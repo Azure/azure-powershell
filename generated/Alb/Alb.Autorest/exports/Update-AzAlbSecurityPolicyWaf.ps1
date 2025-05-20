@@ -49,7 +49,7 @@ TRAFFICCONTROLLERINPUTOBJECT <IAlbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TrafficControllerName <String>]: traffic controller name for path
 .Link
-https://learn.microsoft.com/powershell/module/az.alb/update-azalbsecuritypolicy
+https://learn.microsoft.com/powershell/module/az.alb/update-azalbsecuritypolicywaf
 #>
 function Update-AzAlbSecurityPolicyWaf {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicy])]

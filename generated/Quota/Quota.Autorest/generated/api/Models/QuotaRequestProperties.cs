@@ -36,13 +36,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         public string Message { get => this._message; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestPropertiesInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorDetailInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestPropertiesInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorDetailInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestPropertiesInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ServiceErrorDetail()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for ErrorMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestPropertiesInternal.ErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorDetailInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestPropertiesInternal.ErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorDetailInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Message</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestPropertiesInternal.Message { get => this._message; set { {_message = value;} } }

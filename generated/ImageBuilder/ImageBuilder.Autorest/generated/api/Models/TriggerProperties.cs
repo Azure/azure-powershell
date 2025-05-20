@@ -27,13 +27,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models
         Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerStatus Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal.Status { get => (this._status = this._status ?? new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.TriggerStatus()); set { {_status = value;} } }
 
         /// <summary>Internal Acessors for StatusCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal.StatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerStatusInternal)Status).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerStatusInternal)Status).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal.StatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerStatusInternal)Status).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerStatusInternal)Status).Code = value ?? null; }
 
         /// <summary>Internal Acessors for StatusMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal.StatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerStatusInternal)Status).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerStatusInternal)Status).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal.StatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerStatusInternal)Status).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerStatusInternal)Status).Message = value ?? null; }
 
         /// <summary>Internal Acessors for StatusTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal.StatusTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerStatusInternal)Status).Time; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerStatusInternal)Status).Time = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal.StatusTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerStatusInternal)Status).Time; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerStatusInternal)Status).Time = value ?? default(global::System.DateTime); }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;

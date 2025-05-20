@@ -60,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models
         Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDiagnosticStorageProperties Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IInstancePropertiesInternal.DiagnosticStorageProperty { get => (this._diagnosticStorageProperty = this._diagnosticStorageProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.DiagnosticStorageProperties()); set { {_diagnosticStorageProperty = value;} } }
 
         /// <summary>Internal Acessors for DiagnosticStoragePropertyAuthenticationType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IInstancePropertiesInternal.DiagnosticStoragePropertyAuthenticationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDiagnosticStoragePropertiesInternal)DiagnosticStorageProperty).AuthenticationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDiagnosticStoragePropertiesInternal)DiagnosticStorageProperty).AuthenticationType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IInstancePropertiesInternal.DiagnosticStoragePropertyAuthenticationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDiagnosticStoragePropertiesInternal)DiagnosticStorageProperty).AuthenticationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDiagnosticStoragePropertiesInternal)DiagnosticStorageProperty).AuthenticationType = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IInstancePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }

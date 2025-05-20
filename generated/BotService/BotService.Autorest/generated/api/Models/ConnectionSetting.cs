@@ -46,25 +46,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IConnectionSettingProperties Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IConnectionSettingInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ConnectionSettingProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for SettingId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IConnectionSettingInternal.SettingId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IConnectionSettingPropertiesInternal)Property).SettingId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IConnectionSettingPropertiesInternal)Property).SettingId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IConnectionSettingInternal.SettingId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IConnectionSettingPropertiesInternal)Property).SettingId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IConnectionSettingPropertiesInternal)Property).SettingId = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Sku = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Sku = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SkuTier</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).SkuTier; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).SkuTier = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).SkuTier; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).SkuTier = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for Zone</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Zone { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Zone; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Zone = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal.Zone { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Zone; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceInternal)__resource).Zone = value ?? null /* arrayOf */; }
 
         /// <summary>Specifies the name of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]

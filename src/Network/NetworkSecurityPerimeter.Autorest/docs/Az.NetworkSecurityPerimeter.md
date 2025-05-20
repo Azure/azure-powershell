@@ -1,6 +1,6 @@
 ---
 Module Name: Az.NetworkSecurityPerimeter
-Module Guid: 19cb1f22-64db-4916-ae5c-e611e0181a66
+Module Guid: 1e8ff294-7df5-4c1f-b2ef-32889569c6b4
 Download Help Link: https://learn.microsoft.com/powershell/module/az.networksecurityperimeter
 Help Version: 1.0.0.0
 Locale: en-US

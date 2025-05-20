@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.AutomationRunbookR
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactiongroupautomationrunbookreceiverobject
 #>
 function New-AzActionGroupAutomationRunbookReceiverObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.AutomationRunbookReceiver')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

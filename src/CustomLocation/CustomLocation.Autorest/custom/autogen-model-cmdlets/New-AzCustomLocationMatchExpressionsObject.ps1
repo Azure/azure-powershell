@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.MatchExpressionsPropert
 https://learn.microsoft.com/powershell/module/Az.CustomLocation/new-azcustomlocationmatchexpressionsobject
 #>
 function New-AzCustomLocationMatchExpressionsObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.MatchExpressionsProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

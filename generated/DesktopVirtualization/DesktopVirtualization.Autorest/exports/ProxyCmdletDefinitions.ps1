@@ -4982,7 +4982,6 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 APPATTACHPACKAGE <AppAttachPackage>: 
-  Location <String>: The geo-location where the resource lives
   [FailHealthCheckOnStagingFailure <String>]: Parameter indicating how the health check should behave if this package fails staging
   [HostPoolReference <List<String>>]: List of Hostpool resource Ids.
   [ImageCertificateExpiry <DateTime?>]: Date certificate expires, found in the appxmanifest.xml. 
@@ -5012,6 +5011,7 @@ APPATTACHPACKAGE <AppAttachPackage>:
   [ImagePath <String>]: VHD/CIM image path on Network Share.
   [ImageVersion <String>]: Package version found in the appxmanifest.xml. 
   [KeyVaultUrl <String>]: URL path to certificate name located in keyVault
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 
@@ -11816,7 +11816,6 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 APPATTACHPACKAGE <AppAttachPackage>: 
-  Location <String>: The geo-location where the resource lives
   [FailHealthCheckOnStagingFailure <String>]: Parameter indicating how the health check should behave if this package fails staging
   [HostPoolReference <List<String>>]: List of Hostpool resource Ids.
   [ImageCertificateExpiry <DateTime?>]: Date certificate expires, found in the appxmanifest.xml. 
@@ -11846,6 +11845,7 @@ APPATTACHPACKAGE <AppAttachPackage>:
   [ImagePath <String>]: VHD/CIM image path on Network Share.
   [ImageVersion <String>]: Package version found in the appxmanifest.xml. 
   [KeyVaultUrl <String>]: URL path to certificate name located in keyVault
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 

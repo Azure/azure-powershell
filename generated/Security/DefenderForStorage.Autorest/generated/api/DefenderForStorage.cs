@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage
     public partial class DefenderForStorage
     {
 
-        /// <summary>Update the Defender for Storage settings on a specified storage account.</summary>
+        /// <summary>update the Defender for Storage settings on a specified storage account.</summary>
         /// <param name="resourceId">The identifier of the resource.</param>
         /// <param name="body">Defender for Storage Settings</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage
             }
         }
 
-        /// <summary>Update the Defender for Storage settings on a specified storage account.</summary>
+        /// <summary>update the Defender for Storage settings on a specified storage account.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Defender for Storage Settings</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage
             }
         }
 
-        /// <summary>Update the Defender for Storage settings on a specified storage account.</summary>
+        /// <summary>update the Defender for Storage settings on a specified storage account.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Defender for Storage Settings</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage
             }
         }
 
-        /// <summary>Update the Defender for Storage settings on a specified storage account.</summary>
+        /// <summary>update the Defender for Storage settings on a specified storage account.</summary>
         /// <param name="resourceId">The identifier of the resource.</param>
         /// <param name="jsonString">Json string supplied to the DefenderForStorageCreate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage
             }
         }
 
-        /// <summary>Update the Defender for Storage settings on a specified storage account.</summary>
+        /// <summary>update the Defender for Storage settings on a specified storage account.</summary>
         /// <param name="resourceId">The identifier of the resource.</param>
         /// <param name="jsonString">Json string supplied to the DefenderForStorageCreate operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage
             }
         }
 
-        /// <summary>Update the Defender for Storage settings on a specified storage account.</summary>
+        /// <summary>update the Defender for Storage settings on a specified storage account.</summary>
         /// <param name="resourceId">The identifier of the resource.</param>
         /// <param name="body">Defender for Storage Settings</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Runtime.IEventListener" /> instance that will receive events.</param>

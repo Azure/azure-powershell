@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCarbonMonthlySummaryReportQueryFilterObject
 
 ## SYNOPSIS
-Create an in-memory object for MonthlySummaryReportQueryFilterObject.
+Create an in-memory object for MonthlySummaryReportQueryFilter.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzCarbonMonthlySummaryReportQueryFilterObject -CarbonScopeList <String[]> -D
 ```
 
 ## DESCRIPTION
-Create an in-memory object for MonthlySummaryReportQueryFilterObject.
+Create an in-memory object for MonthlySummaryReportQueryFilter.
 
 ## EXAMPLES
 
@@ -39,12 +39,14 @@ ResourceTypeList     :
 SubscriptionList     : {00000000-0000-0000-0000-000000000000, 00000000-0000-0000-0000-000000000001}
 ```
 
+
+
 ## PARAMETERS
 
 ### -CarbonScopeList
 List of carbon emission scopes.
 Required.
-Accepts one or more values from - Scope1, Scope2, Scope3 in list form.
+Accepts one or more values from EmissionScopeEnum (e.g., Scope1, Scope2, Scope3) in list form.
 The output will include the total emissions for the specified scopes.
 
 ```yaml
@@ -167,7 +169,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.MonthlySummaryReportQueryFilterObject
+### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.MonthlySummaryReportQueryFilter
 
 ## NOTES
 

@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Cmdlets;
     using System;
 
-    /// <summary>The operation to create or update the extension.</summary>
+    /// <summary>The operation to create the extension.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzStackHCIVMMachineExtension_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtension))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"The operation to create or update the extension.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"The operation to create the extension.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}", ApiVersion = "2023-03-15-preview")]
     public partial class NewAzStackHCIVMMachineExtension_CreateExpanded : global::System.Management.Automation.PSCmdlet,

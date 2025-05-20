@@ -32,11 +32,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 LINK <ISpacecraftLink[]>: Immutable list of Spacecraft links.
-  BandwidthMHz <Single>: Bandwidth in MHz.
-  CenterFrequencyMHz <Single>: Center Frequency in MHz.
-  Direction <String>: Direction (Uplink or Downlink).
-  Name <String>: Link name.
-  Polarization <String>: Polarization. e.g. (RHCP, LHCP).
+  [BandwidthMHz <Single?>]: Bandwidth in MHz.
+  [CenterFrequencyMHz <Single?>]: Center Frequency in MHz.
+  [Direction <String>]: Direction (Uplink or Downlink).
+  [Name <String>]: Link name.
+  [Polarization <String>]: Polarization. e.g. (RHCP, LHCP).
 .Link
 https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraft
 #>

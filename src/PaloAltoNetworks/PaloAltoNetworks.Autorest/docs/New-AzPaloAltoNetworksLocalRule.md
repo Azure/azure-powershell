@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPaloAltoNetworksLocalRule
 
 ## SYNOPSIS
-Create a LocalRulesResource
+create a LocalRulesResource
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ New-AzPaloAltoNetworksLocalRule -LocalRulestackName <String> -Priority <String> 
 ```
 
 ## DESCRIPTION
-Create a LocalRulesResource
+create a LocalRulesResource
 
 ## EXAMPLES
 

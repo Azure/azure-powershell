@@ -24,11 +24,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         /// The destination IP a packet can be sent to. This would for example be the TCP endpoint you would send data to.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inlined)]
-        public string AntennaConfigurationDestinationIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesAntennaConfigurationInternal)AntennaConfiguration).DestinationIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesAntennaConfigurationInternal)AntennaConfiguration).DestinationIP = value ?? null; }
+        public string AntennaConfigurationDestinationIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesAntennaConfigurationInternal)AntennaConfiguration).DestinationIP; }
 
         /// <summary>List of Source IP</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> AntennaConfigurationSourceIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesAntennaConfigurationInternal)AntennaConfiguration).SourceIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesAntennaConfigurationInternal)AntennaConfiguration).SourceIP = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> AntennaConfigurationSourceIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesAntennaConfigurationInternal)AntennaConfiguration).SourceIP; }
 
         /// <summary>Backing field for <see cref="ContactProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesContactProfile _contactProfile;
@@ -79,6 +79,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         /// <summary>Internal Acessors for AntennaConfiguration</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesAntennaConfiguration Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal.AntennaConfiguration { get => (this._antennaConfiguration = this._antennaConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactsPropertiesAntennaConfiguration()); set { {_antennaConfiguration = value;} } }
 
+        /// <summary>Internal Acessors for AntennaConfigurationDestinationIP</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal.AntennaConfigurationDestinationIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesAntennaConfigurationInternal)AntennaConfiguration).DestinationIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesAntennaConfigurationInternal)AntennaConfiguration).DestinationIP = value ?? null; }
+
+        /// <summary>Internal Acessors for AntennaConfigurationSourceIP</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal.AntennaConfigurationSourceIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesAntennaConfigurationInternal)AntennaConfiguration).SourceIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesAntennaConfigurationInternal)AntennaConfiguration).SourceIP = value ?? null /* arrayOf */; }
+
         /// <summary>Internal Acessors for ContactProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesContactProfile Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal.ContactProfile { get => (this._contactProfile = this._contactProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactsPropertiesContactProfile()); set { {_contactProfile = value;} } }
 
@@ -126,18 +132,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         public string ProvisioningState { get => this._provisioningState; }
 
         /// <summary>Backing field for <see cref="ReservationEndTime" /> property.</summary>
-        private global::System.DateTime _reservationEndTime;
+        private global::System.DateTime? _reservationEndTime;
 
         /// <summary>Reservation end time of a contact (ISO 8601 UTC standard).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Owned)]
-        public global::System.DateTime ReservationEndTime { get => this._reservationEndTime; set => this._reservationEndTime = value; }
+        public global::System.DateTime? ReservationEndTime { get => this._reservationEndTime; set => this._reservationEndTime = value; }
 
         /// <summary>Backing field for <see cref="ReservationStartTime" /> property.</summary>
-        private global::System.DateTime _reservationStartTime;
+        private global::System.DateTime? _reservationStartTime;
 
         /// <summary>Reservation start time of a contact (ISO 8601 UTC standard).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Owned)]
-        public global::System.DateTime ReservationStartTime { get => this._reservationStartTime; set => this._reservationStartTime = value; }
+        public global::System.DateTime? ReservationStartTime { get => this._reservationStartTime; set => this._reservationStartTime = value; }
 
         /// <summary>Backing field for <see cref="RxEndTime" /> property.</summary>
         private global::System.DateTime? _rxEndTime;
@@ -268,7 +274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         string ErrorMessage { get;  }
         /// <summary>Azure Ground Station name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -301,7 +307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         string ProvisioningState { get;  }
         /// <summary>Reservation end time of a contact (ISO 8601 UTC standard).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -309,10 +315,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         Description = @"Reservation end time of a contact (ISO 8601 UTC standard).",
         SerializedName = @"reservationEndTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime ReservationEndTime { get; set; }
+        global::System.DateTime? ReservationEndTime { get; set; }
         /// <summary>Reservation start time of a contact (ISO 8601 UTC standard).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -320,7 +326,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         Description = @"Reservation start time of a contact (ISO 8601 UTC standard).",
         SerializedName = @"reservationStartTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime ReservationStartTime { get; set; }
+        global::System.DateTime? ReservationStartTime { get; set; }
         /// <summary>Receive end time of a contact (ISO 8601 UTC standard).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
         Required = false,
@@ -430,9 +436,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         /// <summary>The current state of the resource's creation, deletion, or modification.</summary>
         string ProvisioningState { get; set; }
         /// <summary>Reservation end time of a contact (ISO 8601 UTC standard).</summary>
-        global::System.DateTime ReservationEndTime { get; set; }
+        global::System.DateTime? ReservationEndTime { get; set; }
         /// <summary>Reservation start time of a contact (ISO 8601 UTC standard).</summary>
-        global::System.DateTime ReservationStartTime { get; set; }
+        global::System.DateTime? ReservationStartTime { get; set; }
         /// <summary>Receive end time of a contact (ISO 8601 UTC standard).</summary>
         global::System.DateTime? RxEndTime { get; set; }
         /// <summary>Receive start time of a contact (ISO 8601 UTC standard).</summary>

@@ -53,49 +53,67 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).Location = value ?? null; }
 
         /// <summary>Internal Acessors for CandidatePublicKey</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.CandidatePublicKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).CandidatePublicKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).CandidatePublicKey = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.CandidatePublicKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).CandidatePublicKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).CandidatePublicKey = value ?? null; }
 
         /// <summary>Internal Acessors for CandidatePublicKeyNotAfter</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.CandidatePublicKeyNotAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).CandidatePublicKeyNotAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).CandidatePublicKeyNotAfter = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.CandidatePublicKeyNotAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).CandidatePublicKeyNotAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).CandidatePublicKeyNotAfter = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for CandidatePublicKeyRenewAfter</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.CandidatePublicKeyRenewAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).CandidatePublicKeyRenewAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).CandidatePublicKeyRenewAfter = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.CandidatePublicKeyRenewAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).CandidatePublicKeyRenewAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).CandidatePublicKeyRenewAfter = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for ClientPublicKey</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.ClientPublicKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).ClientPublicKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).ClientPublicKey = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.ClientPublicKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).ClientPublicKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).ClientPublicKey = value ?? null; }
 
         /// <summary>Internal Acessors for ClientPublicKeyNotAfter</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.ClientPublicKeyNotAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).ClientPublicKeyNotAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).ClientPublicKeyNotAfter = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.ClientPublicKeyNotAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).ClientPublicKeyNotAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).ClientPublicKeyNotAfter = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for ClientPublicKeyRenewAfter</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.ClientPublicKeyRenewAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).ClientPublicKeyRenewAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).ClientPublicKeyRenewAfter = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.ClientPublicKeyRenewAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).ClientPublicKeyRenewAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).ClientPublicKeyRenewAfter = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for KeyProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyProperties Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.KeyProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).KeyProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).KeyProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyProperties Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.KeyProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).KeyProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).KeyProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for KeyPropertyCandidatePublicKey</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetails Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.KeyPropertyCandidatePublicKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).KeyPropertyCandidatePublicKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).KeyPropertyCandidatePublicKey = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetails Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.KeyPropertyCandidatePublicKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).KeyPropertyCandidatePublicKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).KeyPropertyCandidatePublicKey = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for KeyPropertyClientPublicKey</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetails Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.KeyPropertyClientPublicKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).KeyPropertyClientPublicKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).KeyPropertyClientPublicKey = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetails Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.KeyPropertyClientPublicKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).KeyPropertyClientPublicKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).KeyPropertyClientPublicKey = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationProperties Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.NetworkConfigurationProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for TenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkConfigurationPropertiesInternal)Property).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
@@ -124,31 +142,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__proxyResourceAutoGenerated).SystemDataLastModifiedByType; }
 
         /// <summary>Azure resource tenant Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]

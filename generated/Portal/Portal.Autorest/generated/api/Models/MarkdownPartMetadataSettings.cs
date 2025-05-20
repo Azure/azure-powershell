@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Models
         Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsContent Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsInternal.Content { get => (this._content = this._content ?? new Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.MarkdownPartMetadataSettingsContent()); set { {_content = value;} } }
 
         /// <summary>Internal Acessors for ContentSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsContentSettings Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsInternal.ContentSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsContentInternal)Content).Setting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsContentInternal)Content).Setting = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsContentSettings Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsInternal.ContentSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsContentInternal)Content).Setting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsContentInternal)Content).Setting = value ?? null /* model class */; }
 
         /// <summary>The content of the markdown part.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Portal.Origin(Microsoft.Azure.PowerShell.Cmdlets.Portal.PropertyOrigin.Inlined)]

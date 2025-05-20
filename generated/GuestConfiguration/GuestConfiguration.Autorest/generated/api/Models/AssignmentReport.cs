@@ -60,19 +60,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
         Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfo Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.Assignment { get => (this._assignment = this._assignment ?? new Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.AssignmentInfo()); set { {_assignment = value;} } }
 
         /// <summary>Internal Acessors for AssignmentConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationInfo Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.AssignmentConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).Configuration; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).Configuration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationInfo Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.AssignmentConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).Configuration; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).Configuration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AssignmentName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.AssignmentName { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.AssignmentName { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).Name = value ?? null; }
 
         /// <summary>Internal Acessors for ComplianceStatus</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.ComplianceStatus { get => this._complianceStatus; set { {_complianceStatus = value;} } }
 
         /// <summary>Internal Acessors for ConfigurationName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.ConfigurationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).ConfigurationName; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).ConfigurationName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.ConfigurationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).ConfigurationName; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).ConfigurationName = value ?? null; }
 
         /// <summary>Internal Acessors for ConfigurationVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.ConfigurationVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).ConfigurationVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).ConfigurationVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.ConfigurationVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).ConfigurationVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal)Assignment).ConfigurationVersion = value ?? null; }
 
         /// <summary>Internal Acessors for EndTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.EndTime { get => this._endTime; set { {_endTime = value;} } }
@@ -93,10 +93,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
         Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IVMInfo Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.VM { get => (this._vM = this._vM ?? new Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.VMInfo()); set { {_vM = value;} } }
 
         /// <summary>Internal Acessors for VMId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.VMId { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IVMInfoInternal)VM).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IVMInfoInternal)VM).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.VMId { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IVMInfoInternal)VM).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IVMInfoInternal)VM).Id = value ?? null; }
 
         /// <summary>Internal Acessors for VMUuid</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.VMUuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IVMInfoInternal)VM).Uuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IVMInfoInternal)VM).Uuid = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportInternal.VMUuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IVMInfoInternal)VM).Uuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IVMInfoInternal)VM).Uuid = value ?? null; }
 
         /// <summary>Backing field for <see cref="OperationType" /> property.</summary>
         private string _operationType;

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a NewRelicMonitorResource
+create a NewRelicMonitorResource
 .Description
-Create a NewRelicMonitorResource
+create a NewRelicMonitorResource
 .Example
 New-AzNewRelicMonitor -Name test-01 -ResourceGroupName ps-test -Location eastus -PlanDataPlanDetail "newrelicpaygtestplan2@123456789123456@PUBIDnewrelicinc1234567891234.newrelic_liftr_payg"-PlanDataBillingCycle 'MONTHLY' -PlanDataUsageType 'PAYG' -PlanDataEffectiveDate (Get-Date -DisplayHint DateTime) -UserInfoEmailAddress user1@outlook.com -UserInfoFirstName "group" -UserInfoLastName "test"
 
@@ -86,7 +86,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Decides if enable a system assigned identity for the resource.
+    # Determines whether to enable a system-assigned identity for the resource.
     ${EnableSystemAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -300,14 +300,15 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
 
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
         $mapping = @{
             CreateExpanded = 'Az.NewRelic.private\New-AzNewRelicMonitor_CreateExpanded';
             CreateViaJsonFilePath = 'Az.NewRelic.private\New-AzNewRelicMonitor_CreateViaJsonFilePath';
             CreateViaJsonString = 'Az.NewRelic.private\New-AzNewRelicMonitor_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -316,6 +317,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

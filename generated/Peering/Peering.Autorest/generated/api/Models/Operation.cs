@@ -47,16 +47,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfo Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationInternal.Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.OperationDisplayInfo()); set { {_display = value;} } }
 
         /// <summary>Internal Acessors for DisplayDescription</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Description = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayOperation</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Operation = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Operation = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayProvider</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Provider = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Provider = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayResource</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Resource = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationDisplayInfoInternal)Display).Resource = value ?? null; }
 
         /// <summary>Internal Acessors for IsDataAction</summary>
         bool? Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationInternal.IsDataAction { get => this._isDataAction; set { {_isDataAction = value;} } }
@@ -68,10 +68,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationProperties Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.OperationProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ServiceSpecification</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IServiceSpecification Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationInternal.ServiceSpecification { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationPropertiesInternal)Property).ServiceSpecification; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationPropertiesInternal)Property).ServiceSpecification = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IServiceSpecification Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationInternal.ServiceSpecification { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationPropertiesInternal)Property).ServiceSpecification; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationPropertiesInternal)Property).ServiceSpecification = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ServiceSpecificationMetricSpecification</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IMetricSpecification> Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationInternal.ServiceSpecificationMetricSpecification { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationPropertiesInternal)Property).ServiceSpecificationMetricSpecification; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationPropertiesInternal)Property).ServiceSpecificationMetricSpecification = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IMetricSpecification> Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationInternal.ServiceSpecificationMetricSpecification { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationPropertiesInternal)Property).ServiceSpecificationMetricSpecification; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperationPropertiesInternal)Property).ServiceSpecificationMetricSpecification = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

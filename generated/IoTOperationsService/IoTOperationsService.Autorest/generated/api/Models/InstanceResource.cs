@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
 
         /// <summary>The name of the extended location.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Origin(Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.PropertyOrigin.Inlined)]
-        public string ExtendedLocationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IExtendedLocationInternal)ExtendedLocation).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IExtendedLocationInternal)ExtendedLocation).Name = value ; }
+        public string ExtendedLocationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IExtendedLocationInternal)ExtendedLocation).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IExtendedLocationInternal)ExtendedLocation).Name = value ?? null; }
 
         /// <summary>Type of ExtendedLocation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Origin(Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.PropertyOrigin.Inlined)]
@@ -79,46 +79,64 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Origin(Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for ExtendedLocation</summary>
         Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IExtendedLocation Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResourceInternal.ExtendedLocation { get => (this._extendedLocation = this._extendedLocation ?? new Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ExtendedLocation()); set { {_extendedLocation = value;} } }
 
         /// <summary>Internal Acessors for ExtendedLocationType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResourceInternal.ExtendedLocationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IExtendedLocationInternal)ExtendedLocation).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IExtendedLocationInternal)ExtendedLocation).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResourceInternal.ExtendedLocationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IExtendedLocationInternal)ExtendedLocation).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IExtendedLocationInternal)ExtendedLocation).Type = value ?? null; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResourceInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResourceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResourceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResourceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResourceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceProperties Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.InstanceProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for SchemaRegistryRef</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ISchemaRegistryRef Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResourceInternal.SchemaRegistryRef { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePropertiesInternal)Property).SchemaRegistryRef; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePropertiesInternal)Property).SchemaRegistryRef = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ISchemaRegistryRef Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResourceInternal.SchemaRegistryRef { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePropertiesInternal)Property).SchemaRegistryRef; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePropertiesInternal)Property).SchemaRegistryRef = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Version</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResourceInternal.Version { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePropertiesInternal)Property).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePropertiesInternal)Property).Version = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstanceResourceInternal.Version { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePropertiesInternal)Property).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePropertiesInternal)Property).Version = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Origin(Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.PropertyOrigin.Inherited)]
@@ -147,31 +165,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Origin(Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Origin(Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Origin(Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Origin(Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Origin(Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Origin(Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Origin(Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Origin(Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.PropertyOrigin.Inherited)]
@@ -223,7 +241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         string Description { get; set; }
         /// <summary>The name of the extended location.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -234,7 +252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         string ExtendedLocationName { get; set; }
         /// <summary>Type of ExtendedLocation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = true,
         Read = true,
         Create = true,

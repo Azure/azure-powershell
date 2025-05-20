@@ -23,10 +23,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         public string ClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IUserAssignedIdentityInternal)__userAssignedIdentity).ClientId; }
 
         /// <summary>Internal Acessors for ClientId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IUserAssignedIdentityInternal.ClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IUserAssignedIdentityInternal)__userAssignedIdentity).ClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IUserAssignedIdentityInternal)__userAssignedIdentity).ClientId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IUserAssignedIdentityInternal.ClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IUserAssignedIdentityInternal)__userAssignedIdentity).ClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IUserAssignedIdentityInternal)__userAssignedIdentity).ClientId = value ?? null; }
 
         /// <summary>Internal Acessors for PrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IUserAssignedIdentityInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IUserAssignedIdentityInternal)__userAssignedIdentity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IUserAssignedIdentityInternal)__userAssignedIdentity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IUserAssignedIdentityInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IUserAssignedIdentityInternal)__userAssignedIdentity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IUserAssignedIdentityInternal)__userAssignedIdentity).PrincipalId = value ?? null; }
 
         /// <summary>The principal ID of the assigned identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inherited)]

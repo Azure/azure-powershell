@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IListCredentialResponseInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for Kubeconfig</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ICredentialResult> Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IListCredentialResponseInternal.Kubeconfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IListCredentialResponsePropertiesInternal)Property).Kubeconfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IListCredentialResponsePropertiesInternal)Property).Kubeconfig = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ICredentialResult> Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IListCredentialResponseInternal.Kubeconfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IListCredentialResponsePropertiesInternal)Property).Kubeconfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IListCredentialResponsePropertiesInternal)Property).Kubeconfig = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IListCredentialResponseInternal.Name { get => this._name; set { {_name = value;} } }

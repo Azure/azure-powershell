@@ -41,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
         Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.IManagementConfigurationProperties Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.IManagementConfigurationInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.ManagementConfigurationProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.IManagementConfigurationInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.IManagementConfigurationPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.IManagementConfigurationPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.IManagementConfigurationInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.IManagementConfigurationPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.IManagementConfigurationPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.IManagementConfigurationInternal.Type { get => this._type; set { {_type = value;} } }

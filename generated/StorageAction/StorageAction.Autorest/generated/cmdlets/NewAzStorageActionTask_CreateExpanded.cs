@@ -11,17 +11,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Cmdlets
     using System;
 
     /// <summary>
-    /// Asynchronously creates a new storage task resource with the specified parameters. If a storage task is already created
+    /// Asynchronously create a new storage task resource with the specified parameters. If a storage task is already created
     /// and a subsequent create request is issued with different properties, the storage task properties will be updated. If a
-    /// storage task is already created and a subsequent create or update request is issued with the exact same set of properties,
-    /// the request will succeed.
+    /// storage task is already created and a subsequent create request is issued with the exact same set of properties, the request
+    /// will succeed.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzStorageActionTask_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Description(@"Asynchronously creates a new storage task resource with the specified parameters. If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated. If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Description(@"Asynchronously create a new storage task resource with the specified parameters. If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated. If a storage task is already created and a subsequent create request is issued with the exact same set of properties, the request will succeed.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}", ApiVersion = "2023-01-01")]
     public partial class NewAzStorageActionTask_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -106,8 +106,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Cmdlets
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation) })]
         public Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[] ElseOperation { get => _parametersBody.ElseOperation?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ElseOperation = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation>(value) : null); }
 
-        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
         public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _parametersBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
 
         /// <summary>Storage Task is enabled when set to true and disabled when set to false</summary>

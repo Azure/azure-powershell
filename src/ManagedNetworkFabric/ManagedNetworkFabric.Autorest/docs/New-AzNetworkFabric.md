@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkFabric
 
 ## SYNOPSIS
-Create Network Fabric resource.
+create Network Fabric resource.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ New-AzNetworkFabric -Name <String> -ResourceGroupName <String> -JsonString <Stri
 ```
 
 ## DESCRIPTION
-Create Network Fabric resource.
+create Network Fabric resource.
 
 ## EXAMPLES
 

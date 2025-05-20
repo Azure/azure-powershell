@@ -85,13 +85,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
         public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Internal Acessors for Endpoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).Endpoint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).Endpoint = value ?? null; }
 
         /// <summary>Internal Acessors for GrafanaIntegration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IGrafanaIntegrations Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.GrafanaIntegration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).GrafanaIntegration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).GrafanaIntegration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IGrafanaIntegrations Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.GrafanaIntegration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).GrafanaIntegration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).GrafanaIntegration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for GrafanaVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.GrafanaVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).GrafanaVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).GrafanaVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.GrafanaVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).GrafanaVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).GrafanaVersion = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.Id { get => this._id; set { {_id = value;} } }
@@ -100,25 +100,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedServiceIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.Name { get => this._name; set { {_name = value;} } }
 
         /// <summary>Internal Acessors for OutboundIP</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.OutboundIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).OutboundIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).OutboundIP = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.OutboundIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).OutboundIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).OutboundIP = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).PrivateEndpointConnection = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).PrivateEndpointConnection = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaProperties Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ManagedGrafanaProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IResourceSku Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ResourceSku()); set { {_sku = value;} } }
@@ -127,22 +127,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaInternal.Type { get => this._type; set { {_type = value;} } }

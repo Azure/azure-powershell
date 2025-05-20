@@ -30,16 +30,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 
         /// <summary>The identity type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIdentityInternal)Identity).Type = value ?? null; }
+        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIdentityInternal)Identity).Type; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIdentity Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHybridIdentityMetadataPropertiesInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Identity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHybridIdentityMetadataPropertiesInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHybridIdentityMetadataPropertiesInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHybridIdentityMetadataPropertiesInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHybridIdentityMetadataPropertiesInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIdentityInternal)Identity).TenantId = value ?? null; }
+
+        /// <summary>Internal Acessors for IdentityType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHybridIdentityMetadataPropertiesInternal.IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIdentityInternal)Identity).Type = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHybridIdentityMetadataPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }

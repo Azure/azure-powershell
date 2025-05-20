@@ -1,6 +1,6 @@
 ---
 Module Name: Az.HealthBot
-Module Guid: c0515980-2dc4-45bc-b9c4-f1e1d8cc8738
+Module Guid: 401c7687-ee1d-4d93-bd83-2f4845bb366c
 Download Help Link: https://learn.microsoft.com/powershell/module/az.healthbot
 Help Version: 1.0.0.0
 Locale: en-US

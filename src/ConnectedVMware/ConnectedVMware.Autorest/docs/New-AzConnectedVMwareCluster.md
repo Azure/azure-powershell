@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedVMwareCluster
 
 ## SYNOPSIS
-Create cluster.
+create cluster.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzConnectedVMwareCluster -Name <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-Create cluster.
+create cluster.
 
 ## EXAMPLES
 

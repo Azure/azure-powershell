@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzOracleAutonomousDatabaseBackup
 
 ## SYNOPSIS
-Create a AutonomousDatabaseBackup
+create a AutonomousDatabaseBackup
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -Autonomousdatabasena
 ```
 
 ## DESCRIPTION
-Create a AutonomousDatabaseBackup
+create a AutonomousDatabaseBackup
 
 ## EXAMPLES
 

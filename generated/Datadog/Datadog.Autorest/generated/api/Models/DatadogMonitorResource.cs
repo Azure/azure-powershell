@@ -92,13 +92,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         public string MarketplaceSubscriptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus; }
 
         /// <summary>Internal Acessors for DatadogOrganizationProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationProperties Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.DatadogOrganizationProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationProperties Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.DatadogOrganizationProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DatadogOrganizationPropertyId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.DatadogOrganizationPropertyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.DatadogOrganizationPropertyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyId = value ?? null; }
 
         /// <summary>Internal Acessors for DatadogOrganizationPropertyName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.DatadogOrganizationPropertyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.DatadogOrganizationPropertyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyName = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.Id { get => this._id; set { {_id = value;} } }
@@ -107,19 +107,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityProperties Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IdentityProperties()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for LiftrResourceCategory</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.LiftrResourceCategory { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourceCategory; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourceCategory = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.LiftrResourceCategory { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourceCategory; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourceCategory = value ?? null; }
 
         /// <summary>Internal Acessors for LiftrResourcePreference</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.LiftrResourcePreference { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourcePreference; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourcePreference = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.LiftrResourcePreference { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourcePreference; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourcePreference = value ?? default(int); }
 
         /// <summary>Internal Acessors for MarketplaceSubscriptionStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.MarketplaceSubscriptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.MarketplaceSubscriptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.Name { get => this._name; set { {_name = value;} } }
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorProperties Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.MonitorProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSku Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ResourceSku()); set { {_sku = value;} } }
@@ -137,28 +137,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.Type { get => this._type; set { {_type = value;} } }
 
         /// <summary>Internal Acessors for UserInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IUserInfo Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.UserInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).UserInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).UserInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IUserInfo Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.UserInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).UserInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).UserInfo = value ?? null /* model class */; }
 
         /// <summary>Flag specifying if the resource monitoring is enabled or disabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]

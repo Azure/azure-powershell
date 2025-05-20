@@ -80,8 +80,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
                 return;
             }
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
-            {_centerFrequencyMHz = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNumber>("centerFrequencyMHz"), out var __jsonCenterFrequencyMHz) ? (float)__jsonCenterFrequencyMHz : _centerFrequencyMHz;}
-            {_bandwidthMHz = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNumber>("bandwidthMHz"), out var __jsonBandwidthMHz) ? (float)__jsonBandwidthMHz : _bandwidthMHz;}
+            {_centerFrequencyMHz = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNumber>("centerFrequencyMHz"), out var __jsonCenterFrequencyMHz) ? (float?)__jsonCenterFrequencyMHz : _centerFrequencyMHz;}
+            {_bandwidthMHz = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNumber>("bandwidthMHz"), out var __jsonBandwidthMHz) ? (float?)__jsonBandwidthMHz : _bandwidthMHz;}
             {_direction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("direction"), out var __jsonDirection) ? (string)__jsonDirection : (string)_direction;}
             {_polarization = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("polarization"), out var __jsonPolarization) ? (string)__jsonPolarization : (string)_polarization;}
             {_authorization = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonArray>("authorizations"), out var __jsonAuthorizations) ? If( __jsonAuthorizations as Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAuthorizedGroundstation>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAuthorizedGroundstation) (Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AuthorizedGroundstation.FromJson(__u) )) ))() : null : _authorization;}
@@ -113,11 +113,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.SerializationMode.IncludeCreate))
             {
-                AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNumber(this._centerFrequencyMHz), "centerFrequencyMHz" ,container.Add );
+                AddIf( null != this._centerFrequencyMHz ? (Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNumber((float)this._centerFrequencyMHz) : null, "centerFrequencyMHz" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.SerializationMode.IncludeCreate))
             {
-                AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNumber(this._bandwidthMHz), "bandwidthMHz" ,container.Add );
+                AddIf( null != this._bandwidthMHz ? (Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNumber((float)this._bandwidthMHz) : null, "bandwidthMHz" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.SerializationMode.IncludeCreate))
             {

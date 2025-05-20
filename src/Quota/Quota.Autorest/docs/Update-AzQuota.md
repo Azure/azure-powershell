@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzQuota
 
 ## SYNOPSIS
-Update the quota limit for a specific resource to the specified value:\n1.
+update the quota limit for a specific resource to the specified value:\n1.
 Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate the new quota limit.
 These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
 Use this PUT operation to update the quota limit.
@@ -43,7 +43,7 @@ Update-AzQuota -ResourceName <String> -Scope <String> -JsonString <String> [-Def
 ```
 
 ## DESCRIPTION
-Update the quota limit for a specific resource to the specified value:\n1.
+update the quota limit for a specific resource to the specified value:\n1.
 Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate the new quota limit.
 These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
 Use this PUT operation to update the quota limit.

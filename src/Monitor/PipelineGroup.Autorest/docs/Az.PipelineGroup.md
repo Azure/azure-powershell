@@ -1,6 +1,6 @@
 ---
 Module Name: Az.PipelineGroup
-Module Guid: 771bcd47-2561-4441-abe5-4149f359b483
+Module Guid: 11fd19f1-1925-4603-9ab9-e183827680f5
 Download Help Link: https://learn.microsoft.com/powershell/module/az.pipelinegroup
 Help Version: 1.0.0.0
 Locale: en-US

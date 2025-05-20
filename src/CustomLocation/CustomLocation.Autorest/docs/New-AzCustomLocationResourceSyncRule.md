@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCustomLocationResourceSyncRule
 
 ## SYNOPSIS
-Create a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
+create a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
 
 ## SYNTAX
 
@@ -52,7 +52,7 @@ New-AzCustomLocationResourceSyncRule -CustomLocationName <String> -Name <String>
 ```
 
 ## DESCRIPTION
-Create a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
+create a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
 
 ## EXAMPLES
 

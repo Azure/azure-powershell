@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzOracleCloudVMCluster
 
 ## SYNOPSIS
-Create a CloudVmCluster
+create a CloudVmCluster
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ New-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> -JsonStrin
 ```
 
 ## DESCRIPTION
-Create a CloudVmCluster
+create a CloudVmCluster
 
 ## EXAMPLES
 

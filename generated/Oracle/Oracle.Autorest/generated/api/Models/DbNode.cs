@@ -81,88 +81,106 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         public int? MemorySizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MemorySizeInGb; }
 
         /// <summary>Internal Acessors for AdditionalDetail</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.AdditionalDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).AdditionalDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).AdditionalDetail = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.AdditionalDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).AdditionalDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).AdditionalDetail = value ?? null; }
 
         /// <summary>Internal Acessors for BackupIPId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.BackupIPId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupIPId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupIPId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.BackupIPId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupIPId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupIPId = value ?? null; }
 
         /// <summary>Internal Acessors for BackupVnic2Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.BackupVnic2Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnic2Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnic2Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.BackupVnic2Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnic2Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnic2Id = value ?? null; }
 
         /// <summary>Internal Acessors for BackupVnicId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.BackupVnicId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnicId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnicId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.BackupVnicId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnicId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).BackupVnicId = value ?? null; }
 
         /// <summary>Internal Acessors for CpuCoreCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.CpuCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).CpuCoreCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).CpuCoreCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.CpuCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).CpuCoreCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).CpuCoreCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for DbServerId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.DbServerId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbServerId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbServerId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.DbServerId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbServerId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbServerId = value ?? null; }
 
         /// <summary>Internal Acessors for DbSystemId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.DbSystemId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbSystemId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbSystemId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.DbSystemId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbSystemId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbSystemId = value ?? null; }
 
         /// <summary>Internal Acessors for FaultDomain</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.FaultDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).FaultDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).FaultDomain = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.FaultDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).FaultDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).FaultDomain = value ?? null; }
 
         /// <summary>Internal Acessors for HostIPId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.HostIPId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).HostIPId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).HostIPId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.HostIPId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).HostIPId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).HostIPId = value ?? null; }
 
         /// <summary>Internal Acessors for Hostname</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.Hostname { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Hostname; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Hostname = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.Hostname { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Hostname; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Hostname = value ?? null; }
 
         /// <summary>Internal Acessors for LifecycleDetail</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.LifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleDetail = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.LifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleDetail = value ?? null; }
 
         /// <summary>Internal Acessors for LifecycleState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.LifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.LifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).LifecycleState = value ?? null; }
 
         /// <summary>Internal Acessors for MaintenanceType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.MaintenanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MaintenanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MaintenanceType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.MaintenanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MaintenanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MaintenanceType = value ?? null; }
 
         /// <summary>Internal Acessors for MemorySizeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.MemorySizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MemorySizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MemorySizeInGb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.MemorySizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MemorySizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).MemorySizeInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for Ocid</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.Ocid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Ocid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Ocid = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.Ocid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Ocid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Ocid = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeProperties Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbNodeProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for SoftwareStorageSizeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.SoftwareStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).SoftwareStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).SoftwareStorageSizeInGb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.SoftwareStorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).SoftwareStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).SoftwareStorageSizeInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for StorageSizeInGb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.StorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbNodeStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbNodeStorageSizeInGb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.StorageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbNodeStorageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).DbNodeStorageSizeInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for TimeCreated</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.TimeCreated { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeCreated; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeCreated = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.TimeCreated { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeCreated; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeCreated = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for TimeMaintenanceWindowEnd</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.TimeMaintenanceWindowEnd { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowEnd; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowEnd = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.TimeMaintenanceWindowEnd { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowEnd; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowEnd = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for TimeMaintenanceWindowStart</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.TimeMaintenanceWindowStart { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowStart; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowStart = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.TimeMaintenanceWindowStart { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowStart; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).TimeMaintenanceWindowStart = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Vnic2Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.Vnic2Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Vnic2Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Vnic2Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.Vnic2Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Vnic2Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).Vnic2Id = value ?? null; }
 
         /// <summary>Internal Acessors for VnicId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.VnicId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).VnicId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).VnicId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeInternal.VnicId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).VnicId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)Property).VnicId = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
@@ -202,31 +220,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
 
         /// <summary>The date and time that the database node was created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]

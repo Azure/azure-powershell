@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.MonitoredSubscription
 https://learn.microsoft.com/powershell/module/Az.NewRelic/new-aznewrelicmonitoredsubscriptionobject
 #>
 function New-AzNewRelicMonitoredSubscriptionObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.MonitoredSubscription')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

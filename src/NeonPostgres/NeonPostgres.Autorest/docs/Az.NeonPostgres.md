@@ -1,6 +1,6 @@
 ---
 Module Name: Az.NeonPostgres
-Module Guid: b3e01e02-1629-4884-8793-ec1494a14142
+Module Guid: 9a0cdc2f-aa82-4f5a-ad4f-da57e4bddf4e
 Download Help Link: https://learn.microsoft.com/powershell/module/az.neonpostgres
 Help Version: 1.0.0.0
 Locale: en-US

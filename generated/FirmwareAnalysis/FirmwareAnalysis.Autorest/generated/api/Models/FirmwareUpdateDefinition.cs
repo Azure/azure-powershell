@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareProperties Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareUpdateDefinitionInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.FirmwareProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareUpdateDefinitionInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwarePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwarePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareUpdateDefinitionInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwarePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwarePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Firmware model.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]

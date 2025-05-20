@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzOracleCloudExadataInfrastructure
 
 ## SYNOPSIS
-Create a CloudExadataInfrastructure
+create a CloudExadataInfrastructure
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ New-AzOracleCloudExadataInfrastructure -Name <String> -ResourceGroupName <String
 ```
 
 ## DESCRIPTION
-Create a CloudExadataInfrastructure
+create a CloudExadataInfrastructure
 
 ## EXAMPLES
 

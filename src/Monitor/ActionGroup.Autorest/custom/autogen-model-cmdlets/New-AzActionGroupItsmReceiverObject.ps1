@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ItsmReceiver
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactiongroupitsmreceiverobject
 #>
 function New-AzActionGroupItsmReceiverObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ItsmReceiver')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSecurityDefenderForStorage
 
 ## SYNOPSIS
-Update the Defender for Storage settings on a specified storage account.
+update the Defender for Storage settings on a specified storage account.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Update-AzSecurityDefenderForStorage -ResourceId <String> [-IsEnabled]
 ```
 
 ## DESCRIPTION
-Update the Defender for Storage settings on a specified storage account.
+update the Defender for Storage settings on a specified storage account.
 
 ## EXAMPLES
 

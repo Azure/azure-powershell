@@ -35,16 +35,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinitionInternal)Error).Message; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinitionInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinitionInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinitionInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinitionInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinition> Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinitionInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinitionInternal)Error).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinition> Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinitionInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinitionInternal)Error).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinition Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorResponseInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ErrorDefinition()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinitionInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinitionInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinitionInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IErrorDefinitionInternal)Error).Message = value ?? null; }
 
         /// <summary>Creates an new <see cref="ErrorResponse" /> instance.</summary>
         public ErrorResponse()

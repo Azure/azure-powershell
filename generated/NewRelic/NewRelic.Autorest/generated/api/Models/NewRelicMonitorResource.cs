@@ -83,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Marketplace Subscription Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inlined)]
@@ -97,61 +97,79 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IManagedServiceIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for LiftrResourceCategory</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.LiftrResourceCategory { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).LiftrResourceCategory; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).LiftrResourceCategory = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.LiftrResourceCategory { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).LiftrResourceCategory; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).LiftrResourceCategory = value ?? null; }
 
         /// <summary>Internal Acessors for LiftrResourcePreference</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.LiftrResourcePreference { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).LiftrResourcePreference; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).LiftrResourcePreference = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.LiftrResourcePreference { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).LiftrResourcePreference; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).LiftrResourcePreference = value ?? default(int); }
 
         /// <summary>Internal Acessors for MarketplaceSubscriptionId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.MarketplaceSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.MarketplaceSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionId = value ?? null; }
 
         /// <summary>Internal Acessors for MarketplaceSubscriptionStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.MarketplaceSubscriptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.MarketplaceSubscriptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus = value ?? null; }
 
         /// <summary>Internal Acessors for MonitoringStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.MonitoringStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).MonitoringStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).MonitoringStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.MonitoringStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).MonitoringStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).MonitoringStatus = value ?? null; }
 
         /// <summary>Internal Acessors for NewRelicAccountProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountProperties Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.NewRelicAccountProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountProperties Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.NewRelicAccountProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NewRelicAccountPropertyAccountInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAccountInfo Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.NewRelicAccountPropertyAccountInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountPropertyAccountInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountPropertyAccountInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAccountInfo Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.NewRelicAccountPropertyAccountInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountPropertyAccountInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountPropertyAccountInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NewRelicAccountPropertyOrganizationInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOrganizationInfo Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.NewRelicAccountPropertyOrganizationInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountPropertyOrganizationInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountPropertyOrganizationInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOrganizationInfo Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.NewRelicAccountPropertyOrganizationInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountPropertyOrganizationInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountPropertyOrganizationInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NewRelicAccountPropertySingleSignOnProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicSingleSignOnProperties Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.NewRelicAccountPropertySingleSignOnProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountPropertySingleSignOnProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountPropertySingleSignOnProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicSingleSignOnProperties Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.NewRelicAccountPropertySingleSignOnProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountPropertySingleSignOnProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).NewRelicAccountPropertySingleSignOnProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PlanData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanData Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.PlanData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).PlanData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).PlanData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanData Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.PlanData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).PlanData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).PlanData = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorProperties Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.MonitorProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for UserInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IUserInfo Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.UserInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).UserInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).UserInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IUserInfo Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal.UserInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).UserInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)Property).UserInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>MonitoringStatus of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inlined)]
@@ -232,31 +250,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inherited)]

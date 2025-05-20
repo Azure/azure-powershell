@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzKubernetesRuntimeService
 
 ## SYNOPSIS
-Update a ServiceResource
+update a ServiceResource
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Update-AzKubernetesRuntimeService -InputObject <IKubernetesRuntimeIdentity> [-De
 ```
 
 ## DESCRIPTION
-Update a ServiceResource
+update a ServiceResource
 
 ## EXAMPLES
 

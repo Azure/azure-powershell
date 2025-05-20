@@ -48,11 +48,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// is considered. The IPV4 address subnet is an optional attribute.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> InfrastructureServiceIpv4AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv4AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv4AddressSpace = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> InfrastructureServiceIpv4AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv4AddressSpace; }
 
         /// <summary>The IPv6 is not supported right now.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> InfrastructureServiceIpv6AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv6AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv6AddressSpace = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> InfrastructureServiceIpv6AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv6AddressSpace; }
 
         /// <summary>Backing field for <see cref="Ipv4AddressSpace" /> property.</summary>
         private string _ipv4AddressSpace;
@@ -96,6 +96,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Internal Acessors for InfrastructureService</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServices Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.InfrastructureService { get => (this._infrastructureService = this._infrastructureService ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ControllerServices()); set { {_infrastructureService = value;} } }
 
+        /// <summary>Internal Acessors for InfrastructureServiceIpv4AddressSpace</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.InfrastructureServiceIpv4AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv4AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv4AddressSpace = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for InfrastructureServiceIpv6AddressSpace</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.InfrastructureServiceIpv6AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv6AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)InfrastructureService).Ipv6AddressSpace = value ?? null /* arrayOf */; }
+
         /// <summary>Internal Acessors for ManagedResourceGroupConfiguration</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedResourceGroupConfiguration Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.ManagedResourceGroupConfiguration { get => (this._managedResourceGroupConfiguration = this._managedResourceGroupConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedResourceGroupConfiguration()); set { {_managedResourceGroupConfiguration = value;} } }
 
@@ -113,6 +119,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 
         /// <summary>Internal Acessors for WorkloadService</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServices Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.WorkloadService { get => (this._workloadService = this._workloadService ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ControllerServices()); set { {_workloadService = value;} } }
+
+        /// <summary>Internal Acessors for WorkloadServiceIpv4AddressSpace</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.WorkloadServiceIpv4AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv4AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv4AddressSpace = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for WorkloadServiceIpv6AddressSpace</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricControllerPropertiesInternal.WorkloadServiceIpv6AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv6AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv6AddressSpace = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="NetworkFabricId" /> property.</summary>
         private System.Collections.Generic.List<string> _networkFabricId;
@@ -176,11 +188,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// is considered. The IPV4 address subnet is an optional attribute.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> WorkloadServiceIpv4AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv4AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv4AddressSpace = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> WorkloadServiceIpv4AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv4AddressSpace; }
 
         /// <summary>The IPv6 is not supported right now.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> WorkloadServiceIpv6AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv6AddressSpace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv6AddressSpace = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> WorkloadServiceIpv6AddressSpace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControllerServicesInternal)WorkloadService).Ipv6AddressSpace; }
 
         /// <summary>Creates an new <see cref="NetworkFabricControllerProperties" /> instance.</summary>
         public NetworkFabricControllerProperties()

@@ -80,43 +80,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models
         Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.Dkim2 { get => (this._dkim2 = this._dkim2 ?? new Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.VerificationStatusRecord()); set { {_dkim2 = value;} } }
 
         /// <summary>Internal Acessors for Dkim2ErrorCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.Dkim2ErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim2).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim2).ErrorCode = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.Dkim2ErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim2).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim2).ErrorCode = value ?? null; }
 
         /// <summary>Internal Acessors for Dkim2Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.Dkim2Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim2).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim2).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.Dkim2Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim2).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim2).Status = value ?? null; }
 
         /// <summary>Internal Acessors for DkimErrorCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.DkimErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim).ErrorCode = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.DkimErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim).ErrorCode = value ?? null; }
 
         /// <summary>Internal Acessors for DkimStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.DkimStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.DkimStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dkim).Status = value ?? null; }
 
         /// <summary>Internal Acessors for Dmarc</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.Dmarc { get => (this._dmarc = this._dmarc ?? new Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.VerificationStatusRecord()); set { {_dmarc = value;} } }
 
         /// <summary>Internal Acessors for DmarcErrorCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.DmarcErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dmarc).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dmarc).ErrorCode = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.DmarcErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dmarc).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dmarc).ErrorCode = value ?? null; }
 
         /// <summary>Internal Acessors for DmarcStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.DmarcStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dmarc).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dmarc).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.DmarcStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dmarc).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Dmarc).Status = value ?? null; }
 
         /// <summary>Internal Acessors for Domain</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.Domain { get => (this._domain = this._domain ?? new Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.VerificationStatusRecord()); set { {_domain = value;} } }
 
         /// <summary>Internal Acessors for DomainErrorCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.DomainErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Domain).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Domain).ErrorCode = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.DomainErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Domain).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Domain).ErrorCode = value ?? null; }
 
         /// <summary>Internal Acessors for DomainStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.DomainStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Domain).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Domain).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.DomainStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Domain).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Domain).Status = value ?? null; }
 
         /// <summary>Internal Acessors for Spf</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.Spf { get => (this._spf = this._spf ?? new Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.VerificationStatusRecord()); set { {_spf = value;} } }
 
         /// <summary>Internal Acessors for SpfErrorCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.SpfErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Spf).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Spf).ErrorCode = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.SpfErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Spf).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Spf).ErrorCode = value ?? null; }
 
         /// <summary>Internal Acessors for SpfStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.SpfStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Spf).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Spf).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStatesInternal.SpfStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Spf).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecordInternal)Spf).Status = value ?? null; }
 
         /// <summary>Backing field for <see cref="Spf" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord _spf;

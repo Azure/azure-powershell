@@ -30,10 +30,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         public string ExpirationDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICertificateInternal)__certificate).ExpirationDate; }
 
         /// <summary>Internal Acessors for ExpirationDate</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICertificateInternal.ExpirationDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICertificateInternal)__certificate).ExpirationDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICertificateInternal)__certificate).ExpirationDate = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICertificateInternal.ExpirationDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICertificateInternal)__certificate).ExpirationDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICertificateInternal)__certificate).ExpirationDate = value ?? null; }
 
         /// <summary>Internal Acessors for Subject</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICertificateInternal.Subject { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICertificateInternal)__certificate).Subject; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICertificateInternal)__certificate).Subject = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICertificateInternal.Subject { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICertificateInternal)__certificate).Subject; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICertificateInternal)__certificate).Subject = value ?? null; }
 
         /// <summary>Internal Acessors for CertificateAuthority</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomerCertificateInternal.CertificateAuthority { get => this._certificateAuthority; set { {_certificateAuthority = value;} } }

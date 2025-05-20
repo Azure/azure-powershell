@@ -55,7 +55,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryDataset Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryDefinitionInternal.Dataset { get => (this._dataset = this._dataset ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryDataset()); set { {_dataset = value;} } }
 
         /// <summary>Internal Acessors for DatasetConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryDatasetConfiguration Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryDefinitionInternal.DatasetConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryDatasetInternal)Dataset).Configuration; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryDatasetInternal)Dataset).Configuration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryDatasetConfiguration Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryDefinitionInternal.DatasetConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryDatasetInternal)Dataset).Configuration; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryDatasetInternal)Dataset).Configuration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for TimePeriod</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryTimePeriod Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryDefinitionInternal.TimePeriod { get => (this._timePeriod = this._timePeriod ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryTimePeriod()); set { {_timePeriod = value;} } }

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Marketplace
-Module Guid: 4db1f51a-b835-4783-be47-0b8939492ea5
+Module Guid: d9ab6116-07d0-453c-9063-80333fde0213
 Download Help Link: https://learn.microsoft.com/powershell/module/az.marketplace
 Help Version: 1.0.0.0
 Locale: en-US
@@ -63,10 +63,10 @@ List of offers, regardless the collections
 Changes private store properties
 
 ### [New-AzMarketplacePrivateStoreCollection](New-AzMarketplacePrivateStoreCollection.md)
-Create private store collection
+create private store collection
 
 ### [New-AzMarketplacePrivateStoreCollectionOffer](New-AzMarketplacePrivateStoreCollectionOffer.md)
-Create or add an offer to a specific collection of the private store.
+create or add an offer to a specific collection of the private store.
 
 ### [New-AzMarketplacePrivateStoreCollectionOfferMultiContext](New-AzMarketplacePrivateStoreCollectionOfferMultiContext.md)
 Upsert an offer with multiple context details.
@@ -84,17 +84,17 @@ Perform an action on bulk collections
 Changes private store properties
 
 ### [Set-AzMarketplacePrivateStoreCollection](Set-AzMarketplacePrivateStoreCollection.md)
-Update private store collection
+update private store collection
 
 ### [Set-AzMarketplacePrivateStoreCollectionOffer](Set-AzMarketplacePrivateStoreCollectionOffer.md)
-Update or add an offer to a specific collection of the private store.
+update or add an offer to a specific collection of the private store.
 
 ### [Test-AzMarketplacePrivateStoreAnyExistingOffer](Test-AzMarketplacePrivateStoreAnyExistingOffer.md)
 Query whether exists any offer in the collections.
 
 ### [Update-AzMarketplacePrivateStoreCollection](Update-AzMarketplacePrivateStoreCollection.md)
-Update private store collection
+update private store collection
 
 ### [Update-AzMarketplacePrivateStoreCollectionOffer](Update-AzMarketplacePrivateStoreCollectionOffer.md)
-Update or add an offer to a specific collection of the private store.
+update or add an offer to a specific collection of the private store.
 

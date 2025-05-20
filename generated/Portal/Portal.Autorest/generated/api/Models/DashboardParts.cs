@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Models
         Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartMetadata Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartsInternal.Metadata { get => (this._metadata = this._metadata ?? new Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.DashboardPartMetadata()); set { {_metadata = value;} } }
 
         /// <summary>Internal Acessors for MetadataType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartsInternal.MetadataType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartMetadataInternal)Metadata).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartMetadataInternal)Metadata).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartsInternal.MetadataType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartMetadataInternal)Metadata).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartMetadataInternal)Metadata).Type = value ?? null; }
 
         /// <summary>Internal Acessors for Position</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartsPosition Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartsInternal.Position { get => (this._position = this._position ?? new Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.DashboardPartsPosition()); set { {_position = value;} } }

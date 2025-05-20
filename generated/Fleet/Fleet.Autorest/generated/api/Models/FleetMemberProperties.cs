@@ -55,7 +55,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
         /// The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

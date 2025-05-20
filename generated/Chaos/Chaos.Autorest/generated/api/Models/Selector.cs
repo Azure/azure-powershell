@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFilter Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal.Filter { get => (this._filter = this._filter ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Filter()); set { {_filter = value;} } }
 
         /// <summary>Internal Acessors for FilterType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal.FilterType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFilterInternal)Filter).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFilterInternal)Filter).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal.FilterType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFilterInternal)Filter).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFilterInternal)Filter).Type = value ?? null; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;

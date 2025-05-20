@@ -56,10 +56,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadata Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostInternal.Meta { get => (this._meta = this._meta ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.DatadogHostMetadata()); set { {_meta = value;} } }
 
         /// <summary>Internal Acessors for MetaInstallMethod</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogInstallMethod Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostInternal.MetaInstallMethod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).InstallMethod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).InstallMethod = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogInstallMethod Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostInternal.MetaInstallMethod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).InstallMethod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).InstallMethod = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MetaLogsAgent</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogLogsAgent Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostInternal.MetaLogsAgent { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).LogsAgent; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).LogsAgent = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogLogsAgent Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostInternal.MetaLogsAgent { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).LogsAgent; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).LogsAgent = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFleet
 
 ## SYNOPSIS
-Create a Fleet.
+create a Fleet.
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ New-AzFleet -Name <String> -ResourceGroupName <String> -JsonString <String> [-Su
 ```
 
 ## DESCRIPTION
-Create a Fleet.
+create a Fleet.
 
 ## EXAMPLES
 
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.KubernetesRuntime
-Module Guid: 16846b06-e1a9-4928-95ad-8a030e6c28e5
+Module Guid: 19b36ef5-6fef-4826-ab5b-5aa9d731b100
 Download Help Link: https://learn.microsoft.com/powershell/module/az.kubernetesruntime
 Help Version: 1.0.0.0
 Locale: en-US
@@ -36,13 +36,13 @@ Get a ServiceResource
 Get a StorageClassResource
 
 ### [New-AzKubernetesRuntimeBgpPeer](New-AzKubernetesRuntimeBgpPeer.md)
-Create a BgpPeer
+create a BgpPeer
 
 ### [New-AzKubernetesRuntimeBlobStorageClassTypePropertiesObject](New-AzKubernetesRuntimeBlobStorageClassTypePropertiesObject.md)
 Create an in-memory object for BlobStorageClassTypeProperties.
 
 ### [New-AzKubernetesRuntimeLoadBalancer](New-AzKubernetesRuntimeLoadBalancer.md)
-Create a LoadBalancer
+create a LoadBalancer
 
 ### [New-AzKubernetesRuntimeNativeStorageClassTypePropertiesObject](New-AzKubernetesRuntimeNativeStorageClassTypePropertiesObject.md)
 Create an in-memory object for NativeStorageClassTypeProperties.
@@ -54,13 +54,13 @@ Create an in-memory object for NfsStorageClassTypeProperties.
 Create an in-memory object for RwxStorageClassTypeProperties.
 
 ### [New-AzKubernetesRuntimeService](New-AzKubernetesRuntimeService.md)
-Create a ServiceResource
+create a ServiceResource
 
 ### [New-AzKubernetesRuntimeSmbStorageClassTypePropertiesObject](New-AzKubernetesRuntimeSmbStorageClassTypePropertiesObject.md)
 Create an in-memory object for SmbStorageClassTypeProperties.
 
 ### [New-AzKubernetesRuntimeStorageClass](New-AzKubernetesRuntimeStorageClass.md)
-Create a StorageClassResource
+create a StorageClassResource
 
 ### [Remove-AzKubernetesRuntimeBgpPeer](Remove-AzKubernetesRuntimeBgpPeer.md)
 Delete a BgpPeer
@@ -75,14 +75,14 @@ Delete a ServiceResource
 Delete a StorageClassResource
 
 ### [Update-AzKubernetesRuntimeBgpPeer](Update-AzKubernetesRuntimeBgpPeer.md)
-Update a BgpPeer
+update a BgpPeer
 
 ### [Update-AzKubernetesRuntimeLoadBalancer](Update-AzKubernetesRuntimeLoadBalancer.md)
-Update a LoadBalancer
+update a LoadBalancer
 
 ### [Update-AzKubernetesRuntimeService](Update-AzKubernetesRuntimeService.md)
-Update a ServiceResource
+update a ServiceResource
 
 ### [Update-AzKubernetesRuntimeStorageClass](Update-AzKubernetesRuntimeStorageClass.md)
-Update a StorageClassResource
+update a StorageClassResource
 

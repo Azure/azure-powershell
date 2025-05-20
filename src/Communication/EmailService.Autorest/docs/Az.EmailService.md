@@ -1,6 +1,6 @@
 ---
 Module Name: Az.EmailService
-Module Guid: 21bdebd2-08fb-474b-9b85-a6b7415bd1f2
+Module Guid: d355c6d9-2348-4d16-a402-e7a755a77193
 Download Help Link: https://learn.microsoft.com/powershell/module/az.emailservice
 Help Version: 1.0.0.0
 Locale: en-US

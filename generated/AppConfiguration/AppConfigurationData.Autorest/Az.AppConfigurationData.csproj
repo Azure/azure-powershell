@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <PsModuleName>AppConfigurationdata</PsModuleName>
+    <PsModuleName>AppConfigurationData</PsModuleName>
     <PsRootModuleName>AppConfiguration</PsRootModuleName>
     <PsModuleFolder>AppConfigurationData.Autorest</PsModuleFolder>
   </PropertyGroup>
