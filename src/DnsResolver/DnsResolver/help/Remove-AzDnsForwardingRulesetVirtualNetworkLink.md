@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingrulesetvirtualnetworklink
 schema: 2.0.0
@@ -17,13 +17,14 @@ WARNING: This operation cannot be undone.
 ```
 Remove-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzDnsForwardingRulesetVirtualNetworkLink -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -250,4 +251,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

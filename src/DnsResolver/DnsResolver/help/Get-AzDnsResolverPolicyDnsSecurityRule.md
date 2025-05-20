@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverpolicydnssecurityrule
 schema: 2.0.0
@@ -15,13 +15,15 @@ Gets properties of a DNS security rule for a DNS resolver policy.
 ### List (Default)
 ```
 Get-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -35,7 +37,7 @@ Gets properties of a DNS security rule for a DNS resolver policy.
 
 ## EXAMPLES
 
-### Example 1: List all DNS Security Rule under the dns resolver policy 
+### Example 1: List all DNS Security Rule under the dns resolver policy
 ```powershell
 Get-AzDnsResolverPolicyDnsSecurityRule  -ResourceGroupName exampleResourceGroup -DnsResolverPolicyName exampleDnsResolverPolicy
 ```
@@ -94,7 +96,7 @@ The name of the DNS resolver policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -141,7 +143,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -157,7 +159,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -197,4 +199,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

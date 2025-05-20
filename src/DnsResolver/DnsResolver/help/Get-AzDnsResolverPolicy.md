@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverpolicy
 schema: 2.0.0
@@ -15,30 +15,31 @@ Gets properties of a DNS resolver policy.
 ### List1 (Default)
 ```
 Get-AzDnsResolverPolicy [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDnsResolverPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### List2
 ```
-Get-AzDnsResolverPolicy -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDnsResolverPolicy -ResourceGroupName <String> [-SubscriptionId <String[]>] -VirtualNetworkName <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzDnsResolverPolicy -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### List2
+### GetViaIdentity
 ```
-Get-AzDnsResolverPolicy -ResourceGroupName <String> -VirtualNetworkName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzDnsResolverPolicy -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +47,7 @@ Gets properties of a DNS resolver policy.
 
 ## EXAMPLES
 
-### Example 1: List all DNS Resolver Policies under the subscription 
+### Example 1: List all DNS Resolver Policies under the subscription
 ```powershell
 Get-AzDnsResolverPolicy -SubscriptionId 0e5a46b1-de0b-4ec3-a5d7-dda908b4e076
 ```
@@ -69,7 +70,7 @@ westus2  dnsresolverpolicytestresolver9892 Microsoft.Network/dnsResolverPolicies
 
 This command gets all DNS Resolver Policies under the subscription.
 
-### Example 2: List all DNS Resolver Policies under the resource group 
+### Example 2: List all DNS Resolver Policies under the resource group
 ```powershell
 Get-AzDnsResolverPolicy -ResourceGroupName powershell-test-rg
 ```
@@ -84,7 +85,7 @@ westus2  psdnsresolverpolicyname35m3jf0n Microsoft.Network/dnsResolverPolicies "
 
 This command gets all DNS Resolver Policies under the resource group.
 
-### Example 3: Get single DNS Resolver by name 
+### Example 3: Get single DNS Resolver by name
 ```powershell
 Get-AzDnsResolverPolicy -ResourceGroupName powershell-test-rg -Name psdnsresolverpolicyname33nmy1fz
 ```
@@ -152,7 +153,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List2
+Parameter Sets: Get, List2, List
 Aliases:
 
 Required: True
@@ -168,7 +169,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1, List2
+Parameter Sets: List1, Get, List2, List
 Aliases:
 
 Required: False
@@ -184,7 +185,7 @@ If not specified, returns up to 100 results.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, List1
+Parameter Sets: List1, List
 Aliases:
 
 Required: False
@@ -256,4 +257,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

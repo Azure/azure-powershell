@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingrulesetforwardingrule
 schema: 2.0.0
@@ -17,14 +17,14 @@ Updates a forwarding rule in a DNS forwarding ruleset.
 Update-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
  [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDnsForwardingRulesetForwardingRule -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
  [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -263,4 +263,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

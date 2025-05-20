@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolver
 schema: 2.0.0
@@ -15,13 +15,15 @@ Updates a DNS resolver.
 ### UpdateExpanded (Default)
 ```
 Update-AzDnsResolver -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDnsResolver -InputObject <IDnsResolverIdentity> [-IfMatch <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +33,7 @@ Updates a DNS resolver.
 
 ### Example 1: Update an existing DNS Resolver by name
 ```powershell
-Update-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz -Tag @{"key0" = "value0"} 
+Update-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz -Tag @{"key0" = "value0"}
 ```
 
 ```output
@@ -45,7 +47,7 @@ This command updates an existing DNS Resolver by name ( adding tag ).
 ### Example 2: Updates an existing DNS Resolver by identity
 ```powershell
 $dnsResolverObject = Get-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz
-Update-AzDnsResolver -InputObject $dnsResolverObject  -Tag @{} 
+Update-AzDnsResolver -InputObject $dnsResolverObject  -Tag @{}
 ```
 
 ```output
@@ -244,4 +246,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

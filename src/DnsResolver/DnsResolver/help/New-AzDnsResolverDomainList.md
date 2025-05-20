@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverdomainlist
 schema: 2.0.0
@@ -13,9 +13,10 @@ Creates or updates a DNS resolver domain list.
 ## SYNTAX
 
 ```
-New-AzDnsResolverDomainList -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-Domain <String[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDnsResolverDomainList -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] -Location <String> [-Domain <String[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +24,7 @@ Creates or updates a DNS resolver domain list.
 
 ## EXAMPLES
 
-### Example 1: Create a DNS resolver domain list 
+### Example 1: Create a DNS resolver domain list
 ```powershell
 New-AzDnsResolverDomainList -Name sampleResolverDomainList -ResourceGroupName powershell-test-rg -Location westus2 -Domain @("contoso.com.", "example.com.")
 ```
@@ -265,4 +266,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

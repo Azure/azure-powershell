@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverpolicydnssecurityrule
 schema: 2.0.0
@@ -17,7 +17,8 @@ Updates a DNS security rule.
 Update-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-ActionType <ActionType>]
  [-DnsResolverDomainList <ISubResource[]>] [-DnsSecurityRuleState <DnsSecurityRuleState>] [-Priority <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -25,7 +26,8 @@ Update-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name 
 Update-AzDnsResolverPolicyDnsSecurityRule -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
  [-ActionType <ActionType>] [-DnsResolverDomainList <ISubResource[]>]
  [-DnsSecurityRuleState <DnsSecurityRuleState>] [-Priority <Int32>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +37,7 @@ Updates a DNS security rule.
 
 ### Example 1: Update an existing DNS Security Rule by name
 ```powershell
-Update-AzDnsResolverPolicyDnsSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleDnsResolverPolicyName -Name psdnssecurityrulename33nmy1fz -Tag @{"key0" = "value0"} 
+Update-AzDnsResolverPolicyDnsSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleDnsResolverPolicyName -Name psdnssecurityrulename33nmy1fz -Tag @{"key0" = "value0"}
 ```
 
 ```output
@@ -49,7 +51,7 @@ This command updates an existing DNS Security Rules by name ( adding tag ).
 ### Example 2: Updates an existing DNS Resolver by identity
 ```powershell
 $dnsSecurityRuleObject = Get-AzDnsResolverPolicyDnsSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleDnsResolverPolicyName -Name psdnssecurityrulename33nmy1fz
-Update-AzDnsResolverPolicyDnsSecurityRule -InputObject $dnsSecurityRuleObject  -Tag @{} 
+Update-AzDnsResolverPolicyDnsSecurityRule -InputObject $dnsSecurityRuleObject  -Tag @{}
 ```
 
 ```output
@@ -324,4 +326,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

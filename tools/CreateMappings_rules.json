@@ -971,5 +971,9 @@
   {
     "alias": "Carbon",
     "module": "Carbon"
+  },
+  {
+    "module": "DnsResolver",
+    "alias": "DnsResolver"
   }
 ]

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverinboundendpoint
 schema: 2.0.0
@@ -14,9 +14,9 @@ Creates or updates an inbound endpoint for a DNS resolver.
 
 ```
 New-AzDnsResolverInboundEndpoint -DnsResolverName <String> -Name <String> -ResourceGroupName <String>
- -IPConfiguration <IIPConfiguration[]> -Location <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -IPConfiguration <IIPConfiguration[]>
+ -Location <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -284,4 +284,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

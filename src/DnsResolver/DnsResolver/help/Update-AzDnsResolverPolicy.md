@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverpolicy
 schema: 2.0.0
@@ -15,14 +15,15 @@ Updates a DNS resolver policy.
 ### UpdateExpanded (Default)
 ```
 Update-AzDnsResolverPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IfMatch <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-IfMatch <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDnsResolverPolicy -InputObject <IDnsResolverIdentity> [-IfMatch <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +33,7 @@ Updates a DNS resolver policy.
 
 ### Example 1: Update an existing DNS Resolver Policy by name
 ```powershell
-Update-AzDnsResolverPolicy -ResourceGroupName powershell-test-rg -Name  psdnsresolverpolicyname33nmy1fz -Tag @{"key0" = "value0"} 
+Update-AzDnsResolverPolicy -ResourceGroupName powershell-test-rg -Name  psdnsresolverpolicyname33nmy1fz -Tag @{"key0" = "value0"}
 ```
 
 ```output
@@ -46,7 +47,7 @@ This command updates an existing DNS Resolver Policy by name ( adding tag ).
 ### Example 2: Updates an existing DNS Resolver Policy by identity
 ```powershell
 $dnsResolverPolicyObject = Get-AzDnsResolverPolicy -ResourceGroupName powershell-test-rg -Name  psdnsresolverpolicyname33nmy1fz
-Update-AzDnsResolverPolicy -InputObject $dnsResolverPolicyObject  -Tag @{} 
+Update-AzDnsResolverPolicy -InputObject $dnsResolverPolicyObject  -Tag @{}
 ```
 
 ```output
@@ -245,4 +246,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

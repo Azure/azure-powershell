@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/invoke-azdnsresolverbulkdnsresolverdomainlist
 schema: 2.0.0
@@ -15,30 +15,31 @@ Uploads or downloads the list of domains for a DNS Resolver Domain List from a s
 ### BulkExpanded (Default)
 ```
 Invoke-AzDnsResolverBulkDnsResolverDomainList -DnsResolverDomainListName <String> -ResourceGroupName <String>
- -Action <Action> -StorageUrl <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -Action <Action> -StorageUrl <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Bulk
 ```
 Invoke-AzDnsResolverBulkDnsResolverDomainList -DnsResolverDomainListName <String> -ResourceGroupName <String>
- -Parameter <IDnsResolverDomainListBulk> [-SubscriptionId <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -Parameter <IDnsResolverDomainListBulk>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### BulkViaIdentity
-```
-Invoke-AzDnsResolverBulkDnsResolverDomainList -InputObject <IDnsResolverIdentity>
- -Parameter <IDnsResolverDomainListBulk> [-IfMatch <String>] [-IfNoneMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### BulkViaIdentityExpanded
 ```
-Invoke-AzDnsResolverBulkDnsResolverDomainList -InputObject <IDnsResolverIdentity> -Action <Action>
- -StorageUrl <String> [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzDnsResolverBulkDnsResolverDomainList -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
+ [-IfNoneMatch <String>] -Action <Action> -StorageUrl <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### BulkViaIdentity
+```
+Invoke-AzDnsResolverBulkDnsResolverDomainList -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
+ [-IfNoneMatch <String>] -Parameter <IDnsResolverDomainListBulk> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,27 +47,31 @@ Uploads or downloads the list of domains for a DNS Resolver Domain List from a s
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Upload storage file to domain list
 ```powershell
-{{ Add code here }}
+Invoke-AzDnsResolverBulkDnsResolverDomainList -ResourceGroupName exampleResourceGroupName -DnsResolverDomainListName exampleDomainListName -Action "Upload" -StorageUrl https://exampleStorageAccount.blob.core.windows.net/exampleContainerName/exampleFileName.txt?sp=r&st=2025-05-16T03:54:40Z&se=2025-05-16T11:54:40Z&spr=https&sv=2024-11-04&sr=b&sig={exampleSasToken}
 ```
 
 ```output
-{{ Add output here }}
+Location Name                     Type                                  Etag
+-------- ----                     ----                                  ----
+westus2  exampleDomainListName    Microsoft.Network/dnsResolverPolicies "00008cd5-0000-0800-0000-604016c90000"
 ```
 
-{{ Add description here }}
+This command runs the POST on the domain list to upload the domains from a storage url with sas token.
 
-### Example 2: {{ Add title here }}
+### Example 2: Download domain list domains to storage file
 ```powershell
-{{ Add code here }}
+Invoke-AzDnsResolverBulkDnsResolverDomainList -ResourceGroupName exampleResourceGroupName -DnsResolverDomainListName exampleDomainListName -Action "Download" -StorageUrl https://exampleStorageAccount.blob.core.windows.net/exampleContainerName/exampleFileName.txt?sp=r&st=2025-05-16T03:54:40Z&se=2025-05-16T11:54:40Z&spr=https&sv=2024-11-04&sr=b&sig={exampleSasToken}
 ```
 
 ```output
-{{ Add output here }}
+Location Name                     Type                                  Etag
+-------- ----                     ----                                  ----
+westus2  exampleDomainListName    Microsoft.Network/dnsResolverPolicies "00008cd5-0000-0800-0000-604016c90000"
 ```
 
-{{ Add description here }}
+This command runs the POST on the domain list to download the domains to a storage url with sas token.
 
 ## PARAMETERS
 
@@ -121,7 +126,7 @@ The name of the DNS resolver domain list.
 
 ```yaml
 Type: System.String
-Parameter Sets: Bulk, BulkExpanded
+Parameter Sets: BulkExpanded, Bulk
 Aliases:
 
 Required: True
@@ -170,7 +175,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-Parameter Sets: BulkViaIdentity, BulkViaIdentityExpanded
+Parameter Sets: BulkViaIdentityExpanded, BulkViaIdentity
 Aliases:
 
 Required: True
@@ -217,7 +222,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Bulk, BulkExpanded
+Parameter Sets: BulkExpanded, Bulk
 Aliases:
 
 Required: True
@@ -248,7 +253,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Bulk, BulkExpanded
+Parameter Sets: BulkExpanded, Bulk
 Aliases:
 
 Required: False
@@ -305,4 +310,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

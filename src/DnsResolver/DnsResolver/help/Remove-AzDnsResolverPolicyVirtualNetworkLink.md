@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverpolicyvirtualnetworklink
 schema: 2.0.0
@@ -17,13 +17,14 @@ WARNING: This operation cannot be undone.
 ```
 Remove-AzDnsResolverPolicyVirtualNetworkLink -DnsResolverPolicyName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzDnsResolverPolicyVirtualNetworkLink -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +43,7 @@ This command removes a DNS Resolver Policy Link by name.
 ### Example 2: Remove a DNS Resolver Policy Link by identity
 ```powershell
 $dnsResolverPolicyLinkObject = Get-AzDnsResolverPolicyVirtualNetworkLink  -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleResolverPolicyName -Name psdnsresolverpolicylinkname33nmy1fz
-Remove-AzDnsResolverPolicyVirtualNetworkLink  -InputObject $dnsResolverPolicyLinkObject 
+Remove-AzDnsResolverPolicyVirtualNetworkLink  -InputObject $dnsResolverPolicyLinkObject
 ```
 
 This command removes a DNS Resolver Policy Link by identity.
@@ -250,4 +251,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverdomainlist
 schema: 2.0.0
@@ -16,13 +16,14 @@ Updates a DNS resolver domain list.
 ```
 Update-AzDnsResolverDomainList -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IfMatch <String>] [-Domain <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDnsResolverDomainList -InputObject <IDnsResolverIdentity> [-IfMatch <String>] [-Domain <String[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +33,7 @@ Updates a DNS resolver domain list.
 
 ### Example 1: Update an existing DNS Resolver Domain List by name
 ```powershell
-Update-AzDnsResolverDomainList -ResourceGroupName powershell-test-rg -Name  psdnsresolverdomainlistname33nmy1fz -Tag @{"key0" = "value0"} 
+Update-AzDnsResolverDomainList -ResourceGroupName powershell-test-rg -Name  psdnsresolverdomainlistname33nmy1fz -Tag @{"key0" = "value0"}
 ```
 
 ```output
@@ -46,7 +47,7 @@ This command updates an existing DNS Resolver Domain List by name ( adding tag )
 ### Example 2: Updates an existing DNS Resolver Domain List by identity
 ```powershell
 $dnsResolverDomainListObject = Get-AzDnsResolverDomainList -ResourceGroupName powershell-test-rg -Name  psdnsresolverdomainlistname33nmy1fz
-Update-AzDnsResolverDomainList -InputObject $dnsResolverDomainListObject  -Tag @{} 
+Update-AzDnsResolverDomainList -InputObject $dnsResolverDomainListObject  -Tag @{}
 ```
 
 ```output
@@ -260,4 +261,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
