@@ -18,11 +18,7 @@ param (
 
     [Parameter(Mandatory)]
     [ValidateNotNullOrEmpty()]
-    [string] $RunPlatform,
-
-    [Parameter()]
-    [ValidateScript({ Test-Path -Path $_ -PathType Container })]
-    [string] $DataLocation
+    [string] $RunPlatform
 )
 
 New-Variable -Name ResourceGroupPrefix -Value "azpslrg" -Scope Script -Option Constant
@@ -34,31 +30,6 @@ New-Variable -Name CommandDelay -Value 10 -Scope Script -Option Constant
 New-Variable -Name ScenarioMaxRetryCount -Value 3 -Scope Script -Option Constant
 New-Variable -Name ScenarioMaxDelay -Value 20 -Scope Script -Option Constant
 New-Variable -Name ScenarioDelay -Value 5 -Scope Script -Option Constant
-
-New-Variable -Name LiveTestAnalysisDirectory -Value (Join-Path -Path $DataLocation -ChildPath "LiveTestAnalysis") -Scope Script -Option Constant
-New-Variable -Name LiveTestRawDirectory -Value (Join-Path -Path $script:LiveTestAnalysisDirectory -ChildPath "Raw") -Scope Script -Option Constant
-New-Variable -Name LiveTestRawCsvFile -Value (Join-Path -Path $script:LiveTestRawDirectory -ChildPath "Az.$ModuleName.csv") -Scope Script -Option Constant
-
-function InitializeLiveTestModule {
-    [CmdletBinding()]
-    param ()
-
-    if (!(Test-Path -Path $script:LiveTestAnalysisDirectory -PathType Container)) {
-        New-Item -Path $script:LiveTestAnalysisDirectory -ItemType Directory -Force
-        New-Item -Path $script:LiveTestRawDirectory -ItemType Directory -Force
-    }
-
-    if (!(Test-Path -Path $script:LiveTestRawCsvFile -PathType Leaf)) {
-        $crtMtx = [System.Threading.Mutex]::new($false, "CreationLock")
-        try {
-            $crtMtx.WaitOne()
-            ({} | Select-Object "PSVersion", "Module", "Name", "Description", "StartDateTime", "EndDateTime", "IsSuccess", "Errors" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -FilePath $script:LiveTestRawCsvFile -Encoding utf8 -Force
-        }
-        finally {
-            $crtMtx.ReleaseMutex()
-        }
-    }
-}
 
 function New-LiveTestRandomName {
     [CmdletBinding()]
@@ -404,7 +375,6 @@ function Invoke-LiveTestScenario {
         $updMtx = [System.Threading.Mutex]::new($false, "UpdateLock")
         try {
             $updMtx.WaitOne()
-            $snrCsvData | Export-Csv -Path $script:LiveTestRawCsvFile -Encoding utf8 -NoTypeInformation -Append
         }
         finally {
             $updMtx.ReleaseMutex()
@@ -453,5 +423,3 @@ function ConvertToLiveTestJsonErrors {
 
     (ConvertTo-Json $errorsObj -Compress)
 }
-
-InitializeLiveTestModule
