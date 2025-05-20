@@ -15,6 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDataTransferFlow'))
 }
 
 $flowToUpdate = "test-flow-to-update-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+Write-Host "Flow name: $flowToUpdate"
 
 Describe 'Update-AzDataTransferFlow' {
     It 'UpdateTagsForExistingFlow' {
@@ -39,6 +40,26 @@ Describe 'Update-AzDataTransferFlow' {
             $updatedFlow | Should -Not -BeNullOrEmpty
             $updatedFlow.Tags.Environment | Should -Be "Production"
             $updatedFlow.Tags.Department | Should -Be "IT"
+        } | Should -Not -Throw
+    }
+
+    It 'UpdateTagsForExistingFlow AsJob' {
+        {
+            # Update tags for the flow as a background job
+            $job = Update-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToUpdate -Tag @{Source="Job"; Status="Completed"} -AsJob -Confirm:$false
+    
+            # Verify the job is created
+            $job | Should -Not -BeNullOrEmpty
+            $job.State | Should -Be "Running" -Or "Completed"
+    
+            # Wait for the job to complete
+            $job | Wait-Job | Out-Null
+    
+            # Verify the tags are updated after the job completes
+            $updatedFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToUpdate
+            $updatedFlow | Should -Not -BeNullOrEmpty
+            $updatedFlow.Tags.Source | Should -Be "Job"
+            $updatedFlow.Tags.Status | Should -Be "Completed"
         } | Should -Not -Throw
     }
 

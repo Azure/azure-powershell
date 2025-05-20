@@ -14,24 +14,39 @@ if(($null -eq $TestName) -or ($TestName -contains 'Approve-AzDataTransferConnect
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+$connectionToApproveName = "test-connection-to-approve-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+$connectionToApproveAsJobName = "test-connection-to-approve-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+
 Describe 'Approve-AzDataTransferConnection' {
-    $connectionToApprove = "test-connection-to-approve-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
     $connectionParams = @{
-        Location             =  $env.Location
-        PipelineName         =  $env.PipelineName
+        Location             = $env.Location
+        PipelineName         = $env.PipelineName
         Direction            = "Receive"
         FlowType             = "Mission"
-        ResourceGroupName    =  $env.ResourceGroupName
+        ResourceGroupName    = $env.ResourceGroupName
         Justification        = "Receive side for PS testing"
-        RemoteSubscriptionId =  $env.SubscriptionId
+        RemoteSubscriptionId = $env.SubscriptionId
         RequirementId        = 0
-        Name                 = $connectionToApprove
+        Name                 = $connectionToApproveName
         PrimaryContact       = "faikh@microsoft.com"
     }
-    New-AzDataTransferConnection @connectionParams
-    $subId = $env.SubcriptionId
-    $rgName = $env.ResourceGroupName
-    $connectionToApproveId = "/subscriptions/$subId/resourceGroups/$rgName/providers/Private.AzureDataTransfer/connections/$connectionToApprove"
+    $connectionToApprove = New-AzDataTransferConnection @connectionParams
+    $connectionToApproveId = $connectionToApprove.Id
+
+    $connectionAsJobParams = @{
+        Location             = $env.Location
+        PipelineName         = $env.PipelineName
+        Direction            = "Receive"
+        FlowType             = "Mission"
+        ResourceGroupName    = $env.ResourceGroupName
+        Justification        = "Receive side for PS testing"
+        RemoteSubscriptionId = $env.SubscriptionId
+        RequirementId        = 0
+        Name                 = $connectionToApproveAsJobName
+        PrimaryContact       = "faikh@microsoft.com"
+    }
+    $connectionToApproveAsJob = New-AzDataTransferConnection @connectionAsJobParams
+    $connectionToApproveAsJobId = $connectionToApproveAsJob.Id
 
     It 'Approve' {
         {
@@ -56,13 +71,30 @@ Describe 'Approve-AzDataTransferConnection' {
 
     It 'Approve when already rejected' {
         {
-            $connec
             # Attempt to approve a rejected connection
             Approve-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $env.ConnectionRejectedId -StatusReason "Approving for testing" -Confirm:$false | Should -Throw
 
             # Verify the connection is still rejected
             $rejectedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $env.ConnectionRejected
             $rejectedConnection.Status | Should -Be "Rejected"
+        } | Should -Not -Throw
+    }
+
+    It 'Approve AsJob' {
+        {
+            # Approve the connection as a background job
+            $job = Approve-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $connectionToApproveAsJobId -StatusReason "Approving as a background job" -AsJob -Confirm:$false
+    
+            # Verify the job is created
+            $job | Should -Not -BeNullOrEmpty
+            $job.State | Should -Be "Running" -Or "Completed"
+    
+            # Wait for the job to complete
+            $job | Wait-Job | Out-Null
+    
+            # Verify the connection is approved after the job completes
+            $approvedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToApproveAsJobName
+            $approvedConnection.Status | Should -Be "Approved"
         } | Should -Not -Throw
     }
 
@@ -88,6 +120,7 @@ Describe 'Approve-AzDataTransferConnection' {
 
     AfterAll {
         # Clean up the connection
-        Remove-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -Name $connectionToApprove -Confirm:$false | Should -Not -Throw
+        Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToApproveName -Confirm:$false
+        Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToApproveAsJobName -Confirm:$false
     }
 }

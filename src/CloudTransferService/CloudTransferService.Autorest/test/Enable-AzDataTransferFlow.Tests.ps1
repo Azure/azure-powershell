@@ -15,8 +15,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzDataTransferFlow'))
 }
 
 Describe 'Enable-AzDataTransferFlow' {
-    $flowToEnable = "test-flow-to-enable-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
-
     It 'Enable' {
         {
             # Enable the flow
@@ -33,6 +31,24 @@ Describe 'Enable-AzDataTransferFlow' {
             $enabledFlow = Enable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.FaikhEnabledFlow -Confirm:$false
 
             # Verify the flow is still enabled
+            $enabledFlow.Status | Should -Be "Enabled"
+        } | Should -Not -Throw
+    }
+
+    It 'Enable AsJob' {
+        {
+            # Enable the flow as a background job
+            $job = Enable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.FaikhRecvFlow -AsJob -Confirm:$false
+    
+            # Verify the job is created
+            $job | Should -Not -BeNullOrEmpty
+            $job.State | Should -Be "Running" -Or "Completed"
+    
+            # Wait for the job to complete
+            $job | Wait-Job | Out-Null
+    
+            # Verify the flow is enabled after the job completes
+            $enabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.FaikhRecvFlow
             $enabledFlow.Status | Should -Be "Enabled"
         } | Should -Not -Throw
     }

@@ -13,43 +13,50 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzDataTransferLinkPend
   }
   . ($mockingPath | Select-Object -First 1).FullName
 }
+
 $connectionRecvName = 'test-connection-receive-' + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
 $connectionSendName = 'test-connection-send-' + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
 
 Write-Host "Connection names: $connectionRecvName, $connectionSendName"
-$connectionRecvParams = @{
-    Location             =  $env.Location
-    PipelineName         =  $env.PipelineName
-    Direction            = "Receive"
-    FlowType             = "Mission"
-    ResourceGroupName    =  $env.ResourceGroupName
-    Justification        = "Receive side for PS testing"
-    RemoteSubscriptionId =  $env.SubscriptionId
-    RequirementId        = 0
-    Name                 = $connectionRecvName
-    PrimaryContact       = "faikh@microsoft.com"
-}
 
-$connectionRecv = New-AzDataTransferConnection @connectionRecvParams
-$connectionRecvApproved = Approve-AzDataTransferConnection -ConnectionId $connectionRecv.Id -StatusReason "Approving for PS testing" -ResourceGroupName  $env.ResourceGroupName -PipelineName  $env.PipelineName
+$connectionRecvAsJobName = 'test-connection-receive-asjob-' + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+$connectionSendAsJobName = 'test-connection-send-asjob-' + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
 
-$connectionSendParams = @{
-    Location             =  $env.Location
-    PipelineName         =  $env.PipelineName
-    Direction            = "Send"
-    FlowType             = "Mission"
-    ResourceGroupName    =  $env.ResourceGroupName
-    Justification        = "Send side for PS testing"
-    Name                 = $connectionSendName
-    PrimaryContact       = "faikh@microsoft.com"
-    PIN                  = $connectionRecvApproved.PIN
-}
-$connectionSend = New-AzDataTransferConnection @connectionSendParams
-$connectionSendId = $connectionSend.Id
+Write-Host "Connection names for AsJob: $connectionRecvAsJobName, $connectionSendAsJobName"
 
 Describe 'Invoke-AzDataTransferLinkPendingConnection' {
     It 'LinkPendingConnection' {
         {
+            $connectionRecvParams = @{
+                Location             = $env.Location
+                PipelineName         = $env.PipelineName
+                Direction            = "Receive"
+                FlowType             = "Mission"
+                ResourceGroupName    = $env.ResourceGroupName
+                Justification        = "Receive side for PS testing"
+                RemoteSubscriptionId = $env.SubscriptionId
+                RequirementId        = 0
+                Name                 = $connectionRecvName
+                PrimaryContact       = "faikh@microsoft.com"
+            }
+            
+            $connectionRecv = New-AzDataTransferConnection @connectionRecvParams
+            $connectionRecvApproved = Approve-AzDataTransferConnection -ConnectionId $connectionRecv.Id -StatusReason "Approving for PS testing" -ResourceGroupName  $env.ResourceGroupName -PipelineName  $env.PipelineName
+            
+            $connectionSendParams = @{
+                Location             =  $env.Location
+                PipelineName         =  $env.PipelineName
+                Direction            = "Send"
+                FlowType             = "Mission"
+                ResourceGroupName    =  $env.ResourceGroupName
+                Justification        = "Send side for PS testing"
+                Name                 = $connectionSendName
+                PrimaryContact       = "faikh@microsoft.com"
+                PIN                  = $connectionRecvApproved.PIN
+            }
+            $connectionSend = New-AzDataTransferConnection @connectionSendParams
+            $connectionSendId = $connectionSend.Id
+
             # Link the pending connection
             Invoke-AzDataTransferLinkPendingConnection -ResourceGroupName $env.ResourceGroupName -ConnectionName $connectionRecvName -PendingConnectionId $connectionSendId -StatusReason "Linking for testing" -Confirm:$false
 
@@ -66,6 +73,54 @@ Describe 'Invoke-AzDataTransferLinkPendingConnection' {
 
             # Verify the connection is still linked
             $linkedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionRecvName
+            $linkedConnection.LinkStatus | Should -Be "Linked"
+        } | Should -Not -Throw
+    }
+
+    It 'LinkPendingConnection AsJob' {
+        {
+            $connectionRecvParams = @{
+                Location             =  $env.Location
+                PipelineName         =  $env.PipelineName
+                Direction            = "Receive"
+                FlowType             = "Mission"
+                ResourceGroupName    =  $env.ResourceGroupName
+                Justification        = "Receive side for PS testing"
+                RemoteSubscriptionId =  $env.SubscriptionId
+                RequirementId        = 0
+                Name                 = $connectionRecvAsJobName
+                PrimaryContact       = "faikh@microsoft.com"
+            }
+            
+            $connectionRecv = New-AzDataTransferConnection @connectionRecvParams
+            $connectionRecvApproved = Approve-AzDataTransferConnection -ConnectionId $connectionRecv.Id -StatusReason "Approving for PS testing" -ResourceGroupName  $env.ResourceGroupName -PipelineName  $env.PipelineName
+            
+            $connectionSendParams = @{
+                Location             =  $env.Location
+                PipelineName         =  $env.PipelineName
+                Direction            = "Send"
+                FlowType             = "Mission"
+                ResourceGroupName    =  $env.ResourceGroupName
+                Justification        = "Send side for PS testing"
+                Name                 = $connectionSendAsJobName
+                PrimaryContact       = "faikh@microsoft.com"
+                PIN                  = $connectionRecvApproved.PIN
+            }
+            $connectionSend = New-AzDataTransferConnection @connectionSendParams
+            $connectionSendId = $connectionSend.Id
+
+            # Link the pending connection as a background job
+            $job = Invoke-AzDataTransferLinkPendingConnection -ResourceGroupName $env.ResourceGroupName -ConnectionName $connectionRecvAsJobName -PendingConnectionId $connectionSendId -StatusReason "Linking for testing as a job" -AsJob -Confirm:$false
+    
+            # Verify the job is created
+            $job | Should -Not -BeNullOrEmpty
+            $job.State | Should -Be "Running" -Or "Completed"
+    
+            # Wait for the job to complete
+            $job | Wait-Job | Out-Null
+    
+            # Verify the connection is linked after the job completes
+            $linkedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionRecvAsJobName
             $linkedConnection.LinkStatus | Should -Be "Linked"
         } | Should -Not -Throw
     }
@@ -94,5 +149,7 @@ Describe 'Invoke-AzDataTransferLinkPendingConnection' {
         # Clean up the connections
         Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionRecvName
         Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionSendName
+        Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionRecvAsJobName
+        Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionSendAsJobName
     }
 }

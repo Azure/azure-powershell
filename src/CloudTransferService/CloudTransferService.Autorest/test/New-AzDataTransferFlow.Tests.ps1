@@ -15,6 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDataTransferFlow'))
 }
 
 $flowToCreate = "test-flow-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+$flowToCreateAsJob = "test-flow-as-job-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+
+Write-Host "Flow names: $flowToCreate, $flowToCreateAsJob"
+
 Describe 'New-AzDataTransferFlow' {
     $flowParams = @{
         ResourceGroupName     = $env.ResourceGroupName
@@ -43,6 +47,41 @@ Describe 'New-AzDataTransferFlow' {
         } | Should -Not -Throw
     }
 
+    It 'CreateNewFlow AsJob' {
+        {
+            $flowParams = @{
+                ResourceGroupName     = $env.ResourceGroupName
+                ConnectionName        = $env.ConnectionLinked
+                Name                  = $flowToCreateAsJob
+                Location              = $env.Location
+                FlowType              = "Mission"
+                DataType              = "Blob"
+                StorageAccountName    = $env.StorageAccountName
+                StorageContainerName  = $env.StorageContainerName
+            }
+
+            # Create a new flow as a background job
+            $job = New-AzDataTransferFlow @flowParams -AsJob -Confirm:$false
+    
+            # Verify the job is created
+            $job | Should -Not -BeNullOrEmpty
+            $job.State | Should -Be "Running" -Or "Completed"
+    
+            # Wait for the job to complete
+            $job | Wait-Job | Out-Null
+    
+            # Verify the flow is created after the job completes
+            $createdFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToCreateAsJob
+            $createdFlow | Should -Not -BeNullOrEmpty
+            $createdFlow.Name | Should -Be $flowToCreateAsJob
+            $createdFlow.Location | Should -Be $env.Location
+            $createdFlow.FlowType | Should -Be "Mission"
+            $createdFlow.DataType | Should -Be "Blob"
+            $createdFlow.StorageAccountName | Should -Be $env.StorageAccountName
+            $createdFlow.StorageContainerName | Should -Be $env.StorageContainerName
+        } | Should -Not -Throw
+    }
+
     It 'CreateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
@@ -58,5 +97,6 @@ Describe 'New-AzDataTransferFlow' {
     AfterAll {
         # Clean up the created flow
         Remove-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToCreate
+        Remove-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToCreateAsJob
     }
 }

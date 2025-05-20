@@ -35,6 +35,24 @@ Describe 'Disable-AzDataTransferFlow' {
         } | Should -Not -Throw
     }
 
+    It 'Disable AsJob' {
+        {
+            # Disable the flow as a background job
+            $job = Disable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinkedSend -Name $env.FaikhSendFlow -AsJob -Confirm:$false
+    
+            # Verify the job is created
+            $job | Should -Not -BeNullOrEmpty
+            $job.State | Should -Be "Running" -Or "Completed"
+    
+            # Wait for the job to complete
+            $job | Wait-Job | Out-Null
+    
+            # Verify the flow is disabled after the job completes
+            $disabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinkedSend -Name $env.FaikhSendFlow
+            $disabledFlow.Status | Should -Be "Disabled"
+        } | Should -Not -Throw
+    }
+
     It 'DisableViaIdentityConnection' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

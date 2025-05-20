@@ -15,6 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDataTransferConnecti
 }
 
 $connectionToUpdate = "test-connection-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+Write-Host "Connection name: $connectionToUpdate"
 
 Describe 'Update-AzDataTransferConnection' {
     It 'UpdateTagsForExistingConnection' {
@@ -41,6 +42,26 @@ Describe 'Update-AzDataTransferConnection' {
             $updatedConnection | Should -Not -BeNullOrEmpty
             $updatedConnection.Tags.Environment | Should -Be "Production"
             $updatedConnection.Tags.Department | Should -Be "IT"
+        } | Should -Not -Throw
+    }
+
+    It 'UpdateTagsForExistingConnection AsJob' {
+        {
+            # Update tags for the connection as a background job
+            $job = Update-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToUpdate -Tag @{Source="Job"; Status="Completed"} -AsJob -Confirm:$false
+    
+            # Verify the job is created
+            $job | Should -Not -BeNullOrEmpty
+            $job.State | Should -Be "Running" -Or "Completed"
+    
+            # Wait for the job to complete
+            $job | Wait-Job | Out-Null
+    
+            # Verify the tags are updated after the job completes
+            $updatedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToUpdate
+            $updatedConnection | Should -Not -BeNullOrEmpty
+            $updatedConnection.Tags.Source | Should -Be "Job"
+            $updatedConnection.Tags.Status | Should -Be "Completed"
         } | Should -Not -Throw
     }
 

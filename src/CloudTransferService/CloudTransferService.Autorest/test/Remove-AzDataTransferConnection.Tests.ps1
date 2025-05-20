@@ -14,24 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDataTransferConnecti
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-$connectionToRemove = "test-connection-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
-$connectionParams = @{
-    Location             = $env.Location
-    PipelineName         = $env.PipelineName
-    Direction            = "Receive"
-    FlowType             = "Mission"
-    ResourceGroupName    = $env.ResourceGroupName
-    Justification        = "Receive side for PS testing"
-    RemoteSubscriptionId = $env.SubscriptionId
-    RequirementId        = 0
-    Name                 = $connectionToRemove
-    PrimaryContact       = "faikh@microsoft.com"
-}
-
 Describe 'Remove-AzDataTransferConnection' {
     It 'Delete' {
         { 
             $connectionToRemove = "test-connection-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+            Write-Host "Connection name: $connectionToRemove"
+
             $connectionParams = @{
                 Location             = $env.Location
                 PipelineName         = $env.PipelineName
@@ -58,6 +46,8 @@ Describe 'Remove-AzDataTransferConnection' {
     It 'Delete and return result' {
         {
             $connectionToRemove = "test-connection-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+            Write-Host "Connection name: $connectionToRemove"
+
             $connectionParams = @{
                 Location             = $env.Location
                 PipelineName         = $env.PipelineName
@@ -76,6 +66,44 @@ Describe 'Remove-AzDataTransferConnection' {
             $result = Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToRemove -PassThru -Confirm:$false
             $result | Should -Be $true
 
+            # Ensure the connection is deleted
+            $deletedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToRemove -ErrorAction SilentlyContinue
+            $deletedConnection | Should -BeNullOrEmpty
+        } | Should -Not -Throw
+    }
+
+    It 'Delete AsJob' {
+        {
+            # Create a new connection to remove
+            $connectionToRemove = "test-connection-asjob-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+            Write-Host "Connection name: $connectionToRemove"
+            
+            $connectionParams = @{
+                Location             = $env.Location
+                PipelineName         = $env.PipelineName
+                Direction            = "Receive"
+                FlowType             = "Mission"
+                ResourceGroupName    = $env.ResourceGroupName
+                Justification        = "Receive side for PS testing"
+                RemoteSubscriptionId = $env.SubscriptionId
+                RequirementId        = 0
+                Name                 = $connectionToRemove
+                PrimaryContact       = "faikh@microsoft.com"
+            }
+    
+            $createdConnection = New-AzDataTransferConnection @connectionParams
+            $createdConnection | Should -Not -BeNullOrEmpty
+    
+            # Remove the connection as a background job
+            $job = Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToRemove -AsJob -Confirm:$false
+    
+            # Verify the job is created
+            $job | Should -Not -BeNullOrEmpty
+            $job.State | Should -Be "Running" -Or "Completed"
+    
+            # Wait for the job to complete
+            $job | Wait-Job | Out-Null
+    
             # Ensure the connection is deleted
             $deletedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToRemove -ErrorAction SilentlyContinue
             $deletedConnection | Should -BeNullOrEmpty

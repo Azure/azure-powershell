@@ -14,8 +14,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Deny-AzDataTransferConnection
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+$connectionToDenyName = "test-connection-to-deny-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+$connectionToDenyAsJobName = "test-connection-to-deny-as-job-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+
 Describe 'Deny-AzDataTransferConnection' {
-    $connectionToDeny = "test-connection-to-deny-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
     $connectionParams = @{
         Location             =  $env.Location
         PipelineName         =  $env.PipelineName
@@ -25,13 +27,26 @@ Describe 'Deny-AzDataTransferConnection' {
         Justification        = "Receive side for PS testing"
         RemoteSubscriptionId =  $env.SubscriptionId
         RequirementId        = 0
-        Name                 = $connectionToDeny
+        Name                 = $connectionToDenyName
         PrimaryContact       = "faikh@microsoft.com"
     }
-    New-AzDataTransferConnection @connectionParams
-    $subId = $env.SubcriptionId
-    $rgName = $env.ResourceGroupName
-    $connectionToDenyId = "/subscriptions/$subId/resourceGroups/$rgName/providers/Private.AzureDataTransfer/connections/$connectionToDeny"
+    $connectionToDeny = New-AzDataTransferConnection @connectionParams
+    $connectionToDenyId = $connectionToDeny.Id
+
+    $connectionParams = @{
+        Location             =  $env.Location
+        PipelineName         =  $env.PipelineName
+        Direction            = "Receive"
+        FlowType             = "Mission"
+        ResourceGroupName    =  $env.ResourceGroupName
+        Justification        = "Receive side for PS testing"
+        RemoteSubscriptionId =  $env.SubscriptionId
+        RequirementId        = 0
+        Name                 = $connectionToDenyAsJobName
+        PrimaryContact       = "faikh@microsoft.com"
+    }
+    $connectionToDenyAsJob = New-AzDataTransferConnection @connectionParams
+    $connectionToDenyAsJobId = $connectionToDenyAsJob.Id
 
     It 'Deny' {
         {
@@ -64,6 +79,24 @@ Describe 'Deny-AzDataTransferConnection' {
             $deniedConnection.Status | Should -Be "Approved"
         } | Should -Not -Throw
     }
+
+    It 'Deny AsJob' {
+        {
+            # Reject the connection as a background job
+            $job = Deny-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $connectionToDenyAsJobId -StatusReason "Rejecting as a background job" -AsJob -Confirm:$false
+    
+            # Verify the job is created
+            $job | Should -Not -BeNullOrEmpty
+            $job.State | Should -Be "Running" -Or "Completed"
+    
+            # Wait for the job to complete
+            $job | Wait-Job | Out-Null
+    
+            # Verify the connection is rejected after the job completes
+            $deniedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToDenyAsJobName
+            $deniedConnection.Status | Should -Be "Approved"
+        } | Should -Not -Throw
+    }
     
     It 'RejectExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
@@ -86,7 +119,8 @@ Describe 'Deny-AzDataTransferConnection' {
     }
 
     AfterAll {
-        # Clean up the connection
-        Remove-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -Name $connectionToDeny -Confirm:$false | Should -Not -Throw
+        # Clean up the connections
+        Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToDenyName -Confirm:$false
+        Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToDenyAsJobName -Confirm:$false
     }
 }

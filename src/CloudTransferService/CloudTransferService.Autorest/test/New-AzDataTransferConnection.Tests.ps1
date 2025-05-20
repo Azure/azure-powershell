@@ -15,16 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDataTransferConnection'
 }
 
 $connectionToCreate = "test-connection-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+$connectionToCreateAsJob = "test-connection-as-job-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+
+Write-Host "Connection names - $connectionToCreate, $connectionToCreateAsJob"
 
 Describe 'New-AzDataTransferConnection' {
     $connectionParams = @{
-        Location             =  $env.Location
-        PipelineName         =  $env.PipelineName
+        Location             = $env.Location
+        PipelineName         = $env.PipelineName
         Direction            = "Receive"
         FlowType             = "Mission"
-        ResourceGroupName    =  $env.ResourceGroupName
+        ResourceGroupName    = $env.ResourceGroupName
         Justification        = "Receive side for PS testing"
-        RemoteSubscriptionId =  $env.SubscriptionId
+        RemoteSubscriptionId = $env.SubscriptionId
         RequirementId        = 0
         Name                 = $connectionToCreate
         PrimaryContact       = "faikh@microsoft.com"
@@ -60,6 +63,45 @@ Describe 'New-AzDataTransferConnection' {
         } | Should -Not -Throw
     }
 
+    It 'CreateNewConnection AsJob' {
+        {
+            $connectionParams = @{
+                Location             = $env.Location
+                PipelineName         = $env.PipelineName
+                Direction            = "Receive"
+                FlowType             = "Mission"
+                ResourceGroupName    = $env.ResourceGroupName
+                Justification        = "Receive side for PS testing"
+                RemoteSubscriptionId = $env.SubscriptionId
+                RequirementId        = 0
+                Name                 = $connectionToCreateAsJob
+                PrimaryContact       = "faikh@microsoft.com"
+            }
+
+            # Create a new connection as a background job
+            $job = New-AzDataTransferConnection @connectionParams -AsJob -Confirm:$false
+    
+            # Verify the job is created
+            $job | Should -Not -BeNullOrEmpty
+            $job.State | Should -Be "Running" -Or "Completed"
+    
+            # Wait for the job to complete
+            $job | Wait-Job | Out-Null
+    
+            # Verify the connection is created after the job completes
+            $createdConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToCreateAsJob
+            $createdConnection | Should -Not -BeNullOrEmpty
+            $createdConnection.Name | Should -Be $connectionToCreateAsJob
+            $createdConnection.Location | Should -Be $env.Location
+            $createdConnection.Pipeline | Should -Be $env.PipelineName
+            $createdConnection.Direction | Should -Be "Receive"
+            $createdConnection.FlowType | Should -Be "Mission"
+            $createdConnection.ResourceGroupName | Should -Be $env.ResourceGroupName
+            $createdConnection.RemoteSubscriptionId | Should -Be $env.SubscriptionId
+            $createdConnection.RequirementId | Should -Be 0
+        } | Should -Not -Throw
+    }
+
     It 'CreateViaJsonFilePath' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
@@ -71,5 +113,6 @@ Describe 'New-AzDataTransferConnection' {
     AfterAll {
         # Clean up the created connection
         Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToCreate
+        Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToCreateAsJob
     }
 }

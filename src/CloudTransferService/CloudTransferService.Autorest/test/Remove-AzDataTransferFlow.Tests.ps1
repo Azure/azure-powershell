@@ -18,6 +18,8 @@ Describe 'Remove-AzDataTransferFlow' {
     It 'Delete' {
         {
             $flowToDelete = "test-flow-to-delete-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+            Write-Host "Flow name: $flowToDelete"
+
             $flowParams = @{
                 ResourceGroupName     = $env.ResourceGroupName
                 ConnectionName        = $env.ConnectionLinked
@@ -42,6 +44,8 @@ Describe 'Remove-AzDataTransferFlow' {
     It 'Delete and return result' {
         {
             $flowToDelete = "test-flow-to-delete-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+            Write-Host "Flow name: $flowToDelete"
+
             $flowParams = @{
                 ResourceGroupName     = $env.ResourceGroupName
                 ConnectionName        = $env.ConnectionLinked
@@ -64,6 +68,42 @@ Describe 'Remove-AzDataTransferFlow' {
         } | Should -Not -Throw
     }
 
+    It 'Delete AsJob' {
+        {
+            # Create a new flow to delete
+            $flowToDelete = "test-flow-asjob-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+            Write-Host "Flow name: $flowToDelete"
+    
+            $flowParams = @{
+                ResourceGroupName     = $env.ResourceGroupName
+                ConnectionName        = $env.ConnectionLinked
+                Name                  = $flowToDelete
+                Location              = $env.Location
+                FlowType              = "Mission"
+                DataType              = "Blob"
+                StorageAccountName    = $env.StorageAccountName
+                StorageContainerName  = $env.StorageContainerName
+            }
+    
+            $createdFlow = New-AzDataTransferFlow @flowParams
+            $createdFlow | Should -Not -BeNullOrEmpty
+    
+            # Remove the flow as a background job
+            $job = Remove-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToDelete -AsJob -Confirm:$false
+    
+            # Verify the job is created
+            $job | Should -Not -BeNullOrEmpty
+            $job.State | Should -Be "Running" -Or "Completed"
+    
+            # Wait for the job to complete
+            $job | Wait-Job | Out-Null
+    
+            # Ensure the flow is deleted
+            $deletedFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToDelete -ErrorAction SilentlyContinue
+            $deletedFlow | Should -BeNullOrEmpty
+        } | Should -Not -Throw
+    }
+    
     It 'DeleteViaIdentityConnection' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
