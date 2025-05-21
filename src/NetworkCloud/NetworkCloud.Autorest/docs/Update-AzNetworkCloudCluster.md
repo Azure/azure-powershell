@@ -121,6 +121,7 @@ $tagHash = @{
     tagUpdate = "tagUpdate"
 }
 $securePassword = ConvertTo-SecureString "password" -asplaintext -force
+$identityUserAssignedIdentity = @{}
 $userAssignedIdentityResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myManagedIdentity"
 $identityUserAssignedIdentity.Add($userAssignedIdentityResourceId, @{})
 
