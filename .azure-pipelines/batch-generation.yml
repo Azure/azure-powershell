@@ -435,10 +435,18 @@ stages:
         fetchDepth: 1
         fetchTags: false
 
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          artifactName: 'prepare'
+          targetPath: artifacts
+
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          artifactName: 'filter'
+          targetPath: artifacts
+
       - download: current
         patterns: |
-          prepare/generationTargets.json
-          filter/**
           **/AnalyseReport-*.json
           **/GenerationReport-*.json
           **/BuildReport-*.json

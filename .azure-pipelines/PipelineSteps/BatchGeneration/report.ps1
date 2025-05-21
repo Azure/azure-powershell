@@ -3,17 +3,8 @@ param (
     [string]$PipelineWorkspace
 )
 
-Get-ChildItem -Path $PipelineWorkspace -Recurse -Depth 2 | ForEach-Object {
-    if ($_.PSIsContainer) {
-        Write-Host "DIR : $($_.FullName)"
-    } else {
-        Write-Host "FILE: $($_.FullName)"
-    }
-}
-
-
 # Check number of generation targets
-$generationTargetsFile = Join-Path $PipelineWorkspace "_current" "generationTargets.json"
+$generationTargetsFile = Join-Path $RepoRoot "artifacts" "generationTargets.json"
 $generationTargets = Get-Content -Raw -Path $generationTargetsFile | ConvertFrom-Json
 $totalGenerationModules = 0
 foreach ($outerKey in $generationTargets.PSObject.Properties.Name) {
@@ -29,7 +20,7 @@ $targetPatterns = @{
     Test = "testWindowsTargets.json"
 }
 foreach ($pattern in $targetPatterns.GetEnumerator()) {
-    $targetFilePath = Join-Path $PipelineWorkspace "_current" $pattern.Value
+    $targetFilePath = Join-Path $RepoRoot "artifacts" $pattern.Value
     $targetJson = Get-Content -Raw -Path $targetFilePath | ConvertFrom-Json
     $total = ($targetJson.PSObject.Properties.Value | ForEach-Object {
         $_.Count
