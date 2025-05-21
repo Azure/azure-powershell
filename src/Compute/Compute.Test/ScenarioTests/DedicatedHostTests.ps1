@@ -335,8 +335,6 @@ function Test-DedicatedHostUpdateAndSize
     }
 }
 
-}
-
 <#
 .SYNOPSIS
 Test Update-AzHost with Redeploy parameter.
