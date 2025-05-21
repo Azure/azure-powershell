@@ -4,6 +4,8 @@ jobs:
 - job: SimpleJob
   pool: pool-windows-2019
   steps:
+  - checkout: none
+  
   - powershell: |
       Write-Host "Pipeline A success"
     displayName: 'Write success'
