@@ -20,16 +20,11 @@
 ## Upcoming Release
 * Added fix for resume protection with AzureFileshare.
 * Added fix for Get backup item for MSSQL soft deleted items.
+* Added check to compare the VM resource group in the list of VMs returned for registration.
 
-## Version 7.10.1
+## Version 7.7.1
 * Updated `GetAzureRmRecoveryServicesBackupSchedulePolicyObject` to default the `PolicySubType` to `Enhanced` for AzureVM.
 * Updated Azure Backup SDK version to support protecting TVM with standard policy.
-
-## Version 7.9.0
-* Added check to compare the VM resource group in the list of VMs returned for registration
-
-## Version 7.8.0
-* Added check to compare the VM resource group in the list of VMs returned for registration
 
 ## Version 7.7.0
 * Fix for reprotect cmdlet in Azure Site Recovery for Azure to Azure provider.
