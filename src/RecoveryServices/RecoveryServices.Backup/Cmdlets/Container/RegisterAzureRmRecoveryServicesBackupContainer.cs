@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             {
                                 AzureVmWorkloadContainer azureVmWorkloadContainer = (AzureVmWorkloadContainer)Container;
                                 Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(azureVmWorkloadContainer.SourceResourceId);
-                                vmResourceGroupParsed = HelperUtils.GetResourceGroupNameFromId(keyValueDict, ResourceId);
+                                vmResourceGroupParsed = HelperUtils.GetResourceGroupNameFromId(keyValueDict, azureVmWorkloadContainer.SourceResourceId);
                             }
                             else
                             {
