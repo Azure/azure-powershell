@@ -96,7 +96,7 @@ foreach ($moduleName in $sortedModuleNames) {
         $date = Get-Date -Format "dd/MM/yy"
         $newChangeLogEntry = "* Autorest version: $AutorestVersion - $date"
         $changeLogContent.Insert(1, $newChangeLogEntry)
-        Set-Content $changelogPath -Value $changeLogContent
+        Set-Content $changeLogPath -Value $changeLogContent
         $moduleResult.Changed = "Yes, Autorest Change Log Updated"
         Write-Host "New change log entry added to $changeLogPath"
     }

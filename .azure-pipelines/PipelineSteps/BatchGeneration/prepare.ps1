@@ -9,9 +9,6 @@ Import-Module $utilFilePath -Force
 
 $srcPath = Join-Path $RepoRoot 'src'
 $moduleMap = Get-AutorestV4ModuleMap -srcPath $srcPath
-$moduleMap = @{
-    "DeviceRegistry" = @("DeviceRegistry.Autorest")
-}
 Write-Host "Total matched modules: $($moduleMap.Count)"
 
 $modules = @($moduleMap.Keys | Sort-Object)
