@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.1.0
 * Upgrade Azure.Core to 1.45.0
 
 ## Version 5.0.0

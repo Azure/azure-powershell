@@ -1,0 +1,29 @@
+## 15.0.0 - June 2025
+#### Az.Migrate 2.8.0 
+* Added cmdlet `Get-AzMigrateServerMigrationStatus`
+#### Az.MySql 1.4.0 
+* Modified cmdlet `Restore-AzMySqlFlexibleServer`
+   - Added parameters `-Location`, `-UseGeoRestore`, `-Sku`, `-Tag`
+#### Az.Network 7.17.0 
+* Modified cmdlet `Add-AzLoadBalancerRuleConfig`
+   - Added parameter `-EnableConnectionTracking`
+* Removed cmdlet `Get-AzNetworkWatcherConnectionMonitorReport`
+* Modified cmdlet `New-AzLoadBalancerRuleConfig`
+   - Added parameter `-EnableConnectionTracking`
+* Modified cmdlet `New-AzNatGateway`
+   - Added parameters `-PublicIpAddressV6`, `-PublicIpPrefixV6`, `-SourceVirtualNetwork`
+* Modified cmdlet `New-AzNetworkManagerConnectivityConfiguration`
+   - Added parameter `-ConnectivityCapability`
+* Modified cmdlet `New-AzVirtualNetworkGateway`
+   - Added parameter `-EnableAdvancedConnectivityFeature`
+* Modified cmdlet `Set-AzLoadBalancerRuleConfig`
+   - Added parameter `-EnableConnectionTracking`
+* Modified cmdlet `Set-AzNatGateway`
+   - Added parameters `-PublicIpAddressV6`, `-PublicIpPrefixV6`, `-SourceVirtualNetwork`
+* Removed cmdlet `Start-AzNetworkWatcherConnectionMonitor`
+* Added cmdlet `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`, `Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`, `Get-AzLoadBalancerRuleHealth`, `Get-AzNetworkVirtualApplianceBootDiagnostics`, `Invoke-AzVirtualNetworkGatewayAbortMigration`, `Invoke-AzVirtualNetworkGatewayCommitMigration`, `Invoke-AzVirtualNetworkGatewayExecuteMigration`, `Invoke-AzVirtualNetworkGatewayPrepareMigration`, `New-AzVirtualNetworkGatewayMigrationParameter`, `Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`, `Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`, `Get-AzNetworkSecurityPerimeter`, `Get-AzNetworkSecurityPerimeterAccessRule`, `Get-AzNetworkSecurityPerimeterAssociableResourceType`, `Get-AzNetworkSecurityPerimeterAssociation`, `Get-AzNetworkSecurityPerimeterLink`, `Get-AzNetworkSecurityPerimeterLinkReference`, `Get-AzNetworkSecurityPerimeterLoggingConfiguration`, `Get-AzNetworkSecurityPerimeterProfile`, `New-AzNetworkSecurityPerimeter`, `New-AzNetworkSecurityPerimeterAccessRule`, `New-AzNetworkSecurityPerimeterAssociation`, `New-AzNetworkSecurityPerimeterLink`, `New-AzNetworkSecurityPerimeterLoggingConfiguration`, `New-AzNetworkSecurityPerimeterProfile`, `Remove-AzNetworkSecurityPerimeter`, `Remove-AzNetworkSecurityPerimeterAccessRule`, `Remove-AzNetworkSecurityPerimeterAssociation`, `Remove-AzNetworkSecurityPerimeterLink`, `Remove-AzNetworkSecurityPerimeterLinkReference`, `Remove-AzNetworkSecurityPerimeterLoggingConfiguration`, `Remove-AzNetworkSecurityPerimeterProfile`, `Update-AzNetworkSecurityPerimeter`, `Update-AzNetworkSecurityPerimeterAccessRule`, `Update-AzNetworkSecurityPerimeterAssociation`, `Update-AzNetworkSecurityPerimeterLink`, `Update-AzNetworkSecurityPerimeterLoggingConfiguration`
+#### Az.PostgreSql 1.3.0 
+* Modified cmdlet `Restore-AzPostgreSqlFlexibleServer`
+   - Added parameters `-UseGeoRestore`, `-Sku`, `-Tag`
+
+
