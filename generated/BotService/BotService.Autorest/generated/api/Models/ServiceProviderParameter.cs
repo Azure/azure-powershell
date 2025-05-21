@@ -53,7 +53,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         internal Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterMetadata Metadata { get => (this._metadata = this._metadata ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ServiceProviderParameterMetadata()); }
 
         /// <summary>Internal Acessors for ConstraintRequired</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterInternal.ConstraintRequired { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterMetadataInternal)Metadata).ConstraintRequired; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterMetadataInternal)Metadata).ConstraintRequired = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterInternal.ConstraintRequired { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterMetadataInternal)Metadata).ConstraintRequired; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterMetadataInternal)Metadata).ConstraintRequired = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Default</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterInternal.Default { get => this._default; set { {_default = value;} } }
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterMetadata Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterInternal.Metadata { get => (this._metadata = this._metadata ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ServiceProviderParameterMetadata()); set { {_metadata = value;} } }
 
         /// <summary>Internal Acessors for MetadataConstraint</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterMetadataConstraints Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterInternal.MetadataConstraint { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterMetadataInternal)Metadata).Constraint; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterMetadataInternal)Metadata).Constraint = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterMetadataConstraints Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterInternal.MetadataConstraint { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterMetadataInternal)Metadata).Constraint; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterMetadataInternal)Metadata).Constraint = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderParameterInternal.Name { get => this._name; set { {_name = value;} } }

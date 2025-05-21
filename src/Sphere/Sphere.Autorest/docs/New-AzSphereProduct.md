@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSphereProduct
 
 ## SYNOPSIS
-Create a Product.
+create a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 
 ## SYNTAX
@@ -35,7 +35,7 @@ New-AzSphereProduct -CatalogName <String> -Name <String> -ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-Create a Product.
+create a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 
 ## EXAMPLES

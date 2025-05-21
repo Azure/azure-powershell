@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedVMwareVMTemplate
 
 ## SYNOPSIS
-Create virtual machine template.
+create virtual machine template.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzConnectedVMwareVMTemplate -Name <String> -ResourceGroupName <String> -Json
 ```
 
 ## DESCRIPTION
-Create virtual machine template.
+create virtual machine template.
 
 ## EXAMPLES
 

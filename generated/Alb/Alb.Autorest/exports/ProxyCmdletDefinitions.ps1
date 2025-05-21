@@ -3252,7 +3252,7 @@ New-AzAlbSecurityPolicyWaf -Name test-securityPolicy -AlbName test-alb -Resource
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicy
 .Link
-https://learn.microsoft.com/powershell/module/az.alb/new-azalbsecuritypolicy
+https://learn.microsoft.com/powershell/module/az.alb/new-azalbsecuritypolicywaf
 #>
 function New-AzAlbSecurityPolicyWaf {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicy])]
@@ -3496,7 +3496,7 @@ TRAFFICCONTROLLERINPUTOBJECT <IAlbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TrafficControllerName <String>]: traffic controller name for path
 .Link
-https://learn.microsoft.com/powershell/module/az.alb/update-azalbsecuritypolicy
+https://learn.microsoft.com/powershell/module/az.alb/update-azalbsecuritypolicywaf
 #>
 function Update-AzAlbSecurityPolicyWaf {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicy])]

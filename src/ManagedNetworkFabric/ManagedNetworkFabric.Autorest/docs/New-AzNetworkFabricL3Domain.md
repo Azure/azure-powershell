@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkFabricL3Domain
 
 ## SYNOPSIS
-Create isolation domain resources for layer 3 connectivity between compute nodes and for communication with external services .This configuration is applied on the devices only after the creation of networks is completed and isolation domain is enabled.
+create isolation domain resources for layer 3 connectivity between compute nodes and for communication with external services .This configuration is applied on the devices only after the creation of networks is completed and isolation domain is enabled.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ New-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> -JsonStri
 ```
 
 ## DESCRIPTION
-Create isolation domain resources for layer 3 connectivity between compute nodes and for communication with external services .This configuration is applied on the devices only after the creation of networks is completed and isolation domain is enabled.
+create isolation domain resources for layer 3 connectivity between compute nodes and for communication with external services .This configuration is applied on the devices only after the creation of networks is completed and isolation domain is enabled.
 
 ## EXAMPLES
 

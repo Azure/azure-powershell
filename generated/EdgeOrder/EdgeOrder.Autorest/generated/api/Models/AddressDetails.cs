@@ -36,19 +36,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressProperties Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressDetailsInternal.ForwardAddress { get => (this._forwardAddress = this._forwardAddress ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.AddressProperties()); set { {_forwardAddress = value;} } }
 
         /// <summary>Internal Acessors for ForwardAddressValidationStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressDetailsInternal.ForwardAddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ForwardAddress).AddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ForwardAddress).AddressValidationStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressDetailsInternal.ForwardAddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ForwardAddress).AddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ForwardAddress).AddressValidationStatus = value ?? null; }
 
         /// <summary>Internal Acessors for ReturnAddress</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressProperties Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressDetailsInternal.ReturnAddress { get => (this._returnAddress = this._returnAddress ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.AddressProperties()); set { {_returnAddress = value;} } }
 
         /// <summary>Internal Acessors for ReturnAddressContactDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IContactDetails Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressDetailsInternal.ReturnAddressContactDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).ContactDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).ContactDetail = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IContactDetails Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressDetailsInternal.ReturnAddressContactDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).ContactDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).ContactDetail = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ReturnAddressShippingAddress</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IShippingAddress Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressDetailsInternal.ReturnAddressShippingAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).ShippingAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).ShippingAddress = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IShippingAddress Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressDetailsInternal.ReturnAddressShippingAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).ShippingAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).ShippingAddress = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ReturnAddressValidationStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressDetailsInternal.ReturnAddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).AddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).AddressValidationStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressDetailsInternal.ReturnAddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).AddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).AddressValidationStatus = value ?? null; }
 
         /// <summary>Backing field for <see cref="ReturnAddress" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressProperties _returnAddress;

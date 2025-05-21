@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzOracleAutonomousDatabase
 
 ## SYNOPSIS
-Update a AutonomousDatabase
+update a AutonomousDatabase
 
 ## SYNTAX
 
@@ -58,7 +58,7 @@ Update-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> -Js
 ```
 
 ## DESCRIPTION
-Update a AutonomousDatabase
+update a AutonomousDatabase
 
 ## EXAMPLES
 

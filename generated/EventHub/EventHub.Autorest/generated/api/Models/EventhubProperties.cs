@@ -135,16 +135,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescription Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.CaptureDescription { get => (this._captureDescription = this._captureDescription ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.CaptureDescription()); set { {_captureDescription = value;} } }
 
         /// <summary>Internal Acessors for CaptureDescriptionDestination</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestination Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.CaptureDescriptionDestination { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).Destination; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).Destination = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestination Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.CaptureDescriptionDestination { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).Destination; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).Destination = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for CreatedAt</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.CreatedAt { get => this._createdAt; set { {_createdAt = value;} } }
 
         /// <summary>Internal Acessors for DestinationIdentity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureIdentity Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.DestinationIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationIdentity = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureIdentity Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.DestinationIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationIdentity = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DestinationProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestinationProperties Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.DestinationProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestinationProperties Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.DestinationProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal)CaptureDescription).DestinationProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Identifier</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal.Identifier { get => this._identifier; set { {_identifier = value;} } }

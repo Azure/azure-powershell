@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ManagedNetworkFabric
-Module Guid: 95e96bd7-4548-4973-a345-3f982b13f681
+Module Guid: 27927f24-d126-4c7c-ab65-1287d5184410
 Download Help Link: https://learn.microsoft.com/powershell/module/az.managednetworkfabric
 Help Version: 1.0.0.0
 Locale: en-US
@@ -78,7 +78,7 @@ Get Network Tap Rule resource details.
 Deprovisions the underlying resources in the given Network Fabric instance.
 
 ### [Invoke-AzNetworkFabricInterfaceUpdateAdminState](Invoke-AzNetworkFabricInterfaceUpdateAdminState.md)
-Update the admin state of the Network Interface.
+update the admin state of the Network Interface.
 
 ### [Invoke-AzNetworkFabricL2DomainUpdateAdminState](Invoke-AzNetworkFabricL2DomainUpdateAdminState.md)
 Enables isolation domain across the fabric or on specified racks.
@@ -93,22 +93,22 @@ Provisions the underlying resources in the given Network Fabric instance.
 Implements the operation to the underlying resources.
 
 ### [New-AzNetworkFabric](New-AzNetworkFabric.md)
-Create Network Fabric resource.
+create Network Fabric resource.
 
 ### [New-AzNetworkFabricAcl](New-AzNetworkFabricAcl.md)
 Implements Access Control List PUT method.
 
 ### [New-AzNetworkFabricController](New-AzNetworkFabricController.md)
-Create a Network Fabric Controller.
+create a Network Fabric Controller.
 
 ### [New-AzNetworkFabricExternalNetwork](New-AzNetworkFabricExternalNetwork.md)
-Create ExternalNetwork PUT method.
+create ExternalNetwork PUT method.
 
 ### [New-AzNetworkFabricInternalNetwork](New-AzNetworkFabricInternalNetwork.md)
-Create InternalNetwork PUT method.
+create InternalNetwork PUT method.
 
 ### [New-AzNetworkFabricInternetGatewayRule](New-AzNetworkFabricInternetGatewayRule.md)
-Create an Internet Gateway rule resource.
+create an Internet Gateway rule resource.
 
 ### [New-AzNetworkFabricIPCommunity](New-AzNetworkFabricIPCommunity.md)
 Implements an IP Community PUT method.
@@ -120,10 +120,10 @@ Implements IP Extended Community PUT method.
 Implements IP Prefix PUT method.
 
 ### [New-AzNetworkFabricL2Domain](New-AzNetworkFabricL2Domain.md)
-Create layer 2 network connectivity between compute nodes within a rack and across racks.The configuration is applied on the devices only after the isolation domain is enabled.
+create layer 2 network connectivity between compute nodes within a rack and across racks.The configuration is applied on the devices only after the isolation domain is enabled.
 
 ### [New-AzNetworkFabricL3Domain](New-AzNetworkFabricL3Domain.md)
-Create isolation domain resources for layer 3 connectivity between compute nodes and for communication with external services .This configuration is applied on the devices only after the creation of networks is completed and isolation domain is enabled.
+create isolation domain resources for layer 3 connectivity between compute nodes and for communication with external services .This configuration is applied on the devices only after the creation of networks is completed and isolation domain is enabled.
 
 ### [New-AzNetworkFabricNeighborGroup](New-AzNetworkFabricNeighborGroup.md)
 Implements the Neighbor Group PUT method.
@@ -135,10 +135,10 @@ Configuration used to setup CE-PE connectivity PUT Method.
 Implements Route Policy PUT method.
 
 ### [New-AzNetworkFabricTap](New-AzNetworkFabricTap.md)
-Create a Network Tap.
+create a Network Tap.
 
 ### [New-AzNetworkFabricTapRule](New-AzNetworkFabricTapRule.md)
-Create Network Tap Rule resource.
+create Network Tap Rule resource.
 
 ### [Remove-AzNetworkFabric](Remove-AzNetworkFabric.md)
 Delete Network Fabric resource.
@@ -189,11 +189,11 @@ Deletes Network Tap.
 Delete Network Tap Rule resource.
 
 ### [Update-AzNetworkFabricDevice](Update-AzNetworkFabricDevice.md)
-Update certain properties of the Network Device resource.
+update certain properties of the Network Device resource.
 
 ### [Update-AzNetworkFabricInternetGateway](Update-AzNetworkFabricInternetGateway.md)
 Execute patch on Network Fabric Service Internet Gateway.
 
 ### [Update-AzNetworkFabricNeighborGroup](Update-AzNetworkFabricNeighborGroup.md)
-Update the Neighbor Group.
+update the Neighbor Group.
 

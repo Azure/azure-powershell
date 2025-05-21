@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StandbyPool
-Module Guid: 906124f0-0d0b-43ea-a3f8-27a8a5ed0afa
+Module Guid: 4dd2a14b-df76-4d7c-9bcc-3e9ee4b15ebb
 Download Help Link: https://learn.microsoft.com/powershell/module/az.standbypool
 Help Version: 1.0.0.0
 Locale: en-US

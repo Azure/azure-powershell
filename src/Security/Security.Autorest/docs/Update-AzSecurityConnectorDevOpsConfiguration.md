@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSecurityConnectorDevOpsConfiguration
 
 ## SYNOPSIS
-Update a DevOps Configuration.
+update a DevOps Configuration.
 
 ## SYNTAX
 
@@ -28,7 +28,7 @@ Update-AzSecurityConnectorDevOpsConfiguration -InputObject <ISecurityIdentity> [
 ```
 
 ## DESCRIPTION
-Update a DevOps Configuration.
+update a DevOps Configuration.
 
 ## EXAMPLES
 

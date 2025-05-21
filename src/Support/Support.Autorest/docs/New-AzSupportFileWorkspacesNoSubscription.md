@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSupportFileWorkspacesNoSubscription
 
 ## SYNOPSIS
-Create a new file workspace.
+create a new file workspace.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzSupportFileWorkspacesNoSubscription -FileWorkspaceName <String> [-DefaultP
 ```
 
 ## DESCRIPTION
-Create a new file workspace.
+create a new file workspace.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzInformaticaOrganization
 
 ## SYNOPSIS
-Create a InformaticaOrganizationResource
+create a InformaticaOrganizationResource
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ New-AzInformaticaOrganization -Name <String> -ResourceGroupName <String> -JsonSt
 ```
 
 ## DESCRIPTION
-Create a InformaticaOrganizationResource
+create a InformaticaOrganizationResource
 
 ## EXAMPLES
 

@@ -59,13 +59,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatusInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatusInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatusInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatusInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatusInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatusInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for EndTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatusInternal.EndTime { get => this._endTime; set { {_endTime = value;} } }
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models
         Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatusInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.ErrorDetail()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatusInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatusInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportResult Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatusInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.ExportResult()); set { {_property = value;} } }
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatusInternal.StartTime { get => this._startTime; set { {_startTime = value;} } }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatusInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatusInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetailInternal)Error).Target = value ?? null; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

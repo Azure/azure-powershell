@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.IPSecurityRestrictionRule
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappipsecurityrestrictionruleobject
 #>
 function New-AzContainerAppIPSecurityRestrictionRuleObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.IPSecurityRestrictionRule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

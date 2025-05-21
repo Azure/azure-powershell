@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         public string AddonType { get => "HCX"; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).AddonType = "HCX"; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).ProvisioningState = value ?? null; }
 
         /// <summary>Backing field for <see cref="Offer" /> property.</summary>
         private string _offer;

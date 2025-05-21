@@ -202,64 +202,64 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.Circuit { get => (this._circuit = this._circuit ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Circuit()); set { {_circuit = value;} } }
 
         /// <summary>Internal Acessors for CircuitExpressRouteId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.CircuitExpressRouteId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).ExpressRouteId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).ExpressRouteId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.CircuitExpressRouteId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).ExpressRouteId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).ExpressRouteId = value ?? null; }
 
         /// <summary>Internal Acessors for CircuitExpressRoutePrivatePeeringId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.CircuitExpressRoutePrivatePeeringId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).ExpressRoutePrivatePeeringId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).ExpressRoutePrivatePeeringId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.CircuitExpressRoutePrivatePeeringId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).ExpressRoutePrivatePeeringId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).ExpressRoutePrivatePeeringId = value ?? null; }
 
         /// <summary>Internal Acessors for CircuitPrimarySubnet</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.CircuitPrimarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).PrimarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).PrimarySubnet = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.CircuitPrimarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).PrimarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).PrimarySubnet = value ?? null; }
 
         /// <summary>Internal Acessors for CircuitSecondarySubnet</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.CircuitSecondarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).SecondarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).SecondarySubnet = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.CircuitSecondarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).SecondarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)Circuit).SecondarySubnet = value ?? null; }
 
         /// <summary>Internal Acessors for Encryption</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryption Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.Encryption { get => (this._encryption = this._encryption ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Encryption()); set { {_encryption = value;} } }
 
         /// <summary>Internal Acessors for EncryptionKeyVaultProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Endpoint</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpoints Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.Endpoint { get => (this._endpoint = this._endpoint ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Endpoints()); set { {_endpoint = value;} } }
 
         /// <summary>Internal Acessors for EndpointHcxCloudManager</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.EndpointHcxCloudManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).HcxCloudManager; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).HcxCloudManager = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.EndpointHcxCloudManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).HcxCloudManager; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).HcxCloudManager = value ?? null; }
 
         /// <summary>Internal Acessors for EndpointHcxCloudManagerIP</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.EndpointHcxCloudManagerIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).HcxCloudManagerIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).HcxCloudManagerIP = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.EndpointHcxCloudManagerIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).HcxCloudManagerIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).HcxCloudManagerIP = value ?? null; }
 
         /// <summary>Internal Acessors for EndpointNsxtManager</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.EndpointNsxtManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).NsxtManager; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).NsxtManager = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.EndpointNsxtManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).NsxtManager; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).NsxtManager = value ?? null; }
 
         /// <summary>Internal Acessors for EndpointNsxtManagerIP</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.EndpointNsxtManagerIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).NsxtManagerIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).NsxtManagerIP = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.EndpointNsxtManagerIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).NsxtManagerIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).NsxtManagerIP = value ?? null; }
 
         /// <summary>Internal Acessors for EndpointVcenterIP</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.EndpointVcenterIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).VcenterIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).VcenterIP = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.EndpointVcenterIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).VcenterIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).VcenterIP = value ?? null; }
 
         /// <summary>Internal Acessors for EndpointVcsa</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.EndpointVcsa { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).Vcsa; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).Vcsa = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.EndpointVcsa { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).Vcsa; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)Endpoint).Vcsa = value ?? null; }
 
         /// <summary>Internal Acessors for ExternalCloudLink</summary>
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.ExternalCloudLink { get => this._externalCloudLink; set { {_externalCloudLink = value;} } }
 
         /// <summary>Internal Acessors for KeyVaultPropertyAutoDetectedKeyVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.KeyVaultPropertyAutoDetectedKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyAutoDetectedKeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyAutoDetectedKeyVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.KeyVaultPropertyAutoDetectedKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyAutoDetectedKeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyAutoDetectedKeyVersion = value ?? null; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyKeyState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.KeyVaultPropertyKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyKeyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyKeyState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.KeyVaultPropertyKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyKeyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyKeyState = value ?? null; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyVersionType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.KeyVaultPropertyVersionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyVersionType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyVersionType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.KeyVaultPropertyVersionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyVersionType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyVersionType = value ?? null; }
 
         /// <summary>Internal Acessors for ManagementCluster</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementCluster Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.ManagementCluster { get => (this._managementCluster = this._managementCluster ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ManagementCluster()); set { {_managementCluster = value;} } }
 
         /// <summary>Internal Acessors for ManagementClusterId</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.ManagementClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ClusterId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ClusterId = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.ManagementClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ClusterId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ClusterId = value ?? default(int); }
 
         /// <summary>Internal Acessors for ManagementClusterProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.ManagementClusterProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.ManagementClusterProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for ManagementNetwork</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.ManagementNetwork { get => this._managementNetwork; set { {_managementNetwork = value;} } }
@@ -280,16 +280,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.SecondaryCircuit { get => (this._secondaryCircuit = this._secondaryCircuit ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Circuit()); set { {_secondaryCircuit = value;} } }
 
         /// <summary>Internal Acessors for SecondaryCircuitExpressRouteId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.SecondaryCircuitExpressRouteId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).ExpressRouteId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).ExpressRouteId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.SecondaryCircuitExpressRouteId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).ExpressRouteId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).ExpressRouteId = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryCircuitExpressRoutePrivatePeeringId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.SecondaryCircuitExpressRoutePrivatePeeringId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).ExpressRoutePrivatePeeringId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).ExpressRoutePrivatePeeringId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.SecondaryCircuitExpressRoutePrivatePeeringId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).ExpressRoutePrivatePeeringId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).ExpressRoutePrivatePeeringId = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryCircuitPrimarySubnet</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.SecondaryCircuitPrimarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).PrimarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).PrimarySubnet = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.SecondaryCircuitPrimarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).PrimarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).PrimarySubnet = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryCircuitSecondarySubnet</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.SecondaryCircuitSecondarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).SecondarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).SecondarySubnet = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.SecondaryCircuitSecondarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).SecondarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuitInternal)SecondaryCircuit).SecondarySubnet = value ?? null; }
 
         /// <summary>Internal Acessors for VcenterCertificateThumbprint</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal.VcenterCertificateThumbprint { get => this._vcenterCertificateThumbprint; set { {_vcenterCertificateThumbprint = value;} } }

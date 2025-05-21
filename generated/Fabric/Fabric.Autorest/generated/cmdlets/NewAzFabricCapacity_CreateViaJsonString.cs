@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fabric.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Fabric.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a FabricCapacity</summary>
+    /// <summary>create a FabricCapacity</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzFabricCapacity_CreateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacity))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fabric.Description(@"Create a FabricCapacity")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Fabric.Description(@"create a FabricCapacity")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fabric.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fabric.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}", ApiVersion = "2023-11-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fabric.NotSuggestDefaultParameterSet]

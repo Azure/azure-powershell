@@ -214,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("LogAnalyticProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).LogAnalyticProfileEnabled = (bool) content.GetValueForProperty("LogAnalyticProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).LogAnalyticProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).LogAnalyticProfileEnabled = (bool?) content.GetValueForProperty("LogAnalyticProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).LogAnalyticProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("LogAnalyticProfileWorkspaceId"))
             {
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("LogAnalyticProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).LogAnalyticProfileEnabled = (bool) content.GetValueForProperty("LogAnalyticProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).LogAnalyticProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).LogAnalyticProfileEnabled = (bool?) content.GetValueForProperty("LogAnalyticProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).LogAnalyticProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("LogAnalyticProfileWorkspaceId"))
             {

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedVMwareVMGuestAgent
 
 ## SYNOPSIS
-Create GuestAgent.
+create GuestAgent.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ New-AzConnectedVMwareVMGuestAgent -MachineId <String> -JsonString <String> [-Def
 ```
 
 ## DESCRIPTION
-Create GuestAgent.
+create GuestAgent.
 
 ## EXAMPLES
 

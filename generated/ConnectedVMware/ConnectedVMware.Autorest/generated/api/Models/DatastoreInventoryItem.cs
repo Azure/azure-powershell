@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         public string ManagedResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ManagedResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ManagedResourceId = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState = value ?? null; }
 
         /// <summary>Gets or sets the vCenter Managed Object name for the inventory item.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.PropertyOrigin.Inherited)]

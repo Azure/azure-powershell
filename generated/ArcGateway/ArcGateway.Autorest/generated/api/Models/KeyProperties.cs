@@ -55,25 +55,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetails Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyPropertiesInternal.CandidatePublicKey { get => (this._candidatePublicKey = this._candidatePublicKey ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.KeyDetails()); set { {_candidatePublicKey = value;} } }
 
         /// <summary>Internal Acessors for CandidatePublicKeyNotAfter</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyPropertiesInternal.CandidatePublicKeyNotAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)CandidatePublicKey).NotAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)CandidatePublicKey).NotAfter = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyPropertiesInternal.CandidatePublicKeyNotAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)CandidatePublicKey).NotAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)CandidatePublicKey).NotAfter = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for CandidatePublicKeyPublicKey</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyPropertiesInternal.CandidatePublicKeyPublicKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)CandidatePublicKey).PublicKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)CandidatePublicKey).PublicKey = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyPropertiesInternal.CandidatePublicKeyPublicKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)CandidatePublicKey).PublicKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)CandidatePublicKey).PublicKey = value ?? null; }
 
         /// <summary>Internal Acessors for CandidatePublicKeyRenewAfter</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyPropertiesInternal.CandidatePublicKeyRenewAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)CandidatePublicKey).RenewAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)CandidatePublicKey).RenewAfter = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyPropertiesInternal.CandidatePublicKeyRenewAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)CandidatePublicKey).RenewAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)CandidatePublicKey).RenewAfter = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for ClientPublicKey</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetails Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyPropertiesInternal.ClientPublicKey { get => (this._clientPublicKey = this._clientPublicKey ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.KeyDetails()); set { {_clientPublicKey = value;} } }
 
         /// <summary>Internal Acessors for ClientPublicKeyNotAfter</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyPropertiesInternal.ClientPublicKeyNotAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)ClientPublicKey).NotAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)ClientPublicKey).NotAfter = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyPropertiesInternal.ClientPublicKeyNotAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)ClientPublicKey).NotAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)ClientPublicKey).NotAfter = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for ClientPublicKeyPublicKey</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyPropertiesInternal.ClientPublicKeyPublicKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)ClientPublicKey).PublicKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)ClientPublicKey).PublicKey = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyPropertiesInternal.ClientPublicKeyPublicKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)ClientPublicKey).PublicKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)ClientPublicKey).PublicKey = value ?? null; }
 
         /// <summary>Internal Acessors for ClientPublicKeyRenewAfter</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyPropertiesInternal.ClientPublicKeyRenewAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)ClientPublicKey).RenewAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)ClientPublicKey).RenewAfter = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyPropertiesInternal.ClientPublicKeyRenewAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)ClientPublicKey).RenewAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IKeyDetailsInternal)ClientPublicKey).RenewAfter = value ?? default(global::System.DateTime); }
 
         /// <summary>Creates an new <see cref="KeyProperties" /> instance.</summary>
         public KeyProperties()

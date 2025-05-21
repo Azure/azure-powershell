@@ -74,43 +74,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for ConnectionStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerInternal.ConnectionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).ConnectionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).ConnectionStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerInternal.ConnectionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).ConnectionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).ConnectionStatus = value ?? null; }
 
         /// <summary>Internal Acessors for Credentials</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmCredential Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerInternal.Credentials { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).Credentials; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).Credentials = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmCredential Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerInternal.Credentials { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).Credentials; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).Credentials = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ErrorMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerInternal.ErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).ErrorMessage = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerInternal.ErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).ErrorMessage = value ?? null; }
 
         /// <summary>Internal Acessors for ExtendedLocation</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IExtendedLocation Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerInternal.ExtendedLocation { get => (this._extendedLocation = this._extendedLocation ?? new Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ExtendedLocation()); set { {_extendedLocation = value;} } }
@@ -119,13 +119,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerProperties Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.VmmServerProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Uuid</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerInternal.Uuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).Uuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).Uuid = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerInternal.Uuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).Uuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).Uuid = value ?? null; }
 
         /// <summary>Internal Acessors for Version</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerInternal.Version { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).Version = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerInternal.Version { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVmmServerPropertiesInternal)Property).Version = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Origin(Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PropertyOrigin.Inherited)]

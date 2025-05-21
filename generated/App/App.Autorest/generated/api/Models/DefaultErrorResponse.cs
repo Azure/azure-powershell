@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
 
         /// <summary>Details or the error</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorDetailsItem> Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Detail = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorDetailsItem> Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Detail; }
 
         /// <summary>Backing field for <see cref="Error" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseError _error;
@@ -37,19 +37,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Message; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Code = value ?? null; }
+
+        /// <summary>Internal Acessors for Detail</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorDetailsItem> Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseError Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.DefaultErrorResponseError()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Innererror</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseInternal.Innererror { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Innererror; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Innererror = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseInternal.Innererror { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Innererror; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Innererror = value ?? null; }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponseErrorInternal)Error).Target = value ?? null; }
 
         /// <summary>Detailed error description and debugging information.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inlined)]

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFleetUpdateStrategy
 
 ## SYNOPSIS
-Create a FleetUpdateStrategy
+create a FleetUpdateStrategy
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzFleetUpdateStrategy -FleetName <String> -Name <String> -ResourceGroupName 
 ```
 
 ## DESCRIPTION
-Create a FleetUpdateStrategy
+create a FleetUpdateStrategy
 
 ## EXAMPLES
 

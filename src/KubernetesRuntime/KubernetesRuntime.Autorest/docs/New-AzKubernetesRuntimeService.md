@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzKubernetesRuntimeService
 
 ## SYNOPSIS
-Create a ServiceResource
+create a ServiceResource
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ New-AzKubernetesRuntimeService -ArcConnectedClusterId <String> -Name <String> -J
 ```
 
 ## DESCRIPTION
-Create a ServiceResource
+create a ServiceResource
 
 ## EXAMPLES
 

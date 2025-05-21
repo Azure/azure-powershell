@@ -65,10 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models
         public string ManagementGroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponsePropertiesInternal)Property).ManagementGroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponsePropertiesInternal)Property).ManagementGroupId = value ?? null; }
 
         /// <summary>Internal Acessors for AcceptOwnershipState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.AcceptOwnershipState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponsePropertiesInternal)Property).AcceptOwnershipState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponsePropertiesInternal)Property).AcceptOwnershipState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.AcceptOwnershipState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponsePropertiesInternal)Property).AcceptOwnershipState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponsePropertiesInternal)Property).AcceptOwnershipState = value ?? null; }
 
         /// <summary>Internal Acessors for AcceptOwnershipUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.AcceptOwnershipUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponsePropertiesInternal)Property).AcceptOwnershipUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponsePropertiesInternal)Property).AcceptOwnershipUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.AcceptOwnershipUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponsePropertiesInternal)Property).AcceptOwnershipUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponsePropertiesInternal)Property).AcceptOwnershipUrl = value ?? null; }
 
         /// <summary>Internal Acessors for AliasName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.AliasName { get => this._aliasName; set { {_aliasName = value;} } }
@@ -80,28 +80,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models
         Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseProperties Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.SubscriptionAliasResponseProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for SubscriptionId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.SubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponsePropertiesInternal)Property).SubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponsePropertiesInternal)Property).SubscriptionId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.SubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponsePropertiesInternal)Property).SubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponsePropertiesInternal)Property).SubscriptionId = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponseInternal.Type { get => this._type; set { {_type = value;} } }

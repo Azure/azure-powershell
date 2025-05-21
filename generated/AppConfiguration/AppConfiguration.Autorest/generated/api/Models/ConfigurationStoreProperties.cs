@@ -72,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IEncryptionProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal.Encryption { get => (this._encryption = this._encryption ?? new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.EncryptionProperties()); set { {_encryption = value;} } }
 
         /// <summary>Internal Acessors for EncryptionKeyVaultProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal.EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IEncryptionPropertiesInternal)Encryption).KeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IEncryptionPropertiesInternal)Encryption).KeyVaultProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal.EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IEncryptionPropertiesInternal)Encryption).KeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IEncryptionPropertiesInternal)Encryption).KeyVaultProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Endpoint</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStorePropertiesInternal.Endpoint { get => this._endpoint; set { {_endpoint = value;} } }

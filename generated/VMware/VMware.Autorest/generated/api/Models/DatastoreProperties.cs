@@ -54,7 +54,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal.DiskPoolVolume { get => (this._diskPoolVolume = this._diskPoolVolume ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.DiskPoolVolume()); set { {_diskPoolVolume = value;} } }
 
         /// <summary>Internal Acessors for DiskPoolVolumePath</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal.DiskPoolVolumePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).Path; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).Path = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal.DiskPoolVolumePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).Path; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).Path = value ?? null; }
 
         /// <summary>Internal Acessors for ElasticSanVolume</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal.ElasticSanVolume { get => (this._elasticSanVolume = this._elasticSanVolume ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ElasticSanVolume()); set { {_elasticSanVolume = value;} } }

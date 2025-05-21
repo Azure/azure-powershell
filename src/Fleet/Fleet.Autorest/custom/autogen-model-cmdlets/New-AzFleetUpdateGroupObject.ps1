@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UpdateGroup
 https://learn.microsoft.com/powershell/module/Az.Fleet/new-azfleetupdategroupobject
 #>
 function New-AzFleetUpdateGroupObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UpdateGroup')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

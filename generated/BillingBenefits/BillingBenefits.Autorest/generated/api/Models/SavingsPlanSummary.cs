@@ -20,31 +20,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCount Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.Value { get => (this._value = this._value ?? new Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.SavingsPlanSummaryCount()); set { {_value = value;} } }
 
         /// <summary>Internal Acessors for ValueCancelledCount</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueCancelledCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).CancelledCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).CancelledCount = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueCancelledCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).CancelledCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).CancelledCount = value ?? default(float); }
 
         /// <summary>Internal Acessors for ValueExpiredCount</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueExpiredCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).ExpiredCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).ExpiredCount = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueExpiredCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).ExpiredCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).ExpiredCount = value ?? default(float); }
 
         /// <summary>Internal Acessors for ValueExpiringCount</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueExpiringCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).ExpiringCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).ExpiringCount = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueExpiringCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).ExpiringCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).ExpiringCount = value ?? default(float); }
 
         /// <summary>Internal Acessors for ValueFailedCount</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueFailedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).FailedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).FailedCount = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueFailedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).FailedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).FailedCount = value ?? default(float); }
 
         /// <summary>Internal Acessors for ValueNoBenefitCount</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueNoBenefitCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).NoBenefitCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).NoBenefitCount = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueNoBenefitCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).NoBenefitCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).NoBenefitCount = value ?? default(float); }
 
         /// <summary>Internal Acessors for ValuePendingCount</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValuePendingCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).PendingCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).PendingCount = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValuePendingCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).PendingCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).PendingCount = value ?? default(float); }
 
         /// <summary>Internal Acessors for ValueProcessingCount</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueProcessingCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).ProcessingCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).ProcessingCount = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueProcessingCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).ProcessingCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).ProcessingCount = value ?? default(float); }
 
         /// <summary>Internal Acessors for ValueSucceededCount</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueSucceededCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).SucceededCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).SucceededCount = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueSucceededCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).SucceededCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).SucceededCount = value ?? default(float); }
 
         /// <summary>Internal Acessors for ValueWarningCount</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueWarningCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).WarningCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).WarningCount = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryInternal.ValueWarningCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).WarningCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanSummaryCountInternal)Value).WarningCount = value ?? default(float); }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

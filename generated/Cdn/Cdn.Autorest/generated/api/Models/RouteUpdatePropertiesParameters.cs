@@ -98,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfiguration Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal.CacheConfiguration { get => (this._cacheConfiguration = this._cacheConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdRouteCacheConfiguration()); set { {_cacheConfiguration = value;} } }
 
         /// <summary>Internal Acessors for CacheConfigurationCompressionSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICompressionSettings Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal.CacheConfigurationCompressionSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfigurationInternal)CacheConfiguration).CompressionSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfigurationInternal)CacheConfiguration).CompressionSetting = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICompressionSettings Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal.CacheConfigurationCompressionSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfigurationInternal)CacheConfiguration).CompressionSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfigurationInternal)CacheConfiguration).CompressionSetting = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for EndpointName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal.EndpointName { get => this._endpointName; set { {_endpointName = value;} } }

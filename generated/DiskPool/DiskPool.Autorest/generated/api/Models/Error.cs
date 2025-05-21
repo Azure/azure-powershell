@@ -37,22 +37,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponse> Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponse> Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Error1</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponse Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorInternal.Error1 { get => (this._error1 = this._error1 ?? new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ErrorResponse()); set { {_error1 = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IErrorResponseInternal)Error1).Target = value ?? null; }
 
         /// <summary>The error target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.PropertyOrigin.Inlined)]

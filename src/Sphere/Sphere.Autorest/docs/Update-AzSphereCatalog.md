@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSphereCatalog
 
 ## SYNOPSIS
-Update a Catalog
+update a Catalog
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzSphereCatalog -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-Update a Catalog
+update a Catalog
 
 ## EXAMPLES
 

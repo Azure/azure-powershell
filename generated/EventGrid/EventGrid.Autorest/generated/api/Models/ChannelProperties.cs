@@ -57,13 +57,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models
         Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerDestinationInfo Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal.PartnerDestinationInfo { get => (this._partnerDestinationInfo = this._partnerDestinationInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.PartnerDestinationInfo()); set { {_partnerDestinationInfo = value;} } }
 
         /// <summary>Internal Acessors for PartnerDestinationInfoEndpointType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal.PartnerDestinationInfoEndpointType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerDestinationInfoInternal)PartnerDestinationInfo).EndpointType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerDestinationInfoInternal)PartnerDestinationInfo).EndpointType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal.PartnerDestinationInfoEndpointType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerDestinationInfoInternal)PartnerDestinationInfo).EndpointType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerDestinationInfoInternal)PartnerDestinationInfo).EndpointType = value ?? null; }
 
         /// <summary>Internal Acessors for PartnerTopicInfo</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerTopicInfo Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal.PartnerTopicInfo { get => (this._partnerTopicInfo = this._partnerTopicInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.PartnerTopicInfo()); set { {_partnerTopicInfo = value;} } }
 
         /// <summary>Internal Acessors for PartnerTopicInfoEventTypeInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventTypeInfo Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal.PartnerTopicInfoEventTypeInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerTopicInfoInternal)PartnerTopicInfo).EventTypeInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerTopicInfoInternal)PartnerTopicInfo).EventTypeInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventTypeInfo Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal.PartnerTopicInfoEventTypeInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerTopicInfoInternal)PartnerTopicInfo).EventTypeInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerTopicInfoInternal)PartnerTopicInfo).EventTypeInfo = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="PartnerDestinationInfo" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerDestinationInfo _partnerDestinationInfo;

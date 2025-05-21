@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRequestMethodMatchConditionParameters Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleRequestMethodConditionInternal.Parameter { get => (this._parameter = this._parameter ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.RequestMethodMatchConditionParameters()); set { {_parameter = value;} } }
 
         /// <summary>Internal Acessors for ParameterOperator</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleRequestMethodConditionInternal.ParameterOperator { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRequestMethodMatchConditionParametersInternal)Parameter).Operator; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRequestMethodMatchConditionParametersInternal)Parameter).Operator = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleRequestMethodConditionInternal.ParameterOperator { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRequestMethodMatchConditionParametersInternal)Parameter).Operator; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRequestMethodMatchConditionParametersInternal)Parameter).Operator = value ; }
 
         /// <summary>The name of the condition for the delivery rule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Constant]

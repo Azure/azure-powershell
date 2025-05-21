@@ -40,11 +40,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
 
         /// <summary>Active location where data flow will occur.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PropertyOrigin.Inlined)]
-        public string FailoverConfigurationActiveLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IFailoverConfigurationSpecInternal)FailoverConfiguration).ActiveLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IFailoverConfigurationSpecInternal)FailoverConfiguration).ActiveLocation = value ?? null; }
+        public string FailoverConfigurationActiveLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IFailoverConfigurationSpecInternal)FailoverConfiguration).ActiveLocation; }
 
         /// <summary>Locations that are configured for failover.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILocationSpec> FailoverConfigurationLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IFailoverConfigurationSpecInternal)FailoverConfiguration).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IFailoverConfigurationSpecInternal)FailoverConfiguration).Location = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILocationSpec> FailoverConfigurationLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IFailoverConfigurationSpecInternal)FailoverConfiguration).Location; }
 
         /// <summary>Backing field for <see cref="ImmutableId" /> property.</summary>
         private string _immutableId;
@@ -96,13 +96,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointConfigurationAccess Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.ConfigurationAccess { get => (this._configurationAccess = this._configurationAccess ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointConfigurationAccess()); set { {_configurationAccess = value;} } }
 
         /// <summary>Internal Acessors for ConfigurationAccessEndpoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.ConfigurationAccessEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IConfigurationAccessEndpointSpecInternal)ConfigurationAccess).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IConfigurationAccessEndpointSpecInternal)ConfigurationAccess).Endpoint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.ConfigurationAccessEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IConfigurationAccessEndpointSpecInternal)ConfigurationAccess).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IConfigurationAccessEndpointSpecInternal)ConfigurationAccess).Endpoint = value ?? null; }
 
         /// <summary>Internal Acessors for FailoverConfiguration</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointFailoverConfiguration Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.FailoverConfiguration { get => (this._failoverConfiguration = this._failoverConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointFailoverConfiguration()); set { {_failoverConfiguration = value;} } }
 
+        /// <summary>Internal Acessors for FailoverConfigurationActiveLocation</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.FailoverConfigurationActiveLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IFailoverConfigurationSpecInternal)FailoverConfiguration).ActiveLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IFailoverConfigurationSpecInternal)FailoverConfiguration).ActiveLocation = value ?? null; }
+
+        /// <summary>Internal Acessors for FailoverConfigurationLocation</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILocationSpec> Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.FailoverConfigurationLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IFailoverConfigurationSpecInternal)FailoverConfiguration).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IFailoverConfigurationSpecInternal)FailoverConfiguration).Location = value ?? null /* arrayOf */; }
+
         /// <summary>Internal Acessors for LogIngestionEndpoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.LogIngestionEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogsIngestionEndpointSpecInternal)LogsIngestion).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogsIngestionEndpointSpecInternal)LogsIngestion).Endpoint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.LogIngestionEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogsIngestionEndpointSpecInternal)LogsIngestion).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogsIngestionEndpointSpecInternal)LogsIngestion).Endpoint = value ?? null; }
 
         /// <summary>Internal Acessors for LogsIngestion</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointLogsIngestion Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.LogsIngestion { get => (this._logsIngestion = this._logsIngestion ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointLogsIngestion()); set { {_logsIngestion = value;} } }
@@ -111,13 +117,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointMetadata Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.Metadata { get => (this._metadata = this._metadata ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointMetadata()); set { {_metadata = value;} } }
 
         /// <summary>Internal Acessors for MetadataProvisionedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.MetadataProvisionedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.MetadataProvisionedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedBy = value ?? null; }
 
         /// <summary>Internal Acessors for MetadataProvisionedByResourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.MetadataProvisionedByResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedByResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedByResourceId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.MetadataProvisionedByResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedByResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedByResourceId = value ?? null; }
 
         /// <summary>Internal Acessors for MetricIngestionEndpoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.MetricIngestionEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetricsIngestionEndpointSpecInternal)MetricsIngestion).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetricsIngestionEndpointSpecInternal)MetricsIngestion).Endpoint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.MetricIngestionEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetricsIngestionEndpointSpecInternal)MetricsIngestion).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetricsIngestionEndpointSpecInternal)MetricsIngestion).Endpoint = value ?? null; }
 
         /// <summary>Internal Acessors for MetricsIngestion</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointMetricsIngestion Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointInternal.MetricsIngestion { get => (this._metricsIngestion = this._metricsIngestion ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointMetricsIngestion()); set { {_metricsIngestion = value;} } }

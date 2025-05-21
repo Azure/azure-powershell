@@ -1,6 +1,6 @@
 ---
 Module Name: Az.PaloAltoNetworks
-Module Guid: 787ef00f-9345-469d-9156-0654cdc69286
+Module Guid: fc0bd446-44c8-4929-a362-c41115b77174
 Download Help Link: https://learn.microsoft.com/powershell/module/az.paloaltonetworks
 Help Version: 1.0.0.0
 Locale: en-US
@@ -54,13 +54,13 @@ Commit rulestack configuration
 Revert rulestack configuration
 
 ### [New-AzPaloAltoNetworksCertificateObjectLocalRulestack](New-AzPaloAltoNetworksCertificateObjectLocalRulestack.md)
-Create a CertificateObjectLocalRulestackResource
+create a CertificateObjectLocalRulestackResource
 
 ### [New-AzPaloAltoNetworksFirewall](New-AzPaloAltoNetworksFirewall.md)
-Create a FirewallResource
+create a FirewallResource
 
 ### [New-AzPaloAltoNetworksFqdnListLocalRulestack](New-AzPaloAltoNetworksFqdnListLocalRulestack.md)
-Create a FqdnListLocalRulestackResource
+create a FqdnListLocalRulestackResource
 
 ### [New-AzPaloAltoNetworksFrontendSettingObject](New-AzPaloAltoNetworksFrontendSettingObject.md)
 Create an in-memory object for FrontendSetting.
@@ -69,13 +69,13 @@ Create an in-memory object for FrontendSetting.
 Create an in-memory object for IPAddress.
 
 ### [New-AzPaloAltoNetworksLocalRule](New-AzPaloAltoNetworksLocalRule.md)
-Create a LocalRulesResource
+create a LocalRulesResource
 
 ### [New-AzPaloAltoNetworksLocalRulestack](New-AzPaloAltoNetworksLocalRulestack.md)
-Create a LocalRulestackResource
+create a LocalRulestackResource
 
 ### [New-AzPaloAltoNetworksPrefixListLocalRulestack](New-AzPaloAltoNetworksPrefixListLocalRulestack.md)
-Create a PrefixListResource
+create a PrefixListResource
 
 ### [New-AzPaloAltoNetworksProfileObject](New-AzPaloAltoNetworksProfileObject.md)
 Create an in-memory object for NetworkProfile.
@@ -108,11 +108,11 @@ Reset counters
 Log Profile for Firewall
 
 ### [Update-AzPaloAltoNetworksFirewall](Update-AzPaloAltoNetworksFirewall.md)
-Update a FirewallResource
+update a FirewallResource
 
 ### [Update-AzPaloAltoNetworksLocalRuleCounter](Update-AzPaloAltoNetworksLocalRuleCounter.md)
 Refresh counters
 
 ### [Update-AzPaloAltoNetworksLocalRulestack](Update-AzPaloAltoNetworksLocalRulestack.md)
-Update a LocalRulestackResource
+update a LocalRulestackResource
 

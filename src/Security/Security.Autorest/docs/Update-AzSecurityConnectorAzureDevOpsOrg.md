@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSecurityConnectorAzureDevOpsOrg
 
 ## SYNOPSIS
-Update monitored Azure DevOps organization details.
+update monitored Azure DevOps organization details.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Update-AzSecurityConnectorAzureDevOpsOrg -InputObject <ISecurityIdentity>
 ```
 
 ## DESCRIPTION
-Update monitored Azure DevOps organization details.
+update monitored Azure DevOps organization details.
 
 ## EXAMPLES
 

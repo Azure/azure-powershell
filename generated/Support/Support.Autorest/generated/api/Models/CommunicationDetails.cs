@@ -42,13 +42,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support.Models
         public string Id { get => this._id; }
 
         /// <summary>Internal Acessors for CommunicationDirection</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsInternal.CommunicationDirection { get => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsPropertiesInternal)Property).CommunicationDirection; set => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsPropertiesInternal)Property).CommunicationDirection = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsInternal.CommunicationDirection { get => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsPropertiesInternal)Property).CommunicationDirection; set => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsPropertiesInternal)Property).CommunicationDirection = value ?? null; }
 
         /// <summary>Internal Acessors for CommunicationType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsInternal.CommunicationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsPropertiesInternal)Property).CommunicationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsPropertiesInternal)Property).CommunicationType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsInternal.CommunicationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsPropertiesInternal)Property).CommunicationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsPropertiesInternal)Property).CommunicationType = value ?? null; }
 
         /// <summary>Internal Acessors for CreatedDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsInternal.CreatedDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsPropertiesInternal)Property).CreatedDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsPropertiesInternal)Property).CreatedDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsInternal.CreatedDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsPropertiesInternal)Property).CreatedDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsPropertiesInternal)Property).CreatedDate = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetailsInternal.Id { get => this._id; set { {_id = value;} } }

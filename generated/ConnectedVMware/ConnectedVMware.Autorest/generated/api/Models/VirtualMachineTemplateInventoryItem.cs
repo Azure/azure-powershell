@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         public int? MemorySizeMb { get => this._memorySizeMb; set => this._memorySizeMb = value; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for ToolsVersion</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualMachineTemplateInventoryItemInternal.ToolsVersion { get => this._toolsVersion; set { {_toolsVersion = value;} } }

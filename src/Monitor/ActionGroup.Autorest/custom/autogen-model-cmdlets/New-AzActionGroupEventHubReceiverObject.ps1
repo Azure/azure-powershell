@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.EventHubReceiver
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactiongroupeventhubreceiverobject
 #>
 function New-AzActionGroupEventHubReceiverObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.EventHubReceiver')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

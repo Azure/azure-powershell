@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedVMwareResourcePool
 
 ## SYNOPSIS
-Create resourcePool.
+create resourcePool.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzConnectedVMwareResourcePool -Name <String> -ResourceGroupName <String> -Js
 ```
 
 ## DESCRIPTION
-Create resourcePool.
+create resourcePool.
 
 ## EXAMPLES
 

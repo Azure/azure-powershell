@@ -20,10 +20,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         private Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IManagedServiceIdentity __managedServiceIdentity = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ManagedServiceIdentity();
 
         /// <summary>Internal Acessors for PrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IManagedServiceIdentityInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IManagedServiceIdentityInternal)__managedServiceIdentity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IManagedServiceIdentityInternal)__managedServiceIdentity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IManagedServiceIdentityInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IManagedServiceIdentityInternal)__managedServiceIdentity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IManagedServiceIdentityInternal)__managedServiceIdentity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for TenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IManagedServiceIdentityInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IManagedServiceIdentityInternal)__managedServiceIdentity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IManagedServiceIdentityInternal)__managedServiceIdentity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IManagedServiceIdentityInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IManagedServiceIdentityInternal)__managedServiceIdentity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IManagedServiceIdentityInternal)__managedServiceIdentity).TenantId = value ?? null; }
 
         /// <summary>
         /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.

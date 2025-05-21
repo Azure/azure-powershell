@@ -3642,7 +3642,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CLUSTERPOOL <IClusterPool>: Cluster pool.
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [ComputeProfileAvailabilityZone <List<String>>]: The list of Availability zones to use for AKS VMSS nodes.
@@ -4322,7 +4322,7 @@ COMPUTEPROFILENODE <INodeProfile[]>: The nodes definitions.
   VMSize <String>: The virtual machine SKU.
 
 HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AccessProfileEnableInternalIngress <Boolean?>]: Whether to create cluster using private IP instead of public IP. This property must be set at create time.
@@ -6110,7 +6110,7 @@ CLUSTERPOOLINPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 CLUSTERRESIZEREQUEST <IClusterResizeData>: The parameters for resizing a cluster.
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [TargetWorkerNodeCount <Int32?>]: Target node count of worker node.
@@ -6429,7 +6429,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CLUSTERPOOL <IClusterPool>: Cluster pool.
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [ComputeProfileAvailabilityZone <List<String>>]: The list of Availability zones to use for AKS VMSS nodes.

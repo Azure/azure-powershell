@@ -27,13 +27,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).Location = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IWebChatChannelProperties Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IWebChatChannelInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.WebChatChannelProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for WebChatEmbedCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IWebChatChannelInternal.WebChatEmbedCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IWebChatChannelPropertiesInternal)Property).WebChatEmbedCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IWebChatChannelPropertiesInternal)Property).WebChatEmbedCode = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IWebChatChannelInternal.WebChatEmbedCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IWebChatChannelPropertiesInternal)Property).WebChatEmbedCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IWebChatChannelPropertiesInternal)Property).WebChatEmbedCode = value ?? null; }
 
         /// <summary>The channel name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Constant]

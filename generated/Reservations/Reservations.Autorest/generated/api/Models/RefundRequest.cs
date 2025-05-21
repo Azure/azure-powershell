@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundRequestProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundRequestInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.RefundRequestProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ReservationToReturn</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationToReturn Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundRequestInternal.ReservationToReturn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundRequestPropertiesInternal)Property).ReservationToReturn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundRequestPropertiesInternal)Property).ReservationToReturn = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationToReturn Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundRequestInternal.ReservationToReturn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundRequestPropertiesInternal)Property).ReservationToReturn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundRequestPropertiesInternal)Property).ReservationToReturn = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundRequestProperties _property;

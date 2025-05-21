@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFleetMember
 
 ## SYNOPSIS
-Update a FleetMember
+update a FleetMember
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ Update-AzFleetMember -FleetName <String> -Name <String> -ResourceGroupName <Stri
 ```
 
 ## DESCRIPTION
-Update a FleetMember
+update a FleetMember
 
 ## EXAMPLES
 

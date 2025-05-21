@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSphereDeviceGroup
 
 ## SYNOPSIS
-Update a DeviceGroup.
+update a DeviceGroup.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 
 ## SYNTAX
@@ -59,7 +59,7 @@ Update-AzSphereDeviceGroup -CatalogName <String> -Name <String> -ProductName <St
 ```
 
 ## DESCRIPTION
-Update a DeviceGroup.
+update a DeviceGroup.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 
 ## EXAMPLES

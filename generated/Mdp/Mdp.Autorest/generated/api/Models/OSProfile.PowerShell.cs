@@ -127,7 +127,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models
             }
             if (content.Contains("SecretManagementSettingKeyExportable"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOSProfileInternal)this).SecretManagementSettingKeyExportable = (bool) content.GetValueForProperty("SecretManagementSettingKeyExportable",((Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOSProfileInternal)this).SecretManagementSettingKeyExportable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOSProfileInternal)this).SecretManagementSettingKeyExportable = (bool?) content.GetValueForProperty("SecretManagementSettingKeyExportable",((Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOSProfileInternal)this).SecretManagementSettingKeyExportable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models
             }
             if (content.Contains("SecretManagementSettingKeyExportable"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOSProfileInternal)this).SecretManagementSettingKeyExportable = (bool) content.GetValueForProperty("SecretManagementSettingKeyExportable",((Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOSProfileInternal)this).SecretManagementSettingKeyExportable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOSProfileInternal)this).SecretManagementSettingKeyExportable = (bool?) content.GetValueForProperty("SecretManagementSettingKeyExportable",((Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOSProfileInternal)this).SecretManagementSettingKeyExportable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

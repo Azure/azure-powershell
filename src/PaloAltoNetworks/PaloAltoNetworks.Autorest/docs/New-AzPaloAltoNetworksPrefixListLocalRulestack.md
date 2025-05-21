@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPaloAltoNetworksPrefixListLocalRulestack
 
 ## SYNOPSIS
-Create a PrefixListResource
+create a PrefixListResource
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzPaloAltoNetworksPrefixListLocalRulestack -LocalRulestackName <String> -Nam
 ```
 
 ## DESCRIPTION
-Create a PrefixListResource
+create a PrefixListResource
 
 ## EXAMPLES
 

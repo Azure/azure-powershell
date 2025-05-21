@@ -14,13 +14,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     {
 
         /// <summary>Backing field for <see cref="EnableInternalIngress" /> property.</summary>
-        private bool _enableInternalIngress;
+        private bool? _enableInternalIngress;
 
         /// <summary>
         /// Whether to create cluster using private IP instead of public IP. This property must be set at create time.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        public bool EnableInternalIngress { get => this._enableInternalIngress; set => this._enableInternalIngress = value; }
+        public bool? EnableInternalIngress { get => this._enableInternalIngress; set => this._enableInternalIngress = value; }
 
         /// <summary>Internal Acessors for PrivateLinkServiceId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfileInternal.PrivateLinkServiceId { get => this._privateLinkServiceId; set { {_privateLinkServiceId = value;} } }
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// Whether to create cluster using private IP instead of public IP. This property must be set at create time.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Description = @"Whether to create cluster using private IP instead of public IP. This property must be set at create time.",
         SerializedName = @"enableInternalIngress",
         PossibleTypes = new [] { typeof(bool) })]
-        bool EnableInternalIngress { get; set; }
+        bool? EnableInternalIngress { get; set; }
         /// <summary>
         /// Private link service resource ID. Only when enableInternalIngress is true, this property will be returned.
         /// </summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>
         /// Whether to create cluster using private IP instead of public IP. This property must be set at create time.
         /// </summary>
-        bool EnableInternalIngress { get; set; }
+        bool? EnableInternalIngress { get; set; }
         /// <summary>
         /// Private link service resource ID. Only when enableInternalIngress is true, this property will be returned.
         /// </summary>

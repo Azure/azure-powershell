@@ -179,7 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Cmdlets
         Description = @"Reservation end time of a contact (ISO 8601 UTC standard).",
         SerializedName = @"reservationEndTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime ReservationEndTime { get => _parametersBody.ReservationEndTime; set => _parametersBody.ReservationEndTime = value; }
+        public global::System.DateTime ReservationEndTime { get => _parametersBody.ReservationEndTime ?? default(global::System.DateTime); set => _parametersBody.ReservationEndTime = value; }
 
         /// <summary>Reservation start time of a contact (ISO 8601 UTC standard).</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Reservation start time of a contact (ISO 8601 UTC standard).")]
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Cmdlets
         Description = @"Reservation start time of a contact (ISO 8601 UTC standard).",
         SerializedName = @"reservationStartTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime ReservationStartTime { get => _parametersBody.ReservationStartTime; set => _parametersBody.ReservationStartTime = value; }
+        public global::System.DateTime ReservationStartTime { get => _parametersBody.ReservationStartTime ?? default(global::System.DateTime); set => _parametersBody.ReservationStartTime = value; }
 
         /// <summary>Backing field for <see cref="SpacecraftInputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity _spacecraftInputObject;

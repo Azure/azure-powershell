@@ -52,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         public int? MaxPod { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProfileInternal)__agentPoolProfile).MaxPod; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProfileInternal)__agentPoolProfile).MaxPod = value ?? default(int); }
 
         /// <summary>Internal Acessors for KubernetesVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolUpdateProfileInternal.KubernetesVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolUpdateProfileInternal)__agentPoolUpdateProfile).KubernetesVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolUpdateProfileInternal)__agentPoolUpdateProfile).KubernetesVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolUpdateProfileInternal.KubernetesVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolUpdateProfileInternal)__agentPoolUpdateProfile).KubernetesVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolUpdateProfileInternal)__agentPoolUpdateProfile).KubernetesVersion = value ?? null; }
 
         /// <summary>The minimum number of nodes for auto-scaling</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inherited)]

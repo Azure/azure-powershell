@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzOracleCloudExadataInfrastructure
 
 ## SYNOPSIS
-Update a CloudExadataInfrastructure
+update a CloudExadataInfrastructure
 
 ## SYNTAX
 
@@ -53,7 +53,7 @@ Update-AzOracleCloudExadataInfrastructure -Name <String> -ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-Update a CloudExadataInfrastructure
+update a CloudExadataInfrastructure
 
 ## EXAMPLES
 

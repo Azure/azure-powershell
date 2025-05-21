@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSphereCatalog
 
 ## SYNOPSIS
-Create a Catalog
+create a Catalog
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ New-AzSphereCatalog -Name <String> -ResourceGroupName <String> -JsonString <Stri
 ```
 
 ## DESCRIPTION
-Create a Catalog
+create a Catalog
 
 ## EXAMPLES
 

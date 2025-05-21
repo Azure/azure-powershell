@@ -117,11 +117,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
             }
             if (content.Contains("CenterFrequencyMHz"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).CenterFrequencyMHz = (float) content.GetValueForProperty("CenterFrequencyMHz",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).CenterFrequencyMHz, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).CenterFrequencyMHz = (float?) content.GetValueForProperty("CenterFrequencyMHz",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).CenterFrequencyMHz, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("BandwidthMHz"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).BandwidthMHz = (float) content.GetValueForProperty("BandwidthMHz",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).BandwidthMHz, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).BandwidthMHz = (float?) content.GetValueForProperty("BandwidthMHz",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).BandwidthMHz, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("Direction"))
             {
@@ -158,11 +158,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
             }
             if (content.Contains("CenterFrequencyMHz"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).CenterFrequencyMHz = (float) content.GetValueForProperty("CenterFrequencyMHz",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).CenterFrequencyMHz, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).CenterFrequencyMHz = (float?) content.GetValueForProperty("CenterFrequencyMHz",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).CenterFrequencyMHz, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("BandwidthMHz"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).BandwidthMHz = (float) content.GetValueForProperty("BandwidthMHz",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).BandwidthMHz, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).BandwidthMHz = (float?) content.GetValueForProperty("BandwidthMHz",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLinkInternal)this).BandwidthMHz, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("Direction"))
             {

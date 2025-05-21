@@ -1,6 +1,6 @@
 ---
 Module Name: Az.NewRelic
-Module Guid: fcb6df7e-4a86-4278-88de-1e16f349572c
+Module Guid: 072fbdca-9f36-41b8-9e77-db452303bb2e
 Download Help Link: https://learn.microsoft.com/powershell/module/az.newrelic
 Help Version: 1.0.0.0
 Locale: en-US
@@ -66,7 +66,7 @@ Add the subscriptions that should be monitored by the NewRelic monitor resource.
 Create an in-memory object for MonitoredSubscription.
 
 ### [New-AzNewRelicMonitorTagRule](New-AzNewRelicMonitorTagRule.md)
-Create a TagRule
+create a TagRule
 
 ### [Remove-AzNewRelicMonitor](Remove-AzNewRelicMonitor.md)
 Delete a NewRelicMonitorResource
@@ -84,5 +84,5 @@ Switches the billing for NewRelic monitor resource.
 Add the subscriptions that should be monitored by the NewRelic monitor resource.
 
 ### [Update-AzNewRelicMonitorTagRule](Update-AzNewRelicMonitorTagRule.md)
-Update a TagRule
+update a TagRule
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedVMwareDatastore
 
 ## SYNOPSIS
-Create datastore.
+create datastore.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzConnectedVMwareDatastore -Name <String> -ResourceGroupName <String> -JsonS
 ```
 
 ## DESCRIPTION
-Create datastore.
+create datastore.
 
 ## EXAMPLES
 

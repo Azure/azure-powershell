@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a DevOps Configuration.</summary>
+    /// <summary>create a DevOps Configuration.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzSecurityConnectorDevOpsConfiguration_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDevOpsConfiguration))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Description(@"Create a DevOps Configuration.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Description(@"create a DevOps Configuration.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Security.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default", ApiVersion = "2023-09-01-preview")]
     public partial class NewAzSecurityConnectorDevOpsConfiguration_CreateExpanded : global::System.Management.Automation.PSCmdlet,

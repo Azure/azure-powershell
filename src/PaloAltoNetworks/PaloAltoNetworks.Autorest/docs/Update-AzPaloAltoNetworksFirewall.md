@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzPaloAltoNetworksFirewall
 
 ## SYNOPSIS
-Update a FirewallResource
+update a FirewallResource
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Update-AzPaloAltoNetworksFirewall -InputObject <IPaloAltoNetworksIdentity>
 ```
 
 ## DESCRIPTION
-Update a FirewallResource
+update a FirewallResource
 
 ## EXAMPLES
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]

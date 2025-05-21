@@ -62,10 +62,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models
         Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IAccountUpdateInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IAccountUpdateInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IAccountUpdateInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IAccountUpdateInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IManagedServiceIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IAccountUpdateInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>
         /// List of key value pairs that describe the resource. This will overwrite the existing tags.

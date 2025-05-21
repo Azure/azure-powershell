@@ -51,72 +51,114 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
 
         /// <summary>Script end time.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public global::System.DateTime? InstanceViewEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewEndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewEndTime = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? InstanceViewEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewEndTime; }
 
         /// <summary>Script error stream.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public string InstanceViewError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewError; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewError = value ?? null; }
+        public string InstanceViewError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewError; }
 
         /// <summary>Communicate script configuration errors or execution messages.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public string InstanceViewExecutionMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewExecutionMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewExecutionMessage = value ?? null; }
+        public string InstanceViewExecutionMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewExecutionMessage; }
 
         /// <summary>Script execution status.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public string InstanceViewExecutionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewExecutionState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewExecutionState = value ?? null; }
+        public string InstanceViewExecutionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewExecutionState; }
 
         /// <summary>Exit code returned from script execution.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public int? InstanceViewExitCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewExitCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewExitCode = value ?? default(int); }
+        public int? InstanceViewExitCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewExitCode; }
 
         /// <summary>Script output stream.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public string InstanceViewOutput { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewOutput; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewOutput = value ?? null; }
+        public string InstanceViewOutput { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewOutput; }
 
         /// <summary>Script start time.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public global::System.DateTime? InstanceViewStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewStartTime = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? InstanceViewStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewStartTime; }
 
         /// <summary>The status information.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IExtensionsResourceStatus> InstanceViewStatuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewStatuses; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewStatuses = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IExtensionsResourceStatus> InstanceViewStatuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewStatuses; }
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for ErrorBlobManagedIdentity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IRunCommandManagedIdentity Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.ErrorBlobManagedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).ErrorBlobManagedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).ErrorBlobManagedIdentity = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IRunCommandManagedIdentity Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.ErrorBlobManagedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).ErrorBlobManagedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).ErrorBlobManagedIdentity = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for InstanceView</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceView Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.InstanceView { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceView; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceView = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceView Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.InstanceView { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceView; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceView = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for InstanceViewEndTime</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.InstanceViewEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewEndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewEndTime = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for InstanceViewError</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.InstanceViewError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewError; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewError = value ?? null; }
+
+        /// <summary>Internal Acessors for InstanceViewExecutionMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.InstanceViewExecutionMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewExecutionMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewExecutionMessage = value ?? null; }
+
+        /// <summary>Internal Acessors for InstanceViewExecutionState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.InstanceViewExecutionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewExecutionState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewExecutionState = value ?? null; }
+
+        /// <summary>Internal Acessors for InstanceViewExitCode</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.InstanceViewExitCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewExitCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewExitCode = value ?? default(int); }
+
+        /// <summary>Internal Acessors for InstanceViewOutput</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.InstanceViewOutput { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewOutput; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewOutput = value ?? null; }
+
+        /// <summary>Internal Acessors for InstanceViewStartTime</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.InstanceViewStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewStartTime = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for InstanceViewStatuses</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IExtensionsResourceStatus> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.InstanceViewStatuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewStatuses; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).InstanceViewStatuses = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for OutputBlobManagedIdentity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IRunCommandManagedIdentity Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.OutputBlobManagedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).OutputBlobManagedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).OutputBlobManagedIdentity = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IRunCommandManagedIdentity Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.OutputBlobManagedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).OutputBlobManagedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).OutputBlobManagedIdentity = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandProperties Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.MachineRunCommandProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Source</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandScriptSource Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.Source { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).Source; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).Source = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandScriptSource Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.Source { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).Source; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).Source = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SourceScriptUriManagedIdentity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IRunCommandManagedIdentity Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.SourceScriptUriManagedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).SourceScriptUriManagedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).SourceScriptUriManagedIdentity = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IRunCommandManagedIdentity Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInternal.SourceScriptUriManagedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).SourceScriptUriManagedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal)Property).SourceScriptUriManagedIdentity = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
@@ -204,31 +246,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]

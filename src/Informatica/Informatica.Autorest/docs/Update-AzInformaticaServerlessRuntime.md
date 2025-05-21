@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzInformaticaServerlessRuntime
 
 ## SYNOPSIS
-Update a InformaticaServerlessRuntimeResource
+update a InformaticaServerlessRuntimeResource
 
 ## SYNTAX
 
@@ -69,7 +69,7 @@ Update-AzInformaticaServerlessRuntime -Name <String> -OrganizationName <String> 
 ```
 
 ## DESCRIPTION
-Update a InformaticaServerlessRuntimeResource
+update a InformaticaServerlessRuntimeResource
 
 ## EXAMPLES
 

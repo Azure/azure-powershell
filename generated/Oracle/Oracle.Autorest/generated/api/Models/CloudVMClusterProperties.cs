@@ -164,19 +164,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>An array of IORM settings for all the database in the Exadata DB system.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbIormConfig> IormConfigCacheDbPlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).DbPlan; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).DbPlan = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbIormConfig> IormConfigCacheDbPlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).DbPlan; }
 
         /// <summary>Additional information about the current lifecycleState.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string IormConfigCacheLifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleDetail = value ?? null; }
+        public string IormConfigCacheLifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleDetail; }
 
         /// <summary>The current state of IORM configuration for the Exadata DB system.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string IormConfigCacheLifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleState = value ?? null; }
+        public string IormConfigCacheLifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleState; }
 
         /// <summary>The current value for the IORM objective. The default is AUTO.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string IormConfigCacheObjective { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).Objective; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).Objective = value ?? null; }
+        public string IormConfigCacheObjective { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).Objective; }
 
         /// <summary>Backing field for <see cref="IsLocalBackupEnabled" /> property.</summary>
         private bool? _isLocalBackupEnabled;
@@ -252,6 +252,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>Internal Acessors for IormConfigCache</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfig Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.IormConfigCache { get => (this._iormConfigCache = this._iormConfigCache ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ExadataIormConfig()); set { {_iormConfigCache = value;} } }
+
+        /// <summary>Internal Acessors for IormConfigCacheDbPlan</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbIormConfig> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.IormConfigCacheDbPlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).DbPlan; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).DbPlan = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for IormConfigCacheLifecycleDetail</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.IormConfigCacheLifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleDetail = value ?? null; }
+
+        /// <summary>Internal Acessors for IormConfigCacheLifecycleState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.IormConfigCacheLifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleState = value ?? null; }
+
+        /// <summary>Internal Acessors for IormConfigCacheObjective</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.IormConfigCacheObjective { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).Objective; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).Objective = value ?? null; }
 
         /// <summary>Internal Acessors for LastUpdateHistoryEntryId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.LastUpdateHistoryEntryId { get => this._lastUpdateHistoryEntryId; set { {_lastUpdateHistoryEntryId = value;} } }
@@ -507,7 +519,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string BackupSubnetCidr { get; set; }
         /// <summary>Cloud Exadata Infrastructure ID</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -689,7 +701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string Domain { get; set; }
         /// <summary>Oracle Grid Infrastructure (GI) software version</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -700,7 +712,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string GiVersion { get; set; }
         /// <summary>The hostname for the cloud VM cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -1036,7 +1048,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         int? StorageSizeInGb { get; set; }
         /// <summary>Client subnet</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -1108,7 +1120,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         System.Collections.Generic.List<string> VipId { get;  }
         /// <summary>VNET for network connectivity</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

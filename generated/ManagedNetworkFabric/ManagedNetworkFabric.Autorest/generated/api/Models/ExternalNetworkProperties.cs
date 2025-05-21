@@ -76,7 +76,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesOptionAProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal.OptionAProperty { get => (this._optionAProperty = this._optionAProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExternalNetworkPropertiesOptionAProperties()); set { {_optionAProperty = value;} } }
 
         /// <summary>Internal Acessors for OptionAPropertyFabricAsn</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal.OptionAPropertyFabricAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)OptionAProperty).FabricAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)OptionAProperty).FabricAsn = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal.OptionAPropertyFabricAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)OptionAProperty).FabricAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)OptionAProperty).FabricAsn = value ?? default(long); }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }

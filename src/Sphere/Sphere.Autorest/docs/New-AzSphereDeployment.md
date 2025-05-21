@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSphereDeployment
 
 ## SYNOPSIS
-Create a Deployment.
+create a Deployment.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 
 ## SYNTAX
@@ -35,7 +35,7 @@ New-AzSphereDeployment -CatalogName <String> -DeviceGroupName <String> -Name <St
 ```
 
 ## DESCRIPTION
-Create a Deployment.
+create a Deployment.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 
 ## EXAMPLES
