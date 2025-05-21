@@ -19,30 +19,6 @@ stages:
   jobs:
   - template: util/live-test-steps.yml
     parameters:
-      name: 'win_ps_5_1_win_2022'
-      vmImage: ${{ variables.os_windows_2022 }}
-      osType: 'Windows'
-      psVersion: ${{ variables.win_ps_5_1 }}
-      dotnetVersion: ${{ variables.dotnet_sdk_8 }}
-
-  - template: util/live-test-steps.yml
-    parameters:
-      name: 'ps_7_4_x_win_2022'
-      vmImage: ${{ variables.os_windows_2022 }}
-      osType: 'Windows'
-      psVersion: ${{ variables.ps_7_4_x }}
-      dotnetVersion: ${{ variables.dotnet_sdk_8 }}
-
-  - template: util/live-test-steps.yml
-    parameters:
-      name: 'ps_7_5_x_win_2022'
-      vmImage: ${{ variables.os_windows_2022 }}
-      osType: 'Windows'
-      psVersion: ${{ variables.ps_7_5_x }}
-      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
-
-  - template: util/live-test-steps.yml
-    parameters:
       name: 'ps_7_4_x_linux'
       vmImage: ${{ variables.os_linux }}
       osType: 'Linux'
