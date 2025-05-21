@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 7.8.0
+* Added check to compare the VM resource group in the list of VMs returned for registration
+
 ## Version 7.7.0
 * Fix for reprotect cmdlet in Azure Site Recovery for Azure to Azure provider.
 * Deprecated the `Token` parameter for cross-tenant authentication in MUA scenarios for handling breaking change in Get-AzAccessToken cmdlet, use parameter `SecureToken` going forward.
