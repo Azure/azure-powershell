@@ -21,45 +21,46 @@ Create an in-memory object for DataNetworkConfiguration.
 Create an in-memory object for DataNetworkConfiguration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkConfiguration
 .Link
-https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkDataNetworkConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.MobileNetwork/new-azmobilenetworkdatanetworkconfigurationobject
 #>
 function New-AzMobileNetworkDataNetworkConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkConfiguration')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Allowed session types in addition to the default session type. Must not duplicate the default session type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PduSessionType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PduSessionType[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("IPv4", "IPv6")]
+        [string[]]
         $AdditionalAllowedSessionType,
         [Parameter(HelpMessage="Default QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.")]
         [int]
         $AllocationAndRetentionPriorityLevel,
         [Parameter(Mandatory, HelpMessage="List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IServiceResourceId[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IServiceResourceId[]]
         $AllowedService,
         [Parameter(Mandatory, HelpMessage="Data network resource ID.")]
         [string]
         $DataNetworkId,
         [Parameter(HelpMessage="The default PDU session type, which is used if the UE does not request a specific session type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PduSessionType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PduSessionType]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("IPv4", "IPv6")]
+        [string]
         $DefaultSessionType,
-        [Parameter(HelpMessage="Default QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.")]
+        [Parameter(HelpMessage="Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.")]
         [int]
         $FiveQi,
         [Parameter(HelpMessage="The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.")]
         [int]
         $MaximumNumberOfBufferedPacket,
         [Parameter(HelpMessage="Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreempt", "MayPreempt")]
+        [string]
         $PreemptionCapability,
         [Parameter(HelpMessage="Default QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreemptable", "Preemptable")]
+        [string]
         $PreemptionVulnerability,
         [Parameter(Mandatory, HelpMessage="Downlink bit rate.")]
         [string]
@@ -70,7 +71,7 @@ function New-AzMobileNetworkDataNetworkConfigurationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkConfiguration]::New()
 
         if ($PSBoundParameters.ContainsKey('AdditionalAllowedSessionType')) {
             $Object.AdditionalAllowedSessionType = $AdditionalAllowedSessionType

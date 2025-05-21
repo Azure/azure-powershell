@@ -21,12 +21,13 @@ Create an in-memory object for PccRuleConfiguration.
 Create an in-memory object for PccRuleConfiguration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleConfiguration
 .Link
-https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkPccRuleConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.MobileNetwork/new-azmobilenetworkpccruleconfigurationobject
 #>
 function New-AzMobileNetworkPccRuleConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleConfiguration')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -45,7 +46,7 @@ function New-AzMobileNetworkPccRuleConfigurationObject {
         [Parameter(HelpMessage="QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.")]
         [int]
         $RuleQoPolicyAllocationAndRetentionPriorityLevel,
-        [Parameter(HelpMessage="QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.")]
+        [Parameter(HelpMessage="5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.")]
         [int]
         $RuleQoPolicyFiveQi,
         [Parameter(HelpMessage="Downlink bit rate.")]
@@ -55,24 +56,24 @@ function New-AzMobileNetworkPccRuleConfigurationObject {
         [string]
         $RuleQoPolicyMaximumBitRateUplink,
         [Parameter(HelpMessage="QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreempt", "MayPreempt")]
+        [string]
         $RuleQoPolicyPreemptionCapability,
         [Parameter(HelpMessage="QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreemptable", "Preemptable")]
+        [string]
         $RuleQoPolicyPreemptionVulnerability,
         [Parameter(Mandatory, HelpMessage="The set of data flow templates to use for this data flow policy rule.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IServiceDataFlowTemplate[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IServiceDataFlowTemplate[]]
         $ServiceDataFlowTemplate,
         [Parameter(HelpMessage="Determines whether flows that match this data flow policy rule are permitted.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.TrafficControlPermission])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.TrafficControlPermission]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("Enabled", "Blocked")]
+        [string]
         $TrafficControl
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleConfiguration]::New()
 
         if ($PSBoundParameters.ContainsKey('GuaranteedBitRateDownlink')) {
             $Object.GuaranteedBitRateDownlink = $GuaranteedBitRateDownlink

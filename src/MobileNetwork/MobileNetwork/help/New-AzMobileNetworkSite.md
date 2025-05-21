@@ -16,13 +16,13 @@ Must be created in the same location as its parent mobile network.
 ```
 New-AzMobileNetworkSite -MobileNetworkName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DataNetworkName <String>] -Location <String> [-Tag <Hashtable>]
- [-PlatformType <PlatformType>] [-ControlPlaneAccessInterfaceName <String>]
+ [-PlatformType <String>] [-ControlPlaneAccessInterfaceName <String>]
  [-ControlPlaneAccessInterfaceIpv4Address <String>] [-ControlPlaneAccessInterfaceIpv4Gateway <String>]
  [-ControlPlaneAccessInterfaceIpv4Subnet <String>] [-CustomLocationId <String>]
- [-AzureStackEdgeDeviceId <String>] [-LocalDiagnosticAccessAuthenticationType <AuthenticationType>]
- [-CoreNetworkTechnology <CoreNetworkType>] [-Sku <BillingSku>] [-UserPlaneAccessInterfaceIpv4Address <String>]
+ [-AzureStackEdgeDeviceId <String>] [-LocalDiagnosticAccessAuthenticationType <String>]
+ [-CoreNetworkTechnology <String>] [-Sku <String>] [-UserPlaneAccessInterfaceIpv4Address <String>]
  [-UserPlaneAccessInterfaceIpv4Gateway <String>] [-UserPlaneAccessInterfaceIpv4Subnet <String>]
- [-UserPlaneAccessInterfaceName <String>] [-DnsAddress <String[]>] [-NaptConfigurationEnabled <NaptEnabled>]
+ [-UserPlaneAccessInterfaceName <String>] [-DnsAddress <String[]>] [-NaptConfigurationEnabled <String>]
  [-UserPlaneDataInterfaceIpv4Address <String>] [-UserPlaneDataInterfaceIpv4Gateway <String>]
  [-UserPlaneDataInterfaceIpv4Subnet <String>] [-UserPlaneDataInterfaceName <String>]
  [-UserEquipmentAddressPoolPrefix <String[]>] [-UserEquipmentStaticAddressPoolPrefix <String[]>]
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 The core network technology generation (5G core or EPC / 4G core).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.CoreNetworkType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -226,7 +226,7 @@ Accept wildcard characters: False
 How to authenticate users who access local diagnostics APIs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.AuthenticationType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -286,7 +286,7 @@ Accept wildcard characters: False
 Whether NAPT is enabled for connections to this attached data network.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.NaptEnabled
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -317,7 +317,7 @@ New-AzMobileNetworkPacketCoreControlPlane
 The platform type where packet core is deployed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PlatformType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -348,7 +348,7 @@ Accept wildcard characters: False
 The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -584,7 +584,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISite
 
 ## NOTES
 

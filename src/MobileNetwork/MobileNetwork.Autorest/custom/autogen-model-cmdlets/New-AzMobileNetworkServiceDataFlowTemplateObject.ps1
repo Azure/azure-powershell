@@ -21,18 +21,19 @@ Create an in-memory object for ServiceDataFlowTemplate.
 Create an in-memory object for ServiceDataFlowTemplate.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceDataFlowTemplate
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceDataFlowTemplate
 .Link
-https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkServiceDataFlowTemplateObject
+https://learn.microsoft.com/powershell/module/Az.MobileNetwork/new-azmobilenetworkservicedataflowtemplateobject
 #>
 function New-AzMobileNetworkServiceDataFlowTemplateObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceDataFlowTemplate')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceDataFlowTemplate')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(Mandatory, HelpMessage="The direction of this flow.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.SdfDirection])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.SdfDirection]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("Uplink", "Downlink", "Bidirectional")]
+        [string]
         $Direction,
         [Parameter(HelpMessage="The port(s) to which UEs will connect for this flow. You can specify zero or more ports or port ranges. If you specify one or more ports or port ranges then you must specify a value other than `ip` in the `protocol` field. This is an optional setting. If you do not specify it then connections will be allowed on all ports. Port ranges must be specified as <FirstPort>-<LastPort>. For example: [`8080`, `8082-8085`].")]
         [string[]]
@@ -49,7 +50,7 @@ function New-AzMobileNetworkServiceDataFlowTemplateObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceDataFlowTemplate]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceDataFlowTemplate]::New()
 
         if ($PSBoundParameters.ContainsKey('Direction')) {
             $Object.Direction = $Direction
