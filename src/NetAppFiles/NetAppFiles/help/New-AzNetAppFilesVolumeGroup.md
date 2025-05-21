@@ -47,7 +47,7 @@ New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescript
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
  [-EncryptionKeySource <String>] [-KeyVaultPrivateEndpointResourceId <String>] [-NetworkFeature <String>]
- [-Zone <String[]>] [-OracleDatabaseSize <Int32>] [-NumberOfDataVolumes <Int32>]
+ [-Zone <String[]>] [-OracleDatabaseSize <Int32>] [-NumberOfDataVolume <Int32>]
  [-AdditionalCapacityForSnapshots <Int32>] [-OracleDatabaseThroughput <Int32>] [-DataSize2 <Int64>]
  [-Data2Performance <Int32>] [-Data2ReplicationSourceId <String>] [-Data2ReplicationSchedule <String>]
  [-DataSize3 <Int64>] [-Data3Performance <Int32>] [-Data3ReplicationSourceId <String>]
@@ -466,7 +466,7 @@ Accept wildcard characters: False
 ```
 
 ### -Data4Size
-Specify capacity (in GiB). If ommited DataSize for disk 4 will be autocalculated or specify an integer value representing size. If NumberOfDataVolumes is less than 4 this will be ignored. For Oracle Application Volume Groups only
+Specify capacity (in GiB). If ommited DataSize for disk 4 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 4 this will be ignored. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -526,7 +526,7 @@ Accept wildcard characters: False
 ```
 
 ### -Data5Size
-Specify capacity (in GiB). If ommited DataSize for disk 5 will be autocalculated or specify an integer value representing size.If NumberOfDataVolumes is less than 5 this will be ignored. For Oracle Application Volume Groups only
+Specify capacity (in GiB). If ommited DataSize for disk 5 will be autocalculated or specify an integer value representing size.If NumberOfDataVolume is less than 5 this will be ignored. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -586,7 +586,7 @@ Accept wildcard characters: False
 ```
 
 ### -Data6Size
-Specify capacity (in GiB). If ommited DataSize for disk 6 will be autocalculated or specify an integer value representing size. If NumberOfDataVolumes is less than 6 this will be ignored. For Oracle Application Volume Groups only
+Specify capacity (in GiB). If ommited DataSize for disk 6 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 6 this will be ignored. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -646,7 +646,7 @@ Accept wildcard characters: False
 ```
 
 ### -Data7Size
-Specify capacity (in GiB). If ommited DataSize for disk 7 will be autocalculated or specify an integer value representing size. If NumberOfDataVolumes is less than 7 this will be ignored. For Oracle Application Volume Groups only
+Specify capacity (in GiB). If ommited DataSize for disk 7 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 7 this will be ignored. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -845,7 +845,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataSize3
-Specify capacity (in GiB). If ommited DataSize for disk 3 will be autocalculated or specify an integer value representing size. If NumberOfDataVolumes is less than 3 this will be ignored. For Oracle Application Volume Groups only
+Specify capacity (in GiB). If ommited DataSize for disk 3 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 3 this will be ignored. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -860,7 +860,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataSize8
-Specify capacity (in GiB). If ommited DataSize for disk 8 will be autocalculated or specify an integer value representing size.If NumberOfDataVolumes is less than 8 this will be ignored. For Oracle Application Volume Groups only
+Specify capacity (in GiB). If ommited DataSize for disk 8 will be autocalculated or specify an integer value representing size.If NumberOfDataVolume is less than 8 this will be ignored. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -1273,7 +1273,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NumberOfDataVolumes
+### -NumberOfDataVolume
 How many data volumes to create. Can have a minimum of 2 up to 8 data volumes. Defaults to 2. For Oracle Application Volume Groups only
 
 ```yaml

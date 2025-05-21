@@ -373,14 +373,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'")]
-        public string KeyVaultPrivateEndpointResourceId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "Basic network, or Standard features available to the volume (Basic, Standard).")]
         [PSArgumentCompleter("Basic", "Standard")]
         public string NetworkFeature { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'")]
+        public string KeyVaultPrivateEndpointResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -398,10 +398,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "How many data volumes to create. Can have a minimum of 2 up to 8 data volumes. Defaults to 2. For Oracle Application Volume Groups only",
+            HelpMessage = "How many data volume to create. Can have a minimum of 2 up to 8 data volumes. Defaults to 2. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         [ValidateRange(2, 8)]
-        public int? NumberOfDataVolumes { get; set; } = 2;
+        public int? NumberOfDataVolume { get; set; } = 2;
 
         [Parameter(
             Mandatory = false,
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 3 will be autocalculated or specify an integer value representing size. If NumberOfDataVolumes is less than 3 this will be ignored. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 3 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 3 this will be ignored. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public long? DataSize3 { get; set; }
 
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 4 will be autocalculated or specify an integer value representing size. If NumberOfDataVolumes is less than 4 this will be ignored. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 4 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 4 this will be ignored. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public long? Data4Size { get; set; }
 
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 5 will be autocalculated or specify an integer value representing size.If NumberOfDataVolumes is less than 5 this will be ignored. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 5 will be autocalculated or specify an integer value representing size.If NumberOfDataVolume is less than 5 this will be ignored. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public long? Data5Size { get; set; }
 
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 6 will be autocalculated or specify an integer value representing size. If NumberOfDataVolumes is less than 6 this will be ignored. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 6 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 6 this will be ignored. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public long? Data6Size { get; set; }
 
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 7 will be autocalculated or specify an integer value representing size. If NumberOfDataVolumes is less than 7 this will be ignored. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 7 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 7 this will be ignored. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public long? Data7Size { get; set; }
 
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 8 will be autocalculated or specify an integer value representing size.If NumberOfDataVolumes is less than 8 this will be ignored. For Oracle Application Volume Groups only",
+            HelpMessage = "Specify capacity (in GiB). If ommited DataSize for disk 8 will be autocalculated or specify an integer value representing size.If NumberOfDataVolume is less than 8 this will be ignored. For Oracle Application Volume Groups only",
             ParameterSetName = OracleParameterSetName)]
         public long? DataSize8 { get; set; }
 
@@ -812,7 +812,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 
             if (ApplicationType == OracleApplicationType)
             {
-                return CreateOracleVolumeGroup(name, ApplicationIdentifier, poolResourceId, tagPairs, BackupProtocolType, volumeExportPolicy, OracleDatabaseSize, OracleDatabaseThroughput, NumberOfDataVolumes, CapacityOverhead, SystemRole);
+                return CreateOracleVolumeGroup(name, ApplicationIdentifier, poolResourceId, tagPairs, BackupProtocolType, volumeExportPolicy, OracleDatabaseSize, OracleDatabaseThroughput, NumberOfDataVolume, CapacityOverhead, SystemRole);
             }
             else
             {
@@ -1144,31 +1144,31 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
             return throughput;
         }
 
-        private VolumeGroupDetails CreateOracleVolumeGroup(string name, string sid, string poolResourceId, IDictionary<string, string> tagPairs, string[] volumeBackupProtocolTypes, VolumePropertiesExportPolicy volumeExportPolicy, int? oracleDatabaseSize, int? oracleDatabaseThroughput, int? numberOfDataVolumes, int? capacityOverhead, string systemRole)
+        private VolumeGroupDetails CreateOracleVolumeGroup(string name, string sid, string poolResourceId, IDictionary<string, string> tagPairs, string[] volumeBackupProtocolTypes, VolumePropertiesExportPolicy volumeExportPolicy, int? oracleDatabaseSize, int? oracleDatabaseThroughput, int? NumberOfDataVolume, int? capacityOverhead, string systemRole)
         {
             int snapshotCapacityOverhead = capacityOverhead ?? 0;
-            var dataUsageThreshold = this.DataSize ?? CalulateOracleUsageThreshold(oracleDatabaseSize.Value, numberOfDataVolumes.Value, snapshotCapacityOverhead, OracleVolumeType.Data);
-            var logUsageThreshold = this.LogSize ?? CalulateOracleUsageThreshold(oracleDatabaseSize.Value, numberOfDataVolumes.Value, snapshotCapacityOverhead, OracleVolumeType.Log);
-            var binaryUsageThreshold = this.BinarySize ?? CalulateOracleUsageThreshold(oracleDatabaseSize.Value, numberOfDataVolumes.Value, snapshotCapacityOverhead, OracleVolumeType.Binary);
-            var logMirrorUsageThreshold = this.LogMirrorPerformance ?? CalulateOracleUsageThreshold(oracleDatabaseSize.Value, numberOfDataVolumes.Value, snapshotCapacityOverhead, OracleVolumeType.LogMirror);
-            var backupUsageThreshold = this.DataBackupSize ?? CalulateOracleUsageThreshold(oracleDatabaseSize.Value, numberOfDataVolumes.Value, snapshotCapacityOverhead, OracleVolumeType.Backup);
+            var dataUsageThreshold = this.DataSize ?? CalulateOracleUsageThreshold(oracleDatabaseSize.Value, NumberOfDataVolume.Value, snapshotCapacityOverhead, OracleVolumeType.Data);
+            var logUsageThreshold = this.LogSize ?? CalulateOracleUsageThreshold(oracleDatabaseSize.Value, NumberOfDataVolume.Value, snapshotCapacityOverhead, OracleVolumeType.Log);
+            var binaryUsageThreshold = this.BinarySize ?? CalulateOracleUsageThreshold(oracleDatabaseSize.Value, NumberOfDataVolume.Value, snapshotCapacityOverhead, OracleVolumeType.Binary);
+            var logMirrorUsageThreshold = this.LogMirrorPerformance ?? CalulateOracleUsageThreshold(oracleDatabaseSize.Value, NumberOfDataVolume.Value, snapshotCapacityOverhead, OracleVolumeType.LogMirror);
+            var backupUsageThreshold = this.DataBackupSize ?? CalulateOracleUsageThreshold(oracleDatabaseSize.Value, NumberOfDataVolume.Value, snapshotCapacityOverhead, OracleVolumeType.Backup);
 
-            var dataThroughput = this.DataPerformance ?? CalculateOracleThroughput(oracleDatabaseThroughput.Value, numberOfDataVolumes.Value, OracleVolumeType.Data);
-            var logThroughput = this.LogPerformance ?? CalculateOracleThroughput(oracleDatabaseThroughput.Value, numberOfDataVolumes.Value, OracleVolumeType.Log);
-            var binaryThroughput = this.SharedPerformance ?? CalculateOracleThroughput(oracleDatabaseThroughput.Value, numberOfDataVolumes.Value, OracleVolumeType.Binary);
-            var logMirrorThroughput = this.LogBackupPerformance ?? CalculateOracleThroughput(oracleDatabaseThroughput.Value, numberOfDataVolumes.Value, OracleVolumeType.LogMirror);
-            var backupThroughput = this.DataBackupPerformance ?? CalculateOracleThroughput(oracleDatabaseThroughput.Value, numberOfDataVolumes.Value, OracleVolumeType.Backup);
+            var dataThroughput = this.DataPerformance ?? CalculateOracleThroughput(oracleDatabaseThroughput.Value, NumberOfDataVolume.Value, OracleVolumeType.Data);
+            var logThroughput = this.LogPerformance ?? CalculateOracleThroughput(oracleDatabaseThroughput.Value, NumberOfDataVolume.Value, OracleVolumeType.Log);
+            var binaryThroughput = this.SharedPerformance ?? CalculateOracleThroughput(oracleDatabaseThroughput.Value, NumberOfDataVolume.Value, OracleVolumeType.Binary);
+            var logMirrorThroughput = this.LogBackupPerformance ?? CalculateOracleThroughput(oracleDatabaseThroughput.Value, NumberOfDataVolume.Value, OracleVolumeType.LogMirror);
+            var backupThroughput = this.DataBackupPerformance ?? CalculateOracleThroughput(oracleDatabaseThroughput.Value, NumberOfDataVolume.Value, OracleVolumeType.Backup);
             var zoneList = this.Zone?.ToList();
 
             List<VolumeGroupVolumeProperties> volumesInGroup = new List<VolumeGroupVolumeProperties>();
-            for (int i = 0; i < numberOfDataVolumes; i++)
+            for (int i = 0; i < NumberOfDataVolume; i++)
             {
                 int currentHostCount = i + 1;
                 string dataVolumeName = GenerateOracleVolumeName(ApplicationIdentifier, SystemId, OracleVolumeType.Data, currentHostCount, systemRole);
                 var dataVolume = new VolumeGroupVolumeProperties
                 {
                     Name = dataVolumeName,
-                    VolumeSpecName = SapVolumeType.Data,
+                    VolumeSpecName = OracleVolumeType.Data,
                     CapacityPoolResourceId = poolResourceId,
                     ProximityPlacementGroup = ProximityPlacementGroup,
                     UsageThreshold = dataUsageThreshold,
@@ -1428,12 +1428,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
             return replciationObject;
         }
             
-        public static long CalulateOracleUsageThreshold(int oracleDatabaseSize, int numberOfDataVolumes, int snapshotReserveOverhead, string volumeType)
+        public static long CalulateOracleUsageThreshold(int oracleDatabaseSize, int NumberOfDataVolume, int snapshotReserveOverhead, string volumeType)
         {
             long size = 0;
             if (volumeType == OracleVolumeType.Data)
             {
-                int sizeFactor = oracleDatabaseSize / numberOfDataVolumes;
+                int sizeFactor = oracleDatabaseSize / NumberOfDataVolume;
                 double capacityFactor = ((double)snapshotReserveOverhead /100) * sizeFactor;
                 size = Math.Max(100, (long)(sizeFactor + capacityFactor));
             }
@@ -1461,15 +1461,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
         /// Returns throughput in MiB/s
         /// </summary>
         /// <param name="oracleThroughput">nodeMemory should be sent in GiB</param>
-        /// <param name="numberOfDataVolumes"></param>
+        /// <param name="NumberOfDataVolume"></param>
         /// /// <param name="volumeType"></param>
         /// <returns></returns>
-        public static long CalculateOracleThroughput(int oracleThroughput, int numberOfDataVolumes, string volumeType)
+        public static long CalculateOracleThroughput(int oracleThroughput, int NumberOfDataVolume, string volumeType)
         {
             int throughput = 150;
             if (volumeType == OracleVolumeType.Data)
             {
-                throughput = Math.Max(100,oracleThroughput/numberOfDataVolumes);
+                throughput = Math.Max(100,oracleThroughput/NumberOfDataVolume);
             }
             else if (volumeType == OracleVolumeType.Log)
             {
