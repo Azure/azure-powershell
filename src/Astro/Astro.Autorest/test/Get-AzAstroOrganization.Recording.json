@@ -18,7 +18,7 @@
       }
     },
     "Response": {
-      "StatusCode": 800,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
