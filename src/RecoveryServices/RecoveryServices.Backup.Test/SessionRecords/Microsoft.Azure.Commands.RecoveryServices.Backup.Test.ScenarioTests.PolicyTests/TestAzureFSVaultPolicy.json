@@ -5,17 +5,17 @@
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3Y/YXBpLXZlcnNpb249MjAyNC0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "3b54f20d-bb37-4c6f-aaa3-220374a7fb75"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "9edcc38d-5efe-452b-9071-78e236c4875c"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.3624.51421",
+          "FxVersion/8.0.1525.16413",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.3.0"
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.7.0"
         ]
       },
       "RequestBody": "",
@@ -33,19 +33,19 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "49cd1d12-2b7a-4473-aec4-340c3559881d"
+          "e197c9c5-d31b-47cc-b186-b1495e2a3c32"
         ],
         "x-ms-client-request-id": [
-          "3b54f20d-bb37-4c6f-aaa3-220374a7fb75"
+          "9edcc38d-5efe-452b-9071-78e236c4875c"
         ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [
           "16499"
         ],
         "x-ms-correlation-request-id": [
-          "49cd1d12-2b7a-4473-aec4-340c3559881d"
+          "e197c9c5-d31b-47cc-b186-b1495e2a3c32"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20250115T104413Z:49cd1d12-2b7a-4473-aec4-340c3559881d"
+          "WESTINDIA:20250508T190052Z:e197c9c5-d31b-47cc-b186-b1495e2a3c32"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -54,13 +54,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 510761CC582249A3BC3511642E5E076B Ref B: MAA201060515045 Ref C: 2025-01-15T10:44:13Z"
+          "Ref A: A6B67FA678DE4EDC9996D92593A03171 Ref B: MAA201060515021 Ref C: 2025-05-08T19:00:51Z"
         ],
         "Date": [
-          "Wed, 15 Jan 2025 10:44:12 GMT"
+          "Thu, 08 May 2025 19:00:51 GMT"
         ],
         "Content-Length": [
-          "990"
+          "991"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,25 +69,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"eastasia\",\r\n  \"name\": \"iannea-rsv\",\r\n  \"etag\": \"W/\\\"datetime'2025-01-14T23%3A58%3A37.564463Z'\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V1\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": {\r\n        \"state\": \"Disabled\"\r\n      },\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Disabled\",\r\n        \"enhancedSecurityState\": \"Disabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\"\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"LocallyRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"None\",\r\n    \"bcdrSecurityLevel\": \"Poor\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"eastasia\",\r\n  \"name\": \"iannea-rsv\",\r\n  \"etag\": \"W/\\\"datetime'2025-05-08T18%3A45%3A48.1309411Z'\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V1\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": {\r\n        \"state\": \"Disabled\"\r\n      },\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Disabled\",\r\n        \"enhancedSecurityState\": \"Disabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\"\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"LocallyRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"None\",\r\n    \"bcdrSecurityLevel\": \"Poor\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2024-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2025-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI1LTAyLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f6bb9350-ccae-4752-b190-b939685ff323"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "dc9c2bd4-4a6d-4d98-ae1b-39ee4af1d2fc"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.3624.51421",
+          "FxVersion/8.0.1525.16413",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.3.0"
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
         ]
       },
       "RequestBody": "",
@@ -98,23 +98,26 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/9305772e-e61e-4ff1-9c75-331d7cc675f2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "bf3c1830-1e5f-4def-ab05-d99783153e4b"
+          "0077d366-06aa-4e7e-8b33-e969839a2554"
         ],
         "x-ms-client-request-id": [
-          "f6bb9350-ccae-4752-b190-b939685ff323"
+          "dc9c2bd4-4a6d-4d98-ae1b-39ee4af1d2fc"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
         ],
         "x-ms-correlation-request-id": [
-          "bf3c1830-1e5f-4def-ab05-d99783153e4b"
+          "0077d366-06aa-4e7e-8b33-e969839a2554"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20250115T104415Z:bf3c1830-1e5f-4def-ab05-d99783153e4b"
+          "WESTINDIA:20250508T190053Z:0077d366-06aa-4e7e-8b33-e969839a2554"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -123,10 +126,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: BDE85D5BDD7444F8ABC0F27517CCF011 Ref B: MAA201060514029 Ref C: 2025-01-15T10:44:14Z"
+          "Ref A: 1FE78C8AD79847D4A5043484D3F13DA1 Ref B: MAA201060515025 Ref C: 2025-05-08T19:00:52Z"
         ],
         "Date": [
-          "Wed, 15 Jan 2025 10:44:14 GMT"
+          "Thu, 08 May 2025 19:00:52 GMT"
         ],
         "Content-Length": [
           "2"
@@ -142,21 +145,21 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2024-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2025-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI1LTAyLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f6bb9350-ccae-4752-b190-b939685ff323"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "dc9c2bd4-4a6d-4d98-ae1b-39ee4af1d2fc"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.3624.51421",
+          "FxVersion/8.0.1525.16413",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.3.0"
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
         ]
       },
       "RequestBody": "",
@@ -171,19 +174,22 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "e8ae2448-1ca3-44e4-9579-c250524080ec"
+          "7af2cdc6-1435-46ac-a7ef-d3aee7e21569"
         ],
         "x-ms-client-request-id": [
-          "f6bb9350-ccae-4752-b190-b939685ff323"
+          "dc9c2bd4-4a6d-4d98-ae1b-39ee4af1d2fc"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/978aa1ad-7749-489d-9135-2dabd2c591a4"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
+          "249"
         ],
         "x-ms-correlation-request-id": [
-          "e8ae2448-1ca3-44e4-9579-c250524080ec"
+          "7af2cdc6-1435-46ac-a7ef-d3aee7e21569"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20250115T104417Z:e8ae2448-1ca3-44e4-9579-c250524080ec"
+          "WESTINDIA:20250508T190056Z:7af2cdc6-1435-46ac-a7ef-d3aee7e21569"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -192,10 +198,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 3DF59B9C67744D8989A368971A3AE478 Ref B: MAA201060514029 Ref C: 2025-01-15T10:44:17Z"
+          "Ref A: 3B42C7C97820493DAE4ABFE1C900B540 Ref B: MAA201060515025 Ref C: 2025-05-08T19:00:55Z"
         ],
         "Date": [
-          "Wed, 15 Jan 2025 10:44:16 GMT"
+          "Thu, 08 May 2025 19:00:55 GMT"
         ],
         "Content-Length": [
           "777"
@@ -207,25 +213,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-01-15T14:00:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-01-15T14:00:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 5\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-05-09T03:30:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-05-09T03:30:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 5\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2024-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2025-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI1LTAyLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "3d30b2d5-a3bb-4246-bd96-159cc5a5fa8b"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "1b868e37-fc4d-4997-b6ba-baeee7693b69"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.3624.51421",
+          "FxVersion/8.0.1525.16413",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.3.0"
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
         ]
       },
       "RequestBody": "",
@@ -240,19 +246,22 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "039c0264-0dd7-47cb-a1cb-4e85bf3b664c"
+          "7b83e1e6-2cc8-4fe4-8321-f47004ccaf65"
         ],
         "x-ms-client-request-id": [
-          "3d30b2d5-a3bb-4246-bd96-159cc5a5fa8b"
+          "1b868e37-fc4d-4997-b6ba-baeee7693b69"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/4212e49e-6ced-4a22-b41d-6dbeaeafa58c"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
+          "249"
         ],
         "x-ms-correlation-request-id": [
-          "039c0264-0dd7-47cb-a1cb-4e85bf3b664c"
+          "7b83e1e6-2cc8-4fe4-8321-f47004ccaf65"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20250115T104419Z:039c0264-0dd7-47cb-a1cb-4e85bf3b664c"
+          "WESTINDIA:20250508T190057Z:7b83e1e6-2cc8-4fe4-8321-f47004ccaf65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -261,10 +270,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 4BDAFDA2FE5E432C9CBD6A22E467BBE5 Ref B: MAA201060514009 Ref C: 2025-01-15T10:44:19Z"
+          "Ref A: 0AEE0BB9E48044FCB97E70F2C972F3B3 Ref B: MAA201060515027 Ref C: 2025-05-08T19:00:56Z"
         ],
         "Date": [
-          "Wed, 15 Jan 2025 10:44:19 GMT"
+          "Thu, 08 May 2025 19:00:57 GMT"
         ],
         "Content-Length": [
           "777"
@@ -276,25 +285,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-01-15T14:00:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-01-15T14:00:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 5\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-05-09T03:30:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-05-09T03:30:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 5\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2024-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2025-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI1LTAyLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "436523e3-b4b0-4980-9e1a-f96f76128992"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "66422d20-cc59-4bcb-9c7a-00d04b3c4159"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.3624.51421",
+          "FxVersion/8.0.1525.16413",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.3.0"
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
         ]
       },
       "RequestBody": "",
@@ -309,19 +318,22 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "ff5307f2-5a05-42b1-b96f-fc582f6532b3"
+          "5453c357-1cc0-42be-ab47-32b921b98408"
         ],
         "x-ms-client-request-id": [
-          "436523e3-b4b0-4980-9e1a-f96f76128992"
+          "66422d20-cc59-4bcb-9c7a-00d04b3c4159"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/southindia/507d4656-1e17-482d-8d8e-9b6e23e12695"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "149"
         ],
         "x-ms-correlation-request-id": [
-          "ff5307f2-5a05-42b1-b96f-fc582f6532b3"
+          "5453c357-1cc0-42be-ab47-32b921b98408"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20250115T104422Z:ff5307f2-5a05-42b1-b96f-fc582f6532b3"
+          "SOUTHINDIA:20250508T190100Z:5453c357-1cc0-42be-ab47-32b921b98408"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -330,10 +342,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 17C40C8579574AF597F0142BDBBC7477 Ref B: MAA201060513027 Ref C: 2025-01-15T10:44:22Z"
+          "Ref A: 8864F415ECA14182A89857A9546BE735 Ref B: MAA201060514023 Ref C: 2025-05-08T19:00:59Z"
         ],
         "Date": [
-          "Wed, 15 Jan 2025 10:44:22 GMT"
+          "Thu, 08 May 2025 19:00:59 GMT"
         ],
         "Content-Length": [
           "778"
@@ -345,25 +357,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-01-15T14:00:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-01-15T14:00:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 15\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-05-09T03:30:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-05-09T03:30:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 15\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2024-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2025-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI1LTAyLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "75b970b7-1090-4682-97d9-01c5239fa6ed"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "ea29480c-710f-49e8-911a-1013363dbeb2"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.3624.51421",
+          "FxVersion/8.0.1525.16413",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.3.0"
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
         ]
       },
       "RequestBody": "",
@@ -378,19 +390,22 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "344f3755-4551-4c7f-8e74-1af04971cac0"
+          "9ab53f5c-bca4-438c-9e17-3cd6d3521e99"
         ],
         "x-ms-client-request-id": [
-          "75b970b7-1090-4682-97d9-01c5239fa6ed"
+          "ea29480c-710f-49e8-911a-1013363dbeb2"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/southindia/6c4b1cdf-f752-42c2-acc7-f342f12e6480"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "149"
         ],
         "x-ms-correlation-request-id": [
-          "344f3755-4551-4c7f-8e74-1af04971cac0"
+          "9ab53f5c-bca4-438c-9e17-3cd6d3521e99"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20250115T104424Z:344f3755-4551-4c7f-8e74-1af04971cac0"
+          "SOUTHINDIA:20250508T190101Z:9ab53f5c-bca4-438c-9e17-3cd6d3521e99"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -399,10 +414,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 1BEAC7DE9896444486C19EFB94023B3F Ref B: MAA201060515029 Ref C: 2025-01-15T10:44:23Z"
+          "Ref A: AAF81E848EA34FC2937B15586CFAA70C Ref B: MAA201060514045 Ref C: 2025-05-08T19:01:00Z"
         ],
         "Date": [
-          "Wed, 15 Jan 2025 10:44:24 GMT"
+          "Thu, 08 May 2025 19:01:01 GMT"
         ],
         "Content-Length": [
           "778"
@@ -414,25 +429,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-01-15T14:00:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-01-15T14:00:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 15\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-05-09T03:30:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-05-09T03:30:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 15\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2024-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2025-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI1LTAyLTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f6bb9350-ccae-4752-b190-b939685ff323"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "dc9c2bd4-4a6d-4d98-ae1b-39ee4af1d2fc"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.3624.51421",
+          "FxVersion/8.0.1525.16413",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.3.0"
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -441,7 +456,7 @@
           "731"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-01-15T14:00:00Z\"\r\n      ]\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-01-15T14:00:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 5\r\n    },\r\n    \"timeZone\": \"UTC\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-05-09T03:30:00Z\"\r\n      ]\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-05-09T03:30:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 5\r\n    },\r\n    \"timeZone\": \"UTC\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -453,10 +468,13 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "bdc20fc1-4864-404b-9426-cc98c172674a"
+          "e850a4e0-942d-4396-af47-2e2f5f9a4be4"
         ],
         "x-ms-client-request-id": [
-          "f6bb9350-ccae-4752-b190-b939685ff323"
+          "dc9c2bd4-4a6d-4d98-ae1b-39ee4af1d2fc"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/4d7fd155-b8a6-49ce-9952-983cb667f4d2"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "799"
@@ -465,10 +483,10 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "bdc20fc1-4864-404b-9426-cc98c172674a"
+          "e850a4e0-942d-4396-af47-2e2f5f9a4be4"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20250115T104416Z:bdc20fc1-4864-404b-9426-cc98c172674a"
+          "WESTINDIA:20250508T190055Z:e850a4e0-942d-4396-af47-2e2f5f9a4be4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -477,10 +495,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 43DA20D689764382B9E175F21BB57741 Ref B: MAA201060514029 Ref C: 2025-01-15T10:44:15Z"
+          "Ref A: 94C6B8923CC842AD8266174427D7E4E6 Ref B: MAA201060515025 Ref C: 2025-05-08T19:00:53Z"
         ],
         "Date": [
-          "Wed, 15 Jan 2025 10:44:15 GMT"
+          "Thu, 08 May 2025 19:00:55 GMT"
         ],
         "Content-Length": [
           "777"
@@ -492,25 +510,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-01-15T14:00:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-01-15T14:00:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 5\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-05-09T03:30:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-05-09T03:30:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 5\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2024-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2025-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI1LTAyLTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "3d30b2d5-a3bb-4246-bd96-159cc5a5fa8b"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "1b868e37-fc4d-4997-b6ba-baeee7693b69"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.3624.51421",
+          "FxVersion/8.0.1525.16413",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.3.0"
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -519,7 +537,7 @@
           "732"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-01-15T14:00:00Z\"\r\n      ]\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-01-15T14:00:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 15\r\n    },\r\n    \"timeZone\": \"UTC\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-05-09T03:30:00Z\"\r\n      ]\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-05-09T03:30:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 15\r\n    },\r\n    \"timeZone\": \"UTC\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -531,10 +549,13 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "4c9c2860-12eb-4284-a15f-468565e07ea8"
+          "f69a08ec-6574-48a1-a2d2-006c850fe636"
         ],
         "x-ms-client-request-id": [
-          "3d30b2d5-a3bb-4246-bd96-159cc5a5fa8b"
+          "1b868e37-fc4d-4997-b6ba-baeee7693b69"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/f3d588f9-b275-4471-9e73-342963800a14"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "799"
@@ -543,10 +564,10 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "4c9c2860-12eb-4284-a15f-468565e07ea8"
+          "f69a08ec-6574-48a1-a2d2-006c850fe636"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20250115T104421Z:4c9c2860-12eb-4284-a15f-468565e07ea8"
+          "WESTINDIA:20250508T190059Z:f69a08ec-6574-48a1-a2d2-006c850fe636"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -555,10 +576,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 5EA1EB1E2EB843F794ECA7600C063CA5 Ref B: MAA201060514009 Ref C: 2025-01-15T10:44:19Z"
+          "Ref A: 66D0E79976E64174A33434E804266485 Ref B: MAA201060515027 Ref C: 2025-05-08T19:00:57Z"
         ],
         "Date": [
-          "Wed, 15 Jan 2025 10:44:21 GMT"
+          "Thu, 08 May 2025 19:00:59 GMT"
         ],
         "Content-Length": [
           "778"
@@ -570,25 +591,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-01-15T14:00:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-01-15T14:00:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 15\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy\",\r\n  \"name\": \"newFilePolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workLoadType\": \"AzureFileShare\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [\r\n        \"2025-05-09T03:30:00Z\"\r\n      ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"vaultRetentionPolicy\": {\r\n      \"vaultRetention\": {\r\n        \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n        \"dailySchedule\": {\r\n          \"retentionTimes\": [\r\n            \"2025-05-09T03:30:00Z\"\r\n          ],\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      \"snapshotRetentionInDays\": 15\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2024-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/newFilePolicy?api-version=2025-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXMvbmV3RmlsZVBvbGljeT9hcGktdmVyc2lvbj0yMDI1LTAyLTAx",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "55ce0f2a-2afe-4418-9c75-b39fc0d0c311"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "9e83fa45-588f-4933-b6a7-f5b50c3d6c03"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.3624.51421",
+          "FxVersion/8.0.1525.16413",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.3.0"
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
         ]
       },
       "RequestBody": "",
@@ -603,10 +624,13 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "58293762-c94f-41c0-b700-629f99caf60d"
+          "7fb02d16-084b-4ebc-82a6-7a0ff1b96e7c"
         ],
         "x-ms-client-request-id": [
-          "55ce0f2a-2afe-4418-9c75-b39fc0d0c311"
+          "9e83fa45-588f-4933-b6a7-f5b50c3d6c03"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/southindia/57e49038-fa53-4aad-91f6-afa84debf60c"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "799"
@@ -615,10 +639,10 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "58293762-c94f-41c0-b700-629f99caf60d"
+          "7fb02d16-084b-4ebc-82a6-7a0ff1b96e7c"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20250115T104425Z:58293762-c94f-41c0-b700-629f99caf60d"
+          "SOUTHINDIA:20250508T190102Z:7fb02d16-084b-4ebc-82a6-7a0ff1b96e7c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -627,10 +651,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: CEB84C7EF0E645A78A43F14112BDA327 Ref B: MAA201060516019 Ref C: 2025-01-15T10:44:25Z"
+          "Ref A: CA6766ABF1AB4A7699F821E0E3C750CB Ref B: MAA201060513019 Ref C: 2025-05-08T19:01:01Z"
         ],
         "Date": [
-          "Wed, 15 Jan 2025 10:44:25 GMT"
+          "Thu, 08 May 2025 19:01:01 GMT"
         ],
         "Expires": [
           "-1"
@@ -643,21 +667,21 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies?$filter=backupManagementType%20eq%20'AzureStorage'&api-version=2024-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXM/JGZpbHRlcj1iYWNrdXBNYW5hZ2VtZW50VHlwZSUyMGVxJTIwJ0F6dXJlU3RvcmFnZScmYXBpLXZlcnNpb249MjAyNC0xMC0wMQ==",
+      "RequestUri": "/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies?$filter=backupManagementType%20eq%20'AzureStorage'&api-version=2025-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTllNTc0ZjEtZTI3OC00YjY2LTg3NWItZTNlNGZlNzRhZDg4L3Jlc291cmNlR3JvdXBzL2lhbm5lYS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2lhbm5lYS1yc3YvYmFja3VwUG9saWNpZXM/JGZpbHRlcj1iYWNrdXBNYW5hZ2VtZW50VHlwZSUyMGVxJTIwJ0F6dXJlU3RvcmFnZScmYXBpLXZlcnNpb249MjAyNS0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "cac586dc-510b-4605-b835-f4b4d8ea7c2c"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "70a6e136-5525-4062-a5d4-320ea3d74d86"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.3624.51421",
+          "FxVersion/8.0.1525.16413",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.3.0"
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
         ]
       },
       "RequestBody": "",
@@ -672,19 +696,22 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "abfc804f-bf7a-4f96-a68b-3bf2d36a58cb"
+          "0aff81a3-add9-457b-9351-bc4869d1c839"
         ],
         "x-ms-client-request-id": [
-          "cac586dc-510b-4605-b835-f4b4d8ea7c2c"
+          "70a6e136-5525-4062-a5d4-320ea3d74d86"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/aaface04-0ffe-4ad9-8df1-766619f49b5c"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
+          "249"
         ],
         "x-ms-correlation-request-id": [
-          "abfc804f-bf7a-4f96-a68b-3bf2d36a58cb"
+          "0aff81a3-add9-457b-9351-bc4869d1c839"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20250115T104426Z:abfc804f-bf7a-4f96-a68b-3bf2d36a58cb"
+          "WESTINDIA:20250508T190103Z:0aff81a3-add9-457b-9351-bc4869d1c839"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -693,13 +720,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: F7A1FA18C8A146309DAC59C1EE2DFC7C Ref B: MAA201060515027 Ref C: 2025-01-15T10:44:26Z"
+          "Ref A: 2B8B5B02B4F24DE18672B18C6E0D1334 Ref B: MAA201060516017 Ref C: 2025-05-08T19:01:02Z"
         ],
         "Date": [
-          "Wed, 15 Jan 2025 10:44:26 GMT"
+          "Thu, 08 May 2025 19:01:02 GMT"
         ],
         "Content-Length": [
-          "12761"
+          "14271"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -708,7 +735,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/afspolicascasy\",\r\n      \"name\": \"afspolicascasy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Hourly\",\r\n          \"hourlySchedule\": {\r\n            \"interval\": 4,\r\n            \"scheduleWindowStartTime\": \"2024-11-12T08:00:00Z\",\r\n            \"scheduleWindowDuration\": 12\r\n          },\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2024-11-12T20:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 5,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/snapshotDef\",\r\n      \"name\": \"snapshotDef\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-12-16T04:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2024-12-16T04:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/afsvaultpolicy\",\r\n      \"name\": \"afsvaultpolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-15T18:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-11-15T18:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 5\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/afspolicy1\",\r\n      \"name\": \"afspolicy1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-11T21:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-11-11T21:00:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 30\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/testDayaScenarioVault\",\r\n      \"name\": \"testDayaScenarioVault\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-12-23T18:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-12-23T18:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 5\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/testpol\",\r\n      \"name\": \"testpol\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-15T18:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-11-15T18:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 200,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            },\r\n            \"weeklySchedule\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"retentionTimes\": [\r\n                \"2024-11-15T18:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 12,\r\n                \"durationType\": \"Weeks\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 5\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/vaultDef\",\r\n      \"name\": \"vaultDef\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-12-16T04:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-12-16T04:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 5\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/testVaultConstants2\",\r\n      \"name\": \"testVaultConstants2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-29T23:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-11-29T23:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 9999,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            },\r\n            \"weeklySchedule\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"retentionTimes\": [\r\n                \"2024-11-29T23:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 5163,\r\n                \"durationType\": \"Weeks\"\r\n              }\r\n            },\r\n            \"monthlySchedule\": {\r\n              \"retentionScheduleFormatType\": \"Weekly\",\r\n              \"retentionScheduleWeekly\": {\r\n                \"daysOfTheWeek\": [\r\n                  \"Sunday\"\r\n                ],\r\n                \"weeksOfTheMonth\": [\r\n                  \"First\"\r\n                ]\r\n              },\r\n              \"retentionTimes\": [\r\n                \"2024-11-29T23:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 1188,\r\n                \"durationType\": \"Months\"\r\n              }\r\n            },\r\n            \"yearlySchedule\": {\r\n              \"retentionScheduleFormatType\": \"Weekly\",\r\n              \"monthsOfYear\": [\r\n                \"January\"\r\n              ],\r\n              \"retentionScheduleWeekly\": {\r\n                \"daysOfTheWeek\": [\r\n                  \"Sunday\"\r\n                ],\r\n                \"weeksOfTheMonth\": [\r\n                  \"First\"\r\n                ]\r\n              },\r\n              \"retentionTimes\": [\r\n                \"2024-11-29T23:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 99,\r\n                \"durationType\": \"Years\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 30\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/afspolicy4\",\r\n      \"name\": \"afspolicy4\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-11T23:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2024-11-11T23:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/afspolicy3\",\r\n      \"name\": \"afspolicy3\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-11T21:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-11-11T21:00:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 30\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/testVaultConstants3\",\r\n      \"name\": \"testVaultConstants3\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-29T23:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2024-11-29T23:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 200,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/testDayaScenario\",\r\n      \"name\": \"testDayaScenario\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-12-23T18:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2024-12-23T18:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/afsvaultpolicy1\",\r\n      \"name\": \"afsvaultpolicy1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-11T21:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-11-11T21:00:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 5\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/policy222\",\r\n      \"name\": \"policy222\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-11T21:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-11-11T21:00:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 5\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/testVaultConstants4\",\r\n      \"name\": \"testVaultConstants4\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-29T23:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2024-11-29T23:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 5,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2024-11-29T23:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 120,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2024-11-29T23:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/afspolicascasy\",\r\n      \"name\": \"afspolicascasy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Hourly\",\r\n          \"hourlySchedule\": {\r\n            \"interval\": 4,\r\n            \"scheduleWindowStartTime\": \"2024-11-12T08:00:00Z\",\r\n            \"scheduleWindowDuration\": 12\r\n          },\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2024-11-12T20:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 5,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/snapshotDef\",\r\n      \"name\": \"snapshotDef\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-12-16T04:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2024-12-16T04:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/afsvaultpolicy\",\r\n      \"name\": \"afsvaultpolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-15T18:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-11-15T18:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 5\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/afspolicy1\",\r\n      \"name\": \"afspolicy1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-11T21:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-11-11T21:00:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 30\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/testDayaScenarioVault\",\r\n      \"name\": \"testDayaScenarioVault\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-12-23T18:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-12-23T18:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 5\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/testpol\",\r\n      \"name\": \"testpol\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-15T18:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-11-15T18:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 200,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            },\r\n            \"weeklySchedule\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"retentionTimes\": [\r\n                \"2024-11-15T18:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 12,\r\n                \"durationType\": \"Weeks\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 5\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/vaultDef\",\r\n      \"name\": \"vaultDef\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-12-16T04:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-12-16T04:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 5\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/testVaultConstants2\",\r\n      \"name\": \"testVaultConstants2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-29T23:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-11-29T23:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 9999,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            },\r\n            \"weeklySchedule\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"retentionTimes\": [\r\n                \"2024-11-29T23:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 5163,\r\n                \"durationType\": \"Weeks\"\r\n              }\r\n            },\r\n            \"monthlySchedule\": {\r\n              \"retentionScheduleFormatType\": \"Weekly\",\r\n              \"retentionScheduleWeekly\": {\r\n                \"daysOfTheWeek\": [\r\n                  \"Sunday\"\r\n                ],\r\n                \"weeksOfTheMonth\": [\r\n                  \"First\"\r\n                ]\r\n              },\r\n              \"retentionTimes\": [\r\n                \"2024-11-29T23:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 1188,\r\n                \"durationType\": \"Months\"\r\n              }\r\n            },\r\n            \"yearlySchedule\": {\r\n              \"retentionScheduleFormatType\": \"Weekly\",\r\n              \"monthsOfYear\": [\r\n                \"January\"\r\n              ],\r\n              \"retentionScheduleWeekly\": {\r\n                \"daysOfTheWeek\": [\r\n                  \"Sunday\"\r\n                ],\r\n                \"weeksOfTheMonth\": [\r\n                  \"First\"\r\n                ]\r\n              },\r\n              \"retentionTimes\": [\r\n                \"2024-11-29T23:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 99,\r\n                \"durationType\": \"Years\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 30\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/afspolicy4\",\r\n      \"name\": \"afspolicy4\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-11T23:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2024-11-11T23:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/afspolicy3\",\r\n      \"name\": \"afspolicy3\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2025-01-15T21:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2025-01-15T21:00:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 31,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 30\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/testVaultConstants3\",\r\n      \"name\": \"testVaultConstants3\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-29T23:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2024-11-29T23:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 200,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/testDayaScenario\",\r\n      \"name\": \"testDayaScenario\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-12-23T18:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2024-12-23T18:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/afsvaultpolicy1\",\r\n      \"name\": \"afsvaultpolicy1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-11T21:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-11-11T21:00:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 5\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/policy222\",\r\n      \"name\": \"policy222\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-11T21:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2024-11-11T21:00:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 5\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/testVaultConstants4\",\r\n      \"name\": \"testVaultConstants4\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2024-11-29T23:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2024-11-29T23:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 5,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2024-11-29T23:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 120,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2024-11-29T23:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/afsvaultpstest\",\r\n      \"name\": \"afsvaultpstest\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2025-01-16T21:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"vaultRetentionPolicy\": {\r\n          \"vaultRetention\": {\r\n            \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n            \"dailySchedule\": {\r\n              \"retentionTimes\": [\r\n                \"2025-01-16T21:30:00Z\"\r\n              ],\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          \"snapshotRetentionInDays\": 5\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/59e574f1-e278-4b66-875b-e3e4fe74ad88/resourceGroups/iannea-rg/providers/Microsoft.RecoveryServices/vaults/iannea-rsv/backupPolicies/afspolicypstest\",\r\n      \"name\": \"afspolicypstest\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workLoadType\": \"AzureFileShare\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2025-01-16T21:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2025-01-16T21:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],

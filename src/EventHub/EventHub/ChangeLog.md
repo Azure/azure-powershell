@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 5.3.0
+* Added parameters 'MaxReplicationLagDurationInSeconds' and 'Replicalocation' in cmdlets 'New-AzEventHubNamespace' & 'Set-AzEventHubNamespace'
+* Added new cmdlets for doing namespace failover - 'Start-AzEventHubNamespaceFailOver'
+* Added new cmdlets for generating replication object for Replication parameter - 'New-AzEventHubLocationsNameObject'
+
 ## Version 5.2.0
 *  Added parameter `MinCompactionLagInMin`, `TimestampType` and `UserMetadata` to cmdlets `New-AzEventHub` and `Set-AzEventHub`
 *  Supported `DelectorCompact` policy in parameter `Cleanup-policy` of cmdlet `new-AzEventhub`

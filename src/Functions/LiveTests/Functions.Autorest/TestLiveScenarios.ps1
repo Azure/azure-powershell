@@ -8,7 +8,7 @@ Invoke-LiveTestScenario -Name "Create function app" -Description "Test creating 
     $location = "westus"
 
     New-AzStorageAccount -ResourceGroupName $rgName -Name $saName -Location $location -SkuName Standard_LRS
-    New-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName -Location $location -FunctionsVersion 4 -StorageAccountName $saName -OSType Windows -Runtime PowerShell -RuntimeVersion 7.2
+    New-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName -Location $location -FunctionsVersion 4 -StorageAccountName $saName -OSType Windows -Runtime PowerShell -RuntimeVersion 7.4
 
     $actual = Get-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName
     Assert-NotNull $actual
@@ -29,7 +29,7 @@ Invoke-LiveTestScenario -Name "Update function app" -Description "Test updating 
     $location = "eastus"
 
     New-AzStorageAccount -ResourceGroupName $rgName -Name $saName -Location $location -SkuName Standard_LRS
-    $funcApp = New-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName -Location $location -FunctionsVersion 4 -StorageAccountName $saName -OSType Windows -Runtime PowerShell -RuntimeVersion 7.2
+    $funcApp = New-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName -Location $location -FunctionsVersion 4 -StorageAccountName $saName -OSType Windows -Runtime PowerShell -RuntimeVersion 7.4
     $funcApp | Update-AzFunctionApp -Tag @{ "key" = "value" } -Force
     Update-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName -IdentityType SystemAssigned -Force
 
@@ -52,7 +52,7 @@ Invoke-LiveTestScenario -Name "Remove function app" -Description "Test removing 
     $location = "centralus"
 
     New-AzStorageAccount -ResourceGroupName $rgName -Name $saName -Location $location -SkuName Standard_LRS
-    New-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName -Location $location -FunctionsVersion 4 -StorageAccountName $saName -OSType Windows -Runtime PowerShell -RuntimeVersion 7.2
+    New-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName -Location $location -FunctionsVersion 4 -StorageAccountName $saName -OSType Windows -Runtime PowerShell -RuntimeVersion 7.4
     Remove-AzFunctionApp -ResourceGroupName $rgName -name $funcAppName -Force
 
     $actual = Get-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName -ErrorAction SilentlyContinue
@@ -69,7 +69,7 @@ Invoke-LiveTestScenario -Name "Operate function app" -Description "Test operatin
     $location = "eastus"
 
     New-AzStorageAccount -ResourceGroupName $rgName -Name $saName -Location $location -SkuName Standard_LRS
-    New-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName -Location $location -FunctionsVersion 4 -StorageAccountName $saName -OSType Windows -Runtime PowerShell -RuntimeVersion 7.2
+    New-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName -Location $location -FunctionsVersion 4 -StorageAccountName $saName -OSType Windows -Runtime PowerShell -RuntimeVersion 7.4
 
     Stop-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName -Force
     $app = Get-AzFunctionApp -ResourceGroupName $rgName -Name $funcAppName

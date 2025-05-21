@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added more support for SparkV2 and HiveV2 connection properties.
+
+## Version 1.19.2
 * Added more support for M365 connection properties.
 * Added more support for SnowfalkeV2 connection properties.
 * Added more support for AzureDatabricks connection properties.

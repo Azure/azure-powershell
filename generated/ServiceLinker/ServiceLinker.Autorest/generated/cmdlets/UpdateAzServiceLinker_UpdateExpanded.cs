@@ -6,6 +6,8 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Cmdlets;
     using System;
 
     /// <summary>Operation to update an existing Linker.</summary>
@@ -14,12 +16,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzServiceLinker_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Description(@"Operation to update an existing Linker.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.HttpPath(Path = "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}", ApiVersion = "2022-11-01-preview")]
     public partial class UpdateAzServiceLinker_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,8 +38,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>A Linker to be updated.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerPatch _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.LinkerPatch();
+        private Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerPatch _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.LinkerPatch();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -51,13 +66,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         ReadOnly = false,
         Description = @"The authentication type.",
         SerializedName = @"authInfo",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IAuthInfoBase) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IAuthInfoBase AuthInfo { get => _parametersBody.AuthInfo ?? null /* object */; set => _parametersBody.AuthInfo = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IAuthInfoBase) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IAuthInfoBase AuthInfo { get => _parametersBody.AuthInfo ?? null /* object */; set => _parametersBody.AuthInfo = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ServiceLinker Client => Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Module.Instance.ClientAPI;
@@ -70,9 +88,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         ReadOnly = false,
         Description = @"The application client type",
         SerializedName = @"clientType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType ClientType { get => _parametersBody.ClientType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType)""); set => _parametersBody.ClientType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("none", "dotnet", "java", "python", "go", "php", "ruby", "django", "nodejs", "springBoot", "kafka-springBoot")]
+        public string ClientType { get => _parametersBody.ClientType ?? null; set => _parametersBody.ClientType = value; }
 
         /// <summary>
         /// Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied
@@ -85,9 +103,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         ReadOnly = false,
         Description = @"Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.",
         SerializedName = @"action",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType ConfigurationInfoAction { get => _parametersBody.ConfigurationInfoAction ?? ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType)""); set => _parametersBody.ConfigurationInfoAction = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("Internal", "enable", "optOut")]
+        public string ConfigurationInfoAction { get => _parametersBody.ConfigurationInfoAction ?? null; set => _parametersBody.ConfigurationInfoAction = value; }
 
         /// <summary>
         /// A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this
@@ -101,8 +119,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         ReadOnly = false,
         Description = @"A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations",
         SerializedName = @"additionalConfigurations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoAdditionalConfigurations) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoAdditionalConfigurations ConfigurationInfoAdditionalConfiguration { get => _parametersBody.ConfigurationInfoAdditionalConfiguration ?? null /* object */; set => _parametersBody.ConfigurationInfoAdditionalConfiguration = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationInfoAdditionalConfigurations) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationInfoAdditionalConfigurations ConfigurationInfoAdditionalConfiguration { get => _parametersBody.ConfigurationInfoAdditionalConfiguration ?? null /* object */; set => _parametersBody.ConfigurationInfoAdditionalConfiguration = value; }
 
         /// <summary>
         /// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be
@@ -116,8 +134,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         ReadOnly = false,
         Description = @"Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations",
         SerializedName = @"customizedKeys",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoCustomizedKeys) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoCustomizedKeys ConfigurationInfoCustomizedKey { get => _parametersBody.ConfigurationInfoCustomizedKey ?? null /* object */; set => _parametersBody.ConfigurationInfoCustomizedKey = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationInfoCustomizedKeys) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationInfoCustomizedKeys ConfigurationInfoCustomizedKey { get => _parametersBody.ConfigurationInfoCustomizedKey ?? null /* object */; set => _parametersBody.ConfigurationInfoCustomizedKey = value; }
 
         /// <summary>
         /// Indicates whether to clean up previous operation when Linker is updating or deleting
@@ -129,10 +147,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         ReadOnly = false,
         Description = @"Indicates whether to clean up previous operation when Linker is updating or deleting",
         SerializedName = @"deleteOrUpdateBehavior",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior) })]
+        PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.DoNotExport]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior ConfigurationInfoDeleteOrUpdateBehavior { get => _parametersBody.ConfigurationInfoDeleteOrUpdateBehavior ?? ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior)""); set => _parametersBody.ConfigurationInfoDeleteOrUpdateBehavior = value; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("Default", "ForcedCleanup")]
+        public string ConfigurationInfoDeleteOrUpdateBehavior { get => _parametersBody.ConfigurationInfoDeleteOrUpdateBehavior ?? null; set => _parametersBody.ConfigurationInfoDeleteOrUpdateBehavior = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -144,6 +162,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>Allow Azure services to access the target service if true.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Allow Azure services to access the target service if true.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ParameterCategory.Body)]
@@ -152,9 +173,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         ReadOnly = false,
         Description = @"Allow Azure services to access the target service if true.",
         SerializedName = @"azureServices",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType FirewallRuleAzureService { get => _parametersBody.FirewallRuleAzureService ?? ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType)""); set => _parametersBody.FirewallRuleAzureService = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("true", "false")]
+        public string FirewallRuleAzureService { get => _parametersBody.FirewallRuleAzureService ?? null; set => _parametersBody.FirewallRuleAzureService = value; }
 
         /// <summary>
         /// Allow caller client IP to access the target service if true. the property is used when connecting local application to
@@ -167,9 +188,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         ReadOnly = false,
         Description = @"Allow caller client IP to access the target service if true. the property is used when connecting local application to target service.",
         SerializedName = @"callerClientIP",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType FirewallRuleCallerClientIP { get => _parametersBody.FirewallRuleCallerClientIP ?? ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType)""); set => _parametersBody.FirewallRuleCallerClientIP = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("true", "false")]
+        public string FirewallRuleCallerClientIP { get => _parametersBody.FirewallRuleCallerClientIP ?? null; set => _parametersBody.FirewallRuleCallerClientIP = value; }
 
         /// <summary>
         /// This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client
@@ -184,7 +205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         Description = @"This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.",
         SerializedName = @"ipRanges",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] FirewallRuleIPRange { get => _parametersBody.FirewallRuleIPRange ?? null /* arrayOf */; set => _parametersBody.FirewallRuleIPRange = value; }
+        public string[] FirewallRuleIPRange { get => _parametersBody.FirewallRuleIPRange?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.FirewallRuleIPRange = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -235,7 +256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -264,9 +285,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         ReadOnly = false,
         Description = @"Optional. Indicates public network solution. If enable, enable public network access of target service with best try. Default is enable. If optOut, opt out public network access configuration.",
         SerializedName = @"action",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType PublicNetworkSolutionAction { get => _parametersBody.PublicNetworkSolutionAction ?? ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType)""); set => _parametersBody.PublicNetworkSolutionAction = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("Internal", "enable", "optOut")]
+        public string PublicNetworkSolutionAction { get => _parametersBody.PublicNetworkSolutionAction ?? null; set => _parametersBody.PublicNetworkSolutionAction = value; }
 
         /// <summary>
         /// Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting
@@ -278,10 +299,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         ReadOnly = false,
         Description = @"Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting",
         SerializedName = @"deleteOrUpdateBehavior",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior) })]
+        PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.DoNotExport]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior PublicNetworkSolutionDeleteOrUpdateBehavior { get => _parametersBody.PublicNetworkSolutionDeleteOrUpdateBehavior ?? ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior)""); set => _parametersBody.PublicNetworkSolutionDeleteOrUpdateBehavior = value; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("Default", "ForcedCleanup")]
+        public string PublicNetworkSolutionDeleteOrUpdateBehavior { get => _parametersBody.PublicNetworkSolutionDeleteOrUpdateBehavior ?? null; set => _parametersBody.PublicNetworkSolutionDeleteOrUpdateBehavior = value; }
 
         /// <summary>Backing field for <see cref="ResourceUri" /> property.</summary>
         private string _resourceUri;
@@ -340,8 +361,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         ReadOnly = false,
         Description = @"The target service properties",
         SerializedName = @"targetService",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ITargetServiceBase) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ITargetServiceBase TargetService { get => _parametersBody.TargetService ?? null /* object */; set => _parametersBody.TargetService = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ITargetServiceBase) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ITargetServiceBase TargetService { get => _parametersBody.TargetService ?? null /* object */; set => _parametersBody.TargetService = value; }
 
         /// <summary>
         /// Indicates whether to clean up previous operation when Linker is updating or deleting
@@ -353,10 +374,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         ReadOnly = false,
         Description = @"Indicates whether to clean up previous operation when Linker is updating or deleting",
         SerializedName = @"deleteOrUpdateBehavior",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior) })]
+        PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.DoNotExport]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior VNetSolutionDeleteOrUpdateBehavior { get => _parametersBody.VNetSolutionDeleteOrUpdateBehavior ?? ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior)""); set => _parametersBody.VNetSolutionDeleteOrUpdateBehavior = value; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("Default", "ForcedCleanup")]
+        public string VNetSolutionDeleteOrUpdateBehavior { get => _parametersBody.VNetSolutionDeleteOrUpdateBehavior ?? null; set => _parametersBody.VNetSolutionDeleteOrUpdateBehavior = value; }
 
         /// <summary>Type of VNet solution.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of VNet solution.")]
@@ -366,9 +387,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         ReadOnly = false,
         Description = @"Type of VNet solution.",
         SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.VNetSolutionType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.VNetSolutionType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.VNetSolutionType VNetSolutionType { get => _parametersBody.VNetSolutionType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.VNetSolutionType)""); set => _parametersBody.VNetSolutionType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("serviceEndpoint", "privateLink")]
+        public string VNetSolutionType { get => _parametersBody.VNetSolutionType ?? null; set => _parametersBody.VNetSolutionType = value; }
 
         /// <summary>Backing field for <see cref="XmsServiceconnectorUserToken" /> property.</summary>
         private string _xmsServiceconnectorUserToken;
@@ -388,24 +409,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -452,6 +473,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -516,11 +542,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -532,10 +583,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -603,7 +670,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -613,15 +680,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
                     Pipeline.Append((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelineAppend) ?? HttpPipelineAppend);
                 }
                 // get the client instance
+                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("VNetSolutionDeleteOrUpdateBehavior"))
+                {
+                    VNetSolutionDeleteOrUpdateBehavior = (string)this.MyInvocation.BoundParameters["VNetSolutionDeleteOrUpdateBehavior"];
+                }
+                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("PublicNetworkSolutionDeleteOrUpdateBehavior"))
+                {
+                    PublicNetworkSolutionDeleteOrUpdateBehavior = (string)this.MyInvocation.BoundParameters["PublicNetworkSolutionDeleteOrUpdateBehavior"];
+                }
+                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("ConfigurationInfoDeleteOrUpdateBehavior"))
+                {
+                    ConfigurationInfoDeleteOrUpdateBehavior = (string)this.MyInvocation.BoundParameters["ConfigurationInfoDeleteOrUpdateBehavior"];
+                }
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.LinkerUpdate(ResourceUri, Name, this.InvocationInformation.BoundParameters.ContainsKey("XmsServiceconnectorUserToken") ? XmsServiceconnectorUserToken : null, _parametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.LinkerUpdate(ResourceUri, Name, this.InvocationInformation.BoundParameters.ContainsKey("XmsServiceconnectorUserToken") ? XmsServiceconnectorUserToken : null, _parametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceUri=ResourceUri,Name=Name,XmsServiceconnectorUserToken=this.InvocationInformation.BoundParameters.ContainsKey("XmsServiceconnectorUserToken") ? XmsServiceconnectorUserToken : null,body=_parametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceUri=ResourceUri,Name=Name,XmsServiceconnectorUserToken=this.InvocationInformation.BoundParameters.ContainsKey("XmsServiceconnectorUserToken") ? XmsServiceconnectorUserToken : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -641,7 +720,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzServiceLinker_UpdateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzServiceLinker_UpdateExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzServiceLinker_UpdateExpanded()
         {
@@ -667,12 +746,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -689,15 +768,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceUri=ResourceUri, Name=Name, XmsServiceconnectorUserToken=this.InvocationInformation.BoundParameters.ContainsKey("XmsServiceconnectorUserToken") ? XmsServiceconnectorUserToken : null, body=_parametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceUri=ResourceUri, Name=Name, XmsServiceconnectorUserToken=this.InvocationInformation.BoundParameters.ContainsKey("XmsServiceconnectorUserToken") ? XmsServiceconnectorUserToken : null, body=_parametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -707,12 +786,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -724,8 +803,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

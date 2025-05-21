@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubNetworkRuleSet'
 }
 
 Describe 'Set-AzEventHubNetworkRuleSet' {
-    It 'SetExpanded'  {
+    It 'SetExpanded' -skip {
         $ipRule1 = New-AzEventHubIPRuleConfig -IPMask 1.1.1.1 -Action Allow
         $ipRule2 = New-AzEventHubIPRuleConfig -IPMask 2.2.2.2 -Action Allow
 

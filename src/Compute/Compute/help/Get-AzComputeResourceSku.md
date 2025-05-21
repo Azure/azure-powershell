@@ -29,6 +29,45 @@ Get-AzComputeResourceSku "westus";
 
 List all compute resource skus in West US region
 
+### Example 2
+```powershell
+Get-AzComputeResourceSku -Location "westus" | Where-Object {
+    $_.Name -like 'Standard_A*' -and
+    ([int]($_.Capabilities | Where-Object { $_.Name -eq 'vCPUs' }).Value) -le 4
+} | Select-Object -ExpandProperty Name
+```
+```output
+Standard_A0
+Standard_A1
+Standard_A1_v2
+Standard_A2
+Standard_A2m_v2
+Standard_A2_v2
+Standard_A3
+Standard_A4m_v2
+Standard_A4_v2
+Standard_A5
+Standard_A6
+```
+
+Get all compute resource skus in West US region, filter by name and vCPUs capability, and select the name property.
+
+### Example 3
+```powershell
+$vmSizes = Get-AzComputeResourceSku -Location "WestUS" | Where-Object {
+    $_.ResourceType -eq "virtualMachines" -and
+    ([int]($_.Capabilities | Where-Object { $_.Name -eq "vCPUs" }).Value) -ge 4 -and
+    ([int]($_.Capabilities | Where-Object { $_.Name -eq "MaxDataDiskCount" }).Value) -ge 8
+}
+$vmSizes.count
+```
+
+```output
+812
+```
+
+Get all compute resource skus in West US region, filter by resource type, vCPUs capability, and MaxDataDiskCount capability, and count the number of results.
+
 ## PARAMETERS
 
 ### -DefaultProfile
