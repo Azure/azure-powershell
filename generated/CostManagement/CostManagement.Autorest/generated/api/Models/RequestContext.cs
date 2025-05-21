@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IGenerateCostDetailsReportRequestDefinition Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IRequestContextInternal.RequestBody { get => (this._requestBody = this._requestBody ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.GenerateCostDetailsReportRequestDefinition()); set { {_requestBody = value;} } }
 
         /// <summary>Internal Acessors for RequestBodyTimePeriod</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsTimePeriod Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IRequestContextInternal.RequestBodyTimePeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IGenerateCostDetailsReportRequestDefinitionInternal)RequestBody).TimePeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IGenerateCostDetailsReportRequestDefinitionInternal)RequestBody).TimePeriod = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsTimePeriod Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IRequestContextInternal.RequestBodyTimePeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IGenerateCostDetailsReportRequestDefinitionInternal)RequestBody).TimePeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IGenerateCostDetailsReportRequestDefinitionInternal)RequestBody).TimePeriod = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="RequestBody" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IGenerateCostDetailsReportRequestDefinition _requestBody;

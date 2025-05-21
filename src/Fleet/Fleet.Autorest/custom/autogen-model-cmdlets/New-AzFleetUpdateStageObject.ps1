@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UpdateStage
 https://learn.microsoft.com/powershell/module/Az.Fleet/new-azfleetupdatestageobject
 #>
 function New-AzFleetUpdateStageObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UpdateStage')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

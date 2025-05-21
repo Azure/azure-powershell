@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Alb
-online version: https://learn.microsoft.com/powershell/module/az.alb/new-azalbsecuritypolicy
+online version: https://learn.microsoft.com/powershell/module/az.alb/new-azalbsecuritypolicywaf
 schema: 2.0.0
 ---
 

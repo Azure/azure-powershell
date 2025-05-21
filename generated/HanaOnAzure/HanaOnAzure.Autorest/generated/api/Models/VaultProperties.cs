@@ -88,7 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultPropertiesInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Sku()); set { {_sku = value;} } }
 
         /// <summary>Internal Acessors for SkuFamily</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultPropertiesInternal.SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISkuInternal)Sku).Family; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISkuInternal)Sku).Family = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultPropertiesInternal.SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISkuInternal)Sku).Family; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISkuInternal)Sku).Family = value ; }
 
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISku _sku;

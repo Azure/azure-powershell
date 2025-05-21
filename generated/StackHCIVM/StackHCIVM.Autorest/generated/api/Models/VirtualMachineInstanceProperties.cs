@@ -135,25 +135,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.GuestAgentInstallStatus { get => (this._guestAgentInstallStatus = this._guestAgentInstallStatus ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.GuestAgentInstallStatus()); set { {_guestAgentInstallStatus = value;} } }
 
         /// <summary>Internal Acessors for GuestAgentInstallStatusAgentVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.GuestAgentInstallStatusAgentVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).AgentVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).AgentVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.GuestAgentInstallStatusAgentVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).AgentVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).AgentVersion = value ?? null; }
 
         /// <summary>Internal Acessors for GuestAgentInstallStatusErrorDetail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.GuestAgentInstallStatusErrorDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).ErrorDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).ErrorDetail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.GuestAgentInstallStatusErrorDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).ErrorDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).ErrorDetail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for GuestAgentInstallStatusLastStatusChange</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.GuestAgentInstallStatusLastStatusChange { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).LastStatusChange; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).LastStatusChange = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.GuestAgentInstallStatusLastStatusChange { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).LastStatusChange; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).LastStatusChange = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for GuestAgentInstallStatusStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.GuestAgentInstallStatusStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.GuestAgentInstallStatusStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).Status = value ?? null; }
 
         /// <summary>Internal Acessors for GuestAgentInstallStatusVMUuid</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.GuestAgentInstallStatusVMUuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).VMUuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).VMUuid = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.GuestAgentInstallStatusVMUuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).VMUuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentInstallStatusInternal)GuestAgentInstallStatus).VMUuid = value ?? null; }
 
         /// <summary>Internal Acessors for HardwareProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesHardwareProfile Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.HardwareProfile { get => (this._hardwareProfile = this._hardwareProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.VirtualMachineInstancePropertiesHardwareProfile()); set { {_hardwareProfile = value;} } }
 
         /// <summary>Internal Acessors for HardwareProfileDynamicMemoryConfig</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.HardwareProfileDynamicMemoryConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesHardwareProfileInternal)HardwareProfile).DynamicMemoryConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesHardwareProfileInternal)HardwareProfile).DynamicMemoryConfig = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.HardwareProfileDynamicMemoryConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesHardwareProfileInternal)HardwareProfile).DynamicMemoryConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesHardwareProfileInternal)HardwareProfile).DynamicMemoryConfig = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for HttpProxyConfig</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHttpProxyConfiguration Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.HttpProxyConfig { get => (this._httpProxyConfig = this._httpProxyConfig ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.HttpProxyConfiguration()); set { {_httpProxyConfig = value;} } }
@@ -162,10 +162,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceView Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.InstanceView { get => (this._instanceView = this._instanceView ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.VirtualMachineInstanceView()); set { {_instanceView = value;} } }
 
         /// <summary>Internal Acessors for InstanceViewVMAgent</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineConfigAgentInstanceView Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.InstanceViewVMAgent { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceViewInternal)InstanceView).VMAgent; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceViewInternal)InstanceView).VMAgent = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineConfigAgentInstanceView Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.InstanceViewVMAgent { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceViewInternal)InstanceView).VMAgent; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceViewInternal)InstanceView).VMAgent = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for LinuxConfigurationSsh</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshConfiguration Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.LinuxConfigurationSsh { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).LinuxConfigurationSsh; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).LinuxConfigurationSsh = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshConfiguration Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.LinuxConfigurationSsh { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).LinuxConfigurationSsh; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).LinuxConfigurationSsh = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NetworkProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesNetworkProfile Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.NetworkProfile { get => (this._networkProfile = this._networkProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.VirtualMachineInstancePropertiesNetworkProfile()); set { {_networkProfile = value;} } }
@@ -174,40 +174,61 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfile Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.OSProfile { get => (this._oSProfile = this._oSProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.VirtualMachineInstancePropertiesOSProfile()); set { {_oSProfile = value;} } }
 
         /// <summary>Internal Acessors for OSProfileLinuxConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileLinuxConfiguration Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.OSProfileLinuxConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).LinuxConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).LinuxConfiguration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileLinuxConfiguration Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.OSProfileLinuxConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).LinuxConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).LinuxConfiguration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for OSProfileWindowsConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileWindowsConfiguration Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.OSProfileWindowsConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).WindowsConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).WindowsConfiguration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileWindowsConfiguration Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.OSProfileWindowsConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).WindowsConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).WindowsConfiguration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
+        /// <summary>Internal Acessors for ProvisioningStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.ProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ProvisioningStatusStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ProvisioningStatusStatus = value ?? null; }
+
+        /// <summary>Internal Acessors for ProvisioningStatusOperationId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.ProvisioningStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ProvisioningStatusOperationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ProvisioningStatusOperationId = value ?? null; }
 
         /// <summary>Internal Acessors for SecurityProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesSecurityProfile Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.SecurityProfile { get => (this._securityProfile = this._securityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.VirtualMachineInstancePropertiesSecurityProfile()); set { {_securityProfile = value;} } }
 
         /// <summary>Internal Acessors for SecurityProfileUefiSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesSecurityProfileUefiSettings Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.SecurityProfileUefiSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesSecurityProfileInternal)SecurityProfile).UefiSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesSecurityProfileInternal)SecurityProfile).UefiSetting = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesSecurityProfileUefiSettings Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.SecurityProfileUefiSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesSecurityProfileInternal)SecurityProfile).UefiSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesSecurityProfileInternal)SecurityProfile).UefiSetting = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Status</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.Status { get => (this._status = this._status ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.VirtualMachineInstanceStatus()); set { {_status = value;} } }
 
+        /// <summary>Internal Acessors for StatusErrorCode</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ErrorCode = value ?? null; }
+
+        /// <summary>Internal Acessors for StatusErrorMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ErrorMessage = value ?? null; }
+
+        /// <summary>Internal Acessors for StatusPowerState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.StatusPowerState { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).PowerState; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).PowerState = value ?? null; }
+
         /// <summary>Internal Acessors for StatusProvisioningStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusProvisioningStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.StatusProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ProvisioningStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ProvisioningStatus = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusProvisioningStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.StatusProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ProvisioningStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ProvisioningStatus = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StorageProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfile Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.StorageProfile { get => (this._storageProfile = this._storageProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.VirtualMachineInstancePropertiesStorageProfile()); set { {_storageProfile = value;} } }
 
         /// <summary>Internal Acessors for StorageProfileImageReference</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileImageReference Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.StorageProfileImageReference { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileInternal)StorageProfile).ImageReference; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileInternal)StorageProfile).ImageReference = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileImageReference Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.StorageProfileImageReference { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileInternal)StorageProfile).ImageReference; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileInternal)StorageProfile).ImageReference = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StorageProfileOSDisk</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileOSDisk Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.StorageProfileOSDisk { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileInternal)StorageProfile).OSDisk; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileInternal)StorageProfile).OSDisk = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileOSDisk Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.StorageProfileOSDisk { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileInternal)StorageProfile).OSDisk; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileInternal)StorageProfile).OSDisk = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for VMAgentStatuses</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IInstanceViewStatus> Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.VMAgentStatuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceViewInternal)InstanceView).VMAgentStatuses; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceViewInternal)InstanceView).VMAgentStatuses = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for VMAgentVmconfigAgentVersion</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.VMAgentVmconfigAgentVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceViewInternal)InstanceView).VMAgentVmconfigAgentVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceViewInternal)InstanceView).VMAgentVmconfigAgentVersion = value ?? null; }
 
         /// <summary>Internal Acessors for VMId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.VMId { get => this._vMId; set { {_vMId = value;} } }
 
         /// <summary>Internal Acessors for WindowConfigurationSsh</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshConfiguration Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.WindowConfigurationSsh { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).WindowConfigurationSsh; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).WindowConfigurationSsh = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshConfiguration Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal.WindowConfigurationSsh { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).WindowConfigurationSsh; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)OSProfile).WindowConfigurationSsh = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="NetworkProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesNetworkProfile _networkProfile;
@@ -267,11 +288,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         /// The status of the operation performed on the virtual machine instance [Succeeded, Failed, InProgress]
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string ProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ProvisioningStatusStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ProvisioningStatusStatus = value ?? null; }
+        public string ProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ProvisioningStatusStatus; }
 
         /// <summary>The ID of the operation performed on the virtual machine instance</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string ProvisioningStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ProvisioningStatusOperationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ProvisioningStatusOperationId = value ?? null; }
+        public string ProvisioningStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ProvisioningStatusOperationId; }
 
         /// <summary>Backing field for <see cref="ResourceUid" /> property.</summary>
         private string _resourceUid;
@@ -308,15 +329,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 
         /// <summary>VirtualMachine provisioning error code</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ErrorCode = value ?? null; }
+        public string StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ErrorCode; }
 
         /// <summary>Descriptive error message</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ErrorMessage = value ?? null; }
+        public string StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).ErrorMessage; }
 
         /// <summary>The power state of the virtual machine instance</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string StatusPowerState { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).PowerState; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).PowerState = value ?? null; }
+        public string StatusPowerState { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceStatusInternal)Status).PowerState; }
 
         /// <summary>Backing field for <see cref="StorageProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfile _storageProfile;
@@ -343,11 +364,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 
         /// <summary>The resource status information.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IInstanceViewStatus> VMAgentStatuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceViewInternal)InstanceView).VMAgentStatuses; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceViewInternal)InstanceView).VMAgentStatuses = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IInstanceViewStatus> VMAgentStatuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceViewInternal)InstanceView).VMAgentStatuses; }
 
         /// <summary>The VM Config Agent full version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string VMAgentVmconfigAgentVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceViewInternal)InstanceView).VMAgentVmconfigAgentVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceViewInternal)InstanceView).VMAgentVmconfigAgentVersion = value ?? null; }
+        public string VMAgentVmconfigAgentVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceViewInternal)InstanceView).VMAgentVmconfigAgentVersion; }
 
         /// <summary>Backing field for <see cref="VMId" /> property.</summary>
         private string _vMId;

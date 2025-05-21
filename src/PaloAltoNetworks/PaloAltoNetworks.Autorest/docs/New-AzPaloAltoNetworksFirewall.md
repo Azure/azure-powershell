@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPaloAltoNetworksFirewall
 
 ## SYNOPSIS
-Create a FirewallResource
+create a FirewallResource
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ New-AzPaloAltoNetworksFirewall -Name <String> -ResourceGroupName <String> -Locat
 ```
 
 ## DESCRIPTION
-Create a FirewallResource
+create a FirewallResource
 
 ## EXAMPLES
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

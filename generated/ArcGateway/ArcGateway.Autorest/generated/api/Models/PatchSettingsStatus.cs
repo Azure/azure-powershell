@@ -46,22 +46,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ErrorDetail()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetailInternal)Error).Target = value ?? null; }
 
         /// <summary>The error target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]

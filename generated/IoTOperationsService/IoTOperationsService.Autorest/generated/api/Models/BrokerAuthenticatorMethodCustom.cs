@@ -49,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthenticatorCustomAuth Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthenticatorMethodCustomInternal.Auth { get => (this._auth = this._auth ?? new Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.BrokerAuthenticatorCustomAuth()); set { {_auth = value;} } }
 
         /// <summary>Internal Acessors for AuthX509</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IX509ManualCertificate Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthenticatorMethodCustomInternal.AuthX509 { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthenticatorCustomAuthInternal)Auth).X509; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthenticatorCustomAuthInternal)Auth).X509 = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IX509ManualCertificate Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthenticatorMethodCustomInternal.AuthX509 { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthenticatorCustomAuthInternal)Auth).X509; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthenticatorCustomAuthInternal)Auth).X509 = value ?? null /* model class */; }
 
         /// <summary>
         /// Kubernetes secret containing an X.509 client certificate. This is a reference to the secret through an identifying name,

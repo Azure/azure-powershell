@@ -1,6 +1,6 @@
 ---
 Module Name: Az.VoiceServices
-Module Guid: 8635872c-2777-4eac-8a7b-6c2b66691ee8
+Module Guid: a92dc41b-721a-4c04-a896-2b1d2056ab73
 Download Help Link: https://learn.microsoft.com/powershell/module/az.voiceservices
 Help Version: 1.0.0.0
 Locale: en-US

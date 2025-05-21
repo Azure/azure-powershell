@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDataset Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal.DataSet { get => (this._dataSet = this._dataSet ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportDataset()); set { {_dataSet = value;} } }
 
         /// <summary>Internal Acessors for DataSetConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDatasetConfiguration Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal.DataSetConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDatasetInternal)DataSet).Configuration; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDatasetInternal)DataSet).Configuration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDatasetConfiguration Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal.DataSetConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDatasetInternal)DataSet).Configuration; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDatasetInternal)DataSet).Configuration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for TimePeriod</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportTimePeriod Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportDefinitionInternal.TimePeriod { get => (this._timePeriod = this._timePeriod ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportTimePeriod()); set { {_timePeriod = value;} } }

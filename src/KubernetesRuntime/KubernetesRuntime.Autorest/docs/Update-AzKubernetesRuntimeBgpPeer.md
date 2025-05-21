@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzKubernetesRuntimeBgpPeer
 
 ## SYNOPSIS
-Update a BgpPeer
+update a BgpPeer
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Update-AzKubernetesRuntimeBgpPeer -InputObject <IKubernetesRuntimeIdentity> [-My
 ```
 
 ## DESCRIPTION
-Update a BgpPeer
+update a BgpPeer
 
 ## EXAMPLES
 

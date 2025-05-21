@@ -51,31 +51,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models
         public string ManagedApplicationPublisherId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ManagedApplicationPublisherId; }
 
         /// <summary>Internal Acessors for Aad</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesAad Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.Aad { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).Aad; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).Aad = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesAad Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.Aad { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).Aad; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).Aad = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AadApplicationId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.AadApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).AadApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).AadApplicationId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.AadApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).AadApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).AadApplicationId = value ?? null; }
 
         /// <summary>Internal Acessors for AadTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.AadTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).AadTenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).AadTenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.AadTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).AadTenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).AadTenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Company</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.Company { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).Company; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).Company = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.Company { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).Company; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).Company = value ?? null; }
 
         /// <summary>Internal Acessors for DefaultEndpoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.DefaultEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).DefaultEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).DefaultEndpoint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.DefaultEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).DefaultEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).DefaultEndpoint = value ?? null; }
 
         /// <summary>Internal Acessors for Description</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).Description = value ?? null; }
 
         /// <summary>Internal Acessors for ManagedApplication</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesManagedApplication Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.ManagedApplication { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ManagedApplication; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ManagedApplication = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesManagedApplication Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.ManagedApplication { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ManagedApplication; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ManagedApplication = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ManagedApplicationOfferId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.ManagedApplicationOfferId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ManagedApplicationOfferId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ManagedApplicationOfferId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.ManagedApplicationOfferId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ManagedApplicationOfferId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ManagedApplicationOfferId = value ?? null; }
 
         /// <summary>Internal Acessors for ManagedApplicationPublisherId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.ManagedApplicationPublisherId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ManagedApplicationPublisherId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ManagedApplicationPublisherId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.ManagedApplicationPublisherId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ManagedApplicationPublisherId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ManagedApplicationPublisherId = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.Name { get => this._name; set { {_name = value;} } }
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models
         Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderProperties Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ProviderProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProviderType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.ProviderType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ProviderType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ProviderType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescriptionInternal.ProviderType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ProviderType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderPropertiesInternal)Property).ProviderType = value ?? null; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

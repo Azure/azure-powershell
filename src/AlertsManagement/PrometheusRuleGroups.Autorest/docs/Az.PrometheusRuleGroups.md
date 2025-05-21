@@ -1,6 +1,6 @@
 ---
 Module Name: Az.PrometheusRuleGroups
-Module Guid: 6ab881a6-6f81-4bd0-acc0-48ac742741b3
+Module Guid: 07ea303f-9442-4070-a51d-ebce08d8fb03
 Download Help Link: https://learn.microsoft.com/powershell/module/az.prometheusrulegroups
 Help Version: 1.0.0.0
 Locale: en-US

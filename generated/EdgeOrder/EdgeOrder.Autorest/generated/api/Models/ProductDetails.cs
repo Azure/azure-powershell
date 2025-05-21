@@ -59,10 +59,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IDisplayInfo Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IProductDetailsInternal.DisplayInfo { get => (this._displayInfo = this._displayInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.DisplayInfo()); set { {_displayInfo = value;} } }
 
         /// <summary>Internal Acessors for DisplayInfoConfigurationDisplayName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IProductDetailsInternal.DisplayInfoConfigurationDisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IDisplayInfoInternal)DisplayInfo).ConfigurationDisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IDisplayInfoInternal)DisplayInfo).ConfigurationDisplayName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IProductDetailsInternal.DisplayInfoConfigurationDisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IDisplayInfoInternal)DisplayInfo).ConfigurationDisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IDisplayInfoInternal)DisplayInfo).ConfigurationDisplayName = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayInfoProductFamilyDisplayName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IProductDetailsInternal.DisplayInfoProductFamilyDisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IDisplayInfoInternal)DisplayInfo).ProductFamilyDisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IDisplayInfoInternal)DisplayInfo).ProductFamilyDisplayName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IProductDetailsInternal.DisplayInfoProductFamilyDisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IDisplayInfoInternal)DisplayInfo).ProductFamilyDisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IDisplayInfoInternal)DisplayInfo).ProductFamilyDisplayName = value ?? null; }
 
         /// <summary>Internal Acessors for ProductDoubleEncryptionStatus</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IProductDetailsInternal.ProductDoubleEncryptionStatus { get => this._productDoubleEncryptionStatus; set { {_productDoubleEncryptionStatus = value;} } }

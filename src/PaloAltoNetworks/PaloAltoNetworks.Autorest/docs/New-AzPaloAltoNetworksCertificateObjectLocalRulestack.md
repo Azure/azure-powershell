@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPaloAltoNetworksCertificateObjectLocalRulestack
 
 ## SYNOPSIS
-Create a CertificateObjectLocalRulestackResource
+create a CertificateObjectLocalRulestackResource
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzPaloAltoNetworksCertificateObjectLocalRulestack -LocalRulestackName <Strin
 ```
 
 ## DESCRIPTION
-Create a CertificateObjectLocalRulestackResource
+create a CertificateObjectLocalRulestackResource
 
 ## EXAMPLES
 

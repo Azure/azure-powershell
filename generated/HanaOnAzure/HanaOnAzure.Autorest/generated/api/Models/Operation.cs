@@ -59,19 +59,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplay Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IOperationInternal.Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Display()); set { {_display = value;} } }
 
         /// <summary>Internal Acessors for DisplayDescription</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IOperationInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IOperationInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Description = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayOperation</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IOperationInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Operation = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IOperationInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Operation = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayOrigin</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IOperationInternal.DisplayOrigin { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Origin; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Origin = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IOperationInternal.DisplayOrigin { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Origin; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Origin = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayProvider</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IOperationInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Provider = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IOperationInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Provider = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayResource</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IOperationInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Resource = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IOperationInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IDisplayInternal)Display).Resource = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IOperationInternal.Name { get => this._name; set { {_name = value;} } }

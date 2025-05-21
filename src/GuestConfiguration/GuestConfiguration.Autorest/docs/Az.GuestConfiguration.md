@@ -1,6 +1,6 @@
 ---
 Module Name: Az.GuestConfiguration
-Module Guid: 4afd08fc-b997-4356-8118-ed62d7ce1ce1
+Module Guid: c2b17e04-27e6-4823-81de-87a3ebff9669
 Download Help Link: https://learn.microsoft.com/powershell/module/az.guestconfiguration
 Help Version: 1.0.0.0
 Locale: en-US

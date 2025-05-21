@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSphereProduct
 
 ## SYNOPSIS
-Update a Product.
+update a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 
 ## SYNTAX
@@ -47,7 +47,7 @@ Update-AzSphereProduct -CatalogName <String> -Name <String> -ResourceGroupName <
 ```
 
 ## DESCRIPTION
-Update a Product.
+update a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 
 ## EXAMPLES

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         public string EventHubStream { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesInternal)__dataImportSources).EventHubStream; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesInternal)__dataImportSources).EventHubStream = value ?? null; }
 
         /// <summary>Internal Acessors for EventHub</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesEventHub Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesInternal.EventHub { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesInternal)__dataImportSources).EventHub; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesInternal)__dataImportSources).EventHub = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesEventHub Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesInternal.EventHub { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesInternal)__dataImportSources).EventHub; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesInternal)__dataImportSources).EventHub = value ?? null /* model class */; }
 
         /// <summary>Creates an new <see cref="DataSourcesSpecDataImports" /> instance.</summary>
         public DataSourcesSpecDataImports()

@@ -31,13 +31,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal)__clusterLibraryProperties).Message; }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal)__clusterLibraryProperties).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal)__clusterLibraryProperties).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal)__clusterLibraryProperties).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal)__clusterLibraryProperties).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal)__clusterLibraryProperties).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal)__clusterLibraryProperties).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal)__clusterLibraryProperties).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal)__clusterLibraryProperties).Status = value ?? null; }
 
         /// <summary>Internal Acessors for Timestamp</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal.Timestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal)__clusterLibraryProperties).Timestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal)__clusterLibraryProperties).Timestamp = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal.Timestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal)__clusterLibraryProperties).Timestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryPropertiesInternal)__clusterLibraryProperties).Timestamp = value ?? default(global::System.DateTime); }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

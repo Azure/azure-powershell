@@ -175,7 +175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal.ScheduledOperation { get => (this._scheduledOperation = this._scheduledOperation ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsTypeUpdate()); set { {_scheduledOperation = value;} } }
 
         /// <summary>Internal Acessors for ScheduledOperationDayOfWeek</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDayOfWeekUpdate Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal.ScheduledOperationDayOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdateInternal)ScheduledOperation).DayOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdateInternal)ScheduledOperation).DayOfWeek = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDayOfWeekUpdate Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal.ScheduledOperationDayOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdateInternal)ScheduledOperation).DayOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdateInternal)ScheduledOperation).DayOfWeek = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="OpenMode" /> property.</summary>
         private string _openMode;

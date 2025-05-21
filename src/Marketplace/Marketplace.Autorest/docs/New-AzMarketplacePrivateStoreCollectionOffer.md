@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMarketplacePrivateStoreCollectionOffer
 
 ## SYNOPSIS
-Create or add an offer to a specific collection of the private store.
+create or add an offer to a specific collection of the private store.
 
 ## SYNTAX
 
@@ -60,7 +60,7 @@ New-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <St
 ```
 
 ## DESCRIPTION
-Create or add an offer to a specific collection of the private store.
+create or add an offer to a specific collection of the private store.
 
 ## EXAMPLES
 

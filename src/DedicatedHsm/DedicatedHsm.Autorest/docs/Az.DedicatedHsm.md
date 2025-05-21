@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DedicatedHsm
-Module Guid: 1fcbb2f1-cb1e-4d67-9da2-5e7b35810c88
+Module Guid: efe40c9f-a672-47d7-b959-11ab0c54449b
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dedicatedhsm
 Help Version: 1.0.0.0
 Locale: en-US

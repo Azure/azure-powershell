@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzKubernetesRuntimeLoadBalancer
 
 ## SYNOPSIS
-Update a LoadBalancer
+update a LoadBalancer
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Update-AzKubernetesRuntimeLoadBalancer -InputObject <IKubernetesRuntimeIdentity>
 ```
 
 ## DESCRIPTION
-Update a LoadBalancer
+update a LoadBalancer
 
 ## EXAMPLES
 

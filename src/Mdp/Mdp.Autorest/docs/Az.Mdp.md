@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Mdp
-Module Guid: c9f4a15f-58e0-4476-821d-a0d998e51a11
+Module Guid: c23d59f0-f1ee-4cae-9ee2-57f229e16edd
 Download Help Link: https://learn.microsoft.com/powershell/module/az.mdp
 Help Version: 1.0.0.0
 Locale: en-US

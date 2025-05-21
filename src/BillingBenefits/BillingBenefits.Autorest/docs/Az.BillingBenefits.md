@@ -1,6 +1,6 @@
 ---
 Module Name: Az.BillingBenefits
-Module Guid: d7dd6348-cc7d-477e-baeb-e38cc4e0c9f9
+Module Guid: 771becd4-e80a-4a1b-8e43-3b37c8d818c6
 Download Help Link: https://learn.microsoft.com/powershell/module/az.billingbenefits
 Help Version: 1.0.0.0
 Locale: en-US

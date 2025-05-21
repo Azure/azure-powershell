@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
     {
         /// <summary>CIDR Block for iSCSI path.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

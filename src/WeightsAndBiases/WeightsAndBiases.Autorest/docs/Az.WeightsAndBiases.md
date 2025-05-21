@@ -1,6 +1,6 @@
 ---
 Module Name: Az.WeightsAndBiases
-Module Guid: 2049d853-8b10-4827-8e22-252cf1233ac4
+Module Guid: ab5bccaa-a11c-498a-81ee-cbd75891694a
 Download Help Link: https://learn.microsoft.com/powershell/module/az.weightsandbiases
 Help Version: 1.0.0.0
 Locale: en-US

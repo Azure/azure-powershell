@@ -180,7 +180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models
         System.Collections.Generic.List<string> Codec { get; set; }
         /// <summary>How to connect back to the operator network, e.g. MAPS</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = true,
         Read = true,
         Create = true,

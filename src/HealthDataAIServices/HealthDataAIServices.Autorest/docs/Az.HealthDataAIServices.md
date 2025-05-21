@@ -1,6 +1,6 @@
 ---
 Module Name: Az.HealthDataAIServices
-Module Guid: 38e4b21d-b436-4d83-a47b-d94a7d963dc2
+Module Guid: 065374f2-1d7a-4983-9ff0-72e02a24c1b7
 Download Help Link: https://learn.microsoft.com/powershell/module/az.healthdataaiservices
 Help Version: 1.0.0.0
 Locale: en-US

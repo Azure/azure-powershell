@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNewRelicMonitorTagRule
 
 ## SYNOPSIS
-Update a TagRule
+update a TagRule
 
 ## SYNTAX
 
@@ -53,7 +53,7 @@ Update-AzNewRelicMonitorTagRule -MonitorName <String> -ResourceGroupName <String
 ```
 
 ## DESCRIPTION
-Update a TagRule
+update a TagRule
 
 ## EXAMPLES
 

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         public int? HttpsPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOriginPropertiesInternal)Property).HttpsPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOriginPropertiesInternal)Property).HttpsPort = value ?? default(int); }
 
         /// <summary>Internal Acessors for PrivateEndpointStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOriginInternal.PrivateEndpointStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOriginPropertiesInternal)Property).PrivateEndpointStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOriginPropertiesInternal)Property).PrivateEndpointStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOriginInternal.PrivateEndpointStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOriginPropertiesInternal)Property).PrivateEndpointStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOriginPropertiesInternal)Property).PrivateEndpointStatus = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOriginProperties Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOriginInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeepCreatedOriginProperties()); set { {_property = value;} } }

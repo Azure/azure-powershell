@@ -35,10 +35,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         public string MeterGuid { get => this._meterGuid; }
 
         /// <summary>Internal Acessors for ChargingType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal.ChargingType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)__meterDetails).ChargingType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)__meterDetails).ChargingType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal.ChargingType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)__meterDetails).ChargingType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)__meterDetails).ChargingType = value ?? null; }
 
         /// <summary>Internal Acessors for Multiplier</summary>
-        double? Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal.Multiplier { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)__meterDetails).Multiplier; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)__meterDetails).Multiplier = value; }
+        double? Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal.Multiplier { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)__meterDetails).Multiplier; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)__meterDetails).Multiplier = value ?? default(double); }
 
         /// <summary>Internal Acessors for MeterGuid</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IPav2MeterDetailsInternal.MeterGuid { get => this._meterGuid; set { {_meterGuid = value;} } }

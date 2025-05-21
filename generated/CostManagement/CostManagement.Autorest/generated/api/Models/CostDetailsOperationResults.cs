@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Message; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResultsInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResultsInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetails Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResultsInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ErrorDetails()); set { {_error = value;} } }
@@ -76,16 +76,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifest Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResultsInternal.Manifest { get => (this._manifest = this._manifest ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportManifest()); set { {_manifest = value;} } }
 
         /// <summary>Internal Acessors for ManifestRequestContext</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IRequestContext Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResultsInternal.ManifestRequestContext { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal)Manifest).RequestContext; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal)Manifest).RequestContext = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IRequestContext Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResultsInternal.ManifestRequestContext { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal)Manifest).RequestContext; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal)Manifest).RequestContext = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResultsInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResultsInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for RequestBodyTimePeriod</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsTimePeriod Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResultsInternal.RequestBodyTimePeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal)Manifest).RequestBodyTimePeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal)Manifest).RequestBodyTimePeriod = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsTimePeriod Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResultsInternal.RequestBodyTimePeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal)Manifest).RequestBodyTimePeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal)Manifest).RequestBodyTimePeriod = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for RequestContextRequestBody</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IGenerateCostDetailsReportRequestDefinition Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResultsInternal.RequestContextRequestBody { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal)Manifest).RequestContextRequestBody; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal)Manifest).RequestContextRequestBody = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IGenerateCostDetailsReportRequestDefinition Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResultsInternal.RequestContextRequestBody { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal)Manifest).RequestContextRequestBody; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IReportManifestInternal)Manifest).RequestContextRequestBody = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

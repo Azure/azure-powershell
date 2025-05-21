@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for LastRefreshAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal.LastRefreshAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationPropertiesInternal)Property).LastRefreshAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationPropertiesInternal)Property).LastRefreshAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal.LastRefreshAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationPropertiesInternal)Property).LastRefreshAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationPropertiesInternal)Property).LastRefreshAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal.Name { get => this._name; set { {_name = value;} } }

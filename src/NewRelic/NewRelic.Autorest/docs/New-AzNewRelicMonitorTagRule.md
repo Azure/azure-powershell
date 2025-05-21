@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNewRelicMonitorTagRule
 
 ## SYNOPSIS
-Create a TagRule
+create a TagRule
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ New-AzNewRelicMonitorTagRule -MonitorName <String> -ResourceGroupName <String> -
 ```
 
 ## DESCRIPTION
-Create a TagRule
+create a TagRule
 
 ## EXAMPLES
 

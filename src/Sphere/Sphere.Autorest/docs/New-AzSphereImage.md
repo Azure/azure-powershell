@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSphereImage
 
 ## SYNOPSIS
-Create a Image
+create a Image
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzSphereImage -CatalogName <String> -Name <String> -ResourceGroupName <Strin
 ```
 
 ## DESCRIPTION
-Create a Image
+create a Image
 
 ## EXAMPLES
 

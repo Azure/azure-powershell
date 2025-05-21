@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkFabricTap
 
 ## SYNOPSIS
-Create a Network Tap.
+create a Network Tap.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzNetworkFabricTap -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-Create a Network Tap.
+create a Network Tap.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCarbonTopItemsSummaryReportQueryFilterObject
 
 ## SYNOPSIS
-Create an in-memory object for TopItemsSummaryReportQueryFilterObject.
+Create an in-memory object for TopItemsSummaryReportQueryFilter.
 
 ## SYNTAX
 
@@ -20,13 +20,13 @@ New-AzCarbonTopItemsSummaryReportQueryFilterObject -CarbonScopeList <String[]> -
 ```
 
 ## DESCRIPTION
-Create an in-memory object for TopItemsSummaryReportQueryFilterObject.
+Create an in-memory object for TopItemsSummaryReportQueryFilter.
 
 ## EXAMPLES
 
 ### Example 1: Create new TopItemsSummaryReportQueryFilterObject object
 ```powershell
-New-AzCarbonTopItemsSummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('00000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000001')
+New-AzCarbonTopItemsSummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
 ```
 
 ```output
@@ -42,12 +42,14 @@ SubscriptionList     : {00000000-0000-0000-0000-000000000000, 00000000-0000-0000
 TopItem              : 5
 ```
 
+
+
 ## PARAMETERS
 
 ### -CarbonScopeList
 List of carbon emission scopes.
 Required.
-Accepts one or more values from - Scope1, Scope2, Scope3 in list form.
+Accepts one or more values from EmissionScopeEnum (e.g., Scope1, Scope2, Scope3) in list form.
 The output will include the total emissions for the specified scopes.
 
 ```yaml
@@ -64,7 +66,7 @@ Accept wildcard characters: False
 
 ### -CategoryType
 Specifies the category type for which to retrieve top-emitting items.
-Accepts values - Resource, ResourceGroup, ResourceType, Location, Subscription.
+See supported values defined in CategoryTypeEnum.
 
 ```yaml
 Type: System.String
@@ -202,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsSummaryReportQueryFilterObject
+### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsSummaryReportQueryFilter
 
 ## NOTES
 

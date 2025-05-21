@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Informatica
-Module Guid: 2cc23942-2b17-4b45-84c4-ebd4d2af2292
+Module Guid: fb95d96b-c280-44a1-ada1-ea1f974a0042
 Download Help Link: https://learn.microsoft.com/powershell/module/az.informatica
 Help Version: 1.0.0.0
 Locale: en-US
@@ -27,10 +27,10 @@ Get a InformaticaServerlessRuntimeResource
 Returns a serverless runtime resource by ID
 
 ### [New-AzInformaticaOrganization](New-AzInformaticaOrganization.md)
-Create a InformaticaOrganizationResource
+create a InformaticaOrganizationResource
 
 ### [New-AzInformaticaServerlessRuntime](New-AzInformaticaServerlessRuntime.md)
-Create a InformaticaServerlessRuntimeResource
+create a InformaticaServerlessRuntimeResource
 
 ### [Remove-AzInformaticaOrganization](Remove-AzInformaticaOrganization.md)
 Delete a InformaticaOrganizationResource
@@ -45,8 +45,8 @@ Starts a failed runtime resource
 Checks all dependencies for a serverless runtime resource
 
 ### [Update-AzInformaticaOrganization](Update-AzInformaticaOrganization.md)
-Update a InformaticaOrganizationResource
+update a InformaticaOrganizationResource
 
 ### [Update-AzInformaticaServerlessRuntime](Update-AzInformaticaServerlessRuntime.md)
-Update a InformaticaServerlessRuntimeResource
+update a InformaticaServerlessRuntimeResource
 

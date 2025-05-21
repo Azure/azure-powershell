@@ -1,6 +1,6 @@
 ---
 Module Name: Az.EventGrid
-Module Guid: 71259a97-80f1-4768-8d19-86e39e156d96
+Module Guid: 4055f38f-63c9-4dae-80f4-f3e3e6ad35db
 Download Help Link: https://learn.microsoft.com/powershell/module/az.eventgrid
 Help Version: 1.0.0.0
 Locale: en-US

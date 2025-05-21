@@ -61,13 +61,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoringTagRulesProperties Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionInternal.TagRule { get => (this._tagRule = this._tagRule ?? new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.MonitoringTagRulesProperties()); set { {_tagRule = value;} } }
 
         /// <summary>Internal Acessors for TagRuleLogRule</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILogRules Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionInternal.TagRuleLogRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoringTagRulesPropertiesInternal)TagRule).LogRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoringTagRulesPropertiesInternal)TagRule).LogRule = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILogRules Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionInternal.TagRuleLogRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoringTagRulesPropertiesInternal)TagRule).LogRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoringTagRulesPropertiesInternal)TagRule).LogRule = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for TagRuleMetricRule</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricRules Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionInternal.TagRuleMetricRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoringTagRulesPropertiesInternal)TagRule).MetricRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoringTagRulesPropertiesInternal)TagRule).MetricRule = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricRules Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionInternal.TagRuleMetricRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoringTagRulesPropertiesInternal)TagRule).MetricRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoringTagRulesPropertiesInternal)TagRule).MetricRule = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for TagRuleProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionInternal.TagRuleProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoringTagRulesPropertiesInternal)TagRule).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoringTagRulesPropertiesInternal)TagRule).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionInternal.TagRuleProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoringTagRulesPropertiesInternal)TagRule).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoringTagRulesPropertiesInternal)TagRule).ProvisioningState = value ?? null; }
 
         /// <summary>Backing field for <see cref="Status" /> property.</summary>
         private string _status;

@@ -45,13 +45,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         public string MatchProcessingBehavior { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).MatchProcessingBehavior; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).MatchProcessingBehavior = value ?? null; }
 
         /// <summary>Internal Acessors for DeploymentStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for RuleSetName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal.RuleSetName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).RuleSetName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).RuleSetName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal.RuleSetName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).RuleSetName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).RuleSetName = value ?? null; }
 
         /// <summary>
         /// The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will

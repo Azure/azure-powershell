@@ -194,7 +194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("SshProfileCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfileCount = (int) content.GetValueForProperty("SshProfileCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfileCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfileCount = (int?) content.GetValueForProperty("SshProfileCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfileCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SshProfilePodPrefix"))
             {
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("ClusterAccessProfileEnableInternalIngress"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfileEnableInternalIngress = (bool) content.GetValueForProperty("ClusterAccessProfileEnableInternalIngress",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfileEnableInternalIngress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfileEnableInternalIngress = (bool?) content.GetValueForProperty("ClusterAccessProfileEnableInternalIngress",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfileEnableInternalIngress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("ClusterAccessProfilePrivateLinkServiceId"))
             {
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("LogAnalyticProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LogAnalyticProfileEnabled = (bool) content.GetValueForProperty("LogAnalyticProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LogAnalyticProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LogAnalyticProfileEnabled = (bool?) content.GetValueForProperty("LogAnalyticProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LogAnalyticProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("LogAnalyticProfileMetricsEnabled"))
             {
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("PrometheuProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).PrometheuProfileEnabled = (bool) content.GetValueForProperty("PrometheuProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).PrometheuProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).PrometheuProfileEnabled = (bool?) content.GetValueForProperty("PrometheuProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).PrometheuProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("AutoscaleProfileScheduleBasedConfig"))
             {
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("AutoscaleProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AutoscaleProfileEnabled = (bool) content.GetValueForProperty("AutoscaleProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AutoscaleProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AutoscaleProfileEnabled = (bool?) content.GetValueForProperty("AutoscaleProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AutoscaleProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("AutoscaleProfileGracefulDecommissionTimeout"))
             {
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("ScheduleBasedConfigDefaultCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ScheduleBasedConfigDefaultCount = (int) content.GetValueForProperty("ScheduleBasedConfigDefaultCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ScheduleBasedConfigDefaultCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ScheduleBasedConfigDefaultCount = (int?) content.GetValueForProperty("ScheduleBasedConfigDefaultCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ScheduleBasedConfigDefaultCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ScheduleBasedConfigSchedule"))
             {
@@ -290,11 +290,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("LoadBasedConfigMinNode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMinNode = (int) content.GetValueForProperty("LoadBasedConfigMinNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMinNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMinNode = (int?) content.GetValueForProperty("LoadBasedConfigMinNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMinNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LoadBasedConfigMaxNode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMaxNode = (int) content.GetValueForProperty("LoadBasedConfigMaxNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMaxNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMaxNode = (int?) content.GetValueForProperty("LoadBasedConfigMaxNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMaxNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LoadBasedConfigPollInterval"))
             {
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("RangerPluginProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfileEnabled = (bool) content.GetValueForProperty("RangerPluginProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfileEnabled = (bool?) content.GetValueForProperty("RangerPluginProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("KafkaProfileDiskStorage"))
             {
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("DiskStorageDataDiskSize"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskSize = (int) content.GetValueForProperty("DiskStorageDataDiskSize",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskSize = (int?) content.GetValueForProperty("DiskStorageDataDiskSize",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("DiskStorageDataDiskType"))
             {
@@ -470,27 +470,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("JobManagerCpu"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerCpu = (float) content.GetValueForProperty("JobManagerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerCpu = (float?) content.GetValueForProperty("JobManagerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("JobManagerMemory"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerMemory = (long) content.GetValueForProperty("JobManagerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerMemory = (long?) content.GetValueForProperty("JobManagerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("HistoryServerCpu"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerCpu = (float) content.GetValueForProperty("HistoryServerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerCpu = (float?) content.GetValueForProperty("HistoryServerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("HistoryServerMemory"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerMemory = (long) content.GetValueForProperty("HistoryServerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerMemory = (long?) content.GetValueForProperty("HistoryServerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("TaskManagerCpu"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerCpu = (float) content.GetValueForProperty("TaskManagerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerCpu = (float?) content.GetValueForProperty("TaskManagerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("TaskManagerMemory"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerMemory = (long) content.GetValueForProperty("TaskManagerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerMemory = (long?) content.GetValueForProperty("TaskManagerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("FlinkProfileCatalogOptionsHive"))
             {
@@ -783,7 +783,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("SshProfileCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfileCount = (int) content.GetValueForProperty("SshProfileCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfileCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfileCount = (int?) content.GetValueForProperty("SshProfileCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfileCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SshProfilePodPrefix"))
             {
@@ -827,7 +827,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("ClusterAccessProfileEnableInternalIngress"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfileEnableInternalIngress = (bool) content.GetValueForProperty("ClusterAccessProfileEnableInternalIngress",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfileEnableInternalIngress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfileEnableInternalIngress = (bool?) content.GetValueForProperty("ClusterAccessProfileEnableInternalIngress",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfileEnableInternalIngress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("ClusterAccessProfilePrivateLinkServiceId"))
             {
@@ -839,7 +839,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("LogAnalyticProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LogAnalyticProfileEnabled = (bool) content.GetValueForProperty("LogAnalyticProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LogAnalyticProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LogAnalyticProfileEnabled = (bool?) content.GetValueForProperty("LogAnalyticProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LogAnalyticProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("LogAnalyticProfileMetricsEnabled"))
             {
@@ -847,7 +847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("PrometheuProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).PrometheuProfileEnabled = (bool) content.GetValueForProperty("PrometheuProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).PrometheuProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).PrometheuProfileEnabled = (bool?) content.GetValueForProperty("PrometheuProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).PrometheuProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("AutoscaleProfileScheduleBasedConfig"))
             {
@@ -859,7 +859,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("AutoscaleProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AutoscaleProfileEnabled = (bool) content.GetValueForProperty("AutoscaleProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AutoscaleProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AutoscaleProfileEnabled = (bool?) content.GetValueForProperty("AutoscaleProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AutoscaleProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("AutoscaleProfileGracefulDecommissionTimeout"))
             {
@@ -871,7 +871,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("ScheduleBasedConfigDefaultCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ScheduleBasedConfigDefaultCount = (int) content.GetValueForProperty("ScheduleBasedConfigDefaultCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ScheduleBasedConfigDefaultCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ScheduleBasedConfigDefaultCount = (int?) content.GetValueForProperty("ScheduleBasedConfigDefaultCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ScheduleBasedConfigDefaultCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ScheduleBasedConfigSchedule"))
             {
@@ -879,11 +879,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("LoadBasedConfigMinNode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMinNode = (int) content.GetValueForProperty("LoadBasedConfigMinNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMinNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMinNode = (int?) content.GetValueForProperty("LoadBasedConfigMinNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMinNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LoadBasedConfigMaxNode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMaxNode = (int) content.GetValueForProperty("LoadBasedConfigMaxNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMaxNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMaxNode = (int?) content.GetValueForProperty("LoadBasedConfigMaxNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigMaxNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LoadBasedConfigPollInterval"))
             {
@@ -899,7 +899,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("RangerPluginProfileEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfileEnabled = (bool) content.GetValueForProperty("RangerPluginProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfileEnabled = (bool?) content.GetValueForProperty("RangerPluginProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("KafkaProfileDiskStorage"))
             {
@@ -1015,7 +1015,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("DiskStorageDataDiskSize"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskSize = (int) content.GetValueForProperty("DiskStorageDataDiskSize",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskSize = (int?) content.GetValueForProperty("DiskStorageDataDiskSize",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("DiskStorageDataDiskType"))
             {
@@ -1059,27 +1059,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("JobManagerCpu"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerCpu = (float) content.GetValueForProperty("JobManagerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerCpu = (float?) content.GetValueForProperty("JobManagerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("JobManagerMemory"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerMemory = (long) content.GetValueForProperty("JobManagerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerMemory = (long?) content.GetValueForProperty("JobManagerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobManagerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("HistoryServerCpu"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerCpu = (float) content.GetValueForProperty("HistoryServerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerCpu = (float?) content.GetValueForProperty("HistoryServerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("HistoryServerMemory"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerMemory = (long) content.GetValueForProperty("HistoryServerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerMemory = (long?) content.GetValueForProperty("HistoryServerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HistoryServerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("TaskManagerCpu"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerCpu = (float) content.GetValueForProperty("TaskManagerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerCpu = (float?) content.GetValueForProperty("TaskManagerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("TaskManagerMemory"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerMemory = (long) content.GetValueForProperty("TaskManagerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerMemory = (long?) content.GetValueForProperty("TaskManagerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TaskManagerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("FlinkProfileCatalogOptionsHive"))
             {

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSphereDevice
 
 ## SYNOPSIS
-Create a Device.
+create a Device.
 Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog only.
 
 ## SYNTAX
@@ -35,7 +35,7 @@ New-AzSphereDevice -CatalogName <String> -GroupName <String> -Name <String> -Pro
 ```
 
 ## DESCRIPTION
-Create a Device.
+create a Device.
 Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog only.
 
 ## EXAMPLES

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models
         Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccountPatchProperties Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccountPatchInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.CodeSigningAccountPatchProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Sku</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.IAccountSkuPatch Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccountPatchInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccountPatchPropertiesInternal)Property).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccountPatchPropertiesInternal)Property).Sku = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.IAccountSkuPatch Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccountPatchInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccountPatchPropertiesInternal)Property).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccountPatchPropertiesInternal)Property).Sku = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICodeSigningAccountPatchProperties _property;

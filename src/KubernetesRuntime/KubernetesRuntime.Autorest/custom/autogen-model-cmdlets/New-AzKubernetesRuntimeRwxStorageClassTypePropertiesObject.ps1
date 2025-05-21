@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.RwxStorageClassTypeP
 https://learn.microsoft.com/powershell/module/Az.KubernetesRuntime/new-azkubernetesruntimerwxstorageclasstypepropertiesobject
 #>
 function New-AzKubernetesRuntimeRwxStorageClassTypePropertiesObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.RwxStorageClassTypeProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

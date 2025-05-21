@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFabricCapacity
 
 ## SYNOPSIS
-Update a FabricCapacity
+update a FabricCapacity
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzFabricCapacity -CapacityName <String> -ResourceGroupName <String> -Json
 ```
 
 ## DESCRIPTION
-Update a FabricCapacity
+update a FabricCapacity
 
 ## EXAMPLES
 

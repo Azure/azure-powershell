@@ -54,16 +54,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTable Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnetPropertiesFormatInternal.RouteTable { get => (this._routeTable = this._routeTable ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.RouteTable()); set { {_routeTable = value;} } }
 
         /// <summary>Internal Acessors for RouteTableEtag</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnetPropertiesFormatInternal.RouteTableEtag { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Etag; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Etag = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnetPropertiesFormatInternal.RouteTableEtag { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Etag; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Etag = value ?? null; }
 
         /// <summary>Internal Acessors for RouteTableName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnetPropertiesFormatInternal.RouteTableName { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnetPropertiesFormatInternal.RouteTableName { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Name = value ?? null; }
 
         /// <summary>Internal Acessors for RouteTableProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTablePropertiesFormat Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnetPropertiesFormatInternal.RouteTableProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Property = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTablePropertiesFormat Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnetPropertiesFormatInternal.RouteTableProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Property = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for RouteTableType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnetPropertiesFormatInternal.RouteTableType { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnetPropertiesFormatInternal.RouteTableType { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IRouteTableInternal)RouteTable).Type = value ?? null; }
 
         /// <summary>Collection of routes contained within a route table.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]

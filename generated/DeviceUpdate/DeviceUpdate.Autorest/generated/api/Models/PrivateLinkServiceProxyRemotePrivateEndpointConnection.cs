@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IRemotePrivateEndpointConnectionInternal)__remotePrivateEndpointConnection).Id; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IRemotePrivateEndpointConnectionInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IRemotePrivateEndpointConnectionInternal)__remotePrivateEndpointConnection).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IRemotePrivateEndpointConnectionInternal)__remotePrivateEndpointConnection).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IRemotePrivateEndpointConnectionInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IRemotePrivateEndpointConnectionInternal)__remotePrivateEndpointConnection).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IRemotePrivateEndpointConnectionInternal)__remotePrivateEndpointConnection).Id = value ?? null; }
 
         /// <summary>
         /// Creates an new <see cref="PrivateLinkServiceProxyRemotePrivateEndpointConnection" /> instance.

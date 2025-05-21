@@ -1,6 +1,6 @@
 ---
 Module Name: Az.CustomLocation
-Module Guid: b5a68592-6b36-4d8f-b582-a157eb4dfacf
+Module Guid: b2701cb3-563a-4bc1-96a9-ef7fcbf21eeb
 Download Help Link: https://learn.microsoft.com/powershell/module/az.customlocation
 Help Version: 1.0.0.0
 Locale: en-US
@@ -24,13 +24,13 @@ Gets the list of the Enabled Resource Types.
 Gets the details of the resourceSyncRule with a specified resource group, subscription id Custom Location resource name and Resource Sync Rule name.
 
 ### [New-AzCustomLocation](New-AzCustomLocation.md)
-Create a Custom Location in the specified Subscription and Resource Group
+create a Custom Location in the specified Subscription and Resource Group
 
 ### [New-AzCustomLocationMatchExpressionsObject](New-AzCustomLocationMatchExpressionsObject.md)
 Create an in-memory object for MatchExpressionsProperties.
 
 ### [New-AzCustomLocationResourceSyncRule](New-AzCustomLocationResourceSyncRule.md)
-Create a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
+create a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
 
 ### [Remove-AzCustomLocation](Remove-AzCustomLocation.md)
 Deletes the Custom Location with the specified Resource Name, Resource Group, and Subscription Id.
@@ -39,8 +39,8 @@ Deletes the Custom Location with the specified Resource Name, Resource Group, an
 Deletes the Resource Sync Rule with the specified Resource Sync Rule Name, Custom Location Resource Name, Resource Group, and Subscription Id.
 
 ### [Update-AzCustomLocation](Update-AzCustomLocation.md)
-Update a Custom Location in the specified Subscription and Resource Group
+update a Custom Location in the specified Subscription and Resource Group
 
 ### [Update-AzCustomLocationResourceSyncRule](Update-AzCustomLocationResourceSyncRule.md)
-Update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and Custom Location name.
+update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and Custom Location name.
 

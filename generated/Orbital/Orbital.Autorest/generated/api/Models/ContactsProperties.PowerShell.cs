@@ -94,11 +94,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
             }
             if (content.Contains("ReservationStartTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationStartTime = (global::System.DateTime) content.GetValueForProperty("ReservationStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationStartTime = (global::System.DateTime?) content.GetValueForProperty("ReservationStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("ReservationEndTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationEndTime = (global::System.DateTime) content.GetValueForProperty("ReservationEndTime",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationEndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationEndTime = (global::System.DateTime?) content.GetValueForProperty("ReservationEndTime",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationEndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("RxStartTime"))
             {
@@ -191,11 +191,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
             }
             if (content.Contains("ReservationStartTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationStartTime = (global::System.DateTime) content.GetValueForProperty("ReservationStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationStartTime = (global::System.DateTime?) content.GetValueForProperty("ReservationStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("ReservationEndTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationEndTime = (global::System.DateTime) content.GetValueForProperty("ReservationEndTime",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationEndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationEndTime = (global::System.DateTime?) content.GetValueForProperty("ReservationEndTime",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)this).ReservationEndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("RxStartTime"))
             {

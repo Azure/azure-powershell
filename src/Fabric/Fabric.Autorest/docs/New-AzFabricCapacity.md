@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFabricCapacity
 
 ## SYNOPSIS
-Create a FabricCapacity
+create a FabricCapacity
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzFabricCapacity -CapacityName <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-Create a FabricCapacity
+create a FabricCapacity
 
 ## EXAMPLES
 

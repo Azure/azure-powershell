@@ -117,22 +117,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpSettings Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfigPropertiesInternal.HttpSetting { get => (this._httpSetting = this._httpSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.HttpSettings()); set { {_httpSetting = value;} } }
 
         /// <summary>Internal Acessors for HttpSettingForwardProxy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IForwardProxy Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfigPropertiesInternal.HttpSettingForwardProxy { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpSettingsInternal)HttpSetting).ForwardProxy; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpSettingsInternal)HttpSetting).ForwardProxy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IForwardProxy Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfigPropertiesInternal.HttpSettingForwardProxy { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpSettingsInternal)HttpSetting).ForwardProxy; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpSettingsInternal)HttpSetting).ForwardProxy = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for HttpSettingRoute</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpSettingsRoutes Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfigPropertiesInternal.HttpSettingRoute { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpSettingsInternal)HttpSetting).Route; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpSettingsInternal)HttpSetting).Route = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpSettingsRoutes Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfigPropertiesInternal.HttpSettingRoute { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpSettingsInternal)HttpSetting).Route; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpSettingsInternal)HttpSetting).Route = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Login</summary>
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILogin Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfigPropertiesInternal.Login { get => (this._login = this._login ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.Login()); set { {_login = value;} } }
 
         /// <summary>Internal Acessors for LoginCookieExpiration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICookieExpiration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfigPropertiesInternal.LoginCookieExpiration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginInternal)Login).CookieExpiration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginInternal)Login).CookieExpiration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICookieExpiration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfigPropertiesInternal.LoginCookieExpiration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginInternal)Login).CookieExpiration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginInternal)Login).CookieExpiration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for LoginNonce</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.INonce Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfigPropertiesInternal.LoginNonce { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginInternal)Login).Nonce; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginInternal)Login).Nonce = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.INonce Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfigPropertiesInternal.LoginNonce { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginInternal)Login).Nonce; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginInternal)Login).Nonce = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for LoginRoute</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginRoutes Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfigPropertiesInternal.LoginRoute { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginInternal)Login).Route; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginInternal)Login).Route = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginRoutes Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfigPropertiesInternal.LoginRoute { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginInternal)Login).Route; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginInternal)Login).Route = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Platform</summary>
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthPlatform Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfigPropertiesInternal.Platform { get => (this._platform = this._platform ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.AuthPlatform()); set { {_platform = value;} } }

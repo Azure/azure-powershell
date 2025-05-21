@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPaloAltoNetworksFqdnListLocalRulestack
 
 ## SYNOPSIS
-Create a FqdnListLocalRulestackResource
+create a FqdnListLocalRulestackResource
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzPaloAltoNetworksFqdnListLocalRulestack -LocalRulestackName <String> -Name 
 ```
 
 ## DESCRIPTION
-Create a FqdnListLocalRulestackResource
+create a FqdnListLocalRulestackResource
 
 ## EXAMPLES
 

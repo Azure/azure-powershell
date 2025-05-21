@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a new file under a workspace for the specified subscription.</summary>
+    /// <summary>create a new file under a workspace for the specified subscription.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Support.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzSupportFile_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IFileDetails))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Support.Description(@"Create a new file under a workspace for the specified subscription.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Support.Description(@"create a new file under a workspace for the specified subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Support.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Support.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}", ApiVersion = "2024-04-01")]
     public partial class NewAzSupportFile_CreateExpanded : global::System.Management.Automation.PSCmdlet,

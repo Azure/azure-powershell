@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Support
-Module Guid: ca38d4b0-fe38-4f55-b9e1-66df3d985f20
+Module Guid: 6a10b088-2300-4c58-9890-7bcaff0bc2c1
 Download Help Link: https://learn.microsoft.com/powershell/module/az.support
 Help Version: 1.0.0.0
 Locale: en-US
@@ -69,13 +69,13 @@ Creates and uploads a new file under a workspace for the specified subscription.
 Creates and uploads a new file under a workspace for the specified subscription.
 
 ### [New-AzSupportFileWorkspace](New-AzSupportFileWorkspace.md)
-Create a new file workspace for the specified subscription.
+create a new file workspace for the specified subscription.
 
 ### [New-AzSupportFileWorkspacesNoSubscription](New-AzSupportFileWorkspacesNoSubscription.md)
-Create a new file workspace.
+create a new file workspace.
 
 ### [New-AzSupportTicket](New-AzSupportTicket.md)
-Create a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management issues for the specified subscription.
+create a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management issues for the specified subscription.
 Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support ticket.\<br/\>\<br/\>Always call the Services and ProblemClassifications API to get the most recent set of services and problem categories required for support ticket creation.\<br/\>\<br/\>Adding attachments is not currently supported via the API.
 To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest) page in the Azure portal, select the support ticket, and use the file upload control to add a new file.\<br/\>\<br/\>Providing consent to share diagnostic information with Azure support is currently not supported via the API.
 The Azure support engineer working on your ticket will reach out to you for consent if your issue requires gathering diagnostic information from your Azure resources.\<br/\>\<br/\>**Creating a support ticket for on-behalf-of**: Include _x-ms-authorization-auxiliary_ header to provide an auxiliary token as per [documentation](https://docs.microsoft.com/azure/azure-resource-manager/management/authenticate-multi-tenant).
@@ -84,7 +84,7 @@ Cloud solution provider (CSP) customer tenant.
 The auxiliary token will be from the Cloud solution provider (CSP) partner tenant.
 
 ### [New-AzSupportTicketsNoSubscription](New-AzSupportTicketsNoSubscription.md)
-Create a new support ticket for Billing, and Subscription Management issues.
+create a new support ticket for Billing, and Subscription Management issues.
 Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support ticket.\<br/\>\<br/\>Always call the Services and ProblemClassifications API to get the most recent set of services and problem categories required for support ticket creation.\<br/\>\<br/\>Adding attachments is not currently supported via the API.
 To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest) page in the Azure portal, select the support ticket, and use the file upload control to add a new file.\<br/\>\<br/\>Providing consent to share diagnostic information with Azure support is currently not supported via the API.
 The Azure support engineer working on your ticket will reach out to you for consent if your issue requires gathering diagnostic information from your Azure resources.\<br/\>\<br/\>

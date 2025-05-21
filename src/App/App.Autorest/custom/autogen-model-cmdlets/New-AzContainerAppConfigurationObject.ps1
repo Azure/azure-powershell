@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.Configuration
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappconfigurationobject
 #>
 function New-AzContainerAppConfigurationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Configuration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

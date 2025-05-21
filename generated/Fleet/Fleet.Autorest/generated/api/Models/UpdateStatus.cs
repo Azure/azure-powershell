@@ -44,22 +44,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for CompletedTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal.CompletedTime { get => this._completedTime; set { {_completedTime = value;} } }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.ErrorDetail()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for StartTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal.StartTime { get => this._startTime; set { {_startTime = value;} } }
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
         string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal.State { get => this._state; set { {_state = value;} } }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetailInternal)Error).Target = value ?? null; }
 
         /// <summary>Backing field for <see cref="StartTime" /> property.</summary>
         private global::System.DateTime? _startTime;

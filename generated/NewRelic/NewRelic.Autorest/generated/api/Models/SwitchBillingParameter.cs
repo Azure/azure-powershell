@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequest Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingParameterInternal.Request { get => (this._request = this._request ?? new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.SwitchBillingRequest()); set { {_request = value;} } }
 
         /// <summary>Internal Acessors for RequestPlanData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanData Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingParameterInternal.RequestPlanData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequestInternal)Request).PlanData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequestInternal)Request).PlanData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanData Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingParameterInternal.RequestPlanData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequestInternal)Request).PlanData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequestInternal)Request).PlanData = value ?? null /* model class */; }
 
         /// <summary>Different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inlined)]

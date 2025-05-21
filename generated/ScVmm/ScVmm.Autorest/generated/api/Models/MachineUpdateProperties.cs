@@ -86,22 +86,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgrade Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IMachineUpdatePropertiesInternal.AgentUpgrade { get => (this._agentUpgrade = this._agentUpgrade ?? new Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.AgentUpgrade()); set { {_agentUpgrade = value;} } }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptDesiredVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptDesiredVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptDesiredVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion = value ?? null; }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage = value ?? null; }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus = value ?? null; }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptTimestamp</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp = value ?? null; }
 
         /// <summary>Internal Acessors for CloudMetadata</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudMetadata Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IMachineUpdatePropertiesInternal.CloudMetadata { get => (this._cloudMetadata = this._cloudMetadata ?? new Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.CloudMetadata()); set { {_cloudMetadata = value;} } }
 
         /// <summary>Internal Acessors for CloudMetadataProvider</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IMachineUpdatePropertiesInternal.CloudMetadataProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudMetadataInternal)CloudMetadata).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudMetadataInternal)CloudMetadata).Provider = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IMachineUpdatePropertiesInternal.CloudMetadataProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudMetadataInternal)CloudMetadata).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudMetadataInternal)CloudMetadata).Provider = value ?? null; }
 
         /// <summary>Internal Acessors for LocationData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILocationData Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IMachineUpdatePropertiesInternal.LocationData { get => (this._locationData = this._locationData ?? new Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.LocationData()); set { {_locationData = value;} } }

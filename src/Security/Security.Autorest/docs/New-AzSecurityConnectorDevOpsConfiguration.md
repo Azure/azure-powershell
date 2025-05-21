@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSecurityConnectorDevOpsConfiguration
 
 ## SYNOPSIS
-Create a DevOps Configuration.
+create a DevOps Configuration.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzSecurityConnectorDevOpsConfiguration -ResourceGroupName <String> -Security
 ```
 
 ## DESCRIPTION
-Create a DevOps Configuration.
+create a DevOps Configuration.
 
 ## EXAMPLES
 

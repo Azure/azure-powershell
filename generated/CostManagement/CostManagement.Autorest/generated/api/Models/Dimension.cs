@@ -51,52 +51,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Location; }
 
         /// <summary>Internal Acessors for Category</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.Category { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).Category; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).Category = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.Category { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).Category; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).Category = value ?? null; }
 
         /// <summary>Internal Acessors for Description</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).Description = value ?? null; }
 
         /// <summary>Internal Acessors for FilterEnabled</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.FilterEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).FilterEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).FilterEnabled = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.FilterEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).FilterEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).FilterEnabled = value ?? default(bool); }
 
         /// <summary>Internal Acessors for GroupingEnabled</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.GroupingEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).GroupingEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).GroupingEnabled = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.GroupingEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).GroupingEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).GroupingEnabled = value ?? default(bool); }
 
         /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.NextLink { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).NextLink; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).NextLink = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.NextLink { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).NextLink; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).NextLink = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionProperties Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.DimensionProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Total</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.Total { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).Total; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).Total = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.Total { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).Total; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).Total = value ?? default(int); }
 
         /// <summary>Internal Acessors for UsageEnd</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.UsageEnd { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).UsageEnd; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).UsageEnd = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.UsageEnd { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).UsageEnd; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).UsageEnd = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for UsageStart</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.UsageStart { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).UsageStart; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).UsageStart = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionInternal.UsageStart { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).UsageStart; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IDimensionPropertiesInternal)Property).UsageStart = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for ETag</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal.ETag { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).ETag; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).ETag = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal.ETag { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).ETag; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).ETag = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Location</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Location = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Sku = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Sku = value ?? null; }
 
         /// <summary>Internal Acessors for Tag</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceTags Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal.Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Tag = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceTags Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal.Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Tag = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>Resource name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inherited)]

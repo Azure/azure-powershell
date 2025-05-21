@@ -38,7 +38,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models
         Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.IRevocation Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICertificateInternal.Revocation { get => (this._revocation = this._revocation ?? new Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.Revocation()); set { {_revocation = value;} } }
 
         /// <summary>Internal Acessors for RevocationStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICertificateInternal.RevocationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.IRevocationInternal)Revocation).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.IRevocationInternal)Revocation).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.ICertificateInternal.RevocationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.IRevocationInternal)Revocation).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.IRevocationInternal)Revocation).Status = value ?? null; }
 
         /// <summary>Backing field for <see cref="Revocation" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Models.IRevocation _revocation;

@@ -23,6 +23,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         /// <summary>Internal Acessors for Subnet</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISubnet Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IIPAddressInternal.Subnet { get => (this._subnet = this._subnet ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.Subnet()); set { {_subnet = value;} } }
 
+        /// <summary>Internal Acessors for SubnetAddressPrefix</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IIPAddressInternal.SubnetAddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISubnetInternal)Subnet).AddressPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISubnetInternal)Subnet).AddressPrefix = value ?? null; }
+
         /// <summary>Backing field for <see cref="Subnet" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISubnet _subnet;
 
@@ -32,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
 
         /// <summary>Represents address prefix.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public string SubnetAddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISubnetInternal)Subnet).AddressPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISubnetInternal)Subnet).AddressPrefix = value ?? null; }
+        public string SubnetAddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISubnetInternal)Subnet).AddressPrefix; }
 
         /// <summary>Backing field for <see cref="Version" /> property.</summary>
         private string _version;

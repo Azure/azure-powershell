@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPaloAltoNetworksLocalRulestack
 
 ## SYNOPSIS
-Create a LocalRulestackResource
+create a LocalRulestackResource
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ New-AzPaloAltoNetworksLocalRulestack -Name <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-Create a LocalRulestackResource
+create a LocalRulestackResource
 
 ## EXAMPLES
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

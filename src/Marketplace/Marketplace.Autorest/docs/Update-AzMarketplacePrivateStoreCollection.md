@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMarketplacePrivateStoreCollection
 
 ## SYNOPSIS
-Update private store collection
+update private store collection
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Update-AzMarketplacePrivateStoreCollection -CollectionId <String>
 ```
 
 ## DESCRIPTION
-Update private store collection
+update private store collection
 
 ## EXAMPLES
 

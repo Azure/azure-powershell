@@ -35,10 +35,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         public string Image { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal)__baseContainer).Image; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal)__baseContainer).Image = value ?? null; }
 
         /// <summary>Internal Acessors for Resource</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerResources Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal.Resource { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal)__baseContainer).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal)__baseContainer).Resource = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerResources Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal.Resource { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal)__baseContainer).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal)__baseContainer).Resource = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ResourceEphemeralStorage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal.ResourceEphemeralStorage { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal)__baseContainer).ResourceEphemeralStorage; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal)__baseContainer).ResourceEphemeralStorage = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal.ResourceEphemeralStorage { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal)__baseContainer).ResourceEphemeralStorage; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IBaseContainerInternal)__baseContainer).ResourceEphemeralStorage = value ?? null; }
 
         /// <summary>Custom container name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inherited)]

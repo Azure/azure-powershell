@@ -29,13 +29,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Location; }
 
         /// <summary>Internal Acessors for DeletionDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.DeletionDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).DeletionDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).DeletionDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.DeletionDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).DeletionDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).DeletionDate = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for Location</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Location = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Location = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Name { get => this._name; set { {_name = value;} } }
@@ -44,19 +44,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultProperties Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.DeletedVaultProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for PurgeProtectionEnabled</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.PurgeProtectionEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).PurgeProtectionEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).PurgeProtectionEnabled = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.PurgeProtectionEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).PurgeProtectionEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).PurgeProtectionEnabled = value ?? default(bool); }
 
         /// <summary>Internal Acessors for ScheduledPurgeDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.ScheduledPurgeDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).ScheduledPurgeDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).ScheduledPurgeDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.ScheduledPurgeDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).ScheduledPurgeDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).ScheduledPurgeDate = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Tag</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesTags Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Tag = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesTags Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Tag = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Type { get => this._type; set { {_type = value;} } }
 
         /// <summary>Internal Acessors for VaultId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.VaultId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).VaultId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).VaultId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.VaultId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).VaultId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).VaultId = value ?? null; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

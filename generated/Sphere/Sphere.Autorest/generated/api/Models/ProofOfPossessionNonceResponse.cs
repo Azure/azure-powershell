@@ -28,25 +28,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models
         public global::System.DateTime? ExpiryUtc { get => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).ExpiryUtc; }
 
         /// <summary>Internal Acessors for Certificate</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal.Certificate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Certificate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Certificate = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal.Certificate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Certificate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Certificate = value ?? null; }
 
         /// <summary>Internal Acessors for ExpiryUtc</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal.ExpiryUtc { get => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).ExpiryUtc; set => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).ExpiryUtc = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal.ExpiryUtc { get => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).ExpiryUtc; set => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).ExpiryUtc = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for NotBeforeUtc</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal.NotBeforeUtc { get => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).NotBeforeUtc; set => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).NotBeforeUtc = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal.NotBeforeUtc { get => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).NotBeforeUtc; set => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).NotBeforeUtc = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Status = value ?? null; }
 
         /// <summary>Internal Acessors for Subject</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal.Subject { get => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Subject; set => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Subject = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal.Subject { get => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Subject; set => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Subject = value ?? null; }
 
         /// <summary>Internal Acessors for Thumbprint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal.Thumbprint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Thumbprint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Thumbprint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal.Thumbprint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Thumbprint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificatePropertiesInternal)__certificateProperties).Thumbprint = value ?? null; }
 
         /// <summary>The certificate not before date.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Sphere.Origin(Microsoft.Azure.PowerShell.Cmdlets.Sphere.PropertyOrigin.Inherited)]

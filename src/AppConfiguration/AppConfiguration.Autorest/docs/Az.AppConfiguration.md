@@ -1,6 +1,6 @@
 ---
 Module Name: Az.AppConfiguration
-Module Guid: eb7a20d7-4675-4932-b491-c24a29f7519e
+Module Guid: bd008870-56d8-496f-854f-c36bd0626121
 Download Help Link: https://learn.microsoft.com/powershell/module/az.appconfiguration
 Help Version: 1.0.0.0
 Locale: en-US

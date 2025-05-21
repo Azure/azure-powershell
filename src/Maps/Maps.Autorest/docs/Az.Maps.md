@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Maps
-Module Guid: 28ccfd74-6337-4e18-97fa-345b819a2341
+Module Guid: e9438d60-3258-4601-bae5-7eeebc3941f9
 Download Help Link: https://learn.microsoft.com/powershell/module/az.maps
 Help Version: 1.0.0.0
 Locale: en-US

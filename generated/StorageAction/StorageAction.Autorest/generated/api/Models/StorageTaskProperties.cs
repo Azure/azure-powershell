@@ -59,10 +59,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
         Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskAction Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.Action { get => (this._action = this._action ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskAction()); set { {_action = value;} } }
 
         /// <summary>Internal Acessors for ActionElse</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IElseCondition Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.ActionElse { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).Else; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).Else = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IElseCondition Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.ActionElse { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).Else; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).Else = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ActionIf</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IIfCondition Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.ActionIf { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).If; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).If = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IIfCondition Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.ActionIf { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).If; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).If = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for CreationTimeInUtc</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.CreationTimeInUtc { get => this._creationTimeInUtc; set { {_creationTimeInUtc = value;} } }

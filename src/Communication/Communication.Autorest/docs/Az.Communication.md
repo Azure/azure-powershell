@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Communication
-Module Guid: 669fb84c-45ab-4b4d-8d73-1f2418b8df76
+Module Guid: b0553ff7-e53d-4431-91a5-a94edde2afd3
 Download Help Link: https://learn.microsoft.com/powershell/module/az.communication
 Help Version: 1.0.0.0
 Locale: en-US
