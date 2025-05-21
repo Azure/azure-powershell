@@ -3,6 +3,15 @@ param (
     [string]$PipelineWorkspace
 )
 
+Get-ChildItem -Path $PipelineWorkspace -Recurse -Depth 2 | ForEach-Object {
+    if ($_.PSIsContainer) {
+        Write-Host "DIR : $($_.FullName)"
+    } else {
+        Write-Host "FILE: $($_.FullName)"
+    }
+}
+
+
 # Check number of generation targets
 $generationTargetsFile = Join-Path $PipelineWorkspace "_current" "generationTargets.json"
 $generationTargets = Get-Content -Raw -Path $generationTargetsFile | ConvertFrom-Json
