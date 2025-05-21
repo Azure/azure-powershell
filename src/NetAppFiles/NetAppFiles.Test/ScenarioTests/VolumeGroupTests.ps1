@@ -387,7 +387,7 @@ function Test-OracleVolumeGroupToManyVolumes
         $newTagValue = "tagValue1"
         Write-Log "Call new volumegroup"
         #Assert-ThrowsContains{  New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectory $activeDirectories} 'Only one active directory allowed';
-        Assert-ThrowsContains{$retrievedVolumeGroup = New-AzNetAppFilesVolumeGroup -ResourceGroupName $fixedResourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -Name $volGroupName1 -Tag @{$newTagName = $newTagValue} -NumberOfDataVolumes $numberOfVolumes -GroupDescription $GroupDescription -ApplicationIdentifier $ApplicationIdentifier -Zone 1 -Vnet $vnetName -SystemRole $SystemRole -NodeMemory $nodeMemory } 'Cannot validate argument on parameter 'NumberOfDataVolumes'. The 9 argument is greater than the maximum allowed range of 8'
+        Assert-ThrowsContains{$retrievedVolumeGroup = New-AzNetAppFilesVolumeGroup -ResourceGroupName $fixedResourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -Name $volGroupName1 -Tag @{$newTagName = $newTagValue} -NumberOfDataVolume $numberOfVolumes -GroupDescription $GroupDescription -ApplicationIdentifier $ApplicationIdentifier -Zone 1 -Vnet $vnetName -SystemRole $SystemRole -NodeMemory $nodeMemory } 'Cannot validate argument on parameter 'NumberOfDataVolume'. The 9 argument is greater than the maximum allowed range of 8'
         # Cleanup the volumes
         #foreach($volume in $retrievedVolumeGroup.Volumes)
         #{
