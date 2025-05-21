@@ -26,21 +26,21 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
         [Parameter(
              Mandatory = false,
              ValueFromPipeline = true,
-             HelpMessage = "Number of file count, Default value of count is 10 and maximum number is 10000.")]
+             HelpMessage = "Number of file count.")]
         [ValidateNotNullOrEmpty]
         public int? FileCount { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Number of bytes captured per packet, Default value in bytes 104857600 (100MB) and maximum in bytes 4294967295 (4GB).")]
+            HelpMessage = "Number of bytes captured per packet.")]
         [ValidateNotNullOrEmpty]
         public long? FileSizeInBytes { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Maximum duration of the capture session in seconds is 604800s (7 days) for a file. Default value in second 86400s (1 day).")]
+            HelpMessage = "Capture session in seconds.")]
         [ValidateNotNullOrEmpty]
         public int? SessionTimeLimitInSeconds { get; set; }
 
@@ -48,10 +48,32 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
         {
             base.Execute();
 
-            if ((this.FileCount == null || this.FileCount == 0) && (this.FileSizeInBytes == null || this.FileSizeInBytes == 0)
-                && (this.SessionTimeLimitInSeconds == null || this.SessionTimeLimitInSeconds == 0))
+            // Set default values if null
+            if (this.FileCount == null)
+                this.FileCount = 10;
+
+            if (this.FileSizeInBytes == null)
+                this.FileSizeInBytes = 104857600;
+
+            if (this.SessionTimeLimitInSeconds == null)
+                this.SessionTimeLimitInSeconds = 86400;
+
+            // Validate FileCount
+            if (this.FileCount < 1 || this.FileCount > 10000)
             {
-                throw new ArgumentException("Parameters cannot be all empty or zero to create new packet capture settings.");
+                throw new ArgumentException("FileCount must be between 1 and 10,000. Default is 10.");
+            }
+
+            // Validate FileSizeInBytes
+            if (this.FileSizeInBytes < 1 || this.FileSizeInBytes > 4294967295)
+            {
+                throw new ArgumentException("FileSizeInBytes must be between 1 byte and 4,294,967,295 bytes (4 GB). Default is 104,857,600 bytes (100 MB).");
+            }
+
+            // Validate SessionTimeLimitInSeconds
+            if (this.SessionTimeLimitInSeconds < 1 || this.SessionTimeLimitInSeconds > 604800)
+            {
+                throw new ArgumentException("SessionTimeLimitInSeconds must be between 1 second and 604,800 seconds (7 days). Default is 86,400 seconds.");
             }
 
             var packetCaptureSettings = new PSPacketCaptureSettings

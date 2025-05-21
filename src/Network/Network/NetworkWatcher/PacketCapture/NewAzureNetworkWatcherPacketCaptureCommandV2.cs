@@ -16,6 +16,7 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Network.Version2017_03_01.Models;
 using Microsoft.Azure.Management.Network;
 using System;
 using System.Collections;
@@ -25,7 +26,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherPacketCaptureV2", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResource"),OutputType(typeof(PSPacketCaptureResult))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherPacketCaptureV2", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSPacketCaptureResult))]
     public class NewAzureNetworkWatcherPacketCaptureCommandV2 : PacketCaptureBaseCmdlet
     {
         [Parameter(
@@ -94,9 +95,9 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "Local file path.")]
+             HelpMessage = "File path.")]
         [ValidateNotNullOrEmpty]
-        public string LocalFilePath { get; set; }
+        public string FilePath { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -192,6 +193,68 @@ namespace Microsoft.Azure.Commands.Network
                 name = this.NetworkWatcherName;
             }
 
+            //Validation
+            //if we pass totalBytesPerSession -> Not supported -> removing from the parameters
+            //if we pass timeLimitInSeconds-> Not supported-> removing from the parameters
+            //
+
+            #region Capture Settings Validations
+            if (this.ContinuousCapture == null)
+            {
+                if (this.FilePath == null || this.StorageAccountId == null)
+                {
+                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalFilePath: StorageLocation must have either storage id or local file path specified.");
+                }
+            }
+            else
+            {
+                if (this.TotalBytesPerSession != null)
+                {
+                    throw new ArgumentException("InvalidRequestPropertiesInPacketCaptureRequest: TotalBytesPerSession is not supported in packet capture request.");
+                }
+
+                if (this.TimeLimitInSecond != null)
+                {
+                    throw new ArgumentException("InvalidRequestPropertiesInPacketCaptureRequest: TimeLimitInSecond is not supported in packet capture request.");
+                }
+
+                if (this.FilePath != null)
+                {
+                    throw new ArgumentException("InvalidRequestPropertiesInPacketCaptureRequest: FilePath is not supported in packet capture request.");
+                }
+
+                if (this.CaptureSettings == null)
+                {
+                    this.CaptureSettings = new PSPacketCaptureSettings
+                    {
+                        FileCount = 10,
+                        FileSizeInBytes = 104857600,
+                        SessionTimeLimitInSeconds = 86400
+                    };
+                }
+                else
+                {
+                    this.CaptureSettings.FileCount = this.CaptureSettings.FileCount ?? 10;
+                    this.CaptureSettings.FileSizeInBytes = this.CaptureSettings.FileSizeInBytes ?? 104857600;
+                    this.CaptureSettings.SessionTimeLimitInSeconds = this.CaptureSettings.SessionTimeLimitInSeconds ?? 86400;
+
+                    if (this.CaptureSettings.FileCount < 1 || this.CaptureSettings.FileCount > 10000)
+                    {
+                        throw new ArgumentException("FileCount must be between 1 and 10,000. Default is 10.");
+                    }
+                    if (this.CaptureSettings.FileSizeInBytes < 1 || this.CaptureSettings.FileSizeInBytes > 4294967295)
+                    {
+                        throw new ArgumentException("FileSizeInBytes must be between 1 byte and 4,294,967,295 bytes (4 GB). Default is 104,857,600 bytes (100 MB).");
+                    }
+                    if (this.CaptureSettings.SessionTimeLimitInSeconds < 1 || this.CaptureSettings.SessionTimeLimitInSeconds > 604800)
+                    {
+                        throw new ArgumentException("SessionTimeLimitInSeconds must be between 1 second and 604,800 seconds (7 days). Default is 86,400 seconds.");
+                    }
+                }
+            }
+
+            #endregion
+
             var present = this.IsPacketCapturePresent(resourceGroupName, name, this.Name);
 
             if (!present)
@@ -211,7 +274,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             MNM.PacketCapture packetCaptureProperties = new MNM.PacketCapture();
 
-            if(this.BytesToCapturePerPacket != null)
+            if (this.BytesToCapturePerPacket != null)
             {
                 packetCaptureProperties.BytesToCapturePerPacket = this.BytesToCapturePerPacket;
             }
@@ -229,15 +292,25 @@ namespace Microsoft.Azure.Commands.Network
             packetCaptureProperties.Target = this.TargetId;
 
             packetCaptureProperties.StorageLocation = new MNM.PacketCaptureStorageLocation();
-            packetCaptureProperties.StorageLocation.FilePath = this.LocalFilePath;
+            packetCaptureProperties.ContinuousCapture = this.ContinuousCapture;
+
+            if (this.ContinuousCapture != null)
+            {
+                packetCaptureProperties.StorageLocation.LocalPath = this.LocalPath;
+                packetCaptureProperties.CaptureSettings = new MNM.PacketCaptureSettings()
+                {
+                    FileCount = this.CaptureSettings.FileCount,
+                    FileSizeInBytes = this.CaptureSettings.FileSizeInBytes,
+                    SessionTimeLimitInSeconds = this.CaptureSettings.SessionTimeLimitInSeconds
+                };
+            }
+            else
+            {
+                packetCaptureProperties.StorageLocation.FilePath = this.FilePath;
+            }
+
             packetCaptureProperties.StorageLocation.StorageId = this.StorageAccountId;
             packetCaptureProperties.StorageLocation.StoragePath = this.StoragePath;
-            
-            //Change for ring buffer
-            packetCaptureProperties.StorageLocation.LocalPath = null;
-            packetCaptureProperties.ContinuousCapture = this.ContinuousCapture;
-            packetCaptureProperties.CaptureSettings = new MNM.PacketCaptureSettings();
-
             packetCaptureProperties.TargetType = MNM.PacketCaptureTargetType.AzureVM;
 
             if (!string.IsNullOrEmpty(this.TargetType))
