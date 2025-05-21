@@ -1,11 +1,21 @@
 trigger: none
 
+resources:
+  pipelines:
+    - pipeline: pipelineA
+      project: release       # 被触发 pipeline 所在项目
+      source: pipelineA     # 被触发 pipeline 的名字
+      trigger:
+        branches:
+          include:
+            - bernard-test-batch-generation-trigger
+
 jobs:
 - job: SimpleJob
   pool: pool-windows-2019
   steps:
   - checkout: none
-  
+
   - powershell: |
-      Write-Host "Pipeline A success"
+      Write-Host "Pipeline Batch success"
     displayName: 'Write success'
