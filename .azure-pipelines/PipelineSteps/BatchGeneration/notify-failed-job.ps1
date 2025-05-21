@@ -5,9 +5,10 @@ param (
 $utilFilePath = Join-Path $RepoRoot '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'util.psm1'
 Import-Module $utilFilePath -Force
 
-# TODO(Bernard): Add Xiaogang and Yabo to the list
 $batchGenSubscribers = @(
-    "bernardpan@microsoft.com"
+    "bernardpan@microsoft.com",
+    "xidi@microsoft.com",
+    "yabhu@microsoft.com"
 )
 $receivers = $batchGenSubscribers -join ","
 
