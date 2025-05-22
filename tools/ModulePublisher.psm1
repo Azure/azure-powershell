@@ -210,7 +210,7 @@ function Publish-RMModules
 		$RepoLocation,
 
 		[Parameter(ParameterSetName="ByLocation", Mandatory=$true)]
-		[Parameter(ParameterSetName="ByLocation", Mandatory=$false)]
+		[Parameter(ParameterSetName="ByName", Mandatory=$false)]
 		[string]
 		$ApiKey,
 
