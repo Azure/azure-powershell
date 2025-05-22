@@ -16,12 +16,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
     /// [OpenAPI] CreateOrUpdateBuild=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.InternalExport]
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzSpringCloudBuildService_UpdateViaIdentityBuildService", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzSpringCloudBuildServiceBuild_UpdateViaIdentitySpringExpanded", SupportsShouldProcess = true)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.CmdletBreakingChange("19.3.0", "0.3.2", "2028/03/31", ChangeDescription = "Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Description(@"update a KPack build.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Generated]
-    public partial class UpdateAzSpringCloudBuildService_UpdateViaIdentityBuildService : global::System.Management.Automation.PSCmdlet,
+    public partial class UpdateAzSpringCloudBuildServiceBuild_UpdateViaIdentitySpringExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IContext
     {
@@ -33,6 +33,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
 
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
+
+        /// <summary>Build resource payload</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild _buildBody = new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Build();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -51,46 +54,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
+        /// <summary>The resource id of agent pool</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource id of agent pool")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The resource id of agent pool",
+        SerializedName = @"agentPool",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AgentPoolId { get => _buildBody.AgentPool ?? null; set => _buildBody.AgentPool = value; }
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
 
-        /// <summary>Backing field for <see cref="Build" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild _build;
+        /// <summary>Backing field for <see cref="BuildServiceName" /> property.</summary>
+        private string _buildServiceName;
 
-        /// <summary>Build resource payload</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Build resource payload", ValueFromPipeline = true)]
+        /// <summary>The name of the build service resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the build service resource.")]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Build resource payload",
-        SerializedName = @"build",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
-        public Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild Build { get => this._build; set => this._build = value; }
-
-        /// <summary>Backing field for <see cref="BuildName" /> property.</summary>
-        private string _buildName;
-
-        /// <summary>The name of the build resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the build resource.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the build resource.",
-        SerializedName = @"buildName",
+        Description = @"The name of the build service resource.",
+        SerializedName = @"buildServiceName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Path)]
-        public string BuildName { get => this._buildName; set => this._buildName = value; }
+        public string BuildServiceName { get => this._buildServiceName; set => this._buildServiceName = value; }
 
-        /// <summary>Backing field for <see cref="BuildServiceInputObject" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity _buildServiceInputObject;
-
-        /// <summary>Identity Parameter</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Identity Parameter", ValueFromPipeline = true)]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Path)]
-        public Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity BuildServiceInputObject { get => this._buildServiceInputObject; set => this._buildServiceInputObject = value; }
+        /// <summary>The resource id of builder to build the source code</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource id of builder to build the source code")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The resource id of builder to build the source code",
+        SerializedName = @"builder",
+        PossibleTypes = new [] { typeof(string) })]
+        public string BuilderId { get => _buildBody.Er ?? null; set => _buildBody.Er = value; }
 
         /// <summary>Accessor for cancellationTokenSource.</summary>
         public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
@@ -107,6 +110,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>The environment variables for this build</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The environment variables for this build")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The environment variables for this build",
+        SerializedName = @"env",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildPropertiesEnv) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildPropertiesEnv Env { get => _buildBody.Env ?? null /* object */; set => _buildBody.Env = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -134,6 +149,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
+        /// <summary>Backing field for <see cref="Name" /> property.</summary>
+        private string _name;
+
+        /// <summary>The name of the build resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the build resource.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The name of the build resource.",
+        SerializedName = @"buildName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Path)]
+        public string Name { get => this._name; set => this._name = value; }
+
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
@@ -154,6 +183,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
+
+        /// <summary>The relative path of source code</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The relative path of source code")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The relative path of source code",
+        SerializedName = @"relativePath",
+        PossibleTypes = new [] { typeof(string) })]
+        public string RelativePath { get => _buildBody.RelativePath ?? null; set => _buildBody.RelativePath = value; }
+
+        /// <summary>Backing field for <see cref="SpringInputObject" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity _springInputObject;
+
+        /// <summary>Identity Parameter</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Identity Parameter", ValueFromPipeline = true)]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ParameterCategory.Path)]
+        public Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity SpringInputObject { get => this._springInputObject; set => this._springInputObject = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
@@ -376,41 +424,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    if (BuildServiceInputObject?.Id != null)
+                    if (SpringInputObject?.Id != null)
                     {
-                        this.BuildServiceInputObject.Id += $"/builds/{(global::System.Uri.EscapeDataString(this.BuildName.ToString()))}";
-                        Build = await this.Client.BuildServiceGetBuildViaIdentityWithResult(BuildServiceInputObject.Id, this, Pipeline);
-                        this.UpdateBuild();
-                        await this.Client.BuildServiceCreateOrUpdateBuildViaIdentity(BuildServiceInputObject.Id, Build, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SerializationMode.IncludeUpdate);
+                        this.SpringInputObject.Id += $"/buildServices/{(global::System.Uri.EscapeDataString(this.BuildServiceName.ToString()))}/builds/{(global::System.Uri.EscapeDataString(this.Name.ToString()))}";
+                        _buildBody = await this.Client.BuildServiceGetBuildViaIdentityWithResult(SpringInputObject.Id, this, Pipeline);
+                        this.Update_buildBody();
+                        await this.Client.BuildServiceCreateOrUpdateBuildViaIdentity(SpringInputObject.Id, _buildBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
                         // try to call with PATH parameters from Input Object
-                        if (null == BuildServiceInputObject.SubscriptionId)
+                        if (null == SpringInputObject.SubscriptionId)
                         {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("BuildServiceInputObject has null value for BuildServiceInputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, BuildServiceInputObject) );
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("SpringInputObject has null value for SpringInputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, SpringInputObject) );
                         }
-                        if (null == BuildServiceInputObject.ResourceGroupName)
+                        if (null == SpringInputObject.ResourceGroupName)
                         {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("BuildServiceInputObject has null value for BuildServiceInputObject.ResourceGroupName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, BuildServiceInputObject) );
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("SpringInputObject has null value for SpringInputObject.ResourceGroupName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, SpringInputObject) );
                         }
-                        if (null == BuildServiceInputObject.ServiceName)
+                        if (null == SpringInputObject.ServiceName)
                         {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("BuildServiceInputObject has null value for BuildServiceInputObject.ServiceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, BuildServiceInputObject) );
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("SpringInputObject has null value for SpringInputObject.ServiceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, SpringInputObject) );
                         }
-                        if (null == BuildServiceInputObject.BuildServiceName)
-                        {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("BuildServiceInputObject has null value for BuildServiceInputObject.BuildServiceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, BuildServiceInputObject) );
-                        }
-                        Build = await this.Client.BuildServiceGetBuildWithResult(BuildServiceInputObject.SubscriptionId ?? null, BuildServiceInputObject.ResourceGroupName ?? null, BuildServiceInputObject.ServiceName ?? null, BuildServiceInputObject.BuildServiceName ?? null, BuildName, this, Pipeline);
-                        this.UpdateBuild();
-                        await this.Client.BuildServiceCreateOrUpdateBuild(BuildServiceInputObject.SubscriptionId ?? null, BuildServiceInputObject.ResourceGroupName ?? null, BuildServiceInputObject.ServiceName ?? null, BuildServiceInputObject.BuildServiceName ?? null, BuildName, Build, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SerializationMode.IncludeUpdate);
+                        _buildBody = await this.Client.BuildServiceGetBuildWithResult(SpringInputObject.SubscriptionId ?? null, SpringInputObject.ResourceGroupName ?? null, SpringInputObject.ServiceName ?? null, BuildServiceName, Name, this, Pipeline);
+                        this.Update_buildBody();
+                        await this.Client.BuildServiceCreateOrUpdateBuild(SpringInputObject.SubscriptionId ?? null, SpringInputObject.ResourceGroupName ?? null, SpringInputObject.ServiceName ?? null, BuildServiceName, Name, _buildBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { BuildName=BuildName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { BuildServiceName=BuildServiceName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -430,19 +474,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateAzSpringCloudBuildService_UpdateViaIdentityBuildService" /> cmdlet
-        /// class.
+        /// Initializes a new instance of the <see cref="UpdateAzSpringCloudBuildServiceBuild_UpdateViaIdentitySpringExpanded" />
+        /// cmdlet class.
         /// </summary>
-        public UpdateAzSpringCloudBuildService_UpdateViaIdentityBuildService()
+        public UpdateAzSpringCloudBuildServiceBuild_UpdateViaIdentitySpringExpanded()
         {
 
         }
 
-        private void UpdateBuild()
+        private void Update_buildBody()
         {
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Build")))
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("RelativePath")))
             {
-                this.Build = (Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild)(this.MyInvocation?.BoundParameters["Build"]);
+                this.RelativePath = (string)(this.MyInvocation?.BoundParameters["RelativePath"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("BuilderId")))
+            {
+                this.BuilderId = (string)(this.MyInvocation?.BoundParameters["BuilderId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AgentPoolId")))
+            {
+                this.AgentPoolId = (string)(this.MyInvocation?.BoundParameters["AgentPoolId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Env")))
+            {
+                this.Env = (Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildPropertiesEnv)(this.MyInvocation?.BoundParameters["Env"]);
             }
         }
 

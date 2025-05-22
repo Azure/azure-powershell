@@ -17,10 +17,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServiceAgentPoolSizeProperties Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServiceAgentPoolPropertiesInternal.PoolSize { get => (this._poolSize = this._poolSize ?? new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildServiceAgentPoolSizeProperties()); set { {_poolSize = value;} } }
 
         /// <summary>Internal Acessors for PoolSizeCpu</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServiceAgentPoolPropertiesInternal.PoolSizeCpu { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServiceAgentPoolSizePropertiesInternal)PoolSize).Cpu; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServiceAgentPoolSizePropertiesInternal)PoolSize).Cpu = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServiceAgentPoolPropertiesInternal.PoolSizeCpu { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServiceAgentPoolSizePropertiesInternal)PoolSize).Cpu; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServiceAgentPoolSizePropertiesInternal)PoolSize).Cpu = value ?? null; }
 
         /// <summary>Internal Acessors for PoolSizeMemory</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServiceAgentPoolPropertiesInternal.PoolSizeMemory { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServiceAgentPoolSizePropertiesInternal)PoolSize).Memory; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServiceAgentPoolSizePropertiesInternal)PoolSize).Memory = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServiceAgentPoolPropertiesInternal.PoolSizeMemory { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServiceAgentPoolSizePropertiesInternal)PoolSize).Memory; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServiceAgentPoolSizePropertiesInternal)PoolSize).Memory = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServiceAgentPoolPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
