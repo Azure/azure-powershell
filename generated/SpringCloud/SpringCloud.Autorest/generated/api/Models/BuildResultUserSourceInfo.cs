@@ -27,6 +27,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Owned)]
         public string BuildResultId { get => this._buildResultId; set => this._buildResultId = value; }
 
+        /// <summary>Relative path of the storage which stores the source</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Inherited)]
+        public string RelativePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)__userSourceInfo).RelativePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)__userSourceInfo).RelativePath = value ?? null; }
+
         /// <summary>Type of the source uploaded</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Constant]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Inherited)]
