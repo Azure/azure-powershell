@@ -1,7 +1,7 @@
 ---
 external help file: Az.MobileNetwork-help.xml
 Module Name: Az.MobileNetwork
-online version: https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkPccRuleConfigurationObject
+online version: https://learn.microsoft.com/powershell/module/Az.MobileNetwork/new-azmobilenetworkpccruleconfigurationobject
 schema: 2.0.0
 ---
 
@@ -17,8 +17,8 @@ New-AzMobileNetworkPccRuleConfigurationObject -RuleName <String> -RulePrecedence
  -ServiceDataFlowTemplate <IServiceDataFlowTemplate[]> [-GuaranteedBitRateDownlink <String>]
  [-GuaranteedBitRateUplink <String>] [-RuleQoPolicyAllocationAndRetentionPriorityLevel <Int32>]
  [-RuleQoPolicyFiveQi <Int32>] [-RuleQoPolicyMaximumBitRateDownlink <String>]
- [-RuleQoPolicyMaximumBitRateUplink <String>] [-RuleQoPolicyPreemptionCapability <PreemptionCapability>]
- [-RuleQoPolicyPreemptionVulnerability <PreemptionVulnerability>] [-TrafficControl <TrafficControlPermission>]
+ [-RuleQoPolicyMaximumBitRateUplink <String>] [-RuleQoPolicyPreemptionCapability <String>]
+ [-RuleQoPolicyPreemptionVulnerability <String>] [-TrafficControl <String>]
  [<CommonParameters>]
 ```
 
@@ -128,11 +128,9 @@ Accept wildcard characters: False
 ```
 
 ### -RuleQoPolicyFiveQi
-QoS Flow 5G QoS Indicator value.
+5G QoS Flow Indicator value.
 The 5QI identifies a specific QoS forwarding treatment to be provided to a flow.
-This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow.
-The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85.
-See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 
 ```yaml
 Type: System.Int32
@@ -182,7 +180,7 @@ The preemption capability of a QoS Flow controls whether it can preempt another 
 See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -199,7 +197,7 @@ The preemption vulnerability of a QoS Flow controls whether it can be preempted 
 See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -212,10 +210,9 @@ Accept wildcard characters: False
 
 ### -ServiceDataFlowTemplate
 The set of data flow templates to use for this data flow policy rule.
-To construct, see NOTES section for SERVICEDATAFLOWTEMPLATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IServiceDataFlowTemplate[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IServiceDataFlowTemplate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -230,7 +227,7 @@ Accept wildcard characters: False
 Determines whether flows that match this data flow policy rule are permitted.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.TrafficControlPermission
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -248,7 +245,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleConfiguration
 
 ## NOTES
 

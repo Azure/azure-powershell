@@ -25,6 +25,20 @@ Remove-AzMobileNetworkAttachedDataNetwork -InputObject <IMobileNetworkIdentity> 
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityPacketCoreControlPlane
+```
+Remove-AzMobileNetworkAttachedDataNetwork -Name <String>
+ -PacketCoreControlPlaneInputObject <IMobileNetworkIdentity> -PacketCoreDataPlaneName <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityPacketCoreDataPlane
+```
+Remove-AzMobileNetworkAttachedDataNetwork -Name <String>
+ -PacketCoreDataPlaneInputObject <IMobileNetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deletes the specified attached data network.
 
@@ -72,7 +86,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
@@ -91,7 +104,7 @@ The name of the attached data network.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityPacketCoreControlPlane, DeleteViaIdentityPacketCoreDataPlane
 Aliases: AttachedDataNetworkName
 
 Required: True
@@ -116,6 +129,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PacketCoreControlPlaneInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: DeleteViaIdentityPacketCoreControlPlane
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PacketCoreControlPlaneName
 The name of the packet core control plane.
 
@@ -131,12 +159,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PacketCoreDataPlaneInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: DeleteViaIdentityPacketCoreDataPlane
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PacketCoreDataPlaneName
 The name of the packet core data plane.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityPacketCoreControlPlane
 Aliases:
 
 Required: True
