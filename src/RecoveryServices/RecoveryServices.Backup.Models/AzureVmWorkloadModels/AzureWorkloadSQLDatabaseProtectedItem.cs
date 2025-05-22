@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                     TimeSpan timeRemaining;
                     if (TimeSpan.TryParse(protectedItem.DeferredDeleteTimeRemaining, out timeRemaining))
                     {
-                        DateOfPurge = protectedItem.DeferredDeleteTimeInUtc.Value.Add(timeRemaining);
+                        DateOfPurge = DateTime.UtcNow.Add(timeRemaining);
                     }
                 }
                 DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
