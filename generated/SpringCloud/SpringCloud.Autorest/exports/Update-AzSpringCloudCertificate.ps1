@@ -55,7 +55,7 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 PROPERTY <ICertificateProperties>: Properties of the certificate resource payload.
-  Type <String>: The type of the certificate source.
+  [Type <String>]: The type of the certificate source.
 
 SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the build service agent pool resource.

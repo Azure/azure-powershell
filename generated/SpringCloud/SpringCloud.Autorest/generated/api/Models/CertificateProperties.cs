@@ -179,7 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         string Thumbprint { get;  }
         /// <summary>The type of the certificate source.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

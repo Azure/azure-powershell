@@ -27,10 +27,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServicePropertiesResourceRequests Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServicePropertiesInternal.ResourceRequest { get => (this._resourceRequest = this._resourceRequest ?? new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildServicePropertiesResourceRequests()); set { {_resourceRequest = value;} } }
 
         /// <summary>Internal Acessors for ResourceRequestCpu</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServicePropertiesInternal.ResourceRequestCpu { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServicePropertiesResourceRequestsInternal)ResourceRequest).Cpu; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServicePropertiesResourceRequestsInternal)ResourceRequest).Cpu = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServicePropertiesInternal.ResourceRequestCpu { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServicePropertiesResourceRequestsInternal)ResourceRequest).Cpu; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServicePropertiesResourceRequestsInternal)ResourceRequest).Cpu = value ?? null; }
 
         /// <summary>Internal Acessors for ResourceRequestMemory</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServicePropertiesInternal.ResourceRequestMemory { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServicePropertiesResourceRequestsInternal)ResourceRequest).Memory; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServicePropertiesResourceRequestsInternal)ResourceRequest).Memory = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServicePropertiesInternal.ResourceRequestMemory { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServicePropertiesResourceRequestsInternal)ResourceRequest).Memory; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildServicePropertiesResourceRequestsInternal)ResourceRequest).Memory = value ?? null; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;

@@ -7,11 +7,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Extensions;
 
-    /// <summary>Source information for a deployment</summary>
+    /// <summary>Source with uploaded location</summary>
     public partial class UserSourceInfo :
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfo,
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal
     {
+
+        /// <summary>Backing field for <see cref="RelativePath" /> property.</summary>
+        private string _relativePath;
+
+        /// <summary>Relative path of the storage which stores the source</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Owned)]
+        public string RelativePath { get => this._relativePath; set => this._relativePath = value; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
@@ -33,10 +40,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
 
         }
     }
-    /// Source information for a deployment
+    /// Source with uploaded location
     public partial interface IUserSourceInfo :
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IJsonSerializable
     {
+        /// <summary>Relative path of the storage which stores the source</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Relative path of the storage which stores the source",
+        SerializedName = @"relativePath",
+        PossibleTypes = new [] { typeof(string) })]
+        string RelativePath { get; set; }
         /// <summary>Type of the source uploaded</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = true,
@@ -61,10 +79,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         string Version { get; set; }
 
     }
-    /// Source information for a deployment
+    /// Source with uploaded location
     internal partial interface IUserSourceInfoInternal
 
     {
+        /// <summary>Relative path of the storage which stores the source</summary>
+        string RelativePath { get; set; }
         /// <summary>Type of the source uploaded</summary>
         string Type { get; set; }
         /// <summary>Version of the source</summary>

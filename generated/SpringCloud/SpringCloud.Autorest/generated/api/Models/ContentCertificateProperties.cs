@@ -47,25 +47,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         public string Issuer { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).Issuer; }
 
         /// <summary>Internal Acessors for ActivateDate</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal.ActivateDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).ActivateDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).ActivateDate = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal.ActivateDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).ActivateDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).ActivateDate = value ?? null; }
 
         /// <summary>Internal Acessors for DnsName</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal.DnsName { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).DnsName; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).DnsName = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal.DnsName { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).DnsName; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).DnsName = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for ExpirationDate</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal.ExpirationDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).ExpirationDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).ExpirationDate = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal.ExpirationDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).ExpirationDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).ExpirationDate = value ?? null; }
 
         /// <summary>Internal Acessors for IssuedDate</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal.IssuedDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).IssuedDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).IssuedDate = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal.IssuedDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).IssuedDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).IssuedDate = value ?? null; }
 
         /// <summary>Internal Acessors for Issuer</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal.Issuer { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).Issuer; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).Issuer = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal.Issuer { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).Issuer; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).Issuer = value ?? null; }
 
         /// <summary>Internal Acessors for SubjectName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal.SubjectName { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).SubjectName; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).SubjectName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal.SubjectName { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).SubjectName; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).SubjectName = value ?? null; }
 
         /// <summary>Internal Acessors for Thumbprint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal.Thumbprint { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).Thumbprint; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).Thumbprint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal.Thumbprint { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).Thumbprint; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificatePropertiesInternal)__certificateProperties).Thumbprint = value ?? null; }
 
         /// <summary>The subject name of certificate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Inherited)]

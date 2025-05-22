@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
             {
                 return;
             }
-            __uploadedUserSourceInfo = new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.UploadedUserSourceInfo(json);
+            __userSourceInfo = new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.UserSourceInfo(json);
             {_artifactSelector = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("artifactSelector"), out var __jsonArtifactSelector) ? (string)__jsonArtifactSelector : (string)_artifactSelector;}
             {_runtimeVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("runtimeVersion"), out var __jsonRuntimeVersion) ? (string)__jsonRuntimeVersion : (string)_runtimeVersion;}
             AfterFromJson(json);
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
             {
                 return container;
             }
-            __uploadedUserSourceInfo?.ToJson(container, serializationMode);
+            __userSourceInfo?.ToJson(container, serializationMode);
             AddIf( null != (((object)this._artifactSelector)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString(this._artifactSelector.ToString()) : null, "artifactSelector" ,container.Add );
             AddIf( null != (((object)this._runtimeVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString(this._runtimeVersion.ToString()) : null, "runtimeVersion" ,container.Add );
             AfterToJson(ref container);

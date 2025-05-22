@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
             {
                 return;
             }
-            __uploadedUserSourceInfo = new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.UploadedUserSourceInfo(json);
+            __userSourceInfo = new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.UserSourceInfo(json);
             {_netCoreMainEntryPath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("netCoreMainEntryPath"), out var __jsonNetCoreMainEntryPath) ? (string)__jsonNetCoreMainEntryPath : (string)_netCoreMainEntryPath;}
             {_runtimeVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("runtimeVersion"), out var __jsonRuntimeVersion) ? (string)__jsonRuntimeVersion : (string)_runtimeVersion;}
             AfterFromJson(json);
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
             {
                 return container;
             }
-            __uploadedUserSourceInfo?.ToJson(container, serializationMode);
+            __userSourceInfo?.ToJson(container, serializationMode);
             AddIf( null != (((object)this._netCoreMainEntryPath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString(this._netCoreMainEntryPath.ToString()) : null, "netCoreMainEntryPath" ,container.Add );
             AddIf( null != (((object)this._runtimeVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString(this._runtimeVersion.ToString()) : null, "runtimeVersion" ,container.Add );
             AfterToJson(ref container);

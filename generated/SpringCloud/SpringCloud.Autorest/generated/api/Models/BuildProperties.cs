@@ -40,6 +40,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         /// <summary>Internal Acessors for TriggeredBuildResult</summary>
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ITriggeredBuildResult Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildPropertiesInternal.TriggeredBuildResult { get => (this._triggeredBuildResult = this._triggeredBuildResult ?? new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.TriggeredBuildResult()); set { {_triggeredBuildResult = value;} } }
 
+        /// <summary>Internal Acessors for TriggeredBuildResultId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildPropertiesInternal.TriggeredBuildResultId { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ITriggeredBuildResultInternal)TriggeredBuildResult).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ITriggeredBuildResultInternal)TriggeredBuildResult).Id = value ?? null; }
+
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
 
@@ -63,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
 
         /// <summary>The unique build id of this build result</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Inlined)]
-        public string TriggeredBuildResultId { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ITriggeredBuildResultInternal)TriggeredBuildResult).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ITriggeredBuildResultInternal)TriggeredBuildResult).Id = value ?? null; }
+        public string TriggeredBuildResultId { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ITriggeredBuildResultInternal)TriggeredBuildResult).Id; }
 
         /// <summary>Creates an new <see cref="BuildProperties" /> instance.</summary>
         public BuildProperties()
