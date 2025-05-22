@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Updates a SIM.
 ```powershell
-{{ Add code here }}
+Update-AzMobileNetworkSim -GroupName azps-mn-simgroup -Name azps-mn-sim -ResourceGroupName azps_test_group  -InternationalMobileSubscriberIdentity 000000000000001 -AuthenticationKey 00112233445566778899AABBCCDDEEFF -DeviceType Mobile -IntegratedCircuitCardIdentifier 8900000000000000001 -OperatorKeyCode 00000000000000000000000000000001 -SimPolicyId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/simPolicies/azps-mn-simpolicy"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name        ResourceGroupName ProvisioningState
+----        ----------------- -----------------
+azps-mn-sim azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command updates a SIM.
