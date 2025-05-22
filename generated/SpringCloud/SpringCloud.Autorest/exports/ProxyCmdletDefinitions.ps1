@@ -6098,6 +6098,7 @@ APPINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
 
 SOURCE <IUserSourceInfo>: Uploaded source information of the deployment.
   Type <String>: Type of the source uploaded
+  [RelativePath <String>]: Relative path of the storage which stores the source
   [Version <String>]: Version of the source
 
 SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
@@ -7456,7 +7457,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PROPERTY <ICertificateProperties>: Properties of the certificate resource payload.
-  Type <String>: The type of the certificate source.
+  [Type <String>]: The type of the certificate source.
 
 SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the build service agent pool resource.
@@ -14665,6 +14666,7 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
 
 SOURCE <IUserSourceInfo>: Uploaded source information of the deployment.
   Type <String>: Type of the source uploaded
+  [RelativePath <String>]: Relative path of the storage which stores the source
   [Version <String>]: Version of the source
 
 SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
@@ -16451,7 +16453,7 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 PROPERTY <ICertificateProperties>: Properties of the certificate resource payload.
-  Type <String>: The type of the certificate source.
+  [Type <String>]: The type of the certificate source.
 
 SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the build service agent pool resource.

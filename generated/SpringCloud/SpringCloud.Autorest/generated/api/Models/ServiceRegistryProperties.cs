@@ -30,13 +30,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryResourceRequests Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryPropertiesInternal.ResourceRequest { get => (this._resourceRequest = this._resourceRequest ?? new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ServiceRegistryResourceRequests()); set { {_resourceRequest = value;} } }
 
         /// <summary>Internal Acessors for ResourceRequestCpu</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryPropertiesInternal.ResourceRequestCpu { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryResourceRequestsInternal)ResourceRequest).Cpu; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryResourceRequestsInternal)ResourceRequest).Cpu = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryPropertiesInternal.ResourceRequestCpu { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryResourceRequestsInternal)ResourceRequest).Cpu; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryResourceRequestsInternal)ResourceRequest).Cpu = value ?? null; }
 
         /// <summary>Internal Acessors for ResourceRequestInstanceCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryPropertiesInternal.ResourceRequestInstanceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryResourceRequestsInternal)ResourceRequest).InstanceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryResourceRequestsInternal)ResourceRequest).InstanceCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryPropertiesInternal.ResourceRequestInstanceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryResourceRequestsInternal)ResourceRequest).InstanceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryResourceRequestsInternal)ResourceRequest).InstanceCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for ResourceRequestMemory</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryPropertiesInternal.ResourceRequestMemory { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryResourceRequestsInternal)ResourceRequest).Memory; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryResourceRequestsInternal)ResourceRequest).Memory = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryPropertiesInternal.ResourceRequestMemory { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryResourceRequestsInternal)ResourceRequest).Memory; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceRegistryResourceRequestsInternal)ResourceRequest).Memory = value ?? null; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;

@@ -88,7 +88,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Azure.Core",
-          "version": "1.44.1"
+          "version": "1.45.0"
         }
       }
     },
@@ -178,7 +178,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.ClientModel",
-          "version": "1.1.0"
+          "version": "1.2.1"
         }
       }
     },
