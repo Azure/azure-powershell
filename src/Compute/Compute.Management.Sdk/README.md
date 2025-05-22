@@ -37,17 +37,7 @@ namespace: Microsoft.Azure.Management.Compute
 
 
 directive:
-  # Fix for enums missing x-ms-enum name
-  - from: swagger-document
-    where: $..["x-ms-enum"]
-    transform: |
-      if (!$.name) {
-        // Generate a unique name based on location in the document
-        const path = JSON.stringify(console.trackPath);
-        console.log(`Adding missing enum name for path: ${path}`);
-        $.name = "UnnamedEnum" + Math.random().toString(36).substring(2, 8);
-      }
-      return $;
+
 
   - from: swagger-document
     where: $..definitions.OperatingSystemStateTypes
@@ -80,6 +70,69 @@ directive:
     where: $
     transform: >
       $.tags = [];
+
+  # Set PassNames enum name
+  - from: swagger-document
+    where: $.definitions.PassNames
+    transform: |
+      $["x-ms-enum"].name = "PassNames";
+      $["x-ms-enum"].modelAsString = false;
+      return $;
+  
+  # Set ComponentNames enum name
+  - from: swagger-document
+    where: $.definitions.ComponentNames
+    transform: |
+      $["x-ms-enum"].name = "ComponentNames";
+      $["x-ms-enum"].modelAsString = false;
+      return $;
+
+  # Rename TrackedResource definition to Resource
+  - from: swagger-document
+    where: $.definitions
+    transform: |
+      if ($.TrackedResource) {
+        $.Resource = $.TrackedResource;
+        delete $.TrackedResource;
+      }
+      return $;
+      
+  # Fix all references to TrackedResource
+  - from: swagger-document
+    where: $
+    transform: |
+      const traverse = (obj) => {
+        if (obj === null || typeof obj !== 'object') return obj;
+        
+        if (obj.$ref === '#/definitions/TrackedResource') {
+          obj.$ref = '#/definitions/Resource';
+        }
+        
+        Object.keys(obj).forEach(key => {
+          obj[key] = traverse(obj[key]);
+        });
+        
+        return obj;
+      };
+      
+      return traverse($);
+
+  # Set PassNames as enum name for the enum containing OobeSystem
+  - from: swagger-document
+    where: $..["x-ms-enum"]
+    transform: |
+      if ($ && $.values && $.values.some(v => v.value === 'OobeSystem') && !$.name) {
+        $.name = "PassNames";
+      }
+      return $;
+
+  - from: swagger-document
+    where: $..["x-ms-enum"]
+    transform: |
+      if ($ && $.values && $.values.some(v => v.value === 'Microsoft-Windows-Shell-Setup') && !$.name) {
+        $.name = "ComponentNames";
+      }
+      return $;
 
   # Update OrchestrationServiceNames enum consistently
   - from: ComputeRP.json

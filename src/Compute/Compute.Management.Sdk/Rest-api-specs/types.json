@@ -19,7 +19,7 @@
       },
       "allOf": [
         {
-          "$ref": "#/definitions/Resource"
+          "$ref": "#/definitions/ResourceOriginal"
         }
       ],
       "x-ms-client-name": "AzureEntityResource"
@@ -147,7 +147,7 @@
       }
     },
     "Operation": {},
-    "Resource": {
+    "ResourceOriginal": {
       "type": "object",
       "description": "The Resource model definition.",
       "properties": {
@@ -259,7 +259,7 @@
       "description": "The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location",
       "allOf": [
         {
-          "$ref": "#/definitions/Resource"
+          "$ref": "#/definitions/ResourceOriginal"
         }
       ]
     },
