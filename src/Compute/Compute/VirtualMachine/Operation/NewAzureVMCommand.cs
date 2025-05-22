@@ -708,7 +708,7 @@ namespace Microsoft.Azure.Commands.Compute
                 CM.ExtendedLocation extLoc = null;
                 if (_cmdlet.EdgeZone != null)
                 {
-                    extLoc = new CM.ExtendedLocation { Name = _cmdlet.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                    extLoc = new CM.ExtendedLocation { Name = _cmdlet.EdgeZone, Type = CM.ExtendedLocationType.EdgeZone };
                 }
 
                 if (_cmdlet.DiskFile == null)
@@ -996,7 +996,7 @@ namespace Microsoft.Azure.Commands.Compute
             CM.ExtendedLocation ExtendedLocation = null;
             if (this.EdgeZone != null)
             {
-                ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationType.EdgeZone };
             }
 
             // Normal TL defaulting check, minimal params
@@ -1182,7 +1182,7 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
-                    Rest.Azure.AzureOperationResponse<VirtualMachine> result;
+                    Rest.Azure.AzureOperationResponse<VirtualMachine, VirtualMachinesCreateOrUpdateHeaders> result;
 
                     if (this.IsParameterBound(c => c.SshKeyName))
                     {
@@ -1379,9 +1379,9 @@ namespace Microsoft.Azure.Commands.Compute
                            (SystemAssignedIdentity.IsPresent ? CM.ResourceIdentityType.SystemAssignedUserAssigned : CM.ResourceIdentityType.UserAssigned),
 
                     UserAssignedIdentities = isUserAssignedEnabled
-                                             ? new Dictionary<string, UserAssignedIdentitiesValue>()
+                                             ? new Dictionary<string, UserAssignedIdentitiesValueModel>()
                                              {
-                                                 { UserAssignedIdentity, new UserAssignedIdentitiesValue() }
+                                                 { UserAssignedIdentity, new UserAssignedIdentitiesValueModel() }
                                              }
                                              : null,
                 }
@@ -1555,7 +1555,7 @@ namespace Microsoft.Azure.Commands.Compute
             SM.ExtendedLocation extendedLocation = null;
             if (this.EdgeZone != null)
             {
-                extendedLocation = new SM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                extendedLocation = new SM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationType.EdgeZone };
             }
 
             var storaeAccountParameter = new StorageAccountCreateParameters

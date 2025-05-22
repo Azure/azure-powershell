@@ -289,11 +289,11 @@ namespace Microsoft.Azure.Commands.Compute
 
                         }
 
-                        parameters.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
+                        parameters.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValueModel>();
 
                         foreach (var id in this.IdentityId)
                         {
-                            parameters.Identity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValue());
+                            parameters.Identity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValueModel());
                         }
                     }
 

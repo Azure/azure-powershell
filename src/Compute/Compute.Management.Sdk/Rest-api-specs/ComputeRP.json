@@ -693,25 +693,14 @@
               "$ref": "#/definitions/LogAnalyticsOperationResult"
             }
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Azure-AsyncOperation": {
-                "type": "string",
-                "description": "A link to the status monitor"
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -751,25 +740,14 @@
               "$ref": "#/definitions/LogAnalyticsOperationResult"
             }
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Azure-AsyncOperation": {
-                "type": "string",
-                "description": "A link to the status monitor"
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1898,25 +1876,14 @@
           }
         ],
         "responses": {
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2561,25 +2528,14 @@
               "$ref": "#/definitions/CapacityReservation"
             }
           },
-          "202": {
-            "description": "Resource update request accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2622,20 +2578,6 @@
           "200": {
             "description": "Resource deleted successfully."
           },
-          "202": {
-            "description": "Resource deletion accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "204": {
             "description": "Resource does not exist."
           },
@@ -2644,6 +2586,9 @@
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -3175,20 +3120,6 @@
           "200": {
             "description": "Resource deleted successfully."
           },
-          "202": {
-            "description": "Resource deletion accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "204": {
             "description": "Resource does not exist."
           },
@@ -3197,6 +3128,9 @@
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -3626,20 +3560,6 @@
           "200": {
             "description": "Resource deleted successfully."
           },
-          "202": {
-            "description": "Resource deletion accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "204": {
             "description": "Resource does not exist."
           },
@@ -3648,6 +3568,9 @@
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -4106,20 +4029,6 @@
           "200": {
             "description": "Resource deleted successfully."
           },
-          "202": {
-            "description": "Resource deletion accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "204": {
             "description": "Resource does not exist."
           },
@@ -4128,6 +4037,9 @@
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -4308,20 +4220,6 @@
           "200": {
             "description": "Resource deleted successfully."
           },
-          "202": {
-            "description": "Resource deletion accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "204": {
             "description": "Resource does not exist."
           },
@@ -4330,6 +4228,9 @@
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -4903,20 +4804,6 @@
           "200": {
             "description": "Resource deleted successfully."
           },
-          "202": {
-            "description": "Resource deletion accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "204": {
             "description": "Resource does not exist."
           },
@@ -4925,6 +4812,9 @@
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -5087,25 +4977,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -5159,25 +5038,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -5215,25 +5083,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -5527,20 +5384,6 @@
           "200": {
             "description": "Resource deleted successfully."
           },
-          "202": {
-            "description": "Resource deletion accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "204": {
             "description": "Resource does not exist."
           },
@@ -5549,6 +5392,9 @@
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -5699,25 +5545,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -5755,25 +5590,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -5864,25 +5688,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -5936,25 +5749,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -6057,25 +5859,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -6122,25 +5913,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -6187,25 +5967,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -6252,25 +6021,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -6308,25 +6066,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -6414,25 +6161,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -6523,25 +6259,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -6741,28 +6466,14 @@
               "$ref": "#/definitions/VirtualMachineScaleSetVM"
             }
           },
-          "202": {
-            "description": "The request has been accepted for processing, but processing has not yet completed.",
-            "schema": {
-              "$ref": "#/definitions/VirtualMachineScaleSetVM"
-            },
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -6812,20 +6523,6 @@
           "200": {
             "description": "Resource deleted successfully."
           },
-          "202": {
-            "description": "Resource deletion accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "204": {
             "description": "Resource does not exist."
           },
@@ -6834,6 +6531,9 @@
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -7013,25 +6713,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -7358,20 +7047,6 @@
           "200": {
             "description": "Resource deleted successfully."
           },
-          "202": {
-            "description": "Resource deletion accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "204": {
             "description": "Resource does not exist."
           },
@@ -7380,6 +7055,9 @@
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -7472,25 +7150,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -7542,25 +7209,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -7605,25 +7261,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -7677,25 +7322,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -7740,25 +7374,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -7803,25 +7426,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -7934,25 +7546,14 @@
               "$ref": "#/definitions/RunCommandResult"
             }
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -8282,20 +7883,6 @@
           "200": {
             "description": "Resource deleted successfully."
           },
-          "202": {
-            "description": "Resource deletion accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "204": {
             "description": "Resource does not exist."
           },
@@ -8304,6 +7891,9 @@
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -8393,25 +7983,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -8739,20 +8318,6 @@
           "200": {
             "description": "Resource deleted successfully."
           },
-          "202": {
-            "description": "Resource deletion accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "204": {
             "description": "Resource does not exist."
           },
@@ -8761,6 +8326,9 @@
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -8801,25 +8369,14 @@
               "$ref": "#/definitions/VirtualMachineAssessPatchesResult"
             }
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -8937,25 +8494,14 @@
               "$ref": "#/definitions/VirtualMachineCaptureResult"
             }
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -8993,25 +8539,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -9056,25 +8591,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -9366,20 +8890,6 @@
           "200": {
             "description": "Resource deleted successfully."
           },
-          "202": {
-            "description": "Resource deletion accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "204": {
             "description": "Resource does not exist."
           },
@@ -9388,6 +8898,9 @@
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -9475,25 +8988,14 @@
               "$ref": "#/definitions/VirtualMachineInstallPatchesResult"
             }
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -9578,25 +9080,14 @@
           }
         ],
         "responses": {
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -9634,25 +9125,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -9697,25 +9177,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -9753,25 +9222,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -9809,25 +9267,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -9874,25 +9321,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -9930,25 +9366,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -10047,25 +9472,14 @@
               "$ref": "#/definitions/RunCommandResult"
             }
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -10360,20 +9774,6 @@
           "200": {
             "description": "Resource deleted successfully."
           },
-          "202": {
-            "description": "Resource deletion accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "204": {
             "description": "Resource does not exist."
           },
@@ -10382,6 +9782,9 @@
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -10457,25 +9860,14 @@
           "200": {
             "description": "The request has succeeded."
           },
-          "202": {
-            "description": "Resource operation accepted.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "The Location header contains the URL where the status of the long running operation can be checked."
-              },
-              "Retry-After": {
-                "type": "integer",
-                "format": "int32",
-                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
-              }
-            }
-          },
           "default": {
             "description": "An unexpected error response.",
             "schema": {
               "$ref": "./common.json#/definitions/CloudError"
             }
+          },
+          "202": {
+            "description": "Accepted"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -10569,20 +9961,7 @@
             "in": "query",
             "description": "The expand expression to apply on the operation.",
             "required": true,
-            "type": "string",
-            "enum": [
-              "Properties"
-            ],
-            "x-ms-enum": {
-              "name": "Expand",
-              "modelAsString": true,
-              "values": [
-                {
-                  "name": "Properties",
-                  "value": "Properties"
-                }
-              ]
-            }
+            "type": "string"
           },
           {
             "name": "$top",
@@ -10602,7 +9981,10 @@
           "200": {
             "description": "The request has succeeded.",
             "schema": {
-              "$ref": "#/definitions/VirtualMachineImagesWithPropertiesListResult"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/VirtualMachineImage"
+              }
             }
           },
           "default": {
