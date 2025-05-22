@@ -15,10 +15,11 @@ create the connection resource.
 ### CreateExpanded (Default)
 ```
 New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Direction <String>] [-FlowType <String[]>] [-Justification <String>]
- [-Pin <String>] [-PipelineName <String>] [-PrimaryContact <String>] [-RemoteSubscriptionId <String>]
- [-RequirementId <String>] [-Schema <ISchema[]>] [-SchemaUri <String[]>] [-SecondaryContact <String[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Direction <String>] [-EnableSystemAssignedIdentity] [-FlowType <String[]>]
+ [-Justification <String>] [-Pin <String>] [-PipelineName <String>] [-PrimaryContact <String>]
+ [-RemoteSubscriptionId <String>] [-RequirementId <String>] [-Schema <ISchema[]>] [-SchemaUri <String[]>]
+ [-SecondaryContact <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -115,6 +116,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FlowType
 The flow types being requested for this connection
 
@@ -191,7 +207,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name for the connection that is to be requested.
+The name for the connection to perform the operation on.
 
 ```yaml
 Type: System.String
@@ -315,7 +331,7 @@ Accept wildcard characters: False
 The schemas for this connection
 
 ```yaml
-Type: PrivateADT.Models.ISchema[]
+Type: ADT.Models.ISchema[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -387,6 +403,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -425,7 +457,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### PrivateADT.Models.IConnection
+### ADT.Models.IConnection
 
 ## NOTES
 

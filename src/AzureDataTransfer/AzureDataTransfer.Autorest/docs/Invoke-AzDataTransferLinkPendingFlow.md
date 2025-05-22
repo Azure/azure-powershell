@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IDataTransferIdentity
+Type: ADT.Models.IDataTransferIdentity
 Parameter Sets: LinkViaIdentityConnection, LinkViaIdentityConnectionExpanded
 Aliases:
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionName
-The name for the connection that is to be requested.
+The name for the connection to perform the operation on.
 
 ```yaml
 Type: System.String
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 The resource to reference.
 
 ```yaml
-Type: PrivateADT.Models.IResourceBody
+Type: ADT.Models.IResourceBody
 Parameter Sets: Link, LinkViaIdentity, LinkViaIdentityConnection
 Aliases:
 
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -FlowName
-The name for the flow that is to be onboarded.
+The name for the flow to perform the operation on.
 
 ```yaml
 Type: System.String
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IDataTransferIdentity
+Type: ADT.Models.IDataTransferIdentity
 Parameter Sets: LinkViaIdentity, LinkViaIdentityExpanded
 Aliases:
 
@@ -332,13 +332,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PrivateADT.Models.IDataTransferIdentity
+### ADT.Models.IDataTransferIdentity
 
-### PrivateADT.Models.IResourceBody
+### ADT.Models.IResourceBody
 
 ## OUTPUTS
 
-### PrivateADT.Models.IFlow
+### ADT.Models.IFlow
 
 ## NOTES
 

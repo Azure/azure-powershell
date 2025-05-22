@@ -1,73 +1,117 @@
 ---
 external help file:
 Module Name: Az.DataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.datatransfer/invoke-azdatatransferlinkpendingconnection
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/invoke-azdatatransferexecutepipelineaction
 schema: 2.0.0
 ---
 
-# Invoke-AzDataTransferLinkPendingConnection
+# Invoke-AzDataTransferExecutePipelineAction
 
 ## SYNOPSIS
-Links the connection to its pending connection.
+Executes a privileged action for a pipeline.
 
 ## SYNTAX
 
-### LinkExpanded (Default)
+### ExecuteExpanded (Default)
 ```
-Invoke-AzDataTransferLinkPendingConnection -ConnectionName <String> -ResourceGroupName <String>
- -PendingConnectionId <String> [-SubscriptionId <String>] [-StatusReason <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Link
-```
-Invoke-AzDataTransferLinkPendingConnection -ConnectionName <String> -ResourceGroupName <String>
- -Connection <IResourceBody> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### LinkViaIdentity
-```
-Invoke-AzDataTransferLinkPendingConnection -InputObject <IDataTransferIdentity> -Connection <IResourceBody>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### LinkViaIdentityExpanded
-```
-Invoke-AzDataTransferLinkPendingConnection -InputObject <IDataTransferIdentity> -PendingConnectionId <String>
- [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Invoke-AzDataTransferExecutePipelineAction -PipelineName <String> -ResourceGroupName <String>
+ -ActionType <String> -Target <String[]> -TargetType <String> [-SubscriptionId <String>]
+ [-Justification <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### LinkViaJsonFilePath
+### Execute
 ```
-Invoke-AzDataTransferLinkPendingConnection -ConnectionName <String> -ResourceGroupName <String>
+Invoke-AzDataTransferExecutePipelineAction -PipelineName <String> -ResourceGroupName <String>
+ -Action <IAction> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### ExecuteViaIdentity
+```
+Invoke-AzDataTransferExecutePipelineAction -InputObject <IDataTransferIdentity> -Action <IAction>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ExecuteViaIdentityExpanded
+```
+Invoke-AzDataTransferExecutePipelineAction -InputObject <IDataTransferIdentity> -ActionType <String>
+ -Target <String[]> -TargetType <String> [-Justification <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ExecuteViaJsonFilePath
+```
+Invoke-AzDataTransferExecutePipelineAction -PipelineName <String> -ResourceGroupName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### LinkViaJsonString
+### ExecuteViaJsonString
 ```
-Invoke-AzDataTransferLinkPendingConnection -ConnectionName <String> -ResourceGroupName <String>
+Invoke-AzDataTransferExecutePipelineAction -PipelineName <String> -ResourceGroupName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Links the connection to its pending connection.
+Executes a privileged action for a pipeline.
 
 ## EXAMPLES
 
-### Example 1: Link a pending connection by ID
+### Example 1: {{ Add title here }}
 ```powershell
-Invoke-AzDataTransferLinkPendingConnection -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -PendingConnectionId "pending-connection-id-123" -StatusReason "Linking approved" -Confirm:$false
+{{ Add code here }}
 ```
 
-This example links a pending connection with the ID `pending-connection-id-123` to the connection `Connection01` within the resource group `ResourceGroup01` and provides a status reason.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
 
----
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -Action
+The action to be executed.
+
+```yaml
+Type: ADT.Models.IAction
+Parameter Sets: Execute, ExecuteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ActionType
+Type of action to be executed
+
+```yaml
+Type: System.String
+Parameter Sets: ExecuteExpanded, ExecuteViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -78,36 +122,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Connection
-The resource to reference.
-
-```yaml
-Type: ADT.Models.IResourceBody
-Parameter Sets: Link, LinkViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ConnectionName
-The name for the connection to perform the operation on.
-
-```yaml
-Type: System.String
-Parameter Sets: Link, LinkExpanded, LinkViaJsonFilePath, LinkViaJsonString
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -135,7 +149,7 @@ Identity Parameter
 
 ```yaml
 Type: ADT.Models.IDataTransferIdentity
-Parameter Sets: LinkViaIdentity, LinkViaIdentityExpanded
+Parameter Sets: ExecuteViaIdentity, ExecuteViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -146,11 +160,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-Path of Json file supplied to the Link operation
+Path of Json file supplied to the Execute operation
 
 ```yaml
 Type: System.String
-Parameter Sets: LinkViaJsonFilePath
+Parameter Sets: ExecuteViaJsonFilePath
 Aliases:
 
 Required: True
@@ -161,14 +175,29 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Link operation
+Json string supplied to the Execute operation
 
 ```yaml
 Type: System.String
-Parameter Sets: LinkViaJsonString
+Parameter Sets: ExecuteViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Justification
+Business justification for the action
+
+```yaml
+Type: System.String
+Parameter Sets: ExecuteExpanded, ExecuteViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -190,12 +219,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PendingConnectionId
-ID of the resource.
+### -PipelineName
+The name for the pipeline to perform the operation on.
 
 ```yaml
 Type: System.String
-Parameter Sets: LinkExpanded, LinkViaIdentityExpanded
+Parameter Sets: Execute, ExecuteExpanded, ExecuteViaJsonFilePath, ExecuteViaJsonString
 Aliases:
 
 Required: True
@@ -211,25 +240,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Link, LinkExpanded, LinkViaJsonFilePath, LinkViaJsonString
+Parameter Sets: Execute, ExecuteExpanded, ExecuteViaJsonFilePath, ExecuteViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StatusReason
-Reason for resource operation.
-
-```yaml
-Type: System.String
-Parameter Sets: LinkExpanded, LinkViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -242,12 +256,42 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Link, LinkExpanded, LinkViaJsonFilePath, LinkViaJsonString
+Parameter Sets: Execute, ExecuteExpanded, ExecuteViaJsonFilePath, ExecuteViaJsonString
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Target
+Targets for the action
+
+```yaml
+Type: System.String[]
+Parameter Sets: ExecuteExpanded, ExecuteViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetType
+Type of target to execute the action on
+
+```yaml
+Type: System.String
+Parameter Sets: ExecuteExpanded, ExecuteViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -288,13 +332,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ADT.Models.IDataTransferIdentity
+### ADT.Models.IAction
 
-### ADT.Models.IResourceBody
+### ADT.Models.IDataTransferIdentity
 
 ## OUTPUTS
 
-### ADT.Models.IConnection
+### ADT.Models.IPipeline
 
 ## NOTES
 

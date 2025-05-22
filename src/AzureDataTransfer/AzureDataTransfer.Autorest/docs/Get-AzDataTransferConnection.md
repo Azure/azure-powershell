@@ -12,7 +12,7 @@ Gets connection resource.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzDataTransferConnection [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -29,7 +29,7 @@ Get-AzDataTransferConnection -InputObject <IDataTransferIdentity> [-DefaultProfi
  [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzDataTransferConnection -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IDataTransferIdentity
+Type: ADT.Models.IDataTransferIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name for the connection that is to be requested.
+The name for the connection to perform the operation on.
 
 ```yaml
 Type: System.String
@@ -144,7 +144,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -175,11 +175,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PrivateADT.Models.IDataTransferIdentity
+### ADT.Models.IDataTransferIdentity
 
 ## OUTPUTS
 
-### PrivateADT.Models.IConnection
+### ADT.Models.IConnection
 
 ## NOTES
 

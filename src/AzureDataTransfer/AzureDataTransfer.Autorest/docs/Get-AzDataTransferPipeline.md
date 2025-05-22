@@ -12,7 +12,7 @@ Gets pipeline resource.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzDataTransferPipeline [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -29,7 +29,7 @@ Get-AzDataTransferPipeline -InputObject <IDataTransferIdentity> [-DefaultProfile
  [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzDataTransferPipeline -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IDataTransferIdentity
+Type: ADT.Models.IDataTransferIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name for the pipeline that is to be requested.
+The name for the pipeline to perform the operation on.
 
 ```yaml
 Type: System.String
@@ -147,7 +147,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -178,11 +178,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PrivateADT.Models.IDataTransferIdentity
+### ADT.Models.IDataTransferIdentity
 
 ## OUTPUTS
 
-### PrivateADT.Models.IPipeline
+### ADT.Models.IPipeline
 
 ## NOTES
 

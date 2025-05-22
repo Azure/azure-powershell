@@ -15,13 +15,19 @@ update the flow resource.
 ### UpdateExpanded (Default)
 ```
 Update-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CustomerManagedKeyVaultUri <String>] [-DataType <String>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-FlowType <String>] [-MessagingOptionBillingTier <String>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>]
- [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>]
- [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-Status <String>] [-StorageAccountId <String>]
- [-StorageAccountName <String>] [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>]
+ [-SubscriptionId <String>] [-ApiFlowOptionApiMode <String>] [-ApiFlowOptionAudienceOverride <String>]
+ [-ApiFlowOptionCname <String>] [-ApiFlowOptionIdentityTranslation <String>]
+ [-ApiFlowOptionRemoteCallingModeClientId <String>] [-ApiFlowOptionRemoteEndpoint <String>]
+ [-ApiFlowOptionSenderClientId <String>] [-ConnectionId <String>] [-ConnectionSubscriptionName <String>]
+ [-ConsumerGroup <String>] [-CustomerManagedKeyVaultUri <String>] [-DataType <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-EventHubId <String>] [-FlowType <String>]
+ [-MessagingOptionBillingTier <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-PropertiesConnectionName <String>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
+ [-SchemaDirection <String>] [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>]
+ [-SchemaType <String>] [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-SourceAddress <String[]>]
+ [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
+ [-StorageContainerName <String>] [-StorageTableName <String>] [-StreamId <String>] [-StreamLatency <Int64>]
  [-StreamProtocol <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -29,29 +35,40 @@ Update-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroup
 ### UpdateViaIdentityConnectionExpanded
 ```
 Update-AzDataTransferFlow -ConnectionInputObject <IDataTransferIdentity> -Name <String>
- [-CustomerManagedKeyVaultUri <String>] [-DataType <String>] [-EnableSystemAssignedIdentity <Boolean?>]
- [-FlowType <String>] [-MessagingOptionBillingTier <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
- [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
- [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
- [-ServiceBusQueueId <String>] [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
- [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzDataTransferFlow -InputObject <IDataTransferIdentity> [-CustomerManagedKeyVaultUri <String>]
- [-DataType <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-FlowType <String>]
+ [-ConnectionName <String>] [-ApiFlowOptionApiMode <String>] [-ApiFlowOptionAudienceOverride <String>]
+ [-ApiFlowOptionCname <String>] [-ApiFlowOptionIdentityTranslation <String>]
+ [-ApiFlowOptionRemoteCallingModeClientId <String>] [-ApiFlowOptionRemoteEndpoint <String>]
+ [-ApiFlowOptionSenderClientId <String>] [-ConnectionId <String>] [-ConnectionSubscriptionName <String>]
+ [-ConsumerGroup <String>] [-CustomerManagedKeyVaultUri <String>] [-DataType <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-EventHubId <String>] [-FlowType <String>]
  [-MessagingOptionBillingTier <String>] [-PlanName <String>] [-PlanProduct <String>]
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
  [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
- [-ServiceBusQueueId <String>] [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
- [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ServiceBusQueueId <String>] [-SourceAddress <String[]>] [-Status <String>] [-StorageAccountId <String>]
+ [-StorageAccountName <String>] [-StorageContainerName <String>] [-StorageTableName <String>]
+ [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzDataTransferFlow -InputObject <IDataTransferIdentity> [-ConnectionName <String>]
+ [-ApiFlowOptionApiMode <String>] [-ApiFlowOptionAudienceOverride <String>] [-ApiFlowOptionCname <String>]
+ [-ApiFlowOptionIdentityTranslation <String>] [-ApiFlowOptionRemoteCallingModeClientId <String>]
+ [-ApiFlowOptionRemoteEndpoint <String>] [-ApiFlowOptionSenderClientId <String>] [-ConnectionId <String>]
+ [-ConnectionSubscriptionName <String>] [-ConsumerGroup <String>] [-CustomerManagedKeyVaultUri <String>]
+ [-DataType <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-EventHubId <String>] [-FlowType <String>]
+ [-MessagingOptionBillingTier <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
+ [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
+ [-ServiceBusQueueId <String>] [-SourceAddress <String[]>] [-Status <String>] [-StorageAccountId <String>]
+ [-StorageAccountName <String>] [-StorageContainerName <String>] [-StorageTableName <String>]
+ [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +96,111 @@ This example updates the flow `Flow01` in the connection `Connection01` within t
 
 ## PARAMETERS
 
+### -ApiFlowOptionApiMode
+Remote Calling Mode in the Azure Data Transfer API Flow, which describes how the API Flow will be invoked
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApiFlowOptionAudienceOverride
+Optional field to override the audience of the remote endpoint
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApiFlowOptionCname
+Unique CNAME to represent the Azure Data Transfer API Flow instance
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApiFlowOptionIdentityTranslation
+Flag for if Azure Data Transfer API Flow should extract the user token
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApiFlowOptionRemoteCallingModeClientId
+Remote stub app registration Client ID
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApiFlowOptionRemoteEndpoint
+Remote host to which communication needs to be made
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApiFlowOptionSenderClientId
+Sender's app user assigned Manage Identity client ID
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run the command as a job
 
@@ -94,11 +216,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ConnectionId
+Id of the connection
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ConnectionInputObject
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IDataTransferIdentity
+Type: ADT.Models.IDataTransferIdentity
 Parameter Sets: UpdateViaIdentityConnectionExpanded
 Aliases:
 
@@ -110,14 +247,44 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionName
-The name for the connection that is to be requested.
+The name for the connection to perform the operation on.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectionSubscriptionName
+Name of the subscription with the connection
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConsumerGroup
+Event Hub Consumer Group
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -140,7 +307,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataType
-Transfer Storage Blobs or Tables
+Type of data to transfer via the flow.
 
 ```yaml
 Type: System.String
@@ -185,6 +352,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EventHubId
+Event Hub ID
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FlowType
 The flow type for this flow
 
@@ -204,7 +386,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IDataTransferIdentity
+Type: ADT.Models.IDataTransferIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -231,7 +413,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name for the flow that is to be onboarded.
+The name for the flow to perform the operation on.
 
 ```yaml
 Type: System.String
@@ -331,6 +513,21 @@ The version of the desired product/artifact.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PropertiesConnectionName
+Name of the connection
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -491,6 +688,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SourceAddress
+A source IP address or CIDR range
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Status
 Status of the current flow
 
@@ -538,6 +750,21 @@ Accept wildcard characters: False
 
 ### -StorageContainerName
 Storage Container Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageTableName
+Storage Table Name
 
 ```yaml
 Type: System.String
@@ -679,11 +906,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PrivateADT.Models.IDataTransferIdentity
+### ADT.Models.IDataTransferIdentity
 
 ## OUTPUTS
 
-### PrivateADT.Models.IFlow
+### ADT.Models.IFlow
 
 ## NOTES
 

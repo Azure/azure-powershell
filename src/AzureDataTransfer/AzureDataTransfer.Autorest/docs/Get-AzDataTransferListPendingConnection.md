@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataTransferListPendingConnection
 
 ## SYNOPSIS
-Lists all pending connections for a connection.
+Lists all pending remote connections that are linkable to this connection.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzDataTransferListPendingConnection -ConnectionName <String> -ResourceGroupN
 ```
 
 ## DESCRIPTION
-Lists all pending connections for a connection.
+Lists all pending remote connections that are linkable to this connection.
 
 ## EXAMPLES
 
@@ -48,7 +48,7 @@ This example lists all pending connections for the connection `Connection01` wit
 ## PARAMETERS
 
 ### -ConnectionName
-The name for the connection that is to be requested.
+The name for the connection to perform the operation on.
 
 ```yaml
 Type: System.String
@@ -148,7 +148,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### PrivateADT.Models.IPendingConnection
+### ADT.Models.IPendingConnection
 
 ## NOTES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataTransferListPendingFlow
 
 ## SYNOPSIS
-Lists all pending flows for a connection.
+Lists all remote flows that have not yet been linked to local flows
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzDataTransferListPendingFlow -ConnectionName <String> -ResourceGroupName <S
 ```
 
 ## DESCRIPTION
-Lists all pending flows for a connection.
+Lists all remote flows that have not yet been linked to local flows
 
 ## EXAMPLES
 
@@ -48,7 +48,7 @@ This example lists all pending flows for the connection `Connection01` within th
 ## PARAMETERS
 
 ### -ConnectionName
-The name for the connection that is to be requested.
+The name for the connection to perform the operation on.
 
 ```yaml
 Type: System.String
@@ -148,7 +148,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### PrivateADT.Models.IPendingFlow
+### ADT.Models.IPendingFlow
 
 ## NOTES
 

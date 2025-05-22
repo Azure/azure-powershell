@@ -8,7 +8,7 @@ schema: 2.0.0
 # Deny-AzDataTransferConnection
 
 ## SYNOPSIS
-Rejects the specified connection in a pipeline.
+Rejects the specified connection request in a pipeline.
 
 ## SYNTAX
 
@@ -54,7 +54,7 @@ Deny-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String>
 ```
 
 ## DESCRIPTION
-Rejects the specified connection in a pipeline.
+Rejects the specified connection request in a pipeline.
 
 ## EXAMPLES
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 The resource to reference.
 
 ```yaml
-Type: PrivateADT.Models.IResourceBody
+Type: ADT.Models.IResourceBody
 Parameter Sets: Reject, RejectViaIdentity
 Aliases:
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IDataTransferIdentity
+Type: ADT.Models.IDataTransferIdentity
 Parameter Sets: RejectViaIdentity, RejectViaIdentityExpanded
 Aliases:
 
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -PipelineName
-The name for the pipeline that is to be requested.
+The name for the pipeline to perform the operation on.
 
 ```yaml
 Type: System.String
@@ -288,13 +288,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PrivateADT.Models.IDataTransferIdentity
+### ADT.Models.IDataTransferIdentity
 
-### PrivateADT.Models.IResourceBody
+### ADT.Models.IResourceBody
 
 ## OUTPUTS
 
-### PrivateADT.Models.IConnection
+### ADT.Models.IConnection
 
 ## NOTES
 

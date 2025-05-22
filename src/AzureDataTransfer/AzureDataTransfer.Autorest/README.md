@@ -29,8 +29,8 @@ For information on how to develop for `Az.DataTransfer`, see [how-to.md](how-to.
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 7c2d8d88e35acda25c8a0fe358f75a10d2f3597c
-namespace: PrivateADT
+commit: 37690580d6e2c915854658df6f3f93c22fc2da41
+namespace: ADT
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -111,9 +111,7 @@ directive:
   # - remove-operation: Pipelines_ListByResourceGroup
   # - remove-operation: Pipelines_ListBySubscription
   - remove-operation: Operations_List
-
-  # - remove-model: pendingFlowsListResult
-  # - remove-model: pendingFlow
+  - remove-operation: ListFlowsByPipeline_List
 
   - where:
       parameter-name: Pipeline

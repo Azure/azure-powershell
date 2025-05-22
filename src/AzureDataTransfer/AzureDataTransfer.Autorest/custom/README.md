@@ -31,11 +31,11 @@ These provide functionality to our HTTP pipeline and other useful features. In s
 
 ### Attributes
 For processing the cmdlets, we've created some additional attributes:
-- `PrivateADT.DescriptionAttribute`
+- `ADT.DescriptionAttribute`
   - Used in C# cmdlets to provide a high-level description of the cmdlet. This is propagated to reference documentation via [help comments](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_comment_based_help) in the exported scripts.
-- `PrivateADT.DoNotExportAttribute`
+- `ADT.DoNotExportAttribute`
   - Used in C# and script cmdlets to suppress creating an exported cmdlet at build-time. These cmdlets will *not be exposed* by `Az.DataTransfer`.
-- `PrivateADT.InternalExportAttribute`
+- `ADT.InternalExportAttribute`
   - Used in C# cmdlets to route exported cmdlets to the `../internal`, which are *not exposed* by `Az.DataTransfer`. For more information, see [README.md](../internal/README.md) in the `../internal` folder.
-- `PrivateADT.ProfileAttribute`
+- `ADT.ProfileAttribute`
   - Used in C# and script cmdlets to define which Azure profiles the cmdlet supports. This is only supported for Azure (`--azure`) modules.
