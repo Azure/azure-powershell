@@ -193,15 +193,10 @@ namespace Microsoft.Azure.Commands.Network
                 name = this.NetworkWatcherName;
             }
 
-            //Validation
-            //if we pass totalBytesPerSession -> Not supported -> removing from the parameters
-            //if we pass timeLimitInSeconds-> Not supported-> removing from the parameters
-            //
-
             #region Capture Settings Validations
             if (this.ContinuousCapture == null)
             {
-                if (this.FilePath == null || this.StorageAccountId == null)
+                if (string.IsNullOrEmpty(this.FilePath) && string.IsNullOrEmpty(this.StorageAccountId))
                 {
                     throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalFilePath: StorageLocation must have either storage id or local file path specified.");
                 }
