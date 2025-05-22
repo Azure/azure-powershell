@@ -147,20 +147,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 if (vIdentity.UserAssignedIdentities == null)
                 {
-                    vIdentity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
+                    vIdentity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValueModel>();
                 }
 
                 foreach (DictionaryEntry de in this.UserAssignedIdentity)
                 {
                     if (((Hashtable)de.Value).Count == 0)
                     {
-                        vIdentity.UserAssignedIdentities.Add(de.Key.ToString(), new UserAssignedIdentitiesValue());
+                        vIdentity.UserAssignedIdentities.Add(de.Key.ToString(), new UserAssignedIdentitiesValueModel());
                     }
                     else
                     {
                         string principalId = ((Hashtable)de.Value)["principalId"]?.ToString();
                         string clientId = ((Hashtable)de.Value)["clientId"]?.ToString();
-                        vIdentity.UserAssignedIdentities.Add(de.Key.ToString(), new UserAssignedIdentitiesValue(principalId, clientId));
+                        vIdentity.UserAssignedIdentities.Add(de.Key.ToString(), new UserAssignedIdentitiesValueModel(principalId, clientId));
                     }
                 }
             }

@@ -24,10 +24,80 @@ namespace Microsoft.Azure.Management.Compute
     public partial interface IProximityPlacementGroupsOperations
     {
         /// <summary>
+        /// Lists all proximity placement groups in a subscription.
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ProximityPlacementGroup>>> ListBySubscriptionWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Lists all proximity placement groups in a resource group.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ProximityPlacementGroup>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Retrieves information about a proximity placement group .
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='proximityPlacementGroupName'>
+        /// The name of the proximity placement group.
+        /// </param>
+        /// <param name='includeColocationStatus'>
+        /// includeColocationStatus=true enables fetching the colocation status
+        /// of all the resources in the proximity placement group.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ProximityPlacementGroup>> GetWithHttpMessagesAsync(string resourceGroupName, string proximityPlacementGroupName, string includeColocationStatus = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Create or update a proximity placement group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='proximityPlacementGroupName'>
         /// The name of the proximity placement group.
@@ -56,7 +126,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Update a proximity placement group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='proximityPlacementGroupName'>
         /// The name of the proximity placement group.
@@ -84,7 +154,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Delete a proximity placement group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='proximityPlacementGroupName'>
         /// The name of the proximity placement group.
@@ -102,76 +172,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string proximityPlacementGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Retrieves information about a proximity placement group .
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='proximityPlacementGroupName'>
-        /// The name of the proximity placement group.
-        /// </param>
-        /// <param name='includeColocationStatus'>
-        /// includeColocationStatus=true enables fetching the colocation status
-        /// of all the resources in the proximity placement group.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<ProximityPlacementGroup>> GetWithHttpMessagesAsync(string resourceGroupName, string proximityPlacementGroupName, string includeColocationStatus = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Lists all proximity placement groups in a subscription.
-        /// </summary>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<ProximityPlacementGroup>>> ListBySubscriptionWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Lists all proximity placement groups in a resource group.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<ProximityPlacementGroup>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all proximity placement groups in a subscription.
         /// </summary>

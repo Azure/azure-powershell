@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// SharedGalleryImageVersionStorageProfile class.
         /// </summary>
+        /// <param name="osDiskImage">This is the OS disk image.</param>
         /// <param name="dataDiskImages">A list of data disk images.</param>
         public SharedGalleryImageVersionStorageProfile(SharedGalleryOSDiskImage osDiskImage = default(SharedGalleryOSDiskImage), IList<SharedGalleryDataDiskImage> dataDiskImages = default(IList<SharedGalleryDataDiskImage>))
         {
@@ -47,6 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets this is the OS disk image.
         /// </summary>
         [JsonProperty(PropertyName = "osDiskImage")]
         public SharedGalleryOSDiskImage OsDiskImage { get; set; }

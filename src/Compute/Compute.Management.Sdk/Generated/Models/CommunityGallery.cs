@@ -42,6 +42,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// gallery.</param>
         /// <param name="disclaimer">The disclaimer for a community gallery
         /// resource.</param>
+        /// <param name="artifactTags">The artifact tags of a community gallery
+        /// resource.</param>
+        /// <param name="communityMetadata">The metadata of community
+        /// gallery.</param>
         public CommunityGallery(string name = default(string), string location = default(string), string type = default(string), string uniqueId = default(string), string disclaimer = default(string), IDictionary<string, string> artifactTags = default(IDictionary<string, string>), CommunityGalleryMetadata communityMetadata = default(CommunityGalleryMetadata))
             : base(name, location, type, uniqueId)
         {
@@ -63,11 +67,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string Disclaimer { get; set; }
 
         /// <summary>
+        /// Gets or sets the artifact tags of a community gallery resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.artifactTags")]
         public IDictionary<string, string> ArtifactTags { get; set; }
 
         /// <summary>
+        /// Gets or sets the metadata of community gallery.
         /// </summary>
         [JsonProperty(PropertyName = "properties.communityMetadata")]
         public CommunityGalleryMetadata CommunityMetadata { get; set; }

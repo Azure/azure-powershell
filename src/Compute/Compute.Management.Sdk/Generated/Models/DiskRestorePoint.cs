@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Properties of disk restore point
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DiskRestorePoint : ProxyOnlyResource
+    public partial class DiskRestorePoint : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the DiskRestorePoint class.
@@ -32,9 +34,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the DiskRestorePoint class.
         /// </summary>
+        /// <param name="location">Resource location</param>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags.</param>
         /// <param name="timeCreated">The timestamp of restorePoint
         /// creation</param>
         /// <param name="sourceResourceId">arm id of source disk or source disk
@@ -57,10 +61,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// keys.</param>
         /// <param name="supportsHibernation">Indicates the OS on a disk
         /// supports hibernation.</param>
-        /// <param name="networkAccessPolicy">Possible values include:
-        /// 'AllowAll', 'AllowPrivate', 'DenyAll'</param>
-        /// <param name="publicNetworkAccess">Possible values include:
-        /// 'Enabled', 'Disabled'</param>
+        /// <param name="networkAccessPolicy">Policy for accessing the disk via
+        /// network. Possible values include: 'AllowAll', 'AllowPrivate',
+        /// 'DenyAll'</param>
+        /// <param name="publicNetworkAccess">Policy for controlling export on
+        /// the disk. Possible values include: 'Enabled', 'Disabled'</param>
         /// <param name="diskAccessId">ARM id of the DiskAccess resource for
         /// using private endpoints on disks.</param>
         /// <param name="completionPercent">Percentage complete for the
@@ -76,8 +81,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="logicalSectorSize">Logical sector size in bytes for
         /// disk restore points of UltraSSD_LRS and PremiumV2_LRS disks.
         /// Supported values are 512 and 4096. 4096 is the default.</param>
-        public DiskRestorePoint(string id = default(string), string name = default(string), string type = default(string), System.DateTime? timeCreated = default(System.DateTime?), string sourceResourceId = default(string), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), string familyId = default(string), string sourceUniqueId = default(string), Encryption encryption = default(Encryption), bool? supportsHibernation = default(bool?), string networkAccessPolicy = default(string), string publicNetworkAccess = default(string), string diskAccessId = default(string), double? completionPercent = default(double?), string replicationState = default(string), string sourceResourceLocation = default(string), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), int? logicalSectorSize = default(int?))
-            : base(id, name, type)
+        public DiskRestorePoint(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? timeCreated = default(System.DateTime?), string sourceResourceId = default(string), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), DiskPurchasePlan purchasePlan = default(DiskPurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), string familyId = default(string), string sourceUniqueId = default(string), Encryption encryption = default(Encryption), bool? supportsHibernation = default(bool?), string networkAccessPolicy = default(string), string publicNetworkAccess = default(string), string diskAccessId = default(string), double? completionPercent = default(double?), string replicationState = default(string), string sourceResourceLocation = default(string), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), int? logicalSectorSize = default(int?))
+            : base(location, id, name, type, tags)
         {
             TimeCreated = timeCreated;
             SourceResourceId = sourceResourceId;
@@ -136,7 +141,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// the OS disk was created.
         /// </summary>
         [JsonProperty(PropertyName = "properties.purchasePlan")]
-        public PurchasePlan PurchasePlan { get; set; }
+        public DiskPurchasePlan PurchasePlan { get; set; }
 
         /// <summary>
         /// Gets or sets list of supported capabilities for the image from
@@ -171,14 +176,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         public bool? SupportsHibernation { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'AllowAll', 'AllowPrivate',
-        /// 'DenyAll'
+        /// Gets or sets policy for accessing the disk via network. Possible
+        /// values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkAccessPolicy")]
         public string NetworkAccessPolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'Enabled', 'Disabled'
+        /// Gets or sets policy for controlling export on the disk. Possible
+        /// values include: 'Enabled', 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public string PublicNetworkAccess { get; set; }
@@ -232,8 +238,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (PurchasePlan != null)
             {
                 PurchasePlan.Validate();

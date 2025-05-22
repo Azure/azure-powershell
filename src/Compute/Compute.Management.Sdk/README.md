@@ -71,20 +71,72 @@ directive:
     transform: >
       $.tags = [];
 
-  # Set PassNames enum name
+  # Remove existing PassNames and ComponentNames definitions
   - from: swagger-document
-    where: $.definitions.PassNames
+    where: $.definitions
     transform: |
-      $["x-ms-enum"].name = "PassNames";
-      $["x-ms-enum"].modelAsString = false;
+      // Delete existing definitions if they exist
+      if ($.PassNames) {
+        delete $.PassNames;
+      }
+      if ($.ComponentNames) {
+        delete $.ComponentNames;
+      }
+      if ($.SettingNames) {
+        delete $.SettingNames;
+      }
       return $;
-  
-  # Set ComponentNames enum name
+
+  # Define AdditionalUnattendContent structure
   - from: swagger-document
-    where: $.definitions.ComponentNames
+    where: $.definitions
     transform: |
-      $["x-ms-enum"].name = "ComponentNames";
-      $["x-ms-enum"].modelAsString = false;
+      $.AdditionalUnattendContent = {
+        "type": "object",
+        "description": "Specifies additional XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. Contents are defined by setting name, component name, and the pass in which the content is applied.",
+        "properties": {
+          "passName": {
+            "type": "string",
+            "description": "The pass name. Currently, the only allowable value is OobeSystem.",
+            "enum": [
+              "OobeSystem"
+            ],
+            "x-ms-enum": {
+              "name": "PassNames",
+              "modelAsString": false
+            },
+            "x-nullable": true
+          },
+          "componentName": {
+            "type": "string",
+            "description": "The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.",
+            "enum": [
+              "Microsoft-Windows-Shell-Setup"
+            ],
+            "x-ms-enum": {
+              "name": "ComponentNames",
+              "modelAsString": false
+            },
+            "x-nullable": true
+          },
+          "settingName": {
+            "type": "string",
+            "description": "Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.",
+            "enum": [
+              "AutoLogon",
+              "FirstLogonCommands"
+            ],
+            "x-ms-enum": {
+              "name": "SettingNames",
+              "modelAsString": false
+            }
+          },
+          "content": {
+            "type": "string",
+            "description": "Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted."
+          }
+        }
+      };
       return $;
 
   # Rename TrackedResource definition to Resource
@@ -116,23 +168,6 @@ directive:
       };
       
       return traverse($);
-
-  # Set PassNames as enum name for the enum containing OobeSystem
-  - from: swagger-document
-    where: $..["x-ms-enum"]
-    transform: |
-      if ($ && $.values && $.values.some(v => v.value === 'OobeSystem') && !$.name) {
-        $.name = "PassNames";
-      }
-      return $;
-
-  - from: swagger-document
-    where: $..["x-ms-enum"]
-    transform: |
-      if ($ && $.values && $.values.some(v => v.value === 'Microsoft-Windows-Shell-Setup') && !$.name) {
-        $.name = "ComponentNames";
-      }
-      return $;
 
   # Update OrchestrationServiceNames enum consistently
   - from: ComputeRP.json

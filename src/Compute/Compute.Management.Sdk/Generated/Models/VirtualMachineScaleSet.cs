@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// machine scale set.</param>
         /// <param name="identity">The identity of the virtual machine scale
         /// set, if configured.</param>
-        /// <param name="zones">The virtual machine scale set zones.</param>
+        /// <param name="zones">The availability zones.</param>
         /// <param name="extendedLocation">The extended location of the Virtual
         /// Machine Scale Set.</param>
         /// <param name="etag">Etag is property returned in Create/Update/Get
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public VirtualMachineScaleSetIdentity Identity { get; set; }
 
         /// <summary>
-        /// Gets or sets the virtual machine scale set zones.
+        /// Gets or sets the availability zones.
         /// </summary>
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; set; }

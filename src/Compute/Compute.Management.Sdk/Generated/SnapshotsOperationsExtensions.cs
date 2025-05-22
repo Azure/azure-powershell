@@ -22,225 +22,6 @@ namespace Microsoft.Azure.Management.Compute
     public static partial class SnapshotsOperationsExtensions
     {
             /// <summary>
-            /// Creates or updates a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot that is being created. The name can't be changed
-            /// after the snapshot is created. Supported characters for the name are a-z,
-            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
-            /// </param>
-            /// <param name='snapshot'>
-            /// Snapshot object supplied in the body of the Put disk operation.
-            /// </param>
-            public static Snapshot CreateOrUpdate(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, Snapshot snapshot)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, snapshotName, snapshot).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot that is being created. The name can't be changed
-            /// after the snapshot is created. Supported characters for the name are a-z,
-            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
-            /// </param>
-            /// <param name='snapshot'>
-            /// Snapshot object supplied in the body of the Put disk operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Snapshot> CreateOrUpdateAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, Snapshot snapshot, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, snapshotName, snapshot, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Updates (patches) a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot that is being created. The name can't be changed
-            /// after the snapshot is created. Supported characters for the name are a-z,
-            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
-            /// </param>
-            /// <param name='snapshot'>
-            /// Snapshot object supplied in the body of the Patch snapshot operation.
-            /// </param>
-            public static Snapshot Update(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, SnapshotUpdate snapshot)
-            {
-                return operations.UpdateAsync(resourceGroupName, snapshotName, snapshot).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates (patches) a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot that is being created. The name can't be changed
-            /// after the snapshot is created. Supported characters for the name are a-z,
-            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
-            /// </param>
-            /// <param name='snapshot'>
-            /// Snapshot object supplied in the body of the Patch snapshot operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Snapshot> UpdateAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, SnapshotUpdate snapshot, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, snapshotName, snapshot, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets information about a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot that is being created. The name can't be changed
-            /// after the snapshot is created. Supported characters for the name are a-z,
-            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
-            /// </param>
-            public static Snapshot Get(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName)
-            {
-                return operations.GetAsync(resourceGroupName, snapshotName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets information about a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot that is being created. The name can't be changed
-            /// after the snapshot is created. Supported characters for the name are a-z,
-            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Snapshot> GetAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, snapshotName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Deletes a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot that is being created. The name can't be changed
-            /// after the snapshot is created. Supported characters for the name are a-z,
-            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
-            /// </param>
-            public static void Delete(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName)
-            {
-                operations.DeleteAsync(resourceGroupName, snapshotName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot that is being created. The name can't be changed
-            /// after the snapshot is created. Supported characters for the name are a-z,
-            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, snapshotName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Lists snapshots under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            public static IPage<Snapshot> ListByResourceGroup(this ISnapshotsOperations operations, string resourceGroupName)
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists snapshots under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Snapshot>> ListByResourceGroupAsync(this ISnapshotsOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Lists snapshots under a subscription.
             /// </summary>
             /// <param name='operations'>
@@ -269,13 +50,232 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
+            /// Lists snapshots under a resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            public static IPage<Snapshot> ListByResourceGroup(this ISnapshotsOperations operations, string resourceGroupName)
+            {
+                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists snapshots under a resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<Snapshot>> ListByResourceGroupAsync(this ISnapshotsOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets information about a snapshot.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='snapshotName'>
+            /// The name of the snapshot that is being created. The name can't be changed
+            /// after the snapshot is created. Supported characters for the name are a-z,
+            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+            /// </param>
+            public static Snapshot Get(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName)
+            {
+                return operations.GetAsync(resourceGroupName, snapshotName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets information about a snapshot.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='snapshotName'>
+            /// The name of the snapshot that is being created. The name can't be changed
+            /// after the snapshot is created. Supported characters for the name are a-z,
+            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Snapshot> GetAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, snapshotName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Creates or updates a snapshot.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='snapshotName'>
+            /// The name of the snapshot that is being created. The name can't be changed
+            /// after the snapshot is created. Supported characters for the name are a-z,
+            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+            /// </param>
+            /// <param name='snapshot'>
+            /// Snapshot object supplied in the body of the Put disk operation.
+            /// </param>
+            public static Snapshot CreateOrUpdate(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, Snapshot snapshot)
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, snapshotName, snapshot).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Creates or updates a snapshot.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='snapshotName'>
+            /// The name of the snapshot that is being created. The name can't be changed
+            /// after the snapshot is created. Supported characters for the name are a-z,
+            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+            /// </param>
+            /// <param name='snapshot'>
+            /// Snapshot object supplied in the body of the Put disk operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Snapshot> CreateOrUpdateAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, Snapshot snapshot, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, snapshotName, snapshot, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Updates (patches) a snapshot.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='snapshotName'>
+            /// The name of the snapshot that is being created. The name can't be changed
+            /// after the snapshot is created. Supported characters for the name are a-z,
+            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+            /// </param>
+            /// <param name='snapshot'>
+            /// Snapshot object supplied in the body of the Patch snapshot operation.
+            /// </param>
+            public static Snapshot Update(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, SnapshotUpdate snapshot)
+            {
+                return operations.UpdateAsync(resourceGroupName, snapshotName, snapshot).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Updates (patches) a snapshot.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='snapshotName'>
+            /// The name of the snapshot that is being created. The name can't be changed
+            /// after the snapshot is created. Supported characters for the name are a-z,
+            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+            /// </param>
+            /// <param name='snapshot'>
+            /// Snapshot object supplied in the body of the Patch snapshot operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Snapshot> UpdateAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, SnapshotUpdate snapshot, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, snapshotName, snapshot, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a snapshot.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='snapshotName'>
+            /// The name of the snapshot that is being created. The name can't be changed
+            /// after the snapshot is created. Supported characters for the name are a-z,
+            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+            /// </param>
+            public static void Delete(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName)
+            {
+                operations.DeleteAsync(resourceGroupName, snapshotName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes a snapshot.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='snapshotName'>
+            /// The name of the snapshot that is being created. The name can't be changed
+            /// after the snapshot is created. Supported characters for the name are a-z,
+            /// A-Z, 0-9, _ and -. The max name length is 80 characters.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, snapshotName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// Grants access to a snapshot.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='snapshotName'>
             /// The name of the snapshot that is being created. The name can't be changed
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='snapshotName'>
             /// The name of the snapshot that is being created. The name can't be changed
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='snapshotName'>
             /// The name of the snapshot that is being created. The name can't be changed
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='snapshotName'>
             /// The name of the snapshot that is being created. The name can't be changed
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='snapshotName'>
             /// The name of the snapshot that is being created. The name can't be changed
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='snapshotName'>
             /// The name of the snapshot that is being created. The name can't be changed
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='snapshotName'>
             /// The name of the snapshot that is being created. The name can't be changed
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='snapshotName'>
             /// The name of the snapshot that is being created. The name can't be changed
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='snapshotName'>
             /// The name of the snapshot that is being created. The name can't be changed
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='snapshotName'>
             /// The name of the snapshot that is being created. The name can't be changed
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='snapshotName'>
             /// The name of the snapshot that is being created. The name can't be changed
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='snapshotName'>
             /// The name of the snapshot that is being created. The name can't be changed
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='snapshotName'>
             /// The name of the snapshot that is being created. The name can't be changed
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='snapshotName'>
             /// The name of the snapshot that is being created. The name can't be changed
@@ -593,40 +593,6 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task BeginRevokeAccessAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginRevokeAccessWithHttpMessagesAsync(resourceGroupName, snapshotName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Lists snapshots under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<Snapshot> ListByResourceGroupNext(this ISnapshotsOperations operations, string nextPageLink)
-            {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists snapshots under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Snapshot>> ListByResourceGroupNextAsync(this ISnapshotsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
             }
 
             /// <summary>
@@ -658,6 +624,40 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task<IPage<Snapshot>> ListNextAsync(this ISnapshotsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists snapshots under a resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<Snapshot> ListByResourceGroupNext(this ISnapshotsOperations operations, string nextPageLink)
+            {
+                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists snapshots under a resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<Snapshot>> ListByResourceGroupNextAsync(this ISnapshotsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

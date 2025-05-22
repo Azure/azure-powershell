@@ -22,27 +22,128 @@ namespace Microsoft.Azure.Management.Compute
     public static partial class GalleryApplicationVersionsOperationsExtensions
     {
             /// <summary>
+            /// List gallery Application Versions in a gallery Application Definition.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            /// <param name='galleryApplicationName'>
+            /// The name of the gallery Application Definition to be retrieved.
+            /// </param>
+            public static IPage<GalleryApplicationVersion> ListByGalleryApplication(this IGalleryApplicationVersionsOperations operations, string resourceGroupName, string galleryName, string galleryApplicationName)
+            {
+                return operations.ListByGalleryApplicationAsync(resourceGroupName, galleryName, galleryApplicationName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// List gallery Application Versions in a gallery Application Definition.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            /// <param name='galleryApplicationName'>
+            /// The name of the gallery Application Definition to be retrieved.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<GalleryApplicationVersion>> ListByGalleryApplicationAsync(this IGalleryApplicationVersionsOperations operations, string resourceGroupName, string galleryName, string galleryApplicationName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByGalleryApplicationWithHttpMessagesAsync(resourceGroupName, galleryName, galleryApplicationName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Retrieves information about a gallery Application Version.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            /// <param name='galleryApplicationName'>
+            /// The name of the gallery Application Definition to be retrieved.
+            /// </param>
+            /// <param name='galleryApplicationVersionName'>
+            /// The name of the gallery Application Version to be retrieved.
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation. Possible values include:
+            /// 'ReplicationStatus', 'UefiSettings'
+            /// </param>
+            public static GalleryApplicationVersion Get(this IGalleryApplicationVersionsOperations operations, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, string expand = default(string))
+            {
+                return operations.GetAsync(resourceGroupName, galleryName, galleryApplicationName, galleryApplicationVersionName, expand).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Retrieves information about a gallery Application Version.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            /// <param name='galleryApplicationName'>
+            /// The name of the gallery Application Definition to be retrieved.
+            /// </param>
+            /// <param name='galleryApplicationVersionName'>
+            /// The name of the gallery Application Version to be retrieved.
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation. Possible values include:
+            /// 'ReplicationStatus', 'UefiSettings'
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GalleryApplicationVersion> GetAsync(this IGalleryApplicationVersionsOperations operations, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, galleryName, galleryApplicationName, galleryApplicationVersionName, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Create or update a gallery Application Version.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='galleryApplicationName'>
-            /// The name of the gallery Application Definition in which the Application
-            /// Version is to be created.
+            /// The name of the gallery Application Definition to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersionName'>
-            /// The name of the gallery Application Version to be created. Needs to follow
-            /// semantic version name pattern: The allowed characters are digit and period.
-            /// Digits must be within the range of a 32-bit integer. Format:
-            /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery Application Version to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersion'>
             /// Parameters supplied to the create or update gallery Application Version
@@ -60,21 +161,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='galleryApplicationName'>
-            /// The name of the gallery Application Definition in which the Application
-            /// Version is to be created.
+            /// The name of the gallery Application Definition to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersionName'>
-            /// The name of the gallery Application Version to be created. Needs to follow
-            /// semantic version name pattern: The allowed characters are digit and period.
-            /// Digits must be within the range of a 32-bit integer. Format:
-            /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery Application Version to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersion'>
             /// Parameters supplied to the create or update gallery Application Version
@@ -98,21 +194,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='galleryApplicationName'>
-            /// The name of the gallery Application Definition in which the Application
-            /// Version is to be updated.
+            /// The name of the gallery Application Definition to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersionName'>
-            /// The name of the gallery Application Version to be updated. Needs to follow
-            /// semantic version name pattern: The allowed characters are digit and period.
-            /// Digits must be within the range of a 32-bit integer. Format:
-            /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery Application Version to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersion'>
             /// Parameters supplied to the update gallery Application Version operation.
@@ -129,21 +220,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='galleryApplicationName'>
-            /// The name of the gallery Application Definition in which the Application
-            /// Version is to be updated.
+            /// The name of the gallery Application Definition to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersionName'>
-            /// The name of the gallery Application Version to be updated. Needs to follow
-            /// semantic version name pattern: The allowed characters are digit and period.
-            /// Digits must be within the range of a 32-bit integer. Format:
-            /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery Application Version to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersion'>
             /// Parameters supplied to the update gallery Application Version operation.
@@ -160,88 +246,22 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Retrieves information about a gallery Application Version.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
-            /// </param>
-            /// <param name='galleryApplicationName'>
-            /// The name of the gallery Application Definition in which the Application
-            /// Version resides.
-            /// </param>
-            /// <param name='galleryApplicationVersionName'>
-            /// The name of the gallery Application Version to be retrieved.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation. Possible values include:
-            /// 'ReplicationStatus', 'UefiSettings'
-            /// </param>
-            public static GalleryApplicationVersion Get(this IGalleryApplicationVersionsOperations operations, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, string expand = default(string))
-            {
-                return operations.GetAsync(resourceGroupName, galleryName, galleryApplicationName, galleryApplicationVersionName, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Retrieves information about a gallery Application Version.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
-            /// </param>
-            /// <param name='galleryApplicationName'>
-            /// The name of the gallery Application Definition in which the Application
-            /// Version resides.
-            /// </param>
-            /// <param name='galleryApplicationVersionName'>
-            /// The name of the gallery Application Version to be retrieved.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation. Possible values include:
-            /// 'ReplicationStatus', 'UefiSettings'
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<GalleryApplicationVersion> GetAsync(this IGalleryApplicationVersionsOperations operations, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, galleryName, galleryApplicationName, galleryApplicationVersionName, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Delete a gallery Application Version.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='galleryApplicationName'>
-            /// The name of the gallery Application Definition in which the Application
-            /// Version resides.
+            /// The name of the gallery Application Definition to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersionName'>
-            /// The name of the gallery Application Version to be deleted.
+            /// The name of the gallery Application Version to be retrieved.
             /// </param>
             public static void Delete(this IGalleryApplicationVersionsOperations operations, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName)
             {
@@ -255,18 +275,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='galleryApplicationName'>
-            /// The name of the gallery Application Definition in which the Application
-            /// Version resides.
+            /// The name of the gallery Application Definition to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersionName'>
-            /// The name of the gallery Application Version to be deleted.
+            /// The name of the gallery Application Version to be retrieved.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -277,77 +295,22 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// List gallery Application Versions in a gallery Application Definition.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
-            /// </param>
-            /// <param name='galleryApplicationName'>
-            /// The name of the Shared Application Gallery Application Definition from
-            /// which the Application Versions are to be listed.
-            /// </param>
-            public static IPage<GalleryApplicationVersion> ListByGalleryApplication(this IGalleryApplicationVersionsOperations operations, string resourceGroupName, string galleryName, string galleryApplicationName)
-            {
-                return operations.ListByGalleryApplicationAsync(resourceGroupName, galleryName, galleryApplicationName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// List gallery Application Versions in a gallery Application Definition.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
-            /// </param>
-            /// <param name='galleryApplicationName'>
-            /// The name of the Shared Application Gallery Application Definition from
-            /// which the Application Versions are to be listed.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<GalleryApplicationVersion>> ListByGalleryApplicationAsync(this IGalleryApplicationVersionsOperations operations, string resourceGroupName, string galleryName, string galleryApplicationName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByGalleryApplicationWithHttpMessagesAsync(resourceGroupName, galleryName, galleryApplicationName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Create or update a gallery Application Version.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='galleryApplicationName'>
-            /// The name of the gallery Application Definition in which the Application
-            /// Version is to be created.
+            /// The name of the gallery Application Definition to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersionName'>
-            /// The name of the gallery Application Version to be created. Needs to follow
-            /// semantic version name pattern: The allowed characters are digit and period.
-            /// Digits must be within the range of a 32-bit integer. Format:
-            /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery Application Version to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersion'>
             /// Parameters supplied to the create or update gallery Application Version
@@ -365,21 +328,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='galleryApplicationName'>
-            /// The name of the gallery Application Definition in which the Application
-            /// Version is to be created.
+            /// The name of the gallery Application Definition to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersionName'>
-            /// The name of the gallery Application Version to be created. Needs to follow
-            /// semantic version name pattern: The allowed characters are digit and period.
-            /// Digits must be within the range of a 32-bit integer. Format:
-            /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery Application Version to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersion'>
             /// Parameters supplied to the create or update gallery Application Version
@@ -403,21 +361,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='galleryApplicationName'>
-            /// The name of the gallery Application Definition in which the Application
-            /// Version is to be updated.
+            /// The name of the gallery Application Definition to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersionName'>
-            /// The name of the gallery Application Version to be updated. Needs to follow
-            /// semantic version name pattern: The allowed characters are digit and period.
-            /// Digits must be within the range of a 32-bit integer. Format:
-            /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery Application Version to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersion'>
             /// Parameters supplied to the update gallery Application Version operation.
@@ -434,21 +387,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='galleryApplicationName'>
-            /// The name of the gallery Application Definition in which the Application
-            /// Version is to be updated.
+            /// The name of the gallery Application Definition to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersionName'>
-            /// The name of the gallery Application Version to be updated. Needs to follow
-            /// semantic version name pattern: The allowed characters are digit and period.
-            /// Digits must be within the range of a 32-bit integer. Format:
-            /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery Application Version to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersion'>
             /// Parameters supplied to the update gallery Application Version operation.
@@ -471,18 +419,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='galleryApplicationName'>
-            /// The name of the gallery Application Definition in which the Application
-            /// Version resides.
+            /// The name of the gallery Application Definition to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersionName'>
-            /// The name of the gallery Application Version to be deleted.
+            /// The name of the gallery Application Version to be retrieved.
             /// </param>
             public static void BeginDelete(this IGalleryApplicationVersionsOperations operations, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName)
             {
@@ -496,18 +442,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Application Gallery in which the Application
-            /// Definition resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='galleryApplicationName'>
-            /// The name of the gallery Application Definition in which the Application
-            /// Version resides.
+            /// The name of the gallery Application Definition to be retrieved.
             /// </param>
             /// <param name='galleryApplicationVersionName'>
-            /// The name of the gallery Application Version to be deleted.
+            /// The name of the gallery Application Version to be retrieved.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

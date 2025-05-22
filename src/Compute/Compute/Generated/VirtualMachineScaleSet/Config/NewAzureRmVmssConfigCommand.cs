@@ -910,11 +910,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vIdentity = new VirtualMachineScaleSetIdentity();
                 }
 
-                vIdentity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
+                vIdentity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValueModel>();
 
                 foreach (var id in this.IdentityId)
                 {
-                    vIdentity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValue());
+                    vIdentity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValueModel());
                 }
             }
 

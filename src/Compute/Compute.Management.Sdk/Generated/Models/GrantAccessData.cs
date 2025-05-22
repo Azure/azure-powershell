@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the GrantAccessData class.
         /// </summary>
-        /// <param name="access">Possible values include: 'None', 'Read',
+        /// <param name="access">The Access Level, accepted values include
+        /// None, Read, Write. Possible values include: 'None', 'Read',
         /// 'Write'</param>
         /// <param name="durationInSeconds">Time duration in seconds until the
         /// SAS access expires.</param>
@@ -54,7 +55,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets possible values include: 'None', 'Read', 'Write'
+        /// Gets or sets the Access Level, accepted values include None, Read,
+        /// Write. Possible values include: 'None', 'Read', 'Write'
         /// </summary>
         [JsonProperty(PropertyName = "access")]
         public string Access { get; set; }

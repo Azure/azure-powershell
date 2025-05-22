@@ -22,17 +22,108 @@ namespace Microsoft.Azure.Management.Compute
     public static partial class VirtualMachineScaleSetExtensionsOperationsExtensions
     {
             /// <summary>
+            /// Gets a list of all extensions in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            public static IPage<VirtualMachineScaleSetExtension> List(this IVirtualMachineScaleSetExtensionsOperations operations, string resourceGroupName, string vmScaleSetName)
+            {
+                return operations.ListAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets a list of all extensions in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<VirtualMachineScaleSetExtension>> ListAsync(this IVirtualMachineScaleSetExtensionsOperations operations, string resourceGroupName, string vmScaleSetName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to get the extension.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='vmssExtensionName'>
+            /// The name of the VM scale set extension.
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation.
+            /// </param>
+            public static VirtualMachineScaleSetExtension Get(this IVirtualMachineScaleSetExtensionsOperations operations, string resourceGroupName, string vmScaleSetName, string vmssExtensionName, string expand = default(string))
+            {
+                return operations.GetAsync(resourceGroupName, vmScaleSetName, vmssExtensionName, expand).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to get the extension.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='vmssExtensionName'>
+            /// The name of the VM scale set extension.
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetExtension> GetAsync(this IVirtualMachineScaleSetExtensionsOperations operations, string resourceGroupName, string vmScaleSetName, string vmssExtensionName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, vmssExtensionName, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// The operation to create or update an extension.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be create or
-            /// updated.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='vmssExtensionName'>
             /// The name of the VM scale set extension.
@@ -52,11 +143,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be create or
-            /// updated.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='vmssExtensionName'>
             /// The name of the VM scale set extension.
@@ -82,10 +172,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be updated.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='vmssExtensionName'>
             /// The name of the VM scale set extension.
@@ -105,10 +195,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be updated.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='vmssExtensionName'>
             /// The name of the VM scale set extension.
@@ -134,10 +224,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be deleted.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='vmssExtensionName'>
             /// The name of the VM scale set extension.
@@ -154,10 +244,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be deleted.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='vmssExtensionName'>
             /// The name of the VM scale set extension.
@@ -171,109 +261,16 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// The operation to get the extension.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set containing the extension.
-            /// </param>
-            /// <param name='vmssExtensionName'>
-            /// The name of the VM scale set extension.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
-            /// </param>
-            public static VirtualMachineScaleSetExtension Get(this IVirtualMachineScaleSetExtensionsOperations operations, string resourceGroupName, string vmScaleSetName, string vmssExtensionName, string expand = default(string))
-            {
-                return operations.GetAsync(resourceGroupName, vmScaleSetName, vmssExtensionName, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to get the extension.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set containing the extension.
-            /// </param>
-            /// <param name='vmssExtensionName'>
-            /// The name of the VM scale set extension.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineScaleSetExtension> GetAsync(this IVirtualMachineScaleSetExtensionsOperations operations, string resourceGroupName, string vmScaleSetName, string vmssExtensionName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, vmssExtensionName, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets a list of all extensions in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set containing the extension.
-            /// </param>
-            public static IPage<VirtualMachineScaleSetExtension> List(this IVirtualMachineScaleSetExtensionsOperations operations, string resourceGroupName, string vmScaleSetName)
-            {
-                return operations.ListAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a list of all extensions in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set containing the extension.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<VirtualMachineScaleSetExtension>> ListAsync(this IVirtualMachineScaleSetExtensionsOperations operations, string resourceGroupName, string vmScaleSetName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// The operation to create or update an extension.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be create or
-            /// updated.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='vmssExtensionName'>
             /// The name of the VM scale set extension.
@@ -293,11 +290,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be create or
-            /// updated.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='vmssExtensionName'>
             /// The name of the VM scale set extension.
@@ -323,10 +319,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be updated.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='vmssExtensionName'>
             /// The name of the VM scale set extension.
@@ -346,10 +342,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be updated.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='vmssExtensionName'>
             /// The name of the VM scale set extension.
@@ -375,10 +371,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be deleted.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='vmssExtensionName'>
             /// The name of the VM scale set extension.
@@ -395,10 +391,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be deleted.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='vmssExtensionName'>
             /// The name of the VM scale set extension.

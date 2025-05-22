@@ -60,11 +60,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// relationship established between the AAD tenants. **Note:** Minimum
         /// api-version: 2023-09-01. Please refer to
         /// https://aka.ms/computereservationsharing for more details.</param>
-        /// <param name="zones">Availability Zones to use for this capacity
-        /// reservation group. The zones can be assigned only during creation.
-        /// If not provided, the group supports only regional resources in the
-        /// region. If provided, enforces each capacity reservation in the
-        /// group to be in one of the zones.</param>
+        /// <param name="zones">The availability zones.</param>
         public CapacityReservationGroup(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubResourceReadOnly> capacityReservations = default(IList<SubResourceReadOnly>), IList<SubResourceReadOnly> virtualMachinesAssociated = default(IList<SubResourceReadOnly>), CapacityReservationGroupInstanceView instanceView = default(CapacityReservationGroupInstanceView), ResourceSharingProfile sharingProfile = default(ResourceSharingProfile), IList<string> zones = default(IList<string>))
             : base(location, id, name, type, tags)
         {
@@ -117,11 +113,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public ResourceSharingProfile SharingProfile { get; set; }
 
         /// <summary>
-        /// Gets or sets availability Zones to use for this capacity
-        /// reservation group. The zones can be assigned only during creation.
-        /// If not provided, the group supports only regional resources in the
-        /// region. If provided, enforces each capacity reservation in the
-        /// group to be in one of the zones.
+        /// Gets or sets the availability zones.
         /// </summary>
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; set; }

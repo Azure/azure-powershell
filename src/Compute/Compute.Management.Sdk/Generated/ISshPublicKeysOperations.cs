@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Compute
         /// SSH public keys.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -69,10 +69,35 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse<IPage<SshPublicKeyResource>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Retrieves information about an SSH public key.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='sshPublicKeyName'>
+        /// The name of the SSH public key.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<SshPublicKeyResource>> GetWithHttpMessagesAsync(string resourceGroupName, string sshPublicKeyName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Creates a new SSH public key resource.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='sshPublicKeyName'>
         /// The name of the SSH public key.
@@ -100,7 +125,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Updates a new SSH public key resource.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='sshPublicKeyName'>
         /// The name of the SSH public key.
@@ -128,7 +153,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Delete an SSH public key.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='sshPublicKeyName'>
         /// The name of the SSH public key.
@@ -147,38 +172,13 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string sshPublicKeyName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Retrieves information about an SSH public key.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='sshPublicKeyName'>
-        /// The name of the SSH public key.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<SshPublicKeyResource>> GetWithHttpMessagesAsync(string resourceGroupName, string sshPublicKeyName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Generates and returns a public/private key pair and populates the
         /// SSH public key resource with the public key. The length of the key
         /// will be 3072 bits. This operation can only be performed once per
         /// SSH public key resource.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='sshPublicKeyName'>
         /// The name of the SSH public key.

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Compute
         /// List shared gallery image versions by subscription id or tenant id.
         /// </summary>
         /// <param name='location'>
-        /// Resource location.
+        /// The name of Azure region.
         /// </param>
         /// <param name='galleryUniqueName'>
         /// The unique name of the Shared Gallery.
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Get a shared gallery image version by subscription id or tenant id.
         /// </summary>
         /// <param name='location'>
-        /// Resource location.
+        /// The name of Azure region.
         /// </param>
         /// <param name='galleryUniqueName'>
         /// The unique name of the Shared Gallery.

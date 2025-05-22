@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// whether the virtual machines created under this image are
         /// 'Generalized' or 'Specialized'. Possible values include:
         /// 'Generalized', 'Specialized'</param>
+        /// <param name="identifier">This is the gallery image definition
+        /// identifier.</param>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
@@ -61,11 +63,19 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="endOfLifeDate">The end of life date of the gallery
         /// image definition. This property can be used for decommissioning
         /// purposes. This property is updatable.</param>
-        /// <param name="provisioningState">Possible values include:
-        /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
-        /// 'Migrating'</param>
+        /// <param name="recommended">The properties describe the recommended
+        /// machine configuration for this Image Definition. These properties
+        /// are updatable.</param>
+        /// <param name="disallowed">Describes the disallowed disk
+        /// types.</param>
+        /// <param name="purchasePlan">Describes the gallery image definition
+        /// purchase plan. This is used by marketplace images.</param>
+        /// <param name="provisioningState">The provisioning state, which only
+        /// appears in the response. Possible values include: 'Creating',
+        /// 'Updating', 'Failed', 'Succeeded', 'Deleting', 'Migrating'</param>
         /// <param name="features">A list of gallery image features.</param>
-        /// <param name="architecture">Possible values include: 'x64',
+        /// <param name="architecture">The architecture of the image.
+        /// Applicable to OS disks only. Possible values include: 'x64',
         /// 'Arm64'</param>
         /// <param name="allowUpdateImage">Optional. Must be set to true if the
         /// gallery image features are being updated.</param>
@@ -155,27 +165,35 @@ namespace Microsoft.Azure.Management.Compute.Models
         public System.DateTime? EndOfLifeDate { get; set; }
 
         /// <summary>
+        /// Gets or sets this is the gallery image definition identifier.
         /// </summary>
         [JsonProperty(PropertyName = "properties.identifier")]
         public GalleryImageIdentifier Identifier { get; set; }
 
         /// <summary>
+        /// Gets or sets the properties describe the recommended machine
+        /// configuration for this Image Definition. These properties are
+        /// updatable.
         /// </summary>
         [JsonProperty(PropertyName = "properties.recommended")]
         public RecommendedMachineConfiguration Recommended { get; set; }
 
         /// <summary>
+        /// Gets or sets describes the disallowed disk types.
         /// </summary>
         [JsonProperty(PropertyName = "properties.disallowed")]
         public Disallowed Disallowed { get; set; }
 
         /// <summary>
+        /// Gets or sets describes the gallery image definition purchase plan.
+        /// This is used by marketplace images.
         /// </summary>
         [JsonProperty(PropertyName = "properties.purchasePlan")]
         public ImagePurchasePlan PurchasePlan { get; set; }
 
         /// <summary>
-        /// Gets possible values include: 'Creating', 'Updating', 'Failed',
+        /// Gets the provisioning state, which only appears in the response.
+        /// Possible values include: 'Creating', 'Updating', 'Failed',
         /// 'Succeeded', 'Deleting', 'Migrating'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
@@ -188,7 +206,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public IList<GalleryImageFeature> Features { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'x64', 'Arm64'
+        /// Gets or sets the architecture of the image. Applicable to OS disks
+        /// only. Possible values include: 'x64', 'Arm64'
         /// </summary>
         [JsonProperty(PropertyName = "properties.architecture")]
         public string Architecture { get; set; }

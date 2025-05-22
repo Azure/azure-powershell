@@ -10,16 +10,18 @@
 
 namespace Microsoft.Azure.Management.Compute.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
-    using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The resource model definition for an Azure Resource Manager proxy
-    /// resource. It will not have tags and a location
+    /// Proxy Resource
     /// </summary>
-    public partial class ProxyResource : IResource
+    /// <remarks>
+    /// The resource model definition for a Azure Resource Manager proxy
+    /// resource. It will not have tags and a location
+    /// </remarks>
+    public partial class ProxyResource : ResourceOriginal
     {
         /// <summary>
         /// Initializes a new instance of the ProxyResource class.
@@ -32,14 +34,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ProxyResource class.
         /// </summary>
+        /// <param name="location">Resource location</param>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
-        public ProxyResource(string id = default(string), string name = default(string), string type = default(string))
+        /// <param name="tags">Resource tags.</param>
+        public ProxyResource(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+            : base(location, id, name, type, tags)
         {
-            Id = id;
-            Name = name;
-            Type = type;
             CustomInit();
         }
 
@@ -49,22 +51,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets resource Id
+        /// Validate the object.
         /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
-        /// Gets resource name
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets resource type
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
-
+        /// <exception cref="Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

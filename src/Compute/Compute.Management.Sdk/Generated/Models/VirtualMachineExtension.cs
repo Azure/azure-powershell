@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// Describes a Virtual Machine Extension.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineExtension : ResourceWithOptionalLocation
+    public partial class VirtualMachineExtension : Resource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineExtension class.
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// key vault</param>
         /// <param name="provisionAfterExtensions">Collection of extension
         /// names after which this extension needs to be provisioned.</param>
-        public VirtualMachineExtension(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string forceUpdateTag = default(string), string publisher = default(string), string virtualMachineExtensionType = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), bool? enableAutomaticUpgrade = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), VirtualMachineExtensionInstanceView instanceView = default(VirtualMachineExtensionInstanceView), bool? suppressFailures = default(bool?), KeyVaultSecretReference protectedSettingsFromKeyVault = default(KeyVaultSecretReference), IList<string> provisionAfterExtensions = default(IList<string>))
+        public VirtualMachineExtension(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string forceUpdateTag = default(string), string publisher = default(string), string virtualMachineExtensionType = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), bool? enableAutomaticUpgrade = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), VirtualMachineExtensionInstanceView instanceView = default(VirtualMachineExtensionInstanceView), bool? suppressFailures = default(bool?), KeyVaultSecretReference protectedSettingsFromKeyVault = default(KeyVaultSecretReference), IList<string> provisionAfterExtensions = default(IList<string>))
             : base(location, id, name, type, tags)
         {
             ForceUpdateTag = forceUpdateTag;
@@ -195,8 +195,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (ProtectedSettingsFromKeyVault != null)
             {
                 ProtectedSettingsFromKeyVault.Validate();

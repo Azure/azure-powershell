@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
+        /// <param name="properties">Describes the properties of a gallery
+        /// inVMAccessControlProfile.</param>
         public GalleryInVMAccessControlProfile(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), GalleryInVMAccessControlProfileProperties properties = default(GalleryInVMAccessControlProfileProperties))
             : base(location, id, name, type, tags)
         {
@@ -52,6 +54,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets describes the properties of a gallery
+        /// inVMAccessControlProfile.
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
         public GalleryInVMAccessControlProfileProperties Properties { get; set; }

@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string Region { get; set; }
 
         /// <summary>
-        /// Gets or sets gallery sharing state in current region. Possible
-        /// values include: 'Succeeded', 'InProgress', 'Failed', 'Unknown'
+        /// Gets gallery sharing state in current region. Possible values
+        /// include: 'Succeeded', 'InProgress', 'Failed', 'Unknown'
         /// </summary>
         [JsonProperty(PropertyName = "state")]
-        public string State { get; set; }
+        public string State { get; private set; }
 
         /// <summary>
         /// Gets or sets details of gallery regional sharing failure.

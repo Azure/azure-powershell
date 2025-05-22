@@ -39,13 +39,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="plan">Specifies information about the marketplace
-        /// image used to create the virtual machine. This element is only used
-        /// for marketplace images. Before you can use a marketplace image from
-        /// an API, you must enable the image for programmatic use.  In the
-        /// Azure portal, find the marketplace image that you want to use and
-        /// then click **Want to deploy programmatically, Get Started -&gt;**.
-        /// Enter any required information and then click **Save**.</param>
         /// <param name="hardwareProfile">Specifies the hardware settings for
         /// the virtual machine.</param>
         /// <param name="scheduledEventsPolicy">Specifies Redeploy, Reboot and
@@ -160,11 +153,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="timeCreated">Specifies the time at which the Virtual
         /// Machine resource was created. Minimum api-version:
         /// 2021-11-01.</param>
+        /// <param name="plan">Specifies information about the marketplace
+        /// image used to create the virtual machine. This element is only used
+        /// for marketplace images. Before you can use a marketplace image from
+        /// an API, you must enable the image for programmatic use.  In the
+        /// Azure portal, find the marketplace image that you want to use and
+        /// then click **Want to deploy programmatically, Get Started -&gt;**.
+        /// Enter any required information and then click **Save**.</param>
         /// <param name="resources">The virtual machine child extension
         /// resources.</param>
         /// <param name="identity">The identity of the virtual machine, if
         /// configured.</param>
-        /// <param name="zones">The virtual machine zones.</param>
+        /// <param name="zones">The availability zones.</param>
         /// <param name="extendedLocation">The extended location of the Virtual
         /// Machine.</param>
         /// <param name="managedBy">ManagedBy is set to Virtual Machine Scale
@@ -178,10 +178,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// user-defined constraints for virtual machine hardware placement.
         /// This property cannot be changed once VM is provisioned. Minimum
         /// api-version: 2024-11-01.</param>
-        public VirtualMachine(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Plan plan = default(Plan), HardwareProfile hardwareProfile = default(HardwareProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), SubResource virtualMachineScaleSet = default(SubResource), SubResource proximityPlacementGroup = default(SubResource), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), SubResource host = default(SubResource), SubResource hostGroup = default(SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), string extensionsTimeBudget = default(string), int? platformFaultDomain = default(int?), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), System.DateTime? timeCreated = default(System.DateTime?), IList<VirtualMachineExtension> resources = default(IList<VirtualMachineExtension>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string managedBy = default(string), string etag = default(string), Placement placement = default(Placement))
+        public VirtualMachine(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), HardwareProfile hardwareProfile = default(HardwareProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), SubResource virtualMachineScaleSet = default(SubResource), SubResource proximityPlacementGroup = default(SubResource), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), SubResource host = default(SubResource), SubResource hostGroup = default(SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), string extensionsTimeBudget = default(string), int? platformFaultDomain = default(int?), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), System.DateTime? timeCreated = default(System.DateTime?), Plan plan = default(Plan), IList<VirtualMachineExtension> resources = default(IList<VirtualMachineExtension>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string managedBy = default(string), string etag = default(string), Placement placement = default(Placement))
             : base(location, id, name, type, tags)
         {
-            Plan = plan;
             HardwareProfile = hardwareProfile;
             ScheduledEventsPolicy = scheduledEventsPolicy;
             StorageProfile = storageProfile;
@@ -209,6 +208,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             CapacityReservation = capacityReservation;
             ApplicationProfile = applicationProfile;
             TimeCreated = timeCreated;
+            Plan = plan;
             Resources = resources;
             Identity = identity;
             Zones = zones;
@@ -223,18 +223,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets specifies information about the marketplace image used
-        /// to create the virtual machine. This element is only used for
-        /// marketplace images. Before you can use a marketplace image from an
-        /// API, you must enable the image for programmatic use.  In the Azure
-        /// portal, find the marketplace image that you want to use and then
-        /// click **Want to deploy programmatically, Get Started -&amp;gt;**.
-        /// Enter any required information and then click **Save**.
-        /// </summary>
-        [JsonProperty(PropertyName = "plan")]
-        public Plan Plan { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the hardware settings for the virtual
@@ -482,6 +470,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         public System.DateTime? TimeCreated { get; private set; }
 
         /// <summary>
+        /// Gets or sets specifies information about the marketplace image used
+        /// to create the virtual machine. This element is only used for
+        /// marketplace images. Before you can use a marketplace image from an
+        /// API, you must enable the image for programmatic use.  In the Azure
+        /// portal, find the marketplace image that you want to use and then
+        /// click **Want to deploy programmatically, Get Started -&amp;gt;**.
+        /// Enter any required information and then click **Save**.
+        /// </summary>
+        [JsonProperty(PropertyName = "plan")]
+        public Plan Plan { get; set; }
+
+        /// <summary>
         /// Gets the virtual machine child extension resources.
         /// </summary>
         [JsonProperty(PropertyName = "resources")]
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public VirtualMachineIdentity Identity { get; set; }
 
         /// <summary>
-        /// Gets or sets the virtual machine zones.
+        /// Gets or sets the availability zones.
         /// </summary>
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; set; }

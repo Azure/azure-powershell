@@ -40,6 +40,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// to be used to store the image. This property is not updatable.
         /// Possible values include: 'Standard_LRS', 'Standard_ZRS',
         /// 'Premium_LRS', 'PremiumV2_LRS'</param>
+        /// <param name="encryption">Optional. Allows users to provide customer
+        /// managed keys for encrypting the OS and data disks in the gallery
+        /// artifact.</param>
         /// <param name="excludeFromLatest">Contains the flag setting to hide
         /// an image when users specify version='latest'</param>
         /// <param name="additionalReplicaSets">List of storage sku with
@@ -82,6 +85,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string StorageAccountType { get; set; }
 
         /// <summary>
+        /// Gets or sets optional. Allows users to provide customer managed
+        /// keys for encrypting the OS and data disks in the gallery artifact.
         /// </summary>
         [JsonProperty(PropertyName = "encryption")]
         public EncryptionImages Encryption { get; set; }

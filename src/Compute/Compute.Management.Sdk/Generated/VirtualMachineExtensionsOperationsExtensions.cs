@@ -22,17 +22,114 @@ namespace Microsoft.Azure.Management.Compute
     public static partial class VirtualMachineExtensionsOperationsExtensions
     {
             /// <summary>
+            /// The operation to get all extensions of a Virtual Machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation.
+            /// </param>
+            public static VirtualMachineExtensionsListResult List(this IVirtualMachineExtensionsOperations operations, string resourceGroupName, string vmName, string expand = default(string))
+            {
+                return operations.ListAsync(resourceGroupName, vmName, expand).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to get all extensions of a Virtual Machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineExtensionsListResult> ListAsync(this IVirtualMachineExtensionsOperations operations, string resourceGroupName, string vmName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, vmName, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to get the extension.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='vmExtensionName'>
+            /// The name of the virtual machine extension.
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation.
+            /// </param>
+            public static VirtualMachineExtension Get(this IVirtualMachineExtensionsOperations operations, string resourceGroupName, string vmName, string vmExtensionName, string expand = default(string))
+            {
+                return operations.GetAsync(resourceGroupName, vmName, vmExtensionName, expand).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to get the extension.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='vmExtensionName'>
+            /// The name of the virtual machine extension.
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineExtension> GetAsync(this IVirtualMachineExtensionsOperations operations, string resourceGroupName, string vmName, string vmExtensionName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vmName, vmExtensionName, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// The operation to create or update the extension.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the extension should be created or
-            /// updated.
+            /// The name of the virtual machine.
             /// </param>
             /// <param name='vmExtensionName'>
             /// The name of the virtual machine extension.
@@ -52,11 +149,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the extension should be created or
-            /// updated.
+            /// The name of the virtual machine.
             /// </param>
             /// <param name='vmExtensionName'>
             /// The name of the virtual machine extension.
@@ -82,10 +178,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the extension should be updated.
+            /// The name of the virtual machine.
             /// </param>
             /// <param name='vmExtensionName'>
             /// The name of the virtual machine extension.
@@ -105,10 +201,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the extension should be updated.
+            /// The name of the virtual machine.
             /// </param>
             /// <param name='vmExtensionName'>
             /// The name of the virtual machine extension.
@@ -134,10 +230,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the extension should be deleted.
+            /// The name of the virtual machine.
             /// </param>
             /// <param name='vmExtensionName'>
             /// The name of the virtual machine extension.
@@ -154,10 +250,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the extension should be deleted.
+            /// The name of the virtual machine.
             /// </param>
             /// <param name='vmExtensionName'>
             /// The name of the virtual machine extension.
@@ -171,115 +267,16 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// The operation to get the extension.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine containing the extension.
-            /// </param>
-            /// <param name='vmExtensionName'>
-            /// The name of the virtual machine extension.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
-            /// </param>
-            public static VirtualMachineExtension Get(this IVirtualMachineExtensionsOperations operations, string resourceGroupName, string vmName, string vmExtensionName, string expand = default(string))
-            {
-                return operations.GetAsync(resourceGroupName, vmName, vmExtensionName, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to get the extension.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine containing the extension.
-            /// </param>
-            /// <param name='vmExtensionName'>
-            /// The name of the virtual machine extension.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineExtension> GetAsync(this IVirtualMachineExtensionsOperations operations, string resourceGroupName, string vmName, string vmExtensionName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vmName, vmExtensionName, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// The operation to get all extensions of a Virtual Machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine containing the extension.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
-            /// </param>
-            public static VirtualMachineExtensionsListResult List(this IVirtualMachineExtensionsOperations operations, string resourceGroupName, string vmName, string expand = default(string))
-            {
-                return operations.ListAsync(resourceGroupName, vmName, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to get all extensions of a Virtual Machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine containing the extension.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineExtensionsListResult> ListAsync(this IVirtualMachineExtensionsOperations operations, string resourceGroupName, string vmName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, vmName, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// The operation to create or update the extension.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the extension should be created or
-            /// updated.
+            /// The name of the virtual machine.
             /// </param>
             /// <param name='vmExtensionName'>
             /// The name of the virtual machine extension.
@@ -299,11 +296,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the extension should be created or
-            /// updated.
+            /// The name of the virtual machine.
             /// </param>
             /// <param name='vmExtensionName'>
             /// The name of the virtual machine extension.
@@ -329,10 +325,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the extension should be updated.
+            /// The name of the virtual machine.
             /// </param>
             /// <param name='vmExtensionName'>
             /// The name of the virtual machine extension.
@@ -352,10 +348,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the extension should be updated.
+            /// The name of the virtual machine.
             /// </param>
             /// <param name='vmExtensionName'>
             /// The name of the virtual machine extension.
@@ -381,10 +377,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the extension should be deleted.
+            /// The name of the virtual machine.
             /// </param>
             /// <param name='vmExtensionName'>
             /// The name of the virtual machine extension.
@@ -401,10 +397,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the extension should be deleted.
+            /// The name of the virtual machine.
             /// </param>
             /// <param name='vmExtensionName'>
             /// The name of the virtual machine extension.

@@ -24,149 +24,17 @@ namespace Microsoft.Azure.Management.Compute
     public partial interface IVirtualMachineScaleSetVMRunCommandsOperations
     {
         /// <summary>
-        /// The operation to create or update the VMSS VM run command.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
-        /// </param>
-        /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
-        /// </param>
-        /// <param name='runCommandName'>
-        /// The name of the virtual machine run command.
-        /// </param>
-        /// <param name='runCommand'>
-        /// Parameters supplied to the Create Virtual Machine RunCommand
-        /// operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<VirtualMachineRunCommand>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommand runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to update the VMSS VM run command.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
-        /// </param>
-        /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
-        /// </param>
-        /// <param name='runCommandName'>
-        /// The name of the virtual machine run command.
-        /// </param>
-        /// <param name='runCommand'>
-        /// Parameters supplied to the Update Virtual Machine RunCommand
-        /// operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<VirtualMachineRunCommand>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommandUpdate runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to delete the VMSS VM run command.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
-        /// </param>
-        /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
-        /// </param>
-        /// <param name='runCommandName'>
-        /// The name of the virtual machine run command.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to get the VMSS VM run command.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
-        /// </param>
-        /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
-        /// </param>
-        /// <param name='runCommandName'>
-        /// The name of the virtual machine run command.
-        /// </param>
-        /// <param name='expand'>
-        /// The expand expression to apply on the operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<VirtualMachineRunCommand>> GetWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// The operation to get all run commands of an instance in Virtual
         /// Machine Scaleset.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
+        /// The name of the VirtualMachineScaleSet
         /// </param>
         /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
+        /// The name of the VirtualMachineScaleSetVM
         /// </param>
         /// <param name='expand'>
         /// The expand expression to apply on the operation.
@@ -188,19 +56,53 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse<IPage<VirtualMachineRunCommand>>> ListWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// The operation to get the VMSS VM run command.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VirtualMachineScaleSet
+        /// </param>
+        /// <param name='instanceId'>
+        /// The name of the VirtualMachineScaleSetVM
+        /// </param>
+        /// <param name='runCommandName'>
+        /// The name of the VirtualMachineRunCommand
+        /// </param>
+        /// <param name='expand'>
+        /// The expand expression to apply on the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<VirtualMachineRunCommand>> GetWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// The operation to create or update the VMSS VM run command.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
+        /// The name of the VirtualMachineScaleSet
         /// </param>
         /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
+        /// The name of the VirtualMachineScaleSetVM
         /// </param>
         /// <param name='runCommandName'>
-        /// The name of the virtual machine run command.
+        /// The name of the VirtualMachineRunCommand
         /// </param>
         /// <param name='runCommand'>
         /// Parameters supplied to the Create Virtual Machine RunCommand
@@ -221,24 +123,86 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineRunCommand>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommand runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineRunCommand,VirtualMachineScaleSetVMRunCommandsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommand runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation to update the VMSS VM run command.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
+        /// The name of the VirtualMachineScaleSet
         /// </param>
         /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
+        /// The name of the VirtualMachineScaleSetVM
         /// </param>
         /// <param name='runCommandName'>
-        /// The name of the virtual machine run command.
+        /// The name of the VirtualMachineRunCommand
         /// </param>
         /// <param name='runCommand'>
-        /// Parameters supplied to the Update Virtual Machine RunCommand
+        /// Resource create parameters.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<VirtualMachineRunCommand,VirtualMachineScaleSetVMRunCommandsUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommandUpdate runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// The operation to delete the VMSS VM run command.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VirtualMachineScaleSet
+        /// </param>
+        /// <param name='instanceId'>
+        /// The name of the VirtualMachineScaleSetVM
+        /// </param>
+        /// <param name='runCommandName'>
+        /// The name of the VirtualMachineRunCommand
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// The operation to create or update the VMSS VM run command.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VirtualMachineScaleSet
+        /// </param>
+        /// <param name='instanceId'>
+        /// The name of the VirtualMachineScaleSetVM
+        /// </param>
+        /// <param name='runCommandName'>
+        /// The name of the VirtualMachineRunCommand
+        /// </param>
+        /// <param name='runCommand'>
+        /// Parameters supplied to the Create Virtual Machine RunCommand
         /// operation.
         /// </param>
         /// <param name='customHeaders'>
@@ -256,21 +220,55 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineRunCommand>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommandUpdate runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineRunCommand,VirtualMachineScaleSetVMRunCommandsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommand runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// The operation to update the VMSS VM run command.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VirtualMachineScaleSet
+        /// </param>
+        /// <param name='instanceId'>
+        /// The name of the VirtualMachineScaleSetVM
+        /// </param>
+        /// <param name='runCommandName'>
+        /// The name of the VirtualMachineRunCommand
+        /// </param>
+        /// <param name='runCommand'>
+        /// Resource create parameters.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<VirtualMachineRunCommand,VirtualMachineScaleSetVMRunCommandsUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommandUpdate runCommand, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation to delete the VMSS VM run command.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
+        /// The name of the VirtualMachineScaleSet
         /// </param>
         /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
+        /// The name of the VirtualMachineScaleSetVM
         /// </param>
         /// <param name='runCommandName'>
-        /// The name of the virtual machine run command.
+        /// The name of the VirtualMachineRunCommand
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
