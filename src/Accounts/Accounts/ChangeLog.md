@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Force `Get-AzAccessToken` to always return SecureString as long as `AsSecureString` is set
 
 ## Version 5.0.0
 * Changed the default output access token of `Get-AzAccessToken` from plain text to `SecureString`.
