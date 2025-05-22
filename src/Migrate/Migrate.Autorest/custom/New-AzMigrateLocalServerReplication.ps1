@@ -189,7 +189,7 @@ function New-AzMigrateLocalServerReplication {
         
         $MachineIdArray = $MachineId.Split("/")
         if ($MachineIdArray.Length -lt 11) {
-            throw "Invalid machine ID '$MachineId'"
+            throw "Invalid machine ARM ID '$MachineId'"
         }
         $SiteType = $MachineIdArray[7]
         $SiteName = $MachineIdArray[8]
