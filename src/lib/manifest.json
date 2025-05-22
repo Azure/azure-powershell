@@ -1,7 +1,7 @@
 [
     {
         "PackageName": "Azure.Core",
-        "PackageVersion": "1.44.1",
+        "PackageVersion": "1.45.0",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
@@ -72,7 +72,7 @@
     },
     {
         "PackageName": "System.ClientModel",
-        "PackageVersion": "1.1.0",
+        "PackageVersion": "1.2.1",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true

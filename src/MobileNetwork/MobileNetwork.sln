@@ -19,9 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileNetwork", "MobileNetwork\MobileNetwork.csproj", "{56B1ECCD-5FF9-45A0-A048-2929C0D629A4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MobileNetwork.Autorest", "MobileNetwork.Autorest", "{2ECEF623-E620-41E4-C88D-8973EA8EE642}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MobileNetwork", "..\..\generated\MobileNetwork\MobileNetwork.Autorest\Az.MobileNetwork.csproj", "{B65542D4-4B0F-4A1A-B420-49F0D62CF469}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MobileNetwork", "..\..\generated\MobileNetwork\MobileNetwork.Autorest\Az.MobileNetwork.csproj", "{362F2F19-721D-4F74-B228-61C6B96EAA9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,25 +111,10 @@ Global
 		{56B1ECCD-5FF9-45A0-A048-2929C0D629A4}.Debug|x86.Build.0 = Debug|Any CPU
 		{56B1ECCD-5FF9-45A0-A048-2929C0D629A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56B1ECCD-5FF9-45A0-A048-2929C0D629A4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56B1ECCD-5FF9-45A0-A048-2929C0D629A4}.Release|x64.ActiveCfg = Release|Any CPU
-		{56B1ECCD-5FF9-45A0-A048-2929C0D629A4}.Release|x64.Build.0 = Release|Any CPU
-		{56B1ECCD-5FF9-45A0-A048-2929C0D629A4}.Release|x86.ActiveCfg = Release|Any CPU
-		{56B1ECCD-5FF9-45A0-A048-2929C0D629A4}.Release|x86.Build.0 = Release|Any CPU
-		{B65542D4-4B0F-4A1A-B420-49F0D62CF469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B65542D4-4B0F-4A1A-B420-49F0D62CF469}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B65542D4-4B0F-4A1A-B420-49F0D62CF469}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{B65542D4-4B0F-4A1A-B420-49F0D62CF469}.Debug|x64.Build.0 = Debug|Any CPU
-		{B65542D4-4B0F-4A1A-B420-49F0D62CF469}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{B65542D4-4B0F-4A1A-B420-49F0D62CF469}.Debug|x86.Build.0 = Debug|Any CPU
-		{B65542D4-4B0F-4A1A-B420-49F0D62CF469}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B65542D4-4B0F-4A1A-B420-49F0D62CF469}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B65542D4-4B0F-4A1A-B420-49F0D62CF469}.Release|x64.ActiveCfg = Release|Any CPU
-		{B65542D4-4B0F-4A1A-B420-49F0D62CF469}.Release|x64.Build.0 = Release|Any CPU
-		{B65542D4-4B0F-4A1A-B420-49F0D62CF469}.Release|x86.ActiveCfg = Release|Any CPU
-		{B65542D4-4B0F-4A1A-B420-49F0D62CF469}.Release|x86.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
+		{362F2F19-721D-4F74-B228-61C6B96EAA9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{362F2F19-721D-4F74-B228-61C6B96EAA9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{362F2F19-721D-4F74-B228-61C6B96EAA9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{362F2F19-721D-4F74-B228-61C6B96EAA9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{703EFC33-60CB-4542-9C42-14B878E4FFD6} = {EF2219AB-EECA-4CC3-B48C-F7C996DA165A}
