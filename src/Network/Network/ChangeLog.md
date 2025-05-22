@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 0.1.0
 * Updated Add-AzNetworkInterfaceIpConfig and New-AzNetworkInterfaceIpConfig cmdlets to add new parameter PrivateIpAddressPrefixLength.
     - `Add-AzNetworkInterfaceIpConfig`
     - `New-AzNetworkInterfaceIpConfig`
