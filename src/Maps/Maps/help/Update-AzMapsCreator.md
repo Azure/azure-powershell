@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMapsCreator
 
 ## SYNOPSIS
-Updates the Maps Creator resource.
+update the Maps Creator resource.
 Only a subset of the parameters may be updated after creation, such as Tags.
 
 ## SYNTAX
@@ -20,6 +20,27 @@ Update-AzMapsCreator -AccountName <String> -Name <String> -ResourceGroupName <St
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaJsonString
+```
+Update-AzMapsCreator -AccountName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzMapsCreator -AccountName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityAccountExpanded
+```
+Update-AzMapsCreator -Name <String> -AccountInputObject <IMapsIdentity> [-StorageUnit <Int32>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzMapsCreator -InputObject <IMapsIdentity> [-StorageUnit <Int32>] [-Tag <Hashtable>]
@@ -27,7 +48,7 @@ Update-AzMapsCreator -InputObject <IMapsIdentity> [-StorageUnit <Int32>] [-Tag <
 ```
 
 ## DESCRIPTION
-Updates the Maps Creator resource.
+update the Maps Creator resource.
 Only a subset of the parameters may be updated after creation, such as Tags.
 
 ## EXAMPLES
@@ -62,12 +83,27 @@ Only a subset of the parameters may be updated after creation, such as Tags.
 
 ## PARAMETERS
 
+### -AccountInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity
+Parameter Sets: UpdateViaIdentityAccountExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -AccountName
 The name of the Maps Account.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -95,7 +131,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity
@@ -109,12 +144,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the Maps Creator instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityAccountExpanded
 Aliases: CreatorName
 
 Required: True
@@ -130,7 +195,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -146,7 +211,7 @@ Integer values from 1 to 100, inclusive.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityAccountExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -161,7 +226,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -179,7 +244,7 @@ Each tag must have a key no greater than 128 characters and value no greater tha
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityAccountExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -229,7 +294,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator
+### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ICreator
 
 ## NOTES
 

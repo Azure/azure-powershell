@@ -100,7 +100,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
@@ -169,7 +168,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IMobileNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetwork
 
 ## NOTES
 

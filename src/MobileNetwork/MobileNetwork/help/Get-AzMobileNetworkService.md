@@ -25,6 +25,12 @@ Get-AzMobileNetworkService -MobileNetworkName <String> -Name <String> -ResourceG
  [<CommonParameters>]
 ```
 
+### GetViaIdentityMobileNetwork
+```
+Get-AzMobileNetworkService -Name <String> -MobileNetworkInputObject <IMobileNetworkIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzMobileNetworkService -InputObject <IMobileNetworkIdentity> [-DefaultProfile <PSObject>]
@@ -82,11 +88,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MobileNetworkInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: GetViaIdentityMobileNetwork
 Aliases:
 
 Required: True
@@ -117,7 +137,7 @@ You must not use any of the following reserved strings - 'default', 'requested' 
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityMobileNetwork
 Aliases: ServiceName
 
 Required: True
@@ -167,7 +187,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IService
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IService
 
 ## NOTES
 

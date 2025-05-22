@@ -23,12 +23,12 @@ Create an in-memory object for ContactProfileLinkChannel.
 New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz 0.036 -CenterFrequencyMHz 2106.4063 -EndPointIPAddress 10.0.1.0 -EndPointName AQUA_command -EndPointPort 4000 -EndPointProtocol TCP -Name channel1 -DecodingConfiguration na -DemodulationConfiguration na -EncodingConfiguration AQUA_CMD_CCSDS -ModulationConfiguration AQUA_UPLINK_BPSK
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLinkChannel
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLinkChannel
 .Link
-https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkChannelObject
+https://learn.microsoft.com/powershell/module/Az.Orbital/new-azorbitalcontactprofilelinkchannelobject
 #>
 function New-AzOrbitalContactProfileLinkChannelObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLinkChannel])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLinkChannel])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -46,7 +46,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
-    # IP Address.
+    # IP Address (IPv4).
     ${EndPointIPAddress},
 
     [Parameter(Mandatory)]
@@ -62,9 +62,9 @@ param(
     ${EndPointPort},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Protocol])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.PSArgumentCompleterAttribute("TCP", "UDP")]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Protocol]
+    [System.String]
     # Protocol either UDP or TCP.
     ${EndPointProtocol},
 
@@ -77,25 +77,29 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
-    # Configuration for decoding.
+    # Currently unused.
     ${DecodingConfiguration},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
-    # Configuration for demodulation.
+    # Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx.
+    # Only valid for downlink directions.
+    # If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.
     ${DemodulationConfiguration},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
-    # Configuration for encoding.
+    # Currently unused.
     ${EncodingConfiguration},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
-    # Configuration for modulation.
+    # Copy of the modem configuration file such as Kratos QRadio.
+    # Only valid for uplink directions.
+    # If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
     ${ModulationConfiguration}
 )
 
@@ -106,6 +110,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -134,6 +141,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

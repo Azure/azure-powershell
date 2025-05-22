@@ -32,12 +32,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 40923289b489ac3f2a96d274ca5fbf0e4457e5d4
+commit: f11631f1c1057d8363f9e3f9597c73b90f8924c8
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2024-09-01-preview/redisenterprise.json
+  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2025-05-01-preview/redisenterprise.json
 
 module-version: 1.0.0
 title: RedisEnterpriseCache
@@ -126,11 +126,33 @@ directive:
     set:
       hide: true
   - where:
+      verb: Invoke
+      subject: ForceDatabaseLinkToReplicationGroup
+      parameter-name: GeoReplicationLinkedDatabase
+    set:
+      parameter-name: LinkedDatabase
+  - where:
+      verb: Invoke
+      subject: ForceDatabaseLinkToReplicationGroup
+      parameter-name: GeoReplicationGroupNickname
+    set:
+      parameter-name: GroupNickname
+  - where:
       verb: New
       subject: Database
       parameter-name: GeoReplicationGroupNickname
     set:
       parameter-name: GroupNickname
+  - where:
+      model-name: ForceLinkParameters
+      property-name: GeoReplicationLinkedDatabase
+    set:
+      property-name: LinkedDatabase
+  - where:
+      model-name: ForceLinkParameters
+      property-name: GeoReplicationGroupNickname
+    set:
+      property-name: GroupNickname
   - where:
       parameter-name: SkuCapacity
     set:
@@ -213,10 +235,6 @@ directive:
   - where:
       subject: PrivateEndpointConnection|PrivateLinkResource
     hide: true
-  - where:
-      verb: Get
-      subject: Sku
-    hide: true
 
   # DatabaseName parameter to have value 'default'
   - where:
@@ -233,6 +251,9 @@ directive:
   - from: swagger-document
     where: $.definitions.AccessPolicyAssignmentProperties.properties.user
     transform: $['required'] = ['objectId']
+  - from: swagger-document
+    where: $.definitions.ForceLinkParameters.properties.geoReplication
+    transform: $['required'] = ['linkedDatabases','groupNickname']
 
   # DatabaseName parameter to have value 'default'
   - where:

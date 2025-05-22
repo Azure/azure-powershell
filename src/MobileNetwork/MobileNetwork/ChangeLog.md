@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* The parameters of the `New-AzMobileNetworkPacketCoreControlPlane`, `New-AzMobileNetworkSimGroup`, `Update-AzMobileNetworkPacketCoreControlPlane` and `Update-AzMobileNetworkSimGroup` commands have changed.
+  * `IdentityType` has been removed. `EnableSystemAssignedIdentity` is used to enable/disable system-assigned identities.
+  * The type of `UserAssignedIdentity` is simplified to an array of strings that is used to specify the user's assigned identity.
 
 ## Version 0.4.2
 * Upgraded nuget package to signed package.

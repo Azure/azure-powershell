@@ -14,7 +14,8 @@ Deletes the resource guard mapping added to the recovery services vault.
 
 ```
 Remove-AzRecoveryServicesResourceGuardMapping [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-Token <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Token <String>] [-SecureToken <SecureString>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,11 +26,11 @@ This cmdlet deletes the mapping between the RS vault and resource guard
 ### Example 1 Delete the resource guard mapping in a cross tenant scenario
 
 ```powershell
-$token = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
-Remove-AzRecoveryServicesResourceGuardMapping -VaultId $vault.ID  -Token $token
+$secureToken = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -AsSecureString).Token
+Remove-AzRecoveryServicesResourceGuardMapping -VaultId $vault.ID  -SecureToken $secureToken
 ```
 
-The first command fetches the access token for the resource guard tenant where the resource guard is present. The second command deletes the mapping between the RSVault $vault and the resource guard. Please note that token parameter is optional and only needed to authenticate cross tenant protected opeartions.
+The first command fetches the access token for the resource guard tenant where the resource guard is present. The second command deletes the mapping between the RSVault $vault and the resource guard. Please note that token parameter is optional and only needed to authenticate cross tenant protected operations.
 
 ## PARAMETERS
 
@@ -40,6 +41,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

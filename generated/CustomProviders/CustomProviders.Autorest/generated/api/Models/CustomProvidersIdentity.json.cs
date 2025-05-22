@@ -64,12 +64,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_resourceProviderName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Json.JsonString>("resourceProviderName"), out var __jsonResourceProviderName) ? (string)__jsonResourceProviderName : (string)ResourceProviderName;}
-            {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)Scope;}
-            {_associationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Json.JsonString>("associationName"), out var __jsonAssociationName) ? (string)__jsonAssociationName : (string)AssociationName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_resourceProviderName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Json.JsonString>("resourceProviderName"), out var __jsonResourceProviderName) ? (string)__jsonResourceProviderName : (string)_resourceProviderName;}
+            {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)_scope;}
+            {_associationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Json.JsonString>("associationName"), out var __jsonAssociationName) ? (string)__jsonAssociationName : (string)_associationName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

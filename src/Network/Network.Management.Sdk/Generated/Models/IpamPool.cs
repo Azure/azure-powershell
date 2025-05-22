@@ -48,11 +48,15 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="properties">Properties of IpamPool resource properties which are specific to the Pool
         /// resource.
         /// </param>
-        public IpamPool(string location, IpamPoolProperties properties, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+
+        /// <param name="etag">String representing unique etag for the resource document.
+        /// </param>
+        public IpamPool(string location, IpamPoolProperties properties, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string))
 
         : base(location, id, name, type, systemData, tags)
         {
             this.Properties = properties;
+            this.Etag = etag;
             CustomInit();
         }
 
@@ -68,6 +72,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
         public IpamPoolProperties Properties {get; set; }
+
+        /// <summary>
+        /// Gets string representing unique etag for the resource document.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
+        public string Etag {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -85,6 +95,7 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 this.Properties.Validate();
             }
+
         }
     }
 }

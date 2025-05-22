@@ -28,7 +28,7 @@ Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedKubernetesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedCluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,41 +43,47 @@ INPUTOBJECT <IConnectedKubernetesIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/update-azconnectedkubernetes
 #>
 function Update-AzConnectedKubernetes {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
-    [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, ConfirmImpact = 'Medium', SupportsShouldProcess)]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedCluster])]
+    [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
         [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
         # The name of the Kubernetes cluster on which get is called.
         ${ClusterName},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+        [Parameter(ParameterSetName='UpdateViaJsonString')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedKubernetesIdentity]
         # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit])]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("True", "False", "NotApplicable")]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit]
+        [System.String]
         # Indicates whether Azure Hybrid Benefit is opted in
         ${AzureHybridBenefit},
 
@@ -86,31 +92,47 @@ function Update-AzConnectedKubernetes {
         # Accept EULA of ConnectedKubernetes, legal term will pop up without this parameter provided
         ${AcceptEULA},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
         # Represents the distribution of the connected cluster
         ${Distribution},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
         # Represents the Kubernetes distribution version on this connected cluster.
         ${DistributionVersion},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedClusterPatchTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedClusterPatchTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
+
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+        [System.String]
+        # Path of Json file supplied to the Update operation
+        ${JsonFilePath},
+    
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+        [System.String]
+        # Json string supplied to the Update operation
+        ${JsonString},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter(DontShow)]

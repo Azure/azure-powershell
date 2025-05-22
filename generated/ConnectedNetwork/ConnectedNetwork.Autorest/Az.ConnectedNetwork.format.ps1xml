@@ -2,9 +2,43 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.AzureStackEdgeFormat</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.AzureStackEdgeFormat#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DeviceType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DeviceType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ConnectedNetworkIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ConnectedNetworkIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ConnectedNetworkIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -84,223 +118,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.ErrorDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.CustomProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.ErrorDetail</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.ProxyResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.ProxyResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.Resource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.Resource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.SystemData</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.SystemData</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResourceTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResourceTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.AzureStackEdgeFormat</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.AzureStackEdgeFormat</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DeviceType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Status</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DeviceType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Status</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.CustomProfile</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.CustomProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.CustomProfile#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -320,9 +140,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.DataDisk</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.DataDisk</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.DataDisk</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.DataDisk#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -354,9 +174,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.Device</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Device</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.Device</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Device#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -388,9 +208,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.DeviceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.DeviceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.DeviceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.DeviceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -410,9 +230,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.DevicePropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.DevicePropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.DevicePropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.DevicePropertiesFormat#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -444,9 +264,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.DeviceRegistrationKey</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.DeviceRegistrationKey</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.DeviceRegistrationKey</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.DeviceRegistrationKey#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -466,9 +286,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.ImageReference</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.ImageReference</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ErrorDetail#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ImageReference</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ImageReference#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -512,9 +366,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunction</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunction</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunction#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -552,9 +406,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -574,9 +428,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionPropertiesFormat#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -626,9 +480,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionRoleConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionRoleConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionRoleConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionRoleConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -660,9 +514,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionRoleInstanceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionRoleInstanceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionRoleInstanceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionRoleInstanceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -682,9 +536,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionSkuDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionSkuDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionSkuDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionSkuDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -710,9 +564,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionSkuListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionSkuListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionSkuListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionSkuListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -732,9 +586,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionSkuRoleDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionSkuRoleDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionSkuRoleDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionSkuRoleDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -754,9 +608,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionUserConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionUserConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionUserConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionUserConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -776,9 +630,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionUserConfigurationOSProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionUserConfigurationOSProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionUserConfigurationOSProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionUserConfigurationOSProfile#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -798,9 +652,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionVendorConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionVendorConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionVendorConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionVendorConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -820,9 +674,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionVendorListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionVendorListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionVendorListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionVendorListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -842,9 +696,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterface</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterface#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -876,15 +730,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterfaceIPConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterfaceIPConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterfaceIPConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterfaceIPConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>DnsServer</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Gateway</Label>
           </TableColumnHeader>
@@ -904,9 +755,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DnsServer</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Gateway</PropertyName>
               </TableColumnItem>
@@ -928,9 +776,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.OSDisk</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.OSDisk</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.OSDisk</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.OSDisk#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -962,9 +810,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.OSProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.OSProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.OSProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.OSProfile#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -996,9 +844,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.PreviewSubscription</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.PreviewSubscription</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.PreviewSubscription</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.PreviewSubscription#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1024,9 +872,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.PreviewSubscriptionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.PreviewSubscriptionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.PreviewSubscriptionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.PreviewSubscriptionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1046,9 +894,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.PreviewSubscriptionsList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.PreviewSubscriptionsList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.PreviewSubscriptionsList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.PreviewSubscriptionsList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1068,9 +916,53 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.RoleInstance</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.RoleInstance</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ProxyResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Resource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Resource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.RoleInstance</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.RoleInstance#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1096,9 +988,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.RoleInstanceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.RoleInstanceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.RoleInstanceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.RoleInstanceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1124,9 +1016,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.SkuOverview</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.SkuOverview</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.SkuOverview</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.SkuOverview#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1152,9 +1044,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.SshPublicKey</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.SshPublicKey</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.SshPublicKey</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.SshPublicKey#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1180,9 +1072,61 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.TagsObjectTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.TagsObjectTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.SystemData#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.TagsObjectTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.TagsObjectTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1202,9 +1146,59 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.Vendor</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.TrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.Vendor</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.TrackedResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.TrackedResourceTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.TrackedResourceTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Vendor</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Vendor#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1230,9 +1224,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1252,9 +1246,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1274,9 +1268,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorNetworkFunction</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorNetworkFunction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorNetworkFunction</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorNetworkFunction#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1302,9 +1296,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorNetworkFunctionListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorNetworkFunctionListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorNetworkFunctionListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorNetworkFunctionListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1324,9 +1318,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorNetworkFunctionPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorNetworkFunctionPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorNetworkFunctionPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorNetworkFunctionPropertiesFormat#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1364,9 +1358,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorPropertiesFormat#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1386,9 +1380,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorSku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorSku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorSku#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1414,9 +1408,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorSkuListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorSkuListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorSkuListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorSkuListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1436,9 +1430,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorSkuPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorSkuPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorSkuPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VendorSkuPropertiesFormat#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1482,9 +1476,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VirtualHardDisk</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VirtualHardDisk</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VirtualHardDisk</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.VirtualHardDisk#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

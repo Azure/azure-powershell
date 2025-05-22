@@ -76,7 +76,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.ISystemAssignedIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.ISystemAssignedIdentity
 
 ## NOTES
 

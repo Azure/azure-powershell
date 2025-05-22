@@ -42,6 +42,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]

@@ -57,6 +57,11 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+GEODATAREPLICATIONLOCATION <INamespaceReplicaLocation[]>: Properties for User Assigned Identities
+  [ClusterArmId <String>]: Optional property that denotes the ARM ID of the Cluster. This is required, if a namespace replica should be placed in a Dedicated Event Hub Cluster
+  [LocationName <String>]: Azure regions where a replica of the namespace is maintained
+  [RoleType <String>]: GeoDR Role Types
+
 INPUTOBJECT <IEventHubIdentity>: Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [Alias <String>]: The Disaster Recovery configuration name
   [ApplicationGroupName <String>]: The Application Group name 
@@ -184,6 +189,20 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.Int64]
+    # The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+    # When the lag exceeds the configured amount, operations on the primary replica will be failed.
+    # The allowed values are 0 and 5 minutes to 1 day.
+    ${GeoDataReplicationMaxReplicationLagDurationInSecond},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]]
+    # Properties for User Assigned Identities
+    ${GeoDataReplicationLocation},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.Collections.Hashtable]
     # Tag of EventHub Namespace.
     ${Tag},
@@ -255,6 +274,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -278,8 +306,6 @@ begin {
             SetViaIdentityExpanded = 'Az.EventHub.custom\Set-AzEventHubNamespace';
         }
         if (('SetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -293,6 +319,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

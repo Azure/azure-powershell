@@ -118,6 +118,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the domain under the profile which is unique globally.",
         SerializedName = @"customDomainName",
         PossibleTypes = new [] { typeof(string) })]
@@ -126,6 +129,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the endpoint under the profile which is unique globally.",
         SerializedName = @"endpointName",
         PossibleTypes = new [] { typeof(string) })]
@@ -134,6 +140,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -142,6 +151,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the origin group which is unique within the endpoint.",
         SerializedName = @"originGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -150,6 +162,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the origin which is unique within the profile.",
         SerializedName = @"originName",
         PossibleTypes = new [] { typeof(string) })]
@@ -160,6 +175,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.",
         SerializedName = @"profileName",
         PossibleTypes = new [] { typeof(string) })]
@@ -168,6 +186,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Resource group within the Azure subscription.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -176,6 +197,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the routing rule.",
         SerializedName = @"routeName",
         PossibleTypes = new [] { typeof(string) })]
@@ -184,6 +208,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the delivery rule which is unique within the endpoint.",
         SerializedName = @"ruleName",
         PossibleTypes = new [] { typeof(string) })]
@@ -192,6 +219,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the rule set under the profile which is unique globally.",
         SerializedName = @"ruleSetName",
         PossibleTypes = new [] { typeof(string) })]
@@ -200,6 +230,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Secret under the profile.",
         SerializedName = @"secretName",
         PossibleTypes = new [] { typeof(string) })]
@@ -208,6 +241,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the security policy under the profile.",
         SerializedName = @"securityPolicyName",
         PossibleTypes = new [] { typeof(string) })]
@@ -216,6 +252,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Azure Subscription ID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

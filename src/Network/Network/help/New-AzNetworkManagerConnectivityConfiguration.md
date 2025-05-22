@@ -16,7 +16,8 @@ Creates a network manager connectivity configuration.
 New-AzNetworkManagerConnectivityConfiguration -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> -AppliesToGroup <PSNetworkManagerConnectivityGroupItem[]>
  -ConnectivityTopology <String> [-Description <String>] [-Hub <PSNetworkManagerHub[]>] [-DeleteExistingPeering]
- [-IsGlobal] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-IsGlobal] [-ConnectivityCapability <PSNetworkManagerConnectivityCapabilities>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -40,6 +41,11 @@ ConnectivityTopology  : HubAndSpoke
 Hubs                  : {/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub}
 DeleteExistingPeering : True
 IsGlobal              : False
+ConnectivityCapability : {
+                             "ConnectedGroupPrivateEndpointScale": "Standard",
+                             "ConnectedGroupAddressOverlap": "Allowed",
+                             "PeeringEnforcement": "Unenforced"
+                           }
 AppliesToGroups       : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup}
 AppliesToGroupsText   : [
                           {
@@ -88,6 +94,11 @@ ConnectivityTopology  : Mesh
 Hubs                  : {}
 DeleteExistingPeering : True
 IsGlobal              : False
+ConnectivityCapability : {
+                             "ConnectedGroupPrivateEndpointScale": "Standard",
+                             "ConnectedGroupAddressOverlap": "Allowed",
+                             "PeeringEnforcement": "Unenforced"
+                           }
 AppliesToGroups       : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup}
 AppliesToGroupsText   : [
                           {
@@ -118,6 +129,57 @@ Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/reso
 
 Creates a mesh network manager connectivity configuration.
 
+### Example 3: Create with ConnectivityCapability
+```powershell
+$connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup"
+[System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem]]$connectivityGroup  = @()  
+$connectivityGroup.Add($connectivityGroupItem)   
+$capabilities = [PSCustomObject]@{
+    ConnectedGroupPrivateEndpointScale = "HighScale"
+    ConnectedGroupAddressOverlap = "Disallowed"
+    PeeringEnforcement = "Enforced"
+}
+New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName psResourceGroup -Name "psConnectivityConfigMesh" -NetworkManagerName psNetworkManager -ConnectivityTopology "Mesh" -AppliesToGroup $connectivityGroup -DeleteExistingPeering -ConnectivityCapability $capabilities
+```
+
+```output
+ConnectivityTopology  : Mesh
+Hubs                  : {}
+DeleteExistingPeering : True
+IsGlobal              : False
+ConnectivityCapability : {
+                             "ConnectedGroupPrivateEndpointScale": "HighScale",
+                             "ConnectedGroupAddressOverlap": "Disallowed",
+                             "PeeringEnforcement": "Enforced"
+                           }
+AppliesToGroups       : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup}
+AppliesToGroupsText   : [
+                          {
+                            "NetworkGroupId": "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup",
+                            "UseHubGateway": "False",
+                            "IsGlobal": "False",
+                            "GroupConnectivity": "None"
+                          }
+                        ]
+HubsText              : []
+DisplayName           :
+Description           :
+Type                  : Microsoft.Network/networkManagers/connectivityConfigurations
+ProvisioningState     : Succeeded
+SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText        : {
+                          "CreatedBy": "jaredgorthy@microsoft.com",
+                          "CreatedByType": "User",
+                          "CreatedAt": "2022-08-07T04:43:00.9075845Z",
+                          "LastModifiedBy": "jaredgorthy@microsoft.com",
+                          "LastModifiedByType": "User",
+                          "LastModifiedAt": "2022-08-07T04:43:00.9075845Z"
+                        }
+Name                  : psConnectivityConfigMesh
+Etag                  :
+Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/connectivityConfigurations/psConnectivityConfigMesh
+```
+
 ## PARAMETERS
 
 ### -AppliesToGroup
@@ -147,6 +209,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectivityCapability
+Specifies topology-specific settings to refine connectivity for the network manager configuration.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityCapabilities
+Parameter Sets: (All)
+Aliases: ConnectivityCapabilities
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

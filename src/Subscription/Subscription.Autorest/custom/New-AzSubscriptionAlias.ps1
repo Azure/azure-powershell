@@ -25,12 +25,12 @@ New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionId XXXXXXXX-XX
 New-AzSubscriptionAlias -AliasName test-subscription -DisplayName "createSub" -BillingScope "/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}" -Workload 'Production' 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse
+Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.subscription/new-azsubscriptionalias
 #>
 function New-AzSubscriptionAlias {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponse])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
@@ -85,15 +85,15 @@ function New-AzSubscriptionAlias {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IPutAliasRequestAdditionalPropertiesTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.IPutAliasRequestAdditionalPropertiesTags]))]
         [System.Collections.Hashtable]
         # Tags for the subscription
         ${Tag},
 
         [Parameter(ParameterSetName = 'WorkloadCreateExpanded', Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.PSArgumentCompleterAttribute("Production", "DevTest")]
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload]
+        [System.String]
         # The workload type of the subscription.
         # It can be either Production or DevTest.
         ${Workload},

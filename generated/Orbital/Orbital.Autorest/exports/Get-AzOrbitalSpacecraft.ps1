@@ -29,7 +29,7 @@ Get-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name AQUA
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraft
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,7 +48,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalspacecraft
 #>
 function Get-AzOrbitalSpacecraft {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraft])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -79,7 +79,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -147,6 +146,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -171,9 +179,7 @@ begin {
             List = 'Az.Orbital.private\Get-AzOrbitalSpacecraft_List';
             List1 = 'Az.Orbital.private\Get-AzOrbitalSpacecraft_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -187,6 +193,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

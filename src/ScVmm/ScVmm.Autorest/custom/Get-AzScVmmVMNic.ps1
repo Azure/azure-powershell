@@ -27,7 +27,7 @@ Get-AzScVmmVMNic -vmName "test-vm" -ResourceGroupName "test-rg-01" -NicName "nic
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterface
 .Link
-https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvmnic
+https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvmnic
 #>
 
 function Get-AzScVmmVMNic {

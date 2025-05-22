@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
             if (ByPath.Equals(this.ParameterSetName) || ByParameters.Equals(this.ParameterSetName))
             {
-                serviceClient = AzureSession.Instance.ClientFactory.CreateArmClient<AzureRestClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+                serviceClient = AzureSession.Instance.ClientFactory.CreateArmClient<AzureRestClient>(context, AzureEnvironment.Endpoint.ResourceManager, _cmdletContext);
             }
             else if (ByURI.Equals(this.ParameterSetName))
             {
@@ -454,11 +454,11 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 ServiceClientCredentials creds = null;
                 if (AzureSession.Instance.AuthenticationFactory is Commands.Common.Authentication.Factories.AuthenticationFactory factory)
                 {
-                    creds = factory.GetServiceClientCredentials(context, targetResourceIdKey, targetResourceId);
+                    creds = factory.GetServiceClientCredentials(context, targetResourceIdKey, targetResourceId, _cmdletContext);
                 }
                 else
                 {
-                    creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, targetResourceId);
+                    creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, targetResourceId, _cmdletContext);
                 }
                 Uri baseUri = new Uri($"{Uri.Scheme}://{Uri.Authority}");
                 serviceClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<AzureRestClient>(baseUri, creds);

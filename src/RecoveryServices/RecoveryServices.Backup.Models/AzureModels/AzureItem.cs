@@ -89,6 +89,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public System.DateTime? DeferredDeleteTimeInUtc { get; set; }
 
+        /// <summary>
+        /// Gets or sets time for deferred deletion time remaining in [d.]hh:mm:ss.fffffff
+        /// </summary>
+        public string DeferredDeleteTimeRemaining { get; set; }
+
         public AzureItem(ProtectedItemResource protectedItemResource,
            string containerName, ContainerType containerType, string policyName)
             : base(protectedItemResource, containerName, containerType)

@@ -14,7 +14,8 @@ The **Test-AzPrivateLinkServiceVisibility** checks whether a private link servic
 
 ```
 Test-AzPrivateLinkServiceVisibility -Location <String> [-ResourceGroupName <String>]
- -PrivateLinkServiceAlias <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -PrivateLinkServiceAlias <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

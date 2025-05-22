@@ -76,7 +76,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResource
+### Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResource
 
 ## NOTES
 

@@ -637,6 +637,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changing the service tier to Hyperscale also converts the geo-secondary replica to Hyperscale. For more information, see https://go.microsoft.com/fwlink/?linkid=2314103.
+        /// </summary>
+        internal static string ForwardMigrationWithGeoDRInfo {
+            get {
+                return ResourceManager.GetString("ForwardMigrationWithGeoDRInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
         /// </summary>
         internal static string InvalidADGroupNotSecurity {

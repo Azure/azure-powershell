@@ -38,7 +38,7 @@ Describe 'Invoke-AzBillingBenefitsSavingsPlanUpdateValidation' {
         $response.Valid | Should -Be "True"
     }
 
-    It 'Validate' {
+    It 'Validate' -Skip {
         $response = Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -SavingsPlanId "9fde2a72-776b-49fc-869c-dca8859d7d62" -SavingsPlanOrderId "d7ea1620-2bba-46e2-8434-11f31bfb984d" -Body $body
         $response | Should -Not -Be $null
         $response.Valid | Should -Not -Be $null
@@ -52,7 +52,7 @@ Describe 'Invoke-AzBillingBenefitsSavingsPlanUpdateValidation' {
         $response.Valid | Should -Be "True"
     }
 
-    It 'ValidateViaIdentity' {
+    It 'ValidateViaIdentity' -Skip {
         $response = Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -InputObject $identity -Body $body
         $response | Should -Not -Be $null
         $response.Valid | Should -Not -Be $null

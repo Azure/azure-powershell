@@ -25,12 +25,12 @@ New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalS
 New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Weeks -SourceRetentionDurationCount 20
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ISourceLifeCycle
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ISourceLifeCycle
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionretentionlifecycleclientobject
 #>
 function New-AzDataProtectionRetentionLifeCycleClientObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ISourceLifeCycle])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ISourceLifeCycle])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

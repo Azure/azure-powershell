@@ -8,27 +8,48 @@ schema: 2.0.0
 # New-AzFluidRelayServer
 
 ## SYNOPSIS
-Create or Update a Fluid Relay server.
+create a Fluid Relay server.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzFluidRelayServer -Name <String> -ResourceGroup <String> [-SubscriptionId <String>] -Location <String>
- [-CustomerManagedKeyEncryptionKeyUrl <String>] [-IdentityType <ResourceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
- [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-ProvisioningState <ProvisioningState>]
- [-Storagesku <StorageSku>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CustomerManagedKeyEncryptionKeyUrl <String>] [-EnableSystemAssignedIdentity]
+ [-KeyEncryptionKeyIdentityType <String>] [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
+ [-ProvisioningState <String>] [-Storagesku <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzFluidRelayServer -Name <String> -ResourceGroup <String> [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzFluidRelayServer -Name <String> -ResourceGroup <String> [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityResourceGroupExpanded
+```
+New-AzFluidRelayServer -Name <String> -ResourceGroupInputObject <IFluidRelayIdentity> -Location <String>
+ [-CustomerManagedKeyEncryptionKeyUrl <String>] [-EnableSystemAssignedIdentity]
+ [-KeyEncryptionKeyIdentityType <String>] [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
+ [-ProvisioningState <String>] [-Storagesku <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or Update a Fluid Relay server.
+create a Fluid Relay server.
 
 ## EXAMPLES
 
 ### Example 1: Create or Update a Fluid Relay server.
 ```powershell
-New-AzFluidRelayServer -Name azps-fluidrelay -ResourceGroup azpstest-gp -Location westus2 -Storagesku 'basic' -ProvisioningState 'Succeeded' -IdentityUserAssignedIdentity @{"/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" = @{};} -IdentityType 'UserAssigned' -KeyEncryptionKeyIdentityUserAssignedIdentityResourceId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" -KeyEncryptionKeyIdentityType 'SystemAssigned'
+New-AzFluidRelayServer -Name azps-fluidrelay -ResourceGroup azpstest-gp -Location westus2 -Storagesku 'basic' -ProvisioningState 'Succeeded' -UserAssignedIdentity "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" -EnableSystemAssignedIdentity:$true -KeyEncryptionKeyIdentityUserAssignedIdentityResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" -KeyEncryptionKeyIdentityType 'SystemAssigned'
 ```
 
 ```output
@@ -50,7 +71,7 @@ The keyEncryptionKeyIdentity(either SystemAssigned or UserAssigned) should have 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityResourceGroupExpanded
 Aliases:
 
 Required: False
@@ -76,12 +97,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The identity type.
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.ResourceIdentityType
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityResourceGroupExpanded
 Aliases:
 
 Required: False
@@ -91,15 +112,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityUserAssignedIdentity
-The list of user identities associated with the resource.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -110,8 +146,8 @@ Accept wildcard characters: False
 Values can be SystemAssigned or UserAssigned
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.CmkIdentityType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityResourceGroupExpanded
 Aliases:
 
 Required: False
@@ -128,7 +164,7 @@ Mutually exclusive with identityType systemAssignedIdentity.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityResourceGroupExpanded
 Aliases:
 
 Required: False
@@ -143,7 +179,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityResourceGroupExpanded
 Aliases:
 
 Required: True
@@ -172,8 +208,8 @@ Accept wildcard characters: False
 Provision states for FluidRelay RP
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.ProvisioningState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityResourceGroupExpanded
 Aliases:
 
 Required: False
@@ -188,7 +224,7 @@ The resource group containing the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -198,12 +234,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
+Parameter Sets: CreateViaIdentityResourceGroupExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Storagesku
 Sku of the storage associated with the resource
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.StorageSku
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityResourceGroupExpanded
 Aliases:
 
 Required: False
@@ -218,7 +269,7 @@ The subscription id (GUID) for this resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -233,7 +284,23 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityResourceGroupExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityResourceGroupExpanded
 Aliases:
 
 Required: False
@@ -279,9 +346,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer
+### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServer
 
 ## NOTES
 

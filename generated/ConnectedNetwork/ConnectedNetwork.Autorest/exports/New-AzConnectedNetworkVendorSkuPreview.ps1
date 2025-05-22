@@ -16,19 +16,53 @@
 
 <#
 .Synopsis
-Creates or updates preview information of a vendor sku.
+create preview information of a vendor sku.
 .Description
-Creates or updates preview information of a vendor sku.
+create preview information of a vendor sku.
 .Example
 New-AzConnectedNetworkVendorSkuPreview -PreviewSubscription xxxxx-00000-xxxxx-00000 -SkuName mySku -VendorName myVendor -SubscriptionId xxxxx-22222-xxxxx-22222
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+VENDORINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
+
+VENDORSKUINPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  [DeviceName <String>]: The name of the device resource.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The Azure region where the network function resource was created by the customer.
+  [NetworkFunctionName <String>]: The name of the network function.
+  [PreviewSubscription <String>]: Preview subscription ID.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleInstanceName <String>]: The name of the role instance of the vendor network function.
+  [ServiceKey <String>]: The GUID for the vendor network function.
+  [SkuName <String>]: The name of the sku.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VendorName <String>]: The name of the vendor.
+  [VendorSkuName <String>]: The name of the network function sku.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendorskupreview
 #>
 function New-AzConnectedNetworkVendorSkuPreview {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -37,24 +71,55 @@ param(
     # Preview subscription ID.
     ${PreviewSubscription},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [System.String]
     # The name of the vendor sku.
     ${SkuName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
-    [System.String]
-    # The name of the vendor.
-    ${VendorName},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [System.String]
+    # The name of the vendor.
+    ${VendorName},
+
+    [Parameter(ParameterSetName='CreateViaIdentityVendorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityVendorSkuExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity]
+    # Identity Parameter
+    ${VendorSkuInputObject},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -124,6 +189,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -144,10 +218,12 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorSkuPreview_CreateExpanded';
+            CreateViaIdentityVendorExpanded = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorSkuPreview_CreateViaIdentityVendorExpanded';
+            CreateViaIdentityVendorSkuExpanded = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorSkuPreview_CreateViaIdentityVendorSkuExpanded';
+            CreateViaJsonFilePath = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorSkuPreview_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ConnectedNetwork.private\New-AzConnectedNetworkVendorSkuPreview_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -161,6 +237,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

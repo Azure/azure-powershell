@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzDataMigrationSqlService_UpdateExpanded", SupportsShouldProcess = true)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.PreviewMessage("This is a SQL Service resource and can only be accessed using cmdlets that have SqlService in their name. (For example Get-AzDataMigrationSqlService should be used to access a data migration SQL Service and NOT Get-AzDataMigrationService)")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationService))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description(@"Update Database Migration Service.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}", ApiVersion = "2022-03-30-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}", ApiVersion = "2025-03-15-preview")]
     public partial class UpdateAzDataMigrationSqlService_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener
     {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>An update to a SQL Migration Service.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationServiceUpdate _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.SqlMigrationServiceUpdate();
+        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationServiceUpdate _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlMigrationServiceUpdate();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -179,8 +179,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         ReadOnly = false,
         Description = @"Dictionary of <string>",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationServiceUpdateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationServiceUpdateTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationServiceUpdateTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationServiceUpdateTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -197,12 +197,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService">Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationService">Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationService</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationService> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -490,12 +490,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService">Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationService">Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationService</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationService> response)
         {
             using( NoSynchronizationContext )
             {
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationService
                 WriteObject((await response));
             }
         }

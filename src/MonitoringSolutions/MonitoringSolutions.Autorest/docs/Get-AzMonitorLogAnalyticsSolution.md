@@ -128,7 +128,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.IMonitoringSolutionsIdentity
@@ -198,7 +197,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution
+### Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.ISolution
+
+### Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.ISolutionPropertiesList
 
 ## NOTES
 

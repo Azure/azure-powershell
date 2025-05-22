@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Updates a Maps Account.
+update a Maps Account.
 Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.
 .Description
-Updates a Maps Account.
+update a Maps Account.
 Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.
 .Example
 Update-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount03 -Tag @{'key1'='value1'; 'key2'='value2'}
@@ -29,7 +29,7 @@ Get-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount03 | Up
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount
+Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccount
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,10 +45,12 @@ INPUTOBJECT <IMapsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.maps/update-azmapsaccount
 #>
 function Update-AzMapsAccount {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccount])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('AccountName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Maps.Category('Path')]
     [System.String]
@@ -56,6 +58,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Maps.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -63,6 +67,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Maps.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -73,39 +79,54 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Maps.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Maps.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support.
     # This will disable Shared Keys authentication from any usage.
     ${DisableLocalAuth},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Maps.PSArgumentCompleterAttribute("Gen1", "Gen2")]
     [Microsoft.Azure.PowerShell.Cmdlets.Maps.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind]
+    [System.String]
     # Get or Set Kind property.
     ${Kind},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Maps.PSArgumentCompleterAttribute("S0", "S1", "G2")]
     [Microsoft.Azure.PowerShell.Cmdlets.Maps.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name]
+    [System.String]
     # The name of the SKU, in standard format (such as S0).
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Maps.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Gets or sets a list of key value pairs that describe the resource.
     # These tags can be used in viewing and grouping this resource (across resource groups).
     # A maximum of 15 tags can be provided for a resource.
     # Each tag must have a key no greater than 128 characters and value no greater than 256 characters.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Maps.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Maps.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -163,6 +184,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -184,10 +214,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Maps.private\Update-AzMapsAccount_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Maps.private\Update-AzMapsAccount_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Maps.private\Update-AzMapsAccount_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Maps.private\Update-AzMapsAccount_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -201,6 +231,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

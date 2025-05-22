@@ -1,7 +1,7 @@
 ---
 external help file: Az.MobileNetwork-help.xml
 Module Name: Az.MobileNetwork
-online version: https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkServiceResourceIdObject
+online version: https://learn.microsoft.com/powershell/module/Az.MobileNetwork/new-azmobilenetworkserviceresourceidobject
 schema: 2.0.0
 ---
 
@@ -59,7 +59,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceResourceId
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceResourceId
 
 ## NOTES
 

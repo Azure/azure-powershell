@@ -19,8 +19,8 @@ New-AzPublicIpAddress [-Name <String>] -ResourceGroupName <String> -Location <St
  [-DomainNameLabel <String>] [-DomainNameLabelScope <PSDomainNameLabelScopeType>] [-IpTag <PSPublicIpTag[]>]
  [-PublicIpPrefix <PSPublicIpPrefix>] [-DdosProtectionMode <String>] [-DdosProtectionPlanId <String>]
  [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>] [-Zone <String[]>] [-IpAddress <String>]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -336,6 +336,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicIpPrefix
 Specifies the PSPublicIpPrefix from which to allocate the public IP address.
 
@@ -388,7 +403,7 @@ The public IP Sku name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Basic, Standard
+Accepted values: Basic, Standard, StandardV2
 
 Required: False
 Position: Named

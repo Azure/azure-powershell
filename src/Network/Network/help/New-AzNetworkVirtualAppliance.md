@@ -20,8 +20,8 @@ New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Locati
  [-CloudInitConfigurationBlob <String[]>] [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force]
  [-AsJob] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
- [-NetworkProfile <PSVirtualApplianceNetworkProfile>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-NetworkProfile <PSVirtualApplianceNetworkProfile>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -32,8 +32,8 @@ New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> -VirtualHu
  [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
- [-NetworkProfile <PSVirtualApplianceNetworkProfile>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-NetworkProfile <PSVirtualApplianceNetworkProfile>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

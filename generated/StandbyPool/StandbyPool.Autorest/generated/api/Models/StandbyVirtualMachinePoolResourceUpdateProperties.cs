@@ -23,27 +23,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         public string AttachedVirtualMachineScaleSetId { get => this._attachedVirtualMachineScaleSetId; set => this._attachedVirtualMachineScaleSetId = value; }
 
         /// <summary>Backing field for <see cref="ElasticityProfile" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdate _elasticityProfile;
+        private Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfile _elasticityProfile;
 
         /// <summary>Specifies the elasticity profile of the standby virtual machine pools.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdate ElasticityProfile { get => (this._elasticityProfile = this._elasticityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolElasticityProfileUpdate()); set => this._elasticityProfile = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfile ElasticityProfile { get => (this._elasticityProfile = this._elasticityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolElasticityProfile()); set => this._elasticityProfile = value; }
 
         /// <summary>
         /// Specifies the maximum number of virtual machines in the standby virtual machine pool.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Inlined)]
-        public long? ElasticityProfileMaxReadyCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)ElasticityProfile).MaxReadyCapacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)ElasticityProfile).MaxReadyCapacity = value ?? default(long); }
+        public long? ElasticityProfileMaxReadyCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileInternal)ElasticityProfile).MaxReadyCapacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileInternal)ElasticityProfile).MaxReadyCapacity = value ?? default(long); }
 
         /// <summary>
         /// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot
         /// exceed MaxReadyCapacity.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Inlined)]
-        public long? ElasticityProfileMinReadyCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)ElasticityProfile).MinReadyCapacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)ElasticityProfile).MinReadyCapacity = value ?? default(long); }
+        public long? ElasticityProfileMinReadyCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileInternal)ElasticityProfile).MinReadyCapacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileInternal)ElasticityProfile).MinReadyCapacity = value ?? default(long); }
 
         /// <summary>Internal Acessors for ElasticityProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdate Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceUpdatePropertiesInternal.ElasticityProfile { get => (this._elasticityProfile = this._elasticityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolElasticityProfileUpdate()); set { {_elasticityProfile = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfile Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceUpdatePropertiesInternal.ElasticityProfile { get => (this._elasticityProfile = this._elasticityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolElasticityProfile()); set { {_elasticityProfile = value;} } }
 
         /// <summary>Backing field for <see cref="VirtualMachineState" /> property.</summary>
         private string _virtualMachineState;
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         Description = @"Specifies the desired state of virtual machines in the pool.",
         SerializedName = @"virtualMachineState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PSArgumentCompleterAttribute("Running", "Deallocated")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PSArgumentCompleterAttribute("Running", "Deallocated", "Hibernated")]
         string VirtualMachineState { get; set; }
 
     }
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         /// </summary>
         string AttachedVirtualMachineScaleSetId { get; set; }
         /// <summary>Specifies the elasticity profile of the standby virtual machine pools.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdate ElasticityProfile { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfile ElasticityProfile { get; set; }
         /// <summary>
         /// Specifies the maximum number of virtual machines in the standby virtual machine pool.
         /// </summary>
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         /// </summary>
         long? ElasticityProfileMinReadyCapacity { get; set; }
         /// <summary>Specifies the desired state of virtual machines in the pool.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PSArgumentCompleterAttribute("Running", "Deallocated")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PSArgumentCompleterAttribute("Running", "Deallocated", "Hibernated")]
         string VirtualMachineState { get; set; }
 
     }

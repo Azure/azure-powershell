@@ -16,19 +16,24 @@ Updates MSIdentity to the recovery services vault.
 ```
 Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> [-IdentityId <String[]>]
  [-RemoveUserAssigned] [-RemoveSystemAssigned] [-DisableClassicAlerts <Boolean>]
- [-DisableAzureMonitorAlertsForJobFailure <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-DisableAzureMonitorAlertsForJobFailure <Boolean>] [-DisableEmailNotificationsForSiteRecovery <Boolean>]
+ [-DisableAzureMonitorAlertsForAllReplicationIssue <Boolean>]
+ [-DisableAzureMonitorAlertsForAllFailoverIssue <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-ImmutabilityState <ImmutabilityState>] [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>]
- [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-SecureToken <SecureString>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureRSVaultAddMSIdentity
 ```
 Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> -IdentityType <MSIdentity>
  [-IdentityId <String[]>] [-DisableClassicAlerts <Boolean>] [-DisableAzureMonitorAlertsForJobFailure <Boolean>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-ImmutabilityState <ImmutabilityState>]
- [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <IAzureContextContainer>]
- [-Token <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisableEmailNotificationsForSiteRecovery <Boolean>]
+ [-DisableAzureMonitorAlertsForAllReplicationIssue <Boolean>]
+ [-DisableAzureMonitorAlertsForAllFailoverIssue <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-ImmutabilityState <ImmutabilityState>] [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>]
+ [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-SecureToken <SecureString>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,6 +159,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableAzureMonitorAlertsForAllFailoverIssue
+Enables or disables monitor alerts for failover issue in RS vault.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableAzureMonitorAlertsForAllReplicationIssue
+Enables or disables monitor alerts for replication issue in RS vault.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DisableAzureMonitorAlertsForJobFailure
 Boolean paramter to specify whether built-in Azure Monitor alerts should be received for every job failure.
 
@@ -171,6 +206,21 @@ Accept wildcard characters: False
 
 ### -DisableClassicAlerts
 Boolean paramter to specify whether backup alerts from the classic solution should be disabled or enabled.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableEmailNotificationsForSiteRecovery
+Enables or disables classic email notifications for Site Recovery in RS vault.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -305,6 +355,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

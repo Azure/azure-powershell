@@ -23,12 +23,12 @@ Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.
 Get-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IAuthenticationKeys
+Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IAuthenticationKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationsqlserviceauthkey
 #>
 function Get-AzDataMigrationSqlServiceAuthKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IAuthenticationKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IAuthenticationKeys])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

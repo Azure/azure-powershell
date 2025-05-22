@@ -14,7 +14,8 @@ Updates the destinations or nexthop for the specified Routing Policy of a Routin
 
 ```
 Set-AzRoutingPolicy -RoutingIntent <PSRoutingIntent> -Destination <String[]> -NextHop <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

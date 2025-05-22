@@ -148,7 +148,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IAzureBareMetalInstance
+### Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstance
 
 ## NOTES
 

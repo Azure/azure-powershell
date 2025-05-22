@@ -27,16 +27,16 @@ Update-AzServiceLinkerForContainerApp -ResourceGroupName servicelinker-test-linu
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-AUTHINFO <IAuthInfoBase>: The authentication type.
-  AuthType <AuthType>: The authentication type.
+AUTHINFO <IAuthInfoBase>: The authentication type. To construct, see NOTES section for AUTHINFO properties and create a hash table.
+  AuthType <String>: The authentication type.
 
-INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [ConnectorName <String>]: The name of resource.
   [DryrunName <String>]: The name of dryrun.
   [Id <String>]: Resource identity path
@@ -46,13 +46,13 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [SubscriptionId <String>]: The ID of the target subscription.
 
-TARGETSERVICE <ITargetServiceBase>: The target service properties
-  Type <TargetServiceType>: The target service type.
+TARGETSERVICE <ITargetServiceBase>: The target service properties To construct, see NOTES section for TARGETSERVICE properties and create a hash table.
+  Type <String>: The target service type.
 .Link
 https://learn.microsoft.com/powershell/module/az.servicelinker/update-azservicelinkerforcontainerapp
 #>
 function Update-AzServiceLinkerForContainerApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -83,15 +83,15 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IAuthInfoBase]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IAuthInfoBase]
     # The authentication type.
     # To construct, see NOTES section for AUTHINFO properties and create a hash table.
     ${AuthInfo},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("none", "dotnet", "java", "python", "go", "php", "ruby", "django", "nodejs", "springBoot", "kafka-springBoot")]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType]
+    [System.String]
     # The application client type
     ${ClientType},
 
@@ -103,7 +103,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ITargetServiceBase]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ITargetServiceBase]
     # The target service properties
     # To construct, see NOTES section for TARGETSERVICE properties and create a hash table.
     ${TargetService},
@@ -115,9 +115,9 @@ param(
     ${SecretStoreKeyVaultId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.VNetSolutionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("serviceEndpoint", "privateLink")]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.VNetSolutionType]
+    [System.String]
     # Type of VNet solution.
     ${VNetSolutionType},
 
@@ -208,6 +208,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -230,9 +239,7 @@ begin {
             UpdateExpanded = 'Az.ServiceLinker.custom\Update-AzServiceLinkerForContainerApp';
             UpdateViaIdentityExpanded = 'Az.ServiceLinker.custom\Update-AzServiceLinkerForContainerApp';
         }
-        if (('UpdateExpanded', 'UpdateViaIdentityExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaIdentityExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -246,6 +253,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

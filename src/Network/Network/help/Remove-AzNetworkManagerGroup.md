@@ -14,8 +14,8 @@ Removes a network Group.
 
 ```
 Remove-AzNetworkManagerGroup -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
- [-ForceDelete] [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ForceDelete] [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

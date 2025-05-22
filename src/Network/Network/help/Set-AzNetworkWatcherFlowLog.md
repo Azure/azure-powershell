@@ -18,7 +18,8 @@ Set-AzNetworkWatcherFlowLog -NetworkWatcherName <String> -ResourceGroupName <Str
  -TargetResourceId <String> -StorageId <String> [-EnabledFilteringCriteria <String>] -Enabled <Boolean>
  [-EnableRetention <Boolean>] [-RetentionPolicyDays <Int32>] [-FormatType <String>]
  [-UserAssignedIdentityId <String>] [-FormatVersion <Int32>] [-Tag <Hashtable>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -26,8 +27,8 @@ Set-AzNetworkWatcherFlowLog -NetworkWatcherName <String> -ResourceGroupName <Str
 Set-AzNetworkWatcherFlowLog -NetworkWatcher <PSNetworkWatcher> -Name <String> -TargetResourceId <String>
  -StorageId <String> [-EnabledFilteringCriteria <String>] -Enabled <Boolean> [-EnableRetention <Boolean>]
  [-RetentionPolicyDays <Int32>] [-FormatType <String>] [-UserAssignedIdentityId <String>]
- [-FormatVersion <Int32>] [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-FormatVersion <Int32>] [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceWithTA
@@ -47,7 +48,8 @@ Set-AzNetworkWatcherFlowLog -NetworkWatcherName <String> -ResourceGroupName <Str
  [-EnableRetention <Boolean>] [-RetentionPolicyDays <Int32>] [-FormatType <String>]
  [-UserAssignedIdentityId <String>] [-FormatVersion <Int32>] [-EnableTrafficAnalytics]
  [-TrafficAnalyticsWorkspaceId <String>] [-TrafficAnalyticsInterval <Int32>] [-Tag <Hashtable>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByLocation
@@ -55,8 +57,8 @@ Set-AzNetworkWatcherFlowLog -NetworkWatcherName <String> -ResourceGroupName <Str
 Set-AzNetworkWatcherFlowLog -Location <String> -Name <String> -TargetResourceId <String> -StorageId <String>
  [-EnabledFilteringCriteria <String>] -Enabled <Boolean> [-EnableRetention <Boolean>]
  [-RetentionPolicyDays <Int32>] [-FormatType <String>] [-UserAssignedIdentityId <String>]
- [-FormatVersion <Int32>] [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-FormatVersion <Int32>] [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByLocationWithTA
@@ -74,8 +76,8 @@ Set-AzNetworkWatcherFlowLog -Location <String> -Name <String> -TargetResourceId 
 Set-AzNetworkWatcherFlowLog -ResourceId <String> -TargetResourceId <String> -StorageId <String>
  [-EnabledFilteringCriteria <String>] -Enabled <Boolean> [-EnableRetention <Boolean>]
  [-RetentionPolicyDays <Int32>] [-FormatType <String>] [-UserAssignedIdentityId <String>]
- [-FormatVersion <Int32>] [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-FormatVersion <Int32>] [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdWithTA
@@ -91,7 +93,8 @@ Set-AzNetworkWatcherFlowLog -ResourceId <String> -TargetResourceId <String> -Sto
 ### SetByInputObject
 ```
 Set-AzNetworkWatcherFlowLog -InputObject <PSFlowLogResource> [-UserAssignedIdentityId <String>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -556,8 +559,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Stop-AzNetworkWatcherConnectionMonitor](./Stop-AzNetworkWatcherConnectionMonitor.md)
 
-[Start-AzNetworkWatcherConnectionMonitor](./Start-AzNetworkWatcherConnectionMonitor.md)
-
 [Set-AzNetworkWatcherConnectionMonitor](./Set-AzNetworkWatcherConnectionMonitor.md)
 
 [Set-AzNetworkWatcherConfigFlowLog](./Set-AzNetworkWatcherConfigFlowLog.md)
@@ -573,8 +574,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzNetworkWatcherReachabilityProvidersList](./Get-AzNetworkWatcherReachabilityProvidersList.md)
 
 [Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
-
-[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport.md)
 
 [Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor.md)
 

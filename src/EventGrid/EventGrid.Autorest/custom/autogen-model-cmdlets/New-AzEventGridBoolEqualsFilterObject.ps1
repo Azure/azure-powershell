@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.BoolEqualsFilter
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridboolequalsfilterobject
 #>
 function New-AzEventGridBoolEqualsFilterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.BoolEqualsFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -87,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

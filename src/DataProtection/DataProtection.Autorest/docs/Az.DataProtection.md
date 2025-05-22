@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DataProtection
-Module Guid: e7388191-d3e0-4d54-b898-d55f0992a1dc
+Module Guid: ade2ccd6-f7d8-4e4a-a8f2-4c0184d8ca79
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dataprotection
 Help Version: 1.0.0.0
 Locale: en-US
@@ -148,6 +148,9 @@ Validate whether adhoc backup will be successful or not
 
 ### [Test-AzDataProtectionBackupInstanceRestore](Test-AzDataProtectionBackupInstanceRestore.md)
 Validates if Restore can be triggered for a DataSource
+
+### [Test-AzDataProtectionBackupInstanceUpdate](Test-AzDataProtectionBackupInstanceUpdate.md)
+Validate whether update for backup instance will be successful or not
 
 ### [Undo-AzDataProtectionBackupInstanceDeletion](Undo-AzDataProtectionBackupInstanceDeletion.md)
 Undeletes a soft deleted backup instance

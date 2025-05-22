@@ -15,14 +15,35 @@ Configures single-sign-on for this resource.
 ### CreateExpanded (Default)
 ```
 New-AzDatadogSingleSignOnConfiguration -MonitorName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-EnterpriseAppId <String>] [-SingleSignOnState <SingleSignOnStates>]
+ [-SubscriptionId <String>] [-EnterpriseAppId <String>] [-SingleSignOnState <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzDatadogSingleSignOnConfiguration -InputObject <IDatadogIdentity> [-EnterpriseAppId <String>]
- [-SingleSignOnState <SingleSignOnStates>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-SingleSignOnState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityMonitorExpanded
+```
+New-AzDatadogSingleSignOnConfiguration -MonitorInputObject <IDatadogIdentity> -Name <String>
+ [-EnterpriseAppId <String>] [-SingleSignOnState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzDatadogSingleSignOnConfiguration -MonitorName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzDatadogSingleSignOnConfiguration -MonitorName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -95,7 +116,7 @@ The Id of the Enterprise App used for Single sign-on.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMonitorExpanded
 Aliases:
 
 Required: False
@@ -107,11 +128,55 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentity
 Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentity
+Parameter Sets: CreateViaIdentityMonitorExpanded
 Aliases:
 
 Required: True
@@ -126,7 +191,7 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -141,7 +206,7 @@ Configuration name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -172,7 +237,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -186,8 +251,8 @@ Accept wildcard characters: False
 Various states of the SSO resource
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Support.SingleSignOnStates
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMonitorExpanded
 Aliases:
 
 Required: False
@@ -202,7 +267,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -252,7 +317,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogSingleSignOnResource
+### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResource
 
 ## NOTES
 

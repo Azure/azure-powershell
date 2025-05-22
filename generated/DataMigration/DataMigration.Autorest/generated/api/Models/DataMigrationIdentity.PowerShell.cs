@@ -71,6 +71,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
+            if (content.Contains("TargetResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).TargetResourceName = (string) content.GetValueForProperty("TargetResourceName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).TargetResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MigrationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).MigrationName = (string) content.GetValueForProperty("MigrationName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).MigrationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("SqlDbInstanceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SqlDbInstanceName = (string) content.GetValueForProperty("SqlDbInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SqlDbInstanceName, global::System.Convert.ToString);
@@ -79,10 +91,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).TargetDbName = (string) content.GetValueForProperty("TargetDbName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).TargetDbName, global::System.Convert.ToString);
             }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            }
             if (content.Contains("ManagedInstanceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).ManagedInstanceName = (string) content.GetValueForProperty("ManagedInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).ManagedInstanceName, global::System.Convert.ToString);
@@ -90,6 +98,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models
             if (content.Contains("SqlVirtualMachineName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SqlVirtualMachineName = (string) content.GetValueForProperty("SqlVirtualMachineName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SqlVirtualMachineName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MigrationServiceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).MigrationServiceName = (string) content.GetValueForProperty("MigrationServiceName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).MigrationServiceName, global::System.Convert.ToString);
             }
             if (content.Contains("SqlMigrationServiceName"))
             {
@@ -120,6 +132,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
+            if (content.Contains("TargetResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).TargetResourceName = (string) content.GetValueForProperty("TargetResourceName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).TargetResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MigrationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).MigrationName = (string) content.GetValueForProperty("MigrationName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).MigrationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("SqlDbInstanceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SqlDbInstanceName = (string) content.GetValueForProperty("SqlDbInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SqlDbInstanceName, global::System.Convert.ToString);
@@ -128,10 +152,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).TargetDbName = (string) content.GetValueForProperty("TargetDbName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).TargetDbName, global::System.Convert.ToString);
             }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            }
             if (content.Contains("ManagedInstanceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).ManagedInstanceName = (string) content.GetValueForProperty("ManagedInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).ManagedInstanceName, global::System.Convert.ToString);
@@ -139,6 +159,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models
             if (content.Contains("SqlVirtualMachineName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SqlVirtualMachineName = (string) content.GetValueForProperty("SqlVirtualMachineName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).SqlVirtualMachineName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MigrationServiceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).MigrationServiceName = (string) content.GetValueForProperty("MigrationServiceName",((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentityInternal)this).MigrationServiceName, global::System.Convert.ToString);
             }
             if (content.Contains("SqlMigrationServiceName"))
             {

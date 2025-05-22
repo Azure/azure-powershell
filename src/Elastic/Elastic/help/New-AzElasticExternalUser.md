@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzElasticExternalUser
 
 ## SYNOPSIS
-Create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 
 ## SYNTAX
 
@@ -19,11 +19,18 @@ New-AzElasticExternalUser -MonitorName <String> -ResourceGroupName <String> [-Su
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaJsonString
 ```
 New-AzElasticExternalUser -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Body <IExternalUserInfo> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzElasticExternalUser -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -33,14 +40,8 @@ New-AzElasticExternalUser -InputObject <IElasticIdentity> [-EmailId <String>] [-
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentity
-```
-New-AzElasticExternalUser -InputObject <IElasticIdentity> -Body <IExternalUserInfo>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 
 ## EXAMPLES
 
@@ -52,22 +53,6 @@ New-AzElasticExternalUser -ResourceGroupName elastic-rg-3eytki -MonitorName elas
 This command Creates an User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 
 ## PARAMETERS
-
-### -Body
-The properties of the request required for creating user on elastic side
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IExternalUserInfo
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -117,11 +102,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -131,12 +115,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -167,7 +181,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -198,7 +212,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -259,13 +273,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IExternalUserInfo
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserCreationResponse
 
 ## NOTES
 

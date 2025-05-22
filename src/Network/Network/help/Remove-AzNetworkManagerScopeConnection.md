@@ -14,8 +14,8 @@ Removes a network manager scope connection.
 
 ```
 Remove-AzNetworkManagerScopeConnection -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
- [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

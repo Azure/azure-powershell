@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -39,10 +40,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultSoftDelteParameterSet, HelpMessage = "Specifies the retention period for soft deleted items in days.")]        
         public int? SoftDeleteRetentionPeriodInDays { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultSoftDelteParameterSet, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricated)]
+        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultCMKParameterSet, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricated)]
+        [ValidateNotNullOrEmpty]
+        public string Token;
+
         [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultSoftDelteParameterSet, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken)]
         [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultCMKParameterSet, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken)]
         [ValidateNotNullOrEmpty]
-        public string Token;
+        public System.Security.SecureString SecureToken;
 
         [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultSoftDelteParameterSet, HelpMessage = ParamHelpMsgs.Common.HybridBackupSecurity)]
         [ValidateNotNullOrEmpty]        
@@ -80,6 +86,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     string vaultName = resourceIdentifier.ResourceName;
                     string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
+                    string plainToken = HelperUtils.GetPlainToken(Token, SecureToken);
+
                     if (SoftDeleteFeatureState != null || DisableHybridBackupSecurityFeature != null || SoftDeleteRetentionPeriodInDays != null)
                     {
                         BackupResourceVaultConfigResource currentConfig = ServiceClientAdapter.GetVaultProperty(vaultName, resourceGroupName);
@@ -105,7 +113,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         bool isMUAProtected = checkMUAForSoftDelete(currentConfig, param);
 
-                        BackupResourceVaultConfigResource result = ServiceClientAdapter.SetVaultProperty(vaultName, resourceGroupName, param, Token, isMUAProtected); // chck - should call vault API ?
+                        BackupResourceVaultConfigResource result = ServiceClientAdapter.SetVaultProperty(vaultName, resourceGroupName, param, plainToken, isMUAProtected); // chck - should call vault API ?
                         WriteObject(result.Properties);
                     }
                     else if (EncryptionKeyId != null)
@@ -141,7 +149,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         
                         // defining this flag in case we want to add logic later 
                         bool isMUAProtected = true;
-                        ServiceClientAdapter.UpdateRSVault(resourceGroupName, vaultName, patchVault, Token, isMUAProtected);
+                        ServiceClientAdapter.UpdateRSVault(resourceGroupName, vaultName, patchVault, plainToken, isMUAProtected);
                     }
                 }
                 catch (Exception exception)

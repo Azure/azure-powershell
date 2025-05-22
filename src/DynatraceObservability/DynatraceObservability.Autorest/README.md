@@ -40,21 +40,17 @@ title: DynatraceObservability
 subject-prefix: Dynatrace
 
 inlining-threshold: 100
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - where:
       verb: Set
     remove: true
   - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
-
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
   # Rename subject
   - where:
       subject: ^MonitorAccountCredentials$
@@ -302,9 +298,10 @@ directive:
           - ProvisioningState
           - SingleSignOnState
           - SingleSignOnUrl
-  # - model-cmdlet:
-    # - FilteringTag 
-    # --> Generate cmdlet: New-AzDynatraceMonitorFilteringTagObject
+  - model-cmdlet:
+      - model-name: FilteringTag
+        cmdlet-name: New-AzDynatraceMonitorFilteringTagObject
+
   - from: GetAzDynatraceMonitorAppService_List.cs
     where: $
     transform: $ = $.replace(", SupportsShouldProcess = true" ,"");

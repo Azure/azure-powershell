@@ -1,6 +1,6 @@
 ---
 Module Name: Az.BotService
-Module Guid: 0fbff4fb-215b-4aca-b867-d1acfecab531
+Module Guid: 30262aa0-2203-409b-8e89-92c02e07022d
 Download Help Link: https://learn.microsoft.com/powershell/module/az.botservice
 Help Version: 1.0.0.0
 Locale: en-US
@@ -36,5 +36,5 @@ Returns a BotService specified by the parameters.
 Deletes a Bot Service from the resource group.
 
 ### [Update-AzBotService](Update-AzBotService.md)
-Updates a Bot Service
+update a Bot Service
 

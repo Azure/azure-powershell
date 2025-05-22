@@ -19,11 +19,11 @@ Gets a list of egress endpoints (network endpoints of all outbound dependencies)
 The operation returns properties of each egress endpoint.
 
 ### [New-AzDedicatedHsm](New-AzDedicatedHsm.md)
-Create or Update a dedicated HSM in the specified subscription.
+create a dedicated HSM in the specified subscription.
 
 ### [Remove-AzDedicatedHsm](Remove-AzDedicatedHsm.md)
 Deletes the specified Azure Dedicated HSM.
 
 ### [Update-AzDedicatedHsm](Update-AzDedicatedHsm.md)
-Update a dedicated HSM in the specified subscription.
+update a dedicated HSM in the specified subscription.
 

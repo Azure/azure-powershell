@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzScVmmVMGuestAgent
 
 ## SYNOPSIS
-Implements GuestAgent GET method.
+Implements Azure Arc agent GET method.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzScVmmVMGuestAgent -Name <String> -ResourceGroupName <String> [-Subscriptio
 ```
 
 ## DESCRIPTION
-Implements GuestAgent GET method.
+Implements Azure Arc agent GET method.
 
 ## EXAMPLES
 

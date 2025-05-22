@@ -17,16 +17,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnCustomDo
 Describe 'Remove-AzFrontDoorCdnCustomDomain'  {
     It 'Delete' {
         $customDomainName = "domain-psName020"
+        $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "ManagedCertificate" -MinimumTlsVersion "TLS12"
         New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-        -HostName "removedomain.dev.cdn.azure.cn" 
+        -HostName "removedomain.dev.cdn.azure.cn" -TlsSetting $tlsSetting
 
         Remove-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $customDomainName
     }
 
     It 'DeleteViaIdentity' {
         $customDomainName = "domain-psName021"
+        $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "ManagedCertificate" -MinimumTlsVersion "TLS12"
         New-AzFrontDoorCdnCustomDomain -SubscriptionId $env.SubscriptionId -CustomDomainName $customDomainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-        -HostName "removedomain.dev.cdn.azure.cn" 
+        -HostName "removedomain.dev.cdn.azure.cn" -TlsSetting $tlsSetting
 
         $domainObject = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $customDomainName
         Remove-AzFrontDoorCdnCustomDomain -InputObject $domainObject

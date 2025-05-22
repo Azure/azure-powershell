@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update an evidence a specified report</summary>
+    /// <summary>update an evidence a specified report</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences/{evidenceName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences/{evidenceName}"
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzAppComplianceAutomationEvidence_UpdateViaIdentityReport", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IEvidenceResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Description(@"Update an evidence a specified report")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Description(@"update an evidence a specified report")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Generated]
     public partial class UpdateAzAppComplianceAutomationEvidence_UpdateViaIdentityReport : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Runtime.IEventListener,

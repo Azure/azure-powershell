@@ -154,3 +154,39 @@ function Test-CheckNameAvailability
         Clean-ResourceGroup $resourceGroup
     }
 }
+
+<#
+.SYNOPSIS
+Test GetUsage
+#>
+function Test-GetUsage
+{
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"    
+    try
+    {        
+        $currentSub = (Get-AzureRmContext).Subscription	
+        $subsid = $currentSub.SubscriptionId        
+        $resourceLocation = "westus2"
+        $usageType = "totalTibsPerSubscription"
+
+        # create the resource group
+        #New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
+        
+        # create the resource group
+        #New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
+
+        # check Get Usages
+        $usageResult = Get-AzNetAppFilesUsage -Location $resourceLocation -UsageType $usageType
+        Assert-NotNull $usageResult
+        Assert-AreEqual $usageType $usageResult.Name.Value       
+
+        # List usages                
+        $usageResult = Get-AzNetAppFilesUsage -ResourceGroupName $resourceGroup -Location $resourceLocation 
+        Assert-NotNull $nameAvailability        
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroup
+    }
+}

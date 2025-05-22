@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a StandbyContainerGroupPoolResource</summary>
+    /// <summary>create a StandbyContainerGroupPoolResource</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzStandbyContainerGroupPool_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Description(@"Create a StandbyContainerGroupPoolResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Description(@"create a StandbyContainerGroupPoolResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}", ApiVersion = "2024-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}", ApiVersion = "2025-03-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.NotSuggestDefaultParameterSet]
     public partial class NewAzStandbyContainerGroupPool_CreateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener,

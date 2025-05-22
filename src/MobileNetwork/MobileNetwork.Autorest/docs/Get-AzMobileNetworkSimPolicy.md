@@ -30,6 +30,12 @@ Get-AzMobileNetworkSimPolicy -InputObject <IMobileNetworkIdentity> [-DefaultProf
  [<CommonParameters>]
 ```
 
+### GetViaIdentityMobileNetwork
+```
+Get-AzMobileNetworkSimPolicy -MobileNetworkInputObject <IMobileNetworkIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets information about the specified SIM policy.
 
@@ -81,11 +87,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MobileNetworkInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: GetViaIdentityMobileNetwork
 Aliases:
 
 Required: True
@@ -115,7 +135,7 @@ The name of the SIM policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityMobileNetwork
 Aliases: SimPolicyName
 
 Required: True
@@ -165,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimPolicy
 
 ## NOTES
 

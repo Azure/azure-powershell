@@ -36,7 +36,7 @@ Get or list app configuration stores.
 Lists the access key for the specified configuration store.
 
 ### [New-AzAppConfigurationStore](New-AzAppConfigurationStore.md)
-Creates a configuration store with the specified parameters.
+create a configuration store with the specified parameters.
 
 ### [New-AzAppConfigurationStoreKey](New-AzAppConfigurationStoreKey.md)
 Regenerates an access key for the specified configuration store.
@@ -63,5 +63,5 @@ Requests the headers and status of the given resource.
 Checks whether the configuration store name is available for use.
 
 ### [Update-AzAppConfigurationStore](Update-AzAppConfigurationStore.md)
-Updates a configuration store with the specified parameters.
+update a configuration store with the specified parameters.
 

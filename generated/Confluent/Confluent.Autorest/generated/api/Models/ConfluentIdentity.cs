@@ -53,6 +53,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -61,6 +64,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Organization resource name",
         SerializedName = @"organizationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -69,6 +75,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource group name",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -77,6 +86,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Microsoft Azure subscription id",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

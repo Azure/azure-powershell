@@ -203,5 +203,20 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkExpressRouteGatewayCRUDwithResiliencyModel");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestHighBandwidthVpnGatewayCreation()
+        {
+            TestRunner.RunTestScript("Test-HighBandwidthVpnGatewayCreation");
+        }
+
+        [Fact]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
+        public void TestVirtualNetworkGatewayMigrationFromBasicIPToSatndardIP()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayBasicIPToStandardIPMigration");
+        }
     }
 }

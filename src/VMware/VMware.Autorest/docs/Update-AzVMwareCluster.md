@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareCluster
 
 ## SYNOPSIS
-Update a Cluster
+update a Cluster
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Update-AzVMwareCluster -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
 ```
 
 ## DESCRIPTION
-Update a Cluster
+update a Cluster
 
 ## EXAMPLES
 

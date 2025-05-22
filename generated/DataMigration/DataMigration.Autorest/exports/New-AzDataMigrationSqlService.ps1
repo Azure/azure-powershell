@@ -23,12 +23,12 @@ Create or Update Database Migration Service.
 New-AzDataMigrationSqlService -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" -Location "eastus2"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService
+Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationService
 .Link
 https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlservice
 #>
 function New-AzDataMigrationSqlService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationService])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -60,7 +60,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api50.ITrackedResourceTags1]))]
     [System.Collections.Hashtable]
     # Dictionary of <string>
     ${Tag},

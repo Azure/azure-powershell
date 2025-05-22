@@ -26,12 +26,12 @@ $item = Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric -ResourceGroupName
 $item.Node[0] 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IIntegrationRuntimeMonitoringData
+Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IIntegrationRuntimeMonitoringData
 .Link
 https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationsqlserviceintegrationruntimemetric
 #>
 function Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IIntegrationRuntimeMonitoringData])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IIntegrationRuntimeMonitoringData])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

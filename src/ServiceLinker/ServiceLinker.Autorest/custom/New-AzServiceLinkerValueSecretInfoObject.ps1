@@ -21,33 +21,27 @@ Create an in-memory object for ValueSecretInfo.
 Create an in-memory object for ValueSecretInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ValueSecretInfo
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ValueSecretInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkervaluesecretinfoobject
 #>
 function New-AzServiceLinkerValueSecretInfoObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ModelCmdletAttribute()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.DoNotExportAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ValueSecretInfo')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ValueSecretInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The actual value of the secret.")]
         [string]
-        $Value,
-        [Parameter(Mandatory, HelpMessage="The secret type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.SecretType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.SecretType]
-        $SecretType
+        $Value
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ValueSecretInfo]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ValueSecretInfo]::New()
 
         if ($PSBoundParameters.ContainsKey('Value')) {
             $Object.Value = $Value
-        }
-        if ($PSBoundParameters.ContainsKey('SecretType')) {
-            $Object.SecretType = $SecretType
         }
         return $Object
     }

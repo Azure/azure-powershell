@@ -44,7 +44,7 @@ $vault = Update-AzDataProtectionBackupVault -AssignUserIdentity $UAMI -Subscript
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -78,7 +78,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionbackupvault
 #>
 function Update-AzDataProtectionBackupVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -121,7 +121,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IEncryptionSettings]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IEncryptionSettings]
     # Customer Managed Key details of the resource.
     # To construct, see NOTES section for ENCRYPTIONSETTING properties and create a hash table.
     ${EncryptionSetting},
@@ -171,7 +171,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IPatchResourceRequestInputTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IPatchResourceRequestInputTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

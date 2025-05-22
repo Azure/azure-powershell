@@ -83,6 +83,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the configuration store.",
         SerializedName = @"configStoreName",
         PossibleTypes = new [] { typeof(string) })]
@@ -91,6 +94,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private link resource group.",
         SerializedName = @"groupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -99,6 +105,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -109,6 +118,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Identifier of key and label combination. Key and label are joined by $ character. Label is optional.",
         SerializedName = @"keyValueName",
         PossibleTypes = new [] { typeof(string) })]
@@ -117,6 +129,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The location in which uniqueness will be verified.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -125,6 +140,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Private endpoint connection name",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -133,6 +151,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group to which the container registry belongs.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -141,6 +162,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Microsoft Azure subscription ID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

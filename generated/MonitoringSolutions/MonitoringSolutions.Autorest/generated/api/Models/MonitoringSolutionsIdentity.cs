@@ -91,6 +91,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -99,6 +102,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"User ManagementAssociation Name.",
         SerializedName = @"managementAssociationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -107,6 +113,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"User Management Configuration Name.",
         SerializedName = @"managementConfigurationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -115,6 +124,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Provider name for the parent resource.",
         SerializedName = @"providerName",
         PossibleTypes = new [] { typeof(string) })]
@@ -123,6 +135,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group to get. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -131,6 +146,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Parent resource name.",
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -139,6 +157,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource type for the parent resource",
         SerializedName = @"resourceType",
         PossibleTypes = new [] { typeof(string) })]
@@ -147,6 +168,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"User Solution Name.",
         SerializedName = @"solutionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -158,6 +182,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

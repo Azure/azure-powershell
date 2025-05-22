@@ -42,5 +42,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-CheckNameAvailability");
         }
+
+        [Fact(Skip = "Doesn't work at the moment due to manifest issue")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetUsage()
+        {
+            TestRunner.RunTestScript("Test-GetUsage");
+        }
     }
 }

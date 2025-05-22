@@ -50,60 +50,66 @@ Set-AzConnectedKubernetes -InputObject $inputObject
 Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId | Set-AzConnectedKubernetes -WorkloadIdentityEnabled:$false
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedCluster
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedCluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+ARCAGENTPROFILESYSTEMCOMPONENT <ISystemComponent[]>: List of system extensions that are installed on the cluster resource.
+  [MajorVersion <Int32?>]: Major Version of the system extension that is currently installed on the cluster resource.
+  [Type <String>]: Type of the system extension
+  [UserSpecifiedVersion <String>]: Version of the system extension to be installed on the cluster resource.
+
+ARCAGENTRYCONFIGURATION <IArcAgentryConfigurations[]>: Configuration settings for customizing the behavior of the connected cluster.
+  [Feature <String>]: Specifies the name of the feature for the configuration setting.
+  [ProtectedSetting <IArcAgentryConfigurationsProtectedSettings>]: The configuration settings for the feature that contain any sensitive or secret information.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [Setting <IArcAgentryConfigurationsSettings>]: The configuration settings for the feature that do not contain any sensitive or secret information.
+    [(Any) <String>]: This indicates any property can be added to this object.
+
 INPUTOBJECT <IConnectedCluster>: 
-  Location <String>: The geo-location where the resource lives
   AgentPublicKeyCertificate <String>: Base64 encoded public certificate used by the agent to do the initial handshake to the backend services in Azure.
-  IdentityType <ResourceIdentityType>: The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster.
+  IdentityType <String>: The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster.
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
-  [AadProfileAdminGroupObjectID <String[]>]: The list of AAD group object IDs that will have admin role of the cluster.
+  [AadProfileAdminGroupObjectID <List<String>>]: The list of AAD group object IDs that will have admin role of the cluster.
   [AadProfileEnableAzureRbac <Boolean?>]: Whether to enable Azure RBAC for Kubernetes authorization.
   [AadProfileTenantId <String>]: The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
-  [ArcAgentProfileAgentAutoUpgrade <AutoUpgradeOptions?>]: Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled.
-  [ArcAgentProfileAgentError <IAgentError[]>]: List of arc agentry and system components errors on the cluster resource.
+  [ArcAgentProfileAgentAutoUpgrade <String>]: Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled.
+  [ArcAgentProfileAgentError <List<IAgentError>>]: List of arc agentry and system components errors on the cluster resource.
   [ArcAgentProfileDesiredAgentVersion <String>]: Version of the Arc agents to be installed on the cluster resource
-  [ArcAgentProfileSystemComponent <ISystemComponent[]>]: List of system extensions that are installed on the cluster resource.
+  [ArcAgentProfileSystemComponent <List<ISystemComponent>>]: List of system extensions that are installed on the cluster resource.
     [MajorVersion <Int32?>]: Major Version of the system extension that is currently installed on the cluster resource.
     [Type <String>]: Type of the system extension
     [UserSpecifiedVersion <String>]: Version of the system extension to be installed on the cluster resource.
-  [ArcAgentryConfiguration <IArcAgentryConfigurations[]>]: Configuration settings for customizing the behavior of the connected cluster.
+  [ArcAgentryConfiguration <List<IArcAgentryConfigurations>>]: Configuration settings for customizing the behavior of the connected cluster.
     [Feature <String>]: Specifies the name of the feature for the configuration setting.
     [ProtectedSetting <IArcAgentryConfigurationsProtectedSettings>]: The configuration settings for the feature that contain any sensitive or secret information.
       [(Any) <String>]: This indicates any property can be added to this object.
     [Setting <IArcAgentryConfigurationsSettings>]: The configuration settings for the feature that do not contain any sensitive or secret information.
       [(Any) <String>]: This indicates any property can be added to this object.
-  [AzureHybridBenefit <AzureHybridBenefit?>]: Indicates whether Azure Hybrid Benefit is opted in
+  [AzureHybridBenefit <String>]: Indicates whether Azure Hybrid Benefit is opted in
   [Distribution <String>]: The Kubernetes distribution running on this connected cluster.
   [DistributionVersion <String>]: The Kubernetes distribution version on this connected cluster.
   [GatewayEnabled <Boolean?>]: Indicates whether the gateway for arc router connectivity is enabled.
   [GatewayResourceId <String>]: The resource ID of the gateway used for the Arc router feature.
   [Infrastructure <String>]: The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
-  [Kind <ConnectedClusterKind?>]: The kind of connected cluster.
+  [Kind <String>]: The kind of connected cluster.
   [OidcIssuerProfileEnabled <Boolean?>]: Whether to enable oidc issuer for workload identity integration.
   [OidcIssuerProfileSelfHostedIssuerUrl <String>]: The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature.
   [PrivateLinkScopeResourceId <String>]: This is populated only if privateLinkState is enabled. The resource id of the private link scope this connected cluster is assigned to, if any.
-  [PrivateLinkState <PrivateLinkState?>]: Property which describes the state of private link on a connected cluster resource.
-  [ProvisioningState <ProvisioningState?>]: Provisioning state of the connected cluster resource.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource modification (UTC).
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <LastModifiedByType?>]: The type of identity that last modified the resource.
+  [PrivateLinkState <String>]: Property which describes the state of private link on a connected cluster resource.
+  [ProvisioningState <String>]: Provisioning state of the connected cluster resource.
   [WorkloadIdentityEnabled <Boolean?>]: Whether to enable or disable the workload identity Webhook
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/set-azconnectedkubernetes
 #>
 function Set-AzConnectedKubernetes {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedCluster])]
 [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
@@ -131,42 +137,6 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
-    [System.Uri]
-    # The http URI of the proxy server for the kubernetes cluster to use
-    ${HttpProxy},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
-    [System.Uri]
-    # The https URI of the proxy server for the kubernetes cluster to use
-    ${HttpsProxy},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
-    [System.String]
-    # The comma-separated list of hostnames that should be excluded from the proxy server for the kubernetes cluster to use
-    ${NoProxy},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
-    [System.String]
-    # The path to the certificate file for proxy or custom Certificate Authority.
-    ${ProxyCert},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
-    [System.Management.Automation.SwitchParameter]
-    # Flag to disable auto upgrade of arc agents.
-    ${DisableAutoUpgrade},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
-    [System.String]
-    # Override the default container log path to enable fluent-bit logging.
-    ${ContainerLogPath},
-
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
     [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
     [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
@@ -176,21 +146,64 @@ param(
     ${Location},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [System.String]
-    # Path to the kube config file
-    ${KubeConfig},
+    [System.String[]]
+    # The list of AAD group object IDs that will have admin role of the cluster.
+    ${AadProfileAdminGroupObjectID},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether to enable Azure RBAC for Kubernetes authorization.
+    ${AadProfileEnableAzureRbac},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [System.String]
-    # Kubconfig context from current machine
-    ${KubeContext},
+    # The AAD tenant ID to use for authentication.
+    # If not specified, will use the tenant of the deployment subscription.
+    ${AadProfileTenantId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit]
+    [System.String]
+    # Indicates whether the Arc agents on the be upgraded automatically to the latest version.
+    # Defaults to Enabled.
+    ${ArcAgentProfileAgentAutoUpgrade},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IAgentError[]]
+    # List of arc agentry and system components errors on the cluster resource.
+    ${ArcAgentProfileAgentError},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [System.String]
+    # Version of the Arc agents to be installed on the cluster resource
+    ${ArcAgentProfileDesiredAgentVersion},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ISystemComponent[]]
+    # List of system extensions that are installed on the cluster resource.
+    ${ArcAgentProfileSystemComponent},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IArcAgentryConfigurations[]]
+    # Configuration settings for customizing the behavior of the connected cluster.
+    ${ArcAgentryConfiguration},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("True", "False", "NotApplicable")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [System.String]
     # Indicates whether Azure Hybrid Benefit is opted in
     ${AzureHybridBenefit},
 
@@ -208,33 +221,47 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicates whether the gateway for arc router connectivity is enabled.
+    ${GatewayEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [System.String]
     # The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
     ${Infrastructure},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("ProvisionedCluster")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [System.String]
+    # The kind of connected cluster.
+    ${Kind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [System.String]
+    # This is populated only if privateLinkState is enabled.
     # The resource id of the private link scope this connected cluster is assigned to, if any.
     ${PrivateLinkScopeResourceId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.PrivateLinkState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.PrivateLinkState]
+    [System.String]
     # Property which describes the state of private link on a connected cluster resource.
     ${PrivateLinkState},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ProvisioningState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ProvisioningState]
+    [System.String]
     # Provisioning state of the connected cluster resource.
     ${ProvisioningState},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -260,7 +287,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Enable the workload identity Webhook
+    # Whether to enable or disable the workload identity Webhook
     ${WorkloadIdentityEnabled},
 
     [Parameter()]
@@ -298,8 +325,8 @@ param(
     [Parameter(ParameterSetName='SetDisableGateway', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='Set', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedCluster]
+    # 
     ${InputObject},
 
     [Parameter()]
@@ -307,7 +334,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -345,14 +373,14 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
     [System.Uri]
-    # The URI of the proxy server for host os to use
+    # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
     [System.Management.Automation.PSCredential]
-    # The credential of the proxy server for host os to use
+    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
@@ -369,6 +397,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -395,9 +432,7 @@ begin {
             SetDisableGateway = 'Az.ConnectedKubernetes.custom\Set-AzConnectedKubernetes';
             Set = 'Az.ConnectedKubernetes.custom\Set-AzConnectedKubernetes';
         }
-        if (('SetExpanded', 'SetExpandedEnableGateway', 'SetExpandedDisableGateway', 'SetEnableGateway', 'SetDisableGateway', 'Set') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('SetExpanded', 'SetExpandedEnableGateway', 'SetExpandedDisableGateway', 'SetEnableGateway', 'SetDisableGateway', 'Set') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -411,6 +446,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -27,12 +27,12 @@ $pointInTimeRange = Find-AzDataProtectionRestorableTimeRange -BackupInstanceName
 $pointInTimeRange.RestorableTimeRange | Format-List
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupFindRestorableTimeRangesResponseResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupFindRestorableTimeRangesResponseResource
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/find-azdataprotectionrestorabletimerange
 #>
 function Find-AzDataProtectionRestorableTimeRange {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupFindRestorableTimeRangesResponseResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupFindRestorableTimeRangesResponseResource])]
 [CmdletBinding(DefaultParameterSetName='FindExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

@@ -16,18 +16,18 @@
 
 <#
 .Synopsis
-Create or Update Disk pool.
-This create or update operation can take 15 minutes to complete.
+create Disk pool.
+This create operation can take 15 minutes to complete.
 This is expected service behavior.
 .Description
-Create or Update Disk pool.
-This create or update operation can take 15 minutes to complete.
+create Disk pool.
+This create operation can take 15 minutes to complete.
 This is expected service behavior.
 .Example
 New-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' -Location 'eastus2euap' -SkuName 'Standard' -SkuTier 'Standard' -SubnetId '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/storagepool-rg-test/providers/Microsoft.Network/virtualNetworks/disk-pool-vnet/subnets/default' -AvailabilityZone "1"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool
+Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,7 +39,7 @@ DISK <IDisk[]>: List of Azure Managed Disks to attach to a Disk Pool.
 https://learn.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
 #>
 function New-AzDiskPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPool])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -63,72 +63,83 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
     # The geo-location where the resource lives.
     ${Location},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
     # Sku name
     ${SkuName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
     # Azure Resource ID of a Subnet for the Disk Pool.
     ${SubnetId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String[]]
     # List of additional capabilities for a Disk Pool.
     ${AdditionalCapability},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String[]]
     # Logical zone for Disk Pool resource; example: ["1"].
     ${AvailabilityZone},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDisk[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDisk[]]
     # List of Azure Managed Disks to attach to a Disk Pool.
-    # To construct, see NOTES section for DISK properties and create a hash table.
     ${Disk},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
     # Azure resource id.
     # Indicates if this resource is managed by another Azure resource.
     ${ManagedBy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String[]]
     # List of Azure resource ids that manage this resource.
     ${ManagedByExtended},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
     # Sku tier
     ${SkuTier},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolCreateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolCreateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -198,13 +209,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.DiskPool.private\New-AzDiskPool_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DiskPool.private\New-AzDiskPool_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DiskPool.private\New-AzDiskPool_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -213,6 +227,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -14,7 +14,8 @@ Define a Network Virtual Appliance Additional Nic Property for the resource.
 
 ```
 New-AzVirtualApplianceAdditionalNicProperty -NicName <String> -HasPublicIP <Boolean> [-AddressFamily <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

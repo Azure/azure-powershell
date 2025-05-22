@@ -14,14 +14,14 @@ Create or update linker resource in spring cloud.
 
 ```
 New-AzServiceLinkerForSpringCloud [-ResourceUri <String>] [-Name <String>] -AuthInfo <IAuthInfoBase>
- -TargetService <ITargetServiceBase> [-ClientType <ClientType>] [-ConfigurationInfoAction <ActionType>]
+ -TargetService <ITargetServiceBase> [-ClientType <String>] [-ConfigurationInfoAction <String>]
  [-ConfigurationInfoAdditionalConfiguration <Hashtable>] [-ConfigurationInfoCustomizedKey <Hashtable>]
- [-FirewallRuleAzureService <AllowType>] [-FirewallRuleCallerClientIP <AllowType>]
- [-FirewallRuleIPRange <String[]>] [-PublicNetworkSolutionAction <ActionType>] [-Scope <String>]
- [-SecretStoreKeyVaultId <String>] [-SecretStoreKeyVaultSecretName <String>]
- [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] -ServiceName <String> -AppName <String>
- -ResourceGroupName <String> [-DeploymentName <String>] [-SubscriptionId <String>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-FirewallRuleAzureService <String>] [-FirewallRuleCallerClientIP <String>] [-FirewallRuleIPRange <String[]>]
+ [-PublicNetworkSolutionAction <String>] [-Scope <String>] [-SecretStoreKeyVaultId <String>]
+ [-SecretStoreKeyVaultSecretName <String>] [-VNetSolutionType <String>] [-DefaultProfile <PSObject>]
+ -ServiceName <String> -AppName <String> -ResourceGroupName <String> [-DeploymentName <String>]
+ [-SubscriptionId <String>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,7 +83,7 @@ The authentication type.
 To construct, see NOTES section for AUTHINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IAuthInfoBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IAuthInfoBase
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The application client type
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +116,7 @@ Default is enable.
 If optOut, no configuration change will be made on source.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 Allow Azure services to access the target service if true.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -210,7 +210,7 @@ Allow caller client IP to access the target service if true.
 the property is used when connecting local application to target service.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -274,7 +274,7 @@ Default is enable.
 If optOut, opt out public network access configuration.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -397,7 +397,7 @@ The target service properties
 To construct, see NOTES section for TARGETSERVICE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ITargetServiceBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ITargetServiceBase
 Parameter Sets: (All)
 Aliases:
 
@@ -412,7 +412,7 @@ Accept wildcard characters: False
 Type of VNet solution.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.VNetSolutionType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -461,7 +461,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource
 
 ## NOTES
 

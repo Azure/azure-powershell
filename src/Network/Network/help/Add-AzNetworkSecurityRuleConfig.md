@@ -20,7 +20,8 @@ Add-AzNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkS
  [-SourceAddressPrefix <String[]>] [-DestinationAddressPrefix <String[]>]
  [-SourceApplicationSecurityGroup <PSApplicationSecurityGroup[]>]
  [-DestinationApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-Access <String>] [-Priority <Int32>]
- [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Direction <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -358,5 +359,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzNetworkSecurityRuleConfig](./Remove-AzNetworkSecurityRuleConfig.md)
 
 [Set-AzNetworkSecurityRuleConfig](./Set-AzNetworkSecurityRuleConfig.md)
-
-

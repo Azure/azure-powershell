@@ -166,5 +166,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzApplicationGatewaySslCertificate](./New-AzApplicationGatewaySslCertificate.md)
 
 [Remove-AzApplicationGatewaySslCertificate](./Remove-AzApplicationGatewaySslCertificate.md)
-
-

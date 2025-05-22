@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.MonitoringSolutions.private.dll'
   FormatsToProcess = './Az.MonitoringSolutions.format.ps1xml'
-  FunctionsToExport = 'Get-AzMonitorLogAnalyticsSolution', 'New-AzMonitorLogAnalyticsSolution', 'Remove-AzMonitorLogAnalyticsSolution', 'Update-AzMonitorLogAnalyticsSolution', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzMonitorLogAnalyticsSolution', 'New-AzMonitorLogAnalyticsSolution', 'Remove-AzMonitorLogAnalyticsSolution', 'Update-AzMonitorLogAnalyticsSolution'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'MonitoringSolutions'

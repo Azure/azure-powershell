@@ -27,11 +27,19 @@ Get-AzImageBuilderTemplateRunOutput -ImageTemplateName azps-ibt-1 -ResourceGroup
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IRunOutput
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IRunOutput
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+IMAGETEMPLATEINPUTOBJECT <IImageBuilderIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageTemplateName <String>]: The name of the image Template
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunOutputName <String>]: The name of the run output
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription Id forms part of the URI for every service call.
+  [TriggerName <String>]: The name of the trigger
 
 INPUTOBJECT <IImageBuilderIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
@@ -44,7 +52,7 @@ INPUTOBJECT <IImageBuilderIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.imagebuilder/get-azimagebuildertemplaterunoutput
 #>
 function Get-AzImageBuilderTemplateRunOutput {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IRunOutput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IRunOutput])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -55,6 +63,7 @@ param(
     ${ImageTemplateName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityImageTemplate', Mandatory)]
     [Alias('RunOutputName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Path')]
     [System.String]
@@ -81,8 +90,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityImageTemplate', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentity]
+    # Identity Parameter
+    ${ImageTemplateInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -140,6 +154,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -161,11 +184,10 @@ begin {
         $mapping = @{
             Get = 'Az.ImageBuilder.private\Get-AzImageBuilderTemplateRunOutput_Get';
             GetViaIdentity = 'Az.ImageBuilder.private\Get-AzImageBuilderTemplateRunOutput_GetViaIdentity';
+            GetViaIdentityImageTemplate = 'Az.ImageBuilder.private\Get-AzImageBuilderTemplateRunOutput_GetViaIdentityImageTemplate';
             List = 'Az.ImageBuilder.private\Get-AzImageBuilderTemplateRunOutput_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -179,6 +201,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

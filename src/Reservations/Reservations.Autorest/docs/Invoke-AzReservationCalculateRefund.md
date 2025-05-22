@@ -19,22 +19,22 @@ Invoke-AzReservationCalculateRefund -ReservationOrderId <String> [-Id <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Post
-```
-Invoke-AzReservationCalculateRefund -ReservationOrderId <String> -Body <ICalculateRefundRequest>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PostViaIdentity
-```
-Invoke-AzReservationCalculateRefund -InputObject <IReservationsIdentity> -Body <ICalculateRefundRequest>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### PostViaIdentityExpanded
 ```
 Invoke-AzReservationCalculateRefund -InputObject <IReservationsIdentity> [-Id <String>]
  [-ReservationToReturnQuantity <Int32>] [-ReservationToReturnReservationId <String>] [-Scope <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PostViaJsonFilePath
+```
+Invoke-AzReservationCalculateRefund -ReservationOrderId <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PostViaJsonString
+```
+Invoke-AzReservationCalculateRefund -ReservationOrderId <String> -JsonString <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -96,22 +96,6 @@ The SessionId in the response is a required input parameter for cmdlet Invoke-Az
 
 ## PARAMETERS
 
-### -Body
-Request containing information needed for calculating refund.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundRequest
-Parameter Sets: Post, PostViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -145,11 +129,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
-Parameter Sets: PostViaIdentity, PostViaIdentityExpanded
+Parameter Sets: PostViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -159,12 +142,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Post operation
+
+```yaml
+Type: System.String
+Parameter Sets: PostViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Post operation
+
+```yaml
+Type: System.String
+Parameter Sets: PostViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReservationOrderId
 Order Id of the reservation
 
 ```yaml
 Type: System.String
-Parameter Sets: Post, PostExpanded
+Parameter Sets: PostExpanded, PostViaJsonFilePath, PostViaJsonString
 Aliases:
 
 Required: True
@@ -257,13 +270,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateRefundResponse
 
 ## NOTES
 

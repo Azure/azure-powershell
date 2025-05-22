@@ -109,8 +109,8 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The default number of nodes for the node pools.")]
         public int NodeOsDiskSize { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The size of the Virtual Machine. Default value is Standard_D2_v2")]
-        public string NodeVmSize { get; set; } = "Standard_D2_v2";
+        [Parameter(Mandatory = false, HelpMessage = "The size of the Virtual Machine. Default value is dynamically selected by the AKS resource provider based on quota and capacity.")]
+        public string NodeVmSize { get; set; } = "";
 
         [Parameter(Mandatory = false, HelpMessage = "Node pool labels used for building Kubernetes network.")]
         public Hashtable NodePoolLabel { get; set; }

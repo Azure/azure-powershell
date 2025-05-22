@@ -18,8 +18,11 @@ Get information about a guest configuration assignment
 Get a report for the guest configuration assignment, by reportId.
 
 ### [New-AzGuestConfigurationAssignment](New-AzGuestConfigurationAssignment.md)
-Creates an association between a VM and guest configuration
+create an association between a VM and guest configuration
 
 ### [Remove-AzGuestConfigurationAssignment](Remove-AzGuestConfigurationAssignment.md)
 Delete a guest configuration assignment
+
+### [Update-AzGuestConfigurationAssignment](Update-AzGuestConfigurationAssignment.md)
+update an association between a ARC machine and guest configuration
 

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
 ## Version 1.3.1
 * Added breaking change announcement for the following cmdlets due to migrating autorest from v3 to v4.
   * `Get-AzFederatedIdentityCredential`

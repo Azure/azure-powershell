@@ -62,32 +62,36 @@ function Get-RepoLocation
 
 function Get-ApiKey
 {
-	param([string]$repoName)
-		$vaultKey="PSTestGalleryApiKey"
-		if ($repoName -eq "PSGallery")
-		{
-			$vaultKey = "PowerShellGalleryApiKey"
-		}
+	[CmdletBinding()]
+	param(
+		[string]$repoName
+	)
 
-		$context = (Get-AzContext -ErrorAction Ignore)
+	$vaultKey="PSTestGalleryApiKey"
+	if ($repoName -eq "PSGallery")
+	{
+		$vaultKey = "PowerShellGalleryApiKey"
+	}
 
-		if ($context -eq $null -or $context.Account -eq $null -or $context.Account.Id -eq $null)
-		{
-			Connect-AzAccount -ErrorAction Stop
-		}
+	$context = (Get-AzContext -ErrorAction Ignore)
 
+	if ($context -eq $null -or $context.Account -eq $null -or $context.Account.Id -eq $null)
+	{
+		Connect-AzAccount -ErrorAction Stop
+	}
+
+	$secret = Get-AzKeyVaultSecret -VaultName kv-azuresdk -Name $vaultKey -ErrorAction Stop
+
+	if($secret.SecretValueText -eq $null)
+	{
 		$secret = Get-AzKeyVaultSecret -VaultName kv-azuresdk -Name $vaultKey -ErrorAction Stop
-
-		if($secret.SecretValueText -eq $null)
-		{
-			$secret = Get-AzKeyVaultSecret -VaultName kv-azuresdk -Name $vaultKey -ErrorAction Stop
-			$secretPlainText = ConvertFrom-SecureString -SecureString $secret.SecretValue -AsPlainText
-			$secretPlainText
-		}
-		else 
-		{
-			$secret.SecretValueText
-		}
+		$secretPlainText = ConvertFrom-SecureString -SecureString $secret.SecretValue -AsPlainText
+		$secretPlainText
+	}
+	else 
+	{
+		$secret.SecretValueText
+	}
 }
 
 function Update-NugetPackage
@@ -206,6 +210,7 @@ function Publish-RMModules
 		$RepoLocation,
 
 		[Parameter(ParameterSetName="ByLocation", Mandatory=$true)]
+		[Parameter(ParameterSetName="ByName", Mandatory=$false)]
 		[string]
 		$ApiKey,
 
@@ -221,7 +226,9 @@ function Publish-RMModules
 		if ($PSCmdlet.ParameterSetName -eq "ByName")
 		{
 			$RepoLocation = (Get-RepoLocation -repoName $RepoName)
-			$ApiKey = (Get-ApiKey -repoName $RepoName)
+			if ($null -eq $ApiKey -Or "" -eq $ApiKey) {
+				$ApiKey = (Get-ApiKey -repoName $RepoName)
+			}
 		}
 		$modules = (Get-ModuleOrder -directory $Path)
 		foreach ($package in $modules)

@@ -23,12 +23,12 @@ Create an in-memory object for StorageAccountDetails.
 New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/storageAccountName"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.StorageAccountDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.StorageAccountDetails
 .Link
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxStorageAccountDetailsObject
 #>
 function New-AzDataBoxStorageAccountDetailsObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.StorageAccountDetails])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.StorageAccountDetails])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

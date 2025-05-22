@@ -63,7 +63,7 @@ It first gets the directory instance, and then pipelines it to the **Get-AzStora
 
 ### Example 3: List files and directories in a share, and exclude extended info
 ```powershell
-Get-AzStorageFile -ShareName "ContosoShare06" -ExcludeExtendedInfo 
+Get-AzStorageFile -ShareName "ContosoShare06" -ExcludeExtendedInfo
 ```
 
 This command lists the files and folders in under the share ContosoShare06, and exclude extended file info like timestamps, ETag, attributes, permissionKey in list file and Directory.

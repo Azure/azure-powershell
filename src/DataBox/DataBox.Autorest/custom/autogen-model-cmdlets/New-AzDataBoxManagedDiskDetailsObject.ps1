@@ -21,12 +21,12 @@ Create an in-memory object for ManagedDiskDetails.
 Create an in-memory object for ManagedDiskDetails.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ManagedDiskDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ManagedDiskDetails
 .Link
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxManagedDiskDetailsObject
 #>
 function New-AzDataBoxManagedDiskDetailsObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ManagedDiskDetails')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ManagedDiskDetails')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -46,7 +46,7 @@ function New-AzDataBoxManagedDiskDetailsObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ManagedDiskDetails]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ManagedDiskDetails]::New()
 
         if ($PSBoundParameters.ContainsKey('ResourceGroupId')) {
             $Object.ResourceGroupId = $ResourceGroupId

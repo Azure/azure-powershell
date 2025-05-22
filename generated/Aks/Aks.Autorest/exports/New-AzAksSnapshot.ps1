@@ -16,20 +16,20 @@
 
 <#
 .Synopsis
-Creates or updates a snapshot.
+create a snapshot.
 .Description
-Creates or updates a snapshot.
+create a snapshot.
 .Example
 $pool = Get-AzAksNodePool -ResourceGroupName mygroup -ClusterName mycluster -Name default
 New-AzAksSnapshot -ResourceGroupName mygroup -ResourceName 'snapshot1' -Location eastus -SnapshotType 'NodePool' -CreationDataSourceResourceId $pool.Id
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ISnapshot
+Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshot
 .Link
 https://learn.microsoft.com/powershell/module/az.aks/new-azakssnapshot
 #>
 function New-AzAksSnapshot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ISnapshot])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISnapshot])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -52,32 +52,44 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
     [System.String]
     # This is the ARM ID of the source object to be used to create the target object.
     ${CreationDataSourceResourceId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.SnapshotType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("NodePool")]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.SnapshotType]
+    [System.String]
     # The type of a snapshot.
     # The default is NodePool.
     ${SnapshotType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -135,6 +147,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -155,10 +176,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Aks.private\New-AzAksSnapshot_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Aks.private\New-AzAksSnapshot_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Aks.private\New-AzAksSnapshot_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -172,6 +193,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

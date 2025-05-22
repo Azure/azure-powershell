@@ -12,12 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Core;
+using Azure.Identity;
+
+using Hyak.Common;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -39,6 +44,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 UserId = account.Id,
                 LoginType = AzureAccount.AccountType.AccessToken
             };
+
+            CollectTelemetry();
 
             if ((resourceId.EqualsInsensitively(environment.AzureKeyVaultServiceEndpointResourceId) ||
                  resourceId.EqualsInsensitively(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId) ||
@@ -86,6 +93,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
             return (parameters as AccessTokenParameters) != null;
+        }
+
+        protected override void CollectTelemetry(TokenCredential credentials = null, TokenCredentialOptions options = null)
+        {
+            base.CollectTelemetry(credentials);
+            telemetry.TokenCredentialName = "AccessToken";
         }
     }
 }

@@ -13,11 +13,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
     {
 
         /// <summary>Backing field for <see cref="ChannelName" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName? _channelName;
+        private string _channelName;
 
         /// <summary>The name of the Channel resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName? ChannelName { get => this._channelName; set => this._channelName = value; }
+        public string ChannelName { get => this._channelName; set => this._channelName = value; }
 
         /// <summary>Backing field for <see cref="ConnectionName" /> property.</summary>
         private string _connectionName;
@@ -74,14 +74,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Channel resource.",
         SerializedName = @"channelName",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName) })]
-        Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName? ChannelName { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.PSArgumentCompleterAttribute("AlexaChannel", "FacebookChannel", "EmailChannel", "KikChannel", "TelegramChannel", "SlackChannel", "MsTeamsChannel", "SkypeChannel", "WebChatChannel", "DirectLineChannel", "SmsChannel", "LineChannel", "DirectLineSpeechChannel", "OutlookChannel", "Omnichannel", "TelephonyChannel")]
+        string ChannelName { get; set; }
         /// <summary>The name of the Bot Service Connection Setting resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Bot Service Connection Setting resource.",
         SerializedName = @"connectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -90,6 +97,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -98,6 +108,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private endpoint connection associated with the Azure resource",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -106,6 +119,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Bot resource group in the user subscription.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -114,6 +130,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Bot resource.",
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -122,6 +141,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Azure Subscription ID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -132,7 +154,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
 
     {
         /// <summary>The name of the Channel resource.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName? ChannelName { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.PSArgumentCompleterAttribute("AlexaChannel", "FacebookChannel", "EmailChannel", "KikChannel", "TelegramChannel", "SlackChannel", "MsTeamsChannel", "SkypeChannel", "WebChatChannel", "DirectLineChannel", "SmsChannel", "LineChannel", "DirectLineSpeechChannel", "OutlookChannel", "Omnichannel", "TelephonyChannel")]
+        string ChannelName { get; set; }
         /// <summary>The name of the Bot Service Connection Setting resource.</summary>
         string ConnectionName { get; set; }
         /// <summary>Resource identity path</summary>

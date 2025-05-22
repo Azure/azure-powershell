@@ -28,7 +28,7 @@ $dbMigration.MigrationStatusDetailMigrationState
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb
+Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlDb
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,17 +37,20 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [ManagedInstanceName <String>]: 
+  [MigrationName <String>]: Name of the migration.
+  [MigrationServiceName <String>]: Name of the Migration Service.
   [ResourceGroupName <String>]: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   [SqlDbInstanceName <String>]: 
   [SqlMigrationServiceName <String>]: Name of the SQL Migration Service.
   [SqlVirtualMachineName <String>]: 
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
   [TargetDbName <String>]: The name of the target database.
+  [TargetResourceName <String>]: The name of the target resource/account.
 .Link
 https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationtosqldb
 #>
 function Get-AzDataMigrationToSqlDb {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlDb])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

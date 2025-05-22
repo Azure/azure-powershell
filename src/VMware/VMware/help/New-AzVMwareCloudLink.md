@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareCloudLink
 
 ## SYNOPSIS
-Create a CloudLink
+create a CloudLink
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ New-AzVMwareCloudLink -InputObject <IVMwareIdentity> [-LinkedCloud <String>] [-D
 ```
 
 ## DESCRIPTION
-Create a CloudLink
+create a CloudLink
 
 ## EXAMPLES
 

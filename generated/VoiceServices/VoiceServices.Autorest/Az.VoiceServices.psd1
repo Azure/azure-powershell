@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.VoiceServices.private.dll'
   FormatsToProcess = './Az.VoiceServices.format.ps1xml'
-  FunctionsToExport = 'Get-AzVoiceServicesCommunicationsGateway', 'Get-AzVoiceServicesCommunicationsTestLine', 'New-AzVoiceServicesCommunicationsGateway', 'New-AzVoiceServicesCommunicationsGatewayServiceRegionObject', 'New-AzVoiceServicesCommunicationsTestLine', 'Remove-AzVoiceServicesCommunicationsGateway', 'Remove-AzVoiceServicesCommunicationsTestLine', 'Test-AzVoiceServicesNameAvailability', 'Update-AzVoiceServicesCommunicationsGateway', 'Update-AzVoiceServicesCommunicationsTestLine', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzVoiceServicesCommunicationsGateway', 'Get-AzVoiceServicesCommunicationsTestLine', 'New-AzVoiceServicesCommunicationsGateway', 'New-AzVoiceServicesCommunicationsGatewayServiceRegionObject', 'New-AzVoiceServicesCommunicationsTestLine', 'Remove-AzVoiceServicesCommunicationsGateway', 'Remove-AzVoiceServicesCommunicationsTestLine', 'Test-AzVoiceServicesNameAvailability', 'Update-AzVoiceServicesCommunicationsGateway', 'Update-AzVoiceServicesCommunicationsTestLine'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'VoiceServices'

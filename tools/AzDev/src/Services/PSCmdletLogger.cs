@@ -22,31 +22,64 @@ namespace AzDev.Services
     /// </summary>
     public class PSCmdletLogger : ILogger
     {
-        private readonly PSCmdlet _cmdlet;
+        private ILogger _logger = NoopLogger.Instance;
 
-        public PSCmdletLogger(PSCmdlet cmdlet)
+        public PSCmdletLogger()
         {
-            _cmdlet = cmdlet ?? throw new ArgumentNullException(nameof(cmdlet));
         }
 
-        public void Debug(string message)
+        public void SetCmdlet(PSCmdlet cmdlet)
         {
-            _cmdlet.WriteDebug(message);
+            _logger = new PSCmdletLoggerAdapter(cmdlet ?? throw new ArgumentNullException(nameof(cmdlet)));
         }
 
-        public void Verbose(string message)
+        public void UnsetCmdlet()
         {
-            _cmdlet.WriteVerbose(message);
+            _logger = NoopLogger.Instance;
         }
 
-        public void Warning(string message)
+
+        public void Debug(string message) => _logger.Debug(PrependTimeStamp(message));
+
+        public void Verbose(string message) => _logger.Verbose(PrependTimeStamp(message));
+
+        public void Warning(string message) => _logger.Warning(PrependTimeStamp(message));
+
+        public void Information(string message) => _logger.Information(PrependTimeStamp(message));
+
+        private class PSCmdletLoggerAdapter : ILogger
         {
-            _cmdlet.WriteWarning(message);
+            private readonly PSCmdlet _cmdlet;
+
+            public PSCmdletLoggerAdapter(PSCmdlet cmdlet)
+            {
+                _cmdlet = cmdlet ?? throw new ArgumentNullException(nameof(cmdlet));
+            }
+
+            public void Debug(string message)
+            {
+                _cmdlet.WriteDebug(message);
+            }
+
+            public void Verbose(string message)
+            {
+                _cmdlet.WriteVerbose(message);
+            }
+
+            public void Warning(string message)
+            {
+                _cmdlet.WriteWarning(message);
+            }
+
+            public void Information(string message)
+            {
+                _cmdlet.WriteInformation(new HostInformationMessage { Message = message }, ["PSHOST"]);
+            }
         }
 
-        public void Information(string message)
+        private static string PrependTimeStamp(string message)
         {
-            _cmdlet.WriteInformation(new InformationRecord(message, "AzDev"));
+            return $"[{DateTime.UtcNow:yyyy-MM-dd HH:mm:ss}] {message}";
         }
     }
 }

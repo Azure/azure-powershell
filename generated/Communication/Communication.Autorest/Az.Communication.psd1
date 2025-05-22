@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Communication.private.dll'
   FormatsToProcess = './Az.Communication.format.ps1xml'
-  FunctionsToExport = 'Get-AzCommunicationService', 'Get-AzCommunicationServiceKey', 'New-AzCommunicationService', 'New-AzCommunicationServiceKey', 'Remove-AzCommunicationService', 'Set-AzCommunicationServiceNotificationHub', 'Test-AzCommunicationServiceNameAvailability', 'Update-AzCommunicationService', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzCommunicationService', 'Get-AzCommunicationServiceKey', 'New-AzCommunicationService', 'New-AzCommunicationServiceKey', 'Remove-AzCommunicationService', 'Set-AzCommunicationServiceNotificationHub', 'Test-AzCommunicationServiceNameAvailability', 'Update-AzCommunicationService'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Communication'

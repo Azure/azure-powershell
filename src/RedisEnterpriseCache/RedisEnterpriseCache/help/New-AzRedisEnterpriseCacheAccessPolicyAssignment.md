@@ -110,6 +110,9 @@ Accept wildcard characters: False
 
 ### -ClusterName
 The name of the Redis Enterprise cluster.
+Name must be 1-60 characters long.
+Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
@@ -190,7 +193,7 @@ Describes the access policy assignment of Redis Enterprise database
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
@@ -283,13 +286,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment
 
 ## NOTES
 

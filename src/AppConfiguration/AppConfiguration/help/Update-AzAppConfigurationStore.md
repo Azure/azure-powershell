@@ -8,31 +8,32 @@ schema: 2.0.0
 # Update-AzAppConfigurationStore
 
 ## SYNOPSIS
-Updates a configuration store with the specified parameters.
+update a configuration store with the specified parameters.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DisableLocalAuth] [-EnablePurgeProtection] [-EncryptionKeyIdentifier <String>]
- [-IdentityType <IdentityType>] [-KeyVaultIdentityClientId <String>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-Sku <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisableLocalAuth] [-EnablePurgeProtection] [-EnableSystemAssignedIdentity <Boolean>]
+ [-EncryptionKeyIdentifier <String>] [-KeyVaultIdentityClientId <String>] [-PublicNetworkAccess <String>]
+ [-Sku <String>] [-SoftDeleteRetentionInDay <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzAppConfigurationStore -InputObject <IAppConfigurationIdentity> [-DisableLocalAuth]
- [-EnablePurgeProtection] [-EncryptionKeyIdentifier <String>] [-IdentityType <IdentityType>]
- [-KeyVaultIdentityClientId <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Sku <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnablePurgeProtection] [-EnableSystemAssignedIdentity <Boolean>] [-EncryptionKeyIdentifier <String>]
+ [-KeyVaultIdentityClientId <String>] [-PublicNetworkAccess <String>] [-Sku <String>]
+ [-SoftDeleteRetentionInDay <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a configuration store with the specified parameters.
+update a configuration store with the specified parameters.
 
 ## EXAMPLES
 
@@ -80,7 +81,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -124,6 +126,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EncryptionKeyIdentifier
 The URI of the key vault key used to encrypt data.
 
@@ -139,26 +156,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The type of managed identity used.
-The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
-The type 'None' will remove any identities.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
@@ -221,7 +220,7 @@ Accept wildcard characters: False
 Control permission for data plane traffic coming from public networks while private endpoint is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -262,6 +261,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SoftDeleteRetentionInDay
+The amount of time in days that the configuration store will be retained when it is soft deleted.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The Microsoft Azure subscription ID.
 
@@ -278,7 +292,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-The ARM resource tags.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -293,8 +307,8 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-The list of user-assigned identities associated with the resource.
-The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
 Type: System.String[]
@@ -348,7 +362,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore
+### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStore
 
 ## NOTES
 

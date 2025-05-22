@@ -25,12 +25,12 @@ New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfDay
 New-AzDataProtectionPolicyTagCriteriaClientObject -DaysOfWeek @("Sunday", "Monday")
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IScheduleBasedBackupCriteria
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IScheduleBasedBackupCriteria
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionpolicytagcriteriaclientobject
 #>
 function New-AzDataProtectionPolicyTagCriteriaClientObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IScheduleBasedBackupCriteria])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IScheduleBasedBackupCriteria])]
 [CmdletBinding(DefaultParameterSetName='ScheduleCriteria', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='AbsoluteCriteria', Mandatory)]

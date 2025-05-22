@@ -18,8 +18,8 @@ Uploads the contents of a file.
 Set-AzStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <String>] [-FileMode <String>]
  [-Owner <String>] [-Group <String>] [-PassThru] [-Force] [-AsJob] [-DisAllowTrailingDot]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [-PreserveSMBAttribute] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Share
@@ -27,8 +27,8 @@ Set-AzStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <Stri
 Set-AzStorageFileContent [-ShareClient] <ShareClient> [-Source] <String> [[-Path] <String>]
  [-FileMode <String>] [-Owner <String>] [-Group <String>] [-PassThru] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [-PreserveSMBAttribute] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Directory
@@ -36,8 +36,8 @@ Set-AzStorageFileContent [-ShareClient] <ShareClient> [-Source] <String> [[-Path
 Set-AzStorageFileContent [-ShareDirectoryClient] <ShareDirectoryClient> [-Source] <String> [[-Path] <String>]
  [-FileMode <String>] [-Owner <String>] [-Group <String>] [-PassThru] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [-PreserveSMBAttribute] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

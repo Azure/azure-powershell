@@ -25,9 +25,9 @@ Check whether a bot name is available.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ICheckNameAvailabilityRequestBody
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ICheckNameAvailabilityRequestBody
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ICheckNameAvailabilityResponseBody
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ICheckNameAvailabilityResponseBody
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,14 +40,13 @@ PARAMETER <ICheckNameAvailabilityRequestBody>: The request body for a request to
 https://learn.microsoft.com/powershell/module/az.botservice/get-azbotservicechecknameavailability
 #>
 function Get-AzBotServiceCheckNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ICheckNameAvailabilityResponseBody])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ICheckNameAvailabilityResponseBody])]
 [CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ICheckNameAvailabilityRequestBody]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ICheckNameAvailabilityRequestBody]
     # The request body for a request to Bot Service Management to check availability of a bot name.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='GetExpanded')]
@@ -62,6 +61,18 @@ param(
     # the type of the bot for which availability needs to be checked
     ${Type},
 
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Get operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Json string supplied to the Get operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -118,143 +129,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.BotService.private\Get-AzBotServiceCheckNameAvailability_Get';
             GetExpanded = 'Az.BotService.private\Get-AzBotServiceCheckNameAvailability_GetExpanded';
+            GetViaJsonFilePath = 'Az.BotService.private\Get-AzBotServiceCheckNameAvailability_GetViaJsonFilePath';
+            GetViaJsonString = 'Az.BotService.private\Get-AzBotServiceCheckNameAvailability_GetViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Get per subscription settings needed to host bot in compute resource such as Azure App Service
-.Description
-Get per subscription settings needed to host bot in compute resource such as Azure App Service
-.Example
-Get-AzBotServiceHostSetting
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IHostSettingsResponse
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
-  [ChannelName <ChannelName?>]: The name of the Channel resource.
-  [ConnectionName <String>]: The name of the Bot Service Connection Setting resource.
-  [Id <String>]: Resource identity path
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the Bot resource group in the user subscription.
-  [ResourceName <String>]: The name of the Bot resource.
-  [SubscriptionId <String>]: Azure Subscription ID.
-.Link
-https://learn.microsoft.com/powershell/module/az.botservice/get-azbotservicehostsetting
-#>
-function Get-AzBotServiceHostSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IHostSettingsResponse])]
-[CmdletBinding(DefaultParameterSetName='GetViaIdentity', PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
         }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            GetViaIdentity = 'Az.BotService.private\Get-AzBotServiceHostSetting_GetViaIdentity';
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -295,12 +184,12 @@ Lists all the available BotService operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IOperationEntity
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IOperationEntity
 .Link
 https://learn.microsoft.com/powershell/module/az.botservice/get-azbotserviceoperation
 #>
 function Get-AzBotServiceOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IOperationEntity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IOperationEntity])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -359,322 +248,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.BotService.private\Get-AzBotServiceOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Gets the specified private endpoint connection associated with the Bot.
-.Description
-Gets the specified private endpoint connection associated with the Bot.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
-  [ChannelName <ChannelName?>]: The name of the Channel resource.
-  [ConnectionName <String>]: The name of the Bot Service Connection Setting resource.
-  [Id <String>]: Resource identity path
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the Bot resource group in the user subscription.
-  [ResourceName <String>]: The name of the Bot resource.
-  [SubscriptionId <String>]: Azure Subscription ID.
-.Link
-https://learn.microsoft.com/powershell/module/az.botservice/get-azbotserviceprivateendpointconnection
-#>
-function Get-AzBotServicePrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Alias('PrivateEndpointConnectionName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [System.String]
-    # The name of the private endpoint connection associated with the Azure resource
-    ${Name},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [System.String]
-    # The name of the Bot resource group in the user subscription.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [System.String]
-    # The name of the Bot resource.
-    ${ResourceName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # Azure Subscription ID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
         }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Get = 'Az.BotService.private\Get-AzBotServicePrivateEndpointConnection_Get';
-            GetViaIdentity = 'Az.BotService.private\Get-AzBotServicePrivateEndpointConnection_GetViaIdentity';
-            List = 'Az.BotService.private\Get-AzBotServicePrivateEndpointConnection_List';
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Gets the private link resources that need to be created for a Bot.
-.Description
-Gets the private link resources that need to be created for a Bot.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateLinkResource
-.Link
-https://learn.microsoft.com/powershell/module/az.botservice/get-azbotserviceprivatelinkresource
-#>
-function Get-AzBotServicePrivateLinkResource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateLinkResource])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [System.String]
-    # The name of the Bot resource group in the user subscription.
-    ${ResourceGroupName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [System.String]
-    # The name of the Bot resource.
-    ${ResourceName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # Azure Subscription ID.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            List = 'Az.BotService.private\Get-AzBotServicePrivateLinkResource_List';
-        }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -715,24 +300,13 @@ Lists the QnA Maker endpoint keys
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IQnAMakerEndpointKeysRequestBody
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IQnAMakerEndpointKeysRequestBody
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IQnAMakerEndpointKeysResponse
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IQnAMakerEndpointKeysResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
-  [ChannelName <ChannelName?>]: The name of the Channel resource.
-  [ConnectionName <String>]: The name of the Bot Service Connection Setting resource.
-  [Id <String>]: Resource identity path
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the Bot resource group in the user subscription.
-  [ResourceName <String>]: The name of the Bot resource.
-  [SubscriptionId <String>]: Azure Subscription ID.
 
 PARAMETER <IQnAMakerEndpointKeysRequestBody>: The request body for a request to Bot Service Management to list QnA Maker endpoint keys.
   [Authkey <String>]: Subscription key which provides access to this API.
@@ -741,47 +315,46 @@ PARAMETER <IQnAMakerEndpointKeysRequestBody>: The request body for a request to 
 https://learn.microsoft.com/powershell/module/az.botservice/get-azbotserviceqnamakerendpointkey
 #>
 function Get-AzBotServiceQnAMakerEndpointKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IQnAMakerEndpointKeysResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IQnAMakerEndpointKeysResponse])]
 [CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='GetViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IQnAMakerEndpointKeysRequestBody]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IQnAMakerEndpointKeysRequestBody]
     # The request body for a request to Bot Service Management to list QnA Maker endpoint keys.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='GetExpanded')]
-    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # Subscription key which provides access to this API.
     ${Authkey},
 
     [Parameter(ParameterSetName='GetExpanded')]
-    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # the host name of the QnA Maker endpoint
     ${Hostname},
 
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Get operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Json string supplied to the Get operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -838,16 +411,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.BotService.private\Get-AzBotServiceQnAMakerEndpointKey_Get';
             GetExpanded = 'Az.BotService.private\Get-AzBotServiceQnAMakerEndpointKey_GetExpanded';
-            GetViaIdentity = 'Az.BotService.private\Get-AzBotServiceQnAMakerEndpointKey_GetViaIdentity';
-            GetViaIdentityExpanded = 'Az.BotService.private\Get-AzBotServiceQnAMakerEndpointKey_GetViaIdentityExpanded';
+            GetViaJsonFilePath = 'Az.BotService.private\Get-AzBotServiceQnAMakerEndpointKey_GetViaJsonFilePath';
+            GetViaJsonString = 'Az.BotService.private\Get-AzBotServiceQnAMakerEndpointKey_GetViaJsonString';
         }
-        if (('Get', 'GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'GetExpanded', 'GetViaJsonFilePath', 'GetViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -856,6 +430,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -887,334 +464,10 @@ end {
 
 <#
 .Synopsis
-Regenerates secret keys and returns them for the DirectLine Channel of a particular BotService resource
-.Description
-Regenerates secret keys and returns them for the DirectLine Channel of a particular BotService resource
-.Example
-New-AzBotServiceDirectLineKey -ChannelName 'DirectLineChannel' -ResourceGroupName botTest-rg -ResourceName botTest1 -Key key1 -SiteName siteName
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ISiteInfo
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotChannel
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-PARAMETER <ISiteInfo>: Site information for WebChat or DirectLine Channels to identify which site to regenerate keys for.
-  Key <Key>: Determines which key is to be regenerated
-  SiteName <String>: The site name
-.Link
-https://learn.microsoft.com/powershell/module/az.botservice/new-azbotservicedirectlinekey
-#>
-function New-AzBotServiceDirectLineKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotChannel])]
-[CmdletBinding(DefaultParameterSetName='Regenerate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.RegenerateKeysChannelName])]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.RegenerateKeysChannelName]
-    # The name of the Channel resource for which keys are to be regenerated.
-    ${ChannelName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [System.String]
-    # The name of the Bot resource group in the user subscription.
-    ${ResourceGroupName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [System.String]
-    # The name of the Bot resource.
-    ${ResourceName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # Azure Subscription ID.
-    ${SubscriptionId},
-
-    [Parameter(Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ISiteInfo]
-    # Site information for WebChat or DirectLine Channels to identify which site to regenerate keys for.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
-    ${Parameter},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Regenerate = 'Az.BotService.private\New-AzBotServiceDirectLineKey_Regenerate';
-        }
-        if (('Regenerate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Update the state of specified private endpoint connection associated with the Bot.
-.Description
-Update the state of specified private endpoint connection associated with the Bot.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection
-.Link
-https://learn.microsoft.com/powershell/module/az.botservice/new-azbotserviceprivateendpointconnection
-#>
-function New-AzBotServicePrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('PrivateEndpointConnectionName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [System.String]
-    # The name of the private endpoint connection associated with the Azure resource
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [System.String]
-    # The name of the Bot resource group in the user subscription.
-    ${ResourceGroupName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [System.String]
-    # The name of the Bot resource.
-    ${ResourceName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # Azure Subscription ID.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [System.String]
-    # A message indicating if changes on the service provider require any updates on the consumer.
-    ${PrivateLinkServiceConnectionStateActionsRequired},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [System.String]
-    # The reason for approval/rejection of the connection.
-    ${PrivateLinkServiceConnectionStateDescription},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointServiceConnectionStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointServiceConnectionStatus]
-    # Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-    ${PrivateLinkServiceConnectionStateStatus},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            CreateExpanded = 'Az.BotService.private\New-AzBotServicePrivateEndpointConnection_CreateExpanded';
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Creates a Bot Service.
+create a Bot Service.
 Bot Service is a resource group wide resource type.
 .Description
-Creates a Bot Service.
+create a Bot Service.
 Bot Service is a resource group wide resource type.
 .Example
 New-AzBotService -resourcegroupname BotTest-rg -name BotTest1 -ApplicationId "af5fce4d-ee68-4b25-be09-f3222582e133" -Location global -Sku F0 -Description "123134" -Registration
@@ -1222,12 +475,12 @@ New-AzBotService -resourcegroupname BotTest-rg -name BotTest1 -ApplicationId "af
 New-AzBotService -resourcegroupname BotTest-rg -name BotTest2 -ApplicationId "b1ab1727-0465-4255-a1bb-976210af972c" -Location global -Sku F0 -Description "123134" -Webapp
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBot
 .Link
 https://learn.microsoft.com/powershell/module/az.botservice/new-azbotservice
 #>
 function New-AzBotService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBot])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1250,209 +503,221 @@ param(
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesAllSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotPropertiesAllSettings]))]
     [System.Collections.Hashtable]
     # Contains resource all settings defined as key/value pairs.
     ${AllSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The hint (e.g.
     # keyVault secret resourceId) on how to fetch the app secret
     ${AppPasswordHint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The CMK Url
     ${CmekKeyVaultUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The description of the bot
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The Application Insights key
     ${DeveloperAppInsightKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The Application Insights Api Key
     ${DeveloperAppInsightsApiKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The Application Insights App Id
     ${DeveloperAppInsightsApplicationId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
     ${DisableLocalAuth},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The Name of the bot
     ${DisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The bot's endpoint
     ${Endpoint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # Entity Tag
     ${Etag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The Icon Url of the bot
     ${IconUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Whether Cmek is enabled
     ${IsCmekEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Whether the bot is streaming supported
     ${IsStreamingSupported},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.PSArgumentCompleterAttribute("sdk", "designer", "bot", "function", "azurebot")]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind]
+    [System.String]
     # Required.
     # Gets or sets the Kind of the resource.
     ${Kind},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # Specifies the location of the resource.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String[]]
     # Collection of LUIS App Ids
     ${LuisAppId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The LUIS Key
     ${LuisKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The bot's manifest url
     ${ManifestUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # Microsoft App Id for the bot
     ${MsaAppId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # Microsoft App Managed Identity Resource Id for the bot
     ${MsaAppMsiResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # Microsoft App Tenant Id for the bot
     ${MsaAppTenantId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.PSArgumentCompleterAttribute("UserAssignedMSI", "SingleTenant", "MultiTenant")]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType]
+    [System.String]
     # Microsoft App Type for the bot
     ${MsaAppType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The hint to browser (e.g.
     # protocol handler) on how to open the bot for authoring
     ${OpenWithHint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotPropertiesParameters]))]
     [System.Collections.Hashtable]
     # Contains resource parameters defined as key/value pairs.
     ${Parameter},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess]
+    [System.String]
     # Whether the bot is in an isolated network
     ${PublicNetworkAccess},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # Publishing credentials of the resource
     ${PublishingCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The channel schema transformation version for the bot
     ${SchemaTransformationVersion},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.PSArgumentCompleterAttribute("F0", "S1")]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName]
+    [System.String]
     # The sku name
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The storage resourceId for the bot
     ${StorageResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Contains resource tags defined as key/value pairs.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The Tenant Id for the bot
     ${TenantId},
 
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -1509,13 +774,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.BotService.private\New-AzBotService_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.BotService.private\New-AzBotService_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.BotService.private\New-AzBotService_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1524,180 +792,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Deletes the specified private endpoint connection associated with the Bot.
-.Description
-Deletes the specified private endpoint connection associated with the Bot.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
-  [ChannelName <ChannelName?>]: The name of the Channel resource.
-  [ConnectionName <String>]: The name of the Bot Service Connection Setting resource.
-  [Id <String>]: Resource identity path
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the Bot resource group in the user subscription.
-  [ResourceName <String>]: The name of the Bot resource.
-  [SubscriptionId <String>]: Azure Subscription ID.
-.Link
-https://learn.microsoft.com/powershell/module/az.botservice/remove-azbotserviceprivateendpointconnection
-#>
-function Remove-AzBotServicePrivateEndpointConnection {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('PrivateEndpointConnectionName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [System.String]
-    # The name of the private endpoint connection associated with the Azure resource
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [System.String]
-    # The name of the Bot resource group in the user subscription.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [System.String]
-    # The name of the Bot resource.
-    ${ResourceName},
-
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # Azure Subscription ID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
         }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Delete = 'Az.BotService.private\Remove-AzBotServicePrivateEndpointConnection_Delete';
-            DeleteViaIdentity = 'Az.BotService.private\Remove-AzBotServicePrivateEndpointConnection_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

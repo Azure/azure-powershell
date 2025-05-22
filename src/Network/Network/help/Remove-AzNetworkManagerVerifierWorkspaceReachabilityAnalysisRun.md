@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:  https://learn.microsoft.com/powershell/module/az.network/remove-aznetworkmanagerverifierworkspacereachabilityanalysisrun
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-aznetworkmanagerverifierworkspacereachabilityanalysisrun
 schema: 2.0.0
 ---
 
@@ -12,28 +12,28 @@ To remove network manager verifier workspace reachability analysis run.
 
 ## SYNTAX
 
-
 ### ByName (Default)
-
 ```
 Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> -VerifierWorkspaceName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
+
 ### ByInputObject
 ```
-Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -InputObject <PSReachabilityAnalysisRun> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -InputObject <PSReachabilityAnalysisRun>
+ [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceId <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceId <String> [-Force] [-PassThru]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
+
 ## DESCRIPTION
 **Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun** cmdlet removes a network manager verifier workspace reachability analysis run.
 
@@ -41,8 +41,8 @@ Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceId <Str
 
 ### Example 1
 ```powershell
- Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name TestReachabilityAnalysisRun3 -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVNV"
- ```
+Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name TestReachabilityAnalysisRun3 -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVNV"
+```
 
 ```output
 Confirm
@@ -99,6 +99,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The Verifier Workspace Analysis Run.
+
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSReachabilityAnalysisRun
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The resource name.
 
@@ -111,19 +127,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-### -InputObject
-The Verifier Workspace Analysis Run.
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSReachabilityAnalysisRun
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -172,6 +175,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+The resource id.
+
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VerifierWorkspaceName
 The verifier workspace name.
 
@@ -185,19 +204,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
-```
-### -ResourceId
-The resource id.
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -Confirm
@@ -245,6 +251,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun](./Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun.md)
 
 [New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun](./New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun.md)

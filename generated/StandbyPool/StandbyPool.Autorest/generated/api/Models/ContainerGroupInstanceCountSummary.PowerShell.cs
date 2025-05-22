@@ -78,9 +78,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Zone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummaryInternal)this).Zone = (long?) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummaryInternal)this).Zone, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             if (content.Contains("InstanceCountsByState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummaryInternal)this).InstanceCountsByState = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount>) content.GetValueForProperty("InstanceCountsByState",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummaryInternal)this).InstanceCountsByState, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount>(__y, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolResourceStateCountTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummaryInternal)this).InstanceCountsByState = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCount>) content.GetValueForProperty("InstanceCountsByState",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummaryInternal)this).InstanceCountsByState, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCount>(__y, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolContainerGroupStateCountTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -99,9 +103,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Zone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummaryInternal)this).Zone = (long?) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummaryInternal)this).Zone, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             if (content.Contains("InstanceCountsByState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummaryInternal)this).InstanceCountsByState = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount>) content.GetValueForProperty("InstanceCountsByState",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummaryInternal)this).InstanceCountsByState, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount>(__y, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolResourceStateCountTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummaryInternal)this).InstanceCountsByState = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCount>) content.GetValueForProperty("InstanceCountsByState",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupInstanceCountSummaryInternal)this).InstanceCountsByState, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCount>(__y, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolContainerGroupStateCountTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new CommunicationService or update an existing CommunicationService.
+create a new CommunicationService or create an existing CommunicationService.
 .Description
-Create a new CommunicationService or update an existing CommunicationService.
+create a new CommunicationService or create an existing CommunicationService.
 .Example
 New-AzCommunicationService -ResourceGroupName ContosoResourceProvider1 -Name ContosoAcsResource1 -DataLocation UnitedStates -Location Global
 .Example
@@ -26,15 +26,15 @@ $linkedDomains = @(
 	"/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/tcsacstest/providers/Microsoft.Communication/emailServices/tcsacstestECSps/domains/AzureManagedDomain"
 )
 
-New-AzCommunicationService -ResourceGroupName ContosoResourceProvider -Name ContosoAcsResource2 -DataLocation UnitedStates -Location Global  -LinkedDomain @linkedDomains
+New-AzCommunicationService -ResourceGroupName ContosoResourceProvider -Name ContosoAcsResource2 -DataLocation UnitedStates -Location Global -LinkedDomain @linkedDomains
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceResource
 .Link
 https://learn.microsoft.com/powershell/module/az.communication/new-azcommunicationservice
 #>
 function New-AzCommunicationService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -59,47 +59,57 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
     [System.String]
     # The location where the communication service stores its data at rest.
     ${DataLocation},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ManagedServiceIdentityType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api50.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
     [System.String[]]
     # List of email Domain resource Ids.
     ${LinkedDomain},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -169,6 +179,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -189,10 +208,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Communication.private\New-AzCommunicationService_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Communication.private\New-AzCommunicationService_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Communication.private\New-AzCommunicationService_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -206,6 +225,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

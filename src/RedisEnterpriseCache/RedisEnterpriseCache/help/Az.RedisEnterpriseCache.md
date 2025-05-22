@@ -29,6 +29,9 @@ Retrieves all access keys for a Redis Enterprise database.
 ### [Get-AzRedisEnterpriseCacheOperationStatus](Get-AzRedisEnterpriseCacheOperationStatus.md)
 Gets the status of operation.
 
+### [Get-AzRedisEnterpriseCacheSku](Get-AzRedisEnterpriseCacheSku.md)
+Lists the available SKUs for scaling the Redis Enterprise cluster.
+
 ### [Import-AzRedisEnterpriseCache](Import-AzRedisEnterpriseCache.md)
 Imports a database file to target database.
 

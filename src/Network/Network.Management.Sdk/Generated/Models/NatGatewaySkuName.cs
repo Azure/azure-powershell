@@ -14,5 +14,6 @@ namespace Microsoft.Azure.Management.Network.Models
     public static class NatGatewaySkuName
     {
         public const string Standard = "Standard";
+        public const string StandardV2 = "StandardV2";
     }
 }

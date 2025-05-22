@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Extensions;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     public partial class Any :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IAny,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IAnyInternal
@@ -19,13 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models
 
         }
     }
-    /// Any object
+    /// Anything
     public partial interface IAny :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.IJsonSerializable
     {
 
     }
-    /// Any object
+    /// Anything
     internal partial interface IAnyInternal
 
     {

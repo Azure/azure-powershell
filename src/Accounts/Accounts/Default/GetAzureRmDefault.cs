@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
             IAzureContext context = DefaultContext;
             IResourceManagementClient client = AzureSession.Instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
                                     context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                                    AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
+                                    AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager, _cmdletContext),
                                     AzureSession.Instance.ClientFactory.GetCustomHandlers());
             client.SubscriptionId = context.Subscription.Id;
 

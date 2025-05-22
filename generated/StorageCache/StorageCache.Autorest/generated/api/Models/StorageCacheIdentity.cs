@@ -21,15 +21,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
         public string AmlFilesystemName { get => this._amlFilesystemName; set => this._amlFilesystemName = value; }
 
-        /// <summary>Backing field for <see cref="CacheName" /> property.</summary>
-        private string _cacheName;
-
-        /// <summary>
-        /// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
-        public string CacheName { get => this._cacheName; set => this._cacheName = value; }
-
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -37,33 +28,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
-        /// <summary>Backing field for <see cref="Location" /> property.</summary>
-        private string _location;
-
-        /// <summary>The name of Azure region.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
-        public string Location { get => this._location; set => this._location = value; }
-
-        /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
-        private string _operationId;
-
-        /// <summary>The ID of an ongoing async operation.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
-        public string OperationId { get => this._operationId; set => this._operationId = value; }
-
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
-
-        /// <summary>Backing field for <see cref="StorageTargetName" /> property.</summary>
-        private string _storageTargetName;
-
-        /// <summary>Name of Storage Target.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
-        public string StorageTargetName { get => this._storageTargetName; set => this._storageTargetName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -87,64 +57,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
         SerializedName = @"amlFilesystemName",
         PossibleTypes = new [] { typeof(string) })]
         string AmlFilesystemName { get; set; }
-        /// <summary>
-        /// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.",
-        SerializedName = @"cacheName",
-        PossibleTypes = new [] { typeof(string) })]
-        string CacheName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>The name of Azure region.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The name of Azure region.",
-        SerializedName = @"location",
-        PossibleTypes = new [] { typeof(string) })]
-        string Location { get; set; }
-        /// <summary>The ID of an ongoing async operation.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The ID of an ongoing async operation.",
-        SerializedName = @"operationId",
-        PossibleTypes = new [] { typeof(string) })]
-        string OperationId { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>Name of Storage Target.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Name of Storage Target.",
-        SerializedName = @"storageTargetName",
-        PossibleTypes = new [] { typeof(string) })]
-        string StorageTargetName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -158,20 +106,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         /// Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
         /// </summary>
         string AmlFilesystemName { get; set; }
-        /// <summary>
-        /// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-        /// </summary>
-        string CacheName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>The name of Azure region.</summary>
-        string Location { get; set; }
-        /// <summary>The ID of an ongoing async operation.</summary>
-        string OperationId { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>Name of Storage Target.</summary>
-        string StorageTargetName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
 

@@ -16,26 +16,27 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 ### RegenerateExpanded (Default)
 ```
 New-AzCommunicationServiceKey -CommunicationServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-KeyType <KeyType>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] [-KeyType <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Regenerate
+### RegenerateViaJsonString
 ```
 New-AzCommunicationServiceKey -CommunicationServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Parameter <IRegenerateKeyParameters> [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RegenerateViaJsonFilePath
+```
+New-AzCommunicationServiceKey -CommunicationServiceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RegenerateViaIdentityExpanded
 ```
-New-AzCommunicationServiceKey -InputObject <ICommunicationIdentity> [-KeyType <KeyType>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RegenerateViaIdentity
-```
-New-AzCommunicationServiceKey -InputObject <ICommunicationIdentity> -Parameter <IRegenerateKeyParameters>
+New-AzCommunicationServiceKey -InputObject <ICommunicationIdentity> [-KeyType <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,20 +46,7 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 
 ## EXAMPLES
 
-### Example 1: Regenerates the Primary key using a IRegenerateKeyParameters hashtable
-```powershell
-New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Parameter @{KeyType="Primary"}
-```
-
-```output
-PrimaryConnectionString              PrimaryKey
------------------------              ----------
-endpoint=<example-primary-endpoint>  <example-primarykey>
-```
-
-Invalidates the previous Primary key, regenerate a new one and return it.
-
-### Example 2: Regenerates the Secondary key using a KeyType
+### Example 1: Regenerates the Secondary key using a KeyType
 ```powershell
 New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -KeyType Secondary
 ```
@@ -78,7 +66,7 @@ The name of the CommunicationService resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded, Regenerate
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -106,11 +94,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
-Parameter Sets: RegenerateViaIdentityExpanded, RegenerateViaIdentity
+Parameter Sets: RegenerateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -120,12 +107,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyType
 The keyType to regenerate.
 Must be either 'primary' or 'secondary'(case-insensitive).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType
+Type: System.String
 Parameter Sets: RegenerateExpanded, RegenerateViaIdentityExpanded
 Aliases:
 
@@ -136,29 +153,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Parameters describes the request to regenerate access keys
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.IRegenerateKeyParameters
-Parameter Sets: Regenerate, RegenerateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded, Regenerate
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -174,7 +175,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded, Regenerate
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -220,13 +221,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.IRegenerateKeyParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceKeys
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceKeys
 
 ## NOTES
 

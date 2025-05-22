@@ -16,20 +16,22 @@ Removes a security user configuration.
 ```
 Remove-AzNetworkManagerSecurityUserConfiguration -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> [-ForceDelete] [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Remove-AzNetworkManagerSecurityUserConfiguration -InputObject <PSNetworkManagerSecurityUserConfiguration>
- [-ForceDelete] [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ForceDelete] [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Remove-AzNetworkManagerSecurityUserConfiguration -ResourceId <String> [-ForceDelete] [-Force] [-PassThru]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -27,40 +27,17 @@ For information on how to develop for `Az.StorageCache`, see [how-to.md](how-to.
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 7a65f22cf67826187f75981e914c7e679039257b
+commit: f3a04ddc23771fca8a99b179ea8eaa428c21fa2f
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2023-05-01/storagecache.json
   - $(repo)/specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2023-05-01/amlfilesystem.json
 
 module-version: 0.1.0
 title: StorageCache
 subject-prefix: $(service-name)
 
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
-  - where:
-      subject: ^Cach(.*)
-    set:
-      subject: $1
-  - where:
-      subject: ^Info(.*)
-    set:
-      subject: $1
- 
-  - where:
-      subject: ^SpaceCachAllocation$
-    set:
-      subject: SpaceAllocation
-
   - where:
       subject: ^AmlFilesystem$
     set:
@@ -82,131 +59,16 @@ directive:
       subject: AmlFileSystemSubnet
 
   - where:
-      subject: ^StorageTarget$
-    set:
-      subject: Target
-
-  - where:
-      subject: ^InvalidateStorageTarget$
-    set:
-      subject: InvalidateTarget
-
-  - where:
-      subject: ^StorageTargetDefault$
-    set:
-      subject: TargetSetting
-
-  - where:
-      subject: ^StorageTargetDns$
-    set:
-      subject: TargetDns
-
-  - from: swagger-document 
-    where: $.paths["/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/startPrimingJob"].post.responses
-    transform: >-
-      return {
-        "200": {
-          "description": "The priming job is being created and will complete asynchronously.",
-          "headers": {
-            "Location": {
-              "description": "Location URI to poll for result",
-              "type": "string"
-            },
-            "Azure-AsyncOperation": {
-              "description": "URI to poll for the operation status",
-              "type": "string"
-            }
-          }
-        },
-        "202": {
-          "description": "The priming job is being created and will complete asynchronously.",
-          "headers": {
-            "Location": {
-              "description": "Location URI to poll for result",
-              "type": "string"
-            },
-            "Azure-AsyncOperation": {
-              "description": "URI to poll for the operation status",
-              "type": "string"
-            }
-          }
-        },
-        "default": {
-          "description": "Error response describing why the operation failed.",
-          "schema": {
-            "$ref": "#/definitions/CloudError"
-          }
-        }
-      }
-
-  - from: swagger-document 
-    where: $.paths["/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/spaceAllocation"].post.responses
-    transform: >-
-      return {
-        "200": {
-          "description": "OK.",
-          "headers": {
-            "Location": {
-              "description": "Location URI to poll for result",
-              "type": "string"
-            },
-            "Azure-AsyncOperation": {
-              "description": "URI to poll for the operation status",
-              "type": "string"
-            }
-          }
-        },
-        "202": {
-          "description": "OK.",
-          "headers": {
-            "Location": {
-              "description": "Location URI to poll for result",
-              "type": "string"
-            },
-            "Azure-AsyncOperation": {
-              "description": "URI to poll for the operation status",
-              "type": "string"
-            }
-          }
-        },
-        "default": {
-          "description": "Error response describing why the operation failed.",
-          "schema": {
-            "$ref": "#/definitions/CloudError"
-          }
-        }
-      }
-
-  - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update|Archive|Check)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       subject: ^AmlFileSystemSubnetRequiredSize$
-      variant: ^Get$|^GetViaIdentity$
-    remove: true
-  - where:
-      subject: ^PrimingJob$
-      variant: ^Start$|^StartViaIdentity$|^Resume$|^ResumeViaIdentity$|^Stop$|^StopViaIdentity$|^Pause$|^PauseViaIdentity$
-    remove: true
-  - where:
-      variant: ^Archive$|^ArchiveViaIdentity$|^Check$|^CheckViaIdentity$
+      variant: ^Get(?!.*?Expanded)
     remove: true
 
   - where:
       verb: Set
     remove: true
-
-  - where:
-      verb: Invoke
-      subject: ^SpaceAllocation$
-    set:
-      verb: Update
-
-  - where:
-      parameter-name: EName
-    set:
-      parameter-name: Name
-      alias: CacheName
 
   - where:
       subject: AmlFileSystemSubnet
@@ -223,24 +85,6 @@ directive:
       subject: AscOperation
     hide: true
 
-  # # The following are commented out and their generated cmdlets may be renamed and custom logic
-  # - model-cmdlet:
-  #     - CacheDirectorySettings
-  #     - NfsAccessPolicy
-  #     - NfsAccessRule
-  #     - NamespaceJunction
-  #     - PrimingJob
-  #     - StorageTargetSpaceAllocation
-
-  - where:
-      model-name: StorageTarget
-    set:
-      format-table:
-        properties:
-          - Name
-          - Location
-          - ResourceGroupName
-          - State
   - where:
       model-name: AmlFilesystem
     set:

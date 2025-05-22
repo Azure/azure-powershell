@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.WindowsEventLog
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azwindowseventlogdatasourceobject
 #>
 function New-AzWindowsEventLogDataSourceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.WindowsEventLogDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

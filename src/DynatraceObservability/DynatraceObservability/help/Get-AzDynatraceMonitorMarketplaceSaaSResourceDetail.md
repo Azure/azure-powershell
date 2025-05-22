@@ -15,29 +15,26 @@ Get Marketplace SaaS resource details of a tenant under a specific subscription
 ### GetExpanded (Default)
 ```
 Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail [-SubscriptionId <String[]>] -TenantId <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail [-SubscriptionId <String[]>]
- -Request <IMarketplaceSaaSResourceDetailsRequest> [-DefaultProfile <PSObject>] [-PassThru]
+ -Request <IMarketplaceSaaSResourceDetailsRequest> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GetViaIdentityExpanded
+### GetViaJsonFilePath
 ```
-Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail -InputObject <IDynatraceObservabilityIdentity>
- -TenantId <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail [-SubscriptionId <String[]>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### GetViaJsonString
 ```
-Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail -InputObject <IDynatraceObservabilityIdentity>
- -Request <IMarketplaceSaaSResourceDetailsRequest> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail [-SubscriptionId <String[]>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,31 +73,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Get operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
-Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Type: System.String
+Parameter Sets: GetViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -JsonString
+Json string supplied to the Get operation
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: GetViaJsonString
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -109,11 +105,10 @@ Accept wildcard characters: False
 
 ### -Request
 Request for getting Marketplace SaaS resource details for a tenant Id
-To construct, see NOTES section for REQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMarketplaceSaaSResourceDetailsRequest
-Parameter Sets: Get, GetViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsRequest
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -128,7 +123,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: GetExpanded, Get
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -143,7 +138,7 @@ Tenant Id
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaIdentityExpanded
+Parameter Sets: GetExpanded
 Aliases:
 
 Required: True
@@ -189,13 +184,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMarketplaceSaaSResourceDetailsRequest
-
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMarketplaceSaaSResourceDetailsResponse
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponse
 
 ## NOTES
 

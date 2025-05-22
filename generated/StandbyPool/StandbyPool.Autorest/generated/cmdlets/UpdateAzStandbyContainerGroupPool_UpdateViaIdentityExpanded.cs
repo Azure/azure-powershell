@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a StandbyContainerGroupPoolResource</summary>
+    /// <summary>update a StandbyContainerGroupPoolResource</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzStandbyContainerGroupPool_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Description(@"Update a StandbyContainerGroupPoolResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Description(@"update a StandbyContainerGroupPoolResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}", ApiVersion = "2024-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}", ApiVersion = "2025-03-01")]
     public partial class UpdateAzStandbyContainerGroupPool_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IContext
@@ -196,6 +196,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
+
+        /// <summary>Specifies zones of standby container group pools.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies zones of standby container group pools.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specifies zones of standby container group pools.",
+        SerializedName = @"zones",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] Zone { get => _propertiesBody.Zone?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.Zone = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what

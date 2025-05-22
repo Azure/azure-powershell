@@ -1,6 +1,6 @@
 {
   "resourceType": "sqlMigrationServices",
-  "apiVersion": "2022-03-30-preview",
+  "apiVersion": "2025-03-15-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.datamigration"
   },

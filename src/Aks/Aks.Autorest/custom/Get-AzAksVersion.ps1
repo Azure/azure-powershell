@@ -23,8 +23,7 @@ List available version for creating managed Kubernetes cluster.
 The operation returns properties of each orchestrator including version, available upgrades and whether that version or upgrades are in preview.
 #>
 function Get-AzAksVersion {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult", "14.0.0", "7.0.0", "2025/05/19", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOrchestratorVersionProfileListResult", DeprecatedOutputProperties = ("Orchestrator Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOrchestratorVersionProfile"), NewOutputProperties = ("Orchestrator System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOrchestratorVersionProfile]"))]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOrchestratorVersionProfileListResult])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
         [Parameter(Mandatory)]

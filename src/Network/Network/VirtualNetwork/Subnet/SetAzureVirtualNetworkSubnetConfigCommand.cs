@@ -67,6 +67,15 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.RouteTableId = null;
                 }
+
+                if (this.InputObject != null)
+                {
+                    this.ResourceId = this.InputObject.Id;
+                }
+                else if (this.MyInvocation.BoundParameters.ContainsKey("InputObject"))
+                {
+                    this.ResourceId = null;
+                }
             }
 
             subnet.AddressPrefix = this.AddressPrefix?.ToList();
@@ -102,6 +111,16 @@ namespace Microsoft.Azure.Commands.Network
             else if (this.MyInvocation.BoundParameters.ContainsKey("RouteTable") || this.MyInvocation.BoundParameters.ContainsKey("RouteTableId"))
             {
                 subnet.RouteTable = null;
+            }
+
+            if (!string.IsNullOrEmpty(this.ResourceId))
+            {
+                subnet.NatGateway = new PSNatGateway();
+                subnet.NatGateway.Id = this.ResourceId;
+            }
+            else if (this.MyInvocation.BoundParameters.ContainsKey("InputObject") || this.MyInvocation.BoundParameters.ContainsKey("ResourceId"))
+            {
+                subnet.NatGateway = null;
             }
 
             if (this.ServiceEndpoint != null || this.ServiceEndpointConfig != null)

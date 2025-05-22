@@ -22,7 +22,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using Microsoft.Azure.Storage.DataMovement;
     using Microsoft.Azure.Storage.File;
     using Microsoft.WindowsAzure.Commands.Common;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -37,7 +36,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Threading.Tasks;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
 
-    [CmdletOutputBreakingChangeWithVersion(typeof(AzureStorageFile), "14.0.0", "9.0.0", ChangeDescription = "The ContentHash properties will be removed from the uploaded Azure file when file size > 1TB, or upload with Oauth credencial, or with -DisAllowTrailingDot.")]
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFile))]
     public class SetAzureStorageFileContent : StorageFileDataManagementCmdletBase, IDynamicParameters
     {
@@ -130,17 +128,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
             long fileSize = localFile.Length;
 
-            // if FIPS policy is enabled, must use native MD5 for DMlib. 
-            if (fipsEnabled)
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                if (fileSize < sizeTB)
-                {
-                    CloudStorageAccount.UseV1MD5 = false;
-                }
-                else // use Track2 SDK
-                {
-                    WriteWarning("The uploaded file won't have Content MD5 hash, since caculate MD5 hash fail, most possiblly caused by FIPS is enabled on this machine.");
-                }
+                CloudStorageAccount.UseV1MD5 = false;
             }
 
             bool isDirectory;
@@ -251,12 +241,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                         List<Task> runningTasks = new List<Task>();
 
-                        IncrementalHash hash = null;
-                        if (!fipsEnabled)
-                        {
-                            hash = IncrementalHash.CreateHash(HashAlgorithmName.MD5);
-                        }
-
                         using (FileStream stream = File.OpenRead(localFile.FullName))
                         {
                             byte[] buffer = null;
@@ -268,10 +252,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                                 buffer = new byte[targetBlockSize];
 
                                 int actualBlockSize = await stream.ReadAsync(buffer: buffer, offset: 0, count: (int)targetBlockSize);
-                                if (!fipsEnabled && hash != null)
-                                {
-                                    hash.AppendData(buffer, 0, actualBlockSize);
-                                }
 
                                 Task task = UploadFileRangAsync(fileClient,
                                     new HttpRange(offset, actualBlockSize),
@@ -303,24 +283,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             }
                             // Wait for all upload range tasks finished
                             await Task.WhenAll(runningTasks).ConfigureAwait(false);
-                        }
-
-                        // Need set file ContentHash
-                        if ((!fipsEnabled && hash != null))
-                        {
-                            ShareFileHttpHeaders header = null;
-                            if (!fipsEnabled && hash != null)
-                            {
-                                header = new ShareFileHttpHeaders();
-                                header.ContentHash = hash.GetHashAndReset();
-                            }
-
-                            // set file header and attributes to the file
-                            ShareFileSetHttpHeadersOptions httpHeadersOptions = new ShareFileSetHttpHeadersOptions
-                            {
-                                HttpHeaders = header,
-                            };
-                            fileClient.SetHttpHeaders(httpHeadersOptions);
                         }
 
                         if (this.PassThru)

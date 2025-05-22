@@ -12,21 +12,33 @@ Gets an existing origin group within an endpoint.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzCdnOriginGroup -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### Get1
+### GetViaIdentityProfile
+```
+Get-AzCdnOriginGroup -EndpointName <String> -Name <String> -ProfileInputObject <ICdnIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
 ```
 Get-AzCdnOriginGroup -EndpointName <String> -Name <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### GetViaIdentity1
+### GetViaIdentityEndpoint
+```
+Get-AzCdnOriginGroup -Name <String> -EndpointInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
 ```
 Get-AzCdnOriginGroup -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -97,12 +109,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EndpointInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: GetViaIdentityEndpoint
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EndpointName
 Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, Get1
+Parameter Sets: List, GetViaIdentityProfile, Get
 Aliases:
 
 Required: True
@@ -114,11 +141,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: GetViaIdentity1
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -133,7 +159,7 @@ Name of the origin group which is unique within the endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1
+Parameter Sets: GetViaIdentityProfile, Get, GetViaIdentityEndpoint
 Aliases: OriginGroupName
 
 Required: True
@@ -143,12 +169,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: GetViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
 Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, Get1
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -163,7 +204,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, Get1
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -178,7 +219,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, Get1
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -197,7 +238,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup
 
 ## NOTES
 

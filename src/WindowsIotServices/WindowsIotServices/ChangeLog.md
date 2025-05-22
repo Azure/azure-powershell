@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Removed parameter Location from command Update-AzWindowsIotServicesDevice.
+
 ## Version 0.1.2
 * Upgraded nuget package to signed package.
 

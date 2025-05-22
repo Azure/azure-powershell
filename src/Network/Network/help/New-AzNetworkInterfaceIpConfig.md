@@ -15,9 +15,10 @@ Creates a network interface IP configuration.
 
 ### SetByResource (Default)
 ```
-New-AzNetworkInterfaceIpConfig -Name <String> [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>]
- [-Primary] [-Subnet <PSSubnet>] [-PublicIpAddress <PSPublicIpAddress>] [-PrivateIpAddressPrefixLength <UInt16>]
- [-LoadBalancerBackendAddressPool <PSBackendAddressPool[]>] [-LoadBalancerInboundNatRule <PSInboundNatRule[]>]
+New-AzNetworkInterfaceIpConfig -Name <String> [-PrivateIPAddressPrefixLength <Int32>]
+ [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-Primary] [-Subnet <PSSubnet>]
+ [-PublicIpAddress <PSPublicIpAddress>] [-LoadBalancerBackendAddressPool <PSBackendAddressPool[]>]
+ [-LoadBalancerInboundNatRule <PSInboundNatRule[]>]
  [-ApplicationGatewayBackendAddressPool <PSApplicationGatewayBackendAddressPool[]>]
  [-ApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-GatewayLoadBalancerId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -25,10 +26,12 @@ New-AzNetworkInterfaceIpConfig -Name <String> [-PrivateIpAddressVersion <String>
 
 ### SetByResourceId
 ```
-New-AzNetworkInterfaceIpConfig -Name <String> [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-PrivateIpAddressPrefixLength <UInt16>]
- [-Primary] [-SubnetId <String>] [-PublicIpAddressId <String>] [-LoadBalancerBackendAddressPoolId <String[]>]
+New-AzNetworkInterfaceIpConfig -Name <String> [-PrivateIPAddressPrefixLength <Int32>]
+ [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-Primary] [-SubnetId <String>]
+ [-PublicIpAddressId <String>] [-LoadBalancerBackendAddressPoolId <String[]>]
  [-LoadBalancerInboundNatRuleId <String[]>] [-ApplicationGatewayBackendAddressPoolId <String[]>]
- [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -278,7 +281,7 @@ Accept wildcard characters: False
 Specifies the static IP address prefix length of the network interface IP configuration.
 
 ```yaml
-Type: Type: System.UInt16
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 

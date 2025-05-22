@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.HybridConnectionEventSubscri
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridhybridconnectioneventsubscriptiondestinationobject
 #>
 function New-AzEventGridHybridConnectionEventSubscriptionDestinationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.HybridConnectionEventSubscriptionDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

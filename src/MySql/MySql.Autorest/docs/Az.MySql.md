@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MySql
-Module Guid: 9e6f7276-93b8-48dc-8c37-abd95fe7d667
+Module Guid: 21aee4b9-13aa-41fa-993f-0ea403b3fa72
 Download Help Link: https://learn.microsoft.com/powershell/module/az.mysql
 Help Version: 1.0.0.0
 Locale: en-US
@@ -102,7 +102,7 @@ Restarts a server.
 Restarts a server.
 
 ### [Restore-AzMySqlFlexibleServer](Restore-AzMySqlFlexibleServer.md)
-Restore a server from an existing backup
+Restore a server from an existing backup using GeoRestore
 
 ### [Restore-AzMySqlServer](Restore-AzMySqlServer.md)
 Restore a server from an existing backup

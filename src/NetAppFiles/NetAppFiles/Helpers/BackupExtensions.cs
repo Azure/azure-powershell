@@ -37,7 +37,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 VolumeResourceId = backup.VolumeResourceId,
                 UseExistingSnapshot = backup.UseExistingSnapshot,
                 SnapshotName = backup.SnapshotName,
-                CreationDate = backup.CreationDate
+                CreationDate = backup.CreationDate,
+                IsLargeVolume = backup.IsLargeVolume,
             };
             return psBackup;
         }

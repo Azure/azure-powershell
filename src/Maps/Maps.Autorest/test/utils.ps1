@@ -55,15 +55,9 @@ function setupEnv() {
 
     # Create resources for test.
     Write-Host -ForegroundColor Green "Create maps account for test"
-    New-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName01 -SkuName S1 -Location $env.location
-    New-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName02 -SkuName S1 -Location $env.location
-    # New-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName03 -SkuName S1 -Location $env.location
-
-    Write-Host -ForegroundColor Green "Create crearor for test"
-    New-AzMapsCreator -ResourceGroupName $env.resourceGroup -AccountName $env.mapsName01 -Name $env.creatorName01 -Location $env.creatorLocation -StorageUnit 3
-    New-AzMapsCreator -ResourceGroupName $env.resourceGroup -AccountName $env.mapsName02 -Name $env.creatorName02 -Location $env.creatorLocation -StorageUnit 3
-    # New-AzMapsCreator -ResourceGroupName $env.resourceGroup -AccountName $env.mapsName03 -Name $env.creatorName03 -Location $env.creatorLocation -StorageUnit 3
-
+    New-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName01 -SkuName G2 -Location $env.location
+    New-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName02 -SkuName G2 -Location $env.location
+    
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

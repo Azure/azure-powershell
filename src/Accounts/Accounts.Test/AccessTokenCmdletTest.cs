@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
@@ -28,6 +29,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 
@@ -49,7 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-
+            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
             var defaultContext = new AzureContext(
                 new AzureSubscription()
                 {
@@ -83,6 +85,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             // Setup
             cmdlet.TenantId = tenantId;
             var fakeToken = "eyfaketoken.eyfaketoken";
+            Environment.SetEnvironmentVariable(Constants.AzPsOutputPlainTextAccessToken, bool.TrueString);
 
             var expected = new PSAccessToken { 
                 UserId = "faker@contoso.com",
@@ -97,8 +100,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 It.IsAny<SecureString>(),
                 It.IsAny<string>(),
                 It.IsAny<Action<string>>(),
-                It.IsAny<IAzureTokenCache>(),
-                It.IsAny<string>())).Returns(new MockAccessToken
+                It.IsAny<IDictionary<string, object>>())).Returns(new MockAccessToken
                 {
                     UserId = expected.UserId,
                     LoginType = LoginType.OrgId,
@@ -121,6 +123,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal("Bearer", ((PSAccessToken)outputPipeline.First()).Type);
             Assert.Equal(expected.Token, ((PSAccessToken)outputPipeline.First()).Token);
 
+            Environment.SetEnvironmentVariable(Constants.AzPsOutputPlainTextAccessToken, null);
             AzureSession.Instance.AuthenticationFactory = previousFactory;
         }
 
@@ -146,8 +149,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 It.IsAny<SecureString>(),
                 It.IsAny<string>(),
                 It.IsAny<Action<string>>(),
-                It.IsAny<IAzureTokenCache>(),
-                It.IsAny<string>())).Returns(new MockAccessToken
+                It.IsAny<IDictionary<string, object>>())).Returns(new MockAccessToken
                 {
                     UserId = expected.UserId,
                     LoginType = LoginType.OrgId,

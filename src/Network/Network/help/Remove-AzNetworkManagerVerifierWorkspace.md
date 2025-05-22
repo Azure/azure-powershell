@@ -13,12 +13,12 @@ To remove network manager verifier workspace.
 ## SYNTAX
 
 ### ByName (Default)
-
 ```
 Remove-AzNetworkManagerVerifierWorkspace -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
+
 ### ByInputObject
 ```
 Remove-AzNetworkManagerVerifierWorkspace -InputObject <PSVerifierWorkspace> [-Force] [-PassThru] [-AsJob]
@@ -32,6 +32,7 @@ Remove-AzNetworkManagerVerifierWorkspace -ResourceId <String> [-Force] [-PassThr
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
+
 ## DESCRIPTION
 **Remove-AzNetworkManagerVerifierWorkspace** cmdlet removes a network manager verifier workspace. 
 
@@ -97,6 +98,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The Verifier Workspace.
+
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSVerifierWorkspace
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The resource name.
 
@@ -111,19 +128,7 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
-### -InputObject
-The Verifier Workspace.
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSVerifierWorkspace
-Parameter Sets: ByInputObject
-Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 ### -NetworkManagerName
 The network manager name.
 
@@ -168,8 +173,11 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
 ### -ResourceId
 The resource id.
+
+
 ```yaml
 Type: System.String
 Parameter Sets: ByResourceId
@@ -227,6 +235,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Get-AzNetworkManagerVerifierWorkspace](./Get-AzNetworkManagerVerifierWorkspace.md)
 
 [Set-AzNetworkManagerVerifierWorkspace](./Set-AzNetworkManagerVerifierWorkspace.md)

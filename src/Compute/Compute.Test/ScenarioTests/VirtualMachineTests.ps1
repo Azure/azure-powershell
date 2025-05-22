@@ -915,12 +915,13 @@ function Test-VirtualMachineSizeAndUsage
         Assert-AreEqual $vm.StorageProfile.DataDisks[1].Lun 2;
         Assert-AreEqual $vm.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
-        # Test Sizes
-        $s1 = Get-AzVMSize -Location ($loc -replace ' ');
-        Assert-NotNull $s1;
-        Assert-NotNull $s1.RequestId;
-        Assert-NotNull $s1.StatusCode;
-        Validate-VirtualMachineSize $vmsize $s1;
+        # Test Sizes 
+        # CASE 1: List Virtual Machine Sizes parameter set deprecated 
+        # s1 = Get-AzVMSize -Location ($loc -replace ' ');
+        # Assert-NotNull $s1;
+        # Assert-NotNull $s1.RequestId;
+        # Assert-NotNull $s1.StatusCode;
+        # Validate-VirtualMachineSize $vmsize $s1;
 
         $s2 = Get-AzVMSize -ResourceGroupName $rgname -VMName $vmname;
         Assert-NotNull $s2;
@@ -2136,7 +2137,8 @@ function Test-VMImageCmdletOutputFormat
 
     Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer | Get-AzVMImageSku " @('Publisher', 'Offer', 'Skus');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer | Get-AzVMImageSku | Get-AzVMImage " @('Version', 'Skus');
+    # Updated Get-AzVmImage list output. No need to output sku when user inputed that. There are more valuable information to display.
+    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer | Get-AzVMImageSku | Get-AzVMImage " @('Version', 'Location');
 
     Assert-OutputContains " Get-AzVMImage -Location '$locStr' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 
@@ -2161,25 +2163,11 @@ function Test-VMImageEdgeZoneCmdletOutputFormat
 
     Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer -EdgeZone '$edgeZone'| Get-AzVMImageSku " @('Publisher', 'Offer', 'Skus');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer -EdgeZone '$edgeZone' | Get-AzVMImageSku | Get-AzVMImage " @('Version', 'Skus');
+    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer -EdgeZone '$edgeZone' | Get-AzVMImageSku | Get-AzVMImage " @('Version', 'Location');
 
     Assert-OutputContains " Get-AzVMImage -Location '$locStr' -EdgeZone '$edgeZone' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 
     Assert-OutputContains " Get-AzVMImage -Location '$locStr' -EdgeZone '$edgeZone' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
-}
-
-# Test Get VM Size from All Locations
-function Test-GetVMSizeFromAllLocations
-{
-    $locations = get_all_vm_locations;
-    foreach ($loc in $locations)
-    {
-        $vmsizes = Get-AzVMSize -Location $loc;
-        Assert-True { $vmsizes.Count -gt 0 }
-        Assert-True { ($vmsizes | where { $_.Name -eq 'Standard_A3' }).Count -eq 1 }
-
-        Write-Output ('Found VM Size Standard_A3 in Location: ' + $loc);
-    }
 }
 
 function get_all_vm_locations
@@ -4863,14 +4851,19 @@ function Test-VirtualMachineImageListTopOrderExpand
         $pubNames = "MicrosoftWindowsServer";
         $pubNameFilter = '*Windows*';
         $offer = "windowsserver";
-        $sku = "2012-R2-Datacenter";
+        $sku = "2025-datacenter";
         $numRecords = 3;
         $orderNameDesc = "name desc";
         $orderNameAsc = "name asc";
 
         # Test -Top
-        $vmImagesTop = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Top $numRecords;
+        $vmImagesTop = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Top $numRecords -Expand "properties";
         Assert-AreEqual $numRecords $vmImagesTop.Count;
+        Assert-NotNull $vmImagesTop[0].Architecture;
+        Assert-NotNull $vmImagesTop[0].HyperVGeneration;
+
+        $vmImagesTop = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Top $numRecords -Expand "properties/imageDeprecationStatus"
+        Assert-NotNull $vmImagesTop[0].ImageDeprecationStatus
 
         # Test -OrderBy
         $vmImagesOrderDesc = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -OrderBy $orderNameDesc;

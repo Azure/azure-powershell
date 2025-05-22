@@ -19,12 +19,13 @@ Create a DriverList Object for ImportExport.
 Create a DriverList Object for ImportExport.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.DriveStatus
+Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.DriveStatus
 .Link
 https://learn.microsoft.com/powershell/module/az.importexport/new-AzImportExportDriveListObject
 #>
 function New-AzImportExportDriveListObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IDriveStatus')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
         [Parameter(HelpMessage="The BitLocker key used to encrypt the drive.")]
@@ -69,7 +70,8 @@ function New-AzImportExportDriveListObject {
         ${PercentComplete},
         [Parameter(HelpMessage="The drive's current state.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.PSArgumentCompleterAttribute("Specified", "Received", "NeverReceived", "Transferring", "Completed", "CompletedMoreInfo", "ShippedBack")]
+        [string]
         ${State},
         [Parameter(HelpMessage="A URI that points to the blob containing the verbose log for the data transfer operation.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
@@ -78,7 +80,7 @@ function New-AzImportExportDriveListObject {
     )
 
     process {
-        $DriveStatus = [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.DriveStatus]::New()
+        $DriveStatus = [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.DriveStatus]::New()
         $DriveStatus.BitLockerKey = $BitLockerKey
         $DriveStatus.BytesSucceeded = $BytesSucceeded
         $DriveStatus.CopyStatus = $CopyStatus

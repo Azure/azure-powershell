@@ -23,7 +23,7 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-commit: 631fafee30edfd6275cc01ee61d1a128f2c2cfdd
+commit: 64a54347ebef32101bd1fcd29d23476b4b838bba
 require: https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/datafactory/resource-manager/readme.md
 
 output-folder: Generated

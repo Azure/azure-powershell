@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareAuthorization
 
 ## SYNOPSIS
-Create a ExpressRouteAuthorization
+create a ExpressRouteAuthorization
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ New-AzVMwareAuthorization -Name <String> -PrivateCloudInputObject <IVMwareIdenti
 ```
 
 ## DESCRIPTION
-Create a ExpressRouteAuthorization
+create a ExpressRouteAuthorization
 
 ## EXAMPLES
 

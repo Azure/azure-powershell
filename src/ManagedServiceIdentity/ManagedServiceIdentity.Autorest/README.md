@@ -35,16 +35,19 @@ input-file:
   - $(repo)/specification/msi/resource-manager/Microsoft.ManagedIdentity/preview/2022-01-31-preview/ManagedIdentity.json
 
 subject-prefix: ""
-resourcegroup-append: true
-nested-object-to-string: true
-identity-correction-for-post: true
 module-version: 0.3.0
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
+  # Update Location parameter available
+  - from: swagger-document
+    where: $.definitions.IdentityUpdate.properties.location.x-ms-mutability
+    transform: >-
+      return [
+        "read",
+        "update",
+        "create"
+      ]
+
   - where:
       verb: Set
       subject: SystemAssignedIdentity|UserAssignedIdentity
@@ -58,7 +61,11 @@ directive:
     
   - where:
       subject: UserAssignedIdentity
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      subject: UserAssignedIdentity
+      variant: ^CreateViaIdentity.*$
     remove: true
 
   - where:
@@ -113,7 +120,12 @@ directive:
 
   - where:
       subject: FederatedIdentityCredential
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+    
+  - where:
+      subject: FederatedIdentityCredential
+      variant: ^CreateViaIdentity.*$|^GetViaIdentityUserAssignedIdentity$|^DeleteViaIdentityUserAssignedIdentity$|^UpdateViaIdentityUserAssignedIdentityExpanded$
     remove: true
 
   - where:
@@ -152,18 +164,18 @@ directive:
 
   - where:
       subject: FederatedIdentityCredential
-      variant: ^Get1$|^List1$|^GetViaIdentity1$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^Delete1$|^DeleteViaIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$
+      variant: ^Get1$|^List1$|^GetViaIdentity1$|^GetViaIdentityUserAssignedIdentity1$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^CreateViaIdentityUserAssignedIdentity1$|^CreateViaIdentityUserAssignedIdentityExpanded1$|^CreateViaJsonFilePath1$|^CreateViaJsonString1$|^Delete1$|^DeleteViaIdentity1$|^DeleteViaIdentityUserAssignedIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$|^UpdateViaIdentityUserAssignedIdentityExpanded1$|^UpdateViaIdentityUserAssignedIdentity1$|^UpdateViaJsonFilePath1$|^UpdateViaJsonString1$
     remove: true
 
   - where:
       verb: Get
       subject: SystemAssignedIdentity
-      variant: ^Get1$|^GetViaIdentity1$
+      variant: ^Get1$ #|^GetViaIdentity1$
     remove: true
 
   - where:
       subject: UserAssignedIdentity
-      variant: ^Get1$|^GetViaIdentity1$|^List2$|^List3$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^Delete1$|^DeleteViaIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$
+      variant: ^Get1$|^GetViaIdentity1$|^List2$|^List3$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^CreateViaJsonFilePath1$|^CreateViaJsonString1$|^Delete1$|^DeleteViaIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$|^UpdateViaJsonFilePath1$|^UpdateViaJsonString1$
     remove: true
 
   # END 
@@ -195,29 +207,4 @@ directive:
           - Name
           - Location
           - ResourceGroupName
-
-  #breaking change message
-  - where:
-      parameter-name: Audience
-    set:
-      breaking-change:
-        old-parameter-type: System.String[]
-        new-parameter-type: System.Collections.Generic.List`1[System.String]
-        change-description: "The type of property 'Audience' of type 'FederatedIdentityCredential' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'."
-        deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/05/19
-
-  - where:
-      subject: FederatedIdentityCredential
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - Audience <System.String[]>
-        new-output-properties:
-          - Audience <System.Collections.Generic.List`1[System.String]>
-        change-description: "The type of property 'Audience' of type 'FederatedIdentityCredential' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'."
-        deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 14.0.0
-        change-effective-date: 2025/05/19
 ```

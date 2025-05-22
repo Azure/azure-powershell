@@ -15,7 +15,8 @@ Removes an application gateway.
 
 ```
 Remove-AzApplicationGateway -Name <String> -ResourceGroupName <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -157,5 +158,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Set-AzApplicationGateway](./Set-AzApplicationGateway.md)
-
-

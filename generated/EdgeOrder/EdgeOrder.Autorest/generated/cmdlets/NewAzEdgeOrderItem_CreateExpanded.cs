@@ -6,22 +6,25 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Cmdlets;
     using System;
 
     /// <summary>
-    /// Creates an order item. Existing order item cannot be updated with this api and should instead be updated with the Update
+    /// create an order item. Existing order item cannot be updated with this api and should instead be updated with the create
     /// order item API.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrderItem=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEdgeOrderItem_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Description(@"Creates an order item. Existing order item cannot be updated with this api and should instead be updated with the Update order item API.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResource))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Description(@"create an order item. Existing order item cannot be updated with this api and should instead be updated with the create order item API.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}", ApiVersion = "2021-12-01")]
     public partial class NewAzEdgeOrderItem_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -37,8 +40,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>Represents order item contract</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource _orderItemResourceBody = new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResource _orderItemResourceBody = new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemResource();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -49,6 +64,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.EdgeOrder Client => Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.ClientAPI;
@@ -63,6 +81,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>Contact details for the address</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Contact details for the address")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.ParameterCategory.Body)]
@@ -71,8 +92,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         ReadOnly = false,
         Description = @"Contact details for the address",
         SerializedName = @"contactDetails",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IContactDetails) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IContactDetails ForwardAddressContactDetail { get => _orderItemResourceBody.ForwardAddressContactDetail ?? null /* object */; set => _orderItemResourceBody.ForwardAddressContactDetail = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IContactDetails) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IContactDetails ForwardAddressContactDetail { get => _orderItemResourceBody.ForwardAddressContactDetail ?? null /* object */; set => _orderItemResourceBody.ForwardAddressContactDetail = value; }
 
         /// <summary>Shipping details for the address</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Shipping details for the address")]
@@ -82,8 +103,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         ReadOnly = false,
         Description = @"Shipping details for the address",
         SerializedName = @"shippingAddress",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IShippingAddress) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IShippingAddress ForwardShippingAddress { get => _orderItemResourceBody.ForwardAddressShippingAddress ?? null /* object */; set => _orderItemResourceBody.ForwardAddressShippingAddress = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IShippingAddress) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IShippingAddress ForwardShippingAddress { get => _orderItemResourceBody.ForwardAddressShippingAddress ?? null /* object */; set => _orderItemResourceBody.ForwardAddressShippingAddress = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -161,13 +182,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         ReadOnly = false,
         Description = @"Represents order item details.",
         SerializedName = @"orderItemDetails",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemDetails) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemDetails OrderItemDetail { get => _orderItemResourceBody.OrderItemDetail ?? null /* object */; set => _orderItemResourceBody.OrderItemDetail = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemDetails) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemDetails OrderItemDetail { get => _orderItemResourceBody.OrderItemDetail ?? null /* object */; set => _orderItemResourceBody.OrderItemDetail = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -213,7 +234,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -226,32 +248,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.ITrackedResourceTags Tag { get => _orderItemResourceBody.Tag ?? null /* object */; set => _orderItemResourceBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ITrackedResourceTags Tag { get => _orderItemResourceBody.Tag ?? null /* object */; set => _orderItemResourceBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResource">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -289,15 +311,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
             clone._orderItemResourceBody = this._orderItemResourceBody;
-            clone.Name = this.Name;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
+            clone.Name = this.Name;
             return clone;
         }
 
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -362,11 +389,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -378,10 +430,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -391,7 +459,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzEdgeOrderItem_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzEdgeOrderItem_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzEdgeOrderItem_CreateExpanded()
         {
@@ -457,7 +525,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -470,12 +538,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.CreateOrderItem(Name, SubscriptionId, ResourceGroupName, _orderItemResourceBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.CreateOrderItem(SubscriptionId, ResourceGroupName, Name, _orderItemResourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Name=Name,SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,body=_orderItemResourceBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -513,12 +581,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -535,15 +603,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Name=Name, SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, body=_orderItemResourceBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Name=Name, SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, body=_orderItemResourceBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -553,12 +621,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResource">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -570,8 +638,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResource
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

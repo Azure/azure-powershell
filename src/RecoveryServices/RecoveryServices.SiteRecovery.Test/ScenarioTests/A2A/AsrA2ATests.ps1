@@ -2186,3 +2186,34 @@ function Test-CRGReplication {
     $failoverjob = Start-AzRecoveryServicesAsrUnPlannedFailoverJob -ReplicationProtectedItem $pe -Direction PrimaryToRecovery -PerformSourceSideAction
     WaitForJobCompletion -JobId $failoverjob.Name
 }
+
+<#
+.SYNOPSIS
+    Test-A2ASingleVMReprotect parametersets
+#>
+function Test-A2ASingleVMReprotect{
+$vault = Get-AzRecoveryServicesVault -Name "vijamireprotecttest" -ResourceGroupName "vijami-alertrg"
+
+Set-AzRecoveryServicesAsrVaultContext -Vault $vault
+
+$primaryfabric = Get-AzRecoveryServicesAsrFabric -Name asr-a2a-default-uksouth
+
+$PrimaryProtContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $primaryfabric
+
+$recoveryfabric = Get-AzRecoveryServicesAsrFabric -Name asr-a2a-default-ukwest
+
+$RecoveryContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $recoveryfabric
+
+$RecoveryMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $RecoveryContainer -Name  ukwest-uksouth-24-hour-retention-policy
+
+$ReplicationProtectedItem = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName "reprotectvm" -ProtectionContainer $PrimaryProtContainer
+
+$CacheStorageAccount = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/gl-rec-rg-prod-z2zgql-ukw/providers/Microsoft.Storage/storageAccounts/bootdiag0411052737"
+
+$rgId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg"
+
+$ReprotectJob = Update-AzRecoveryServicesAsrProtectionDirection -AzureToAzure -ReplicationProtectedItem $ReplicationProtectedItem -ProtectionContainerMapping $RecoveryMapping -LogStorageAccountId $CacheStorageAccount -RecoveryResourceGroupID $rgId
+
+[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+WaitForJobCompletion -JobId $ReprotectJob.Name
+}

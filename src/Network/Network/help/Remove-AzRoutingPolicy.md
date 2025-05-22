@@ -14,7 +14,8 @@ Removes the specified routing policy from a routing intent resource associated w
 
 ```
 Remove-AzRoutingPolicy -RoutingIntent <PSRoutingIntent> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

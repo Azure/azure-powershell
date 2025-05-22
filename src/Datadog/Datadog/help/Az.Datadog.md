@@ -42,16 +42,16 @@ Get a tag rule set for a given monitor resource.
 Create an in-memory object for FilteringTag.
 
 ### [New-AzDatadogMarketplaceAgreement](New-AzDatadogMarketplaceAgreement.md)
-Create Datadog marketplace agreement in the subscription.
+create Datadog marketplace agreement in the subscription.
 
 ### [New-AzDatadogMonitor](New-AzDatadogMonitor.md)
-Create a monitor resource.
+create a monitor resource.
 
 ### [New-AzDatadogSingleSignOnConfiguration](New-AzDatadogSingleSignOnConfiguration.md)
 Configures single-sign-on for this resource.
 
 ### [New-AzDatadogTagRule](New-AzDatadogTagRule.md)
-Create or update a tag rule set for a given monitor resource.
+create a tag rule set for a given monitor resource.
 
 ### [Remove-AzDatadogMonitor](Remove-AzDatadogMonitor.md)
 Delete a monitor resource.
@@ -60,8 +60,14 @@ Delete a monitor resource.
 Set the default api key.
 
 ### [Update-AzDatadogMonitor](Update-AzDatadogMonitor.md)
-Update a monitor resource.
+update a monitor resource.
 
 ### [Update-AzDatadogMonitorSetPasswordLink](Update-AzDatadogMonitorSetPasswordLink.md)
 Refresh the set password link and return a latest one.
+
+### [Update-AzDatadogSingleSignOnConfiguration](Update-AzDatadogSingleSignOnConfiguration.md)
+Configures single-sign-on for this resource.
+
+### [Update-AzDatadogTagRule](Update-AzDatadogTagRule.md)
+update a tag rule set for a given monitor resource.
 

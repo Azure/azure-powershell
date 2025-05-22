@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Return a Reservation.
+Return a reservation and get refund information.
 .Description
-Return a Reservation.
+Return a reservation and get refund information.
 .Example
 $orderId = "50000000-aaaa-bbbb-cccc-100000000003"
 $fullyQualifiedId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003"
@@ -29,18 +29,11 @@ Invoke-AzReservationCalculateRefund -ReservationOrderId $orderId -ReservationToR
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BODY <IRefundRequest>: The return request body.
-  [ReservationToReturnQuantity <Int32?>]: Quantity to be returned. Must be greater than zero.
-  [ReservationToReturnReservationId <String>]: Fully qualified identifier of the reservation being returned
-  [ReturnReason <String>]: The reason of returning the reservation
-  [Scope <String>]: The scope of the refund, e.g. Reservation
-  [SessionId <String>]: SessionId that was returned by CalculateRefund API.
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
@@ -51,39 +44,31 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationreturn
 #>
 function Invoke-AzReservationReturn {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponse])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
+    [System.String]
+    # Order Id of the reservation
+    ${ReservationOrderId},
+
     [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
-    [Parameter(ParameterSetName='Post', Mandatory)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [System.String]
-    # Reservation Order Id.
-    ${ReservationOrderId},
-
-    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
-    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [System.String]
-    # Reservation Id to return.
-    ${ReservationToReturnReservationId},
 
     [Parameter(ParameterSetName='PostExpanded', Mandatory)]
     [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.Int32]
-    # Quantity to return.
+    # Quantity to be returned.
+    # Must be greater than zero.
     ${ReservationToReturnQuantity},
 
     [Parameter(ParameterSetName='PostExpanded', Mandatory)]
@@ -91,8 +76,16 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
-    # The session id obtained from Invoke-AzReservationCalculateRefund..
-    ${SessionId},
+    # Fully qualified identifier of the reservation being returned
+    ${ReservationToReturnReservationId},
+
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # The reason of returning the reservation
+    ${ReturnReason},
 
     [Parameter(ParameterSetName='PostExpanded', Mandatory)]
     [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory)]
@@ -108,24 +101,28 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
-    # The reason for this reservation return.
-    ${ReturnReason},
+    # The session id obtained from Invoke-AzReservationCalculateRefund..
+    ${SessionId},
 
-    [Parameter(ParameterSetName='Post', Mandatory)]
-    [Parameter(ParameterSetName='PostViaIdentity', Mandatory)]
-    [ValidateNotNull()]
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundRequest]
-    # The return request body.
-    # To construct, see NOTES section for BODY properties and create a hash table.
-    ${Body},
+    [System.String]
+    # Json string supplied to the Post operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Post operation
+    ${JsonFilePath},
 
     [Parameter(DontShow)]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -175,6 +172,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -195,9 +201,9 @@ begin {
 
         $mapping = @{
             PostExpanded = 'Az.Reservations.custom\Invoke-AzReservationReturn';
-            Post = 'Az.Reservations.custom\Invoke-AzReservationReturn';
+            PostViaJsonString = 'Az.Reservations.custom\Invoke-AzReservationReturn';
+            PostViaJsonFilePath = 'Az.Reservations.custom\Invoke-AzReservationReturn';
             PostViaIdentityExpanded = 'Az.Reservations.custom\Invoke-AzReservationReturn';
-            PostViaIdentity = 'Az.Reservations.custom\Invoke-AzReservationReturn';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -206,6 +212,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

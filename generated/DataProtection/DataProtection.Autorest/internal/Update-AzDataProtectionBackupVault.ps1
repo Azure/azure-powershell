@@ -42,7 +42,7 @@ $UAMI = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/re
 $vault = Update-AzDataProtectionBackupVault -AssignUserIdentity $UAMI -SubscriptionId "00000000-0000-0000-0000-000000000000" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" -IdentityType 'SystemAssigned,UserAssigned'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -60,7 +60,7 @@ ENCRYPTIONSETTING <IEncryptionSettings>: Customer Managed Key details of the res
 https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionbackupvault
 #>
 function Update-AzDataProtectionBackupVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -117,7 +117,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IEncryptionSettings]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IEncryptionSettings]
     # Customer Managed Key details of the resource.
     # To construct, see NOTES section for ENCRYPTIONSETTING properties and create a hash table.
     ${EncryptionSetting},
@@ -166,7 +166,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IPatchResourceRequestInputTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IPatchResourceRequestInputTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

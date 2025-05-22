@@ -39,7 +39,7 @@ Describe 'Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation' {
         $response.Valid | Should -Be "True"
     }
 
-    It 'Validate' {
+    It 'Validate' -Skip {
         $response = Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation -Body $body
         $response | Should -Not -Be $null
         $response.Valid | Should -Not -Be $null

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.HiveCatalogOption
 https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonakstrinohivecatalogobject
 #>
 function New-AzHdInsightOnAksTrinoHiveCatalogObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.HiveCatalogOption')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

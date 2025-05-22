@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzImportExport
 
 ## SYNOPSIS
-Updates specific properties of a job.
+update specific properties of a job.
 You can call this operation to notify the Import/Export service that the hard drives comprising the import or export job have been shipped to the Microsoft data center.
 It can also be used to cancel an existing job.
 
@@ -28,6 +28,20 @@ Update-AzImportExport -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaJsonString
+```
+Update-AzImportExport -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AcceptLanguage <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzImportExport -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AcceptLanguage <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzImportExport -InputObject <IImportExportIdentity> [-AcceptLanguage <String>] [-BackupDriveManifest]
@@ -43,7 +57,7 @@ Update-AzImportExport -InputObject <IImportExportIdentity> [-AcceptLanguage <Str
 ```
 
 ## DESCRIPTION
-Updates specific properties of a job.
+update specific properties of a job.
 You can call this operation to notify the Import/Export service that the hard drives comprising the import or export job have been shipped to the Microsoft data center.
 It can also be used to cancel an existing job.
 
@@ -97,7 +111,7 @@ Indicates whether the manifest files on the drives should be copied to block blo
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -113,7 +127,7 @@ The service will attempt to cancel the job.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -144,7 +158,7 @@ The name of the carrier that is used to ship the import or export drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -159,7 +173,7 @@ The number of drives included in the package.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -174,7 +188,7 @@ The date when the package is shipped.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -189,7 +203,7 @@ The tracking number of the package.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -201,11 +215,10 @@ Accept wildcard characters: False
 
 ### -DriveList
 List of drives that comprise the job.
-To construct, see NOTES section for DRIVELIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IDriveStatus[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -217,7 +230,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity
@@ -231,12 +243,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LogLevel
 Indicates whether error logging or verbose logging is enabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -251,7 +293,7 @@ The name of the import/export job.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases: JobName
 
 Required: True
@@ -266,7 +308,7 @@ The resource group name uniquely identifies the resource group within the user s
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -281,7 +323,7 @@ The city name to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -296,7 +338,7 @@ The country or region to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -311,7 +353,7 @@ Email address of the recipient of the returned drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -326,7 +368,7 @@ Phone number of the recipient of the returned drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -341,7 +383,7 @@ The postal code to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -356,7 +398,7 @@ The name of the recipient who will receive the hard drives when they are returne
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -371,7 +413,7 @@ The state or province to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -386,7 +428,7 @@ The first line of the street address to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -401,7 +443,7 @@ The second line of the street address to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -416,7 +458,7 @@ The customer's account number with the carrier.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -431,7 +473,7 @@ The carrier's name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -447,7 +489,7 @@ The ReturnAddress and DeliveryPackage properties must have been set either in th
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -462,7 +504,7 @@ The subscription ID for the Azure user.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -477,7 +519,7 @@ Specifies the tags that will be assigned to the job.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -527,7 +569,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse
+### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponse
 
 ## NOTES
 

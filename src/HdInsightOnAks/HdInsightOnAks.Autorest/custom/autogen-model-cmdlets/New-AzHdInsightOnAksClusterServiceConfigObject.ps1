@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfig
 https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterserviceconfigobject
 #>
 function New-AzHdInsightOnAksClusterServiceConfigObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfig')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

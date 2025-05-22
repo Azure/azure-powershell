@@ -28,11 +28,11 @@ $instance = Initialize-AzDataProtectionBackupInstance -SnapshotResourceGroupId $
 Test-AzDataProtectionBackupInstanceReadiness -ResourceGroupName "resourceGroupName" -VaultName $vault.Name -BackupInstance  $instance[0].Property
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IValidateForBackupRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IValidateForBackupRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -128,7 +128,7 @@ PARAMETER <IValidateForBackupRequest>: Validate for backup request
 https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancereadiness
 #>
 function Test-AzDataProtectionBackupInstanceReadiness {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo])]
 [CmdletBinding(DefaultParameterSetName='ValidateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Validate', Mandatory)]
@@ -163,14 +163,14 @@ param(
     [Parameter(ParameterSetName='Validate', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ValidateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IValidateForBackupRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IValidateForBackupRequest]
     # Validate for backup request
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstance]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstance]
     # Backup Instance
     # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
     ${BackupInstance},

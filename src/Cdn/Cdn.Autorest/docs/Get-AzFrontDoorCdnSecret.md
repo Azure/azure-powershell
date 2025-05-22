@@ -29,6 +29,12 @@ Get-AzFrontDoorCdnSecret -Name <String> -ProfileName <String> -ResourceGroupName
 Get-AzFrontDoorCdnSecret -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityProfile
+```
+Get-AzFrontDoorCdnSecret -Name <String> -ProfileInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets an existing Secret within a profile.
 
@@ -96,7 +102,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -115,7 +120,7 @@ Name of the Secret under the profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityProfile
 Aliases: SecretName
 
 Required: True
@@ -125,8 +130,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: GetViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String
@@ -179,7 +199,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecret
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret
 
 ## NOTES
 

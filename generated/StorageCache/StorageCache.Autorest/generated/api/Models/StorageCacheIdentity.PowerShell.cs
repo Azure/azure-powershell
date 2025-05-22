@@ -112,25 +112,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("OperationId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).OperationId, global::System.Convert.ToString);
-            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            }
-            if (content.Contains("CacheName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).CacheName = (string) content.GetValueForProperty("CacheName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).CacheName, global::System.Convert.ToString);
-            }
-            if (content.Contains("StorageTargetName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).StorageTargetName = (string) content.GetValueForProperty("StorageTargetName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).StorageTargetName, global::System.Convert.ToString);
             }
             if (content.Contains("AmlFilesystemName"))
             {
@@ -161,25 +145,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("OperationId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).OperationId, global::System.Convert.ToString);
-            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            }
-            if (content.Contains("CacheName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).CacheName = (string) content.GetValueForProperty("CacheName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).CacheName, global::System.Convert.ToString);
-            }
-            if (content.Contains("StorageTargetName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).StorageTargetName = (string) content.GetValueForProperty("StorageTargetName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).StorageTargetName, global::System.Convert.ToString);
             }
             if (content.Contains("AmlFilesystemName"))
             {

@@ -25,11 +25,11 @@ Checks whether the configuration store name is available for use.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.ICheckNameAvailabilityParameters
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ICheckNameAvailabilityParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.INameAvailabilityStatus
+Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.INameAvailabilityStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,11 +51,13 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.appconfiguration/test-azappconfigurationoperation
 #>
 function Test-AzAppConfigurationOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.INameAvailabilityStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.INameAvailabilityStatus])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Check', Mandatory)]
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [System.String]
     # The location in which uniqueness will be verified.
@@ -63,6 +65,8 @@ param(
 
     [Parameter(ParameterSetName='Check')]
     [Parameter(ParameterSetName='CheckExpanded')]
+    [Parameter(ParameterSetName='CheckViaJsonFilePath')]
+    [Parameter(ParameterSetName='CheckViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -73,15 +77,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.ICheckNameAvailabilityParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.ICheckNameAvailabilityParameters]
     # Parameters used for checking whether a resource name is available.
-    # To construct, see NOTES section for CHECKNAMEAVAILABILITYPARAMETER properties and create a hash table.
     ${CheckNameAvailabilityParameter},
 
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
@@ -89,6 +91,18 @@ param(
     [System.String]
     # The name to check for availability.
     ${Name},
+
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Check operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # Json string supplied to the Check operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -146,15 +160,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Check = 'Az.AppConfiguration.private\Test-AzAppConfigurationOperation_Check';
             CheckExpanded = 'Az.AppConfiguration.private\Test-AzAppConfigurationOperation_CheckExpanded';
             CheckViaIdentity = 'Az.AppConfiguration.private\Test-AzAppConfigurationOperation_CheckViaIdentity';
+            CheckViaJsonFilePath = 'Az.AppConfiguration.private\Test-AzAppConfigurationOperation_CheckViaJsonFilePath';
+            CheckViaJsonString = 'Az.AppConfiguration.private\Test-AzAppConfigurationOperation_CheckViaJsonString';
         }
-        if (('Check', 'CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Check', 'CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -163,6 +180,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -18,10 +18,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDataMigrationToSqlDb_CreateExpanded", SupportsShouldProcess = true)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.PreviewMessage("Only use cmdlets containing ToSqlDb in their name for getting or stopping or deleting a migration created using New-AzDataMigrationToSqlDb")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlDb))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description(@"Create a new database migration to a given SQL Db. This command can migrate data from the selected source database tables to the target database tables. If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target databse.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}", ApiVersion = "2022-03-30-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}", ApiVersion = "2025-03-15-preview")]
     public partial class NewAzDataMigrationToSqlDb_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener
     {
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Database Migration Resource for SQL Database.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.DatabaseMigrationSqlDb();
+        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlDb _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationSqlDb();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -100,13 +100,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
-        /// <summary>ID tracking current migration operation.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ID tracking current migration operation.")]
+        /// <summary>ID for current migration operation.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ID for current migration operation.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"ID tracking current migration operation.",
+        Description = @"ID for current migration operation.",
         SerializedName = @"migrationOperationId",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.DoNotExport]
@@ -188,13 +188,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>Resource Id of the target resource (SQL VM or SQL Managed Instance)</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource Id of the target resource (SQL VM or SQL Managed Instance)")]
+        /// <summary>Resource Id of the target resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource Id of the target resource.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Resource Id of the target resource (SQL VM or SQL Managed Instance)",
+        Description = @"Resource Id of the target resource.",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
         public string Scope { get => _parametersBody.Scope ?? null; set => _parametersBody.Scope = value; }
@@ -425,12 +425,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb">Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlDb">Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlDb</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlDb> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -719,12 +719,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb">Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlDb">Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlDb</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlDb> response)
         {
             using( NoSynchronizationContext )
             {
@@ -736,7 +736,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlDb
                 WriteObject((await response));
             }
         }

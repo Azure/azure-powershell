@@ -37,9 +37,16 @@ $vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxx
 $pol = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" -Name "policyName"
 $datasourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rgName/providers/Microsoft.DBforPostgreSQL/flexibleServers/test-pgflex"
 $backupInstanceClientObject = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDatabaseForPGFlexServer -DatasourceLocation $vault.Location -PolicyId $pol[0].Id -DatasourceId $datasourceId
+.Example
+$storageAccountId = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}"
+$vault = Get-AzDataProtectionBackupVault -ResourceGroupName $resourceGroupName -VaultName $vaultName 
+$blobPolicy = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vault.Name -Name $policyName
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -IncludeAllContainer -StorageAccountResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+$backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureBlob -DatasourceLocation $vault.Location -PolicyId $blobPolicy.Id -DatasourceId $storageAccountId -BackupConfiguration $backupConfig
+$backupInstance
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,7 +58,7 @@ BACKUPCONFIGURATION <IBackupDatasourceParameters>: Backup configuration for back
 https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionbackupinstance
 #>
 function Initialize-AzDataProtectionBackupInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -106,7 +113,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupDatasourceParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupDatasourceParameters]
     # Backup configuration for backup.
     # Use this parameter to configure protection for AzureKubernetesService,AzureBlob.
     # To construct, see NOTES section for BACKUPCONFIGURATION properties and create a hash table.

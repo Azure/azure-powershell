@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
     public partial class VMware
     {
 
-        /// <summary>Update a Addon</summary>
+        /// <summary>update a Addon</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a Addon</summary>
+        /// <summary>update a Addon</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a Addon</summary>
+        /// <summary>update a Addon</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a Addon</summary>
+        /// <summary>update a Addon</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -253,13 +253,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -407,13 +407,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -685,13 +685,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -1510,7 +1510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a ExpressRouteAuthorization</summary>
+        /// <summary>update a ExpressRouteAuthorization</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -1562,7 +1562,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a ExpressRouteAuthorization</summary>
+        /// <summary>update a ExpressRouteAuthorization</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1624,7 +1624,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a ExpressRouteAuthorization</summary>
+        /// <summary>update a ExpressRouteAuthorization</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1684,7 +1684,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a ExpressRouteAuthorization</summary>
+        /// <summary>update a ExpressRouteAuthorization</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -1751,13 +1751,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -1905,13 +1905,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -2183,13 +2183,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -3008,7 +3008,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a CloudLink</summary>
+        /// <summary>update a CloudLink</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -3060,7 +3060,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a CloudLink</summary>
+        /// <summary>update a CloudLink</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3122,7 +3122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a CloudLink</summary>
+        /// <summary>update a CloudLink</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3182,7 +3182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a CloudLink</summary>
+        /// <summary>update a CloudLink</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -3247,13 +3247,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -3401,13 +3401,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -3679,13 +3679,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -4504,7 +4504,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a Cluster</summary>
+        /// <summary>update a Cluster</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -4556,7 +4556,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a Cluster</summary>
+        /// <summary>update a Cluster</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4618,7 +4618,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a Cluster</summary>
+        /// <summary>update a Cluster</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4678,7 +4678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a Cluster</summary>
+        /// <summary>update a Cluster</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -4743,13 +4743,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -4897,13 +4897,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -5175,13 +5175,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -6342,7 +6342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a Cluster</summary>
+        /// <summary>update a Cluster</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -6394,7 +6394,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a Cluster</summary>
+        /// <summary>update a Cluster</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The cluster properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6456,7 +6456,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a Cluster</summary>
+        /// <summary>update a Cluster</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The cluster properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6516,7 +6516,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a Cluster</summary>
+        /// <summary>update a Cluster</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -6581,13 +6581,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -6736,13 +6736,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -6893,7 +6893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a Datastore</summary>
+        /// <summary>update a Datastore</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -6948,7 +6948,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a Datastore</summary>
+        /// <summary>update a Datastore</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7013,7 +7013,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a Datastore</summary>
+        /// <summary>update a Datastore</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7076,7 +7076,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a Datastore</summary>
+        /// <summary>update a Datastore</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -7144,13 +7144,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -7298,13 +7298,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -7585,13 +7585,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -8443,7 +8443,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a GlobalReachConnection</summary>
+        /// <summary>update a GlobalReachConnection</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -8495,7 +8495,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a GlobalReachConnection</summary>
+        /// <summary>update a GlobalReachConnection</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8557,7 +8557,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a GlobalReachConnection</summary>
+        /// <summary>update a GlobalReachConnection</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8617,7 +8617,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a GlobalReachConnection</summary>
+        /// <summary>update a GlobalReachConnection</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -8684,13 +8684,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -8840,13 +8840,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -9118,13 +9118,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -9947,7 +9947,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a HcxEnterpriseSite</summary>
+        /// <summary>update a HcxEnterpriseSite</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -10000,7 +10000,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a HcxEnterpriseSite</summary>
+        /// <summary>update a HcxEnterpriseSite</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10063,7 +10063,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a HcxEnterpriseSite</summary>
+        /// <summary>update a HcxEnterpriseSite</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10123,7 +10123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a HcxEnterpriseSite</summary>
+        /// <summary>update a HcxEnterpriseSite</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -11183,7 +11183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a IscsiPath</summary>
+        /// <summary>update a IscsiPath</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -11233,7 +11233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a IscsiPath</summary>
+        /// <summary>update a IscsiPath</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -11293,7 +11293,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a IscsiPath</summary>
+        /// <summary>update a IscsiPath</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11351,7 +11351,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a IscsiPath</summary>
+        /// <summary>update a IscsiPath</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -11414,13 +11414,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -11568,13 +11568,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -11839,13 +11839,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -13587,7 +13587,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a PlacementPolicy</summary>
+        /// <summary>update a PlacementPolicy</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -13642,7 +13642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a PlacementPolicy</summary>
+        /// <summary>update a PlacementPolicy</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -13707,7 +13707,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a PlacementPolicy</summary>
+        /// <summary>update a PlacementPolicy</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13770,7 +13770,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a PlacementPolicy</summary>
+        /// <summary>update a PlacementPolicy</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -13840,13 +13840,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -13994,13 +13994,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -14281,13 +14281,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -15139,7 +15139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a PlacementPolicy</summary>
+        /// <summary>update a PlacementPolicy</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -15194,7 +15194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a PlacementPolicy</summary>
+        /// <summary>update a PlacementPolicy</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The placement policy properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -15259,7 +15259,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a PlacementPolicy</summary>
+        /// <summary>update a PlacementPolicy</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The placement policy properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15322,7 +15322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a PlacementPolicy</summary>
+        /// <summary>update a PlacementPolicy</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -15390,13 +15390,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -15545,13 +15545,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -15705,7 +15705,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a PrivateCloud</summary>
+        /// <summary>update a PrivateCloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -15754,7 +15754,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a PrivateCloud</summary>
+        /// <summary>update a PrivateCloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -15813,7 +15813,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a PrivateCloud</summary>
+        /// <summary>update a PrivateCloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15870,7 +15870,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a PrivateCloud</summary>
+        /// <summary>update a PrivateCloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -15934,13 +15934,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -16088,13 +16088,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -16357,13 +16357,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -17891,13 +17891,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -18157,13 +18157,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -18535,13 +18535,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -18690,13 +18690,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -19539,7 +19539,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a ScriptExecution</summary>
+        /// <summary>update a ScriptExecution</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -19591,7 +19591,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a ScriptExecution</summary>
+        /// <summary>update a ScriptExecution</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -19653,7 +19653,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a ScriptExecution</summary>
+        /// <summary>update a ScriptExecution</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -19713,7 +19713,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a ScriptExecution</summary>
+        /// <summary>update a ScriptExecution</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -19780,13 +19780,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -19934,13 +19934,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -20212,13 +20212,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -22907,13 +22907,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -23061,7 +23061,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkDhcp</summary>
+        /// <summary>create a WorkloadNetworkDhcp</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -23113,7 +23113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkDhcp</summary>
+        /// <summary>create a WorkloadNetworkDhcp</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -23175,7 +23175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkDhcp</summary>
+        /// <summary>create a WorkloadNetworkDhcp</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -23235,7 +23235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkDhcp</summary>
+        /// <summary>create a WorkloadNetworkDhcp</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -23302,13 +23302,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -23456,13 +23456,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -23612,7 +23612,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkDnsService</summary>
+        /// <summary>create a WorkloadNetworkDnsService</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -23664,7 +23664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkDnsService</summary>
+        /// <summary>create a WorkloadNetworkDnsService</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -23726,7 +23726,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkDnsService</summary>
+        /// <summary>create a WorkloadNetworkDnsService</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -23786,7 +23786,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkDnsService</summary>
+        /// <summary>create a WorkloadNetworkDnsService</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -23853,13 +23853,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -24007,13 +24007,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -24163,7 +24163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkDnsZone</summary>
+        /// <summary>create a WorkloadNetworkDnsZone</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -24215,7 +24215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkDnsZone</summary>
+        /// <summary>create a WorkloadNetworkDnsZone</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -24277,7 +24277,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkDnsZone</summary>
+        /// <summary>create a WorkloadNetworkDnsZone</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -24337,7 +24337,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkDnsZone</summary>
+        /// <summary>create a WorkloadNetworkDnsZone</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -24404,13 +24404,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -24558,13 +24558,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -24714,7 +24714,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkPortMirroring</summary>
+        /// <summary>create a WorkloadNetworkPortMirroring</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -24766,7 +24766,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkPortMirroring</summary>
+        /// <summary>create a WorkloadNetworkPortMirroring</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -24828,7 +24828,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkPortMirroring</summary>
+        /// <summary>create a WorkloadNetworkPortMirroring</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -24888,7 +24888,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkPortMirroring</summary>
+        /// <summary>create a WorkloadNetworkPortMirroring</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -24955,13 +24955,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -25111,13 +25111,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -25267,7 +25267,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkPublicIP</summary>
+        /// <summary>create a WorkloadNetworkPublicIP</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -25319,7 +25319,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkPublicIP</summary>
+        /// <summary>create a WorkloadNetworkPublicIP</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -25381,7 +25381,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkPublicIP</summary>
+        /// <summary>create a WorkloadNetworkPublicIP</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -25441,7 +25441,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkPublicIP</summary>
+        /// <summary>create a WorkloadNetworkPublicIP</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -25508,13 +25508,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -25662,13 +25662,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -25818,7 +25818,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkSegment</summary>
+        /// <summary>create a WorkloadNetworkSegment</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -25870,7 +25870,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkSegment</summary>
+        /// <summary>create a WorkloadNetworkSegment</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -25932,7 +25932,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkSegment</summary>
+        /// <summary>create a WorkloadNetworkSegment</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -25992,7 +25992,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkSegment</summary>
+        /// <summary>create a WorkloadNetworkSegment</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -26059,13 +26059,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -26213,13 +26213,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -26369,7 +26369,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkVMGroup</summary>
+        /// <summary>create a WorkloadNetworkVMGroup</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -26421,7 +26421,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkVMGroup</summary>
+        /// <summary>create a WorkloadNetworkVMGroup</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -26483,7 +26483,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkVMGroup</summary>
+        /// <summary>create a WorkloadNetworkVMGroup</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -26543,7 +26543,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a WorkloadNetworkVMGroup</summary>
+        /// <summary>create a WorkloadNetworkVMGroup</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -26610,13 +26610,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -26764,13 +26764,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -27042,13 +27042,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -27324,13 +27324,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -27606,13 +27606,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -27890,13 +27890,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -28172,13 +28172,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -28454,13 +28454,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -28736,13 +28736,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -35569,7 +35569,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkDhcp</summary>
+        /// <summary>update a WorkloadNetworkDhcp</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -35621,7 +35621,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkDhcp</summary>
+        /// <summary>update a WorkloadNetworkDhcp</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -35683,7 +35683,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkDhcp</summary>
+        /// <summary>update a WorkloadNetworkDhcp</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -35743,7 +35743,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkDhcp</summary>
+        /// <summary>update a WorkloadNetworkDhcp</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -35810,13 +35810,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -35965,13 +35965,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -36122,7 +36122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkDnsService</summary>
+        /// <summary>update a WorkloadNetworkDnsService</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -36174,7 +36174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkDnsService</summary>
+        /// <summary>update a WorkloadNetworkDnsService</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -36236,7 +36236,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkDnsService</summary>
+        /// <summary>update a WorkloadNetworkDnsService</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -36296,7 +36296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkDnsService</summary>
+        /// <summary>update a WorkloadNetworkDnsService</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -36363,13 +36363,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -36518,13 +36518,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -36675,7 +36675,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkDnsZone</summary>
+        /// <summary>update a WorkloadNetworkDnsZone</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -36727,7 +36727,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkDnsZone</summary>
+        /// <summary>update a WorkloadNetworkDnsZone</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -36789,7 +36789,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkDnsZone</summary>
+        /// <summary>update a WorkloadNetworkDnsZone</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -36849,7 +36849,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkDnsZone</summary>
+        /// <summary>update a WorkloadNetworkDnsZone</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -36916,13 +36916,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -37071,13 +37071,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -37228,7 +37228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkPortMirroring</summary>
+        /// <summary>update a WorkloadNetworkPortMirroring</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -37280,7 +37280,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkPortMirroring</summary>
+        /// <summary>update a WorkloadNetworkPortMirroring</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -37342,7 +37342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkPortMirroring</summary>
+        /// <summary>update a WorkloadNetworkPortMirroring</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -37402,7 +37402,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkPortMirroring</summary>
+        /// <summary>update a WorkloadNetworkPortMirroring</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -37469,13 +37469,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -37626,13 +37626,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -37783,7 +37783,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkSegment</summary>
+        /// <summary>update a WorkloadNetworkSegment</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -37835,7 +37835,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkSegment</summary>
+        /// <summary>update a WorkloadNetworkSegment</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -37897,7 +37897,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkSegment</summary>
+        /// <summary>update a WorkloadNetworkSegment</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -37957,7 +37957,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkSegment</summary>
+        /// <summary>update a WorkloadNetworkSegment</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -38024,13 +38024,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -38179,13 +38179,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -38336,7 +38336,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkVMGroup</summary>
+        /// <summary>update a WorkloadNetworkVMGroup</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -38388,7 +38388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkVMGroup</summary>
+        /// <summary>update a WorkloadNetworkVMGroup</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -38450,7 +38450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkVMGroup</summary>
+        /// <summary>update a WorkloadNetworkVMGroup</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -38510,7 +38510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Update a WorkloadNetworkVMGroup</summary>
+        /// <summary>update a WorkloadNetworkVMGroup</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -38577,13 +38577,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -38732,13 +38732,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");

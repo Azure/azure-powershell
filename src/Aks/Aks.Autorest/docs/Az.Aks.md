@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Aks
-Module Guid: 31b8ecad-b901-48df-bd28-148fc912d386
+Module Guid: c58774ba-be69-4451-842a-3d5d9ccc6473
 Download Help Link: https://learn.microsoft.com/powershell/module/az.aks
 Help Version: 1.0.0.0
 Locale: en-US
@@ -54,10 +54,10 @@ If the operation completes before cancellation can take place, a 409 error code 
 Rotates the service account signing keys of a managed cluster.
 
 ### [New-AzAksMaintenanceConfiguration](New-AzAksMaintenanceConfiguration.md)
-Creates or updates a maintenance configuration in the specified managed cluster.
+create a maintenance configuration in the specified managed cluster.
 
 ### [New-AzAksSnapshot](New-AzAksSnapshot.md)
-Creates or updates a snapshot.
+create a snapshot.
 
 ### [New-AzAksTimeInWeekObject](New-AzAksTimeInWeekObject.md)
 Create an in-memory object for TimeInWeek.
@@ -75,7 +75,7 @@ Deletes a snapshot.
 See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
 
 ### [Start-AzAksManagedClusterCommand](Start-AzAksManagedClusterCommand.md)
-AKS will create a pod to run the command.
+AKS will run a pod to run the command.
 This is primarily useful for private clusters.
 For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
 
@@ -84,4 +84,7 @@ This can only be performed on Azure Virtual Machine Scale set backed clusters.
 Stopping a cluster stops the control plane and agent nodes entirely, while maintaining all object and cluster state.
 A cluster does not accrue charges while it is stopped.
 See [stopping a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about stopping a cluster.
+
+### [Update-AzAksMaintenanceConfiguration](Update-AzAksMaintenanceConfiguration.md)
+update a maintenance configuration in the specified managed cluster.
 

@@ -24,16 +24,15 @@ Test-AzDeviceUpdateNameAvailability -Request <ICheckNameAvailabilityRequest> [-S
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CheckViaIdentity
+### CheckViaJsonFilePath
 ```
-Test-AzDeviceUpdateNameAvailability -InputObject <IDeviceUpdateIdentity>
- -Request <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Test-AzDeviceUpdateNameAvailability -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CheckViaIdentityExpanded
+### CheckViaJsonString
 ```
-Test-AzDeviceUpdateNameAvailability -InputObject <IDeviceUpdateIdentity> [-Name <String>] [-Type <String>]
+Test-AzDeviceUpdateNameAvailability -JsonString <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -87,19 +86,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Check operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity
-Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
+Type: System.String
+Parameter Sets: CheckViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -108,7 +121,7 @@ The name of the resource for which availability needs to be checked.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -120,11 +133,10 @@ Accept wildcard characters: False
 
 ### -Request
 The check availability request body.
-To construct, see NOTES section for REQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.ICheckNameAvailabilityRequest
-Parameter Sets: Check, CheckViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ICheckNameAvailabilityRequest
+Parameter Sets: Check
 Aliases:
 
 Required: True
@@ -139,7 +151,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -154,7 +166,7 @@ The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -200,13 +212,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.ICheckNameAvailabilityRequest
-
-### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ICheckNameAvailabilityRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.ICheckNameAvailabilityResponse
+### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ICheckNameAvailabilityResponse
 
 ## NOTES
 

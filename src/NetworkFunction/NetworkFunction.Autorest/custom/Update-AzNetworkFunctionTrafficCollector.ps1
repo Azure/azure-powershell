@@ -24,7 +24,7 @@ Creates or updates a Azure Traffic Collector resource
 .Example
 {{ Add code here }}
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollector
 .Notes
 COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
@@ -47,7 +47,7 @@ COLLECTORPOLICY <ICollectorPolicy[]>: Collector Policies for Azure Traffic Colle
   [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 #>
 function Update-AzNetworkFunctionTrafficCollector {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IAzureTrafficCollector])]
   [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
       [Parameter(Mandatory)]
@@ -73,7 +73,7 @@ function Update-AzNetworkFunctionTrafficCollector {
       [Parameter()]
       [AllowEmptyCollection()]
       [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy[]]
+      [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy[]]
       # Collector Policies for Azure Traffic Collector.
       # To construct, see NOTES section for COLLECTORPOLICY properties and create a hash table.
       ${CollectorPolicy},
@@ -86,7 +86,7 @@ function Update-AzNetworkFunctionTrafficCollector {
   
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ITrackedResourceTags]))]
+      [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ITrackedResourceTags]))]
       [System.Collections.Hashtable]
       # Resource tags.
       ${Tag},

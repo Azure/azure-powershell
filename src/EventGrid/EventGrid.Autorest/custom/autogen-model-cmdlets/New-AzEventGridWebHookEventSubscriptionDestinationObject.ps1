@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.WebHookEventSubscriptionDest
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridwebhookeventsubscriptiondestinationobject
 #>
 function New-AzEventGridWebHookEventSubscriptionDestinationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.WebHookEventSubscriptionDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

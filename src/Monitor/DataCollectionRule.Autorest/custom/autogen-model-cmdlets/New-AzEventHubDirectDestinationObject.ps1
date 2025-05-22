@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.EventHubDirectD
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azeventhubdirectdestinationobject
 #>
 function New-AzEventHubDirectDestinationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.EventHubDirectDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

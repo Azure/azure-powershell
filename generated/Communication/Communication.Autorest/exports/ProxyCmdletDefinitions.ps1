@@ -23,12 +23,12 @@ Get the access keys of the CommunicationService resource.
 Get-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceKeys
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.communication/get-azcommunicationservicekey
 #>
 function Get-AzCommunicationServiceKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceKeys])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -108,6 +108,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -129,9 +138,7 @@ begin {
         $mapping = @{
             List = 'Az.Communication.private\Get-AzCommunicationServiceKey_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -145,6 +152,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -201,7 +211,7 @@ Get-AzCommunicationService -Name ContosoAcsResource34 -ResourceGroupName Contoso
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -216,7 +226,7 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.communication/get-azcommunicationservice
 #>
 function Get-AzCommunicationService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -248,7 +258,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -307,6 +316,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -331,9 +349,7 @@ begin {
             List = 'Az.Communication.private\Get-AzCommunicationService_List';
             List1 = 'Az.Communication.private\Get-AzCommunicationService_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -347,6 +363,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -398,16 +417,12 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 Regenerate CommunicationService access key.
 PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 .Example
-New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Parameter @{KeyType="Primary"}
-.Example
 New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -KeyType Secondary
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.IRegenerateKeyParameters
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceKeys
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceKeys
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -418,33 +433,33 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-
-PARAMETER <IRegenerateKeyParameters>: Parameters describes the request to regenerate access keys
-  [KeyType <KeyType?>]: The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive).
 .Link
 https://learn.microsoft.com/powershell/module/az.communication/new-azcommunicationservicekey
 #>
 function New-AzCommunicationServiceKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceKeys])]
 [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Regenerate', Mandatory)]
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [System.String]
     # The name of the CommunicationService resource.
     ${CommunicationServiceName},
 
-    [Parameter(ParameterSetName='Regenerate', Mandatory)]
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Regenerate')]
     [Parameter(ParameterSetName='RegenerateExpanded')]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath')]
+    [Parameter(ParameterSetName='RegenerateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -452,30 +467,32 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='RegenerateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='RegenerateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='Regenerate', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='RegenerateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.IRegenerateKeyParameters]
-    # Parameters describes the request to regenerate access keys
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
-    ${Parameter},
 
     [Parameter(ParameterSetName='RegenerateExpanded')]
     [Parameter(ParameterSetName='RegenerateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.PSArgumentCompleterAttribute("Primary", "Secondary")]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType]
+    [System.String]
     # The keyType to regenerate.
     # Must be either 'primary' or 'secondary'(case-insensitive).
     ${KeyType},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Regenerate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # Json string supplied to the Regenerate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -533,6 +550,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -552,14 +578,12 @@ begin {
         }
 
         $mapping = @{
-            Regenerate = 'Az.Communication.private\New-AzCommunicationServiceKey_Regenerate';
             RegenerateExpanded = 'Az.Communication.private\New-AzCommunicationServiceKey_RegenerateExpanded';
-            RegenerateViaIdentity = 'Az.Communication.private\New-AzCommunicationServiceKey_RegenerateViaIdentity';
             RegenerateViaIdentityExpanded = 'Az.Communication.private\New-AzCommunicationServiceKey_RegenerateViaIdentityExpanded';
+            RegenerateViaJsonFilePath = 'Az.Communication.private\New-AzCommunicationServiceKey_RegenerateViaJsonFilePath';
+            RegenerateViaJsonString = 'Az.Communication.private\New-AzCommunicationServiceKey_RegenerateViaJsonString';
         }
-        if (('Regenerate', 'RegenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('RegenerateExpanded', 'RegenerateViaJsonFilePath', 'RegenerateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -573,6 +597,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -618,9 +645,9 @@ end {
 
 <#
 .Synopsis
-Create a new CommunicationService or update an existing CommunicationService.
+create a new CommunicationService or create an existing CommunicationService.
 .Description
-Create a new CommunicationService or update an existing CommunicationService.
+create a new CommunicationService or create an existing CommunicationService.
 .Example
 New-AzCommunicationService -ResourceGroupName ContosoResourceProvider1 -Name ContosoAcsResource1 -DataLocation UnitedStates -Location Global
 .Example
@@ -628,15 +655,15 @@ $linkedDomains = @(
 	"/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/tcsacstest/providers/Microsoft.Communication/emailServices/tcsacstestECSps/domains/AzureManagedDomain"
 )
 
-New-AzCommunicationService -ResourceGroupName ContosoResourceProvider -Name ContosoAcsResource2 -DataLocation UnitedStates -Location Global  -LinkedDomain @linkedDomains
+New-AzCommunicationService -ResourceGroupName ContosoResourceProvider -Name ContosoAcsResource2 -DataLocation UnitedStates -Location Global -LinkedDomain @linkedDomains
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceResource
 .Link
 https://learn.microsoft.com/powershell/module/az.communication/new-azcommunicationservice
 #>
 function New-AzCommunicationService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -661,47 +688,57 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
     [System.String]
     # The location where the communication service stores its data at rest.
     ${DataLocation},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ManagedServiceIdentityType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api50.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
     [System.String[]]
     # List of email Domain resource Ids.
     ${LinkedDomain},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -771,6 +808,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -791,10 +837,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Communication.private\New-AzCommunicationService_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Communication.private\New-AzCommunicationService_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Communication.private\New-AzCommunicationService_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -808,6 +854,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -906,7 +955,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -983,6 +1031,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1005,9 +1062,7 @@ begin {
             Delete = 'Az.Communication.private\Remove-AzCommunicationService_Delete';
             DeleteViaIdentity = 'Az.Communication.private\Remove-AzCommunicationService_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1021,6 +1076,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1073,9 +1131,9 @@ Links an Azure Notification Hub to this communication service.
 Set-AzCommunicationServiceNotificationHub -CommunicationServiceName ContosoAcsResource2 -ResourceGroupName ContosoResourceProvider1 -ConnectionString "<notificationhub-connectionstring>" -NotificationHubResourceId "<notificationhub-resourceid>"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkNotificationHubParameters
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ILinkNotificationHubParameters
 .Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ILinkedNotificationHub
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1088,7 +1146,7 @@ LINKNOTIFICATIONHUBPARAMETER <ILinkNotificationHubParameters>: Description of an
 https://learn.microsoft.com/powershell/module/az.communication/set-azcommunicationservicenotificationhub
 #>
 function Set-AzCommunicationServiceNotificationHub {
-[OutputType([System.String])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ILinkedNotificationHub])]
 [CmdletBinding(DefaultParameterSetName='LinkExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1114,22 +1172,33 @@ param(
 
     [Parameter(ParameterSetName='Link', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkNotificationHubParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ILinkNotificationHubParameters]
     # Description of an Azure Notification Hub to link to the communication service
-    # To construct, see NOTES section for LINKNOTIFICATIONHUBPARAMETER properties and create a hash table.
     ${LinkNotificationHubParameter},
 
-    [Parameter(ParameterSetName='LinkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='LinkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
     [System.String]
     # Connection string for the notification hub
     ${ConnectionString},
 
-    [Parameter(ParameterSetName='LinkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='LinkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
     [System.String]
     # The resource ID of the notification hub
     ${NotificationHubResourceId},
+
+    [Parameter(ParameterSetName='LinkViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Link operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='LinkViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # Json string supplied to the Link operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1187,6 +1256,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1208,10 +1286,10 @@ begin {
         $mapping = @{
             Link = 'Az.Communication.private\Set-AzCommunicationServiceNotificationHub_Link';
             LinkExpanded = 'Az.Communication.private\Set-AzCommunicationServiceNotificationHub_LinkExpanded';
+            LinkViaJsonFilePath = 'Az.Communication.private\Set-AzCommunicationServiceNotificationHub_LinkViaJsonFilePath';
+            LinkViaJsonString = 'Az.Communication.private\Set-AzCommunicationServiceNotificationHub_LinkViaJsonString';
         }
-        if (('Link', 'LinkExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Link', 'LinkExpanded', 'LinkViaJsonFilePath', 'LinkViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1225,6 +1303,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1279,12 +1360,12 @@ Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource1
 Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource2
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.ICheckNameAvailabilityResponse
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICheckNameAvailabilityResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.communication/test-azcommunicationservicenameavailability
 #>
 function Test-AzCommunicationServiceNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.ICheckNameAvailabilityResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICheckNameAvailabilityResponse])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter()]
@@ -1295,11 +1376,23 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
     [System.String]
     # The name of the resource for which availability needs to be checked.
     ${Name},
+
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Check operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # Json string supplied to the Check operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1357,6 +1450,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1377,17 +1479,17 @@ begin {
 
         $mapping = @{
             CheckExpanded = 'Az.Communication.private\Test-AzCommunicationServiceNameAvailability_CheckExpanded';
+            CheckViaJsonFilePath = 'Az.Communication.private\Test-AzCommunicationServiceNameAvailability_CheckViaJsonFilePath';
+            CheckViaJsonString = 'Az.Communication.private\Test-AzCommunicationServiceNameAvailability_CheckViaJsonString';
         }
-        if (('CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
         }
-        if (('CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Type')) {
+        if (('CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Type') ) {
             $PSBoundParameters['Type'] = "Microsoft.Communication/CommunicationServices"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -1397,6 +1499,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1442,9 +1547,9 @@ end {
 
 <#
 .Synopsis
-Operation to update an existing CommunicationService.
+update a new CommunicationService or update an existing CommunicationService.
 .Description
-Operation to update an existing CommunicationService.
+update a new CommunicationService or update an existing CommunicationService.
 .Example
 Update-AzCommunicationService -Name ContosoAcsResource2 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleValue1"}
 .Example
@@ -1457,7 +1562,7 @@ Update-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName Conto
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1472,7 +1577,7 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.communication/update-azcommunicationservice
 #>
 function Update-AzCommunicationService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -1501,24 +1606,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ManagedServiceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api50.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
-    ${IdentityUserAssignedIdentity},
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -1529,10 +1623,18 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ITaggedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
-    # Tags of the service which is a list of key value pairs that describe the resource.
+    # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1542,6 +1644,12 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Runtime')]
@@ -1562,6 +1670,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Runtime')]
@@ -1590,6 +1704,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1612,9 +1735,7 @@ begin {
             UpdateExpanded = 'Az.Communication.private\Update-AzCommunicationService_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Communication.private\Update-AzCommunicationService_UpdateViaIdentityExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1628,6 +1749,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

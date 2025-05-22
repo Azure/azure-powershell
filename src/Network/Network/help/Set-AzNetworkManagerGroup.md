@@ -14,7 +14,8 @@ Updates a network manager group.
 
 ```
 Set-AzNetworkManagerGroup -InputObject <PSNetworkManagerGroup> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

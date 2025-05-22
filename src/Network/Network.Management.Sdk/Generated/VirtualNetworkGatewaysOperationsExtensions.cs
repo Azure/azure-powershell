@@ -624,6 +624,102 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// This operation retrieves the resiliency information for an Express Route
+        /// Gateway, including the gateway&#39;s current resiliency score and
+        /// recommendations to further improve the score
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Attempt to recalculate the Resiliency Information for the gateway
+        /// </param>
+        public static GatewayResiliencyInformation GetResiliencyInformation(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, bool? attemptRefresh = default(bool?))
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).GetResiliencyInformationAsync(resourceGroupName, virtualNetworkGatewayName, attemptRefresh).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation retrieves the resiliency information for an Express Route
+        /// Gateway, including the gateway&#39;s current resiliency score and
+        /// recommendations to further improve the score
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Attempt to recalculate the Resiliency Information for the gateway
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GatewayResiliencyInformation> GetResiliencyInformationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, bool? attemptRefresh = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetResiliencyInformationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, attemptRefresh, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// This operation retrieves the route set information for an Express Route
+        /// Gateway based on their resiliency
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Attempt to recalculate the Route Sets Information for the gateway
+        /// </param>
+        public static GatewayRouteSetsInformation GetRoutesInformation(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, bool? attemptRefresh = default(bool?))
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).GetRoutesInformationAsync(resourceGroupName, virtualNetworkGatewayName, attemptRefresh).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation retrieves the route set information for an Express Route
+        /// Gateway based on their resiliency
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Attempt to recalculate the Route Sets Information for the gateway
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GatewayRouteSetsInformation> GetRoutesInformationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, bool? attemptRefresh = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetRoutesInformationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, attemptRefresh, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy
         /// for P2S client of virtual network gateway in the specified resource group
         /// through Network resource provider.
@@ -1106,6 +1202,162 @@ namespace Microsoft.Azure.Management.Network
             (await operations.DisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Trigger prepare migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        public static VirtualNetworkGatewaysInvokePrepareMigrationHeaders InvokePrepareMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VirtualNetworkGatewayMigrationParameters migrationParams)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).InvokePrepareMigrationAsync(resourceGroupName, virtualNetworkGatewayName, migrationParams).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Trigger prepare migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokePrepareMigrationHeaders> InvokePrepareMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VirtualNetworkGatewayMigrationParameters migrationParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.InvokePrepareMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, migrationParams, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Trigger execute migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        public static VirtualNetworkGatewaysInvokeExecuteMigrationHeaders InvokeExecuteMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).InvokeExecuteMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Trigger execute migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokeExecuteMigrationHeaders> InvokeExecuteMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.InvokeExecuteMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Trigger commit migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        public static VirtualNetworkGatewaysInvokeCommitMigrationHeaders InvokeCommitMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).InvokeCommitMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Trigger commit migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokeCommitMigrationHeaders> InvokeCommitMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.InvokeCommitMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Trigger abort migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        public static VirtualNetworkGatewaysInvokeAbortMigrationHeaders InvokeAbortMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).InvokeAbortMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Trigger abort migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokeAbortMigrationHeaders> InvokeAbortMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.InvokeAbortMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Creates or updates a virtual network gateway in the specified resource
         /// group.
         /// </summary>
@@ -1567,6 +1819,102 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// This operation retrieves the resiliency information for an Express Route
+        /// Gateway, including the gateway&#39;s current resiliency score and
+        /// recommendations to further improve the score
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Attempt to recalculate the Resiliency Information for the gateway
+        /// </param>
+        public static GatewayResiliencyInformation BeginGetResiliencyInformation(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, bool? attemptRefresh = default(bool?))
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).BeginGetResiliencyInformationAsync(resourceGroupName, virtualNetworkGatewayName, attemptRefresh).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation retrieves the resiliency information for an Express Route
+        /// Gateway, including the gateway&#39;s current resiliency score and
+        /// recommendations to further improve the score
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Attempt to recalculate the Resiliency Information for the gateway
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GatewayResiliencyInformation> BeginGetResiliencyInformationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, bool? attemptRefresh = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetResiliencyInformationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, attemptRefresh, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// This operation retrieves the route set information for an Express Route
+        /// Gateway based on their resiliency
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Attempt to recalculate the Route Sets Information for the gateway
+        /// </param>
+        public static GatewayRouteSetsInformation BeginGetRoutesInformation(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, bool? attemptRefresh = default(bool?))
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).BeginGetRoutesInformationAsync(resourceGroupName, virtualNetworkGatewayName, attemptRefresh).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation retrieves the route set information for an Express Route
+        /// Gateway based on their resiliency
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Attempt to recalculate the Route Sets Information for the gateway
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GatewayRouteSetsInformation> BeginGetRoutesInformationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, bool? attemptRefresh = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetRoutesInformationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, attemptRefresh, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy
         /// for P2S client of virtual network gateway in the specified resource group
         /// through Network resource provider.
@@ -2006,6 +2354,162 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task BeginDisconnectVirtualNetworkGatewayVpnConnectionsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginDisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Trigger prepare migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        public static VirtualNetworkGatewaysInvokePrepareMigrationHeaders BeginInvokePrepareMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VirtualNetworkGatewayMigrationParameters migrationParams)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).BeginInvokePrepareMigrationAsync(resourceGroupName, virtualNetworkGatewayName, migrationParams).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Trigger prepare migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokePrepareMigrationHeaders> BeginInvokePrepareMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VirtualNetworkGatewayMigrationParameters migrationParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginInvokePrepareMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, migrationParams, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Trigger execute migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        public static VirtualNetworkGatewaysInvokeExecuteMigrationHeaders BeginInvokeExecuteMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).BeginInvokeExecuteMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Trigger execute migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokeExecuteMigrationHeaders> BeginInvokeExecuteMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginInvokeExecuteMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Trigger commit migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        public static VirtualNetworkGatewaysInvokeCommitMigrationHeaders BeginInvokeCommitMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).BeginInvokeCommitMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Trigger commit migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokeCommitMigrationHeaders> BeginInvokeCommitMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginInvokeCommitMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Trigger abort migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        public static VirtualNetworkGatewaysInvokeAbortMigrationHeaders BeginInvokeAbortMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).BeginInvokeAbortMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Trigger abort migration for the virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokeAbortMigrationHeaders> BeginInvokeAbortMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginInvokeAbortMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets all virtual network gateways by resource group.

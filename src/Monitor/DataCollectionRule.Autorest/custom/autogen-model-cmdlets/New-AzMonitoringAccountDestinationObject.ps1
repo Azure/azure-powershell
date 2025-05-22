@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.MonitoringAccou
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azmonitoringaccountdestinationobject
 #>
 function New-AzMonitoringAccountDestinationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.MonitoringAccountDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

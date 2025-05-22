@@ -34,12 +34,15 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [ManagedInstanceName <String>]: 
+  [MigrationName <String>]: Name of the migration.
+  [MigrationServiceName <String>]: Name of the Migration Service.
   [ResourceGroupName <String>]: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   [SqlDbInstanceName <String>]: 
   [SqlMigrationServiceName <String>]: Name of the SQL Migration Service.
   [SqlVirtualMachineName <String>]: 
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
   [TargetDbName <String>]: The name of the target database.
+  [TargetResourceName <String>]: The name of the target resource/account.
 .Link
 https://learn.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationsqlservice
 #>

@@ -16,8 +16,8 @@ Creates a CustomIpPrefix resource
 New-AzCustomIpPrefix -Name <String> -ResourceGroupName <String> -Location <String> -Cidr <String>
  [-Asn <String>] [-Geo <String>] [-SignedMessage <String>] [-AuthorizationMessage <String>]
  [-ExpressRouteAdvertise] [-CustomIpPrefixParent <PSCustomIpPrefix>] [-IsParent] [-Zone <String[]>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

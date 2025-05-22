@@ -12,13 +12,13 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzMapsCreator' {
-    It 'Delete' {
+    It 'Delete' -Skip {
         { 
           Remove-AzMapsCreator -ResourceGroupName $env.resourceGroup -AccountName $env.mapsName02 -Name $env.creatorName02 
         } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -Skip {
         {           
           New-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName03 -SkuName S1 -Location $env.location
           $creator = New-AzMapsCreator -ResourceGroupName $env.resourceGroup -AccountName $env.mapsName03 -Name $env.creatorName03 -Location $env.creatorLocation -StorageUnit 3

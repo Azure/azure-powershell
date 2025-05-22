@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 "Unregister-AzureWorkloadContainer"
             );
         }
-                
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
@@ -57,6 +57,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
                 $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVmWorkloadUnDeleteContainer"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
+        public void TestSQLContainerRegError()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
+                "Test-SQLContainerRegError"
             );
         }
     }

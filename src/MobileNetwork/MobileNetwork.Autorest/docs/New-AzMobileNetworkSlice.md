@@ -8,19 +8,48 @@ schema: 2.0.0
 # New-AzMobileNetworkSlice
 
 ## SYNOPSIS
-Creates or updates a network slice.
+create a network slice.
 Must be created in the same location as its parent mobile network.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzMobileNetworkSlice -MobileNetworkName <String> -ResourceGroupName <String> -SliceName <String>
  -Location <String> -SnssaiSst <Int32> [-SubscriptionId <String>] [-Description <String>] [-SnssaiSd <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityExpanded
+```
+New-AzMobileNetworkSlice -InputObject <IMobileNetworkIdentity> -Location <String> -SnssaiSst <Int32>
+ [-Description <String>] [-SnssaiSd <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityMobileNetworkExpanded
+```
+New-AzMobileNetworkSlice -MobileNetworkInputObject <IMobileNetworkIdentity> -SliceName <String>
+ -Location <String> -SnssaiSst <Int32> [-Description <String>] [-SnssaiSd <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzMobileNetworkSlice -MobileNetworkName <String> -ResourceGroupName <String> -SliceName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzMobileNetworkSlice -MobileNetworkName <String> -ResourceGroupName <String> -SliceName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates a network slice.
+create a network slice.
 Must be created in the same location as its parent mobile network.
 
 ## EXAMPLES
@@ -77,10 +106,55 @@ An optional description for this network slice.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -92,7 +166,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: True
@@ -102,12 +176,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MobileNetworkInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: CreateViaIdentityMobileNetworkExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MobileNetworkName
 The name of the mobile network.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -138,7 +227,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -153,7 +242,7 @@ The name of the network slice.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityMobileNetworkExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -168,7 +257,7 @@ Slice differentiator (SD).
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: False
@@ -183,7 +272,7 @@ Slice/service type (SST).
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: True
@@ -198,7 +287,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -213,7 +302,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: False
@@ -259,9 +348,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISlice
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISlice
 
 ## NOTES
 

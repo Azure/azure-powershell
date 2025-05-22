@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -26,193 +24,243 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip = "TODO: Re-record")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewSimpleResource()
+        public void TestNewAzResourceSimpleByResourceName()
         {
-            TestRunner.RunTestScript("Test-CreatesNewSimpleResource");
+            TestRunner.RunTestScript("Test-NewAzResourceSimpleByResourceName");
         }
 
-        [Fact(Skip = "TODO: Re-record")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewComplexResource()
+        public void TestNewAzResourceSimpleByResourceId()
         {
-            TestRunner.RunTestScript("Test-CreatesNewComplexResource");
+            TestRunner.RunTestScript("Test-NewAzResourceSimpleByResourceId");
         }
 
-        [Fact(Skip = "TODO: Re-record")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourcesViaPiping()
+        public void TestNewAzResourceWithApiVersion()
         {
-            TestRunner.RunTestScript("Test-GetResourcesViaPiping");
+            TestRunner.RunTestScript("Test-NewAzResourceWithApiVersion");
         }
 
-        [Fact(Skip = "TODO: Re-record")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourcesFromEmptyGroup()
+        public void TestNewAzResourceComplexByResourceName()
         {
-            TestRunner.RunTestScript("Test-GetResourcesFromEmptyGroup");
+            TestRunner.RunTestScript("Test-NewAzResourceComplexByResourceName");
         }
 
-        [Fact(Skip = "TODO: Re-record")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourcesFromNonExisingGroup()
+        public void TestNewAzResourceComplexByResourceId()
         {
-            TestRunner.RunTestScript("Test-GetResourcesFromNonExisingGroup");
+            TestRunner.RunTestScript("Test-NewAzResourceComplexByResourceId");
         }
 
-        [Fact(Skip = "TODO: Re-record")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourcesForNonExisingType()
+        public void TestGetAzResourceByResourceName()
         {
-            TestRunner.RunTestScript("Test-GetResourcesForNonExisingType");
+            TestRunner.RunTestScript("Test-GetAzResourceByResourceName");
         }
 
-        [Fact(Skip = "TODO: Re-record")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourceForNonExisingResource()
+        public void TestGetAzResourceByResourceId()
         {
-            TestRunner.RunTestScript("Test-GetResourceForNonExisingResource");
+            TestRunner.RunTestScript("Test-GetAzResourceByResourceId");
         }
 
-        [Fact(Skip = "TODO: Re-record")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourcesViaPipingFromAnotherResource()
+        public void TestGetAzResourceByTag()
         {
-            TestRunner.RunTestScript("Test-GetResourcesViaPipingFromAnotherResource");
+            TestRunner.RunTestScript("Test-GetAzResourceByTag");
         }
 
-        [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
+
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMoveAResourceTest()
+        public void TestGetAzResourceViaPiping()
         {
-            TestRunner.RunTestScript("Test-MoveAResource");
+            TestRunner.RunTestScript("Test-GetAzResourceViaPiping");
         }
 
-        [Fact]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMoveResourceFailed()
+        public void TestGetAzResourceWithExpandProperties()
         {
-            TestRunner.RunTestScript("Test-MoveResourceFailed");
+            TestRunner.RunTestScript("Test-GetAzResourceWithExpandProperties");
         }
 
-        [Fact]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetAResourceTest()
+        public void TestGetAzAResourceWithWildcard()
         {
-            TestRunner.RunTestScript("Test-SetAResource");
+            TestRunner.RunTestScript("Test-GetAzAResourceWithWildcard");
         }
 
-        [Fact]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetAResourceTagCase()
+        public void TestGetAzResourceFromEmptyResourceGroup()
         {
-            TestRunner.RunTestScript("Test-SetAResourceTagCase");
+            TestRunner.RunTestScript("Test-GetAzResourceFromEmptyResourceGroup");
         }
 
-        [Fact]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetAResourceUsingPiping()
+        public void TestGetAzResourceFromNonExisingResourceGroup()
         {
-            TestRunner.RunTestScript("Test-SetAResourceUsingPiping");
+            TestRunner.RunTestScript("Test-GetAzResourceFromNonExisingResourceGroup");
         }
 
-        [Fact]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetAResourceWithPatchTest()
+        public void TestGetAzResourceForNonExisingResource()
         {
-            TestRunner.RunTestScript("Test-SetAResourceWithPatch");
+            TestRunner.RunTestScript("Test-GetAzResourceForNonExisingResource");
         }
 
-        [Fact]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestFindAResourceTest()
+        public void TestGetAzResourceForNonExisingResourceType()
         {
-            TestRunner.RunTestScript("Test-FindAResource");
+            TestRunner.RunTestScript("Test-GetAzResourceForNonExisingResourceType");
         }
 
-        [Fact]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestFindAResourceByTag()
+        public void TestMoveAzResourceByResourceId()
         {
-            TestRunner.RunTestScript("Test-FindAResource-ByTag");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourceWithExpandProperties()
-        {
-            TestRunner.RunTestScript("Test-GetResourceExpandProperties");
+            TestRunner.RunTestScript("Test-MoveAzResourceByResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourceWithExpandPropertiesRGLevel()
+        public void TestMoveAzResourceInDifferentResourceGroups()
         {
-            TestRunner.RunTestScript("Test-GetResourceExpandPropertiesRGLevel");
+            TestRunner.RunTestScript("Test-MoveAzResourceInDifferentResourceGroups");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourceByNameAndType()
+        public void TestMoveAzResourceToNonExistingResourceGroup()
         {
-            TestRunner.RunTestScript("Test-GetResourceByNameAndType");
+            TestRunner.RunTestScript("Test-MoveAzResourceToNonExistingResourceGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourceByIdAndProperties()
+        public void TestMoveAzResourceNonExisting()
         {
-            TestRunner.RunTestScript("Test-GetResourceByIdAndProperties");
+            TestRunner.RunTestScript("Test-MoveAzResourceNonExisting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetChildResourcesById()
+        public void TestSetAzResourceByResourceName()
         {
-            TestRunner.RunTestScript("Test-GetChildResourcesById");
+            TestRunner.RunTestScript("Test-SetAzResourceByResourceName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNestedResourceByPiping()
+        public void TestSetAzResourceByResourceId()
         {
-            TestRunner.RunTestScript("Test-SetNestedResourceByPiping");
+            TestRunner.RunTestScript("Test-SetAzResourceByResourceId");
+        }
+
+        [Fact(Skip = "Potential issue with InputObject parameter.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzResourceByResourceObject()
+        {
+            TestRunner.RunTestScript("Test-SetAzResourceByResourceObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourceByComponentsAndProperties()
+        public void TestSetAzResourceViaPiping()
         {
-            TestRunner.RunTestScript("Test-GetResourceByComponentsAndProperties");
-        }
-
-        [Fact(Skip = "Zones are disabled for now.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestManageResourceWithZones()
-        {
-            TestRunner.RunTestScript("Test-ManageResourceWithZones");
+            TestRunner.RunTestScript("Test-SetAzResourceViaPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAResourceTest()
+        public void TestSetAzResourceWithPatch()
         {
-            TestRunner.RunTestScript("Test-RemoveAResource");
+            TestRunner.RunTestScript("Test-SetAzResourceWithPatch");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveASetOfResourcesTest()
+        public void TestSetAzResourceTags()
         {
-            TestRunner.RunTestScript("Test-RemoveASetOfResources");
+            TestRunner.RunTestScript("Test-SetAzResourceTags");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetComplexResourceByDifferentFiltersTest()
+        public void TestSetAzResourceForNonExistingResourceGroup()
         {
-            TestRunner.RunTestScript("Test-GetComplexResourceByDifferentFilters");
+            TestRunner.RunTestScript("Test-SetAzResourceForNonExistingResourceGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzResourceForNonExistingResource()
+        {
+            TestRunner.RunTestScript("Test-SetAzResourceForNonExistingResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzResourceForNonExistingResourceType()
+        {
+            TestRunner.RunTestScript("Test-SetAzResourceForNonExistingResourceType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAzResourceByResourceName()
+        {
+            TestRunner.RunTestScript("Test-RemoveAzResourceByResourceName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAzResourceByResourceId()
+        {
+            TestRunner.RunTestScript("Test-RemoveAzResourceByResourceId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAzResourceViaPiping()
+        {
+            TestRunner.RunTestScript("Test-RemoveAzResourceViaPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAzResourceParentResourceType()
+        {
+            TestRunner.RunTestScript("Test-RemoveAzResourceParentResourceType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAzResourceChildResourceType()
+        {
+            TestRunner.RunTestScript("Test-RemoveAzResourceChildResourceType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAzResourceWithWildcard()
+        {
+            TestRunner.RunTestScript("Test-RemoveAzResourceWithWildcard");
         }
     }
 }

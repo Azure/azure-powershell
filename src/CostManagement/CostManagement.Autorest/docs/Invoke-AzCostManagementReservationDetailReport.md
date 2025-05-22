@@ -187,9 +187,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IOperationStatus
 
 ## NOTES
 
 ## RELATED LINKS
+
+[https://docs.microsoft.com/en-us/rest/api/costmanagement/](https://docs.microsoft.com/en-us/rest/api/costmanagement/)
 

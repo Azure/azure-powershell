@@ -47,7 +47,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// not.
         /// </param>
 
+        /// <param name="virtualNetworkGatewayMigrationStatus">The reference to the VirtualNetworkGatewayMigrationStatus which represents
+        /// the status of migration.
+        /// </param>
+
         /// <param name="active">ActiveActive flag.
+        /// </param>
+
+        /// <param name="enableHighBandwidthVpnGateway">To enable Advanced Connectivity feature for VPN gateway
         /// </param>
 
         /// <param name="disableIPSecReplayProtection">disableIPSecReplayProtection flag.
@@ -115,7 +122,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="resiliencyModel">Property to indicate if the Express Route Gateway has resiliency model of
         /// MultiHomed or SingleHomed
         /// Possible values include: &#39;SingleHomed&#39;, &#39;MultiHomed&#39;</param>
-        public VirtualNetworkGatewayPropertiesFormat(VirtualNetworkGatewayAutoScaleConfiguration autoScaleConfiguration = default(VirtualNetworkGatewayAutoScaleConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration>), string gatewayType = default(string), string vpnType = default(string), string vpnGatewayGeneration = default(string), bool? enableBgp = default(bool?), bool? enablePrivateIPAddress = default(bool?), bool? active = default(bool?), bool? disableIPSecReplayProtection = default(bool?), SubResource gatewayDefaultSite = default(SubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup> virtualNetworkGatewayPolicyGroups = default(System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup>), BgpSettings bgpSettings = default(BgpSettings), AddressSpace customRoutes = default(AddressSpace), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDnsForwarding = default(bool?), string inboundDnsForwardingEndpoint = default(string), string vNetExtendedLocationResourceId = default(string), System.Collections.Generic.IList<VirtualNetworkGatewayNatRule> natRules = default(System.Collections.Generic.IList<VirtualNetworkGatewayNatRule>), bool? enableBgpRouteTranslationForNat = default(bool?), bool? allowVirtualWanTraffic = default(bool?), bool? allowRemoteVnetTraffic = default(bool?), string adminState = default(string), string resiliencyModel = default(string))
+        public VirtualNetworkGatewayPropertiesFormat(VirtualNetworkGatewayAutoScaleConfiguration autoScaleConfiguration = default(VirtualNetworkGatewayAutoScaleConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration>), string gatewayType = default(string), string vpnType = default(string), string vpnGatewayGeneration = default(string), bool? enableBgp = default(bool?), bool? enablePrivateIPAddress = default(bool?), VirtualNetworkGatewayMigrationStatus virtualNetworkGatewayMigrationStatus = default(VirtualNetworkGatewayMigrationStatus), bool? active = default(bool?), bool? enableHighBandwidthVpnGateway = default(bool?), bool? disableIPSecReplayProtection = default(bool?), SubResource gatewayDefaultSite = default(SubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup> virtualNetworkGatewayPolicyGroups = default(System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup>), BgpSettings bgpSettings = default(BgpSettings), AddressSpace customRoutes = default(AddressSpace), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDnsForwarding = default(bool?), string inboundDnsForwardingEndpoint = default(string), string vNetExtendedLocationResourceId = default(string), System.Collections.Generic.IList<VirtualNetworkGatewayNatRule> natRules = default(System.Collections.Generic.IList<VirtualNetworkGatewayNatRule>), bool? enableBgpRouteTranslationForNat = default(bool?), bool? allowVirtualWanTraffic = default(bool?), bool? allowRemoteVnetTraffic = default(bool?), string adminState = default(string), string resiliencyModel = default(string))
 
         {
             this.AutoScaleConfiguration = autoScaleConfiguration;
@@ -125,7 +132,9 @@ namespace Microsoft.Azure.Management.Network.Models
             this.VpnGatewayGeneration = vpnGatewayGeneration;
             this.EnableBgp = enableBgp;
             this.EnablePrivateIPAddress = enablePrivateIPAddress;
+            this.VirtualNetworkGatewayMigrationStatus = virtualNetworkGatewayMigrationStatus;
             this.Active = active;
+            this.EnableHighBandwidthVpnGateway = enableHighBandwidthVpnGateway;
             this.DisableIPSecReplayProtection = disableIPSecReplayProtection;
             this.GatewayDefaultSite = gatewayDefaultSite;
             this.Sku = sku;
@@ -199,10 +208,23 @@ namespace Microsoft.Azure.Management.Network.Models
         public bool? EnablePrivateIPAddress {get; set; }
 
         /// <summary>
+        /// Gets or sets the reference to the VirtualNetworkGatewayMigrationStatus
+        /// which represents the status of migration.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "virtualNetworkGatewayMigrationStatus")]
+        public VirtualNetworkGatewayMigrationStatus VirtualNetworkGatewayMigrationStatus {get; set; }
+
+        /// <summary>
         /// Gets or sets activeActive flag.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "activeActive")]
         public bool? Active {get; set; }
+
+        /// <summary>
+        /// Gets or sets to enable Advanced Connectivity feature for VPN gateway
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableHighBandwidthVpnGateway")]
+        public bool? EnableHighBandwidthVpnGateway {get; set; }
 
         /// <summary>
         /// Gets or sets disableIPSecReplayProtection flag.
@@ -334,6 +356,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
 
 

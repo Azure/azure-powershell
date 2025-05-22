@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Cmdlets
     using System;
 
     /// <summary>
-    /// Create a new AppComplianceAutomation webhook or update an exiting AppComplianceAutomation webhook.
+    /// create a new AppComplianceAutomation webhook or create an exiting AppComplianceAutomation webhook.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}"
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAppComplianceAutomationWebhook_CreateViaIdentityReportExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Description(@"Create a new AppComplianceAutomation webhook or update an exiting AppComplianceAutomation webhook.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Description(@"create a new AppComplianceAutomation webhook or create an exiting AppComplianceAutomation webhook.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.HttpPath(Path = "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}", ApiVersion = "2024-06-27")]
     public partial class NewAzAppComplianceAutomationWebhook_CreateViaIdentityReportExpanded : global::System.Management.Automation.PSCmdlet,

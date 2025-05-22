@@ -18,7 +18,8 @@ Update-AzVirtualHub -ResourceGroupName <String> -Name <String> [-AddressPrefix <
  [-HubVnetConnection <PSHubVirtualNetworkConnection[]>] [-RouteTable <PSVirtualHubRouteTable>]
  [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-HubRoutingPreference <String>]
  [-VirtualRouterAsn <UInt32>] [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
@@ -27,7 +28,8 @@ Update-AzVirtualHub -ResourceId <String> [-AddressPrefix <String>]
  [-HubVnetConnection <PSHubVirtualNetworkConnection[]>] [-RouteTable <PSVirtualHubRouteTable>]
  [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-HubRoutingPreference <String>]
  [-VirtualRouterAsn <UInt32>] [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
@@ -36,7 +38,8 @@ Update-AzVirtualHub -InputObject <PSVirtualHub> [-AddressPrefix <String>]
  [-HubVnetConnection <PSHubVirtualNetworkConnection[]>] [-RouteTable <PSVirtualHubRouteTable>]
  [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-HubRoutingPreference <String>]
  [-VirtualRouterAsn <UInt32>] [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

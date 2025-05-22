@@ -29,6 +29,12 @@ Get-AzMobileNetworkSim -GroupName <String> -Name <String> -ResourceGroupName <St
 Get-AzMobileNetworkSim -InputObject <IMobileNetworkIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentitySimGroup
+```
+Get-AzMobileNetworkSim -Name <String> -SimGroupInputObject <IMobileNetworkIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets information about the specified SIM.
 
@@ -95,7 +101,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
@@ -114,7 +119,7 @@ The name of the SIM.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentitySimGroup
 Aliases: SimName
 
 Required: True
@@ -137,6 +142,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SimGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: GetViaIdentitySimGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -164,7 +184,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISim
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISim
 
 ## NOTES
 

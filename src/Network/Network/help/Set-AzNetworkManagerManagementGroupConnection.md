@@ -14,7 +14,8 @@ Update a network manger management group connection
 
 ```
 Set-AzNetworkManagerManagementGroupConnection -InputObject <PSNetworkManagerConnection> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

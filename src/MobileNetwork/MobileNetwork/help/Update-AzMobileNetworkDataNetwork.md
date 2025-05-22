@@ -8,18 +8,35 @@ schema: 2.0.0
 # Update-AzMobileNetworkDataNetwork
 
 ## SYNOPSIS
-Updates data network.
+update a data network.
+Must be created in the same location as its parent mobile network.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-Update-AzMobileNetworkDataNetwork -DataNetworkName <String> -MobileNetworkName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-Description <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzMobileNetworkDataNetwork -MobileNetworkName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityMobileNetworkExpanded
+```
+Update-AzMobileNetworkDataNetwork -Name <String> -MobileNetworkInputObject <IMobileNetworkIdentity>
+ [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzMobileNetworkDataNetwork -InputObject <IMobileNetworkIdentity> [-Description <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates data network.
+update a data network.
+Must be created in the same location as its parent mobile network.
 
 ## EXAMPLES
 
@@ -38,15 +55,15 @@ Updates data network.
 
 ## PARAMETERS
 
-### -DataNetworkName
-The name of the data network.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -84,15 +101,75 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MobileNetworkInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: UpdateViaIdentityMobileNetworkExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MobileNetworkName
 The name of the mobile network.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the data network.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMobileNetworkExpanded
+Aliases: DataNetworkName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -105,7 +182,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -120,7 +197,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -185,7 +262,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IDataNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IDataNetwork
 
 ## NOTES
 

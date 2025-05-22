@@ -21,12 +21,14 @@ Create an in-memory object for LoadedCertificate.
 Create an in-memory object for LoadedCertificate.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.LoadedCertificate
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.LoadedCertificate
 .Link
-https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppLoadedCertificateObject
+https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-azspringcloudapploadedcertificateobject
 #>
 function New-AzSpringCloudAppLoadedCertificateObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.LoadedCertificate')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.CmdletBreakingChange("19.3.0", "0.3.2", "2028/03/31", ChangeDescription = "Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.LoadedCertificate')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +41,7 @@ function New-AzSpringCloudAppLoadedCertificateObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.LoadedCertificate]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.LoadedCertificate]::New()
 
         if ($PSBoundParameters.ContainsKey('LoadTrustStore')) {
             $Object.LoadTrustStore = $LoadTrustStore

@@ -22,16 +22,12 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 Regenerate CommunicationService access key.
 PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 .Example
-New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Parameter @{KeyType="Primary"}
-.Example
 New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -KeyType Secondary
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.IRegenerateKeyParameters
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceKeys
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceKeys
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,33 +38,33 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-
-PARAMETER <IRegenerateKeyParameters>: Parameters describes the request to regenerate access keys
-  [KeyType <KeyType?>]: The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive).
 .Link
 https://learn.microsoft.com/powershell/module/az.communication/new-azcommunicationservicekey
 #>
 function New-AzCommunicationServiceKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceKeys])]
 [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Regenerate', Mandatory)]
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [System.String]
     # The name of the CommunicationService resource.
     ${CommunicationServiceName},
 
-    [Parameter(ParameterSetName='Regenerate', Mandatory)]
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Regenerate')]
     [Parameter(ParameterSetName='RegenerateExpanded')]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath')]
+    [Parameter(ParameterSetName='RegenerateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -76,30 +72,32 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='RegenerateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='RegenerateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='Regenerate', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='RegenerateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.IRegenerateKeyParameters]
-    # Parameters describes the request to regenerate access keys
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
-    ${Parameter},
 
     [Parameter(ParameterSetName='RegenerateExpanded')]
     [Parameter(ParameterSetName='RegenerateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.PSArgumentCompleterAttribute("Primary", "Secondary")]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType]
+    [System.String]
     # The keyType to regenerate.
     # Must be either 'primary' or 'secondary'(case-insensitive).
     ${KeyType},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Regenerate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # Json string supplied to the Regenerate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -157,6 +155,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -176,14 +183,12 @@ begin {
         }
 
         $mapping = @{
-            Regenerate = 'Az.Communication.private\New-AzCommunicationServiceKey_Regenerate';
             RegenerateExpanded = 'Az.Communication.private\New-AzCommunicationServiceKey_RegenerateExpanded';
-            RegenerateViaIdentity = 'Az.Communication.private\New-AzCommunicationServiceKey_RegenerateViaIdentity';
             RegenerateViaIdentityExpanded = 'Az.Communication.private\New-AzCommunicationServiceKey_RegenerateViaIdentityExpanded';
+            RegenerateViaJsonFilePath = 'Az.Communication.private\New-AzCommunicationServiceKey_RegenerateViaJsonFilePath';
+            RegenerateViaJsonString = 'Az.Communication.private\New-AzCommunicationServiceKey_RegenerateViaJsonString';
         }
-        if (('Regenerate', 'RegenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('RegenerateExpanded', 'RegenerateViaJsonFilePath', 'RegenerateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -197,6 +202,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -1,0 +1,95 @@
+{
+  "resourceType": "networkSecurityPerimeters/loggingConfigurations",
+  "apiVersion": "2024-07-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.network"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkSecurityPerimeterLoggingConfiguration",
+      "description": "Gets the NSP logging configuration.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/loggingConfigurations/{loggingConfigurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterloggingconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SecurityPerimeterName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the NSP logging configuration.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.loggingConfigurationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SecurityPerimeterName",
+              "value": "[Path.networkSecurityPerimeterName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNetworkSecurityPerimeterLoggingConfiguration",
+      "description": "Deletes an NSP Logging configuration.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/loggingConfigurations/{loggingConfigurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeterloggingconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SecurityPerimeterName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an NSP Logging configuration.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.loggingConfigurationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SecurityPerimeterName",
+              "value": "[Path.networkSecurityPerimeterName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

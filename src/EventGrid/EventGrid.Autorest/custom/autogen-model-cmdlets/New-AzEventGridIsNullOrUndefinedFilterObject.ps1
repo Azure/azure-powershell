@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IsNullOrUndefinedFilter
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridisnullorundefinedfilterobject
 #>
 function New-AzEventGridIsNullOrUndefinedFilterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IsNullOrUndefinedFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

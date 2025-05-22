@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetworkFunctionCollectorPolicyTag
 
 ## SYNOPSIS
-Updates the specified Collector Policy tags.
+update the specified Collector Policy tags.
 
 ## SYNTAX
 
@@ -19,6 +19,27 @@ Update-AzNetworkFunctionCollectorPolicyTag -AzureTrafficCollectorName <String> -
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaJsonString
+```
+Update-AzNetworkFunctionCollectorPolicyTag -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzNetworkFunctionCollectorPolicyTag -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityAzureTrafficCollectorExpanded
+```
+Update-AzNetworkFunctionCollectorPolicyTag -CollectorPolicyName <String>
+ -AzureTrafficCollectorInputObject <INetworkFunctionIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkFunctionCollectorPolicyTag -InputObject <INetworkFunctionIdentity> [-Tag <Hashtable>]
@@ -26,7 +47,7 @@ Update-AzNetworkFunctionCollectorPolicyTag -InputObject <INetworkFunctionIdentit
 ```
 
 ## DESCRIPTION
-Updates the specified Collector Policy tags.
+update the specified Collector Policy tags.
 
 ## EXAMPLES
 
@@ -73,12 +94,27 @@ This cmdlet updates a collector policy tag.
 
 ## PARAMETERS
 
+### -AzureTrafficCollectorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
+Parameter Sets: UpdateViaIdentityAzureTrafficCollectorExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -AzureTrafficCollectorName
 Azure Traffic Collector name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -93,7 +129,7 @@ Collector Policy Name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityAzureTrafficCollectorExpanded
 Aliases:
 
 Required: True
@@ -121,7 +157,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
@@ -135,12 +170,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -155,7 +220,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -170,7 +235,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityAzureTrafficCollectorExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -220,7 +285,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy
 
 ## NOTES
 

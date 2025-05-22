@@ -16,7 +16,8 @@ Creates a Public IP Prefix
 New-AzPublicIpPrefix -Name <String> -ResourceGroupName <String> -Location <String> [-Sku <String>]
  [-Tier <String>] -PrefixLength <UInt16> [-IpAddressVersion <String>] [-IpTag <PSPublicIpPrefixTag[]>]
  [-Zone <String[]>] [-CustomIpPrefix <PSCustomIpPrefix>] [-EdgeZone <String>] [-Tag <Hashtable>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -202,6 +203,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -224,7 +240,7 @@ The public IP Prefix Sku name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard
+Accepted values: Standard, StandardV2
 
 Required: False
 Position: Named

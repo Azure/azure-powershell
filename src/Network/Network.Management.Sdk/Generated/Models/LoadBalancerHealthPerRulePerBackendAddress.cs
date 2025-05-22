@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="ipAddress">The IP address belonging to the backend address.
         /// </param>
 
-        /// <param name="networkInterfaceIPConfigurationId">The id of the network interface ip configuration belonging to the backend
-        /// address
+        /// <param name="networkInterfaceIPConfigurationId">Resource ID of the Network Interface IP Configuration.
         /// </param>
 
         /// <param name="state">The current health of the backend instances that is associated to the LB
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="reason">The explanation of the State
         /// </param>
-        public LoadBalancerHealthPerRulePerBackendAddress(string ipAddress = default(string), NetworkInterfaceIPConfiguration networkInterfaceIPConfigurationId = default(NetworkInterfaceIPConfiguration), string state = default(string), string reason = default(string))
+        public LoadBalancerHealthPerRulePerBackendAddress(string ipAddress = default(string), string networkInterfaceIPConfigurationId = default(string), string state = default(string), string reason = default(string))
 
         {
             this.IPAddress = ipAddress;
@@ -60,11 +59,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public string IPAddress {get; set; }
 
         /// <summary>
-        /// Gets or sets the id of the network interface ip configuration belonging to
-        /// the backend address
+        /// Gets or sets resource ID of the Network Interface IP Configuration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "networkInterfaceIPConfigurationId")]
-        public NetworkInterfaceIPConfiguration NetworkInterfaceIPConfigurationId {get; set; }
+        public string NetworkInterfaceIPConfigurationId {get; set; }
 
         /// <summary>
         /// Gets or sets the current health of the backend instances that is associated
@@ -78,21 +76,5 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "reason")]
         public string Reason {get; set; }
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-
-            if (this.NetworkInterfaceIPConfigurationId != null)
-            {
-                this.NetworkInterfaceIPConfigurationId.Validate();
-            }
-
-
-        }
     }
 }

@@ -16,7 +16,8 @@ Creates a routing rule collection.
 New-AzNetworkManagerRoutingRuleCollection -Name <String> -RoutingConfigurationName <String>
  -NetworkManagerName <String> -ResourceGroupName <String> [-Description <String>]
  -AppliesTo <PSNetworkManagerRoutingGroupItem[]> -DisableBgpRoutePropagation <String> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

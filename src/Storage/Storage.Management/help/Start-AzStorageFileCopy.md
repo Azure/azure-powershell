@@ -18,8 +18,8 @@ Starts to copy a source file.
 Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -DestShareName <String>
  -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>]
  [-DisAllowDestTrailingDot] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContainerInstance
@@ -53,8 +53,8 @@ Start-AzStorageFileCopy -SrcFilePath <String> -SrcShareName <String> -DestShareN
  [-DisAllowSourceTrailingDot] [-DisAllowDestTrailingDot] [-FileMode <String>] [-Owner <String>]
  [-Group <String>] [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareInstance
@@ -63,8 +63,8 @@ Start-AzStorageFileCopy -SrcFilePath <String> -SrcShare <ShareClient> -DestShare
  -DestFilePath <String> [-DestContext <IStorageContext>] [-FileMode <String>] [-Owner <String>]
  [-Group <String>] [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileInstanceToFilePath

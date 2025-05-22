@@ -21,12 +21,13 @@ Create an in-memory object for SpacecraftLink.
 Create an in-memory object for SpacecraftLink.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.SpacecraftLink
 .Link
-https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalSpacecraftLinkObject
+https://learn.microsoft.com/powershell/module/Az.Orbital/new-azorbitalspacecraftlinkobject
 #>
 function New-AzOrbitalSpacecraftLinkObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.SpacecraftLink')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,21 +37,21 @@ function New-AzOrbitalSpacecraftLinkObject {
         [Parameter(Mandatory, HelpMessage="Center Frequency in MHz.")]
         [float]
         $CenterFrequencyMHz,
-        [Parameter(Mandatory, HelpMessage="Direction (uplink or downlink).")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction]
+        [Parameter(Mandatory, HelpMessage="Direction (Uplink or Downlink).")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.PSArgumentCompleterAttribute("Uplink", "Downlink")]
+        [string]
         $Direction,
         [Parameter(Mandatory, HelpMessage="Link name.")]
         [string]
         $Name,
-        [Parameter(Mandatory, HelpMessage="polarization. eg (RHCP, LHCP).")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Polarization])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Polarization]
+        [Parameter(Mandatory, HelpMessage="Polarization. e.g. (RHCP, LHCP).")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.PSArgumentCompleterAttribute("RHCP", "LHCP", "linearVertical", "linearHorizontal")]
+        [string]
         $Polarization
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.SpacecraftLink]::New()
 
         if ($PSBoundParameters.ContainsKey('BandwidthMHz')) {
             $Object.BandwidthMHz = $BandwidthMHz

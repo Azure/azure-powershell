@@ -14,7 +14,8 @@ Removes an application gateway firewall custom rule.
 
 ```
 Remove-AzApplicationGatewayFirewallCustomRule -Name <String> -ResourceGroupName <String> -PolicyName <String>
- [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

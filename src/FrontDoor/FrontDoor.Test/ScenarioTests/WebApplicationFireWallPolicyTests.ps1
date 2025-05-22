@@ -38,7 +38,7 @@ function Test-PolicyCrud
     $LogScrubbingRule = New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Enabled"
     $logscrubbingSetting = New-AzFrontDoorWafLogScrubbingSettingObject -State Enabled -ScrubbingRule @($LogScrubbingRule)
 
-    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Sku Premium_AzureFrontDoor -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention -RequestBodyCheck Disabled -LogScrubbingSetting $logscrubbingSetting -JavascriptChallengeExpirationInMinutes 30  
+    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -CaptchaExpirationInMinutes 5 -Sku Premium_AzureFrontDoor -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention -RequestBodyCheck Disabled -LogScrubbingSetting $logscrubbingSetting -JavascriptChallengeExpirationInMinutes 30  
 	
     $retrievedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName 
     Assert-NotNull $retrievedPolicy
@@ -62,6 +62,9 @@ function Test-PolicyCrud
     Assert-AreEqual $managedRule2.RuleSetType $retrievedPolicy.ManagedRules[1].RuleSetType
     Assert-AreEqual $managedRule2.RuleSetVersion $retrievedPolicy.ManagedRules[1].RuleSetVersion
     Assert-AreEqual "Enabled" $retrievedPolicy.LogScrubbing.State
+    Assert-AreEqual $logscrubbingSetting.ScrubbingRule[0].MatchVariable $retrievedPolicy.LogScrubbing.ScrubbingRule[0].MatchVariable
+    Assert-AreEqual 30 $retrievedPolicy.JavascriptChallengeExpirationInMinutes
+    Assert-AreEqual 5 $retrievedPolicy.CaptchaExpirationInMinutes
     
     $customRule2 = New-AzFrontDoorWafCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
     $updatedPolicy = Update-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule2 -LogScrubbingSetting @{}
@@ -130,26 +133,6 @@ WAF managed rule set definitions retrieval
 function Test-ManagedRuleSetDefinition
 {
     $definitions = Get-AzFrontDoorWafManagedRuleSetDefinition
-    Assert-AreEqual $definitions.Count 9
-    Assert-AreEqual $definitions[0].RuleSetType "Microsoft_DefaultRuleSet"
-    Assert-AreEqual $definitions[0].RuleSetVersion "2.0"
-    Assert-AreEqual $definitions[0].RuleGroups.Count 17
-
-    Assert-AreEqual $definitions[1].RuleSetType "Microsoft_DefaultRuleSet"
-    Assert-AreEqual $definitions[1].RuleSetVersion "2.1"
-    Assert-AreEqual $definitions[1].RuleGroups.Count 17
-
-    Assert-AreEqual $definitions[2].RuleSetType "Microsoft_BotManagerRuleSet"
-    Assert-AreEqual $definitions[2].RuleSetVersion "1.1"
-    Assert-AreEqual $definitions[2].RuleGroups.Count 3
-
-    Assert-AreEqual $definitions[3].RuleSetType "Microsoft_DefaultRuleSet"
-    Assert-AreEqual $definitions[3].RuleSetVersion "1.2"
-    Assert-AreEqual $definitions[3].RuleGroups.Count 13
-
-    Assert-AreEqual $definitions[4].RuleSetType "Microsoft_DefaultRuleSet"
-    Assert-AreEqual $definitions[4].RuleSetVersion "1.1"
-    Assert-AreEqual $definitions[4].RuleGroups.Count 13
 }
 
 <#

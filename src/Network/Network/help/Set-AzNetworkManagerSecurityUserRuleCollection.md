@@ -15,20 +15,23 @@ Updates a network manager security user rule collection.
 ### ByInputObject (Default)
 ```
 Set-AzNetworkManagerSecurityUserRuleCollection -InputObject <PSNetworkManagerSecurityUserRuleCollection>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Set-AzNetworkManagerSecurityUserRuleCollection -Name <String> -ResourceGroupName <String>
  -NetworkManagerName <String> -SecurityUserConfigurationName <String> [-Description <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Set-AzNetworkManagerSecurityUserRuleCollection -ResourceId <String> [-Description <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

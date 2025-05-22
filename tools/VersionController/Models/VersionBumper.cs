@@ -84,6 +84,7 @@ namespace VersionController.Models
             {
                 _newVersion = IsNewModule() ? _oldVersion : GetBumpedVersion();
             }
+            Console.WriteLine("_assignedVersion: " + _assignedVersion);
             if (MinimalVersion != null && MinimalVersion > new AzurePSVersion(_newVersion))
             {
                 Console.WriteLine($"Adjust version from {_newVersion} to {MinimalVersion} due to MinimalVersion.csv");

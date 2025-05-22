@@ -25,12 +25,12 @@ List all the operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IOperationResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IOperationResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationsoperation
 #>
 function Get-AzReservationsOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IOperationResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IOperationResponse])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Reservations.private\Get-AzReservationsOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -137,22 +143,13 @@ $fullyQualifiedOrderId = "/providers/microsoft.capacity/reservationOrders/500000
 Invoke-AzReservationCalculateRefund -ReservationOrderId $orderId -ReservationToReturnQuantity 1 -ReservationToReturnReservationId $fullyQualifiedId  -Id $fullyQualifiedOrderId -Scope "Reservation"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundRequest
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BODY <IRefundRequest>: Request containing information needed for returning reservation.
-  [ReservationToReturnQuantity <Int32?>]: Quantity to be returned. Must be greater than zero.
-  [ReservationToReturnReservationId <String>]: Fully qualified identifier of the reservation being returned
-  [ReturnReason <String>]: The reason of returning the reservation
-  [Scope <String>]: The scope of the refund, e.g. Reservation
-  [SessionId <String>]: SessionId that was returned by CalculateRefund API.
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
@@ -163,31 +160,22 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationreturn
 #>
 function Invoke-AzReservationReturn {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponse])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Post', Mandatory)]
     [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
     # Order Id of the reservation
     ${ReservationOrderId},
 
-    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundRequest]
-    # Request containing information needed for returning reservation.
-    # To construct, see NOTES section for BODY properties and create a hash table.
-    ${Body},
 
     [Parameter(ParameterSetName='PostExpanded')]
     [Parameter(ParameterSetName='PostViaIdentityExpanded')]
@@ -225,6 +213,18 @@ param(
     [System.String]
     # SessionId that was returned by CalculateRefund API.
     ${SessionId},
+
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Post operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Json string supplied to the Post operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -294,15 +294,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
-            Post = 'Az.Reservations.private\Invoke-AzReservationReturn_Post';
             PostExpanded = 'Az.Reservations.private\Invoke-AzReservationReturn_PostExpanded';
-            PostViaIdentity = 'Az.Reservations.private\Invoke-AzReservationReturn_PostViaIdentity';
             PostViaIdentityExpanded = 'Az.Reservations.private\Invoke-AzReservationReturn_PostViaIdentityExpanded';
+            PostViaJsonFilePath = 'Az.Reservations.private\Invoke-AzReservationReturn_PostViaJsonFilePath';
+            PostViaJsonString = 'Az.Reservations.private\Invoke-AzReservationReturn_PostViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -344,18 +350,18 @@ $arr=@("72bc398d-b201-4a2e-a1fa-60fb48a85b23", "34f2474f-b4d7-41ec-a96d-d4bb7c2f
 Merge-AzReservation -ReservationOrderId "79ebddac-4030-4296-ab93-1ad90f032058" -ReservationId $arr
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IMergeRequest
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IMergeRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BODY <IMergeRequest>: The request for reservation merge
-  [Source <String[]>]: Format of the resource id should be /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
+  [Source <List<String>>]: Format of the resource id should be /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
@@ -366,11 +372,13 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.reservations/merge-azreservation
 #>
 function Merge-AzReservation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationResponse])]
 [CmdletBinding(DefaultParameterSetName='MergeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Merge', Mandatory)]
     [Parameter(ParameterSetName='MergeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='MergeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='MergeViaJsonString', Mandatory)]
     [Alias('ReservationOrderId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
@@ -382,15 +390,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Merge', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='MergeViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IMergeRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IMergeRequest]
     # The request for reservation merge
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='MergeExpanded')]
@@ -400,6 +406,18 @@ param(
     [System.String[]]
     # Format of the resource id should be /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
     ${ReservationId},
+
+    [Parameter(ParameterSetName='MergeViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Merge operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='MergeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Json string supplied to the Merge operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -469,15 +487,23 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Merge = 'Az.Reservations.private\Merge-AzReservation_Merge';
             MergeExpanded = 'Az.Reservations.private\Merge-AzReservation_MergeExpanded';
             MergeViaIdentity = 'Az.Reservations.private\Merge-AzReservation_MergeViaIdentity';
             MergeViaIdentityExpanded = 'Az.Reservations.private\Merge-AzReservation_MergeViaIdentityExpanded';
+            MergeViaJsonFilePath = 'Az.Reservations.private\Merge-AzReservation_MergeViaJsonFilePath';
+            MergeViaJsonString = 'Az.Reservations.private\Merge-AzReservation_MergeViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -517,19 +543,13 @@ Split-AzReservation -ReservationOrderId "c615c897-aaaa-4123-8527-c42cc0da41e0" -
 
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ISplitRequest
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BODY <ISplitRequest>: The request for reservation split
-  [Quantity <Int32[]>]: List of the quantities in the new reservations to create.
-  [ReservationId <String>]: Resource id of the reservation to be split. Format of the resource id should be /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
@@ -540,32 +560,23 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.reservations/split-azreservation
 #>
 function Split-AzReservation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationResponse])]
 [CmdletBinding(DefaultParameterSetName='SplitExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Split', Mandatory)]
     [Parameter(ParameterSetName='SplitExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SplitViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='SplitViaJsonString', Mandatory)]
     [Alias('ReservationOrderId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
     # Order Id of the reservation
     ${OrderId},
 
-    [Parameter(ParameterSetName='SplitViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='SplitViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='Split', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='SplitViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ISplitRequest]
-    # The request for reservation split
-    # To construct, see NOTES section for BODY properties and create a hash table.
-    ${Body},
 
     [Parameter(ParameterSetName='SplitExpanded')]
     [Parameter(ParameterSetName='SplitViaIdentityExpanded')]
@@ -582,6 +593,18 @@ param(
     # Resource id of the reservation to be split.
     # Format of the resource id should be /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
     ${ReservationId},
+
+    [Parameter(ParameterSetName='SplitViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Split operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='SplitViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Json string supplied to the Split operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -651,15 +674,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
-            Split = 'Az.Reservations.private\Split-AzReservation_Split';
             SplitExpanded = 'Az.Reservations.private\Split-AzReservation_SplitExpanded';
-            SplitViaIdentity = 'Az.Reservations.private\Split-AzReservation_SplitViaIdentity';
             SplitViaIdentityExpanded = 'Az.Reservations.private\Split-AzReservation_SplitViaIdentityExpanded';
+            SplitViaJsonFilePath = 'Az.Reservations.private\Split-AzReservation_SplitViaJsonFilePath';
+            SplitViaJsonString = 'Az.Reservations.private\Split-AzReservation_SplitViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

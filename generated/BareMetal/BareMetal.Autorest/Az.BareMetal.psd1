@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.BareMetal.private.dll'
   FormatsToProcess = './Az.BareMetal.format.ps1xml'
-  FunctionsToExport = 'Get-AzBareMetal', 'Update-AzBareMetal', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzBareMetal', 'Update-AzBareMetal'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'BareMetal'

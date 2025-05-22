@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ChangeAnalysis.private.dll'
   FormatsToProcess = './Az.ChangeAnalysis.format.ps1xml'
-  FunctionsToExport = 'Get-AzChangeAnalysis', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzChangeAnalysis'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ChangeAnalysis'

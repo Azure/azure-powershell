@@ -8,25 +8,40 @@ schema: 2.0.0
 # Update-AzMobileNetworkPacketCoreControlPlane
 
 ## SYNOPSIS
-Updates packet core control planes.
+update a packet core control plane.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-Update-AzMobileNetworkPacketCoreControlPlane -PacketCoreControlPlaneName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-LocalDiagnosticAccessAuthenticationType <AuthenticationType>]
- [-PlatformType <PlatformType>] [-Site <ISiteResourceId[]>] [-Sku <BillingSku>]
+Update-AzMobileNetworkPacketCoreControlPlane -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-AzureStackEdgeDeviceId <String>] [-AzureStackHciClusterId <String>]
+ [-ConnectedClusterId <String>] [-ControlPlaneAccessInterfaceIpv4Address <String>]
+ [-ControlPlaneAccessInterfaceIpv4Gateway <String>] [-ControlPlaneAccessInterfaceIpv4Subnet <String>]
+ [-ControlPlaneAccessInterfaceName <String>] [-CoreNetworkTechnology <String>] [-CustomLocationId <String>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-HttpsServerCertificateUrl <String>] [-InteropSetting <Hashtable>]
+ [-LocalDiagnosticAccessAuthenticationType <String>] [-PlatformType <String>] [-Site <ISiteResourceId[]>]
+ [-Sku <String>] [-Tag <Hashtable>] [-UeMtu <Int32>] [-UserAssignedIdentity <String[]>] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzMobileNetworkPacketCoreControlPlane -InputObject <IMobileNetworkIdentity>
  [-AzureStackEdgeDeviceId <String>] [-AzureStackHciClusterId <String>] [-ConnectedClusterId <String>]
  [-ControlPlaneAccessInterfaceIpv4Address <String>] [-ControlPlaneAccessInterfaceIpv4Gateway <String>]
  [-ControlPlaneAccessInterfaceIpv4Subnet <String>] [-ControlPlaneAccessInterfaceName <String>]
- [-CoreNetworkTechnology <CoreNetworkType>] [-CustomLocationId <String>] [-HttpsServerCertificateUrl <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-InteropSetting <Hashtable>] [-UeMtu <Int32>] [-Version <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CoreNetworkTechnology <String>] [-CustomLocationId <String>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-HttpsServerCertificateUrl <String>] [-InteropSetting <Hashtable>]
+ [-LocalDiagnosticAccessAuthenticationType <String>] [-PlatformType <String>] [-Site <ISiteResourceId[]>]
+ [-Sku <String>] [-Tag <Hashtable>] [-UeMtu <Int32>] [-UserAssignedIdentity <String[]>] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates packet core control planes.
+update a packet core control plane.
 
 ## EXAMPLES
 
@@ -44,6 +59,21 @@ eastus   azps-mn-pccp azps_test_group   Succeeded
 Updates packet core control planes.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AzureStackEdgeDeviceId
 Azure Stack Edge device resource ID.
@@ -155,7 +185,7 @@ Accept wildcard characters: False
 The core network technology generation (5G core or EPC / 4G core).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.CoreNetworkType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -197,6 +227,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -HttpsServerCertificateUrl
 The certificate URL, unversioned.
 For example: https://contosovault.vault.azure.net/certificates/ingress.
@@ -213,35 +258,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -265,7 +293,7 @@ Accept wildcard characters: False
 How to authenticate users who access local diagnostics APIs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.AuthenticationType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -276,15 +304,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PacketCoreControlPlaneName
+### -Name
 The name of the packet core control plane.
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: PacketCoreControlPlaneName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -295,7 +338,7 @@ Accept wildcard characters: False
 The platform type where packet core is deployed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PlatformType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -312,7 +355,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -325,10 +368,9 @@ Accept wildcard characters: False
 ### -Site
 Site(s) under which this packet core control plane should be deployed.
 The sites must be in the same location as the packet core control plane.
-To construct, see NOTES section for SITE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISiteResourceId[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISiteResourceId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -343,7 +385,7 @@ Accept wildcard characters: False
 The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -359,7 +401,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -391,6 +433,22 @@ The MTU set on the user plane access link is calculated to be 60 bytes greater t
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -456,7 +514,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlane
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreControlPlane
 
 ## NOTES
 

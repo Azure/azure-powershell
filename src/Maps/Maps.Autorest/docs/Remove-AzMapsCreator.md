@@ -24,6 +24,12 @@ Remove-AzMapsCreator -InputObject <IMapsIdentity> [-DefaultProfile <PSObject>] [
  [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityAccount
+```
+Remove-AzMapsCreator -AccountInputObject <IMapsIdentity> -Name <String> [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Delete a Maps Creator resource.
 
@@ -44,6 +50,21 @@ Get-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount
 This command deletes a Maps Creator resource by pipeline.
 
 ## PARAMETERS
+
+### -AccountInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity
+Parameter Sets: DeleteViaIdentityAccount
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -AccountName
 The name of the Maps Account.
@@ -78,7 +99,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity
@@ -97,7 +117,7 @@ The name of the Maps Creator instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityAccount
 Aliases: CreatorName
 
 Required: True

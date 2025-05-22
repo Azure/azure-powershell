@@ -32,12 +32,12 @@ $bi = Get-AzDataProtectionBackupInstance -ResourceGroupName "myResourceGroup" -V
 $updateBI = Update-AzDataProtectionBackupInstance -ResourceGroupName "myResourceGroup" -VaultName "myBackupVault" -BackupInstanceName $bi.Name -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -UserAssignedIdentityArmId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUami" -UseSystemAssignedIdentity $false
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionbackupinstance
 #>
 function Update-AzDataProtectionBackupInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

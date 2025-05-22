@@ -16,38 +16,37 @@
 
 <#
 .Synopsis
-Create a in-memory object for NetworkInterface
+Create an in-memory object for NetworkInterface.
 .Description
-Create a in-memory object for NetworkInterface
+Create an in-memory object for NetworkInterface.
 .Example
 New-AzConnectedNetworkInterfaceObject -IPConfiguration $ipconf1 -Name "mrmmanagementnic1" -VMSwitchType "Management"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterface
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 IPCONFIGURATION <INetworkInterfaceIPConfiguration[]>: A list of IP configurations of the network interface.
-  [DnsServer <String[]>]: The list of DNS servers IP addresses.
+  [DnsServer <List<String>>]: The list of DNS servers IP addresses.
   [Gateway <String>]: The value of the gateway.
   [IPAddress <String>]: The value of the IP address.
-  [IPAllocationMethod <IPAllocationMethod?>]: IP address allocation method.
-  [IPVersion <IPVersion?>]: IP address version.
+  [IPAllocationMethod <String>]: IP address allocation method.
+  [IPVersion <String>]: IP address version.
   [Subnet <String>]: The value of the subnet.
 .Link
-https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceObject
+https://learn.microsoft.com/powershell/module/Az.ConnectedNetwork/new-azconnectednetworkinterfaceobject
 #>
 function New-AzConnectedNetworkInterfaceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterface])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkInterfaceIPConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkInterfaceIPConfiguration[]]
     # A list of IP configurations of the network interface.
-    # To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
     ${IPConfiguration},
 
     [Parameter()]
@@ -63,8 +62,9 @@ param(
     ${Name},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "Management", "Wan", "Lan")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.VMSwitchType]
+    [System.String]
     # The type of the VM switch.
     ${VMSwitchType}
 )
@@ -76,6 +76,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -104,6 +107,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

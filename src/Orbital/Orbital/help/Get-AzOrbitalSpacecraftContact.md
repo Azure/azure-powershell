@@ -19,6 +19,12 @@ Get-AzOrbitalSpacecraftContact -ResourceGroupName <String> -SpacecraftName <Stri
  [<CommonParameters>]
 ```
 
+### GetViaIdentitySpacecraft
+```
+Get-AzOrbitalSpacecraftContact -Name <String> -SpacecraftInputObject <IOrbitalIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzOrbitalSpacecraftContact -Name <String> -ResourceGroupName <String> -SpacecraftName <String>
@@ -102,7 +108,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
@@ -121,7 +126,7 @@ Contact name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentitySpacecraft, Get
 Aliases: ContactName
 
 Required: True
@@ -164,6 +169,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpacecraftInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
+Parameter Sets: GetViaIdentitySpacecraft
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SpacecraftName
 Spacecraft ID.
 
@@ -203,7 +223,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContact
 
 ## NOTES
 

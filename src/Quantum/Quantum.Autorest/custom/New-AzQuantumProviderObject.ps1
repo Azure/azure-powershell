@@ -21,12 +21,13 @@ Create an in-memory object for Provider.
 Create an in-memory object for Provider.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.Provider
+Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Provider
 .Link
 https://learn.microsoft.com/powershell/module/Az.Quantum/new-AzQuantumProviderObject
 #>
 function New-AzQuantumProviderObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.Provider')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Quantum.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Provider')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,8 +41,8 @@ function New-AzQuantumProviderObject {
         [string]
         $InstanceUri,
         [Parameter(HelpMessage="Provisioning status field.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Quantum.Support.Status])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Support.Status]
+        [Microsoft.Azure.PowerShell.Cmdlets.Quantum.PSArgumentCompleterAttribute("Succeeded", "Launching", "Updating", "Deleting", "Deleted", "Failed")]
+        [string]
         $ProvisioningState,
         [Parameter(HelpMessage="Id to track resource usage for the provider.")]
         [string]
@@ -52,7 +53,7 @@ function New-AzQuantumProviderObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.Provider]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Provider]::New()
 
         if ($PSBoundParameters.ContainsKey('ApplicationName')) {
             $Object.ApplicationName = $ApplicationName
@@ -75,4 +76,3 @@ function New-AzQuantumProviderObject {
         return $Object
     }
 }
-

@@ -16,7 +16,8 @@ Creates a new Azure Firewall Policy Intrusion Detection to associate with Firewa
 New-AzFirewallPolicyIntrusionDetection -Mode <String> [-Profile <String>]
  [-SignatureOverride <PSAzureFirewallPolicyIntrusionDetectionSignatureOverride[]>]
  [-BypassTraffic <PSAzureFirewallPolicyIntrusionDetectionBypassTrafficSetting[]>] [-PrivateRange <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

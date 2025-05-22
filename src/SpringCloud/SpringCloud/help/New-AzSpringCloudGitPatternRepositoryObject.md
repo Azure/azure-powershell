@@ -1,7 +1,7 @@
 ---
 external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
-online version: https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudGitPatternRepositoryObject
+online version: https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-azspringcloudgitpatternrepositoryobject
 schema: 2.0.0
 ---
 
@@ -211,10 +211,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.GitPatternRepository
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.GitPatternRepository
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

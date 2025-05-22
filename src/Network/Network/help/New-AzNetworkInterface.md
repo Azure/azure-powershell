@@ -19,7 +19,8 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
  -IpConfiguration <PSNetworkInterfaceIPConfiguration[]> [-DnsServer <String[]>]
  [-InternalDnsNameLabel <String>] [-DisableTcpStateTracking <String>] [-EnableIPForwarding]
  [-EnableAcceleratedNetworking] [-AuxiliaryMode <String>] [-AuxiliarySku <String>] [-Tag <Hashtable>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByIpConfigurationResourceId
@@ -29,7 +30,8 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-DnsServer <String[]>] [-InternalDnsNameLabel <String>]
  [-DisableTcpStateTracking <String>] [-EnableIPForwarding] [-EnableAcceleratedNetworking]
  [-AuxiliaryMode <String>] [-AuxiliarySku <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -41,7 +43,8 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
  [-PrivateIpAddress <String>] [-IpConfigurationName <String>] [-DnsServer <String[]>]
  [-InternalDnsNameLabel <String>] [-DisableTcpStateTracking <String>] [-EnableIPForwarding]
  [-EnableAcceleratedNetworking] [-AuxiliaryMode <String>] [-AuxiliarySku <String>] [-Tag <Hashtable>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -54,7 +57,8 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
  [-IpConfigurationName <String>] [-DnsServer <String[]>] [-InternalDnsNameLabel <String>]
  [-DisableTcpStateTracking <String>] [-EnableIPForwarding] [-EnableAcceleratedNetworking]
  [-AuxiliaryMode <String>] [-AuxiliarySku <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

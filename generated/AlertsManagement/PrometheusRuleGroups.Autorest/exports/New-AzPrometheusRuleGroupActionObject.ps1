@@ -24,7 +24,7 @@ New-AzPrometheusRuleGroupActionObject -ActionGroupId /subscriptions/fffffffff-ff
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRuleGroupAction
+Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.PrometheusRuleGroupAction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -33,10 +33,10 @@ To create the parameters described below, construct a hash table containing the 
 ACTIONPROPERTY <IPrometheusRuleGroupActionProperties>: The properties of an action group object.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://learn.microsoft.com/powershell/module/Az.AlertsManagement/new-AzPrometheusRuleGroupActionObject
+https://learn.microsoft.com/powershell/module/Az.AlertsManagement/new-azprometheusrulegroupactionobject
 #>
 function New-AzPrometheusRuleGroupActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRuleGroupAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.PrometheusRuleGroupAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -47,9 +47,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupActionProperties]
     # The properties of an action group object.
-    # To construct, see NOTES section for ACTIONPROPERTY properties and create a hash table.
     ${ActionProperty}
 )
 
@@ -60,6 +59,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -88,6 +90,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

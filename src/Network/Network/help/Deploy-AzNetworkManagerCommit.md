@@ -14,8 +14,8 @@ Deploys a network manager commit.
 
 ```
 Deploy-AzNetworkManagerCommit -Name <String> -ResourceGroupName <String> -TargetLocation <String[]>
- [-ConfigurationId <String[]>] -CommitType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ConfigurationId <String[]>] -CommitType <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

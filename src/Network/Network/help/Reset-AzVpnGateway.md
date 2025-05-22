@@ -16,19 +16,22 @@ Resets the scalable VPN gateway.
 ### ByVpnGatewayName (Default)
 ```
 Reset-AzVpnGateway -ResourceGroupName <String> -Name <String> [-IpConfigurationId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVpnGatewayObject
 ```
 Reset-AzVpnGateway -InputObject <PSVpnGateway> [-IpConfigurationId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVpnGatewayResourceId
 ```
 Reset-AzVpnGateway -ResourceId <String> [-IpConfigurationId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -69,6 +69,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         public PSNetAppFilesActiveDirectory[] ActiveDirectory { get; set; }
 
         [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "Domain for NFSv4 user ID mapping. This property will be set for all NetApp accounts in the subscription and region and only affect non ldap NFSv4 volumes.")]
+        [ValidateNotNullOrEmpty]
+        public string NfsV4IdDomain { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
@@ -107,7 +114,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             {
                 Location = Location,
                 ActiveDirectories = (ActiveDirectory != null) ? ActiveDirectory.ConvertFromPs() : new List<Management.NetApp.Models.ActiveDirectory>(),
-                Tags = tagPairs
+                Tags = tagPairs,
+                NfsV4IdDomain = NfsV4IdDomain
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

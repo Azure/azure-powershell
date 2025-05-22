@@ -103,5 +103,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzApplicationGatewayFrontendPort](./New-AzApplicationGatewayFrontendPort.md)
 
 [Set-AzApplicationGatewayFrontendPort](./Set-AzApplicationGatewayFrontendPort.md)
-
-

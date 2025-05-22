@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a PrivateCloud</summary>
+    /// <summary>update a PrivateCloud</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzVMwarePrivateCloud_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a PrivateCloud")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"update a PrivateCloud")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
     public partial class UpdateAzVMwarePrivateCloud_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
@@ -90,8 +90,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Public", "Private")]
         public string DnsZoneType { get => _privateCloudBody.DnsZoneType ?? null; set => _privateCloudBody.DnsZoneType = value; }
 
-        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
         public System.Boolean? EnableSystemAssignedIdentity { get; set; }
 
         /// <summary>Status of customer managed encryption key</summary>

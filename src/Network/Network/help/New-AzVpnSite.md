@@ -38,7 +38,8 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -Vir
  -IpAddress <String> [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>]
  [-IsSecuritySite] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualWanObjectByVpnSiteLinkObject
@@ -46,7 +47,8 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -Vir
 New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -VirtualWan <PSVirtualWan>
  [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>] [-IsSecuritySite]
  -VpnSiteLink <PSVpnSiteLink[]> [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceIdByVpnSiteIpAddress
@@ -55,7 +57,8 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -Vir
  -IpAddress <String> [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>]
  [-IsSecuritySite] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceIdByVpnSiteLinkObject
@@ -63,7 +66,8 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -Vir
 New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -VirtualWanId <String>
  [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>] [-IsSecuritySite]
  -VpnSiteLink <PSVpnSiteLink[]> [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

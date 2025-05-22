@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.NetApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
@@ -40,7 +41,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Identity = netAppAccount.Identity?.ConvertToPs(),
                 DisableShowmount = netAppAccount.DisableShowmount,
                 Encryption = netAppAccount.Encryption?.ConvertToPs(),
-                SystemData = netAppAccount.SystemData?.ToPsSystemData()
+                SystemData = netAppAccount.SystemData?.ToPsSystemData(),
+                MultiAdStatus = netAppAccount.MultiAdStatus
             };
         }
 
@@ -61,7 +63,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             return new PSEncryptionIdentity
             {
                 PrincipalId = identity.PrincipalId,
-                UserAssignedIdentity = identity.UserAssignedIdentity
+                UserAssignedIdentity = identity.UserAssignedIdentity,
+                FederatedClientId = identity.FederatedClientId
             };
         }
 
@@ -69,7 +72,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             return new EncryptionIdentity(principalId: encryptionIdentity.PrincipalId)
             {
-                UserAssignedIdentity = encryptionIdentity.UserAssignedIdentity
+                UserAssignedIdentity = encryptionIdentity.UserAssignedIdentity,
+                FederatedClientId = encryptionIdentity.FederatedClientId
             };
         }
 
@@ -162,8 +166,28 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             {
                 KeySource = encryption.KeySource,
                 Identity = encryption.Identity?.ConvertFromPs(),
-                KeyVaultProperties = encryption.KeyVaultProperties?.ConvertFromPs()
+                KeyVaultProperties = encryption.KeyVaultProperties?.ConvertFromPs(),
             };
+        }
+
+        public static List<KeyVaultPrivateEndpoint> ConvertFromPs(this IList<PSANFKeyVaultPrivateEndpoint> keyVaultPrivateEndpoints)
+        {
+            return keyVaultPrivateEndpoints.Select(e => e.ConvertFromPs()).ToList();
+        }
+
+        public static KeyVaultPrivateEndpoint ConvertFromPs(this PSANFKeyVaultPrivateEndpoint keyVaultPrivateEndpoint)
+        {
+            return new KeyVaultPrivateEndpoint(virtualNetworkId: keyVaultPrivateEndpoint.VirtualNetworkId, privateEndpointId: keyVaultPrivateEndpoint.PrivateEndpointId);
+        }
+
+        public static List<PSANFKeyVaultPrivateEndpoint> ConvertToPs(this IList<KeyVaultPrivateEndpoint> keyVaultPrivateEndpoints)
+        {
+            return keyVaultPrivateEndpoints.Select(e => e.ConvertToPs()).ToList();
+        }
+
+        public static PSANFKeyVaultPrivateEndpoint ConvertToPs(this KeyVaultPrivateEndpoint keyVaultPrivateEndpoint)
+        {
+            return new PSANFKeyVaultPrivateEndpoint() { VirtualNetworkId = keyVaultPrivateEndpoint?.VirtualNetworkId, PrivateEndpointId = keyVaultPrivateEndpoint?.PrivateEndpointId };
         }
     }
 }

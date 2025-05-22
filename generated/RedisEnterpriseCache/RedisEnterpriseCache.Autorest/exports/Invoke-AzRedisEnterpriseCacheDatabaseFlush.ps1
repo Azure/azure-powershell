@@ -23,7 +23,7 @@ Flushes all the keys in this database and also from its linked databases.
 Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName "MyCache" -ResourceGroupName "MyResourceGroup" -Id @("Mydatabase1") , @("MyLinkedDatabase1")
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IFlushParameters
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 .Outputs
@@ -35,7 +35,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
-  [ClusterName <String>]: The name of the Redis Enterprise cluster.
+  [ClusterName <String>]: The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   [DatabaseName <String>]: The name of the Redis Enterprise database.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
@@ -58,6 +58,9 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
+    # Name must be 1-60 characters long.
+    # Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+    # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
     [Parameter(ParameterSetName='Flush', Mandatory)]
@@ -87,7 +90,7 @@ param(
     [Parameter(ParameterSetName='Flush', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='FlushViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IFlushParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters]
     # Parameters for a Redis Enterprise active geo-replication flush operation
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

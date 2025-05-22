@@ -17,7 +17,8 @@ New-AzApplicationGatewayFirewallPolicy -Name <String> -ResourceGroupName <String
  [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>]
  [-PolicySetting <PSApplicationGatewayFirewallPolicySettings>]
  [-ManagedRule <PSApplicationGatewayFirewallPolicyManagedRules>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

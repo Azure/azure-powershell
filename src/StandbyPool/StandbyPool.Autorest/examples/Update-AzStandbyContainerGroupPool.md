@@ -29,6 +29,7 @@ SystemDataLastModifiedByType      : User
 Tag                               : {
                                     }
 Type                              : microsoft.standbypool/standbycontainergrouppools
+Zone                              : {1} 
 ```
 
 The above command updated a standby container pool's max ready capacity to 5.

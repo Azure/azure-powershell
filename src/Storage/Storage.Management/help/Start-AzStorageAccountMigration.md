@@ -17,28 +17,28 @@ Zone-redundant storage (ZRS) replicates your storage account synchronously acros
 ### CustomerExpanded (Default)
 ```
 Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -TargetSku <String> [-Name <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -TargetSku <String> [-Name <String>] [-Type <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CustomerViaJsonFilePath
 ```
 Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Force] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CustomerViaJsonString
 ```
 Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Force] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CustomerViaIdentityExpanded
 ```
 Start-AzStorageAccountMigration -InputObject <IStorageIdentity> -TargetSku <String> [-Name <String>]
- [-Type <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Type <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -124,6 +124,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Forces the cmdlet to convert the account's redundancy configuration without prompting for confirmation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

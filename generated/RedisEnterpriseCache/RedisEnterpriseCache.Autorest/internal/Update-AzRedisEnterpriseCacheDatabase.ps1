@@ -27,7 +27,7 @@ Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGrou
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,7 +38,7 @@ GEOREPLICATIONLINKEDDATABASE <ILinkedDatabase[]>: List of database resources to 
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
-  [ClusterName <String>]: The name of the Redis Enterprise cluster.
+  [ClusterName <String>]: The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   [DatabaseName <String>]: The name of the Redis Enterprise database.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
@@ -54,13 +54,16 @@ MODULE <IModule[]>: Optional set of redis modules to enable in this database - m
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecachedatabase
 #>
 function Update-AzRedisEnterpriseCacheDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
+    # Name must be 1-60 characters long.
+    # Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+    # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -128,7 +131,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy]
     # Clustering policy - default is OSSCluster.
-    # This property must be chosen at create time, and cannot be changed without deleting the database.
+    # This property can be updated only if the current value is NoCluster.
+    # If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database.
     ${ClusteringPolicy},
 
     [Parameter()]
@@ -155,7 +159,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]]
     # List of database resources to link with this database
     # To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
     ${GeoReplicationLinkedDatabase},
@@ -163,7 +167,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[]]
     # Optional set of redis modules to enable in this database - modules can only be added at creation time.
     # To construct, see NOTES section for MODULE properties and create a hash table.
     ${Module},

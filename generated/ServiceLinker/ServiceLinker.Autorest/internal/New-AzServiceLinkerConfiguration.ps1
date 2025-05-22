@@ -25,11 +25,11 @@ Generate configurations for a Linker.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfo
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationInfo
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ISourceConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,21 +46,23 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
 
 PARAMETER <IConfigurationInfo>: The configuration information, used to generate configurations or save to applications
-  [Action <ActionType?>]: Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.
+  [Action <String>]: Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.
   [AdditionalConfiguration <IConfigurationInfoAdditionalConfigurations>]: A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
     [(Any) <String>]: This indicates any property can be added to this object.
   [CustomizedKey <IConfigurationInfoCustomizedKeys>]: Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
     [(Any) <String>]: This indicates any property can be added to this object.
-  [DeleteOrUpdateBehavior <DeleteOrUpdateBehavior?>]: Indicates whether to clean up previous operation when Linker is updating or deleting
+  [DeleteOrUpdateBehavior <String>]: Indicates whether to clean up previous operation when Linker is updating or deleting
 .Link
 https://learn.microsoft.com/powershell/module/az.servicelinker/new-azservicelinkerconfiguration
 #>
 function New-AzServiceLinkerConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ISourceConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationResult])]
 [CmdletBinding(DefaultParameterSetName='GenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Generate', Mandatory)]
     [Parameter(ParameterSetName='GenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='GenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='GenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
     [System.String]
     # The name Linker resource.
@@ -68,6 +70,8 @@ param(
 
     [Parameter(ParameterSetName='Generate', Mandatory)]
     [Parameter(ParameterSetName='GenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='GenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='GenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
     [System.String]
     # The fully qualified Azure Resource manager identifier of the resource to be connected.
@@ -78,22 +82,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Generate', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='GenerateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfo]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationInfo]
     # The configuration information, used to generate configurations or save to applications
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='GenerateExpanded')]
     [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("Internal", "enable", "optOut")]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType]
+    [System.String]
     # Optional, indicate whether to apply configurations on source application.
     # If enable, generate configurations and applied to the source application.
     # Default is enable.
@@ -103,7 +105,7 @@ param(
     [Parameter(ParameterSetName='GenerateExpanded')]
     [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoAdditionalConfigurations]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationInfoAdditionalConfigurations]))]
     [System.Collections.Hashtable]
     # A dictionary of additional configurations to be added.
     # Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
@@ -112,12 +114,24 @@ param(
     [Parameter(ParameterSetName='GenerateExpanded')]
     [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoCustomizedKeys]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationInfoCustomizedKeys]))]
     [System.Collections.Hashtable]
     # Optional.
     # A dictionary of default key name and customized key name mapping.
     # If not specified, default key name will be used for generate configurations
     ${CustomizedKey},
+
+    [Parameter(ParameterSetName='GenerateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Generate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='GenerateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [System.String]
+    # Json string supplied to the Generate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -175,15 +189,23 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Generate = 'Az.ServiceLinker.private\New-AzServiceLinkerConfiguration_Generate';
             GenerateExpanded = 'Az.ServiceLinker.private\New-AzServiceLinkerConfiguration_GenerateExpanded';
             GenerateViaIdentity = 'Az.ServiceLinker.private\New-AzServiceLinkerConfiguration_GenerateViaIdentity';
             GenerateViaIdentityExpanded = 'Az.ServiceLinker.private\New-AzServiceLinkerConfiguration_GenerateViaIdentityExpanded';
+            GenerateViaJsonFilePath = 'Az.ServiceLinker.private\New-AzServiceLinkerConfiguration_GenerateViaJsonFilePath';
+            GenerateViaJsonString = 'Az.ServiceLinker.private\New-AzServiceLinkerConfiguration_GenerateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

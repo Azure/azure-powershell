@@ -274,7 +274,7 @@ function Bump-AzVersion
     # Add artifacts as PSModulePath to skip installation
     if(!($env:PSModulePath.Split(";").Contains($resolvedArtifactsOutputPath)))
     {
-        $env:PSModulePath += ";$resolvedArtifactsOutputPath"
+        $env:PSModulePath = "$resolvedArtifactsOutputPath;" + $env:PSModulePath
     }
 
     Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes

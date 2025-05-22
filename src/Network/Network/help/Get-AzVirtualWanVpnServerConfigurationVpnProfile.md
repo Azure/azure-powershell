@@ -50,7 +50,8 @@ Get-AzVirtualWanVpnServerConfigurationVpnProfile -ResourceId <String>
 ### ByVirtualWanResourceIdByVpnServerConfigurationResourceId
 ```
 Get-AzVirtualWanVpnServerConfigurationVpnProfile -ResourceId <String> -VpnServerConfigurationId <String>
- [-AuthenticationMethod <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AuthenticationMethod <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

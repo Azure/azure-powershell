@@ -20,38 +20,18 @@ Fetch User API Key from internal database, if it was generated and stored while 
 .Description
 Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
 .Example
-Get-AzElasticOrganizationApiKey -Body $EmailIdObject
+Get-AzElasticOrganizationApiKey -EmailId "jkore@microsoft.com"
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IUserEmailId
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IUserApiKeyResponseProperties
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BODY <IUserEmailId>: Email Id of the User Organization, of which the API Key must be returned
-  [EmailId <String>]: The User email Id
-
-INPUTOBJECT <IElasticIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [IntegrationName <String>]: OpenAI Integration name
-  [MonitorName <String>]: Monitor resource name
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RuleSetName <String>]: Tag Rule Set resource name
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserApiKeyResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticorganizationapikey
 #>
 function Get-AzElasticOrganizationApiKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IUserApiKeyResponseProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserApiKeyResponse])]
 [CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
@@ -59,28 +39,23 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='GetViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IUserEmailId]
-    # Email Id of the User Organization, of which the API Key must be returned
-    # To construct, see NOTES section for BODY properties and create a hash table.
-    ${Body},
-
     [Parameter(ParameterSetName='GetExpanded')]
-    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
     [System.String]
     # The User email Id
     ${EmailId},
+
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Get operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Json string supplied to the Get operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -138,6 +113,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -157,14 +141,11 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.Elastic.private\Get-AzElasticOrganizationApiKey_Get';
             GetExpanded = 'Az.Elastic.private\Get-AzElasticOrganizationApiKey_GetExpanded';
-            GetViaIdentity = 'Az.Elastic.private\Get-AzElasticOrganizationApiKey_GetViaIdentity';
-            GetViaIdentityExpanded = 'Az.Elastic.private\Get-AzElasticOrganizationApiKey_GetViaIdentityExpanded';
+            GetViaJsonFilePath = 'Az.Elastic.private\Get-AzElasticOrganizationApiKey_GetViaJsonFilePath';
+            GetViaJsonString = 'Az.Elastic.private\Get-AzElasticOrganizationApiKey_GetViaJsonString';
         }
-        if (('Get', 'GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('GetExpanded', 'GetViaJsonFilePath', 'GetViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -178,6 +159,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

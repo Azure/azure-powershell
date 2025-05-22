@@ -40,23 +40,23 @@ $upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf
 Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $upgrade -SubscriptionId testSubId01
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpgradeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpgradeParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-PROFILEUPGRADEPARAMETER <IProfileUpgradeParameters>: Parameters required for profile upgrade.
-  WafMappingList <IProfileChangeSkuWafMapping[]>: Web Application Firewall (WAF) and security policy mapping for the profile upgrade
+PROFILEUPGRADEPARAMETER <IProfileUpgradeParameters>: Parameters required for profile upgrade. To construct, see NOTES section for PROFILEUPGRADEPARAMETER properties and create a hash table.
+  WafMappingList <List<IProfileChangeSkuWafMapping>>: Web Application Firewall (WAF) and security policy mapping for the profile upgrade
     SecurityPolicyName <String>: The security policy name.
     [ChangeToWafPolicyId <String>]: Resource ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnprofilesku
 #>
 function Update-AzFrontDoorCdnProfileSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -80,7 +80,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpgradeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpgradeParameters]
     # Parameters required for profile upgrade.
     # To construct, see NOTES section for PROFILEUPGRADEPARAMETER properties and create a hash table.
     ${ProfileUpgradeParameter},
@@ -152,6 +152,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -173,9 +182,7 @@ begin {
         $mapping = @{
             __AllParameterSets = 'Az.Cdn.custom\Update-AzFrontDoorCdnProfileSku';
         }
-        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -189,6 +196,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

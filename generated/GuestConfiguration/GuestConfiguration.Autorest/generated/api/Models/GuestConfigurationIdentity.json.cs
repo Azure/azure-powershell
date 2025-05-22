@@ -76,15 +76,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
             {
                 return;
             }
-            {_guestConfigurationAssignmentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("guestConfigurationAssignmentName"), out var __jsonGuestConfigurationAssignmentName) ? (string)__jsonGuestConfigurationAssignmentName : (string)GuestConfigurationAssignmentName;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_vMName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("vmName"), out var __jsonVMName) ? (string)__jsonVMName : (string)VMName;}
-            {_machineName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("machineName"), out var __jsonMachineName) ? (string)__jsonMachineName : (string)MachineName;}
-            {_vmssName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("vmssName"), out var __jsonVmssName) ? (string)__jsonVmssName : (string)VmssName;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_reportId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("reportId"), out var __jsonReportId) ? (string)__jsonReportId : (string)ReportId;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_guestConfigurationAssignmentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("guestConfigurationAssignmentName"), out var __jsonGuestConfigurationAssignmentName) ? (string)__jsonGuestConfigurationAssignmentName : (string)_guestConfigurationAssignmentName;}
+            {_vMName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("vmName"), out var __jsonVMName) ? (string)__jsonVMName : (string)_vMName;}
+            {_machineName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("machineName"), out var __jsonMachineName) ? (string)__jsonMachineName : (string)_machineName;}
+            {_vmssName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("vmssName"), out var __jsonVmssName) ? (string)__jsonVmssName : (string)_vmssName;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            {_reportId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("reportId"), out var __jsonReportId) ? (string)__jsonReportId : (string)_reportId;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 
@@ -107,9 +107,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._guestConfigurationAssignmentName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString(this._guestConfigurationAssignmentName.ToString()) : null, "guestConfigurationAssignmentName" ,container.Add );
             AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
+            AddIf( null != (((object)this._guestConfigurationAssignmentName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString(this._guestConfigurationAssignmentName.ToString()) : null, "guestConfigurationAssignmentName" ,container.Add );
             AddIf( null != (((object)this._vMName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString(this._vMName.ToString()) : null, "vmName" ,container.Add );
             AddIf( null != (((object)this._machineName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString(this._machineName.ToString()) : null, "machineName" ,container.Add );
             AddIf( null != (((object)this._vmssName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json.JsonString(this._vmssName.ToString()) : null, "vmssName" ,container.Add );

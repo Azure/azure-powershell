@@ -344,6 +344,29 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                     WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning));
                 }
             }
+
+            // Adding Check to display info message to customer if they are trying to Migrate db with GeoDr link to Hyperscale sku (Forward Migration).
+            //
+            var database = ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName);
+
+            if (database != null && !string.IsNullOrEmpty(database.SkuName))
+            {
+                string currentSku = database.SkuName;
+                string targetSku = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName)
+                    ? AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition)
+                    : RequestedServiceObjectiveName;
+                bool isHyperscalePool = ModelAdapter.CheckIfHyperscalePool(this.ResourceGroupName, this.ServerName, this.ElasticPoolName);
+                bool isForwardMigration = !currentSku.Contains("HS") &&
+                         ((targetSku != null && targetSku.Contains("HS")) || isHyperscalePool);
+
+                // Check if source database has GeoDr Link
+                //
+                if (isForwardMigration && ModelAdapter.CheckIfDatabaseHasGeoDrLink(this.ResourceGroupName, this.ServerName, this.DatabaseName))
+                {
+                    WriteInformation(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ForwardMigrationWithGeoDRInfo));
+                }
+            }
+
             base.ExecuteCmdlet();
         }
 

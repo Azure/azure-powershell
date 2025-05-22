@@ -1,4 +1,3 @@
-
 # ----------------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,13 +20,13 @@ Create an in-memory object for UserManagedHttpsParameters.
 Create an in-memory object for UserManagedHttpsParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UserManagedHttpsParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UserManagedHttpsParameters
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUserManagedHttpsParametersObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnusermanagedhttpsparametersobject
 #>
 function New-AzCdnUserManagedHttpsParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UserManagedHttpsParameters')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.GenericBreakingChange("Add new mandatory parameter CertificateSourceParameterTypeName.", "14.0.0", "5.0.0", "2025-05-19")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UserManagedHttpsParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,25 +42,28 @@ function New-AzCdnUserManagedHttpsParametersObject {
         [Parameter(Mandatory, HelpMessage="Subscription Id of the user's Key Vault containing the SSL certificate.")]
         [string]
         $CertificateSourceParameterSubscriptionId,
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("CdnCertificateSourceParameters", "KeyVaultCertificateSourceParameters")]
+        [string]
+        $CertificateSourceParameterTypeName,
         [Parameter(Mandatory, HelpMessage="The name of the user's Key Vault containing the SSL certificate.")]
         [string]
         $CertificateSourceParameterVaultName,
         [Parameter(Mandatory, HelpMessage="Defines the source of the SSL certificate.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSource])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSource]
+        [string]
         $CertificateSource,
         [Parameter(HelpMessage="TLS protocol version that will be used for Https.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MinimumTlsVersion])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MinimumTlsVersion]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "TLS10", "TLS12")]
+        [string]
         $MinimumTlsVersion,
         [Parameter(Mandatory, HelpMessage="Defines the TLS extension protocol that is used for secure delivery.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProtocolType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProtocolType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("ServerNameIndication", "IPBased")]
+        [string]
         $ProtocolType
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UserManagedHttpsParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UserManagedHttpsParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('CertificateSourceParameterResourceGroupName')) {
             $Object.CertificateSourceParameterResourceGroupName = $CertificateSourceParameterResourceGroupName
@@ -75,11 +77,11 @@ function New-AzCdnUserManagedHttpsParametersObject {
         if ($PSBoundParameters.ContainsKey('CertificateSourceParameterSubscriptionId')) {
             $Object.CertificateSourceParameterSubscriptionId = $CertificateSourceParameterSubscriptionId
         }
+        if ($PSBoundParameters.ContainsKey('CertificateSourceParameterTypeName')) {
+            $Object.CertificateSourceParameterTypeName = $CertificateSourceParameterTypeName
+        }
         if ($PSBoundParameters.ContainsKey('CertificateSourceParameterVaultName')) {
             $Object.CertificateSourceParameterVaultName = $CertificateSourceParameterVaultName
-        }
-        if ($PSBoundParameters.ContainsKey('CertificateSource')) {
-            $Object.CertificateSource = $CertificateSource
         }
         if ($PSBoundParameters.ContainsKey('MinimumTlsVersion')) {
             $Object.MinimumTlsVersion = $MinimumTlsVersion
@@ -90,4 +92,3 @@ function New-AzCdnUserManagedHttpsParametersObject {
         return $Object
     }
 }
-

@@ -61,4 +61,5 @@ Location Name              Kind      ResourceGroupName
 Global   profileName       frontdoor rgName
 ```
 
+
 A CDN profile associated with WAF, when the subscription of the profile is different from the local subscrition.

@@ -83,5 +83,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzApplicationGatewaySslPolicy](./New-AzApplicationGatewaySslPolicy.md)
 
 [Set-AzApplicationGatewaySslPolicy](./Set-AzApplicationGatewaySslPolicy.md)
-
-

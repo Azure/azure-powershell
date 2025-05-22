@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.DynamicDeliveryAttributeMapp
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgriddynamicdeliveryattributemappingobject
 #>
 function New-AzEventGridDynamicDeliveryAttributeMappingObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.DynamicDeliveryAttributeMapping')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

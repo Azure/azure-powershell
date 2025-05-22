@@ -71,6 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the federated identity credential resource.",
         SerializedName = @"federatedIdentityCredentialResourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -79,6 +82,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -87,6 +93,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Resource Group to which the identity belongs.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -95,6 +104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the identity resource.",
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -105,6 +117,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The resource provider scope of the resource. Parent resource being extended by Managed Identities.",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
@@ -113,6 +128,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Id of the Subscription to which the identity belongs.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

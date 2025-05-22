@@ -47,9 +47,9 @@ $cmkKeyUri = "https://samplekvazbckp.vault.azure.net/keys/testkey/3cd5235ad6ac4c
 New-AzDataProtectionBackupVault -SubscriptionId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Location "location" -StorageSetting $storagesetting -IdentityType UserAssigned -UserAssignedIdentity $userAssignedIdentity -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId $cmkIdentityId -CmkEncryptionKeyUri $cmkKeyUri -CmkInfrastructureEncryption Enabled
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -104,7 +104,7 @@ STORAGESETTING <IStorageSetting[]>: Storage Settings
 https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvault
 #>
 function New-AzDataProtectionBackupVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -137,7 +137,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource]
     # Backup Vault Resource
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -145,7 +145,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IStorageSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IStorageSetting[]]
     # Storage Settings
     # To construct, see NOTES section for STORAGESETTING properties and create a hash table.
     ${StorageSetting},
@@ -182,7 +182,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IEncryptionSettings]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IEncryptionSettings]
     # Customer Managed Key details of the resource.
     # To construct, see NOTES section for ENCRYPTIONSETTING properties and create a hash table.
     ${EncryptionSetting},
@@ -244,7 +244,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IDppBaseTrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IDppBaseTrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

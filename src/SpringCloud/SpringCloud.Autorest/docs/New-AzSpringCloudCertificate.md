@@ -8,18 +8,40 @@ schema: 2.0.0
 # New-AzSpringCloudCertificate
 
 ## SYNOPSIS
-Create or update certificate resource.
+create certificate resource.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSpringCloudCertificate -Name <String> -ResourceGroupName <String> -ServiceName <String>
  [-SubscriptionId <String>] [-Property <ICertificateProperties>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentitySpringExpanded
+```
+New-AzSpringCloudCertificate -Name <String> -SpringInputObject <ISpringCloudIdentity>
+ [-Property <ICertificateProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzSpringCloudCertificate -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzSpringCloudCertificate -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update certificate resource.
+create certificate resource.
 
 ## EXAMPLES
 
@@ -70,6 +92,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the certificate resource.
 
@@ -102,11 +154,10 @@ Accept wildcard characters: False
 
 ### -Property
 Properties of the certificate resource payload.
-To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICertificateProperties
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificateProperties
+Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -122,7 +173,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -137,7 +188,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -147,13 +198,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: CreateViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -199,9 +265,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICertificateResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificateResource
 
 ## NOTES
 

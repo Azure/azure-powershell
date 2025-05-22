@@ -14,7 +14,8 @@ Creates a VHubRoute object which can be passed as parameter to the New-AzVHubRou
 
 ```
 New-AzVHubRoute -Destination <String[]> -DestinationType <String> -NextHop <String> -Name <String>
- -NextHopType <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -NextHopType <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -16,27 +16,73 @@
 
 <#
 .Synopsis
-Creates a new origin within the specified endpoint.
+create a new origin within the specified endpoint.
 .Description
-Creates a new origin within the specified endpoint.
+create a new origin within the specified endpoint.
 .Example
 New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HostName "host1.hello.com" 
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+ENDPOINTINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [Id <String>]: Resource identity path
+  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RouteName <String>]: Name of the routing rule.
+  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
+  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
+  [SecretName <String>]: Name of the Secret under the profile.
+  [SecurityPolicyName <String>]: Name of the security policy under the profile.
+  [SubscriptionId <String>]: Azure Subscription ID.
+
+ORIGIN <IOrigin>: CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
+  [Enabled <Boolean?>]: Origin is enabled for load balancing or not
+  [HostHeader <String>]: The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint
+  [HostName <String>]: The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
+  [HttpPort <Int32?>]: The value of the HTTP port. Must be between 1 and 65535.
+  [HttpsPort <Int32?>]: The value of the HTTPS port. Must be between 1 and 65535.
+  [Location <String>]: 
+  [Priority <Int32?>]: Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5
+  [PrivateLinkAlias <String>]: The Alias of the Private Link resource. Populating this optional field indicates that this origin is 'Private'
+  [PrivateLinkApprovalMessage <String>]: A custom message to be included in the approval request to connect to the Private Link.
+  [PrivateLinkLocation <String>]: The location of the Private Link resource. Required only if 'privateLinkResourceId' is populated
+  [PrivateLinkResourceId <String>]: The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
+  [Weight <Int32?>]: Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
+
+PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [Id <String>]: Resource identity path
+  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RouteName <String>]: Name of the routing rule.
+  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
+  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
+  [SecretName <String>]: Name of the Secret under the profile.
+  [SecurityPolicyName <String>]: Name of the security policy under the profile.
+  [SubscriptionId <String>]: Azure Subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnorigin
 #>
 function New-AzCdnOrigin {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # Name of the endpoint under the profile which is unique globally.
-    ${EndpointName},
-
     [Parameter(Mandatory)]
     [Alias('OriginName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
@@ -44,53 +90,93 @@ param(
     # Name of the origin that is unique within the endpoint.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [System.String]
+    # Name of the endpoint under the profile which is unique globally.
+    ${EndpointName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the CDN profile which is unique within the resource group.
     ${ProfileName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityEndpoint', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityEndpointExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
+    ${EndpointInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
+    ${ProfileInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Origin is enabled for load balancing or not
     ${Enabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # The address of the origin.
     # Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
     ${HostName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.Int32]
     # The value of the HTTP port.
     # Must be between 1 and 65535.
     ${HttpPort},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.Int32]
     # The value of the HTTPS port.
     # Must be between 1 and 65535.
     ${HttpsPort},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # The host header value sent to the origin with each request.
@@ -99,46 +185,78 @@ param(
     # This overrides the host header defined at Endpoint
     ${OriginHostHeader},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.Int32]
     # Priority of origin in given origin group for load balancing.
     # Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5
     ${Priority},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # The Alias of the Private Link resource.
     # Populating this optional field indicates that this origin is 'Private'
     ${PrivateLinkAlias},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # A custom message to be included in the approval request to connect to the Private Link.
     ${PrivateLinkApprovalMessage},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # The location of the Private Link resource.
     # Required only if 'privateLinkResourceId' is populated
     ${PrivateLinkLocation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # The Resource Id of the Private Link resource.
     # Populating this optional field indicates that this backend is 'Private'
     ${PrivateLinkResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.Int32]
     # Weight of the origin in given origin group for load balancing.
     # Must be between 1 and 1000
     ${Weight},
+
+    [Parameter(ParameterSetName='CreateViaIdentityEndpoint', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin]
+    # CDN origin is the source of the content being delivered via CDN.
+    # When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
+    ${Origin},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -208,6 +326,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -227,11 +354,15 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded1 = 'Az.Cdn.private\New-AzCdnOrigin_CreateExpanded1';
+            CreateExpanded = 'Az.Cdn.private\New-AzCdnOrigin_CreateExpanded';
+            CreateViaIdentityEndpoint = 'Az.Cdn.private\New-AzCdnOrigin_CreateViaIdentityEndpoint';
+            CreateViaIdentityEndpointExpanded = 'Az.Cdn.private\New-AzCdnOrigin_CreateViaIdentityEndpointExpanded';
+            CreateViaIdentityProfile = 'Az.Cdn.private\New-AzCdnOrigin_CreateViaIdentityProfile';
+            CreateViaIdentityProfileExpanded = 'Az.Cdn.private\New-AzCdnOrigin_CreateViaIdentityProfileExpanded';
+            CreateViaJsonFilePath = 'Az.Cdn.private\New-AzCdnOrigin_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Cdn.private\New-AzCdnOrigin_CreateViaJsonString';
         }
-        if (('CreateExpanded1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -245,6 +376,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DeviceUpdate
-online version: https://learn.microsoft.com/powershell/module/az.DeviceUpdate/new-AzDeviceUpdateCheckNameAvailabilityRequestObject
+online version: https://learn.microsoft.com/powershell/module/Az.DeviceUpdate/new-azdeviceupdatechecknameavailabilityrequestobject
 schema: 2.0.0
 ---
 
@@ -73,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.CheckNameAvailabilityRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.CheckNameAvailabilityRequest
 
 ## NOTES
 

@@ -6,6 +6,8 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Cmdlets;
     using System;
 
     /// <summary>Generate configurations for a Linker.</summary>
@@ -14,12 +16,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzServiceLinkerConfiguration_Generate", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ISourceConfiguration))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Description(@"Generate configurations for a Linker.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.HttpPath(Path = "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/generateConfigurations", ApiVersion = "2022-11-01-preview")]
     public partial class NewAzServiceLinkerConfiguration_Generate : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,10 +38,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ServiceLinker Client => Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Module.Instance.ClientAPI;
@@ -52,6 +70,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -91,7 +112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Parameter" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfo _parameter;
+        private Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationInfo _parameter;
 
         /// <summary>
         /// The configuration information, used to generate configurations or save to applications
@@ -102,13 +123,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         ReadOnly = false,
         Description = @"The configuration information, used to generate configurations or save to applications",
         SerializedName = @"parameters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfo) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfo Parameter { get => this._parameter; set => this._parameter = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationInfo) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ParameterCategory.Body)]
+        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationInfo Parameter { get => this._parameter; set => this._parameter = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -147,24 +169,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationResult">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationResult">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -187,6 +209,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -251,8 +278,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -262,7 +314,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzServiceLinkerConfiguration_Generate" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzServiceLinkerConfiguration_Generate" /> cmdlet class.
         /// </summary>
         public NewAzServiceLinkerConfiguration_Generate()
         {
@@ -316,7 +368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -334,7 +386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceUri=ResourceUri,LinkerName=LinkerName,body=Parameter})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceUri=ResourceUri,LinkerName=LinkerName})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -372,12 +424,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -394,15 +446,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceUri=ResourceUri, LinkerName=LinkerName, body=Parameter })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceUri=ResourceUri, LinkerName=LinkerName, body=Parameter })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -412,12 +464,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationResult">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationResult">Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationResult> response)
         {
             using( NoSynchronizationContext )
             {
@@ -429,9 +481,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationResult
+                var result = (await response);
                 // response should be returning an array of some kind. +Pageable
                 // nested-array / configurations / <none>
-                WriteObject((await response).Configuration, true);
+                if (null != result.Configuration)
+                {
+                    if (0 == _responseSize && 1 == result.Configuration.Count)
+                    {
+                        _firstResponse = result.Configuration[0];
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        var values = new System.Collections.Generic.List<System.Management.Automation.PSObject>();
+                        foreach( var value in result.Configuration )
+                        {
+                            values.Add(value.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(values, true);
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

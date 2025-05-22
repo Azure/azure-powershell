@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Removed all cmdlets related to the retired `Storage Caches` resource.
+* Updated `New-AzStorageCacheAmlFileSystem`:
+    - Removed `-IdentityType` parameter to support new Managed Identity settings.
+    - Renamed `-IdentityUserAssignedIdentity` to `-UserAssignedIdentity`.
+    - Added `EnableSystemAssignedIdentity` to enable/disable system-assigned identities.
 
 ## Version 0.1.2
 * Upgraded nuget package to signed package.

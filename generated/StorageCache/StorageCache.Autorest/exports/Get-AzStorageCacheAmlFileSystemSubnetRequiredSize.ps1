@@ -22,44 +22,21 @@ Get the number of available IP addresses needed for the AML file system informat
 .Example
 Get-AzStorageCacheAmlFileSystemSubnetRequiredSize -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
 .Outputs
-System.Int32
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
-  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
-  [SubscriptionId <String>]: The ID of the target subscription.
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IRequiredAmlFilesystemSubnetsSize
 .Link
 https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecacheamlfilesystemsubnetrequiredsize
 #>
 function Get-AzStorageCacheAmlFileSystemSubnetRequiredSize {
-[OutputType([System.Int32])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IRequiredAmlFilesystemSubnetsSize])]
 [CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
@@ -129,6 +106,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -149,11 +135,8 @@ begin {
 
         $mapping = @{
             GetExpanded = 'Az.StorageCache.private\Get-AzStorageCacheAmlFileSystemSubnetRequiredSize_GetExpanded';
-            GetViaIdentityExpanded = 'Az.StorageCache.private\Get-AzStorageCacheAmlFileSystemSubnetRequiredSize_GetViaIdentityExpanded';
         }
-        if (('GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -167,6 +150,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

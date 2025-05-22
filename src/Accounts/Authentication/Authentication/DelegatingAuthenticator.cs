@@ -12,6 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Core;
+using Azure.Identity;
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -64,10 +69,28 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             if (Next != null)
             {
-                return Next.TryAuthenticate(parameters, cancellationToken, out token);
+                var retToken = Next.TryAuthenticate(parameters, cancellationToken, out token);
+                telemetry = Next.GetDataForTelemetry();
+                return retToken;
             }
 
             return false;
         }
+
+        protected AuthTelemetryRecord telemetry = new AuthTelemetryRecord();
+
+        public AuthTelemetryRecord GetDataForTelemetry()
+        {
+            return telemetry;
+        }
+
+        protected virtual void CollectTelemetry(TokenCredential credential, TokenCredentialOptions options = null)
+        {
+            telemetry.TokenCredentialName = credential?.GetType()?.Name;
+            telemetry.SetProperty(AuthTelemetryRecord.TokenCacheEnabled, CheckTokenCachePersistanceEnabled().ToString());
+            telemetry.SetProperty(nameof(TokenCredentialOptions), options?.GetType()?.Name);
+        }
+
+        protected Func<bool> CheckTokenCachePersistanceEnabled = () => { return false; };
     }
 }

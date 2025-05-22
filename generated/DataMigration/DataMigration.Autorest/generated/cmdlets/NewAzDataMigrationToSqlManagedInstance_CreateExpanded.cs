@@ -12,12 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDataMigrationToSqlManagedInstance_CreateExpanded", SupportsShouldProcess = true)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.PreviewMessage("Only use cmdlets containing ToSqlManagedInstance in their name for getting or deleting or performing cutover on a migration created using New-AzDataMigrationToSqlManagedInstance")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlMi))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description(@"Create a new database migration to a given SQL Managed Instance.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}", ApiVersion = "2022-03-30-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}", ApiVersion = "2025-03-15-preview")]
     public partial class NewAzDataMigrationToSqlManagedInstance_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener
     {
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Database Migration Resource for SQL Managed Instance.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.DatabaseMigrationSqlMi();
+        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlMi _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationSqlMi();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -54,6 +55,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string AzureBlobAccountKey { get => _parametersBody.AzureBlobAccountKey ?? null; set => _parametersBody.AzureBlobAccountKey = value; }
 
+        /// <summary>Authentication type used for accessing Azure Blob Storage.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Authentication type used for accessing Azure Blob Storage.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Authentication type used for accessing Azure Blob Storage.",
+        SerializedName = @"authType",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.AuthType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.AuthType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.AuthType AzureBlobAuthType { get => _parametersBody.AzureBlobAuthType ?? ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.AuthType)""); set => _parametersBody.AzureBlobAuthType = value; }
+
         /// <summary>Blob container name where backups are stored.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Blob container name where backups are stored.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ParameterCategory.Body)]
@@ -64,6 +77,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         SerializedName = @"blobContainerName",
         PossibleTypes = new [] { typeof(string) })]
         public string AzureBlobContainerName { get => _parametersBody.AzureBlobContainerName ?? null; set => _parametersBody.AzureBlobContainerName = value; }
+
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ManagedServiceIdentityType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ManagedServiceIdentityType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ManagedServiceIdentityType AzureBlobIdentityType { get => _parametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ManagedServiceIdentityType)""); set => _parametersBody.IdentityType = value; }
 
         /// <summary>Resource Id of the storage account where backups are stored.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource Id of the storage account where backups are stored.")]
@@ -139,6 +166,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api60.IManagedServiceIdentityUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api60.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => _parametersBody.IdentityUserAssignedIdentity ?? null /* object */; set => _parametersBody.IdentityUserAssignedIdentity = value; }
+
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
@@ -175,13 +218,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
-        /// <summary>ID tracking current migration operation.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ID tracking current migration operation.")]
+        /// <summary>ID for current migration operation.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ID for current migration operation.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"ID tracking current migration operation.",
+        Description = @"ID for current migration operation.",
         SerializedName = @"migrationOperationId",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.DoNotExport]
@@ -288,13 +331,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>Resource Id of the target resource (SQL VM or SQL Managed Instance)</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource Id of the target resource (SQL VM or SQL Managed Instance)")]
+        /// <summary>Resource Id of the target resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource Id of the target resource.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Resource Id of the target resource (SQL VM or SQL Managed Instance)",
+        Description = @"Resource Id of the target resource.",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
         public string Scope { get => _parametersBody.Scope ?? null; set => _parametersBody.Scope = value; }
@@ -456,12 +499,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi">Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlMi">Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlMi</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlMi> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -750,12 +793,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi">Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlMi">Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlMi</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlMi> response)
         {
             using( NoSynchronizationContext )
             {
@@ -767,7 +810,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlMi
                 WriteObject((await response));
             }
         }

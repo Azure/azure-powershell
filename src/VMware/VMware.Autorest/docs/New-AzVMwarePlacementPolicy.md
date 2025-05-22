@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwarePlacementPolicy
 
 ## SYNOPSIS
-Create a PlacementPolicy
+create a PlacementPolicy
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ New-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateCloudIn
 ```
 
 ## DESCRIPTION
-Create a PlacementPolicy
+create a PlacementPolicy
 
 ## EXAMPLES
 

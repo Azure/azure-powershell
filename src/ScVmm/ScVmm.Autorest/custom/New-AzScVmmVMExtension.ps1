@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to create the extension on a virtual machine where Guest Management is enabled.
+The operation to create the extension on a virtual machine where Azure Arc agent is installed.
 .Description
-The operation to create the extension on a virtual machine where Guest Management is enabled.
+The operation to create the extension on a virtual machine where Azure Arc agent is installed.
 .Example
 New-AzScVmmVMExtension -vmName 'test-vm' -ResourceGroupName 'test-rg-01' -Location 'eastus' -ExtensionName 'RunCommand' -Type 'CustomScriptExtension' -Publisher 'Microsoft.Compute' -Setting @{"commandToExecute"= "whoami"}
 

@@ -35,12 +35,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagecache/invoke-azstoragecacheamlfilesystemarchive
@@ -50,6 +46,8 @@ function Invoke-AzStorageCacheAmlFileSystemArchive {
 [CmdletBinding(DefaultParameterSetName='ArchiveExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ArchiveExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ArchiveViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ArchiveViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
     # Name for the AML file system.
@@ -58,6 +56,8 @@ param(
     ${AmlFilesystemName},
 
     [Parameter(ParameterSetName='ArchiveExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ArchiveViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ArchiveViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -65,6 +65,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='ArchiveExpanded')]
+    [Parameter(ParameterSetName='ArchiveViaJsonFilePath')]
+    [Parameter(ParameterSetName='ArchiveViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -75,15 +77,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ArchiveExpanded')]
+    [Parameter(ParameterSetName='ArchiveViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # Lustre file system path to archive relative to the file system root.
     # Specify '/' to archive all modified data.
     ${FilesystemPath},
+
+    [Parameter(ParameterSetName='ArchiveViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Archive operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ArchiveViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Archive operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -147,6 +161,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -168,10 +191,10 @@ begin {
         $mapping = @{
             ArchiveExpanded = 'Az.StorageCache.private\Invoke-AzStorageCacheAmlFileSystemArchive_ArchiveExpanded';
             ArchiveViaIdentityExpanded = 'Az.StorageCache.private\Invoke-AzStorageCacheAmlFileSystemArchive_ArchiveViaIdentityExpanded';
+            ArchiveViaJsonFilePath = 'Az.StorageCache.private\Invoke-AzStorageCacheAmlFileSystemArchive_ArchiveViaJsonFilePath';
+            ArchiveViaJsonString = 'Az.StorageCache.private\Invoke-AzStorageCacheAmlFileSystemArchive_ArchiveViaJsonString';
         }
-        if (('ArchiveExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ArchiveExpanded', 'ArchiveViaJsonFilePath', 'ArchiveViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -185,6 +208,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

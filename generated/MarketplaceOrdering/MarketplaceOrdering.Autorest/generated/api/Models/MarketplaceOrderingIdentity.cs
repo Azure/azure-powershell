@@ -27,11 +27,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models
         public string OfferId { get => this._offerId; set => this._offerId = value; }
 
         /// <summary>Backing field for <see cref="OfferType" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType? _offerType;
+        private string _offerType;
 
         /// <summary>Offer Type, currently only virtualmachine type is supported.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Origin(Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType? OfferType { get => this._offerType; set => this._offerType = value; }
+        public string OfferType { get => this._offerType; set => this._offerType = value; }
 
         /// <summary>Backing field for <see cref="PlanId" /> property.</summary>
         private string _planId;
@@ -67,6 +67,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -75,6 +78,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Offer identifier string of image being deployed.",
         SerializedName = @"offerId",
         PossibleTypes = new [] { typeof(string) })]
@@ -83,14 +89,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Offer Type, currently only virtualmachine type is supported.",
         SerializedName = @"offerType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType? OfferType { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.PSArgumentCompleterAttribute("virtualmachine")]
+        string OfferType { get; set; }
         /// <summary>Plan identifier string of image being deployed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Plan identifier string of image being deployed.",
         SerializedName = @"planId",
         PossibleTypes = new [] { typeof(string) })]
@@ -99,6 +112,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Publisher identifier string of image being deployed.",
         SerializedName = @"publisherId",
         PossibleTypes = new [] { typeof(string) })]
@@ -107,6 +123,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The subscription ID that identifies an Azure subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -121,7 +140,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models
         /// <summary>Offer identifier string of image being deployed.</summary>
         string OfferId { get; set; }
         /// <summary>Offer Type, currently only virtualmachine type is supported.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType? OfferType { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.PSArgumentCompleterAttribute("virtualmachine")]
+        string OfferType { get; set; }
         /// <summary>Plan identifier string of image being deployed.</summary>
         string PlanId { get; set; }
         /// <summary>Publisher identifier string of image being deployed.</summary>

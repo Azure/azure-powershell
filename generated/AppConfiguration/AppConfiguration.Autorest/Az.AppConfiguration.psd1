@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.AppConfiguration.private.dll'
   FormatsToProcess = './Az.AppConfiguration.format.ps1xml'
-  FunctionsToExport = 'Clear-AzAppConfigurationDeletedStore', 'Get-AzAppConfigurationDeletedStore', 'Get-AzAppConfigurationStore', 'Get-AzAppConfigurationStoreKey', 'New-AzAppConfigurationStore', 'New-AzAppConfigurationStoreKey', 'Remove-AzAppConfigurationStore', 'Test-AzAppConfigurationStoreNameAvailability', 'Update-AzAppConfigurationStore', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Clear-AzAppConfigurationDeletedStore', 'Get-AzAppConfigurationDeletedStore', 'Get-AzAppConfigurationStore', 'Get-AzAppConfigurationStoreKey', 'New-AzAppConfigurationStore', 'New-AzAppConfigurationStoreKey', 'Remove-AzAppConfigurationStore', 'Test-AzAppConfigurationStoreNameAvailability', 'Update-AzAppConfigurationStore'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'AppConfiguration'

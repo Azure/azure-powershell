@@ -15,7 +15,8 @@ Gets information about VPN root certificates.
 
 ```
 Get-AzVpnClientRootCertificate [-VpnClientRootCertificateName <String>] -VirtualNetworkGatewayName <String>
- -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -124,5 +125,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzVpnClientRootCertificate](./New-AzVpnClientRootCertificate.md)
 
 [Remove-AzVpnClientRootCertificate](./Remove-AzVpnClientRootCertificate.md)
-
-

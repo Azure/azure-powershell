@@ -12,14 +12,35 @@ Updates service.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-Update-AzMobileNetworkService -MobileNetworkName <String> -ServiceName <String> -ResourceGroupName <String>
+Update-AzMobileNetworkService -MobileNetworkName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -ServicePrecedence <Int32> [-PccRule <IPccRuleConfiguration[]>]
  [-MaximumBitRateDownlink <String>] [-MaximumBitRateUplink <String>]
  [-ServiceQoPolicyAllocationAndRetentionPriorityLevel <Int32>] [-ServiceQoPolicyFiveQi <Int32>]
- [-ServiceQoPolicyPreemptionCapability <PreemptionCapability>]
- [-ServiceQoPolicyPreemptionVulnerability <PreemptionVulnerability>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServiceQoPolicyPreemptionCapability <String>] [-ServiceQoPolicyPreemptionVulnerability <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityMobileNetworkExpanded
+```
+Update-AzMobileNetworkService -Name <String> -MobileNetworkInputObject <IMobileNetworkIdentity>
+ -ServicePrecedence <Int32> [-PccRule <IPccRuleConfiguration[]>] [-MaximumBitRateDownlink <String>]
+ [-MaximumBitRateUplink <String>] [-ServiceQoPolicyAllocationAndRetentionPriorityLevel <Int32>]
+ [-ServiceQoPolicyFiveQi <Int32>] [-ServiceQoPolicyPreemptionCapability <String>]
+ [-ServiceQoPolicyPreemptionVulnerability <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzMobileNetworkService -InputObject <IMobileNetworkIdentity> -ServicePrecedence <Int32>
+ [-PccRule <IPccRuleConfiguration[]>] [-MaximumBitRateDownlink <String>] [-MaximumBitRateUplink <String>]
+ [-ServiceQoPolicyAllocationAndRetentionPriorityLevel <Int32>] [-ServiceQoPolicyFiveQi <Int32>]
+ [-ServiceQoPolicyPreemptionCapability <String>] [-ServiceQoPolicyPreemptionVulnerability <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +63,21 @@ Updates service.
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -55,6 +91,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -88,12 +139,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MobileNetworkInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: UpdateViaIdentityMobileNetworkExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MobileNetworkName
 The name of the mobile network.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -103,12 +169,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PccRule
-The set of data flow policy rules that make up this service.
-To construct, see NOTES section for PCCRULE properties and create a hash table.
+### -Name
+The name of the service.
+You must not use any of the following reserved strings - 'default', 'requested' or 'service'
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPccRuleConfiguration[]
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMobileNetworkExpanded
+Aliases: ServiceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PccRule
+The set of data flow policy rules that make up this service.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPccRuleConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -125,23 +221,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServiceName
-The name of the service.
-You must not use any of the following reserved strings - 'default', 'requested' or 'service'
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -188,11 +268,9 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceQoPolicyFiveQi
-QoS Flow 5G QoS Indicator value.
+5G QoS Flow Indicator value.
 The 5QI identifies a specific QoS forwarding treatment to be provided to a flow.
-This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow.
-The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85.
-See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 
 ```yaml
 Type: System.Int32
@@ -212,7 +290,7 @@ The preemption capability of a QoS Flow controls whether it can preempt another 
 See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -229,7 +307,7 @@ The preemption vulnerability of a QoS Flow controls whether it can be preempted 
 See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -245,7 +323,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -310,7 +388,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IService
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IService
 
 ## NOTES
 

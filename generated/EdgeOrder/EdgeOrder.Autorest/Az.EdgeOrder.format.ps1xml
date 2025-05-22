@@ -2,343 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.EdgeOrderIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.AddressProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.EdgeOrderIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AddressName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>OrderItemName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>OrderName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AddressName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>OrderItemName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>OrderName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.ErrorDetail</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.ErrorDetail</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.Operation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.Operation</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ActionType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsDataAction</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Origin</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ActionType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsDataAction</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Origin</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.OperationDisplay</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.OperationDisplay</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Operation</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Provider</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Resource</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Operation</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Provider</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Resource</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.OperationListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.OperationListResult</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.ProxyResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.ProxyResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.Resource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.Resource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.SystemData</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.SystemData</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.TrackedResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.TrackedResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.TrackedResourceTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.TrackedResourceTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.AddressProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.AddressProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.AddressProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -358,9 +24,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.AddressResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.AddressResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.AddressResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.AddressResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -369,6 +35,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -380,15 +49,18 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.AddressResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.AddressResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.AddressResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.AddressResourceList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -408,9 +80,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.AddressUpdateParameterTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.AddressUpdateParameterTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.AddressUpdateParameterTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.AddressUpdateParameterTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -430,9 +102,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.AvailabilityInformation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.AvailabilityInformation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.AvailabilityInformation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.AvailabilityInformation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -464,9 +136,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.BasicInformation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.BasicInformation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.BasicInformation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.BasicInformation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -486,9 +158,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.BillingMeterDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.BillingMeterDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.BillingMeterDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.BillingMeterDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -520,9 +192,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.CancellationReason</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.CancellationReason</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.CancellationReason</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.CancellationReason#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -542,9 +214,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.CommonProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.CommonProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.CommonProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.CommonProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -559,12 +231,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>CostInformationBillingInfoUrl</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DescriptionAttribute</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DescriptionKeyword</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DescriptionLongDescription</Label>
@@ -595,12 +261,6 @@
                 <PropertyName>CostInformationBillingInfoUrl</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DescriptionAttribute</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DescriptionKeyword</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DescriptionLongDescription</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -618,9 +278,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ConfigurationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ConfigurationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ConfigurationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ConfigurationProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -635,12 +295,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>CostInformationBillingInfoUrl</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DescriptionAttribute</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DescriptionKeyword</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DescriptionLongDescription</Label>
@@ -671,12 +325,6 @@
                 <PropertyName>CostInformationBillingInfoUrl</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DescriptionAttribute</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DescriptionKeyword</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DescriptionLongDescription</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -694,9 +342,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Configurations</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Configurations</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Configurations</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Configurations#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -716,17 +364,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ContactDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ContactDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>ContactName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EmailList</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Mobile</Label>
@@ -745,9 +390,6 @@
                 <PropertyName>ContactName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>EmailList</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Mobile</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -762,9 +404,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.CostInformation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.CostInformation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.CostInformation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.CostInformation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -784,9 +426,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.CustomerSubscriptionDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.CustomerSubscriptionDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.CustomerSubscriptionDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.CustomerSubscriptionDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -812,9 +454,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.CustomerSubscriptionRegisteredFeatures</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.CustomerSubscriptionRegisteredFeatures</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.CustomerSubscriptionRegisteredFeatures</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.CustomerSubscriptionRegisteredFeatures#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -840,18 +482,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Description</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Description</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Description</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Description#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>Attribute</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Keyword</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>LongDescription</Label>
           </TableColumnHeader>
@@ -862,12 +498,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Attribute</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Keyword</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LongDescription</PropertyName>
               </TableColumnItem>
@@ -880,9 +510,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.DeviceDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.DeviceDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.DeviceDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.DeviceDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -914,9 +544,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Dimensions</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Dimensions</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Dimensions</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Dimensions#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -972,9 +602,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.DisplayInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.DisplayInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.DisplayInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.DisplayInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1000,9 +630,61 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.EncryptionPreferences</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.EdgeOrderIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.EncryptionPreferences</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.EdgeOrderIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AddressName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OrderItemName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OrderName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AddressName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OrderItemName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OrderName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.EncryptionPreferences</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.EncryptionPreferences#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1022,21 +704,33 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ErrorDetail#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>SupportedValue</Label>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>SupportedValue</PropertyName>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1044,9 +738,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ForwardShippingDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ForwardShippingDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ForwardShippingDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ForwardShippingDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1084,9 +778,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.HierarchyInformation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.HierarchyInformation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.HierarchyInformation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.HierarchyInformation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1124,9 +818,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ImageInformation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ImageInformation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ImageInformation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ImageInformation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1152,9 +846,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Link</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Link</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Link</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Link#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1174,9 +868,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ManagementResourcePreferences</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ManagementResourcePreferences</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ManagementResourcePreferences</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ManagementResourcePreferences#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1196,9 +890,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.MeterDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.MeterDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.MeterDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.MeterDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1230,9 +924,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.NotificationPreference</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.NotificationPreference</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.NotificationPreference</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.NotificationPreference#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1258,9 +952,111 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Operation#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ActionType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsDataAction</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Origin</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ActionType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsDataAction</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Origin</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OperationDisplay</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OperationDisplay#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Operation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Provider</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Resource</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Operation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Provider</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Resource</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OperationListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OperationListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1272,9 +1068,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DeletionStatus</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NotificationEmailList</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>OrderItemType</Label>
@@ -1299,9 +1092,6 @@
                 <PropertyName>DeletionStatus</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>NotificationEmailList</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>OrderItemType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1316,9 +1106,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1344,9 +1134,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1355,6 +1145,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1366,15 +1159,18 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemResourceList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1394,9 +1190,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemUpdateParameterTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemUpdateParameterTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemUpdateParameterTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemUpdateParameterTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1416,58 +1212,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemUpdateProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NotificationEmailList</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NotificationEmailList</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>OrderItemId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>OrderItemId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1476,15 +1231,18 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderResourceList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1504,9 +1262,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Pav2MeterDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Pav2MeterDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Pav2MeterDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Pav2MeterDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1544,9 +1302,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ProductDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ProductDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ProductDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ProductDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1572,9 +1330,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ProductFamilies</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ProductFamilies</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ProductFamilies</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ProductFamilies#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1594,9 +1352,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ProductFamiliesMetadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ProductFamiliesMetadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ProductFamiliesMetadata</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ProductFamiliesMetadata#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1616,9 +1374,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ProductFamilyProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ProductFamilyProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ProductFamilyProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ProductFamilyProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1633,12 +1391,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>CostInformationBillingInfoUrl</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DescriptionAttribute</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DescriptionKeyword</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DescriptionLongDescription</Label>
@@ -1669,12 +1421,6 @@
                 <PropertyName>CostInformationBillingInfoUrl</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DescriptionAttribute</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DescriptionKeyword</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DescriptionLongDescription</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1692,9 +1438,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ProductLineProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ProductLineProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ProductLineProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ProductLineProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1709,12 +1455,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>CostInformationBillingInfoUrl</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DescriptionAttribute</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DescriptionKeyword</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DescriptionLongDescription</Label>
@@ -1745,12 +1485,6 @@
                 <PropertyName>CostInformationBillingInfoUrl</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DescriptionAttribute</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DescriptionKeyword</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DescriptionLongDescription</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1768,9 +1502,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ProductProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ProductProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ProductProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ProductProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1785,12 +1519,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>CostInformationBillingInfoUrl</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DescriptionAttribute</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DescriptionKeyword</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DescriptionLongDescription</Label>
@@ -1821,12 +1549,6 @@
                 <PropertyName>CostInformationBillingInfoUrl</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DescriptionAttribute</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DescriptionKeyword</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DescriptionLongDescription</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1844,9 +1566,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.PurchaseMeterDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.PurchaseMeterDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ProxyResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.PurchaseMeterDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.PurchaseMeterDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1896,9 +1640,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ResourceIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ResourceIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Resource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ResourceIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ResourceIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1924,9 +1690,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ResourceProviderDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ResourceProviderDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ResourceProviderDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ResourceProviderDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1946,9 +1712,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ReturnOrderItemDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ReturnOrderItemDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ReturnOrderItemDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ReturnOrderItemDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1980,9 +1746,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ReverseShippingDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ReverseShippingDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ReverseShippingDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ReverseShippingDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2026,9 +1792,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingAddress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingAddress#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2102,9 +1868,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2142,9 +1908,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Specification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Specification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Specification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Specification#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2170,9 +1936,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.StageDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.StageDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.StageDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.StageDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2210,9 +1976,111 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.TransportPreferences</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.TransportPreferences</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.SystemData#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.TrackedResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.TrackedResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.TrackedResourceTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.TrackedResourceTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.TransportPreferences</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.TransportPreferences#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

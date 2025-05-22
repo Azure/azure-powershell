@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Network
 
 
 
-            string apiVersion = "2024-05-01";
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -306,6 +306,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// IP Address Manager Pool resource name.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The entity state (ETag) version of the pool to update. This value can be
+        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
+        /// </param>
         /// <param name='body'>
         /// Pool resource object to create/update.
         /// </param>
@@ -315,10 +319,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IpamPool,IpamPoolsCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, IpamPool body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IpamPool,IpamPoolsCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, IpamPool body, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<IpamPool,IpamPoolsCreateHeaders> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, body, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<IpamPool,IpamPoolsCreateHeaders> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, body, ifMatch, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -333,6 +337,10 @@ namespace Microsoft.Azure.Management.Network
         /// </param>
         /// <param name='poolName'>
         /// IP Address Manager Pool resource name.
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The entity state (ETag) version of the pool to update. This value can be
+        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
         /// </param>
         /// <param name='body'>
         /// Pool resource object to update partially.
@@ -358,7 +366,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IpamPool>> UpdateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, IpamPoolUpdate body = default(IpamPoolUpdate), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IpamPool>> UpdateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, string ifMatch = default(string), IpamPoolUpdate body = default(IpamPoolUpdate), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -396,7 +404,8 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
-            string apiVersion = "2024-05-01";
+
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -408,6 +417,7 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("networkManagerName", networkManagerName);
                 tracingParameters.Add("poolName", poolName);
                 tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("ifMatch", ifMatch);
 
                 tracingParameters.Add("body", body);
 
@@ -449,6 +459,14 @@ namespace Microsoft.Azure.Management.Network
                     _httpRequest.Headers.Remove("accept-language");
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+            if (ifMatch != null)
+            {
+                if (_httpRequest.Headers.Contains("If-Match"))
+                {
+                    _httpRequest.Headers.Remove("If-Match");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("If-Match", ifMatch);
             }
 
             if (customHeaders != null)
@@ -630,7 +648,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
-            string apiVersion = "2024-05-01";
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -798,16 +816,20 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// Pool resource name.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The entity state (ETag) version of the pool to update. This value can be
+        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<IpamPoolsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<IpamPoolsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationHeaderResponse<IpamPoolsDeleteHeaders> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationHeaderResponse<IpamPoolsDeleteHeaders> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, ifMatch, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -882,7 +904,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
-            string apiVersion = "2024-05-01";
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1109,7 +1131,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
-            string apiVersion = "2024-05-01";
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1277,6 +1299,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// IP Address Manager Pool resource name.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The entity state (ETag) version of the pool to update. This value can be
+        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
+        /// </param>
         /// <param name='body'>
         /// Pool resource object to create/update.
         /// </param>
@@ -1301,7 +1327,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IpamPool,IpamPoolsCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, IpamPool body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IpamPool,IpamPoolsCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, IpamPool body, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -1347,7 +1373,8 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
-            string apiVersion = "2024-05-01";
+
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1359,6 +1386,7 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("networkManagerName", networkManagerName);
                 tracingParameters.Add("poolName", poolName);
                 tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("ifMatch", ifMatch);
 
                 tracingParameters.Add("body", body);
 
@@ -1400,6 +1428,14 @@ namespace Microsoft.Azure.Management.Network
                     _httpRequest.Headers.Remove("accept-language");
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+            if (ifMatch != null)
+            {
+                if (_httpRequest.Headers.Contains("If-Match"))
+                {
+                    _httpRequest.Headers.Remove("If-Match");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("If-Match", ifMatch);
             }
 
             if (customHeaders != null)
@@ -1553,6 +1589,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// Pool resource name.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The entity state (ETag) version of the pool to update. This value can be
+        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -1571,7 +1611,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<IpamPoolsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<IpamPoolsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -1609,7 +1649,8 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
-            string apiVersion = "2024-05-01";
+
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1621,6 +1662,7 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("networkManagerName", networkManagerName);
                 tracingParameters.Add("poolName", poolName);
                 tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("ifMatch", ifMatch);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -1661,6 +1703,14 @@ namespace Microsoft.Azure.Management.Network
                     _httpRequest.Headers.Remove("accept-language");
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+            if (ifMatch != null)
+            {
+                if (_httpRequest.Headers.Contains("If-Match"))
+                {
+                    _httpRequest.Headers.Remove("If-Match");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("If-Match", ifMatch);
             }
 
             if (customHeaders != null)

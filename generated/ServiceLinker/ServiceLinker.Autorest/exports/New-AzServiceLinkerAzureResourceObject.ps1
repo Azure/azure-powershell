@@ -23,12 +23,12 @@ Create an in-memory object for AzureResource.
 New-AzServiceLinkerAzureResourceObject -Id /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/servicelinker-test-group/providers/Microsoft.KeyVault/vaults/servicelinker-test-kv -ConnectAsKubernetesCsiDriver 1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.AzureResource
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.AzureResource
 .Link
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerazureresourceobject
 #>
 function New-AzServiceLinkerAzureResourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.AzureResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.AzureResource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -45,10 +45,9 @@ param(
     ${ConnectAsKubernetesCsiDriver},
 
     [Parameter(DontShow)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.TargetServiceType])]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script='"AzureResource"')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.TargetServiceType]
+    [System.String]
     # The target service type.
     ${Type}
 )
@@ -60,6 +59,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -81,7 +83,7 @@ begin {
         $mapping = @{
             __AllParameterSets = 'Az.ServiceLinker.custom\New-AzServiceLinkerAzureResourceObject';
         }
-        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Type')) {
+        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Type') ) {
             $PSBoundParameters['Type'] = "AzureResource"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -91,6 +93,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

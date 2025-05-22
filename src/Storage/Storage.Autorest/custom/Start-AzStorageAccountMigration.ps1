@@ -64,7 +64,6 @@ INPUTOBJECT <IStorageIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storage/start-azstorageaccountmigration
 #>
 function Start-AzStorageAccountMigration {
-[Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.GenericBreakingChangeAttribute("A prompt that needs users' confirmation will be added when converting the account's redundancy configuration. Suppress it with -Force.", "14.0.0", "9.0.0", "2025/05/19")]
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='CustomerExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -199,11 +198,21 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
+    ${ProxyUseDefaultCredentials},
+    
+    [Parameter()]
+    # Forces the cmdlet to convert the account's redundancy configuration without prompting for confirmation.
+    [System.Management.Automation.SwitchParameter]
+    ${Force}
 )
 
     process {
-        Write-Warning("After your request to convert the account's redundancy configuration is validated, the conversion will typically complete in a few days, but can take a few weeks depending on current resource demands in the region, account size, and other factors. The conversion can't be stopped after being initiated, and for accounts with geo redundancy a failover can't be initiated while conversion is in progress. The data within the storage account will continue to be accessible with no loss of durability or availability.")
+
+      if ($Force.IsPresent -or $PsCmdlet.ShouldContinue("Confirm redundancy configuration change:", "After your request to convert the account's redundancy configuration is validated, the conversion will typically complete in a few days, but can take several weeks depending on current resource demands in the region, account size, and other factors. The conversion can't be stopped after being initiated, and for accounts with geo redundancy a failover can't be initiated while conversion is in progress. The data within the storage account will continue to be accessible with no loss of durability or availability.")) {
+        if ($PSBoundParameters.ContainsKey("Force")) {
+          $PSBoundParameters.Remove("Force")  | Out-Null
+        }
         Az.Storage.internal\Start-AzStorageAccountMigration @PSBoundParameters
+      }
     }
 }

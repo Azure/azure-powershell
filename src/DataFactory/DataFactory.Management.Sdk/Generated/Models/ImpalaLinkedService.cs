@@ -62,8 +62,17 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="password">The password corresponding to the user name when using UsernameAndPassword.
         /// </param>
 
+        /// <param name="thriftTransportProtocol">The transport protocol to use in the Thrift layer (for V2 only). Default
+        /// value is Binary.
+        /// Possible values include: &#39;Binary&#39;, &#39;HTTP&#39;</param>
+
         /// <param name="enableSsl">Specifies whether the connections to the server are encrypted using SSL.
         /// The default value is false.
+        /// </param>
+
+        /// <param name="enableServerCertificateValidation">Specify whether to enable server SSL certificate validation when you
+        /// connect.Always use System Trust Store (for V2 only). The default value is
+        /// true.
         /// </param>
 
         /// <param name="trustedCertPath">The full path of the .pem file containing trusted CA certificates for
@@ -88,7 +97,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public ImpalaLinkedService(object host, string authenticationType, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object port = default(object), object username = default(object), SecretBase password = default(SecretBase), object enableSsl = default(object), object trustedCertPath = default(object), object useSystemTrustStore = default(object), object allowHostNameCnMismatch = default(object), object allowSelfSignedServerCert = default(object), string encryptedCredential = default(string))
+        public ImpalaLinkedService(object host, string authenticationType, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object port = default(object), object username = default(object), SecretBase password = default(SecretBase), ImpalaThriftTransportProtocol? thriftTransportProtocol = default(ImpalaThriftTransportProtocol?), object enableSsl = default(object), object enableServerCertificateValidation = default(object), object trustedCertPath = default(object), object useSystemTrustStore = default(object), object allowHostNameCnMismatch = default(object), object allowSelfSignedServerCert = default(object), string encryptedCredential = default(string))
 
         : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
@@ -97,7 +106,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.AuthenticationType = authenticationType;
             this.Username = username;
             this.Password = password;
+            this.ThriftTransportProtocol = thriftTransportProtocol;
             this.EnableSsl = enableSsl;
+            this.EnableServerCertificateValidation = enableServerCertificateValidation;
             this.TrustedCertPath = trustedCertPath;
             this.UseSystemTrustStore = useSystemTrustStore;
             this.AllowHostNameCnMismatch = allowHostNameCnMismatch;
@@ -147,11 +158,26 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public SecretBase Password {get; set; }
 
         /// <summary>
+        /// Gets or sets the transport protocol to use in the Thrift layer (for V2
+        /// only). Default value is Binary. Possible values include: &#39;Binary&#39;, &#39;HTTP&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.thriftTransportProtocol")]
+        public ImpalaThriftTransportProtocol? ThriftTransportProtocol {get; set; }
+
+        /// <summary>
         /// Gets or sets specifies whether the connections to the server are encrypted
         /// using SSL. The default value is false.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.enableSsl")]
         public object EnableSsl {get; set; }
+
+        /// <summary>
+        /// Gets or sets specify whether to enable server SSL certificate validation
+        /// when you connect.Always use System Trust Store (for V2 only). The default
+        /// value is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.enableServerCertificateValidation")]
+        public object EnableServerCertificateValidation {get; set; }
 
         /// <summary>
         /// Gets or sets the full path of the .pem file containing trusted CA
@@ -208,6 +234,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "AuthenticationType");
             }
+
+
 
 
 

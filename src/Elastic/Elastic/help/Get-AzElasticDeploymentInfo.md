@@ -138,7 +138,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IDeploymentInfoResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponse
 
 ## NOTES
 

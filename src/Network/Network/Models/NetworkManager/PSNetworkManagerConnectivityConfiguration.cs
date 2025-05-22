@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 
         public string IsGlobal { get; set; }
 
+        public PSNetworkManagerConnectivityCapabilities ConnectivityCapability { get; set; }
+
         [JsonProperty(Order = 1)]
         public IList<PSNetworkManagerConnectivityGroupItem> AppliesToGroups { get; set; }
 

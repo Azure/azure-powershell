@@ -27,7 +27,7 @@ Get-AzScVmmVMDisk -vmName "test-vm" -ResourceGroupName "test-rg-01" -DiskName "d
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.VirtualDisk
 .Link
-https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvmdisk
+https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvmdisk
 #>
 function Get-AzScVmmVMDisk {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.VirtualDisk])]

@@ -17,7 +17,8 @@ Update the Inbound Security Rule of a Network Virtual Appliance Resource
 Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName <String> -VirtualApplianceName <String>
  -Name <String> [-RuleType <String>]
  -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityRulesProperty]>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceObjectParameterSet
@@ -25,7 +26,8 @@ Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName <String> -Virtua
 Update-AzVirtualApplianceInboundSecurityRule -VirtualAppliance <PSNetworkVirtualAppliance> -Name <String>
  [-RuleType <String>]
  -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityRulesProperty]>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -33,7 +35,8 @@ Update-AzVirtualApplianceInboundSecurityRule -VirtualAppliance <PSNetworkVirtual
 Update-AzVirtualApplianceInboundSecurityRule -VirtualApplianceResourceId <String> -Name <String>
  [-RuleType <String>]
  -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityRulesProperty]>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -76,11 +76,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)OperationId;}
-            {_aliasName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString>("aliasName"), out var __jsonAliasName) ? (string)__jsonAliasName : (string)AliasName;}
-            {_billingAccountId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString>("billingAccountId"), out var __jsonBillingAccountId) ? (string)__jsonBillingAccountId : (string)BillingAccountId;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)_operationId;}
+            {_aliasName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString>("aliasName"), out var __jsonAliasName) ? (string)__jsonAliasName : (string)_aliasName;}
+            {_billingAccountId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString>("billingAccountId"), out var __jsonBillingAccountId) ? (string)__jsonBillingAccountId : (string)_billingAccountId;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

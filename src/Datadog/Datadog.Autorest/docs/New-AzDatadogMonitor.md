@@ -8,28 +8,53 @@ schema: 2.0.0
 # New-AzDatadogMonitor
 
 ## SYNOPSIS
-Create a monitor resource.
+create a monitor resource.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzDatadogMonitor -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-IdentityType <ManagedIdentityTypes>] [-MonitoringStatus <MonitoringStatus>] [-OrganizationApiKey <String>]
- [-OrganizationApplicationKey <String>] [-OrganizationEnterpriseAppId <String>]
+New-AzDatadogMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-EnableSystemAssignedIdentity] [-Location <String>] [-MonitoringStatus <String>]
+ [-OrganizationApiKey <String>] [-OrganizationApplicationKey <String>] [-OrganizationEnterpriseAppId <String>]
  [-OrganizationLinkingAuthCode <String>] [-OrganizationLinkingClientId <String>]
  [-OrganizationRedirectUri <String>] [-SkuName <String>] [-Tag <Hashtable>] [-UserInfoEmailAddress <String>]
  [-UserInfoName <String>] [-UserInfoPhoneNumber <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityExpanded
+```
+New-AzDatadogMonitor -InputObject <IDatadogIdentity> [-EnableSystemAssignedIdentity] [-Location <String>]
+ [-MonitoringStatus <String>] [-OrganizationApiKey <String>] [-OrganizationApplicationKey <String>]
+ [-OrganizationEnterpriseAppId <String>] [-OrganizationLinkingAuthCode <String>]
+ [-OrganizationLinkingClientId <String>] [-OrganizationRedirectUri <String>] [-SkuName <String>]
+ [-Tag <Hashtable>] [-UserInfoEmailAddress <String>] [-UserInfoName <String>] [-UserInfoPhoneNumber <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzDatadogMonitor -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzDatadogMonitor -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create a monitor resource.
+create a monitor resource.
 
 ## EXAMPLES
 
 ### Example 1: Create a monitor resource
 ```powershell
-New-AzDatadogMonitor -ResourceGroupName azure-rg-test -Name Datadog-pwsh01 -SkuName 'drawdown_testing_20200904_Monthly' -Location 'eastus2euap' -UserInfoEmailAddress 'xxxx@microsoft.com' -UserInfoName 'user' -UserInfoPhoneNumber 'xxxxxxxxxxxx' -IdentityType SystemAssigned
+New-AzDatadogMonitor -ResourceGroupName azure-rg-test -Name Datadog-pwsh01 -SkuName 'drawdown_testing_20200904_Monthly' -Location 'eastus2euap' -UserInfoEmailAddress 'xxxx@microsoft.com' -UserInfoName 'user' -UserInfoPhoneNumber 'xxxxxxxxxxxx' -EnableSystemAssignedIdentity:$true
 ```
 
 ```output
@@ -73,15 +98,60 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Identity type
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Support.ManagedIdentityTypes
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -93,10 +163,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -107,8 +177,8 @@ Accept wildcard characters: False
 Flag specifying if the resource monitoring is enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Support.MonitoringStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -123,7 +193,7 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: MonitorName
 
 Required: True
@@ -153,7 +223,7 @@ Api key associated to the Datadog organization.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -168,7 +238,7 @@ Application key associated to the Datadog organization.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -183,7 +253,7 @@ The Id of the Enterprise App used for Single sign on.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -198,7 +268,7 @@ The auth code used to linking to an existing datadog organization.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -213,7 +283,7 @@ The client_id from an existing in exchange for an auth token to link organizatio
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -228,7 +298,7 @@ The redirect uri for linking.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -244,7 +314,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -259,7 +329,7 @@ Name of the SKU.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -274,7 +344,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -289,7 +359,7 @@ Dictionary of \<string\>
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -304,7 +374,7 @@ Email of the user used by Datadog for contacting them if needed
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -319,7 +389,7 @@ Name of the user
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -334,7 +404,7 @@ Phone number of the user used by Datadog for contacting them if needed
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -380,9 +450,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogMonitorResource
+### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResource
 
 ## NOTES
 

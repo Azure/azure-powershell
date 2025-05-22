@@ -54,10 +54,6 @@ module-version: 0.1.0
 title: Portal
 subject-prefix: $(service-name)
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - where: 
       verb: Set
@@ -66,12 +62,12 @@ directive:
   - where:
       verb: New
       subject: Dashboard
-      variant: CreateViaIdentity|CreateViaIdentityExpanded
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
   - where:
       verb: Update
       subject: Dashboard
-      variant: ^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - from: swagger-document 
     where: $.definitions.DashboardPropertiesWithProvisioningState.properties.metadata

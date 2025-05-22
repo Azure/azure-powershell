@@ -27,7 +27,7 @@ $configuration = Get-AzEdgeOrderConfiguration -SubscriptionId SubscriptionId -Co
 $configuration
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,21 +39,21 @@ CONFIGURATIONFILTER <IConfigurationFilters[]>: Holds details about product hiera
     [ProductFamilyName <String>]: Represents product family name that uniquely identifies product family
     [ProductLineName <String>]: Represents product line name that uniquely identifies product line
     [ProductName <String>]: Represents product name that uniquely identifies product
-  [FilterableProperty <IFilterableProperty[]>]: Filters specific to product
-    SupportedValue <String[]>: Values to be filtered.
-    Type <SupportedFilterTypes>: Type of product filter.
+  [FilterableProperty <List<IFilterableProperty>>]: Filters specific to product
+    SupportedValue <List<String>>: Values to be filtered.
+    Type <String>: Type of product filter.
 
 CUSTOMERSUBSCRIPTIONDETAIL <ICustomerSubscriptionDetails>: Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details
   QuotaId <String>: Quota ID of a subscription
   [LocationPlacementId <String>]: Location placement Id of a subscription
-  [RegisteredFeature <ICustomerSubscriptionRegisteredFeatures[]>]: List of registered feature flags for subscription
+  [RegisteredFeature <List<ICustomerSubscriptionRegisteredFeatures>>]: List of registered feature flags for subscription
     [Name <String>]: Name of subscription registered feature
     [State <String>]: State of subscription registered feature
 .Link
 https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderconfiguration
 #>
 function Get-AzEdgeOrderConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IConfiguration])]
 [CmdletBinding(DefaultParameterSetName='ListExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter()]
@@ -63,13 +63,24 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='ListExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfigurationFilters[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IConfigurationFilters[]]
     # Holds details about product hierarchy information and filterable property.
-    # To construct, see NOTES section for CONFIGURATIONFILTER properties and create a hash table.
     ${ConfigurationFilter},
+
+    [Parameter(ParameterSetName='ListViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the List operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ListViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
+    [System.String]
+    # Json string supplied to the List operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -127,6 +138,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -147,10 +167,10 @@ begin {
 
         $mapping = @{
             ListExpanded = 'Az.EdgeOrder.private\Get-AzEdgeOrderConfiguration_ListExpanded';
+            ListViaJsonFilePath = 'Az.EdgeOrder.private\Get-AzEdgeOrderConfiguration_ListViaJsonFilePath';
+            ListViaJsonString = 'Az.EdgeOrder.private\Get-AzEdgeOrderConfiguration_ListViaJsonString';
         }
-        if (('ListExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ListExpanded', 'ListViaJsonFilePath', 'ListViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -164,6 +184,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

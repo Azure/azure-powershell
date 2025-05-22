@@ -21,6 +21,5 @@ namespace AzDev.Services
         string ContextPath { get; }
         DevContext LoadContext();
         void SaveContext(DevContext context);
-        void SetLogger(ILogger logger);
     }
 }
