@@ -22,7 +22,7 @@
 * The parameters of the `New-AzMobileNetworkPacketCoreControlPlane`, `New-AzMobileNetworkSimGroup`, `Update-AzMobileNetworkPacketCoreControlPlane` and `Update-AzMobileNetworkSimGroup` commands have changed.
   * `IdentityType` has been removed. `EnableSystemAssignedIdentity` is used to enable/disable system-assigned identities.
   * The type of `UserAssignedIdentity` is simplified to an array of strings that is used to specify the user's assigned identity.
-* Added deprecated announcement.
+* Added deprecation announcement for Azure Private 5G Core retirement.
 
 ## Version 0.4.2
 * Upgraded nuget package to signed package.
