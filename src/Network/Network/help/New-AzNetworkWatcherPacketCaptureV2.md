@@ -15,31 +15,31 @@ V2 Version of Packet Capture Cmdlet which creates a new packet capture resource 
 ### SetByResource (Default)
 ```
 New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher <PSNetworkWatcher> -Name <String> -TargetId <String>
- [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
- [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
- [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-StorageAccountId <String>] [-StoragePath <String>] [-FilePath <String>] [-BytesToCapturePerPacket <Int32>]
+ [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>] [-Scope <PSPacketCaptureMachineScope>]
+ [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-ContinuousCapture <Boolean>]
+ [-LocalPath <String>] [-CaptureSettings <PSPacketCaptureSettings>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByName
 ```
 New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcherName <String> -ResourceGroupName <String> -Name <String>
- -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
+ -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>] [-FilePath <String>]
  [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
- [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>]
+ [-ContinuousCapture <Boolean>] [-LocalPath <String>] [-CaptureSettings <PSPacketCaptureSettings>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByLocation
 ```
 New-AzNetworkWatcherPacketCaptureV2 -Location <String> -Name <String> -TargetId <String>
- [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
- [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
- [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-StorageAccountId <String>] [-StoragePath <String>] [-FilePath <String>] [-BytesToCapturePerPacket <Int32>]
+ [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>] [-Scope <PSPacketCaptureMachineScope>]
+ [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-ContinuousCapture <Boolean>]
+ [-LocalPath <String>] [-CaptureSettings <PSPacketCaptureSettings>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -242,6 +242,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -CaptureSettings
+Filters for packet capture session.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSPacketCaptureSettings
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContinuousCapture
+This continuous capture is a nullable boolean, which can hold 'null', 'true' or 'false' value. If we do not pass this parameter, it would be consider as 'null', default value is 'null'.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -254,6 +284,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FilePath
+File path.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -272,8 +317,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LocalFilePath
-Local file path.
+### -LocalPath
+This path is valid if 'ContinuousCapture' is provided and required if no storage ID is provided, otherwise optional. Must include the name of the capture file (*.cap).
 
 ```yaml
 Type: System.String
