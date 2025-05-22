@@ -15,20 +15,22 @@ Get the list of vpn client connection health of an Azure virtual network gateway
 ### ByFactoryName (Default)
 ```
 Get-AzVirtualNetworkGatewayVpnClientConnectionHealth -VirtualNetworkGatewayName <String>
- -ResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Get-AzVirtualNetworkGatewayVpnClientConnectionHealth [-ResourceId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
 Get-AzVirtualNetworkGatewayVpnClientConnectionHealth [-InputObject <PSVirtualNetworkGateway>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

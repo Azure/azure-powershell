@@ -1,7 +1,7 @@
 ---
 external help file: Az.Orbital-help.xml
 Module Name: Az.Orbital
-online version: https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkChannelObject
+online version: https://learn.microsoft.com/powershell/module/Az.Orbital/new-azorbitalcontactprofilelinkchannelobject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create an in-memory object for ContactProfileLinkChannel.
 
 ```
 New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz <Single> -CenterFrequencyMHz <Single>
- -EndPointIPAddress <String> -EndPointName <String> -EndPointPort <String> -EndPointProtocol <Protocol>
+ -EndPointIPAddress <String> -EndPointName <String> -EndPointPort <String> -EndPointProtocol <String>
  -Name <String> [-DecodingConfiguration <String>] [-DemodulationConfiguration <String>]
  [-EncodingConfiguration <String>] [-ModulationConfiguration <String>]
  [<CommonParameters>]
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -DecodingConfiguration
-Configuration for decoding.
+Currently unused.
 
 ```yaml
 Type: System.String
@@ -86,7 +86,9 @@ Accept wildcard characters: False
 ```
 
 ### -DemodulationConfiguration
-Configuration for demodulation.
+Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx.
+Only valid for downlink directions.
+If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.
 
 ```yaml
 Type: System.String
@@ -101,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -EncodingConfiguration
-Configuration for encoding.
+Currently unused.
 
 ```yaml
 Type: System.String
@@ -116,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -EndPointIPAddress
-IP Address.
+IP Address (IPv4).
 
 ```yaml
 Type: System.String
@@ -164,7 +166,7 @@ Accept wildcard characters: False
 Protocol either UDP or TCP.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Protocol
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -176,7 +178,9 @@ Accept wildcard characters: False
 ```
 
 ### -ModulationConfiguration
-Configuration for modulation.
+Copy of the modem configuration file such as Kratos QRadio.
+Only valid for uplink directions.
+If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
 
 ```yaml
 Type: System.String
@@ -212,7 +216,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLinkChannel
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLinkChannel
 
 ## NOTES
 

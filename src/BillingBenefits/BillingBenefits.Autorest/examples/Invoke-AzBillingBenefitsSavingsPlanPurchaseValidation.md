@@ -25,16 +25,3 @@ True
 ```
 
 Validate savings plan purchase(expended).
-
-### Example 2: Validate savings plan purchase.
-```powershell
-Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation -Body $body
-```
-
-```output
-Valid ReasonCode Reason
------ ---------- ------
-True
-```
-
-Validate savings plan purchase.

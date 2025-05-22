@@ -21,12 +21,13 @@ Create an in-memory object for ExchangeConnection.
 Create an in-memory object for ExchangeConnection.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ExchangeConnection
+Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ExchangeConnection
 .Link
-https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringExchangeConnectionObject
+https://learn.microsoft.com/powershell/module/Az.Peering/new-azpeeringexchangeconnectionobject
 #>
 function New-AzPeeringExchangeConnectionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ExchangeConnection')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ExchangeConnection')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -66,7 +67,7 @@ function New-AzPeeringExchangeConnectionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ExchangeConnection]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ExchangeConnection]::New()
 
         if ($PSBoundParameters.ContainsKey('BgpSessionMaxPrefixesAdvertisedV4')) {
             $Object.BgpSessionMaxPrefixesAdvertisedV4 = $BgpSessionMaxPrefixesAdvertisedV4

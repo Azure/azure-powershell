@@ -14,8 +14,7 @@ Get a StandbyVirtualMachinePoolResource
 
 ### List (Default)
 ```
-Get-AzStandbyVMPool [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzStandbyVMPool [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -32,8 +31,7 @@ Get-AzStandbyVMPool -ResourceGroupName <String> [-SubscriptionId <String[]>] [-D
 
 ### GetViaIdentity
 ```
-Get-AzStandbyVMPool -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzStandbyVMPool -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

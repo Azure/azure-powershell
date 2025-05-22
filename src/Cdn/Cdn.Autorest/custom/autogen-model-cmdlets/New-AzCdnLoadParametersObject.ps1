@@ -21,12 +21,13 @@ Create an in-memory object for LoadParameters.
 Create an in-memory object for LoadParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.LoadParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.LoadParameters
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnLoadParametersObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnloadparametersobject
 #>
 function New-AzCdnLoadParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.LoadParameters')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.LoadParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,7 +37,7 @@ function New-AzCdnLoadParametersObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.LoadParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.LoadParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('ContentPath')) {
             $Object.ContentPath = $ContentPath

@@ -45,16 +45,16 @@ Get a TagRule
 Returns the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
 
 ### [New-AzDynatraceMonitor](New-AzDynatraceMonitor.md)
-Create a MonitorResource
+create a MonitorResource
 
 ### [New-AzDynatraceMonitorFilteringTagObject](New-AzDynatraceMonitorFilteringTagObject.md)
 Create an in-memory object for FilteringTag.
 
 ### [New-AzDynatraceMonitorSSOConfig](New-AzDynatraceMonitorSSOConfig.md)
-Create a DynatraceSingleSignOnResource
+create a DynatraceSingleSignOnResource
 
 ### [New-AzDynatraceMonitorTagRule](New-AzDynatraceMonitorTagRule.md)
-Create a TagRule
+create a TagRule
 
 ### [Remove-AzDynatraceMonitor](Remove-AzDynatraceMonitor.md)
 Delete a MonitorResource
@@ -63,5 +63,11 @@ Delete a MonitorResource
 Delete a TagRule
 
 ### [Update-AzDynatraceMonitor](Update-AzDynatraceMonitor.md)
-Update a MonitorResource
+update a MonitorResource
+
+### [Update-AzDynatraceMonitorSSOConfig](Update-AzDynatraceMonitorSSOConfig.md)
+update a DynatraceSingleSignOnResource
+
+### [Update-AzDynatraceMonitorTagRule](Update-AzDynatraceMonitorTagRule.md)
+update a TagRule
 

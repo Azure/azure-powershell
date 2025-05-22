@@ -25,6 +25,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.PropertyOrigin.Owned)]
         public string ManagedInstanceName { get => this._managedInstanceName; set => this._managedInstanceName = value; }
 
+        /// <summary>Backing field for <see cref="MigrationName" /> property.</summary>
+        private string _migrationName;
+
+        /// <summary>Name of the migration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.PropertyOrigin.Owned)]
+        public string MigrationName { get => this._migrationName; set => this._migrationName = value; }
+
+        /// <summary>Backing field for <see cref="MigrationServiceName" /> property.</summary>
+        private string _migrationServiceName;
+
+        /// <summary>Name of the Migration Service.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.PropertyOrigin.Owned)]
+        public string MigrationServiceName { get => this._migrationServiceName; set => this._migrationServiceName = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
@@ -68,6 +82,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.PropertyOrigin.Owned)]
         public string TargetDbName { get => this._targetDbName; set => this._targetDbName = value; }
 
+        /// <summary>Backing field for <see cref="TargetResourceName" /> property.</summary>
+        private string _targetResourceName;
+
+        /// <summary>The name of the target resource/account.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.PropertyOrigin.Owned)]
+        public string TargetResourceName { get => this._targetResourceName; set => this._targetResourceName = value; }
+
         /// <summary>Creates an new <see cref="DataMigrationIdentity" /> instance.</summary>
         public DataMigrationIdentity()
         {
@@ -93,6 +114,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models
         SerializedName = @"managedInstanceName",
         PossibleTypes = new [] { typeof(string) })]
         string ManagedInstanceName { get; set; }
+        /// <summary>Name of the migration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the migration.",
+        SerializedName = @"migrationName",
+        PossibleTypes = new [] { typeof(string) })]
+        string MigrationName { get; set; }
+        /// <summary>Name of the Migration Service.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the Migration Service.",
+        SerializedName = @"migrationServiceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string MigrationServiceName { get; set; }
         /// <summary>
         /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or
         /// the portal.
@@ -144,6 +181,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models
         SerializedName = @"targetDbName",
         PossibleTypes = new [] { typeof(string) })]
         string TargetDbName { get; set; }
+        /// <summary>The name of the target resource/account.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the target resource/account.",
+        SerializedName = @"targetResourceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string TargetResourceName { get; set; }
 
     }
     internal partial interface IDataMigrationIdentityInternal
@@ -153,6 +198,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models
         string Id { get; set; }
 
         string ManagedInstanceName { get; set; }
+        /// <summary>Name of the migration.</summary>
+        string MigrationName { get; set; }
+        /// <summary>Name of the Migration Service.</summary>
+        string MigrationServiceName { get; set; }
         /// <summary>
         /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or
         /// the portal.
@@ -168,6 +217,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models
         string SubscriptionId { get; set; }
         /// <summary>The name of the target database.</summary>
         string TargetDbName { get; set; }
+        /// <summary>The name of the target resource/account.</summary>
+        string TargetResourceName { get; set; }
 
     }
 }

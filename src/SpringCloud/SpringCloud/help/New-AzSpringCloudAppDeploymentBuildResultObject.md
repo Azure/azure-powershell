@@ -1,7 +1,7 @@
 ---
 external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
-online version: https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentBuildResultObject
+online version: https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-azspringcloudappdeploymentbuildresultobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Create an in-memory object for BuildResultUserSourceInfo.
 ## SYNTAX
 
 ```
-New-AzSpringCloudAppDeploymentBuildResultObject [-Version <String>] [<CommonParameters>]
+New-AzSpringCloudAppDeploymentBuildResultObject [-Version <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,10 +59,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildResultUserSourceInfo
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildResultUserSourceInfo
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

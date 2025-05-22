@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the SpringCloud service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -53,15 +52,73 @@ input-file:
     
 title: SpringCloud
 module-version: 0.1.0
-resourcegroup-append: true
-nested-object-to-string: true
-identity-correction-for-post: true
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+disable-transform-identity-type-for-operation:
+   - Apps_Update
+ps-pipeline-input-disable-getByIteself-and-enable-listByParent: false
 
 directive:
+  # TODO: retire on March 31, 2028
+  - where:
+      verb: (.*)
+    set:
+      breaking-change:
+        deprecated-by-version: 0.3.2
+        deprecated-by-azversion: 19.3.0
+        change-effective-date: 2028/03/31
+        change-description: Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement.
+
+  - from: swagger-document
+    where: $.definitions.JarUploadedUserSourceInfo.allOf.[0]
+    transform: >-
+      return {
+        "$ref": "#/definitions/UserSourceInfo"
+      }
+
+  - from: swagger-document
+    where: $.definitions.SourceUploadedUserSourceInfo.allOf.[0]
+    transform: >-
+      return {
+        "$ref": "#/definitions/UserSourceInfo"
+      }
+
+  - from: swagger-document
+    where: $.definitions.NetCoreZipUploadedUserSourceInfo.allOf.[0]
+    transform: >-
+      return {
+        "$ref": "#/definitions/UserSourceInfo"
+      }
+
+  - from: swagger-document
+    where: $.definitions.UserSourceInfo
+    transform: >-
+      return {
+        "description": "Source with uploaded location",
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "description": "Type of the source uploaded",
+            "type": "string"
+          },
+          "version": {
+            "description": "Version of the source",
+            "type": "string"
+          },
+          "relativePath": {
+            "description": "Relative path of the storage which stores the source",
+            "type": "string"
+          }
+        },
+        "discriminator": "type"
+      }
+
+  - from: swagger-document
+    where: $.definitions
+    transform: delete $.UploadedUserSourceInfo
+
   - where:
       verb: Set
       subject: BuildServiceAgentPoolPut
@@ -82,12 +139,12 @@ directive:
   # First rename parameter of the Get-AzSpringCloudService, then rename cmdlet to Get-AzSpringCloud.
   - where: 
       subject: ^Service$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
 
   - where: 
       subject: ^Service$
-      variant: ^Update$|^UpdateViaIdentity$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 
   - where: 
@@ -113,7 +170,7 @@ directive:
       parameter-name: NetworkProfileServiceRuntimeSubnetId
     set:
       parameter-name: NetworkProfileServiceSubnetId
-  # Customization for add default locatio value when not pass location parameter
+  # Customization for add default location value when not pass location parameter
   - where:
       verb: New
       subject: ^Service$
@@ -185,20 +242,13 @@ directive:
       subject: AppDeploymentThreadDump
     remove: true
 # remove variant
-# |Certificate|ConfigurationService
   - where: 
-      subject: ^App$|^AppBinding$|^AppDeployment$|^AppCustomDomain$|^|BuildpackBinding$|^BuildServiceBuild$|^BuildServiceBuilder$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      subject: ^App$|^AppBinding$|^AppDeployment$|^AppCustomDomain$|^BuildpackBinding$|^BuildServiceBuild$|^BuildServiceBuilder$|^TestKey$|^ConfigServer$|^MonitoringSetting$|^BuildServiceAgentPool$|Certificate|ConfigurationService
+      variant: ^(Create|Update|Generate)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where: 
-      subject: ^AppDeploymentHeapDump$|^AppDeploymentThreadDump$|^TestKey$
-      variant: ^Generate$|^GenerateViaIdentity$|^GenerateViaIdentityExpanded$
-    remove: true
-  
-  - where:
-      verb: Get
-      subject: BuildServiceBuildResultLog
-      variant: GetViaIdentity
+      subject: ^App$|^AppBinding$|^AppDeployment$|^AppCustomDomain$|^BuildpackBinding$|^BuildServiceBuild$|^BuildServiceBuilder$|^TestKey$|Certificate|ConfigurationService
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 
   - where:
@@ -206,49 +256,44 @@ directive:
       subject: ^Registry$|^BuildService$|^BuildServiceAgentPool$|^ConfigurationService$
       variant: List
     remove: true
-    
 
   - where: 
       subject: ^TestKey$
-      variant: ^Regenerate$|^RegenerateViaIdentity$|^RegenerateViaIdentityExpanded$
+      variant: ^Regenerate(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
 
   - where: 
       subject: ^AppActiveDeployment$
-      variant: ^SetViaIdentity$|^Set$
-    remove: true
-
-  - where: 
-      subject: ^DeploymentJfr$
-      variant: ^Start$|^StartViaIdentity$
+      variant: ^(Set)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
 
   - where:
       verb: Test 
-      subject: ^AppCustomDomain$
-      variant: ^Validate$|^ValidateViaIdentity$
-    remove: true
-
-  - where:
-      verb: Test 
-      subject: ^ConfigServer$|^ConfigurationService$
-      variant: ^Validate$|^ValidateViaIdentity$
+      subject: ^AppCustomDomain$|^ConfigServer$|^ConfigurationService$
+      variant: ^(Validate)(?!.*?(Expanded|JsonFilePath|JsonString))|^ValidateViaIdentity$
     remove: true
 
   - where:
       verb: Test 
       subject: ^NameAvailability$
-      variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
+      variant: ^(Check)(?!.*?Expanded)|^CheckViaIdentityExpanded$|^CheckViaIdentity$
     remove: true
 
   - where:
       subject: ^AppDeploymentJfr$
-      variant: ^Start$|^StartViaIdentity$
+      variant: ^(Start)(?!.*?Expanded)$
     remove: true
 
-  - where: 
-      subject: ^App$|^AppBinding$|^AppDeployment$|^AppCustomDomain$|^ConfigServer$|^MonitoringSetting$|^BuildServiceAgentPool$
-      variant: ^Update$|^UpdateViaIdentity$
+  # Disable parent resource variant of default child name
+  - where:
+      verb: Get
+      subject: ^BuildServiceAgentPool$|^ConfigurationService$|^Registry$
+      variant: ^GetViaIdentitySpring$|^DeleteViaIdentitySpring$
+    remove: true
+  - where:
+      verb: Get
+      subject: ^BuildServiceAgentPool$|^BuildService$|^BuildServiceBuilder$|^BuildServiceSupportedBuildpack$|^BuildServiceSupportedStack$|^BuildpackBinding$
+      variant: ^GetViaIdentityBuildService$|^DeleteViaIdentityBuildService$
     remove: true
 
 # rename parameter
@@ -424,6 +469,10 @@ directive:
     hide: true
 
   - where:
+      verb: Update
+      subject: ^BuildService$
+    hide: true
+  - where:
       subject: ^BuildServiceBuild$
     hide: true
   - where:
@@ -433,7 +482,7 @@ directive:
       subject: ^BuildServiceBuildResultLog$
     hide: true
 
-  # Customization for add default locatio value when not pass location parameter
+  # Customization for add default location value when not pass location parameter
   - where:
       verb: New
       subject: ^App$
@@ -539,22 +588,31 @@ directive:
     - UserSourceInfo
     - CertificateProperties
 
-  - model-cmdlet:
-      # - BuildpacksGroupProperties
-      # - BuildpackProperties
-      - ConfigurationServiceGitRepository
-      - GitPatternRepository
-      # - KeyVaultCertificateProperties
-      # - ContentCertificateProperties
-    # - LoadedCertificate
-    # --> rename  New-AzSpringCloudLoadedCertificateObject New-AzSpringCloudAppLoadedCertificateObject
-    # - JarUploadedUserSourceInfo
-    # --> rename New-AzSpringCloudDeploymentJarUploadedObject --> New-AzSpringCloudAppDeploymentJarUploadedObject
-    # - NetCoreZipUploadedUserSourceInfo
-    # --> rename New-AzSpringCloudDeploymentNetCoreZipUploadedObject --> New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject
-    # - SourceUploadedUserSourceInfo
-    # --> rename New-AzSpringCloudDeploymentSourceUploadedObject --> New-AzSpringCloudAppDeploymentSourceUploadedObject
-      # - BuildResultUserSourceInfo --> New-AzSpringCloudAppDeploymentBuildResultObject
+  # add retirement message
+#  - model-cmdlet:
+    # - model-name: BuildpacksGroupProperties
+    #   cmdlet-name: New-AzSpringCloudBuildpacksGroupObject
+    # - model-name: BuildpackProperties
+    #   cmdlet-name: New-AzSpringCloudBuildpackObject
+    # - model-name: ConfigurationServiceGitRepository
+    # - model-name: GitPatternRepository
+    # - model-name: ContentCertificateProperties
+    #   cmdlet-name: New-AzSpringCloudContentCertificateObject
+    # - model-name: LoadedCertificate
+    #   cmdlet-name: New-AzSpringCloudAppLoadedCertificateObject
+    # Customized parameter names
+    # - model-name: KeyVaultCertificateProperties 
+    #   cmdlet-name: New-AzSpringCloudKeyVaultCertificateObject
+    # Customized RelativePath with '<default>' value
+    # - model-name: JarUploadedUserSourceInfo
+    #   cmdlet-name: New-AzSpringCloudAppDeploymentJarUploadedObject
+    # - model-name: NetCoreZipUploadedUserSourceInfo
+    #   cmdlet-name: New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject
+    # - model-name: SourceUploadedUserSourceInfo
+    #   cmdlet-name: New-AzSpringCloudAppDeploymentSourceUploadedObject
+    # Customized BuildResultId with '<default>' value
+    # - model-name: BuildResultUserSourceInfo
+    #   cmdlet-name: New-AzSpringCloudAppDeploymentBuildResultObject
 
   - where:
       subject-prefix: SpringCloud

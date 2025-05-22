@@ -18,8 +18,8 @@ Update-AzFrontDoorWafPolicy -ResourceGroupName <String> -Name <String> [-Enabled
  [-Mode <String>] [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
  [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>] [-RequestBodyCheck <String>]
  [-LogScrubbingSetting <PSFrontDoorWafLogScrubbingSetting>] [-JavascriptChallengeExpirationInMinutes <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-CaptchaExpirationInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -28,8 +28,8 @@ Update-AzFrontDoorWafPolicy -InputObject <PSPolicy> [-EnabledState <PSEnabledSta
  [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
  [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>] [-RequestBodyCheck <String>]
  [-LogScrubbingSetting <PSFrontDoorWafLogScrubbingSetting>] [-JavascriptChallengeExpirationInMinutes <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-CaptchaExpirationInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -38,8 +38,8 @@ Update-AzFrontDoorWafPolicy -ResourceId <String> [-EnabledState <PSEnabledState>
  [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
  [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>] [-RequestBodyCheck <String>]
  [-LogScrubbingSetting <PSFrontDoorWafLogScrubbingSetting>] [-JavascriptChallengeExpirationInMinutes <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-CaptchaExpirationInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,6 +94,21 @@ Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName | Update-AzFrontD
 Update all WAF policies in $resourceGroupName
 
 ## PARAMETERS
+
+### -CaptchaExpirationInMinutes
+setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CustomBlockResponseBody
 Custom Response Body
@@ -191,7 +206,7 @@ Accept wildcard characters: False
 setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
 
 ```yaml
-Type: System.Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
