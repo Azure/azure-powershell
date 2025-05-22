@@ -68,10 +68,10 @@
         "description": "Lists all the disk access resources under a subscription.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -84,13 +84,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "list all disk access resources in a subscription.": {
-            "$ref": "./examples/diskAccessExamples/DiskAccess_ListBySubscription.json"
           }
         },
         "x-ms-pageable": {
@@ -107,10 +102,10 @@
         "description": "Lists all the disk encryption sets under a subscription.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -123,13 +118,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "list all disk encryption sets in a subscription.": {
-            "$ref": "./examples/diskEncryptionSetExamples/DiskEncryptionSet_ListBySubscription.json"
           }
         },
         "x-ms-pageable": {
@@ -146,10 +136,10 @@
         "description": "Lists all the disks under a subscription.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -162,13 +152,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "list all managed disks in a subscription.": {
-            "$ref": "./examples/diskExamples/Disk_ListBySubscription.json"
           }
         },
         "x-ms-pageable": {
@@ -185,10 +170,10 @@
         "description": "Lists snapshots under a subscription.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -201,13 +186,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List all snapshots in a subscription.": {
-            "$ref": "./examples/snapshotExamples/Snapshot_ListBySubscription.json"
           }
         },
         "x-ms-pageable": {
@@ -224,13 +204,13 @@
         "description": "Lists all the disk access resources under a resource group.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           }
         ],
         "responses": {
@@ -243,13 +223,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "list all disk access resources in a resource group.": {
-            "$ref": "./examples/diskAccessExamples/DiskAccess_ListByResourceGroup.json"
           }
         },
         "x-ms-pageable": {
@@ -266,13 +241,13 @@
         "description": "Gets information about a disk access resource.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskAccessName",
@@ -292,16 +267,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "get information about a disk access resource with private endpoints.": {
-            "$ref": "./examples/diskAccessExamples/DiskAccess_Get_WithPrivateEndpoints.json"
-          },
-          "get information about a disk access resource.": {
-            "$ref": "./examples/diskAccessExamples/DiskAccess_Get.json"
           }
         }
       },
@@ -313,13 +280,13 @@
         "description": "Creates or updates a disk access resource",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskAccessName",
@@ -365,13 +332,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "create a disk access resource.": {
-            "$ref": "./examples/diskAccessExamples/DiskAccess_Create.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -387,13 +349,13 @@
         "description": "Updates (patches) a disk access resource.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskAccessName",
@@ -439,13 +401,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "update a disk access resource.": {
-            "$ref": "./examples/diskAccessExamples/DiskAccess_Update.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -461,13 +418,13 @@
         "description": "Deletes a disk access resource.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskAccessName",
@@ -501,13 +458,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "delete a disk access resource.": {
-            "$ref": "./examples/diskAccessExamples/DiskAccess_Delete.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -525,13 +477,13 @@
         "description": "List information about private endpoint connections under a disk access resource",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskAccessName",
@@ -551,13 +503,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "get information about a private endpoint connection under a disk access resource.": {
-            "$ref": "./examples/diskAccessExamples/DiskAccessPrivateEndpointConnection_ListByDiskAccess.json"
           }
         },
         "x-ms-pageable": {
@@ -574,13 +521,13 @@
         "description": "Gets information about a private endpoint connection under a disk access resource.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskAccessName",
@@ -607,13 +554,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "get information about a private endpoint connection under a disk access resource.": {
-            "$ref": "./examples/diskAccessExamples/DiskAccessPrivateEndpointConnection_Get.json"
           }
         }
       },
@@ -625,13 +567,13 @@
         "description": "Approve or reject a private endpoint connection under disk access resource, this can't be used to create a new private endpoint connection.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskAccessName",
@@ -684,13 +626,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "approve a Private Endpoint Connection under a disk access resource.": {
-            "$ref": "./examples/diskAccessExamples/DiskAccessPrivateEndpointConnection_Approve.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -706,13 +643,13 @@
         "description": "Deletes a private endpoint connection under a disk access resource.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskAccessName",
@@ -753,13 +690,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "delete a private endpoint connection under a disk access resource.": {
-            "$ref": "./examples/diskAccessExamples/DiskAccessPrivateEndpointConnection_Delete.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -777,13 +709,13 @@
         "description": "Gets the private link resources possible under disk access resource",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskAccessName",
@@ -803,13 +735,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "list all possible private link resources under disk access resource.": {
-            "$ref": "./examples/diskAccessExamples/DiskAccessPrivateLinkResources_Get.json"
           }
         }
       }
@@ -823,13 +750,13 @@
         "description": "Lists all the disk encryption sets under a resource group.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           }
         ],
         "responses": {
@@ -842,13 +769,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "list all disk encryption sets in a resource group.": {
-            "$ref": "./examples/diskEncryptionSetExamples/DiskEncryptionSet_ListByResourceGroup.json"
           }
         },
         "x-ms-pageable": {
@@ -865,13 +787,13 @@
         "description": "Gets information about a disk encryption set.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskEncryptionSetName",
@@ -891,16 +813,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "get information about a disk encryption set when auto-key rotation failed.": {
-            "$ref": "./examples/diskEncryptionSetExamples/DiskEncryptionSet_Get_WithAutoKeyRotationError.json"
-          },
-          "get information about a disk encryption set.": {
-            "$ref": "./examples/diskEncryptionSetExamples/DiskEncryptionSet_Get.json"
           }
         }
       },
@@ -912,13 +826,13 @@
         "description": "Creates or updates a disk encryption set",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskEncryptionSetName",
@@ -964,19 +878,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "create a disk encryption set with key vault from a different subscription.": {
-            "$ref": "./examples/diskEncryptionSetExamples/DiskEncryptionSet_Create_WithKeyVaultFromADifferentSubscription.json"
-          },
-          "create a disk encryption set with key vault from a different tenant.": {
-            "$ref": "./examples/diskEncryptionSetExamples/DiskEncryptionSet_Create_WithKeyVaultFromADifferentTenant.json"
-          },
-          "create a disk encryption set.": {
-            "$ref": "./examples/diskEncryptionSetExamples/DiskEncryptionSet_Create.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -992,13 +895,13 @@
         "description": "Updates (patches) a disk encryption set.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskEncryptionSetName",
@@ -1044,19 +947,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "update a disk encryption set with rotationToLatestKeyVersionEnabled set to true - Succeeded": {
-            "$ref": "./examples/diskEncryptionSetExamples/DiskEncryptionSet_Update_WithRotationToLatestKeyVersionEnabled.json"
-          },
-          "update a disk encryption set with rotationToLatestKeyVersionEnabled set to true - Updating": {
-            "$ref": "./examples/diskEncryptionSetExamples/DiskEncryptionSet_Update_WithRotationToLatestKeyVersionEnabledInProgress.json"
-          },
-          "update a disk encryption set.": {
-            "$ref": "./examples/diskEncryptionSetExamples/DiskEncryptionSet_Update.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1072,13 +964,13 @@
         "description": "Deletes a disk encryption set.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskEncryptionSetName",
@@ -1112,13 +1004,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "delete a disk encryption set.": {
-            "$ref": "./examples/diskEncryptionSetExamples/DiskEncryptionSet_Delete.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1136,13 +1023,13 @@
         "description": "Lists all resources that are encrypted with this disk encryption set.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskEncryptionSetName",
@@ -1162,13 +1049,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "list all resources that are encrypted with this disk encryption set.": {
-            "$ref": "./examples/diskEncryptionSetExamples/DiskEncryptionSet_ListAssociatedResources.json"
           }
         },
         "x-ms-pageable": {
@@ -1185,13 +1067,13 @@
         "description": "Lists all the disks under a resource group.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           }
         ],
         "responses": {
@@ -1204,13 +1086,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "list all managed disks in a resource group.": {
-            "$ref": "./examples/diskExamples/Disk_ListByResourceGroup.json"
           }
         },
         "x-ms-pageable": {
@@ -1227,13 +1104,13 @@
         "description": "Gets information about a disk.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskName",
@@ -1253,13 +1130,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "get information about a managed disk.": {
-            "$ref": "./examples/diskExamples/Disk_Get.json"
           }
         }
       },
@@ -1271,13 +1143,13 @@
         "description": "Creates or updates a disk.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskName",
@@ -1323,85 +1195,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "create a confidential VM supported disk encrypted with customer managed key": {
-            "$ref": "./examples/diskExamples/Disk_Create_ConfidentialVMSupportedDiskEncryptedWithCMK.json"
-          },
-          "create a managed disk and associate with disk access resource.": {
-            "$ref": "./examples/diskExamples/Disk_Create_WithDiskAccess.json"
-          },
-          "create a managed disk and associate with disk encryption set.": {
-            "$ref": "./examples/diskExamples/Disk_Create_WithDiskEncryptionSet.json"
-          },
-          "create a managed disk by copying a snapshot.": {
-            "$ref": "./examples/diskExamples/Disk_Create_ByCopyingASnapshot.json"
-          },
-          "create a managed disk by importing an unmanaged blob from a different subscription.": {
-            "$ref": "./examples/diskExamples/Disk_Create_ByImportingBlobFromADifferentSubscription.json"
-          },
-          "create a managed disk by importing an unmanaged blob from the same subscription.": {
-            "$ref": "./examples/diskExamples/Disk_Create_ByImportingBlobFromTheSameSubscription.json"
-          },
-          "create a managed disk from ImportSecure create option": {
-            "$ref": "./examples/diskExamples/Disk_Create_FromImportSecure.json"
-          },
-          "create a managed disk from UploadPreparedSecure create option": {
-            "$ref": "./examples/diskExamples/Disk_Create_FromUploadPreparedSecure.json"
-          },
-          "create a managed disk from a platform image.": {
-            "$ref": "./examples/diskExamples/Disk_Create_FromAPlatformImage.json"
-          },
-          "create a managed disk from an Azure Compute Gallery community image.": {
-            "$ref": "./examples/diskExamples/Disk_Create_FromAnAzureComputeGalleryCommunityImage.json"
-          },
-          "create a managed disk from an Azure Compute Gallery direct shared image.": {
-            "$ref": "./examples/diskExamples/Disk_Create_FromAnAzureComputeGalleryDirectSharedImage.json"
-          },
-          "create a managed disk from an Azure Compute Gallery image.": {
-            "$ref": "./examples/diskExamples/Disk_Create_FromAnAzureComputeGalleryImage.json"
-          },
-          "create a managed disk from an existing managed disk in the same or different subscription.": {
-            "$ref": "./examples/diskExamples/Disk_Create_FromAnExistingManagedDisk.json"
-          },
-          "create a managed disk from elastic san volume snapshot.": {
-            "$ref": "./examples/diskExamples/Disk_Create_FromAnElasticSanVolumeSnapshot.json"
-          },
-          "create a managed disk with dataAccessAuthMode": {
-            "$ref": "./examples/diskExamples/Disk_Create_WithDataAccessAuthMode.json"
-          },
-          "create a managed disk with optimizedForFrequentAttach.": {
-            "$ref": "./examples/diskExamples/Disk_Create_WithOptimizedForFrequentAttach.json"
-          },
-          "create a managed disk with performancePlus.": {
-            "$ref": "./examples/diskExamples/Disk_Create_PerformancePlus.json"
-          },
-          "create a managed disk with premium v2 account type.": {
-            "$ref": "./examples/diskExamples/Disk_Create_WithPremiumV2_LRSAccountType.json"
-          },
-          "create a managed disk with security profile": {
-            "$ref": "./examples/diskExamples/Disk_Create_WithSecurityProfile.json"
-          },
-          "create a managed disk with ssd zrs account type.": {
-            "$ref": "./examples/diskExamples/Disk_Create_WithSSDZRSAccountType.json"
-          },
-          "create a managed disk with ultra account type with readOnly property set.": {
-            "$ref": "./examples/diskExamples/Disk_Create_WithUltraSSD_ReadOnly.json"
-          },
-          "create a managed upload disk.": {
-            "$ref": "./examples/diskExamples/Disk_Create_UploadDisk.json"
-          },
-          "create an empty managed disk in extended location.": {
-            "$ref": "./examples/diskExamples/Disk_Create_InExtendedLocation.json"
-          },
-          "create an empty managed disk.": {
-            "$ref": "./examples/diskExamples/Disk_Create_Empty.json"
-          },
-          "create an ultra managed disk with logicalSectorSize 512E": {
-            "$ref": "./examples/diskExamples/Disk_Create_WithLogicalSectorSize.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1417,13 +1212,13 @@
         "description": "Updates (patches) a disk.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskName",
@@ -1469,40 +1264,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "create or update a bursting enabled managed disk.": {
-            "$ref": "./examples/diskExamples/Disk_CreateOrUpdate_BurstingEnabled.json"
-          },
-          "update a managed disk to add accelerated networking.": {
-            "$ref": "./examples/diskExamples/Disk_Update_AddAcceleratedNetworking.json"
-          },
-          "update a managed disk to add architecture.": {
-            "$ref": "./examples/diskExamples/Disk_Update_ToAddArchitecture.json"
-          },
-          "update a managed disk to add purchase plan.": {
-            "$ref": "./examples/diskExamples/Disk_Update_AddPurchasePlan.json"
-          },
-          "update a managed disk to add supportsHibernation.": {
-            "$ref": "./examples/diskExamples/Disk_Update_AddSupportsHibernation.json"
-          },
-          "update a managed disk to change tier.": {
-            "$ref": "./examples/diskExamples/Disk_Update_ChangeTier.json"
-          },
-          "update a managed disk to disable bursting.": {
-            "$ref": "./examples/diskExamples/Disk_Update_DisableBursting.json"
-          },
-          "update a managed disk to disable optimizedForFrequentAttach.": {
-            "$ref": "./examples/diskExamples/Disk_Update_DisableOptimizedForFrequentAttach.json"
-          },
-          "update a managed disk with diskControllerTypes.": {
-            "$ref": "./examples/diskExamples/Disk_Update_AddDiskControllerTypes.json"
-          },
-          "update managed disk to remove disk access resource association.": {
-            "$ref": "./examples/diskExamples/Disk_Update_RemoveDiskAccess.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1518,13 +1281,13 @@
         "description": "Deletes a disk.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskName",
@@ -1558,13 +1321,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "delete a managed disk.": {
-            "$ref": "./examples/diskExamples/Disk_Delete.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1582,13 +1340,13 @@
         "description": "Grants access to a disk.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskName",
@@ -1631,16 +1389,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "get a sas on a managed disk.": {
-            "$ref": "./examples/diskExamples/Disk_BeginGetAccess.json"
-          },
-          "get sas on managed disk and VM guest state": {
-            "$ref": "./examples/diskExamples/Disk_BeginGetAccess_WithVMGuestState.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1658,13 +1408,13 @@
         "description": "Revokes access to a disk.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "diskName",
@@ -1695,13 +1445,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "revoke access to a managed disk.": {
-            "$ref": "./examples/diskExamples/Disk_EndGetAccess.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1719,13 +1464,13 @@
         "description": "Lists diskRestorePoints under a vmRestorePoint.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "restorePointCollectionName",
@@ -1752,13 +1497,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "get an incremental disk restorePoint resource.": {
-            "$ref": "./examples/diskRestorePointExamples/DiskRestorePoint_ListByVmRestorePoint.json"
           }
         },
         "x-ms-pageable": {
@@ -1775,13 +1515,13 @@
         "description": "Get disk restorePoint resource",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "restorePointCollectionName",
@@ -1815,16 +1555,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "get an incremental disk restorePoint resource.": {
-            "$ref": "./examples/diskRestorePointExamples/DiskRestorePoint_Get.json"
-          },
-          "get an incremental disk restorePoint when source resource is from a different region": {
-            "$ref": "./examples/diskRestorePointExamples/DiskRestorePoint_Get_WhenSourceResourceIsFromDifferentRegion.json"
           }
         }
       }
@@ -1838,13 +1570,13 @@
         "description": "Grants access to a diskRestorePoint.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "restorePointCollectionName",
@@ -1901,13 +1633,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "grants access to a diskRestorePoint.": {
-            "$ref": "./examples/diskRestorePointExamples/DiskRestorePoint_BeginGetAccess.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1925,13 +1652,13 @@
         "description": "Revokes access to a diskRestorePoint.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "restorePointCollectionName",
@@ -1976,13 +1703,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "revokes access to a diskRestorePoint.": {
-            "$ref": "./examples/diskRestorePointExamples/DiskRestorePoint_EndGetAccess.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2000,13 +1722,13 @@
         "description": "Lists snapshots under a resource group.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           }
         ],
         "responses": {
@@ -2019,13 +1741,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List all snapshots in a resource group.": {
-            "$ref": "./examples/snapshotExamples/Snapshot_ListByResourceGroup.json"
           }
         },
         "x-ms-pageable": {
@@ -2042,13 +1759,13 @@
         "description": "Gets information about a snapshot.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "snapshotName",
@@ -2068,16 +1785,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get information about a snapshot.": {
-            "$ref": "./examples/snapshotExamples/Snapshot_Get.json"
-          },
-          "Get information about an incremental snapshot.": {
-            "$ref": "./examples/snapshotExamples/Snapshot_GetIncrementalSnapshot.json"
           }
         }
       },
@@ -2089,13 +1798,13 @@
         "description": "Creates or updates a snapshot.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "snapshotName",
@@ -2141,28 +1850,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Create a snapshot by importing an unmanaged blob from a different subscription.": {
-            "$ref": "./examples/snapshotExamples/Snapshot_Create_ByImportingAnUnmanagedBlobFromADifferentSubscription.json"
-          },
-          "Create a snapshot by importing an unmanaged blob from the same subscription.": {
-            "$ref": "./examples/snapshotExamples/Snapshot_Create_ByImportingAnUnmanagedBlobFromTheSameSubscription.json"
-          },
-          "Create a snapshot from an elastic san volume snapshot.": {
-            "$ref": "./examples/snapshotExamples/Snapshot_Create_FromAnElasticSanVolumeSnapshot.json"
-          },
-          "Create a snapshot from an existing snapshot in the same or a different subscription in a different region with quicker copy speed.": {
-            "$ref": "./examples/snapshotExamples/Snapshot_Create_EnhancedProvisionedBandwidthCopySpeed.json"
-          },
-          "Create a snapshot from an existing snapshot in the same or a different subscription in a different region.": {
-            "$ref": "./examples/snapshotExamples/Snapshot_Create_FromAnExistingSnapshotInDifferentRegion.json"
-          },
-          "Create a snapshot from an existing snapshot in the same or a different subscription.": {
-            "$ref": "./examples/snapshotExamples/Snapshot_Create_FromAnExistingSnapshot.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2178,13 +1867,13 @@
         "description": "Updates (patches) a snapshot.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "snapshotName",
@@ -2230,16 +1919,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Update a snapshot with accelerated networking.": {
-            "$ref": "./examples/snapshotExamples/Snapshot_Update_WithAcceleratedNetwork.json"
-          },
-          "Update a snapshot.": {
-            "$ref": "./examples/snapshotExamples/Snapshot_Update.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2255,13 +1936,13 @@
         "description": "Deletes a snapshot.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "snapshotName",
@@ -2295,13 +1976,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Delete a snapshot.": {
-            "$ref": "./examples/snapshotExamples/Snapshot_Delete.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2319,13 +1995,13 @@
         "description": "Grants access to a snapshot.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "snapshotName",
@@ -2368,13 +2044,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get a sas on a snapshot.": {
-            "$ref": "./examples/snapshotExamples/Snapshot_BeginGetAccess.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2392,13 +2063,13 @@
         "description": "Revokes access to a snapshot.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "snapshotName",
@@ -2429,13 +2100,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Revoke access to a snapshot.": {
-            "$ref": "./examples/snapshotExamples/Snapshot_EndGetAccess.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2669,13 +2335,13 @@
           }
         },
         "extendedLocation": {
-          "$ref": "../../../common-types/v1/common.json#/definitions/ExtendedLocation",
+          "$ref": "./common.json#/definitions/ExtendedLocation",
           "description": "The extended location where the disk will be created. Extended location cannot be changed."
         }
       },
       "allOf": [
         {
-          "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource"
+          "$ref": "./types.json#/definitions/TrackedResource"
         }
       ]
     },
@@ -2688,13 +2354,13 @@
           "x-ms-client-flatten": true
         },
         "extendedLocation": {
-          "$ref": "../../../common-types/v1/common.json#/definitions/ExtendedLocation",
+          "$ref": "./common.json#/definitions/ExtendedLocation",
           "description": "The extended location where the disk access will be created. Extended location cannot be changed."
         }
       },
       "allOf": [
         {
-          "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource"
+          "$ref": "./types.json#/definitions/TrackedResource"
         }
       ]
     },
@@ -2849,7 +2515,7 @@
       },
       "allOf": [
         {
-          "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource"
+          "$ref": "./types.json#/definitions/TrackedResource"
         }
       ]
     },
@@ -3204,7 +2870,7 @@
       },
       "allOf": [
         {
-          "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/ProxyResource"
+          "$ref": "./types.json#/definitions/ProxyResource"
         }
       ]
     },
@@ -3698,7 +3364,7 @@
           "readOnly": true
         },
         "autoKeyRotationError": {
-          "$ref": "../../../common-types/v1/common.json#/definitions/ApiError",
+          "$ref": "./common.json#/definitions/ApiError",
           "description": "The error that was encountered during auto-key rotation. If an error is present, then auto-key rotation will not be attempted until the error on this disk encryption set is fixed.",
           "readOnly": true
         },
@@ -3993,7 +3659,7 @@
       },
       "allOf": [
         {
-          "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/ProxyResource"
+          "$ref": "./types.json#/definitions/ProxyResource"
         }
       ]
     },
@@ -4289,13 +3955,13 @@
           "description": "The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot"
         },
         "extendedLocation": {
-          "$ref": "../../../common-types/v1/common.json#/definitions/ExtendedLocation",
+          "$ref": "./common.json#/definitions/ExtendedLocation",
           "description": "The extended location where the snapshot will be created. Extended location cannot be changed."
         }
       },
       "allOf": [
         {
-          "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource"
+          "$ref": "./types.json#/definitions/TrackedResource"
         }
       ]
     },

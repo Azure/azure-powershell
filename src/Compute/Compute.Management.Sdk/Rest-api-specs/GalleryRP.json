@@ -89,10 +89,10 @@
         "description": "List galleries under a subscription.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           }
         ],
         "responses": {
@@ -105,13 +105,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List galleries in a subscription.": {
-            "$ref": "./examples/galleryExamples/Gallery_ListBySubscription.json"
           }
         },
         "x-ms-pageable": {
@@ -128,13 +123,13 @@
         "description": "Get a community gallery by gallery public name.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/LocationParameter"
+            "$ref": "./types.json#/parameters/LocationParameter"
           },
           {
             "name": "publicGalleryName",
@@ -154,13 +149,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get a community gallery.": {
-            "$ref": "./examples/communityGalleryExamples/CommunityGallery_Get.json"
           }
         }
       }
@@ -174,13 +164,13 @@
         "description": "List community gallery images inside a gallery.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/LocationParameter"
+            "$ref": "./types.json#/parameters/LocationParameter"
           },
           {
             "name": "publicGalleryName",
@@ -200,13 +190,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List community gallery images.": {
-            "$ref": "./examples/communityGalleryExamples/CommunityGalleryImage_List.json"
           }
         },
         "x-ms-pageable": {
@@ -223,13 +208,13 @@
         "description": "Get a community gallery image.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/LocationParameter"
+            "$ref": "./types.json#/parameters/LocationParameter"
           },
           {
             "name": "publicGalleryName",
@@ -256,13 +241,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get a community gallery image.": {
-            "$ref": "./examples/communityGalleryExamples/CommunityGalleryImage_Get.json"
           }
         }
       }
@@ -276,13 +256,13 @@
         "description": "List community gallery image versions inside an image.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/LocationParameter"
+            "$ref": "./types.json#/parameters/LocationParameter"
           },
           {
             "name": "publicGalleryName",
@@ -309,13 +289,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List community gallery image versions.": {
-            "$ref": "./examples/communityGalleryExamples/CommunityGalleryImageVersion_List.json"
           }
         },
         "x-ms-pageable": {
@@ -332,13 +307,13 @@
         "description": "Get a community gallery image version.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/LocationParameter"
+            "$ref": "./types.json#/parameters/LocationParameter"
           },
           {
             "name": "publicGalleryName",
@@ -372,13 +347,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get a community gallery image version.": {
-            "$ref": "./examples/communityGalleryExamples/CommunityGalleryImageVersion_Get.json"
           }
         }
       }
@@ -392,13 +362,13 @@
         "description": "List shared galleries by subscription id or tenant id.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/LocationParameter"
+            "$ref": "./types.json#/parameters/LocationParameter"
           },
           {
             "name": "sharedTo",
@@ -431,13 +401,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List shared galleries.": {
-            "$ref": "./examples/sharedGalleryExamples/SharedGallery_List.json"
           }
         },
         "x-ms-pageable": {
@@ -454,13 +419,13 @@
         "description": "Get a shared gallery by subscription id or tenant id.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/LocationParameter"
+            "$ref": "./types.json#/parameters/LocationParameter"
           },
           {
             "name": "galleryUniqueName",
@@ -480,13 +445,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get a shared gallery.": {
-            "$ref": "./examples/sharedGalleryExamples/SharedGallery_Get.json"
           }
         }
       }
@@ -500,13 +460,13 @@
         "description": "List shared gallery images by subscription id or tenant id.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/LocationParameter"
+            "$ref": "./types.json#/parameters/LocationParameter"
           },
           {
             "name": "galleryUniqueName",
@@ -546,13 +506,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List shared gallery images.": {
-            "$ref": "./examples/sharedGalleryExamples/SharedGalleryImages_List.json"
           }
         },
         "x-ms-pageable": {
@@ -569,13 +524,13 @@
         "description": "Get a shared gallery image by subscription id or tenant id.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/LocationParameter"
+            "$ref": "./types.json#/parameters/LocationParameter"
           },
           {
             "name": "galleryUniqueName",
@@ -602,13 +557,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get a shared gallery image.": {
-            "$ref": "./examples/sharedGalleryExamples/SharedGalleryImage_Get.json"
           }
         }
       }
@@ -622,13 +572,13 @@
         "description": "List shared gallery image versions by subscription id or tenant id.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/LocationParameter"
+            "$ref": "./types.json#/parameters/LocationParameter"
           },
           {
             "name": "galleryUniqueName",
@@ -675,13 +625,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List shared gallery image versions.": {
-            "$ref": "./examples/sharedGalleryExamples/SharedGalleryImageVersions_List.json"
           }
         },
         "x-ms-pageable": {
@@ -698,13 +643,13 @@
         "description": "Get a shared gallery image version by subscription id or tenant id.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/LocationParameter"
+            "$ref": "./types.json#/parameters/LocationParameter"
           },
           {
             "name": "galleryUniqueName",
@@ -738,13 +683,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get a shared gallery image version.": {
-            "$ref": "./examples/sharedGalleryExamples/SharedGalleryImageVersion_Get.json"
           }
         }
       }
@@ -758,13 +698,13 @@
         "description": "List galleries under a resource group.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           }
         ],
         "responses": {
@@ -777,13 +717,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List galleries in a resource group.": {
-            "$ref": "./examples/galleryExamples/Gallery_ListByResourceGroup.json"
           }
         },
         "x-ms-pageable": {
@@ -800,13 +735,13 @@
         "description": "Retrieves information about a Shared Image Gallery.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -866,25 +801,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get a community gallery.": {
-            "$ref": "./examples/galleryExamples/CommunityGallery_Get.json"
-          },
-          "Get a gallery with expand sharingProfile groups.": {
-            "$ref": "./examples/galleryExamples/Gallery_Get_WithExpandSharingProfileGroups.json"
-          },
-          "Get a gallery with select permissions.": {
-            "$ref": "./examples/galleryExamples/Gallery_Get_WithSelectPermissions.json"
-          },
-          "Get a gallery with system-assigned and user-assigned managed identities.": {
-            "$ref": "./examples/galleryExamples/Gallery_Get_WithManagedIdentity.json"
-          },
-          "Get a gallery.": {
-            "$ref": "./examples/galleryExamples/Gallery_Get.json"
           }
         }
       },
@@ -896,13 +814,13 @@
         "description": "Create or update a Shared Image Gallery.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -965,25 +883,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Create a community gallery.": {
-            "$ref": "./examples/galleryExamples/CommunityGallery_Create.json"
-          },
-          "Create or update a simple gallery with sharing profile.": {
-            "$ref": "./examples/galleryExamples/Gallery_Create_WithSharingProfile.json"
-          },
-          "Create or update a simple gallery with soft deletion enabled.": {
-            "$ref": "./examples/galleryExamples/Gallery_Create_SoftDeletionEnabled.json"
-          },
-          "Create or update a simple gallery with system-assigned and user-assigned managed identities.": {
-            "$ref": "./examples/galleryExamples/Gallery_Create_WithManagedIdentity.json"
-          },
-          "Create or update a simple gallery.": {
-            "$ref": "./examples/galleryExamples/Gallery_Create.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -999,13 +900,13 @@
         "description": "Update a Shared Image Gallery.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -1045,13 +946,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Update a simple gallery.": {
-            "$ref": "./examples/galleryExamples/Gallery_Update.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1067,13 +963,13 @@
         "description": "Delete a Shared Image Gallery.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -1107,13 +1003,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Delete a gallery.": {
-            "$ref": "./examples/galleryExamples/Gallery_Delete.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1131,13 +1022,13 @@
         "description": "List gallery Application Definitions in a gallery.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -1157,13 +1048,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List gallery Applications in a gallery.": {
-            "$ref": "./examples/galleryExamples/GalleryApplication_ListByGallery.json"
           }
         },
         "x-ms-pageable": {
@@ -1180,13 +1066,13 @@
         "description": "Retrieves information about a gallery Application Definition.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -1213,13 +1099,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get a gallery Application.": {
-            "$ref": "./examples/galleryExamples/GalleryApplication_Get.json"
           }
         }
       },
@@ -1231,13 +1112,13 @@
         "description": "Create or update a gallery Application Definition.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -1307,13 +1188,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Create or update a simple gallery Application.": {
-            "$ref": "./examples/galleryExamples/GalleryApplication_Create.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1329,13 +1205,13 @@
         "description": "Update a gallery Application Definition.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -1382,13 +1258,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Update a simple gallery Application.": {
-            "$ref": "./examples/galleryExamples/GalleryApplication_Update.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1404,13 +1275,13 @@
         "description": "Delete a gallery Application.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -1451,13 +1322,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Delete a gallery Application.": {
-            "$ref": "./examples/galleryExamples/GalleryApplication_Delete.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1475,13 +1341,13 @@
         "description": "List gallery Application Versions in a gallery Application Definition.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -1508,13 +1374,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List gallery Application Versions in a gallery Application Definition.": {
-            "$ref": "./examples/galleryExamples/GalleryApplicationVersion_ListByGalleryApplication.json"
           }
         },
         "x-ms-pageable": {
@@ -1531,13 +1392,13 @@
         "description": "Retrieves information about a gallery Application Version.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -1596,16 +1457,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get a gallery Application Version with replication status.": {
-            "$ref": "./examples/galleryExamples/GalleryApplicationVersion_Get_WithReplicationStatus.json"
-          },
-          "Get a gallery Application Version.": {
-            "$ref": "./examples/galleryExamples/GalleryApplicationVersion_Get.json"
           }
         }
       },
@@ -1617,13 +1470,13 @@
         "description": "Create or update a gallery Application Version.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -1700,13 +1553,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Create or update a simple gallery Application Version.": {
-            "$ref": "./examples/galleryExamples/GalleryApplicationVersion_Create.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1722,13 +1570,13 @@
         "description": "Update a gallery Application Version.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -1782,13 +1630,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Update a simple gallery Application Version.": {
-            "$ref": "./examples/galleryExamples/GalleryApplicationVersion_Update.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1804,13 +1647,13 @@
         "description": "Delete a gallery Application Version.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -1858,13 +1701,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Delete a gallery Application Version.": {
-            "$ref": "./examples/galleryExamples/GalleryApplicationVersion_Delete.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -1882,13 +1720,13 @@
         "description": "List gallery image definitions in a gallery.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -1908,13 +1746,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List gallery images in a gallery.": {
-            "$ref": "./examples/galleryExamples/GalleryImage_ListByGallery.json"
           }
         },
         "x-ms-pageable": {
@@ -1931,13 +1764,13 @@
         "description": "Retrieves information about a gallery image definition.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -1964,13 +1797,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get a gallery image.": {
-            "$ref": "./examples/galleryExamples/GalleryImage_Get.json"
           }
         }
       },
@@ -1982,13 +1810,13 @@
         "description": "Create or update a gallery image definition.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -2058,13 +1886,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Create or update a simple gallery image.": {
-            "$ref": "./examples/galleryExamples/GalleryImage_Create.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2080,13 +1903,13 @@
         "description": "Update a gallery image definition.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -2133,16 +1956,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Update a gallery image feature.": {
-            "$ref": "./examples/galleryExamples/GalleryImage_UpdateFeatures.json"
-          },
-          "Update a simple gallery image.": {
-            "$ref": "./examples/galleryExamples/GalleryImage_Update.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2158,13 +1973,13 @@
         "description": "Delete a gallery image.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -2205,13 +2020,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Delete a gallery image.": {
-            "$ref": "./examples/galleryExamples/GalleryImage_Delete.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2229,13 +2039,13 @@
         "description": "List gallery image versions in a gallery image definition.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -2262,13 +2072,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List gallery image versions in a gallery image definition.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_ListByGalleryImage.json"
           }
         },
         "x-ms-pageable": {
@@ -2285,13 +2090,13 @@
         "description": "Retrieves information about a gallery image version.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -2350,28 +2155,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get a gallery image version with replication status.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Get_WithReplicationStatus.json"
-          },
-          "Get a gallery image version with snapshots as a source.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Get_WithSnapshotsAsSource.json"
-          },
-          "Get a gallery image version with validation profile and replication status.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Get_WithValidationProfileAndReplicationStatus.json"
-          },
-          "Get a gallery image version with validation profile.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Get_WithValidationProfile.json"
-          },
-          "Get a gallery image version with vhd as a source.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Get_WithVhdAsSource.json"
-          },
-          "Get a gallery image version.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Get.json"
           }
         }
       },
@@ -2383,13 +2168,13 @@
         "description": "Create or update a gallery image version.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -2466,40 +2251,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Create or update a simple Gallery Image Version using VM as source.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Create_WithVmAsSource.json"
-          },
-          "Create or update a simple Gallery Image Version using community gallery image as source.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Create_WithCommunityImageVersionAsSource.json"
-          },
-          "Create or update a simple Gallery Image Version using managed image as source.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Create.json"
-          },
-          "Create or update a simple Gallery Image Version using shallow replication mode.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Create_WithShallowReplicationMode.json"
-          },
-          "Create or update a simple Gallery Image Version using shared image as source.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Create_WithImageVersionAsSource.json"
-          },
-          "Create or update a simple Gallery Image Version using snapshots as a source.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Create_WithSnapshotsAsSource.json"
-          },
-          "Create or update a simple Gallery Image Version using vhd as a source with custom UEFI keys.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Create_WithVHD_UefiSettings.json"
-          },
-          "Create or update a simple Gallery Image Version using vhd as a source.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Create_WithVHD.json"
-          },
-          "Create or update a simple Gallery Image Version with Direct Drive replicas": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Create_WithAdditionalReplicaSets.json"
-          },
-          "Create or update a simple gallery image version with target extended locations specified.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Create_WithTargetExtendedLocations.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2515,13 +2268,13 @@
         "description": "Update a gallery image version.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -2575,19 +2328,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Restore a Soft Deleted Gallery Image Version": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Update_RestoreSoftDeleted.json"
-          },
-          "Update a simple Gallery Image Version (Managed Image as source).": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Update.json"
-          },
-          "Update a simple Gallery Image Version without source id.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Update_WithoutSourceId.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2603,13 +2345,13 @@
         "description": "Delete a gallery image version.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -2657,13 +2399,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Delete a gallery image version.": {
-            "$ref": "./examples/galleryExamples/GalleryImageVersion_Delete.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2681,13 +2418,13 @@
         "description": "List gallery inVMAccessControlProfiles in a gallery.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -2707,13 +2444,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List gallery inVMAccessControlProfiles in a gallery.": {
-            "$ref": "./examples/galleryResourceProfileExamples/GalleryInVMAccessControlProfile_ListByGallery.json"
           }
         },
         "x-ms-pageable": {
@@ -2730,13 +2462,13 @@
         "description": "Retrieves information about a gallery inVMAccessControlProfile.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -2763,13 +2495,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get a gallery inVMAccessControlProfile.": {
-            "$ref": "./examples/galleryResourceProfileExamples/GalleryInVMAccessControlProfile_Get.json"
           }
         }
       },
@@ -2781,13 +2508,13 @@
         "description": "Create or update a gallery inVMAccessControlProfile.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -2840,13 +2567,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Create or update a gallery inVMAccessControlProfile.": {
-            "$ref": "./examples/galleryResourceProfileExamples/GalleryInVMAccessControlProfile_Create.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2862,13 +2584,13 @@
         "description": "Update a gallery inVMAccessControlProfile.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -2915,13 +2637,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Update a gallery inVMAccessControlProfile.": {
-            "$ref": "./examples/galleryResourceProfileExamples/GalleryInVMAccessControlProfile_Update.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -2937,13 +2654,13 @@
         "description": "Delete a gallery inVMAccessControlProfile.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -2980,13 +2697,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Delete a gallery inVMAccessControlProfile.": {
-            "$ref": "./examples/galleryResourceProfileExamples/GalleryInVMAccessControlProfile_Delete.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -3004,13 +2716,13 @@
         "description": "List gallery inVMAccessControlProfile versions in a gallery inVMAccessControlProfile",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -3037,13 +2749,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List gallery inVMAccessControlProfile versions in a gallery inVMAccessControlProfile.": {
-            "$ref": "./examples/galleryResourceProfileExamples/GalleryInVMAccessControlProfileVersion_ListByGalleryInVMAccessControlProfile.json"
           }
         },
         "x-ms-pageable": {
@@ -3060,13 +2767,13 @@
         "description": "Retrieves information about a gallery inVMAccessControlProfile version.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -3100,13 +2807,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get a gallery inVMAccessControlProfile version.": {
-            "$ref": "./examples/galleryResourceProfileExamples/GalleryInVMAccessControlProfileVersion_Get.json"
           }
         }
       },
@@ -3118,13 +2820,13 @@
         "description": "Create or update a gallery inVMAccessControlProfile version.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -3184,13 +2886,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Create or update a Gallery InVMAccessControlProfile Version.": {
-            "$ref": "./examples/galleryResourceProfileExamples/GalleryInVMAccessControlProfileVersion_Create.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -3206,13 +2903,13 @@
         "description": "Update a gallery inVMAccessControlProfile version.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -3266,13 +2963,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Update a Gallery InVMAccessControlProfile Version.": {
-            "$ref": "./examples/galleryResourceProfileExamples/GalleryInVMAccessControlProfileVersion_Update.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -3288,13 +2980,13 @@
         "description": "Delete a gallery inVMAccessControlProfile version.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -3338,13 +3030,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Delete a gallery inVMAccessControlProfile version.": {
-            "$ref": "./examples/galleryResourceProfileExamples/GalleryInVMAccessControlProfileVersion_Delete.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -3362,13 +3049,13 @@
         "description": "Update sharing profile of a gallery.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -3414,19 +3101,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Add sharing id to the sharing profile of a gallery.": {
-            "$ref": "./examples/galleryExamples/Gallery_AddToSharingProfile.json"
-          },
-          "reset sharing profile of a gallery.": {
-            "$ref": "./examples/galleryExamples/Gallery_ResetSharingProfile.json"
-          },
-          "share a gallery to community.": {
-            "$ref": "./examples/galleryExamples/Gallery_EnableCommunityGallery.json"
           }
         },
         "x-ms-long-running-operation-options": {
@@ -3444,13 +3120,13 @@
         "description": "List soft-deleted resources of an artifact in the gallery, such as soft-deleted gallery image version of an image.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "galleryName",
@@ -3486,13 +3162,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List soft-deleted resources of an artifact in the gallery.": {
-            "$ref": "./examples/galleryExamples/GallerySoftDeletedResource_ListByArtifactName.json"
           }
         },
         "x-ms-pageable": {
@@ -4262,7 +3933,7 @@
       },
       "allOf": [
         {
-          "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource"
+          "$ref": "./types.json#/definitions/TrackedResource"
         }
       ]
     },
@@ -4278,7 +3949,7 @@
       },
       "allOf": [
         {
-          "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource"
+          "$ref": "./types.json#/definitions/TrackedResource"
         }
       ]
     },
@@ -4471,7 +4142,7 @@
       },
       "allOf": [
         {
-          "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource"
+          "$ref": "./types.json#/definitions/TrackedResource"
         }
       ]
     },
@@ -4831,7 +4502,7 @@
       },
       "allOf": [
         {
-          "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource"
+          "$ref": "./types.json#/definitions/TrackedResource"
         }
       ]
     },
@@ -5008,7 +4679,7 @@
       },
       "allOf": [
         {
-          "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource"
+          "$ref": "./types.json#/definitions/TrackedResource"
         }
       ]
     },
@@ -5183,7 +4854,7 @@
       },
       "allOf": [
         {
-          "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource"
+          "$ref": "./types.json#/definitions/TrackedResource"
         }
       ]
     },
@@ -5262,7 +4933,7 @@
       },
       "allOf": [
         {
-          "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource"
+          "$ref": "./types.json#/definitions/TrackedResource"
         }
       ]
     },
@@ -5524,7 +5195,7 @@
       },
       "allOf": [
         {
-          "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource"
+          "$ref": "./types.json#/definitions/TrackedResource"
         }
       ]
     },

@@ -64,17 +64,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -87,12 +87,7 @@
             "description": "No Content"
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Delete Cloud Service Role Instance": {
-            "$ref": "./examples/CloudServiceRoleInstance_Delete.json"
-          }
-        }
+        "x-ms-long-running-operation": true
       },
       "get": {
         "tags": [
@@ -123,10 +118,10 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           },
           {
             "in": "query",
@@ -147,7 +142,7 @@
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -155,11 +150,6 @@
             "schema": {
               "$ref": "#/definitions/RoleInstance"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get Cloud Service Role Instance": {
-            "$ref": "./examples/CloudServiceRoleInstance_Get.json"
           }
         }
       }
@@ -194,17 +184,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -212,11 +202,6 @@
             "schema": {
               "$ref": "#/definitions/RoleInstanceInstanceView"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get Instance View of Cloud Service Role Instance": {
-            "$ref": "./examples/CloudServiceRoleInstance_Get_InstanceView.json"
           }
         }
       }
@@ -244,10 +229,10 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           },
           {
             "in": "query",
@@ -268,7 +253,7 @@
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -276,11 +261,6 @@
             "schema": {
               "$ref": "#/definitions/RoleInstanceListResult"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List Role Instances in a Cloud Service": {
-            "$ref": "./examples/CloudServiceRolesInstance_List.json"
           }
         },
         "x-ms-pageable": {
@@ -318,17 +298,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -338,12 +318,7 @@
             "description": "Accepted"
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Restart Cloud Service Role Instance": {
-            "$ref": "./examples/CloudServiceRoleInstance_Restart.json"
-          }
-        }
+        "x-ms-long-running-operation": true
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/reimage": {
@@ -376,17 +351,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -396,12 +371,7 @@
             "description": "Accepted"
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Reimage Cloud Service Role Instance": {
-            "$ref": "./examples/CloudServiceRoleInstance_Reimage.json"
-          }
-        }
+        "x-ms-long-running-operation": true
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/rebuild": {
@@ -434,17 +404,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -454,12 +424,7 @@
             "description": "Accepted"
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Rebuild Cloud Service Role Instance": {
-            "$ref": "./examples/CloudServiceRoleInstance_Rebuild.json"
-          }
-        }
+        "x-ms-long-running-operation": true
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/remoteDesktopFile": {
@@ -495,17 +460,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -514,11 +479,6 @@
               "format": "binary",
               "type": "file"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get Cloud Service Role": {
-            "$ref": "./examples/CloudServiceRoleInstance_Get_RemoteDesktopFile.json"
           }
         }
       }
@@ -553,17 +513,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -571,11 +531,6 @@
             "schema": {
               "$ref": "#/definitions/CloudServiceRole"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get Cloud Service Role": {
-            "$ref": "./examples/CloudServiceRole_Get.json"
           }
         }
       }
@@ -603,17 +558,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -621,11 +576,6 @@
             "schema": {
               "$ref": "#/definitions/CloudServiceRoleListResult"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List Roles in a Cloud Service": {
-            "$ref": "./examples/CloudServiceRole_List.json"
           }
         },
         "x-ms-pageable": {
@@ -656,10 +606,10 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           },
           {
             "in": "body",
@@ -674,7 +624,7 @@
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -690,24 +640,7 @@
             }
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Create New Cloud Service with Single Role": {
-            "$ref": "./examples/CloudService_Create_WithSingleRole.json"
-          },
-          "Create New Cloud Service with Single Role and RDP Extension": {
-            "$ref": "./examples/CloudService_Create_WithSingleRoleAndRDP.json"
-          },
-          "Create New Cloud Service with Multiple Roles": {
-            "$ref": "./examples/CloudService_Create_WithMultiRole.json"
-          },
-          "Create New Cloud Service with Single Role and Certificate from Key Vault": {
-            "$ref": "./examples/CloudService_Create_WithSingleRoleAndCertificate.json"
-          },
-          "Create New Cloud Service with Multiple Roles in a specific availability zone": {
-            "$ref": "./examples//CloudService_Create_WithMultiRole_WithZones.json"
-          }
-        }
+        "x-ms-long-running-operation": true
       },
       "patch": {
         "tags": [
@@ -731,10 +664,10 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           },
           {
             "in": "body",
@@ -749,7 +682,7 @@
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -759,12 +692,7 @@
             }
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Update existing Cloud Service to add tags": {
-            "$ref": "./examples/CloudService_Update_ToIncludeTags.json"
-          }
-        }
+        "x-ms-long-running-operation": true
       },
       "delete": {
         "tags": [
@@ -788,17 +716,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -811,12 +739,7 @@
             "description": "No Content"
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Delete Cloud Service": {
-            "$ref": "./examples/CloudService_Delete.json"
-          }
-        }
+        "x-ms-long-running-operation": true
       },
       "get": {
         "tags": [
@@ -840,17 +763,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -858,11 +781,6 @@
             "schema": {
               "$ref": "#/definitions/CloudService"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get Cloud Service with Multiple Roles and RDP Extension": {
-            "$ref": "./examples/CloudService_Get_WithMultiRoleAndRDP.json"
           }
         }
       }
@@ -890,17 +808,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -908,11 +826,6 @@
             "schema": {
               "$ref": "#/definitions/CloudServiceInstanceView"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get Cloud Service Instance View with Multiple Roles": {
-            "$ref": "./examples/CloudService_Get_InstanceViewWithMultiRole.json"
           }
         }
       }
@@ -926,17 +839,17 @@
         "operationId": "CloudServices_ListAll",
         "parameters": [
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -944,11 +857,6 @@
             "schema": {
               "$ref": "#/definitions/CloudServiceListResult"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List Cloud Services in a Subscription": {
-            "$ref": "./examples/CloudService_List_BySubscription.json"
           }
         },
         "x-ms-pageable": {
@@ -972,17 +880,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -990,11 +898,6 @@
             "schema": {
               "$ref": "#/definitions/CloudServiceListResult"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List Cloud Services in a Resource Group": {
-            "$ref": "./examples/CloudService_List_ByResourceGroup.json"
           }
         },
         "x-ms-pageable": {
@@ -1025,17 +928,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -1045,12 +948,7 @@
             "description": "Accepted"
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Start Cloud Service": {
-            "$ref": "./examples/CloudService_Start.json"
-          }
-        }
+        "x-ms-long-running-operation": true
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/poweroff": {
@@ -1076,17 +974,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -1096,12 +994,7 @@
             "description": "Accepted"
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Stop or PowerOff Cloud Service": {
-            "$ref": "./examples/CloudService_PowerOff.json"
-          }
-        }
+        "x-ms-long-running-operation": true
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/restart": {
@@ -1127,10 +1020,10 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           },
           {
             "in": "body",
@@ -1145,7 +1038,7 @@
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -1155,12 +1048,7 @@
             "description": "Accepted"
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Restart Cloud Service Role Instances in a Cloud Service": {
-            "$ref": "./examples/CloudServiceRoleInstance_Restart_ByCloudService.json"
-          }
-        }
+        "x-ms-long-running-operation": true
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/reimage": {
@@ -1186,10 +1074,10 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           },
           {
             "in": "body",
@@ -1204,7 +1092,7 @@
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -1214,12 +1102,7 @@
             "description": "Accepted"
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Reimage Cloud Service Role Instances in a Cloud Service": {
-            "$ref": "./examples/CloudServiceRoleInstance_Reimage_ByCloudService.json"
-          }
-        }
+        "x-ms-long-running-operation": true
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/rebuild": {
@@ -1245,10 +1128,10 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           },
           {
             "in": "body",
@@ -1263,7 +1146,7 @@
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -1273,12 +1156,7 @@
             "description": "Accepted"
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Rebuild Cloud Service Role Instances in a Cloud Service": {
-            "$ref": "./examples/CloudServiceRoleInstance_Rebuild_ByCloudService.json"
-          }
-        }
+        "x-ms-long-running-operation": true
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/delete": {
@@ -1304,10 +1182,10 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           },
           {
             "in": "body",
@@ -1322,7 +1200,7 @@
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -1332,12 +1210,7 @@
             "description": "Accepted"
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Delete Cloud Service Role Instances in a Cloud Service": {
-            "$ref": "./examples/CloudServiceRoleInstance_Delete_ByCloudService.json"
-          }
-        }
+        "x-ms-long-running-operation": true
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/updateDomains/{updateDomain}": {
@@ -1371,10 +1244,10 @@
             "format": "int32"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           },
           {
             "in": "body",
@@ -1389,7 +1262,7 @@
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -1399,12 +1272,7 @@
             "description": "Accepted"
           }
         },
-        "x-ms-long-running-operation": true,
-        "x-ms-examples": {
-          "Update Cloud Service to specified Domain": {
-            "$ref": "./examples/CloudServiceUpdateDomain_Update.json"
-          }
-        }
+        "x-ms-long-running-operation": true
       },
       "get": {
         "tags": [
@@ -1436,17 +1304,17 @@
             "format": "int32"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -1454,11 +1322,6 @@
             "schema": {
               "$ref": "#/definitions/UpdateDomain"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get Cloud Service Update Domain": {
-            "$ref": "./examples/CloudServiceUpdateDomain_Get.json"
           }
         }
       }
@@ -1486,17 +1349,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -1504,11 +1367,6 @@
             "schema": {
               "$ref": "#/definitions/UpdateDomainListResult"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List Update Domains in Cloud Service": {
-            "$ref": "./examples/CloudServiceUpdateDomain_List.json"
           }
         },
         "x-ms-pageable": {
@@ -1539,17 +1397,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -1557,11 +1415,6 @@
             "schema": {
               "$ref": "#/definitions/OSVersion"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get Cloud Service OS Version": {
-            "$ref": "./examples/CloudServiceOSVersion_Get.json"
           }
         }
       }
@@ -1582,17 +1435,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -1600,11 +1453,6 @@
             "schema": {
               "$ref": "#/definitions/OSVersionListResult"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List Cloud Service OS Versions in a subscription": {
-            "$ref": "./examples/CloudServiceOSVersion_List.json"
           }
         },
         "x-ms-pageable": {
@@ -1635,17 +1483,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -1653,11 +1501,6 @@
             "schema": {
               "$ref": "#/definitions/OSFamily"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Get Cloud Service OS Family": {
-            "$ref": "./examples/CloudServiceOSFamily_Get.json"
           }
         }
       }
@@ -1678,17 +1521,17 @@
             "type": "string"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./common.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../common-types/v1/common.json#/parameters/ApiVersionParameter"
+            "$ref": "./common.json#/parameters/ApiVersionParameter"
           }
         ],
         "responses": {
           "default": {
             "description": "Error",
             "schema": {
-              "$ref": "../../../common-types/v1/common.json#/definitions/CloudError"
+              "$ref": "./common.json#/definitions/CloudError"
             }
           },
           "200": {
@@ -1696,11 +1539,6 @@
             "schema": {
               "$ref": "#/definitions/OSFamilyListResult"
             }
-          }
-        },
-        "x-ms-examples": {
-          "List Cloud Service OS Families in a subscription": {
-            "$ref": "./examples/CloudServiceOSFamilies_List.json"
           }
         },
         "x-ms-pageable": {
@@ -1734,7 +1572,7 @@
           "description": "Specifies the list of resource Ids for the network interfaces associated with the role instance.",
           "type": "array",
           "items": {
-            "$ref": "../../../common-types/v1/common.json#/definitions/SubResource"
+            "$ref": "./common.json#/definitions/SubResource"
           },
           "readOnly": true
         }
@@ -2026,7 +1864,7 @@
       "type": "object",
       "properties": {
         "sourceVault": {
-          "$ref": "../../../common-types/v1/common.json#/definitions/SubResource",
+          "$ref": "./common.json#/definitions/SubResource",
           "description": "The relative URL of the Key Vault containing all of the certificates in VaultCertificates."
         },
         "vaultCertificates": {
@@ -2062,11 +1900,11 @@
       "type": "object",
       "properties": {
         "publicIPAddress": {
-          "$ref": "../../../common-types/v1/common.json#/definitions/SubResource",
+          "$ref": "./common.json#/definitions/SubResource",
           "description": "The reference to the public ip address resource."
         },
         "subnet": {
-          "$ref": "../../../common-types/v1/common.json#/definitions/SubResource",
+          "$ref": "./common.json#/definitions/SubResource",
           "description": "The reference to the virtual network subnet resource."
         },
         "privateIPAddress": {
@@ -2161,7 +1999,7 @@
           "$ref": "#/definitions/CloudServiceSlotType"
         },
         "swappableCloudService": {
-          "$ref": "../../../common-types/v1/common.json#/definitions/SubResource",
+          "$ref": "./common.json#/definitions/SubResource",
           "description": "The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown."
         }
       }
@@ -2170,7 +2008,7 @@
       "type": "object",
       "properties": {
         "sourceVault": {
-          "$ref": "../../../common-types/v1/common.json#/definitions/SubResource",
+          "$ref": "./common.json#/definitions/SubResource",
           "description": "The ARM Resource ID of the Key Vault"
         },
         "secretUrl": {
@@ -2343,7 +2181,7 @@
           "$ref": "#/definitions/CloudServiceProperties"
         },
         "systemData": {
-          "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/systemData"
+          "$ref": "./types.json#/definitions/systemData"
         },
         "zones": {
           "description": "List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned. This field is optional.",

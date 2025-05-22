@@ -46,10 +46,10 @@
         "description": "Gets the list of Microsoft.Compute SKUs available for your Subscription.",
         "parameters": [
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
           },
           {
             "name": "$filter",
@@ -72,19 +72,8 @@
           "default": {
             "description": "An unexpected error response.",
             "schema": {
-              "$ref": "../../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+              "$ref": "./types.json#/definitions/ErrorResponse"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Lists all available Resource SKUs": {
-            "$ref": "./examples/skus/ListAvailableResourceSkus.json"
-          },
-          "Lists all available Resource SKUs for the specified region": {
-            "$ref": "./examples/skus/ListAvailableResourceSkusForARegion.json"
-          },
-          "Lists all available Resource SKUs with Extended Location information": {
-            "$ref": "./examples/skus/ListAvailableResourceSkusWithExtendedLocations.json"
           }
         },
         "x-ms-pageable": {

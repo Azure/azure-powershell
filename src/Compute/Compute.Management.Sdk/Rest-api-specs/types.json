@@ -146,74 +146,42 @@
         }
       }
     },
-    "Operation": {
+    "Operation": {},
+    "Resource": {
       "type": "object",
-      "title": "REST API Operation",
-      "description": "Details of a REST API operation, returned from the Resource Provider Operations API",
+      "description": "The Resource model definition.",
       "properties": {
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource Id"
+        },
         "name": {
+          "readOnly": true,
           "type": "string",
-          "description": "The name of the operation, as per Resource-Based Access Control (RBAC). Examples: \"Microsoft.Compute/virtualMachines/write\", \"Microsoft.Compute/virtualMachines/capture/action\"",
-          "readOnly": true
+          "description": "Resource name"
         },
-        "isDataAction": {
-          "type": "boolean",
-          "description": "Whether the operation applies to data-plane. This is \"true\" for data-plane operations and \"false\" for ARM/control-plane operations.",
-          "readOnly": true
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource type"
         },
-        "display": {
+        "location": {
+          "type": "string",
+          "description": "Resource location"
+        },
+        "tags": {
           "type": "object",
-          "description": "Localized display information for this particular operation.",
-          "properties": {
-            "provider": {
-              "type": "string",
-              "description": "The localized friendly form of the resource provider name, e.g. \"Microsoft Monitoring Insights\" or \"Microsoft Compute\".",
-              "readOnly": true
-            },
-            "resource": {
-              "type": "string",
-              "description": "The localized friendly name of the resource type related to this operation. E.g. \"Virtual Machines\" or \"Job Schedule Collections\".",
-              "readOnly": true
-            },
-            "operation": {
-              "type": "string",
-              "description": "The concise, localized friendly name for the operation; suitable for dropdowns. E.g. \"Create or Update Virtual Machine\", \"Restart Virtual Machine\".",
-              "readOnly": true
-            },
-            "description": {
-              "type": "string",
-              "description": "The short, localized friendly description of the operation; suitable for tool tips and detailed views.",
-              "readOnly": true
-            }
-          }
-        },
-        "origin": {
-          "type": "string",
-          "description": "The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is \"user,system\"",
-          "enum": [
-            "user",
-            "system",
-            "user,system"
-          ],
-          "x-ms-enum": {
-            "name": "Origin",
-            "modelAsString": true
+          "additionalProperties": {
+            "type": "string"
           },
-          "readOnly": true
-        },
-        "actionType": {
-          "type": "string",
-          "description": "Enum. Indicates the action type. \"Internal\" refers to actions that are for internal only APIs.",
-          "enum": [
-            "Internal"
-          ],
-          "x-ms-enum": {
-            "name": "ActionType",
-            "modelAsString": true
-          },
-          "readOnly": true
+          "description": "Resource tags."
         }
-      }
+      },
+      "required": [
+        "location"
+      ],
+      "x-ms-azure-resource": true
     },
     "OperationListResult": {
       "type": "object",
@@ -311,38 +279,39 @@
     },
     "TrackedResource": {
       "type": "object",
-      "title": "Tracked Resource",
-      "description": "The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'",
+      "description": "The Resource model definition.",
       "properties": {
-        "tags": {
-          "type": "object",
-          "description": "Resource tags.",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "x-ms-mutability": [
-            "read",
-            "create",
-            "update"
-          ]
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource Id"
+        },
+        "name": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource name"
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource type"
         },
         "location": {
           "type": "string",
-          "description": "The geo-location where the resource lives",
-          "x-ms-mutability": [
-            "read",
-            "create"
-          ]
+          "description": "Resource location"
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Resource tags"
         }
       },
       "required": [
         "location"
       ],
-      "allOf": [
-        {
-          "$ref": "#/definitions/Resource"
-        }
-      ]
+      "x-ms-azure-resource": true
     },
     "encryptionProperties": {
       "type": "object",
@@ -450,10 +419,9 @@
     "ApiVersionParameter": {
       "name": "api-version",
       "in": "query",
-      "description": "The API version to use for this operation.",
       "required": true,
       "type": "string",
-      "minLength": 1
+      "description": "Client Api Version."
     },
     "LocationParameter": {
       "name": "location",
@@ -486,10 +454,9 @@
     "SubscriptionIdParameter": {
       "name": "subscriptionId",
       "in": "path",
-      "description": "The ID of the target subscription.",
       "required": true,
       "type": "string",
-      "minLength": 1
+      "description": "Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
     }
   }
 }

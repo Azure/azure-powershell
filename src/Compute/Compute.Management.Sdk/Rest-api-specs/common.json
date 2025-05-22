@@ -138,7 +138,7 @@
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Resource tags"
+          "description": "Resource tags."
         }
       },
       "required": [
@@ -174,39 +174,44 @@
           "description": "Resource location"
         },
         "id": {
-          "readOnly": true,
           "type": "string",
-          "description": "Resource Id"
+          "description": "Resource Id",
+          "readOnly": true
         },
         "name": {
-          "readOnly": true,
           "type": "string",
-          "description": "Resource name"
+          "description": "Resource name",
+          "readOnly": true
         },
         "type": {
-          "readOnly": true,
           "type": "string",
-          "description": "Resource type"
+          "description": "Resource type",
+          "readOnly": true
         },
         "tags": {
           "type": "object",
+          "description": "Resource tags",
           "additionalProperties": {
             "type": "string"
-          },
-          "description": "Resource tags"
+          }
         }
-      },
-      "x-ms-azure-resource": true
+      }
     },
     "ExtendedLocationType": {
       "type": "string",
-      "description": "The type of extendedLocation.",
+      "description": "The type of the extended location.",
       "enum": [
         "EdgeZone"
       ],
       "x-ms-enum": {
-        "name": "ExtendedLocationTypes",
-        "modelAsString": true
+        "name": "ExtendedLocationType",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "EdgeZone",
+            "value": "EdgeZone"
+          }
+        ]
       }
     },
     "ExtendedLocation": {
