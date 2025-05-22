@@ -14,10 +14,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUploadedUserSourceInfo"
-        /// />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfo" />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUploadedUserSourceInfo __uploadedUserSourceInfo = new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.UploadedUserSourceInfo();
+        private Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfo __userSourceInfo = new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.UserSourceInfo();
 
         /// <summary>Backing field for <see cref="NetCoreMainEntryPath" /> property.</summary>
         private string _netCoreMainEntryPath;
@@ -28,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
 
         /// <summary>Relative path of the storage which stores the source</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Inherited)]
-        public string RelativePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUploadedUserSourceInfoInternal)__uploadedUserSourceInfo).RelativePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUploadedUserSourceInfoInternal)__uploadedUserSourceInfo).RelativePath = value ?? null; }
+        public string RelativePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)__userSourceInfo).RelativePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)__userSourceInfo).RelativePath = value ?? null; }
 
         /// <summary>Backing field for <see cref="RuntimeVersion" /> property.</summary>
         private string _runtimeVersion;
@@ -40,16 +39,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         /// <summary>Type of the source uploaded</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Constant]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Inherited)]
-        public string Type { get => "NetCoreZip"; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)__uploadedUserSourceInfo).Type = "NetCoreZip"; }
+        public string Type { get => "NetCoreZip"; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)__userSourceInfo).Type = "NetCoreZip"; }
 
         /// <summary>Version of the source</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Inherited)]
-        public string Version { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)__uploadedUserSourceInfo).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)__uploadedUserSourceInfo).Version = value ?? null; }
+        public string Version { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)__userSourceInfo).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal)__userSourceInfo).Version = value ?? null; }
 
         /// <summary>Creates an new <see cref="NetCoreZipUploadedUserSourceInfo" /> instance.</summary>
         public NetCoreZipUploadedUserSourceInfo()
         {
-            this.__uploadedUserSourceInfo.Type = "NetCoreZip";
+            this.__userSourceInfo.Type = "NetCoreZip";
         }
 
         /// <summary>Validates that this object meets the validation criteria.</summary>
@@ -60,14 +59,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__uploadedUserSourceInfo), __uploadedUserSourceInfo);
-            await eventListener.AssertObjectIsValid(nameof(__uploadedUserSourceInfo), __uploadedUserSourceInfo);
+            await eventListener.AssertNotNull(nameof(__userSourceInfo), __userSourceInfo);
+            await eventListener.AssertObjectIsValid(nameof(__userSourceInfo), __userSourceInfo);
         }
     }
     /// Uploaded Jar binary for a deployment
     public partial interface INetCoreZipUploadedUserSourceInfo :
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUploadedUserSourceInfo
+        Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfo
     {
         /// <summary>The path to the .NET executable relative to zip root</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
     }
     /// Uploaded Jar binary for a deployment
     internal partial interface INetCoreZipUploadedUserSourceInfoInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUploadedUserSourceInfoInternal
+        Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfoInternal
     {
         /// <summary>The path to the .NET executable relative to zip root</summary>
         string NetCoreMainEntryPath { get; set; }

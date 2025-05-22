@@ -32,46 +32,64 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for Fqdn</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.Fqdn { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).Fqdn; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).Fqdn = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.Fqdn { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).Fqdn; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).Fqdn = value ?? null; }
 
         /// <summary>Internal Acessors for NetworkProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.INetworkProfile Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.NetworkProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).NetworkProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).NetworkProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.INetworkProfile Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.NetworkProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).NetworkProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).NetworkProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NetworkProfileOutboundIP</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.INetworkProfileOutboundIPs Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.NetworkProfileOutboundIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).NetworkProfileOutboundIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).NetworkProfileOutboundIP = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.INetworkProfileOutboundIPs Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.NetworkProfileOutboundIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).NetworkProfileOutboundIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).NetworkProfileOutboundIP = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NetworkProfileRequiredTraffic</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IRequiredTraffic> Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.NetworkProfileRequiredTraffic { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).NetworkProfileRequiredTraffic; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).NetworkProfileRequiredTraffic = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IRequiredTraffic> Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.NetworkProfileRequiredTraffic { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).NetworkProfileRequiredTraffic; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).NetworkProfileRequiredTraffic = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for OutboundIPPublicIP</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.OutboundIPPublicIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).OutboundIPPublicIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).OutboundIPPublicIP = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.OutboundIPPublicIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).OutboundIPPublicIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).OutboundIPPublicIP = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourceProperties Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ClusterResourceProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for ServiceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.ServiceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).ServiceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).ServiceId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.ServiceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).ServiceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).ServiceId = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Sku()); set { {_sku = value;} } }
 
         /// <summary>Internal Acessors for Version</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.Version { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).Version = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResourceInternal.Version { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IClusterResourcePropertiesInternal)Property).Version = value ?? default(int); }
 
         /// <summary>The name of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Inherited)]
@@ -153,31 +171,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
 
         /// <summary>Metadata pertaining to creation and last modification of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource modification (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>
         /// Tags of the service which is a list of key value pairs that describe the resource.
