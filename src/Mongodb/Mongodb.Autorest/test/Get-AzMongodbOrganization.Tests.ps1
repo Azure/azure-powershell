@@ -15,7 +15,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMongodbOrganization'))
 }
 
 Describe 'Get-AzMongodbOrganization' {
-    
     It 'Get' {
         { 
             $result =  Get-AzMongodbOrganization -SubscriptionId  $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -Name $env.ResourceName

@@ -20,6 +20,3 @@ create a OrganizationResource
 ### [Remove-AzMongodbOrganization](Remove-AzMongodbOrganization.md)
 Delete a OrganizationResource
 
-### [Update-AzMongodbOrganization](Update-AzMongodbOrganization.md)
-update a OrganizationResource
-

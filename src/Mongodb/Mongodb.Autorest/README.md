@@ -23,7 +23,7 @@ AutoRest does not generate authentication code for the module. Authentication is
 For information on how to develop for `Az.MongoDb`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
-# Mongodb.Autorest
+# MongoDb.Autorest
 
 ### AutoRest Configuration
 
@@ -57,7 +57,7 @@ directive:
   # Following are common directives which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required
-  # Following two directives are v4 specific
+  # Following two directives are v4 specific 
   - where:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
@@ -68,7 +68,10 @@ directive:
   #- where:
   #    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
   #  remove: true
-
+  # Remove the Update-* cmdlet
+  - where:
+      verb: Update
+    remove: true 
   # Remove the set-* cmdlet
   - where:
       verb: Set

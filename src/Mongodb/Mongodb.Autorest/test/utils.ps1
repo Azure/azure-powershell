@@ -45,10 +45,10 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     $env.ResourceGroupName = 'yashika-rg'
-    $env.ResourceName = 'testorg4'
-    $env.NewResourceName = 'test-mongodb-1'
-    $env.PartnerPropertyOrganizationName = 'test-mongodb-1'
-    $env.PartnerPropertyOrganizationId = '6825d3e6bb11af624c2baaef'
+    $env.ResourceName = 'testorg5'
+    $env.NewResourceName = 'test-mongodb-2'
+    $env.PartnerPropertyOrganizationName = 'test-mongodb-2'
+    $env.PartnerPropertyOrganizationId = '6825d3e6bh11af624c2baaef'
     $env.Location = "East US 2"
     $env.SubscriptionId = "61641157-140c-4b97-b365-30ff76d9f82e"
     $env.MarketplaceSubscriptionId = "61641157-140c-4b97-b365-30ff76d9f82e"
@@ -62,7 +62,7 @@ function setupEnv() {
     $env.UserFirstName = "" 
     $env.UserLastName = ""
     $env.UserUpn = "yashikajain@microsoft.com"
-    $env.DeleteResourceName = "mongodbtest2"
+    $env.DeleteResourceName = "testorg6"
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

@@ -15,20 +15,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMongodbOrganization'))
 }
 
 Describe 'New-AzMongodbOrganization' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-}
-
-Describe 'New-AzMongodbOrganization' {
     It 'CreateExpanded' {
         {    
             try {
@@ -44,7 +30,7 @@ Describe 'New-AzMongodbOrganization' {
                     throw $_
                 }
             }
-            
+
             # Validate the result by checking the Name property
         } | Should -Not -Throw
     }
