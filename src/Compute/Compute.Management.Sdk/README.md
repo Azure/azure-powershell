@@ -87,6 +87,45 @@ directive:
       }
       return $;
 
+  # Remove PurchasePlan definitions
+  - from: ComputeRP.json
+    where: $.definitions
+    transform: |
+      // Delete existing definitions if they exist
+      if ($.PurchasePlan) {
+        delete $.PurchasePlan;
+      }
+
+  # Rename DiskPurchasePlan to PurchasePlan
+  - from: DiskRP.json
+    where: $.definitions
+    transform: |
+      if ($.DiskPurchasePlan) {
+        $.PurchasePlan = $.DiskPurchasePlan;
+        delete $.DiskPurchasePlan;
+      }
+      return $;
+      
+  # Update all references from DiskPurchasePlan to PurchasePlan
+  - from: swagger-document
+    where: $
+    transform: |
+      const traverse = (obj) => {
+        if (obj === null || typeof obj !== 'object') return obj;
+        
+        if (obj.$ref === '#/definitions/DiskPurchasePlan') {
+          obj.$ref = '#/definitions/PurchasePlan';
+        }
+        
+        Object.keys(obj).forEach(key => {
+          obj[key] = traverse(obj[key]);
+        });
+        
+        return obj;
+      };
+      
+      return traverse($);
+
   # Define AdditionalUnattendContent structure
   - from: swagger-document
     where: $.definitions

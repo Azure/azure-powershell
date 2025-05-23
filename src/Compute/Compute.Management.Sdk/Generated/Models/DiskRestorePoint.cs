@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="logicalSectorSize">Logical sector size in bytes for
         /// disk restore points of UltraSSD_LRS and PremiumV2_LRS disks.
         /// Supported values are 512 and 4096. 4096 is the default.</param>
-        public DiskRestorePoint(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? timeCreated = default(System.DateTime?), string sourceResourceId = default(string), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), DiskPurchasePlan purchasePlan = default(DiskPurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), string familyId = default(string), string sourceUniqueId = default(string), Encryption encryption = default(Encryption), bool? supportsHibernation = default(bool?), string networkAccessPolicy = default(string), string publicNetworkAccess = default(string), string diskAccessId = default(string), double? completionPercent = default(double?), string replicationState = default(string), string sourceResourceLocation = default(string), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), int? logicalSectorSize = default(int?))
+        public DiskRestorePoint(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? timeCreated = default(System.DateTime?), string sourceResourceId = default(string), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), string familyId = default(string), string sourceUniqueId = default(string), Encryption encryption = default(Encryption), bool? supportsHibernation = default(bool?), string networkAccessPolicy = default(string), string publicNetworkAccess = default(string), string diskAccessId = default(string), double? completionPercent = default(double?), string replicationState = default(string), string sourceResourceLocation = default(string), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), int? logicalSectorSize = default(int?))
             : base(location, id, name, type, tags)
         {
             TimeCreated = timeCreated;
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// the OS disk was created.
         /// </summary>
         [JsonProperty(PropertyName = "properties.purchasePlan")]
-        public DiskPurchasePlan PurchasePlan { get; set; }
+        public PurchasePlan PurchasePlan { get; set; }
 
         /// <summary>
         /// Gets or sets list of supported capabilities for the image from

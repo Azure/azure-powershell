@@ -30,7 +30,7 @@
         /// keys.</param>
         /// <param name="supportsHibernation">Indicates the OS on a disk
         /// supports hibernation.</param>
-        public DiskRestorePoint(string id, string name, string type, System.DateTime? timeCreated, string sourceResourceId, OperatingSystemTypes? osType, string hyperVGeneration, DiskPurchasePlan purchasePlan, string familyId, string sourceUniqueId = default(string), Encryption encryption = default(Encryption), bool? supportsHibernation = default(bool?))
+        public DiskRestorePoint(string id, string name, string type, System.DateTime? timeCreated, string sourceResourceId, OperatingSystemTypes? osType, string hyperVGeneration, PurchasePlan purchasePlan, string familyId, string sourceUniqueId = default(string), Encryption encryption = default(Encryption), bool? supportsHibernation = default(bool?))
                     : base(id, name, type)
         {
             TimeCreated = timeCreated;
