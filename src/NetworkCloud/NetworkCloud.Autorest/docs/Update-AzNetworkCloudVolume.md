@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetworkCloudVolume
 
 ## SYNOPSIS
-Update tags associated with the provided volume.
+update tags associated with the provided volume.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Update-AzNetworkCloudVolume -InputObject <INetworkCloudIdentity> [-Tag <Hashtabl
 ```
 
 ## DESCRIPTION
-Update tags associated with the provided volume.
+update tags associated with the provided volume.
 
 ## EXAMPLES
 
@@ -62,7 +62,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -178,7 +177,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVolume
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolume
 
 ## NOTES
 

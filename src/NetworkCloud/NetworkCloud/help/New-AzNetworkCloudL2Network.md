@@ -8,20 +8,19 @@ schema: 2.0.0
 # New-AzNetworkCloudL2Network
 
 ## SYNOPSIS
-Create a new layer 2 (L2) network or update the properties of the existing network.
+create a new layer 2 (L2) network or create the properties of the existing network.
 
 ## SYNTAX
 
 ```
 New-AzNetworkCloudL2Network -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -ExtendedLocationName <String> -ExtendedLocationType <String> -L2IsolationDomainId <String> -Location <String>
- [-HybridAksPluginType <HybridAksPluginType>] [-InterfaceName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-HybridAksPluginType <String>] [-InterfaceName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new layer 2 (L2) network or update the properties of the existing network.
+create a new layer 2 (L2) network or create the properties of the existing network.
 
 ## EXAMPLES
 
@@ -107,7 +106,7 @@ The field was previously optional, now it will have no defined behavior and will
 The network plugin type for Hybrid AKS.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.HybridAksPluginType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -279,7 +278,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL2Network
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL2Network
 
 ## NOTES
 

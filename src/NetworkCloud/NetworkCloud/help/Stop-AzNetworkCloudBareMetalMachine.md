@@ -15,15 +15,15 @@ Power off the provided bare metal machine.
 ### PowerOffExpanded (Default)
 ```
 Stop-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-SkipShutdown <BareMetalMachineSkipShutdown>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-SkipShutdown <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PowerOffViaIdentityExpanded
 ```
-Stop-AzNetworkCloudBareMetalMachine -InputObject <INetworkCloudIdentity>
- [-SkipShutdown <BareMetalMachineSkipShutdown>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzNetworkCloudBareMetalMachine -InputObject <INetworkCloudIdentity> [-SkipShutdown <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +73,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -152,7 +151,7 @@ Accept wildcard characters: False
 The indicator of whether to skip the graceful OS shutdown and power off the bare metal machine immediately.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BareMetalMachineSkipShutdown
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
