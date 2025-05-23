@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DnsResolver
-Module Guid: 88e239b3-f615-4018-adf3-f0952a0f46a8
+Module Guid: 9435e7a6-441e-47d6-a9a8-fce807710d97
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dnsresolver
 Help Version: 1.0.0.0
 Locale: en-US
@@ -40,6 +40,9 @@ Gets properties of a DNS security rule for a DNS resolver policy.
 
 ### [Get-AzDnsResolverPolicyVirtualNetworkLink](Get-AzDnsResolverPolicyVirtualNetworkLink.md)
 Gets properties of a DNS resolver policy virtual network link.
+
+### [Invoke-AzDnsResolverBulkDnsResolverDomainList](Invoke-AzDnsResolverBulkDnsResolverDomainList.md)
+Uploads or downloads the list of domains for a DNS Resolver Domain List from a storage link.
 
 ### [New-AzDnsForwardingRuleset](New-AzDnsForwardingRuleset.md)
 Creates or updates a DNS forwarding ruleset.
