@@ -59,6 +59,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute
 {
+    [GenericBreakingChangeWithVersion("The default VM size will change from 'Standard_D2s_v3' to 'Standard_D2s_v5'.", "15.0.0", "11.0.0", "Nov 2025")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
