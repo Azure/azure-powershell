@@ -21,12 +21,12 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 Create an in-memory object for ServiceLoadBalancerBgpPeer.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ServiceLoadBalancerBgpPeer
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ServiceLoadBalancerBgpPeer
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudServiceLoadBalancerBgpPeerObject
 #>
 function New-AzNetworkCloudServiceLoadBalancerBgpPeerObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ServiceLoadBalancerBgpPeer')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ServiceLoadBalancerBgpPeer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -65,7 +65,7 @@ function New-AzNetworkCloudServiceLoadBalancerBgpPeerObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ServiceLoadBalancerBgpPeer]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ServiceLoadBalancerBgpPeer]::New()
 
         if ($PSBoundParameters.ContainsKey('BfdEnabled')) {
             $Object.BfdEnabled = $BfdEnabled
