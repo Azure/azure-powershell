@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedMachine-help.xml
 Module Name: Az.ConnectedMachine
 online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedlicense
 schema: 2.0.0
@@ -14,7 +14,8 @@ Retrieves information about the view of a license.
 
 ### List1 (Default)
 ```
-Get-AzConnectedLicense [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedLicense [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -83,7 +84,6 @@ Tag                          : {
                                }
 TenantId                     : ********-****-****-****-**********
 Type                         : Microsoft.HybridCompute/licenses
-
 ```
 
 Get a specific ESU license
@@ -164,4 +164,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

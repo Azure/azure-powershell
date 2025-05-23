@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedMachine-help.xml
 Module Name: Az.ConnectedMachine
 online version: https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/new-azconnectedlicenseprofilefeature
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create an in-memory object for ProductFeature.
 ## SYNTAX
 
 ```
-New-AzConnectedLicenseProfileFeature [-Name <String>] [-SubscriptionStatus <String>] [<CommonParameters>]
+New-AzConnectedLicenseProfileFeature [-Name <String>] [-SubscriptionStatus <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,4 +74,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

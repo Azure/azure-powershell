@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedMachine-help.xml
 Module Name: Az.ConnectedMachine
 online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/invoke-azconnectedreconcilenetworksecurityperimeterconfiguration
 schema: 2.0.0
@@ -16,20 +16,21 @@ Forces the network security perimeter configuration to refresh for a private lin
 ```
 Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -PerimeterName <String>
  -ResourceGroupName <String> -ScopeName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ReconcileViaIdentity
-```
-Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -InputObject <IConnectedMachineIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ReconcileViaIdentityPrivateLinkScope
 ```
 Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -PerimeterName <String>
  -PrivateLinkScopeInputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ReconcileViaIdentity
+```
+Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -InputObject <IConnectedMachineIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -228,4 +229,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

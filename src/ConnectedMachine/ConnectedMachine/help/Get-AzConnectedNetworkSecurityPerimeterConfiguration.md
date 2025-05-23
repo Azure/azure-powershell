@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedMachine-help.xml
 Module Name: Az.ConnectedMachine
 online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectednetworksecurityperimeterconfiguration
 schema: 2.0.0
@@ -15,13 +15,15 @@ Gets the network security perimeter configuration for a private link scope.
 ### List (Default)
 ```
 Get-AzConnectedNetworkSecurityPerimeterConfiguration -ResourceGroupName <String> -ScopeName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzConnectedNetworkSecurityPerimeterConfiguration -PerimeterName <String> -ResourceGroupName <String>
- -ScopeName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedNetworkSecurityPerimeterConfiguration -ResourceGroupName <String> -ScopeName <String>
+ -PerimeterName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -155,4 +157,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedMachine-help.xml
 Module Name: Az.ConnectedMachine
 online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedextensionpublisher
 schema: 2.0.0
@@ -13,7 +13,8 @@ Gets all Extension publishers based on the location
 ## SYNTAX
 
 ```
-Get-AzConnectedExtensionPublisher -Location <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedExtensionPublisher -Location <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,4 +89,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
