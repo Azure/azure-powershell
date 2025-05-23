@@ -816,4 +816,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzDataFactoryV2IntegrationRuntime]()
+[Set-AzDataFactoryV2IntegrationRuntime](Set-AzDataFactoryV2IntegrationRuntime.md)

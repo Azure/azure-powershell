@@ -219,4 +219,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzDataFactoryV2IntegrationRuntimeKey]()
+[Get-AzDataFactoryV2IntegrationRuntimeKey](Get-AzDataFactoryV2IntegrationRuntimeKey.md)
