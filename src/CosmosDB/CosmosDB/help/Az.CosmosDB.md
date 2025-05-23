@@ -399,6 +399,9 @@ Creates a new CosmosDB MongoMI Role Definition.
 ### [New-AzCosmosDBTableToRestore](New-AzCosmosDBTableToRestore.md)
 Creates a new CosmosDB Table to Restore object(PSTableToRestore)
 
+### [New-AzCosmosDBThroughputBucketObject](New-AzCosmosDBThroughputBucketObject.md)
+{{ Fill in the Synopsis }}
+
 ### [New-AzCosmosDBVirtualNetworkRule](New-AzCosmosDBVirtualNetworkRule.md)
 Create a new CosmosDB VirtualNetworkRule Object(PSVirtualNetworkRule).
 
