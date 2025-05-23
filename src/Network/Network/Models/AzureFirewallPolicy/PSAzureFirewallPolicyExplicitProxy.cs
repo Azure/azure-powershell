@@ -23,8 +23,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public int? HttpPort { get; set; }
 
-        public int? HttpsPort { get; set; }
-
         public bool? EnablePacFile { get; set; }
 
         public int? PacFilePort { get; set; }
