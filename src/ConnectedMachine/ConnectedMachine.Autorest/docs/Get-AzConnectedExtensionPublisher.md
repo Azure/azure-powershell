@@ -21,27 +21,58 @@ Gets all Extension publishers based on the location
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get extension publishers
 ```powershell
-{{ Add code here }}
+Get-AzConnectedExtensionPublisher -Location eastus
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name
+----
+azurestackhci.telemetry.agent
+datadog.agent
+dynatrace.ruxit
+microsoft.admincenter
+microsoft.aksarcforlinux
+microsoft.azure.activedirectory
+microsoft.azure.automation.hybridworker
+microsoft.azure.azuredefenderforservers
+microsoft.azure.azuredefenderforsql
+microsoft.azure.changetrackingandinventory
+microsoft.azure.extensions
+microsoft.azure.geneva
+microsoft.azure.keyvault
+microsoft.azure.meshvpn
+microsoft.azure.monitor
+microsoft.azure.monitoring.dependencyagent
+microsoft.azure.networkwatcher
+microsoft.azure.openssh
+microsoft.azure.recoveryservices.workloadbackup
+microsoft.azure.scommi
+microsoft.azure.security
+microsoft.azure.security.linuxattestation
+microsoft.azure.security.monitoring
+microsoft.azure.security.windowsattestation
+microsoft.azuredata
+microsoft.azurestack.arcvirtualization
+microsoft.azurestack.hci.alerts
+microsoft.azurestack.observability
+microsoft.azurestack.orchestration
+microsoft.compute
+microsoft.cplat.core
+microsoft.edge
+microsoft.edge.backup
+microsoft.enterprisecloud.monitoring
+microsoft.sentinel.azuremonitoragentextensions
+microsoft.serviceshub
+microsoft.siterecovery.dra
+microsoft.softwareupdatemanagement
+microsoft.sqlserver.management
+newrelic.infrastructure.extensions
+qualys
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Get extension publishers
 
 ## PARAMETERS
 

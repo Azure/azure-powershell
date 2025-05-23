@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get extension types
 ```powershell
-{{ Add code here }}
+Get-AzConnectedExtensionType -Location eastus -Publisher Microsoft.Azure.AzureDefenderForServers
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name
+----
+mde.linux
+mde.windows
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Get extension types

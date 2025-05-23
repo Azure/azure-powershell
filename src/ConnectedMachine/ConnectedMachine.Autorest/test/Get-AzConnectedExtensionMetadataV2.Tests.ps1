@@ -15,8 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedExtensionMetad
 }
 
 Describe 'Get-AzConnectedExtensionMetadataV2' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $all = @(Get-AzConnectedExtensionMetadataV2 -ExtensionType "MDE.Windows" -Location "eastus" -Publisher "Microsoft.Azure.AzureDefenderForServers")
+        $all | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' -skip {

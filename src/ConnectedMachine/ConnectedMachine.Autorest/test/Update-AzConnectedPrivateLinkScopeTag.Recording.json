@@ -1,9 +1,9 @@
 {
-  "Update-AzConnectedPrivateLinkScopeTag+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3?api-version=2024-07-31-preview+1": {
+  "Update-AzConnectedPrivateLinkScopeTag+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope2?api-version=2024-11-10-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3?api-version=2024-07-31-preview",
-      "Content": "{\r\n  \"tags\": {\r\n    \"world\": \"world\",\r\n    \"hello\": \"hello\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope2?api-version=2024-11-10-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"hello\": \"hello\",\r\n    \"world\": \"world\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,23 +17,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=0cd46ea8-7371-4f65-9bb5-5de55bea6d52/eastus/cbcada7d-d8d9-4d3c-9bca-3ffb3b3cad56" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "abeb7e18-eccf-4cd6-b535-905a058861b9" ],
+        "x-ms-request-id": [ "08a191ca-fa06-4967-b8f7-9169ef75b120" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "d2d7b02f-15df-48e9-8efc-ede2c75aa78d" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20241105T223802Z:d2d7b02f-15df-48e9-8efc-ede2c75aa78d" ],
+        "x-ms-correlation-request-id": [ "17841689-26f1-4423-8ccb-0fa16b8d660c" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250523T034411Z:17841689-26f1-4423-8ccb-0fa16b8d660c" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 433E5337C2E04306AC07546C7245103E Ref B: MNZ221060618009 Ref C: 2024-11-05T22:38:01Z" ],
-        "Date": [ "Tue, 05 Nov 2024 22:38:02 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 851DD742824D4215A3D478FC22E650A0 Ref B: BL2AA2011003034 Ref C: 2025-05-23T03:44:11Z" ],
+        "Date": [ "Fri, 23 May 2025 03:44:11 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "447" ],
+        "Content-Length": [ "448" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3\",\"name\":\"myScope3\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"eastus\",\"properties\":{\"privateLinkScopeId\":\"760fa1c3-da05-4a3b-8d18-c47d6781f1eb\",\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\",\"privateEndpointConnections\":[]},\"tags\":{\"world\":\"world\",\"hello\":\"hello\"}}",
+      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope2\",\"name\":\"myScope2\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"eastus\",\"properties\":{\"privateLinkScopeId\":\"2de854fb-66d3-4a01-af0b-88ae266fd916\",\"publicNetworkAccess\":\"Disabled\",\"provisioningState\":\"Succeeded\",\"privateEndpointConnections\":[]},\"tags\":{\"hello\":\"hello\",\"world\":\"world\"}}",
       "isContentBase64": false
     }
   }

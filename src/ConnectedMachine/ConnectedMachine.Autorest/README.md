@@ -338,7 +338,51 @@ directive:
           - Location
           - PublicNetworkAccess
           - ProvisioningState
- 
+  - where:
+      model-name: ExtensionValue
+    set:
+      format-table:
+        properties:
+          # - ResourceGroupName
+          # - Name
+          - Publisher
+          - ExtensionType
+          - Type
+          - Version
+  - where:
+      model-name: ExtensionValueV2
+    set:
+      format-table:
+        properties:
+          # - ResourceGroupName
+          # - Name
+          - Publisher
+          - ExtensionType
+          - Type
+          - Version
+  - where:
+      model-name: ExtensionValue
+    set:
+      format-table:
+        properties:
+          # - ResourceGroupName
+          # - Name
+          - Publisher
+          - ExtensionType
+          - Type
+          - Version
+  - where:
+        model-name: MachineRunCommand
+    set:
+      format-table:
+        exclude-properties:
+          - SystemDataCreatedAt
+          - SystemDataCreatedBy
+          - SystemDataCreatedByType
+          - SystemDataLastModifiedAt
+          - SystemDataLastModifiedBy
+          - SystemDataLastModifiedByType
+
   # Removing cmlets
   - where:
       subject: PrivateEndpointConnection

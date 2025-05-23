@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedExtensionType'
 }
 
 Describe 'Get-AzConnectedExtensionType' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $all = @(Get-AzConnectedExtensionType -Location "eastus" -Publisher "Microsoft.Azure.AzureDefenderForServers")
+        $all | Should -Not -BeNullOrEmpty
     }
 }
