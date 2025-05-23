@@ -51,6 +51,14 @@ title: MobileNetwork
 subject-prefix: $(service-name)
 
 directive:
+  - where:
+      verb: (.*)
+    set:
+      breaking-change:
+        deprecated-by-version: 0.5.0
+        deprecated-by-azversion: 14.5.0
+        change-effective-date: 2025/09/30
+
   # Change interopSettings type from <IAny> to <HashTable>
   - from: swagger-document
     where: $.definitions.PacketCoreControlPlanePropertiesFormat.properties.interopSettings

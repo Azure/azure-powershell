@@ -69,6 +69,7 @@ https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilene
 #>
 function Update-AzMobileNetworkSlice {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISlice])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.CmdletBreakingChange("14.5.0", "0.5.0", "2025/09/30")]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -198,7 +199,7 @@ function Update-AzMobileNetworkSlice {
 
     process {
         try {
-            Az.MobileNetwork.internal\UpdateAzMobileNetworkSlice @PSBoundParameters
+            Az.MobileNetwork.internal\Update-AzMobileNetworkSlice @PSBoundParameters
         } catch {
             
             throw
