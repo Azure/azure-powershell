@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.0.1
 * Force `Get-AzAccessToken` to always return SecureString as long as `AsSecureString` is set
 * Upgrade Azure.Core to 1.45.0
 
