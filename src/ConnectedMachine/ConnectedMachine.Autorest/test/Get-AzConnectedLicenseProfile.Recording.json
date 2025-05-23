@@ -7,11 +7,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "17e93504-f3d1-4c6f-a751-eb4373a25eb7" ],
+        "x-ms-client-request-id": [ "3c428ee9-b66c-490e-9c35-06495d8dbb02" ],
         "CommandName": [ "Get-AzConnectedLicenseProfile" ],
         "FullCommandName": [ "Get-AzConnectedLicenseProfile_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.ConnectedMachine/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.ConnectedMachine/1.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -24,21 +24,21 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "179c982d-ed2f-472f-87c4-7ebb2944dc84" ],
+        "x-ms-request-id": [ "fb2fa6d7-c3c9-42d4-a09e-749c7fc1470f" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "ad407740-4f61-4fc8-907c-4134db0b550f" ],
-        "x-ms-routing-request-id": [ "westus2:20241108T020035Z:ad407740-4f61-4fc8-907c-4134db0b550f" ],
+        "x-ms-correlation-request-id": [ "9f636517-bd8c-477f-97ac-4a0731500daf" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250523T195845Z:9f636517-bd8c-477f-97ac-4a0731500daf" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9CCCBF58535D4E71BAA4873E3E8921EE Ref B: MNZ221060619053 Ref C: 2024-11-08T02:00:34Z" ],
-        "Date": [ "Fri, 08 Nov 2024 02:00:34 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F616643C569A400997B0932FCD85EF1F Ref B: BN1AA2051015019 Ref C: 2025-05-23T19:58:45Z" ],
+        "Date": [ "Fri, 23 May 2025 19:58:44 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "912" ],
+        "Content-Length": [ "936" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/PayGo_Test_CLI/providers/Microsoft.HybridCompute/machines/WIN-U57JFKURUK8/licenseProfiles/default\",\"name\":\"default\",\"location\":\"westus2\",\"type\":\"Microsoft.HybridCompute/machines/licenseProfiles\",\"properties\":{\"provisioningState\":\"Succeeded\",\"esuProfile\":{\"serverType\":\"Datacenter\",\"esuEligibility\":\"Ineligible\",\"esuKeyState\":\"Inactive\"},\"productProfile\":{\"productType\":\"WindowsServer\",\"productFeatures\":[{\"name\":\"WindowsServerAzureArcMgmt\",\"subscriptionStatus\":\"Enabled\",\"enrollmentDate\":\"2024-11-08T01:58:37.6099656Z\",\"billingStartDate\":\"2024-11-08T01:58:37.6096833Z\"},{\"name\":\"Hotpatch\",\"subscriptionStatus\":\"Enabled\",\"enrollmentDate\":\"2024-11-08T01:58:37.6095044Z\",\"billingStartDate\":\"2025-02-01T00:00:00\"}],\"subscriptionStatus\":\"Enabled\",\"enrollmentDate\":\"2024-11-08T01:53:34.9899742Z\",\"billingStartDate\":\"2024-11-15T01:53:34.989552Z\"}}}",
+      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/PayGo_Test_CLI/providers/Microsoft.HybridCompute/machines/WIN-U57JFKURUK8/licenseProfiles/default\",\"name\":\"default\",\"location\":\"westus2\",\"type\":\"Microsoft.HybridCompute/machines/licenseProfiles\",\"properties\":{\"provisioningState\":\"Succeeded\",\"esuProfile\":{\"serverType\":\"Standard\",\"esuEligibility\":\"Ineligible\",\"esuKeyState\":\"Inactive\",\"esuKeys\":[]},\"productProfile\":{\"productType\":\"WindowsServer\",\"productFeatures\":[{\"name\":\"WindowsServerAzureArcMgmt\",\"subscriptionStatus\":\"Enabled\",\"enrollmentDate\":\"2025-05-15T02:51:57.7762584Z\",\"billingStartDate\":\"2025-05-15T02:51:57.7762354Z\"},{\"name\":\"Hotpatch\",\"subscriptionStatus\":\"Enabled\",\"enrollmentDate\":\"2025-05-15T15:05:30.3366606Z\",\"billingStartDate\":\"2025-05-15T15:05:30.3364097Z\"}],\"subscriptionStatus\":\"Enabled\",\"enrollmentDate\":\"2025-05-15T02:49:54.3554234Z\",\"billingStartDate\":\"2025-05-22T02:49:54.3554075Z\"}}}",
       "isContentBase64": false
     }
   }
