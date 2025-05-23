@@ -31,10 +31,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// GalleryInVMAccessControlProfilesDeleteHeaders class.
         /// </summary>
-        public GalleryInVMAccessControlProfilesDeleteHeaders(string location = default(string), string azureAsyncOperation = default(string))
+        /// <param name="azureAsyncOperation">A link to the status
+        /// monitor</param>
+        /// <param name="location">The Location header contains the URL where
+        /// the status of the long running operation can be checked.</param>
+        public GalleryInVMAccessControlProfilesDeleteHeaders(string azureAsyncOperation = default(string), string location = default(string))
         {
-            Location = location;
             AzureAsyncOperation = azureAsyncOperation;
+            Location = location;
             CustomInit();
         }
 
@@ -44,14 +48,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "Location")]
-        public string Location { get; set; }
-
-        /// <summary>
+        /// Gets or sets a link to the status monitor
         /// </summary>
         [JsonProperty(PropertyName = "Azure-AsyncOperation")]
         public string AzureAsyncOperation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Location header contains the URL where the status
+        /// of the long running operation can be checked.
+        /// </summary>
+        [JsonProperty(PropertyName = "Location")]
+        public string Location { get; set; }
 
     }
 }

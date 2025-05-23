@@ -41,9 +41,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// this Profile version.</param>
         /// <param name="publishedDate">The timestamp for when the Resource
         /// Profile Version is published.</param>
-        /// <param name="provisioningState">Possible values include:
-        /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
-        /// 'Migrating'</param>
+        /// <param name="provisioningState">The provisioning state, which only
+        /// appears in the response. Possible values include: 'Creating',
+        /// 'Updating', 'Failed', 'Succeeded', 'Deleting', 'Migrating'</param>
+        /// <param name="replicationStatus">This is the replication status of
+        /// the gallery image version.</param>
         public GalleryResourceProfileVersionPropertiesBase(IList<TargetRegion> targetLocations = default(IList<TargetRegion>), bool? excludeFromLatest = default(bool?), System.DateTime? publishedDate = default(System.DateTime?), string provisioningState = default(string), ReplicationStatus replicationStatus = default(ReplicationStatus))
         {
             TargetLocations = targetLocations;
@@ -82,13 +84,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         public System.DateTime? PublishedDate { get; private set; }
 
         /// <summary>
-        /// Gets possible values include: 'Creating', 'Updating', 'Failed',
+        /// Gets the provisioning state, which only appears in the response.
+        /// Possible values include: 'Creating', 'Updating', 'Failed',
         /// 'Succeeded', 'Deleting', 'Migrating'
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState { get; private set; }
 
         /// <summary>
+        /// Gets this is the replication status of the gallery image version.
         /// </summary>
         [JsonProperty(PropertyName = "replicationStatus")]
         public ReplicationStatus ReplicationStatus { get; private set; }

@@ -10,8 +10,6 @@
 
 namespace Microsoft.Azure.Management.Compute.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -20,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// <summary>
     /// The Resource model definition with location property as optional.
     /// </summary>
-    public partial class ResourceWithOptionalLocation : IResource
+    public partial class ResourceWithOptionalLocation
     {
         /// <summary>
         /// Initializes a new instance of the ResourceWithOptionalLocation

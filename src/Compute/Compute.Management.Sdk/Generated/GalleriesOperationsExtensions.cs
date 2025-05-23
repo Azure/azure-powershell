@@ -22,233 +22,6 @@ namespace Microsoft.Azure.Management.Compute
     public static partial class GalleriesOperationsExtensions
     {
             /// <summary>
-            /// Create or update a Shared Image Gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery. The allowed characters are alphabets
-            /// and numbers with dots and periods allowed in the middle. The maximum length
-            /// is 80 characters.
-            /// </param>
-            /// <param name='gallery'>
-            /// Parameters supplied to the create or update Shared Image Gallery operation.
-            /// </param>
-            public static Gallery CreateOrUpdate(this IGalleriesOperations operations, string resourceGroupName, string galleryName, Gallery gallery)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, galleryName, gallery).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Create or update a Shared Image Gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery. The allowed characters are alphabets
-            /// and numbers with dots and periods allowed in the middle. The maximum length
-            /// is 80 characters.
-            /// </param>
-            /// <param name='gallery'>
-            /// Parameters supplied to the create or update Shared Image Gallery operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Gallery> CreateOrUpdateAsync(this IGalleriesOperations operations, string resourceGroupName, string galleryName, Gallery gallery, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, galleryName, gallery, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Update a Shared Image Gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery. The allowed characters are alphabets
-            /// and numbers with dots and periods allowed in the middle. The maximum length
-            /// is 80 characters.
-            /// </param>
-            /// <param name='gallery'>
-            /// Parameters supplied to the update Shared Image Gallery operation.
-            /// </param>
-            public static Gallery Update(this IGalleriesOperations operations, string resourceGroupName, string galleryName, GalleryUpdate gallery)
-            {
-                return operations.UpdateAsync(resourceGroupName, galleryName, gallery).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Update a Shared Image Gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery. The allowed characters are alphabets
-            /// and numbers with dots and periods allowed in the middle. The maximum length
-            /// is 80 characters.
-            /// </param>
-            /// <param name='gallery'>
-            /// Parameters supplied to the update Shared Image Gallery operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Gallery> UpdateAsync(this IGalleriesOperations operations, string resourceGroupName, string galleryName, GalleryUpdate gallery, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, galleryName, gallery, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Retrieves information about a Shared Image Gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery.
-            /// </param>
-            /// <param name='select'>
-            /// The select expression to apply on the operation. Possible values include:
-            /// 'Permissions'
-            /// </param>
-            /// <param name='expand'>
-            /// The expand query option to apply on the operation. Possible values include:
-            /// 'SharingProfile/Groups'
-            /// </param>
-            public static Gallery Get(this IGalleriesOperations operations, string resourceGroupName, string galleryName, string select = default(string), string expand = default(string))
-            {
-                return operations.GetAsync(resourceGroupName, galleryName, select, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Retrieves information about a Shared Image Gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery.
-            /// </param>
-            /// <param name='select'>
-            /// The select expression to apply on the operation. Possible values include:
-            /// 'Permissions'
-            /// </param>
-            /// <param name='expand'>
-            /// The expand query option to apply on the operation. Possible values include:
-            /// 'SharingProfile/Groups'
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Gallery> GetAsync(this IGalleriesOperations operations, string resourceGroupName, string galleryName, string select = default(string), string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, galleryName, select, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Delete a Shared Image Gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery to be deleted.
-            /// </param>
-            public static void Delete(this IGalleriesOperations operations, string resourceGroupName, string galleryName)
-            {
-                operations.DeleteAsync(resourceGroupName, galleryName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Delete a Shared Image Gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery to be deleted.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IGalleriesOperations operations, string resourceGroupName, string galleryName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// List galleries under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            public static IPage<Gallery> ListByResourceGroup(this IGalleriesOperations operations, string resourceGroupName)
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// List galleries under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Gallery>> ListByResourceGroupAsync(this IGalleriesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// List galleries under a subscription.
             /// </summary>
             /// <param name='operations'>
@@ -277,18 +50,235 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
+            /// List galleries under a resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            public static IPage<Gallery> ListByResourceGroup(this IGalleriesOperations operations, string resourceGroupName)
+            {
+                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// List galleries under a resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<Gallery>> ListByResourceGroupAsync(this IGalleriesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Retrieves information about a Shared Image Gallery.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            /// <param name='select'>
+            /// The select expression to apply on the operation. Possible values include:
+            /// 'Permissions'
+            /// </param>
+            /// <param name='expand'>
+            /// The expand query option to apply on the operation. Possible values include:
+            /// 'SharingProfile/Groups'
+            /// </param>
+            public static Gallery Get(this IGalleriesOperations operations, string resourceGroupName, string galleryName, string select = default(string), string expand = default(string))
+            {
+                return operations.GetAsync(resourceGroupName, galleryName, select, expand).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Retrieves information about a Shared Image Gallery.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            /// <param name='select'>
+            /// The select expression to apply on the operation. Possible values include:
+            /// 'Permissions'
+            /// </param>
+            /// <param name='expand'>
+            /// The expand query option to apply on the operation. Possible values include:
+            /// 'SharingProfile/Groups'
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Gallery> GetAsync(this IGalleriesOperations operations, string resourceGroupName, string galleryName, string select = default(string), string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, galleryName, select, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Create or update a Shared Image Gallery.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery. The allowed characters are alphabets
-            /// and numbers with dots and periods allowed in the middle. The maximum length
-            /// is 80 characters.
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            /// <param name='gallery'>
+            /// Parameters supplied to the create or update Shared Image Gallery operation.
+            /// </param>
+            public static Gallery CreateOrUpdate(this IGalleriesOperations operations, string resourceGroupName, string galleryName, Gallery gallery)
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, galleryName, gallery).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Create or update a Shared Image Gallery.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            /// <param name='gallery'>
+            /// Parameters supplied to the create or update Shared Image Gallery operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Gallery> CreateOrUpdateAsync(this IGalleriesOperations operations, string resourceGroupName, string galleryName, Gallery gallery, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, galleryName, gallery, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Update a Shared Image Gallery.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            /// <param name='gallery'>
+            /// Parameters supplied to the update Shared Image Gallery operation.
+            /// </param>
+            public static Gallery Update(this IGalleriesOperations operations, string resourceGroupName, string galleryName, GalleryUpdate gallery)
+            {
+                return operations.UpdateAsync(resourceGroupName, galleryName, gallery).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Update a Shared Image Gallery.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            /// <param name='gallery'>
+            /// Parameters supplied to the update Shared Image Gallery operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Gallery> UpdateAsync(this IGalleriesOperations operations, string resourceGroupName, string galleryName, GalleryUpdate gallery, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, galleryName, gallery, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Delete a Shared Image Gallery.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            public static void Delete(this IGalleriesOperations operations, string resourceGroupName, string galleryName)
+            {
+                operations.DeleteAsync(resourceGroupName, galleryName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Delete a Shared Image Gallery.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAsync(this IGalleriesOperations operations, string resourceGroupName, string galleryName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Create or update a Shared Image Gallery.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='gallery'>
             /// Parameters supplied to the create or update Shared Image Gallery operation.
@@ -305,12 +295,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery. The allowed characters are alphabets
-            /// and numbers with dots and periods allowed in the middle. The maximum length
-            /// is 80 characters.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='gallery'>
             /// Parameters supplied to the create or update Shared Image Gallery operation.
@@ -333,12 +321,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery. The allowed characters are alphabets
-            /// and numbers with dots and periods allowed in the middle. The maximum length
-            /// is 80 characters.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='gallery'>
             /// Parameters supplied to the update Shared Image Gallery operation.
@@ -355,12 +341,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery. The allowed characters are alphabets
-            /// and numbers with dots and periods allowed in the middle. The maximum length
-            /// is 80 characters.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='gallery'>
             /// Parameters supplied to the update Shared Image Gallery operation.
@@ -383,10 +367,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery to be deleted.
+            /// The name of the Shared Image Gallery.
             /// </param>
             public static void BeginDelete(this IGalleriesOperations operations, string resourceGroupName, string galleryName)
             {
@@ -400,10 +384,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery to be deleted.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -411,40 +395,6 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task BeginDeleteAsync(this IGalleriesOperations operations, string resourceGroupName, string galleryName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, galleryName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// List galleries under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<Gallery> ListByResourceGroupNext(this IGalleriesOperations operations, string nextPageLink)
-            {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// List galleries under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Gallery>> ListByResourceGroupNextAsync(this IGalleriesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
             }
 
             /// <summary>
@@ -476,6 +426,40 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task<IPage<Gallery>> ListNextAsync(this IGalleriesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// List galleries under a resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<Gallery> ListByResourceGroupNext(this IGalleriesOperations operations, string nextPageLink)
+            {
+                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// List galleries under a resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<Gallery>> ListByResourceGroupNextAsync(this IGalleriesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

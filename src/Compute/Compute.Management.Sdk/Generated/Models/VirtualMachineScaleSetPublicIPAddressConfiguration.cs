@@ -54,6 +54,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="deleteOption">Specify what happens to the public IP
         /// when the VM is deleted. Possible values include: 'Delete',
         /// 'Detach'</param>
+        /// <param name="sku">Describes the public IP Sku. It can only be set
+        /// with OrchestrationMode as Flexible.</param>
         public VirtualMachineScaleSetPublicIPAddressConfiguration(string name, int? idleTimeoutInMinutes = default(int?), VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings), IList<VirtualMachineScaleSetIpTag> ipTags = default(IList<VirtualMachineScaleSetIpTag>), SubResource publicIPPrefix = default(SubResource), string publicIPAddressVersion = default(string), string deleteOption = default(string), PublicIPAddressSku sku = default(PublicIPAddressSku))
         {
             Name = name;
@@ -122,6 +124,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string DeleteOption { get; set; }
 
         /// <summary>
+        /// Gets or sets describes the public IP Sku. It can only be set with
+        /// OrchestrationMode as Flexible.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public PublicIPAddressSku Sku { get; set; }

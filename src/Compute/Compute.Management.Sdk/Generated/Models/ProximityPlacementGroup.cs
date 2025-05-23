@@ -55,9 +55,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Proximity Placement Group.</param>
         /// <param name="intent">Specifies the user intent of the proximity
         /// placement group.</param>
-        /// <param name="zones">Specifies the Availability Zone where virtual
-        /// machine, virtual machine scale set or availability set associated
-        /// with the  proximity placement group can be created.</param>
+        /// <param name="zones">The availability zones.</param>
         public ProximityPlacementGroup(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string proximityPlacementGroupType = default(string), IList<SubResourceWithColocationStatus> virtualMachines = default(IList<SubResourceWithColocationStatus>), IList<SubResourceWithColocationStatus> virtualMachineScaleSets = default(IList<SubResourceWithColocationStatus>), IList<SubResourceWithColocationStatus> availabilitySets = default(IList<SubResourceWithColocationStatus>), InstanceViewStatus colocationStatus = default(InstanceViewStatus), ProximityPlacementGroupPropertiesIntent intent = default(ProximityPlacementGroupPropertiesIntent), IList<string> zones = default(IList<string>))
             : base(location, id, name, type, tags)
         {
@@ -121,9 +119,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public ProximityPlacementGroupPropertiesIntent Intent { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the Availability Zone where virtual machine,
-        /// virtual machine scale set or availability set associated with the
-        /// proximity placement group can be created.
+        /// Gets or sets the availability zones.
         /// </summary>
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; set; }

@@ -191,10 +191,6 @@ namespace Microsoft.Azure.Management.Compute.Models
                 {
                     throw new ValidationException(ValidationRules.InclusiveMaximum, "MaxUnhealthyUpgradedInstancePercent", 100);
                 }
-                if (MaxUnhealthyUpgradedInstancePercent < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "MaxUnhealthyUpgradedInstancePercent", 0);
-                }
             }
         }
     }

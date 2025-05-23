@@ -35,15 +35,27 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the GalleryImageVersionUpdate class.
         /// </summary>
+        /// <param name="storageProfile">This is the storage profile of a
+        /// Gallery Image Version.</param>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="provisioningState">Possible values include:
-        /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
-        /// 'Migrating'</param>
+        /// <param name="publishingProfile">The publishing profile of a gallery
+        /// image Version.</param>
+        /// <param name="provisioningState">The provisioning state, which only
+        /// appears in the response. Possible values include: 'Creating',
+        /// 'Updating', 'Failed', 'Succeeded', 'Deleting', 'Migrating'</param>
+        /// <param name="safetyProfile">This is the safety profile of the
+        /// Gallery Image Version.</param>
+        /// <param name="replicationStatus">This is the replication status of
+        /// the gallery image version.</param>
+        /// <param name="securityProfile">The security profile of a gallery
+        /// image version</param>
         /// <param name="restore">Indicates if this is a soft-delete resource
         /// restoration request.</param>
+        /// <param name="validationsProfile">This is the validations profile of
+        /// a Gallery Image Version.</param>
         public GalleryImageVersionUpdate(GalleryImageVersionStorageProfile storageProfile, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), GalleryImageVersionPublishingProfile publishingProfile = default(GalleryImageVersionPublishingProfile), string provisioningState = default(string), GalleryImageVersionSafetyProfile safetyProfile = default(GalleryImageVersionSafetyProfile), ReplicationStatus replicationStatus = default(ReplicationStatus), ImageVersionSecurityProfile securityProfile = default(ImageVersionSecurityProfile), bool? restore = default(bool?), ValidationsProfile validationsProfile = default(ValidationsProfile))
             : base(id, name, type, tags)
         {
@@ -64,33 +76,41 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets the publishing profile of a gallery image Version.
         /// </summary>
         [JsonProperty(PropertyName = "properties.publishingProfile")]
         public GalleryImageVersionPublishingProfile PublishingProfile { get; set; }
 
         /// <summary>
-        /// Gets possible values include: 'Creating', 'Updating', 'Failed',
+        /// Gets the provisioning state, which only appears in the response.
+        /// Possible values include: 'Creating', 'Updating', 'Failed',
         /// 'Succeeded', 'Deleting', 'Migrating'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
 
         /// <summary>
+        /// Gets or sets this is the storage profile of a Gallery Image
+        /// Version.
         /// </summary>
         [JsonProperty(PropertyName = "properties.storageProfile")]
         public GalleryImageVersionStorageProfile StorageProfile { get; set; }
 
         /// <summary>
+        /// Gets or sets this is the safety profile of the Gallery Image
+        /// Version.
         /// </summary>
         [JsonProperty(PropertyName = "properties.safetyProfile")]
         public GalleryImageVersionSafetyProfile SafetyProfile { get; set; }
 
         /// <summary>
+        /// Gets this is the replication status of the gallery image version.
         /// </summary>
         [JsonProperty(PropertyName = "properties.replicationStatus")]
         public ReplicationStatus ReplicationStatus { get; private set; }
 
         /// <summary>
+        /// Gets or sets the security profile of a gallery image version
         /// </summary>
         [JsonProperty(PropertyName = "properties.securityProfile")]
         public ImageVersionSecurityProfile SecurityProfile { get; set; }
@@ -103,6 +123,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public bool? Restore { get; set; }
 
         /// <summary>
+        /// Gets this is the validations profile of a Gallery Image Version.
         /// </summary>
         [JsonProperty(PropertyName = "properties.validationsProfile")]
         public ValidationsProfile ValidationsProfile { get; private set; }

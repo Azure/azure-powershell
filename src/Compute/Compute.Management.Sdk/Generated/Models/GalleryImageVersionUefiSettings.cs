@@ -36,6 +36,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="signatureTemplateNames">The name of the template(s)
         /// that contains default UEFI key signatures that will be added to the
         /// image.</param>
+        /// <param name="additionalSignatures">Additional UEFI key signatures
+        /// that will be added to the image in addition to the signature
+        /// templates</param>
         public GalleryImageVersionUefiSettings(IList<string> signatureTemplateNames = default(IList<string>), UefiKeySignatures additionalSignatures = default(UefiKeySignatures))
         {
             SignatureTemplateNames = signatureTemplateNames;
@@ -56,6 +59,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public IList<string> SignatureTemplateNames { get; set; }
 
         /// <summary>
+        /// Gets or sets additional UEFI key signatures that will be added to
+        /// the image in addition to the signature templates
         /// </summary>
         [JsonProperty(PropertyName = "additionalSignatures")]
         public UefiKeySignatures AdditionalSignatures { get; set; }

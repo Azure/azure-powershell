@@ -39,11 +39,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.</param>
         /// <param name="networkInterfaceConfigurations">The list of network
         /// configurations.</param>
-        /// <param name="networkApiVersion">Specifies the Microsoft.Network API
+        /// <param name="networkApiVersion">specifies the Microsoft.Network API
         /// version used when creating networking resources in the Network
         /// Interface Configurations for Virtual Machine Scale Set with
-        /// orchestration mode 'Flexible'. For support of all network
-        /// properties, use '2022-11-01'. Possible values include:
+        /// orchestration mode 'Flexible'. Possible values include:
         /// '2020-11-01', '2022-11-01'</param>
         public VirtualMachineScaleSetUpdateNetworkProfile(ApiEntityReference healthProbe = default(ApiEntityReference), IList<VirtualMachineScaleSetUpdateNetworkConfiguration> networkInterfaceConfigurations = default(IList<VirtualMachineScaleSetUpdateNetworkConfiguration>), string networkApiVersion = default(string))
         {
@@ -77,8 +76,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets specifies the Microsoft.Network API version used when
         /// creating networking resources in the Network Interface
         /// Configurations for Virtual Machine Scale Set with orchestration
-        /// mode 'Flexible'. For support of all network properties, use
-        /// '2022-11-01'. Possible values include: '2020-11-01', '2022-11-01'
+        /// mode 'Flexible'. Possible values include: '2020-11-01',
+        /// '2022-11-01'
         /// </summary>
         [JsonProperty(PropertyName = "networkApiVersion")]
         public string NetworkApiVersion { get; set; }

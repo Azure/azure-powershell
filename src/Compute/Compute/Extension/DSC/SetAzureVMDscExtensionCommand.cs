@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
             //Add retry logic due to CRP service restart known issue CRP bug: 3564713
             var count = 1;
-            Rest.Azure.AzureOperationResponse<VirtualMachineExtension> op = null;
+            Rest.Azure.AzureOperationResponse<VirtualMachineExtension, VirtualMachineExtensionsCreateOrUpdateHeaders> op = null;
 
             if (NoWait.IsPresent)
             {

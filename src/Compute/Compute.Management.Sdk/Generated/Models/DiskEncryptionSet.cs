@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="encryptionType">Possible values include:
+        /// <param name="encryptionType">The type of key used to encrypt the
+        /// data of the disk. Possible values include:
         /// 'EncryptionAtRestWithCustomerKey',
         /// 'EncryptionAtRestWithPlatformAndCustomerKeys',
         /// 'ConfidentialVmEncryptedWithCustomerKey'</param>
@@ -63,10 +64,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="federatedClientId">Multi-tenant application client id
         /// to access key vault in a different tenant. Setting the value to
         /// 'None' will clear the property.</param>
-        public DiskEncryptionSet(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), EncryptionSetIdentity identity = default(EncryptionSetIdentity), string encryptionType = default(string), KeyForDiskEncryptionSet activeKey = default(KeyForDiskEncryptionSet), IList<KeyForDiskEncryptionSet> previousKeys = default(IList<KeyForDiskEncryptionSet>), string provisioningState = default(string), bool? rotationToLatestKeyVersionEnabled = default(bool?), System.DateTime? lastKeyRotationTimestamp = default(System.DateTime?), ApiError autoKeyRotationError = default(ApiError), string federatedClientId = default(string))
+        /// <param name="identity">The managed identity for the disk encryption
+        /// set. It should be given permission on the key vault before it can
+        /// be used to encrypt disks.</param>
+        public DiskEncryptionSet(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string encryptionType = default(string), KeyForDiskEncryptionSet activeKey = default(KeyForDiskEncryptionSet), IList<KeyForDiskEncryptionSet> previousKeys = default(IList<KeyForDiskEncryptionSet>), string provisioningState = default(string), bool? rotationToLatestKeyVersionEnabled = default(bool?), System.DateTime? lastKeyRotationTimestamp = default(System.DateTime?), ApiError autoKeyRotationError = default(ApiError), string federatedClientId = default(string), EncryptionSetIdentity identity = default(EncryptionSetIdentity))
             : base(location, id, name, type, tags)
         {
-            Identity = identity;
             EncryptionType = encryptionType;
             ActiveKey = activeKey;
             PreviousKeys = previousKeys;
@@ -75,6 +78,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             LastKeyRotationTimestamp = lastKeyRotationTimestamp;
             AutoKeyRotationError = autoKeyRotationError;
             FederatedClientId = federatedClientId;
+            Identity = identity;
             CustomInit();
         }
 
@@ -84,13 +88,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "identity")]
-        public EncryptionSetIdentity Identity { get; set; }
-
-        /// <summary>
-        /// Gets or sets possible values include:
-        /// 'EncryptionAtRestWithCustomerKey',
+        /// Gets or sets the type of key used to encrypt the data of the disk.
+        /// Possible values include: 'EncryptionAtRestWithCustomerKey',
         /// 'EncryptionAtRestWithPlatformAndCustomerKeys',
         /// 'ConfidentialVmEncryptedWithCustomerKey'
         /// </summary>
@@ -147,6 +146,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.federatedClientId")]
         public string FederatedClientId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed identity for the disk encryption set. It
+        /// should be given permission on the key vault before it can be used
+        /// to encrypt disks.
+        /// </summary>
+        [JsonProperty(PropertyName = "identity")]
+        public EncryptionSetIdentity Identity { get; set; }
 
         /// <summary>
         /// Validate the object.

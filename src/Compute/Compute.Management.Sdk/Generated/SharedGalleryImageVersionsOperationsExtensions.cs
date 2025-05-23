@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
+            /// The name of Azure region.
             /// </param>
             /// <param name='galleryUniqueName'>
             /// The unique name of the Shared Gallery.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
+            /// The name of Azure region.
             /// </param>
             /// <param name='galleryUniqueName'>
             /// The unique name of the Shared Gallery.
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
+            /// The name of Azure region.
             /// </param>
             /// <param name='galleryUniqueName'>
             /// The unique name of the Shared Gallery.
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
+            /// The name of Azure region.
             /// </param>
             /// <param name='galleryUniqueName'>
             /// The unique name of the Shared Gallery.

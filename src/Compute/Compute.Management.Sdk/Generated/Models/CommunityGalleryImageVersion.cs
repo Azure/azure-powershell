@@ -55,6 +55,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// image version.</param>
         /// <param name="disclaimer">The disclaimer for a community gallery
         /// resource.</param>
+        /// <param name="artifactTags">The artifact tags of a community gallery
+        /// resource.</param>
         public CommunityGalleryImageVersion(string name = default(string), string location = default(string), string type = default(string), string uniqueId = default(string), System.DateTime? publishedDate = default(System.DateTime?), System.DateTime? endOfLifeDate = default(System.DateTime?), bool? excludeFromLatest = default(bool?), SharedGalleryImageVersionStorageProfile storageProfile = default(SharedGalleryImageVersionStorageProfile), string disclaimer = default(string), IDictionary<string, string> artifactTags = default(IDictionary<string, string>))
             : base(name, location, type, uniqueId)
         {
@@ -109,6 +111,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string Disclaimer { get; set; }
 
         /// <summary>
+        /// Gets or sets the artifact tags of a community gallery resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.artifactTags")]
         public IDictionary<string, string> ArtifactTags { get; set; }

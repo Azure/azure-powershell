@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Get a community gallery by gallery public name.
         /// </summary>
         /// <param name='location'>
-        /// Resource location.
+        /// The name of Azure region.
         /// </param>
         /// <param name='publicGalleryName'>
         /// The public name of the community gallery.

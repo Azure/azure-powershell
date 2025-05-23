@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// resizing]
         /// (https://docs.microsoft.com/rest/api/compute/dedicated-hosts/listavailablesizes).
         /// Resizing can be only used to scale up DedicatedHost. Only name is
-        /// required to be set. </param>
+        /// required to be set.</param>
         public DedicatedHostUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformFaultDomain = default(int?), bool? autoReplaceOnFailure = default(bool?), string hostId = default(string), IList<SubResourceReadOnly> virtualMachines = default(IList<SubResourceReadOnly>), DedicatedHostLicenseTypes? licenseType = default(DedicatedHostLicenseTypes?), System.DateTime? provisioningTime = default(System.DateTime?), string provisioningState = default(string), DedicatedHostInstanceView instanceView = default(DedicatedHostInstanceView), System.DateTime? timeCreated = default(System.DateTime?), Sku sku = default(Sku))
             : base(tags)
         {
@@ -160,21 +160,5 @@ namespace Microsoft.Azure.Management.Compute.Models
         [JsonProperty(PropertyName = "sku")]
         public Sku Sku { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (PlatformFaultDomain != null)
-            {
-                if (PlatformFaultDomain < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "PlatformFaultDomain", 0);
-                }
-            }
-        }
     }
 }
