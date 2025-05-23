@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -34,21 +32,19 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the PrivateEndpointConnection class.
         /// </summary>
-        /// <param name="location">Resource location</param>
         /// <param name="privateLinkServiceConnectionState">A collection of
         /// information about the state of the connection between DiskAccess
         /// and Virtual Network.</param>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
-        /// <param name="tags">Resource tags.</param>
         /// <param name="privateEndpoint">The resource of private end
         /// point.</param>
         /// <param name="provisioningState">The provisioning state of the
         /// private endpoint connection resource. Possible values include:
         /// 'Succeeded', 'Creating', 'Deleting', 'Failed'</param>
-        public PrivateEndpointConnection(string location, PrivateLinkServiceConnectionState privateLinkServiceConnectionState, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), string provisioningState = default(string))
-            : base(location, id, name, type, tags)
+        public PrivateEndpointConnection(PrivateLinkServiceConnectionState privateLinkServiceConnectionState, string id = default(string), string name = default(string), string type = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), string provisioningState = default(string))
+            : base(id, name, type)
         {
             PrivateEndpoint = privateEndpoint;
             PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
@@ -88,9 +84,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (PrivateLinkServiceConnectionState == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "PrivateLinkServiceConnectionState");

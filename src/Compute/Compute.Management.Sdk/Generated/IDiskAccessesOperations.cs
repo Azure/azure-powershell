@@ -258,9 +258,9 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
         /// </param>
-        /// <param name='privateEndpointConnection'>
-        /// private endpoint connection object supplied in the body of the Put
-        /// private endpoint connection operation.
+        /// <param name='privateLinkServiceConnectionState'>
+        /// A collection of information about the state of the connection
+        /// between DiskAccess and Virtual Network.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnection>> UpdateAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnection, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PrivateEndpointConnection>> UpdateAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a private endpoint connection under a disk access resource.
         /// </summary>
@@ -439,9 +439,9 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
         /// </param>
-        /// <param name='privateEndpointConnection'>
-        /// private endpoint connection object supplied in the body of the Put
-        /// private endpoint connection operation.
+        /// <param name='privateLinkServiceConnectionState'>
+        /// A collection of information about the state of the connection
+        /// between DiskAccess and Virtual Network.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnection>> BeginUpdateAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnection, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PrivateEndpointConnection>> BeginUpdateAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a private endpoint connection under a disk access resource.
         /// </summary>

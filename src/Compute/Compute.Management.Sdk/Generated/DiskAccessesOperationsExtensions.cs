@@ -399,13 +399,13 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='privateEndpointConnectionName'>
             /// The name of the private endpoint connection.
             /// </param>
-            /// <param name='privateEndpointConnection'>
-            /// private endpoint connection object supplied in the body of the Put private
-            /// endpoint connection operation.
+            /// <param name='privateLinkServiceConnectionState'>
+            /// A collection of information about the state of the connection between
+            /// DiskAccess and Virtual Network.
             /// </param>
-            public static PrivateEndpointConnection UpdateAPrivateEndpointConnection(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnection)
+            public static PrivateEndpointConnection UpdateAPrivateEndpointConnection(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState)
             {
-                return operations.UpdateAPrivateEndpointConnectionAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateEndpointConnection).GetAwaiter().GetResult();
+                return operations.UpdateAPrivateEndpointConnectionAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateLinkServiceConnectionState).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -427,16 +427,16 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='privateEndpointConnectionName'>
             /// The name of the private endpoint connection.
             /// </param>
-            /// <param name='privateEndpointConnection'>
-            /// private endpoint connection object supplied in the body of the Put private
-            /// endpoint connection operation.
+            /// <param name='privateLinkServiceConnectionState'>
+            /// A collection of information about the state of the connection between
+            /// DiskAccess and Virtual Network.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PrivateEndpointConnection> UpdateAPrivateEndpointConnectionAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnection, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PrivateEndpointConnection> UpdateAPrivateEndpointConnectionAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateEndpointConnection, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateLinkServiceConnectionState, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -703,13 +703,13 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='privateEndpointConnectionName'>
             /// The name of the private endpoint connection.
             /// </param>
-            /// <param name='privateEndpointConnection'>
-            /// private endpoint connection object supplied in the body of the Put private
-            /// endpoint connection operation.
+            /// <param name='privateLinkServiceConnectionState'>
+            /// A collection of information about the state of the connection between
+            /// DiskAccess and Virtual Network.
             /// </param>
-            public static PrivateEndpointConnection BeginUpdateAPrivateEndpointConnection(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnection)
+            public static PrivateEndpointConnection BeginUpdateAPrivateEndpointConnection(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState)
             {
-                return operations.BeginUpdateAPrivateEndpointConnectionAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateEndpointConnection).GetAwaiter().GetResult();
+                return operations.BeginUpdateAPrivateEndpointConnectionAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateLinkServiceConnectionState).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -731,16 +731,16 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='privateEndpointConnectionName'>
             /// The name of the private endpoint connection.
             /// </param>
-            /// <param name='privateEndpointConnection'>
-            /// private endpoint connection object supplied in the body of the Put private
-            /// endpoint connection operation.
+            /// <param name='privateLinkServiceConnectionState'>
+            /// A collection of information about the state of the connection between
+            /// DiskAccess and Virtual Network.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PrivateEndpointConnection> BeginUpdateAPrivateEndpointConnectionAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnection, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PrivateEndpointConnection> BeginUpdateAPrivateEndpointConnectionAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginUpdateAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateEndpointConnection, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginUpdateAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateLinkServiceConnectionState, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

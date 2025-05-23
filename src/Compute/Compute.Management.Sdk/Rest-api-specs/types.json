@@ -254,14 +254,25 @@
       ]
     },
     "ProxyResource": {
-      "type": "object",
-      "title": "Proxy Resource",
-      "description": "The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location",
-      "allOf": [
-        {
-          "$ref": "#/definitions/ResourceOriginal"
+      "properties": {
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource Id"
+        },
+        "name": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource name"
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource type"
         }
-      ]
+      },
+      "description": "The resource model definition for an Azure Resource Manager proxy resource. It will not have tags and a location",
+      "x-ms-azure-resource": true
     },
     "SkuTier": {
       "type": "string",

@@ -1154,9 +1154,9 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
         /// </param>
-        /// <param name='privateEndpointConnection'>
-        /// private endpoint connection object supplied in the body of the Put private
-        /// endpoint connection operation.
+        /// <param name='privateLinkServiceConnectionState'>
+        /// A collection of information about the state of the connection between
+        /// DiskAccess and Virtual Network.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1164,10 +1164,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<PrivateEndpointConnection>> UpdateAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnection, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PrivateEndpointConnection>> UpdateAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<PrivateEndpointConnection> _response = await BeginUpdateAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateEndpointConnection, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<PrivateEndpointConnection> _response = await BeginUpdateAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateLinkServiceConnectionState, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -2059,9 +2059,9 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
         /// </param>
-        /// <param name='privateEndpointConnection'>
-        /// private endpoint connection object supplied in the body of the Put private
-        /// endpoint connection operation.
+        /// <param name='privateLinkServiceConnectionState'>
+        /// A collection of information about the state of the connection between
+        /// DiskAccess and Virtual Network.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2084,7 +2084,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PrivateEndpointConnection>> BeginUpdateAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnection, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PrivateEndpointConnection>> BeginUpdateAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -2113,15 +2113,16 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "privateEndpointConnectionName");
             }
-            if (privateEndpointConnection == null)
+            if (privateLinkServiceConnectionState == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "privateEndpointConnection");
-            }
-            if (privateEndpointConnection != null)
-            {
-                privateEndpointConnection.Validate();
+                throw new ValidationException(ValidationRules.CannotBeNull, "privateLinkServiceConnectionState");
             }
             string apiVersion = "2024-03-02";
+            PrivateEndpointConnection privateEndpointConnection = new PrivateEndpointConnection();
+            if (privateLinkServiceConnectionState != null)
+            {
+                privateEndpointConnection.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

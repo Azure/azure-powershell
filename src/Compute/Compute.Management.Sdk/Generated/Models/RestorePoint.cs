@@ -34,11 +34,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RestorePoint class.
         /// </summary>
-        /// <param name="location">Resource location</param>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
-        /// <param name="tags">Resource tags.</param>
         /// <param name="excludeDisks">List of disk resource ids that the
         /// customer wishes to exclude from the restore point. If no disks are
         /// specified, all disks will be included.</param>
@@ -57,8 +55,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="sourceRestorePoint">Resource Id of the source restore
         /// point from which a copy needs to be created.</param>
         /// <param name="instanceView">The restore point instance view.</param>
-        public RestorePoint(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<ApiEntityReference> excludeDisks = default(IList<ApiEntityReference>), RestorePointSourceMetadata sourceMetadata = default(RestorePointSourceMetadata), string provisioningState = default(string), string consistencyMode = default(string), System.DateTime? timeCreated = default(System.DateTime?), ApiEntityReference sourceRestorePoint = default(ApiEntityReference), RestorePointInstanceView instanceView = default(RestorePointInstanceView))
-            : base(location, id, name, type, tags)
+        public RestorePoint(string id = default(string), string name = default(string), string type = default(string), IList<ApiEntityReference> excludeDisks = default(IList<ApiEntityReference>), RestorePointSourceMetadata sourceMetadata = default(RestorePointSourceMetadata), string provisioningState = default(string), string consistencyMode = default(string), System.DateTime? timeCreated = default(System.DateTime?), ApiEntityReference sourceRestorePoint = default(ApiEntityReference), RestorePointInstanceView instanceView = default(RestorePointInstanceView))
+            : base(id, name, type)
         {
             ExcludeDisks = excludeDisks;
             SourceMetadata = sourceMetadata;
@@ -132,9 +130,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (SourceMetadata != null)
             {
                 SourceMetadata.Validate();
