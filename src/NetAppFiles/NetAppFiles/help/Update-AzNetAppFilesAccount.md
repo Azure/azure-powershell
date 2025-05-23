@@ -28,7 +28,7 @@ Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Na
 Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Name <String>
  -ResourceId <String> [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>]
  [-Encryption <PSNetAppFilesAccountEncryption>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -36,7 +36,7 @@ Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Na
 Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Name <String>
  [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>] [-Encryption <PSNetAppFilesAccountEncryption>]
  -InputObject <PSNetAppFilesAccount> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
