@@ -824,9 +824,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                            ResourceIdentityType.SystemAssigned :
                            (SystemAssignedIdentity.IsPresent ? ResourceIdentityType.SystemAssignedUserAssigned : ResourceIdentityType.UserAssigned),
                     UserAssignedIdentities = isUserAssignedEnabled
-                                             ? new Dictionary<string, UserAssignedIdentitiesValueModel>()
+                                             ? new Dictionary<string, UserAssignedIdentitiesValue>()
                                              {
-                                                 { UserAssignedIdentity, new UserAssignedIdentitiesValueModel()}
+                                                 { UserAssignedIdentity, new UserAssignedIdentitiesValue()}
                                              }
                                              : null,
                 }
