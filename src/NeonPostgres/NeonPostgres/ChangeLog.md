@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* Support to Manage Neon Projects
+* Support to Manage Neon Branches
+* Added Get Neon Database Connection Uri command
+* Updated to stable release version
+
 ## Version 0.1.1
 * Upgraded nuget package to signed package.
 
