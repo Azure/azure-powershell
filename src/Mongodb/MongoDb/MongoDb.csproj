@@ -4,7 +4,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\psm1.props" />
 
   <PropertyGroup>
-    <PsModuleName>MongoDb</PsModuleName>
+    <PsModuleName>MongoDB</PsModuleName>
   </PropertyGroup>
 
   <PropertyGroup>

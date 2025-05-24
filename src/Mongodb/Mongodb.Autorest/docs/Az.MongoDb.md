@@ -1,22 +1,22 @@
 ---
-Module Name: Az.MongoDb
-Module Guid: 6e1faea1-0ba5-4348-9c62-a708c872b7f5
+Module Name: Az.MongoDB
+Module Guid: de0363fa-58b1-4593-9568-db0531825f09
 Download Help Link: https://learn.microsoft.com/powershell/module/az.mongodb
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.MongoDb Module
+# Az.MongoDB Module
 ## Description
 Microsoft Azure PowerShell: MongoDb cmdlets
 
-## Az.MongoDb Cmdlets
-### [Get-AzMongodbOrganization](Get-AzMongodbOrganization.md)
+## Az.MongoDB Cmdlets
+### [Get-AzMongoDBOrganization](Get-AzMongoDBOrganization.md)
 Get a OrganizationResource
 
-### [New-AzMongodbOrganization](New-AzMongodbOrganization.md)
+### [New-AzMongoDBOrganization](New-AzMongoDBOrganization.md)
 create a OrganizationResource
 
-### [Remove-AzMongodbOrganization](Remove-AzMongodbOrganization.md)
+### [Remove-AzMongoDBOrganization](Remove-AzMongoDBOrganization.md)
 Delete a OrganizationResource
 

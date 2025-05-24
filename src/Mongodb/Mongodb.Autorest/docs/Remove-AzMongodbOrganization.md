@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.MongoDb
+Module Name: Az.MongoDB
 online version: https://learn.microsoft.com/powershell/module/az.mongodb/remove-azmongodborganization
 schema: 2.0.0
 ---
 
-# Remove-AzMongodbOrganization
+# Remove-AzMongoDBOrganization
 
 ## SYNOPSIS
 Delete a OrganizationResource
@@ -14,13 +14,13 @@ Delete a OrganizationResource
 
 ### Delete (Default)
 ```
-Remove-AzMongodbOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzMongoDBOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzMongodbOrganization -InputObject <IMongoDbIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzMongoDBOrganization -InputObject <IMongoDbIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Delete a OrganizationResource
 
 ### Example 1: Remove an Organization
 ```powershell
-Remove-AzMongodbOrganization -ResourceGroupName yashika-rg -Name testorg4
+Remove-AzMongoDBOrganization -ResourceGroupName yashika-rg -Name testorg7
 ```
 
 This command deletes the MongoDB resource.
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MongoDb.Models.IMongoDbIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IMongoDbIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -197,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MongoDb.Models.IMongoDbIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IMongoDbIdentity
 
 ## OUTPUTS
 

@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzMongodbOrganization'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzMongoDBOrganization'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzMongodbOrganization.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzMongoDBOrganization.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,11 +14,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMongodbOrganization'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMongodbOrganization' {
+Describe 'New-AzMongoDBOrganization' {
     It 'CreateExpanded' {
         {    
             try {
-                New-AzMongodbOrganization -Name $env.NewResourceName -Location $env.Location -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -MarketplaceSubscriptionId $env.MarketplaceSubscriptionId -PartnerPropertyOrganizationName $env.PartnerPropertyOrganizationName -PartnerPropertyOrganizationId $env.PartnerPropertyOrganizationId -OfferDetailOfferId $env.OfferDetailOfferId -OfferDetailPlanId $env.OfferDetailPlanId -OfferDetailPlanName $env.OfferDetailPlanName -OfferDetailPublisherId $env.OfferDetailPublisherId -OfferDetailTermId $env.OfferDetailTermId -OfferDetailTermUnit $env.OfferDetailTermUnit -UserEmailAddress $env.UserEmailAddress -UserFirstName $env.UserFirstName -UserLastName $env.UserLastName -UserUpn $env.UserUpn
+                New-AzMongoDBOrganization -Name $env.NewResourceName -Location $env.Location -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -MarketplaceSubscriptionId $env.MarketplaceSubscriptionId -PartnerPropertyOrganizationName $env.PartnerPropertyOrganizationName -PartnerPropertyOrganizationId $env.PartnerPropertyOrganizationId -OfferDetailOfferId $env.OfferDetailOfferId -OfferDetailPlanId $env.OfferDetailPlanId -OfferDetailPlanName $env.OfferDetailPlanName -OfferDetailPublisherId $env.OfferDetailPublisherId -OfferDetailTermId $env.OfferDetailTermId -OfferDetailTermUnit $env.OfferDetailTermUnit -UserEmailAddress $env.UserEmailAddress -UserFirstName $env.UserFirstName -UserLastName $env.UserLastName -UserUpn $env.UserUpn
             }
             catch {
                 # Handle "Status: OK" and "NotFound (404)" as valid responses

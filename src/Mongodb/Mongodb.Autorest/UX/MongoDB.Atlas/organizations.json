@@ -6,7 +6,7 @@
   },
   "commands": [
     {
-      "name": "Get-AzMongodbOrganization",
+      "name": "Get-AzMongoDBOrganization",
       "description": "Get a OrganizationResource",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/MongoDB.Atlas/organizations/{organizationName}",
       "help": {
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "name": "Remove-AzMongodbOrganization",
+      "name": "Remove-AzMongoDBOrganization",
       "description": "Delete a OrganizationResource",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/MongoDB.Atlas/organizations/{organizationName}",
       "help": {

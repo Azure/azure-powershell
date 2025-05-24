@@ -1,5 +1,5 @@
 <!-- region Generated -->
-# Az.MongoDb
+# Az.MongoDB
 This directory contains the PowerShell module for the MongoDb service.
 
 ---
@@ -20,10 +20,8 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.MongoDb`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.MongoDB`, see [how-to.md](how-to.md).
 <!-- endregion -->
-
-# MongoDb.Autorest
 
 ### AutoRest Configuration
 
@@ -46,7 +44,8 @@ try-require:
 module-version: 0.1.0
 # Normally, title is the service name
 title: MongoDB
-subject-prefix: mongodb
+service-name: MongoDB
+subject-prefix: $(service-name)
 
 # The next three configurations are exclusive to v3, and in v4, they are activated by default. If you are still using v3, please uncomment them.
 # identity-correction-for-post: true
@@ -76,4 +75,10 @@ directive:
   - where:
       verb: Set
     remove: true
+
+  # Reset subject-prefix as DB as previous setting by subject-prefix tag converts Db to DB
+  - where:
+      subject-prefix: MongoDb(.*)
+    set:
+      subject-prefix: MongoDB$1
 ```

@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMongodbOrganization'))
+if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMongoDBOrganization'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzMongodbOrganization.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzMongoDBOrganization.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMongodbOrganization'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzMongodbOrganization' {
+Describe 'Remove-AzMongoDBOrganization' {
     It 'Delete' {
         {
             try {
                 # Attempt to delete the resource
-                Remove-AzMongodbOrganization -Name $env.DeleteResourceName -ResourceGroupName $env.ResourceGroupName
+                Remove-AzMongoDBOrganization -Name $env.DeleteResourceName -ResourceGroupName $env.ResourceGroupName
             }
             catch {
                 # Handle "Status: OK" and "NotFound (404)" as valid responses
