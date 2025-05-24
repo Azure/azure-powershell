@@ -1,3 +1,13 @@
+## 14.1.0 - June 2025
+#### Az.Migrate 2.8.0 
+* Added cmdlet `Get-AzMigrateServerMigrationStatus`
+#### Az.MySql 1.4.0 
+* Modified cmdlet `Restore-AzMySqlFlexibleServer`
+   - Added parameters `-Location`, `-UseGeoRestore`, `-Sku`, `-Tag`
+#### Az.PostgreSql 1.3.0 
+* Modified cmdlet `Restore-AzPostgreSqlFlexibleServer`
+   - Added parameters `-UseGeoRestore`, `-Sku`, `-Tag`
+
 ## 14.0.0 - May 2025
 #### Az.Aks 7.0.0 
 * Modified cmdlet `Get-AzAksMaintenanceConfiguration`
@@ -491,5 +501,6 @@
 #### Az.Storage 9.0.0 
 * Modified cmdlet `Start-AzStorageAccountMigration`
    - Added parameter `-Force`
+
 
 
