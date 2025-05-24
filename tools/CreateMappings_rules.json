@@ -971,5 +971,9 @@
   {
     "alias": "Carbon",
     "module": "Carbon"
+  },
+  {
+    "alias": "MongoDB",
+    "module": "MongoDB"
   }
 ]
