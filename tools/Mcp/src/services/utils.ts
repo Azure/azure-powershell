@@ -34,3 +34,104 @@ export function getYamlContentFromReadMe(readmePath: string): yamlContent {
     const yamlContent =  matches[0].groups?.yaml;
     return yaml.load(yamlContent) as yamlContent;
 }
+
+export function getSwaggerUrl(commit: string, filePaths: string[]): string[] {
+    const swaggerBaseUrl = 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs';
+    const swaggerUrls: string[] = [];
+    for (let filePath of filePaths) {
+        filePath = filePath.replace("$(repo)/", "");
+        const swaggerUrl = `${swaggerBaseUrl}/${commit}/${filePath}`;
+        swaggerUrls.push(swaggerUrl);
+    }
+    return swaggerUrls;
+}
+
+export async function getSwaggerContentFromUrl(swaggerUrl: string): Promise<any> {
+    try {
+        const response = await fetch(swaggerUrl);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }    
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching swagger content:', error);
+        throw error;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export async function testCase() {
+    const swaggerUrl = 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f1546dc981fa5d164d7ecd13588520457462c22c/specification/vmware/resource-manager/Microsoft.AVS/stable/2023-09-01/vmware.json'
+    const polymorphism = new Map<string, Set<string>>();
+
+    let swaggerContent: any;
+    try {
+        const response = await fetch(swaggerUrl);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }    
+        swaggerContent = await response.json();
+        //console.log('Swagger content:', swaggerContent);
+    } catch (error) {
+        console.error('Error fetching swagger content:', error);
+        throw error;
+    }
+    const definitions = swaggerContent.definitions;
+    for (const key of Object.keys(definitions)) {
+        if (definitions[key]['x-ms-discriminator-value']) {
+            const parent = definitions[key]['allOf']?.[0]['$ref']?.split('/').pop();
+            if (!polymorphism.has(parent)) {
+                polymorphism.set(parent, new Set<string>());
+            }
+            polymorphism.get(parent)?.add(key);
+        }
+    }
+    // for (const [k, v] of polymorphism) {
+    //     console.log(`Parent: ${k}, Children: ${Array.from(v)}`);
+    // }
+
+    const parents = Array.from(polymorphism.keys());
+    const children = Array.from(polymorphism.values()).map(set => Array.from(set)).flat();
+    console.log("Parents:", parents);
+    console.log("Children:", children);
+}

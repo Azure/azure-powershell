@@ -23,6 +23,18 @@
                 }
             ],
             "callbackName": "writeDirective"
+        },
+        {
+            "name": "polymophism",
+            "description": "this tool can handle polymorphism: when a parent type has multiple children types, and the children types can be inferred by an enum value discriminator, this tool can make parameter of parent type polymorphic which take one of the children types",
+            "parameters": [
+                {
+                    "name": "workingDirectory",
+                    "description": "absolute path of the README.md where the code will be generated",
+                    "type": "string"
+                }
+            ],
+            "callbackName": "handlePolymorphism"
         }
     ]
 }
