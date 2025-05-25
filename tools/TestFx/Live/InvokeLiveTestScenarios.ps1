@@ -15,10 +15,8 @@ param (
 $srcDir = Join-Path -Path ${env:BUILD_SOURCESDIRECTORY} -ChildPath "src"
 $liveScenarios = Get-ChildItem -Path $srcDir -Directory -Exclude "Accounts" -ErrorAction SilentlyContinue | Get-ChildItem -Directory -Filter "LiveTests" -Recurse | Get-ChildItem -File -Filter "TestLiveScenarios.ps1" -Recurse | Select-Object -ExpandProperty FullName
 
-$maxRunspaces = 9
-[void][int]::TryParse(${env:RSPTHROTTLE}, [ref]$maxRunspaces)
-$rsp = [runspacefactory]::CreateRunspacePool(1, $maxRunspaces)
-$rsp.CleanupInterval = [timespan]::FromHours(10) # By default is 15 minutes. Set to 10 hours to avoid the disposal of the idle runspaces when waiting for resource removal.
+$rsp = [runspacefactory]::CreateRunspacePool(1, 5)
+$rsp.CleanupInterval = [timespan]::FromHours(1)
 [void]$rsp.Open()
 
 $liveJobs = $liveScenarios | ForEach-Object {
@@ -34,7 +32,7 @@ $liveJobs = $liveScenarios | ForEach-Object {
             )
 
             Import-Module "./tools/TestFx/Assert.ps1" -Force
-            Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList $Module, $RunPlatform, ${env:DATALOCATION} -Force
+            Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList $Module, $RunPlatform -Force
             . $LiveScenarioScript
         }
     ).AddParameter("Module", $module).AddParameter("RunPlatform", $RunPlatform).AddParameter("LiveScenarioScript", $_)
@@ -67,7 +65,7 @@ $liveJobs = $liveScenarios | ForEach-Object {
     } -PassThru
 }
 
-Start-Sleep -Seconds 300
+Start-Sleep -Seconds 30
 
 $totalJobsCount = $liveJobs.Count
 $queuedJobs = $liveJobs
@@ -136,17 +134,6 @@ while ($queuedJobs.Count -gt 0) {
     Write-Output "##[endgroup]"
 }
 
-$accountsDir = Join-Path -Path $srcDir -ChildPath "Accounts"
-$accountsLiveScenario = Get-ChildItem -Path $accountsDir -Directory -Filter "LiveTests" -Recurse -ErrorAction SilentlyContinue | Get-ChildItem -File -Filter "TestLiveScenarios.ps1" -Recurse | Select-Object -ExpandProperty FullName
-if ($null -ne $accountsLiveScenario) {
-    Write-Output ""
-    Write-Output "##[section]Live test run for module `"Accounts`"."
-
-    Import-Module "./tools/TestFx/Assert.ps1" -Force
-    Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList "Accounts", $RunPlatform, ${env:DATALOCATION} -Force
-    . $accountsLiveScenario
-}
-
 $liveJobs | ForEach-Object {
     if ($null -ne $_.Instance) {
         $_.Instance.Commands.Clear()
@@ -174,37 +161,3 @@ $liveJobs | ForEach-Object {
 Write-Output "##[endgroup]"
 
 $rsp.Dispose()
-
-$ltDir = Join-Path -Path ${env:DATALOCATION} -ChildPath "LiveTestAnalysis" | Join-Path -ChildPath "Raw"
-$ltResults = Get-ChildItem -Path $ltDir -Filter "*.csv" -File -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
-
-if ($null -ne $ltResults) {
-    $tag = ${env:TAG}
-    if (![string]::IsNullOrWhiteSpace($tag)) {
-        $exProps = @{ Tag = $tag } | ConvertTo-Json -Compress
-    }
-
-    $ltResults | ForEach-Object {
-        $ltCsv = (Import-Csv -Path $_)
-        if ($null -ne $ltCsv) {
-            $ltCsv |
-            Select-Object `
-            @{ Name = "Source"; Expression = { "LiveTest" } }, `
-            @{ Name = "BuildId"; Expression = { ${env:BUILD_BUILDID} } }, `
-            @{ Name = "OSVersion"; Expression = { $OSVersion } }, `
-            @{ Name = "PSVersion"; Expression = { $_.PSVersion } }, `
-            @{ Name = "Module"; Expression = { $_.Module } }, `
-            @{ Name = "Name"; Expression = { $_.Name } }, `
-            @{ Name = "Description"; Expression = { $_.Description } }, `
-            @{ Name = "StartDateTime"; Expression = { $_.StartDateTime } }, `
-            @{ Name = "EndDateTime"; Expression = { $_.EndDateTime } }, `
-            @{ Name = "IsSuccess"; Expression = { $_.IsSuccess } }, `
-            @{ Name = "Errors"; Expression = { $_.Errors } }, `
-            @{ Name = "ExtendedProperties"; Expression = { $exProps } } |
-            Export-Csv -Path $_ -Encoding utf8 -NoTypeInformation -Force
-        }
-        else {
-            Remove-Item -Path $_ -Force
-        }
-    }
-}

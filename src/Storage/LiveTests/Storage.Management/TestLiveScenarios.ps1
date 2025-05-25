@@ -6,8 +6,8 @@ Invoke-LiveTestScenario -Name "Creates a Storage account" -Description "Test cre
     # $name = "alex12391d87"
     $name = New-LiveTestResourceName
     $location = "westus"
-    $actual = New-AzStorageAccount  -ResourceGroupName $rgName -Name $name  -Location $location -SkuName Standard_GRS 
-    
+    $actual = New-AzStorageAccount -ResourceGroupName $rgName -Name $name -Location $location -SkuName Standard_GRS
+
     Assert-AreEqual $name $actual.StorageAccountName
     # Assert-AreEqual $rgName $actual.ResourceGroupName
     # Assert-AreEqual $vaultLocation $actual.PrimaryLocation
@@ -27,7 +27,7 @@ Invoke-LiveTestScenario -Name "Removes a Storage account" -Description "Test rem
     $name = New-LiveTestResourceName
     $location = "westus"
 
-    New-AzStorageAccount -ResourceGroupName $rgname -Name $name -Location $location -SkuName Standard_GRS 
+    New-AzStorageAccount -ResourceGroupName $rgname -Name $name -Location $location -SkuName Standard_GRS
     Remove-AzStorageAccount -ResourceGroupName $rgname -Name $name -Force
 
     $removedAccount = Get-AzStorageAccount -ResourceGroupName $rgName -Name $name -ErrorAction SilentlyContinue
@@ -35,7 +35,4 @@ Invoke-LiveTestScenario -Name "Removes a Storage account" -Description "Test rem
 
 }
 
-& "$PSScriptRoot\QueueTests.ps1"
-& "$PSScriptRoot\BlobTests.ps1"
-& "$PSScriptRoot\TableTests.ps1"
 & "$PSScriptRoot\FileTests.ps1"

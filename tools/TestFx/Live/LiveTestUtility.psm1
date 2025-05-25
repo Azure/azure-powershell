@@ -18,11 +18,7 @@ param (
 
     [Parameter(Mandatory)]
     [ValidateNotNullOrEmpty()]
-    [string] $RunPlatform,
-
-    [Parameter()]
-    [ValidateScript({ Test-Path -Path $_ -PathType Container })]
-    [string] $DataLocation
+    [string] $RunPlatform
 )
 
 New-Variable -Name ResourceGroupPrefix -Value "azpslrg" -Scope Script -Option Constant
@@ -34,31 +30,6 @@ New-Variable -Name CommandDelay -Value 10 -Scope Script -Option Constant
 New-Variable -Name ScenarioMaxRetryCount -Value 3 -Scope Script -Option Constant
 New-Variable -Name ScenarioMaxDelay -Value 20 -Scope Script -Option Constant
 New-Variable -Name ScenarioDelay -Value 5 -Scope Script -Option Constant
-
-New-Variable -Name LiveTestAnalysisDirectory -Value (Join-Path -Path $DataLocation -ChildPath "LiveTestAnalysis") -Scope Script -Option Constant
-New-Variable -Name LiveTestRawDirectory -Value (Join-Path -Path $script:LiveTestAnalysisDirectory -ChildPath "Raw") -Scope Script -Option Constant
-New-Variable -Name LiveTestRawCsvFile -Value (Join-Path -Path $script:LiveTestRawDirectory -ChildPath "Az.$ModuleName.csv") -Scope Script -Option Constant
-
-function InitializeLiveTestModule {
-    [CmdletBinding()]
-    param ()
-
-    if (!(Test-Path -Path $script:LiveTestAnalysisDirectory -PathType Container)) {
-        New-Item -Path $script:LiveTestAnalysisDirectory -ItemType Directory -Force
-        New-Item -Path $script:LiveTestRawDirectory -ItemType Directory -Force
-    }
-
-    if (!(Test-Path -Path $script:LiveTestRawCsvFile -PathType Leaf)) {
-        $crtMtx = [System.Threading.Mutex]::new($false, "CreationLock")
-        try {
-            $crtMtx.WaitOne()
-            ({} | Select-Object "PSVersion", "Module", "Name", "Description", "StartDateTime", "EndDateTime", "IsSuccess", "Errors" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -FilePath $script:LiveTestRawCsvFile -Encoding utf8 -Force
-        }
-        finally {
-            $crtMtx.ReleaseMutex()
-        }
-    }
-}
 
 function New-LiveTestRandomName {
     [CmdletBinding()]
@@ -303,25 +274,7 @@ function Invoke-LiveTestScenario {
 
     Write-Output "##[group]Start executing the live scenario `"$Name`""
 
-    if ($curPSVer.Major -eq 5) {
-        $PSVersion = "5.1"
-    }
-    else {
-        $PSVersion = $curPSVer.ToString()
-    }
-
     try {
-        $snrCsvData = [PSCustomObject]@{
-            PSVersion     = $PSVersion
-            Module        = $ModuleName
-            Name          = $Name
-            Description   = $Description
-            StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss")
-            EndDateTime   = $null
-            IsSuccess     = $true
-            Errors        = $null
-        }
-
         if (!$NoResourceGroup.IsPresent) {
             $snrResourceGroupName = New-LiveTestResourceGroupName
             $snrResourceGroupLocation = "westus"
@@ -384,8 +337,6 @@ function Invoke-LiveTestScenario {
                 }
                 else {
                     Write-Error "##[error]Failed to execute the live scenario `"$Name`" with error details `"$snrErrorDetails`"." -ErrorAction Continue
-                    $snrCsvData.IsSuccess = $false
-                    $snrCsvData.Errors = ConvertToLiveTestJsonErrors -Errors $snrRetryErrors
                     break
                 }
             }
@@ -395,21 +346,8 @@ function Invoke-LiveTestScenario {
     catch {
         $snrErrorMessage = $_.Exception.Message
         Write-Error "##[error]Error occurred when executing the live scenario `"$Name`" with error details `"$snrErrorMessage`"." -ErrorAction Continue
-        $snrCsvData.IsSuccess = $false
-        $snrCsvData.Errors = ConvertToLiveTestJsonErrors -Errors $snrErrorMessage
     }
     finally {
-        $snrCsvData.EndDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss")
-
-        $updMtx = [System.Threading.Mutex]::new($false, "UpdateLock")
-        try {
-            $updMtx.WaitOne()
-            $snrCsvData | Export-Csv -Path $script:LiveTestRawCsvFile -Encoding utf8 -NoTypeInformation -Append
-        }
-        finally {
-            $updMtx.ReleaseMutex()
-        }
-
         if (!$NoResourceGroup.IsPresent -and $null -ne $snrResourceGroup) {
             try {
                 Write-Output "##[section]Cleaning up the resource group `"$snrResourceGroupName`"."
@@ -429,29 +367,9 @@ function Clear-LiveTestResources {
     param (
         [Parameter(Mandatory, Position = 0)]
         [ValidateNotNullOrEmpty()]
-        [Alias("ResourceGroupname")]
+        [Alias("ResourceGroupName")]
         [string] $Name
     )
 
     Invoke-LiveTestCommand -Command { Remove-AzResourceGroup -Name $Name -Force -AsJob | Out-Null }
 }
-
-function ConvertToLiveTestJsonErrors {
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [string[]] $Errors
-    )
-
-    $errorsObj = [PSCustomObject]@{
-        Exception = $Errors[0]
-    }
-    for ($n = 1; $n -lt $Errors.Count; $n++) {
-        $errorsObj | Add-Member -NotePropertyName "Retry$($n)Exception" -NotePropertyValue $Errors[$n]
-    }
-
-    (ConvertTo-Json $errorsObj -Compress)
-}
-
-InitializeLiveTestModule
