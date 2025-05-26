@@ -216,6 +216,86 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Reimages one VM belonging to the specified Network Virtual Appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        public static NetworkVirtualApplianceInstanceIds Reimage(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceInstanceIds networkVirtualApplianceInstanceIds = default(NetworkVirtualApplianceInstanceIds))
+        {
+                return ((INetworkVirtualAppliancesOperations)operations).ReimageAsync(resourceGroupName, networkVirtualApplianceName, networkVirtualApplianceInstanceIds).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Reimages one VM belonging to the specified Network Virtual Appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkVirtualApplianceInstanceIds> ReimageAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceInstanceIds networkVirtualApplianceInstanceIds = default(NetworkVirtualApplianceInstanceIds), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ReimageWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, networkVirtualApplianceInstanceIds, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the boot diagnostic logs for a VM instance belonging to the
+        /// specified Network Virtual Appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        public static NetworkVirtualApplianceInstanceId GetBootDiagnosticLogs(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters request)
+        {
+                return ((INetworkVirtualAppliancesOperations)operations).GetBootDiagnosticLogsAsync(resourceGroupName, networkVirtualApplianceName, request).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the boot diagnostic logs for a VM instance belonging to the
+        /// specified Network Virtual Appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkVirtualApplianceInstanceId> GetBootDiagnosticLogsAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetBootDiagnosticLogsWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, request, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Lists all Network Virtual Appliances in a resource group.
         /// </summary>
         /// <param name='operations'>
@@ -390,6 +470,86 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<NetworkVirtualApplianceInstanceIds> BeginRestartAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceInstanceIds networkVirtualApplianceInstanceIds = default(NetworkVirtualApplianceInstanceIds), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginRestartWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, networkVirtualApplianceInstanceIds, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Reimages one VM belonging to the specified Network Virtual Appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        public static NetworkVirtualApplianceInstanceIds BeginReimage(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceInstanceIds networkVirtualApplianceInstanceIds = default(NetworkVirtualApplianceInstanceIds))
+        {
+                return ((INetworkVirtualAppliancesOperations)operations).BeginReimageAsync(resourceGroupName, networkVirtualApplianceName, networkVirtualApplianceInstanceIds).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Reimages one VM belonging to the specified Network Virtual Appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkVirtualApplianceInstanceIds> BeginReimageAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceInstanceIds networkVirtualApplianceInstanceIds = default(NetworkVirtualApplianceInstanceIds), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginReimageWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, networkVirtualApplianceInstanceIds, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the boot diagnostic logs for a VM instance belonging to the
+        /// specified Network Virtual Appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        public static NetworkVirtualApplianceInstanceId BeginGetBootDiagnosticLogs(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters request)
+        {
+                return ((INetworkVirtualAppliancesOperations)operations).BeginGetBootDiagnosticLogsAsync(resourceGroupName, networkVirtualApplianceName, request).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the boot diagnostic logs for a VM instance belonging to the
+        /// specified Network Virtual Appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkVirtualApplianceInstanceId> BeginGetBootDiagnosticLogsAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceBootDiagnosticParameters request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetBootDiagnosticLogsWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, request, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

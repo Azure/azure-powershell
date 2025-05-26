@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.8.0
 * Update parameter for command `New-AzKubernetesExtension` to support for new Managed Identity setting.
   * `IdentityType` has been removed. `EnableSystemAssignedIdentity` is used to enable/disable system-assigned identities.
 * Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).

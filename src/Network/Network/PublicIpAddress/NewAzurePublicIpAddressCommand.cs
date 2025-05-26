@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
             MNM.PublicIPAddressSkuName.Basic,
             MNM.PublicIPAddressSkuName.Standard,
+            "StandardV2",
             IgnoreCase = true)]
         public string Sku { get; set; }
 

@@ -6,19 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Creates or updates preview information of a vendor sku.</summary>
+    /// <summary>create preview information of a vendor sku.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/vendors/{vendorName}/vendorSkus/{skuName}/previewSubscriptions/{previewSubscription}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzConnectedNetworkVendorSkuPreview_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Description(@"Creates or updates preview information of a vendor sku.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Description(@"create preview information of a vendor sku.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/vendors/{vendorName}/vendorSkus/{skuName}/previewSubscriptions/{previewSubscription}", ApiVersion = "2021-05-01")]
     public partial class NewAzConnectedNetworkVendorSkuPreview_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -34,8 +37,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>Customer subscription which can use a sku.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.PreviewSubscription();
+        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.PreviewSubscription();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -46,6 +61,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.ConnectedNetwork Client => Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Module.Instance.ClientAPI;
@@ -59,6 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -94,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>Backing field for <see cref="PreviewSubscription" /> property.</summary>
         private string _previewSubscription;
@@ -154,7 +175,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -177,24 +199,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription">Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription">Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -232,16 +254,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
             clone._parametersBody = this._parametersBody;
+            clone.SubscriptionId = this.SubscriptionId;
             clone.VendorName = this.VendorName;
             clone.SkuName = this.SkuName;
             clone.PreviewSubscription = this.PreviewSubscription;
-            clone.SubscriptionId = this.SubscriptionId;
             return clone;
         }
 
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -306,11 +333,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -322,10 +374,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -335,7 +403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzConnectedNetworkVendorSkuPreview_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzConnectedNetworkVendorSkuPreview_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzConnectedNetworkVendorSkuPreview_CreateExpanded()
         {
@@ -401,7 +469,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -414,12 +482,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.VendorSkuPreviewCreateOrUpdate(VendorName, SkuName, PreviewSubscription, SubscriptionId, _parametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.VendorSkuPreviewCreateOrUpdate(SubscriptionId, VendorName, SkuName, PreviewSubscription, _parametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  VendorName=VendorName,SkuName=SkuName,PreviewSubscription=PreviewSubscription,SubscriptionId=SubscriptionId,body=_parametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,VendorName=VendorName,SkuName=SkuName,PreviewSubscription=PreviewSubscription})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -457,12 +525,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -479,15 +547,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { VendorName=VendorName, SkuName=SkuName, PreviewSubscription=PreviewSubscription, SubscriptionId=SubscriptionId, body=_parametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { VendorName=VendorName, SkuName=SkuName, PreviewSubscription=PreviewSubscription, SubscriptionId=SubscriptionId, body=_parametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -497,12 +565,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription">Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription">Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription> response)
         {
             using( NoSynchronizationContext )
             {
@@ -514,8 +582,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

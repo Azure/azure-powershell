@@ -790,6 +790,10 @@
       "_justification": "Legitimate session record, Key will be revoked after test"
     },
     {
+      "file": "src\\DataMigration\\DataMigration.Autorest\\test\\Remove-AzDataMigrationToSqlDb.Recording.json",
+      "_justification": "Legitimate session record, Resources will be deleted after test"
+    },
+    {
       "file": "src\\RedisCache\\RedisCache\\help\\Export-AzRedisCache.md",
       "_justification": "Example data export"
     },

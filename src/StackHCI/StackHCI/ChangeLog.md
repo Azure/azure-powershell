@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.6.0
 * Added EOL Message for 22H2
 
 ## Version 2.5.0

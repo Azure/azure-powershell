@@ -970,6 +970,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string containerName = (string)ProviderData[ContainerParams.Name];
             string backupManagementType = (string)ProviderData[ContainerParams.BackupManagementType];
             string workloadType = (string)ProviderData[ContainerParams.ContainerType];
+            string vmResourceGroupName = (string)ProviderData[ContainerParams.ResourceGroupName];
             ContainerBase containerBase =
                 (ContainerBase)ProviderData[ContainerParams.Container];
             AzureVmWorkloadContainer container = (AzureVmWorkloadContainer)ProviderData[ContainerParams.Container];
@@ -985,8 +986,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             List<ProtectableContainerResource> unregisteredVmContainers =
                     GetUnRegisteredVmContainers(vaultName, vaultResourceGroupName);
             ProtectableContainerResource unregisteredVmContainer = unregisteredVmContainers.Find(
-                vmContainer => string.Compare(vmContainer.Name.Split(';').Last(),
-                containerName, true) == 0);
+                vmContainer => {
+                    string[] containerNameSplit = vmContainer.Name.Split(';');
+                    int containerNameSplitLen = containerNameSplit.Length;
+                    bool vmNameMatch = string.Compare(containerNameSplit[containerNameSplitLen - 1], containerName, true) == 0;
+                    bool rgNameMatch = string.Compare(containerNameSplit[containerNameSplitLen - 2], vmResourceGroupName, true) == 0;
+                
+                    return vmNameMatch && rgNameMatch;
+                });
 
             if (unregisteredVmContainer != null || container != null)
             {

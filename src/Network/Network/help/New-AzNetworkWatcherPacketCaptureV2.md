@@ -18,7 +18,8 @@ New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher <PSNetworkWatcher> -Name <St
  [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
  [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
  [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByName
@@ -27,7 +28,8 @@ New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcherName <String> -ResourceGroupN
  -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
  [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
  [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByLocation
@@ -36,7 +38,8 @@ New-AzNetworkWatcherPacketCaptureV2 -Location <String> -Name <String> -TargetId 
  [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
  [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
  [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -548,8 +551,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Stop-AzNetworkWatcherConnectionMonitor](./Stop-AzNetworkWatcherConnectionMonitor.md)
 
-[Start-AzNetworkWatcherConnectionMonitor](./Start-AzNetworkWatcherConnectionMonitor.md)
-
 [Set-AzNetworkWatcherConnectionMonitor](./Set-AzNetworkWatcherConnectionMonitor.md)
 
 [Set-AzNetworkWatcherConfigFlowLog](./Set-AzNetworkWatcherConfigFlowLog.md)
@@ -565,7 +566,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzNetworkWatcherReachabilityProvidersList](./Get-AzNetworkWatcherReachabilityProvidersList.md)
 
 [Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
-
-[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport.md)
 
 [Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor.md)

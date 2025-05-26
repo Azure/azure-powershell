@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 0.15.0
+* Bumped up data migration API to 2025-03-15-preview
+* Added support for migrations from Azure Blob to Sql MI using managed identity.
+    - Added new optional params in commandlet New-AzDataMigrationToSqlManagedInstance
+    
 ## Version 0.14.10
 * Updated Sql schema migration and version package to new url. 
 

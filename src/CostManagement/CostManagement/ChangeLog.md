@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.4.1
 * Removed extra empty lines in the output of `Invoke-AzCostManagementQuery`. [#27640]
 
 ## Version 0.4.0

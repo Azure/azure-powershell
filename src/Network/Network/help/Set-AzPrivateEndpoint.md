@@ -102,5 +102,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzPrivateEndpoint](./New-AzPrivateEndpoint.md)
 
 [Remove-AzPrivateEndpoint](./Remove-AzPrivateEndpoint.md)
-
-

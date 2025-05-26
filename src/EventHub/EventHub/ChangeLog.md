@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.3.0
 * Added parameters 'MaxReplicationLagDurationInSeconds' and 'Replicalocation' in cmdlets 'New-AzEventHubNamespace' & 'Set-AzEventHubNamespace'
 * Added new cmdlets for doing namespace failover - 'Start-AzEventHubNamespaceFailOver'
 * Added new cmdlets for generating replication object for Replication parameter - 'New-AzEventHubLocationsNameObject'

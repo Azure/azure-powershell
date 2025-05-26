@@ -1,3 +1,105 @@
+## 14.0.0 - May 2025
+#### Az.Accounts 5.0.0
+* Changed the default output access token of 'Get-AzAccessToken' from plain text to 'SecureString'.
+* Removed the warning message about failing to initialize PSStyle in automation runbooks. [#26155]
+* Increased the timeout for tab-completion of location, resource group, etc. to 10 seconds.
+
+#### Az.Aks 7.0.0
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Updated the default value of '-NodeVmSize' parameter in 'New-AzAksCluster' and '-VmSize' parameter in 'New-AzAksNodePool' from 'Standard_D2_V2' to being dynamically selected by the AKS resource provider based on quota and capacity in the next major release.
+
+#### Az.AppConfiguration 2.0.0
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.Carbon 0.1.0
+* First preview release for module Az.Carbon
+
+#### Az.Cdn 5.0.0
+* Upgraded Api version to 2025-04-15
+* Added support for cipher
+* Added support for migration from classic cdn to afdx
+
+#### Az.Communication 0.6.0
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.Compute 10.0.0
+* Added new properties 'Architecture', 'HyperVGeneration', and 'ImageDeprecationStatus' to be returned in 'Get-AzVMImage' ListVMImage parameter set.
+* Deprecated 'Get-AzVMSize' 'List Virtual Machine Size' parameter set. 
+* Added new parameters 'EnableAutomaticZoneRebalance', 'AutomaticZoneRebalanceStrategy' and 'AutomaticZoneRebalanceBehavior' to 'New-AzVmssConfig' and 'Update-AzVmss' cmdlets for VMSS Automatic Zone Rebalancing. 
+
+#### Az.ConnectedNetwork 0.2.0
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.CostManagement 0.4.1
+* Removed extra empty lines in the output of 'Invoke-AzCostManagementQuery'. [#27640]
+
+#### Az.DataMigration 0.15.0
+* Bumped up data migration API to 2025-03-15-preview
+* Added support for migrations from Azure Blob to Sql MI using managed identity.
+    - Added new optional params in commandlet New-AzDataMigrationToSqlManagedInstance
+
+#### Az.EventHub 5.3.0
+* Added parameters 'MaxReplicationLagDurationInSeconds' and 'Replicalocation' in cmdlets 'New-AzEventHubNamespace' & 'Set-AzEventHubNamespace'
+* Added new cmdlets for doing namespace failover - 'Start-AzEventHubNamespaceFailOver'
+* Added new cmdlets for generating replication object for Replication parameter - 'New-AzEventHubLocationsNameObject'
+
+#### Az.Functions 4.2.1
+* Updated API client to latest commit for version 2023-12-01
+* Refreshed stack definitions
+* Enforced runtime EOL policy for function app creation: block expired, warn if within 6 months
+
+#### Az.ImageBuilder 0.5.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Set parameter 'JsonFilePath' for cmdlet 'New-AzImageBuilderTemplate' alias 'JsonTemplatePath'.
+* Removed cmdlet 'Update-AzImageBuilderTemplate'. Please see the details [here](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/image-builder-troubleshoot#update-or-upgrade-of-image-templates-is-currently-not-supported).
+* Updated 'New-AzImageBuilderTemplate' to support for new Managed Identity setting.
+  * Keep alias 'UserAssignedIdentityId' for parameter 'UserAssignedIdentity'. The type of 'UserAssignedIdentity' is simplified to an array of strings that is used to specify the user's assigned identity.
+
+#### Az.KubernetesConfiguration 0.8.0
+* Update parameter for command 'New-AzKubernetesExtension' to support for new Managed Identity setting.
+  * 'IdentityType' has been removed. 'EnableSystemAssignedIdentity' is used to enable/disable system-assigned identities.
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.ManagedServiceIdentity 2.0.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.Migrate 2.7.1
+* Added validation for Data.Replication
+  - Added validation to protect virtual machines in 'New-AzMigrateLocalServerReplication'
+
+#### Az.NetAppFiles 0.23.0
+* Added 'NfsV4IdDomain' to 'New-AzNetAppFilesAccount' and 'Update-AzNetAppFilesAccount'
+
+#### Az.Network 7.16.2
+* Onboarded 'Microsoft.FluidRelay/fluidRelayServers' to private link cmdlets
+
+#### Az.RecoveryServices 7.7.1
+* Updated 'GetAzureRmRecoveryServicesBackupSchedulePolicyObject' to default the 'PolicySubType' to 'Enhanced' for AzureVM.
+* Updated Azure Backup SDK version to support protecting TVM with standard policy.
+
+#### Az.RedisEnterpriseCache 1.5.0
+* Added support for listing all SKUs a cluster can scale to.
+* Added a new enum: NoCluster for Clustering policy.
+
+#### Az.Resources 8.0.0
+* [Breaking Change] Updated API version of resource types from latest to DefaultApiVersion for cmdlets '*-AzResource' and 'Invoke-AzResourceAction'.
+
+#### Az.Sql 6.0.4
+* Added server level action groups in enum of action groups to be able to be configured via auditing.
+
+#### Az.StackHCI 2.6.0
+* Added EOL Message for 22H2
+
+#### Az.Storage 9.0.0
+* Removed MD5 from blob and file upload in some scenarios
+    - 'Set-AzStorageFileContent'
+    - 'Set-AzStorageBlobContent'
+* Added prompt for customer confirmation for long running account migration operation .
+    - 'Start-AzStorageAccountMigration'
+
+#### Az.Subscription 0.12.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
 ## 13.5.0 - May 2025
 #### Az.Accounts 4.2.0
 * Updated warning message about MFA. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314

@@ -21,7 +21,8 @@ Get-AzPrivateLinkResource -PrivateLinkResourceId <String> [-Name <String>]
 ### ByResource
 ```
 Get-AzPrivateLinkResource -ResourceGroupName <String> -ServiceName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-PrivateLinkResourceType <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>]
+ [-PrivateLinkResourceType <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
