@@ -47,7 +47,7 @@ stages:
           targetType: inline
           pwsh: true
           script: |
-            $date = Get-Date -Format "dd/mm/yy"
+            $date = Get-Date -Format "yy-MM-dd"
             $generationBranch = "batch-generation/branch-$date-$(Build.BuildId)"
             $token = "$(GitHubToken)"
 
