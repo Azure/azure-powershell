@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Upgrade Azure.Core to 1.45.0
+* Added definition of Bleu cloud so it can ve used with commands like `Enter-AzVM`
 
 ## Version 5.0.0
 * Changed the default output access token of `Get-AzAccessToken` from plain text to `SecureString`.
