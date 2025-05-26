@@ -12,14 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Internal.Network.Version2017_03_01.Models;
 using Microsoft.Azure.Management.Network;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -145,7 +141,6 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "This continuous capture is a nullable boolean, which can hold 'null', 'true' or 'false' value. If we do not pass this parameter, it would be consider as 'null', default value is 'null'.")]
-        [ValidateNotNullOrEmpty]
         public bool? ContinuousCapture { get; set; }
 
         [Parameter(
@@ -215,7 +210,12 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.FilePath != null)
                 {
-                    throw new ArgumentException("InvalidRequestPropertiesInPacketCaptureRequest: FilePath is not supported in packet capture request.");
+                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalPath: StorageLocation must have either storage id or local path specified.");
+                }
+
+                if (string.IsNullOrEmpty(this.LocalPath) && string.IsNullOrEmpty(this.StorageAccountId))
+                {
+                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalFilePath: StorageLocation must have either storage id or local file path specified.");
                 }
 
                 if (this.CaptureSettings == null)
@@ -262,6 +262,10 @@ namespace Microsoft.Azure.Commands.Network
                         var packetCapture = CreatePacketCapture(resourceGroupName, name);
                         WriteObject(packetCapture);
                     });
+            }
+            else
+            {
+                throw new ArgumentException($"PacketCaptureExistingAlready: Existing Packet capture can not be updated.");
             }
         }
 
