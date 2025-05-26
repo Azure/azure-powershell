@@ -111,6 +111,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestPublishWebAppOneDeployPullWithMSI()
+        {
+            TestRunner.RunTestScript("Test-PublishAzureWebAppPullWithMSI");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebApp()
         {

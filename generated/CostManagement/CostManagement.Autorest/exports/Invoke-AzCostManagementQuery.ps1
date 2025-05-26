@@ -27,29 +27,34 @@ $filter = New-AzCostManagementQueryFilterObject -Dimensions $dimensions
 Invoke-AzCostManagementQuery -Type Usage -Scope "subscriptions/***********" -DatasetGranularity 'Monthly' -DatasetFilter $filter -Timeframe MonthToDate -Debug
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryResult
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 DATASETFILTER <IQueryFilter>: Has filter expression to use in the query.
-  [And <IQueryFilter[]>]: The logical "AND" expression. Must have at least 2 items.
+  [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
+      Name <String>: The name of the column to use in comparison.
+      Value <List<String>>: Array of values to use for comparison
+    [Not <IQueryFilter>]: The logical "NOT" expression.
+    [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
+    [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
   [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
-    Name <String>: The name of the column to use in comparison.
-    Value <String[]>: Array of values to use for comparison
   [Not <IQueryFilter>]: The logical "NOT" expression.
-  [Or <IQueryFilter[]>]: The logical "OR" expression. Must have at least 2 items.
+  [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
   [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
 
 DATASETGROUPING <IQueryGrouping[]>: Array of group by expression to use in the query.
   Name <String>: The name of the column to group.
-  Type <QueryColumnType>: Has type of the column to group.
+  Type <String>: Has type of the column to group.
 .Link
 https://learn.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementquery
 #>
 function Invoke-AzCostManagementQuery {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryResult])]
 [CmdletBinding(DefaultParameterSetName='UsageExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UsageExpanded', Mandatory)]
@@ -65,23 +70,23 @@ param(
     ${ExternalCloudProviderId},
 
     [Parameter(ParameterSetName='UsageExpanded1', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("ExternalBillingAccounts", "ExternalSubscriptions")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType]
+    [System.String]
     # The external cloud provider type associated with dimension/query operations.
     ${ExternalCloudProviderType},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("MonthToDate", "BillingMonthToDate", "TheLastMonth", "TheLastBillingMonth", "WeekToDate", "Custom")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType]
+    [System.String]
     # The time frame for pulling data for the query.
     ${Timeframe},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Usage", "ActualCost", "AmortizedCost")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType]
+    [System.String]
     # The type of the query.
     ${Type},
 
@@ -93,30 +98,28 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryDatasetAggregation]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryDatasetAggregation]))]
     [System.Collections.Hashtable]
     # Dictionary of aggregation expression to use in the query.
     ${DatasetAggregation},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryFilter]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryFilter]
     # Has filter expression to use in the query.
-    # To construct, see NOTES section for DATASETFILTER properties and create a hash table.
     ${DatasetFilter},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("Daily")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType]
+    [System.String]
     # The granularity of rows in the query.
     ${DatasetGranularity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryGrouping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryGrouping[]]
     # Array of group by expression to use in the query.
-    # To construct, see NOTES section for DATASETGROUPING properties and create a hash table.
     ${DatasetGrouping},
 
     [Parameter()]
@@ -186,6 +189,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -215,6 +227,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

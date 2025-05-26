@@ -21,12 +21,14 @@ Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.NetCoreZipUploadedUserSourceInfo
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.NetCoreZipUploadedUserSourceInfo
 .Link
-https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentNetCoreZipUploadedObject
+https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-azspringcloudappdeploymentnetcorezipuploadedobject
 #>
 function New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.NetCoreZipUploadedUserSourceInfo')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.CmdletBreakingChange("19.3.0", "0.3.2", "2028/03/31", ChangeDescription = "Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.NetCoreZipUploadedUserSourceInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -42,10 +44,8 @@ function New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.NetCoreZipUploadedUserSourceInfo]::New()
-        $Object.Type = 'NetCoreZip'
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.NetCoreZipUploadedUserSourceInfo]::New()
         $Object.RelativePath = '<default>'
-
         if ($PSBoundParameters.ContainsKey('MainEntryPath')) {
             $Object.NetCoreMainEntryPath = $MainEntryPath
         }

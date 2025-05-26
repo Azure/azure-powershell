@@ -41,6 +41,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public bool ActiveActive { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool EnableAdvancedConnectivity { get; set; }
+
         public PSResourceId GatewayDefaultSite { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
@@ -83,6 +86,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "AutoScaleConfiguration", Target = ViewControl.Table)]
         public PSVirtualNetworkGatewayAutoscaleConfiguration AutoScaleConfiguration { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public PSVirtualNetworkGatewayMigrationStatus VirtualNetworkGatewayMigrationStatus { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationsText
@@ -142,6 +148,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string AutoScaleConfigurationText
         {
             get { return JsonConvert.SerializeObject(AutoScaleConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string VirtualNetworkGatewayMigrationStatusText
+        {
+            get { return JsonConvert.SerializeObject(VirtualNetworkGatewayMigrationStatus, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

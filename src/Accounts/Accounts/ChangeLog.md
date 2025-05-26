@@ -19,6 +19,20 @@
 -->
 
 ## Upcoming Release
+* Upgrade Azure.Core to 1.45.0
+
+## Version 5.0.0
+* Changed the default output access token of `Get-AzAccessToken` from plain text to `SecureString`.
+* Removed the warning message about failing to initialize PSStyle in automation runbooks. [#26155]
+* Increased the timeout for tab-completion of location, resource group, etc. to 10 seconds.
+
+## Version 4.2.0
+* Updated warning message about MFA. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314
+* Fixed token in auxiliary authentication header.
+* Collected authentication method for telemetry in end process of cmdlet.
+
+## Version 4.1.0
+* Added AppConfiguration ResourceId and Suffix endpoints for Mooncake and USGov clouds to fix issue [#24219]
 
 ## Version 4.0.2
 * Fixed unsigned dll:

@@ -96,7 +96,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.IProviderDescription
+### Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProviderDescription
 
 ## NOTES
 

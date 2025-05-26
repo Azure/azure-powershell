@@ -14,7 +14,8 @@ Creates a Packet Capture Rule for Azure Firewall
 
 ```
 New-AzFirewallPacketCaptureRule -Source <String[]> -Destination <String[]> [-DestinationPort <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

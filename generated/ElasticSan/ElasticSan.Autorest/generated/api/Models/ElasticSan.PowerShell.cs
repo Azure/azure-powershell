@@ -168,11 +168,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             }
             if (content.Contains("BaseSizeTiB"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).BaseSizeTiB = (long) content.GetValueForProperty("BaseSizeTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).BaseSizeTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).BaseSizeTiB = (long?) content.GetValueForProperty("BaseSizeTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).BaseSizeTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("ExtendedCapacitySizeTiB"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).ExtendedCapacitySizeTiB = (long) content.GetValueForProperty("ExtendedCapacitySizeTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).ExtendedCapacitySizeTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).ExtendedCapacitySizeTiB = (long?) content.GetValueForProperty("ExtendedCapacitySizeTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).ExtendedCapacitySizeTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("TotalVolumeSizeGiB"))
             {
@@ -293,11 +293,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             }
             if (content.Contains("BaseSizeTiB"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).BaseSizeTiB = (long) content.GetValueForProperty("BaseSizeTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).BaseSizeTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).BaseSizeTiB = (long?) content.GetValueForProperty("BaseSizeTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).BaseSizeTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("ExtendedCapacitySizeTiB"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).ExtendedCapacitySizeTiB = (long) content.GetValueForProperty("ExtendedCapacitySizeTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).ExtendedCapacitySizeTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).ExtendedCapacitySizeTiB = (long?) content.GetValueForProperty("ExtendedCapacitySizeTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal)this).ExtendedCapacitySizeTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("TotalVolumeSizeGiB"))
             {

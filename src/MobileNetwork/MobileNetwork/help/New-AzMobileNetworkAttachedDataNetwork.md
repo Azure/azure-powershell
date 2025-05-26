@@ -8,15 +8,16 @@ schema: 2.0.0
 # New-AzMobileNetworkAttachedDataNetwork
 
 ## SYNOPSIS
-Creates or updates an attached data network.
+create an attached data network.
 Must be created in the same location as its parent packet core data plane.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzMobileNetworkAttachedDataNetwork -Name <String> -PacketCoreControlPlaneName <String>
  -PacketCoreDataPlaneName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -DnsAddress <String[]> -Location <String> [-NaptConfigurationEnabled <NaptEnabled>]
+ -DnsAddress <String[]> -Location <String> [-NaptConfigurationEnabled <String>]
  [-NaptConfigurationPinholeLimit <Int32>] [-PinholeTimeoutIcmp <Int32>] [-PinholeTimeoutTcp <Int32>]
  [-PinholeTimeoutUdp <Int32>] [-PortRangeMaxPort <Int32>] [-PortRangeMinPort <Int32>]
  [-PortReuseHoldTimeTcp <Int32>] [-PortReuseHoldTimeUdp <Int32>] [-Tag <Hashtable>]
@@ -27,8 +28,65 @@ New-AzMobileNetworkAttachedDataNetwork -Name <String> -PacketCoreControlPlaneNam
  [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzMobileNetworkAttachedDataNetwork -Name <String> -PacketCoreControlPlaneName <String>
+ -PacketCoreDataPlaneName <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzMobileNetworkAttachedDataNetwork -Name <String> -PacketCoreControlPlaneName <String>
+ -PacketCoreDataPlaneName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityPacketCoreDataPlaneExpanded
+```
+New-AzMobileNetworkAttachedDataNetwork -Name <String> -PacketCoreDataPlaneInputObject <IMobileNetworkIdentity>
+ -DnsAddress <String[]> -Location <String> [-NaptConfigurationEnabled <String>]
+ [-NaptConfigurationPinholeLimit <Int32>] [-PinholeTimeoutIcmp <Int32>] [-PinholeTimeoutTcp <Int32>]
+ [-PinholeTimeoutUdp <Int32>] [-PortRangeMaxPort <Int32>] [-PortRangeMinPort <Int32>]
+ [-PortReuseHoldTimeTcp <Int32>] [-PortReuseHoldTimeUdp <Int32>] [-Tag <Hashtable>]
+ [-UserEquipmentAddressPoolPrefix <String[]>] [-UserEquipmentStaticAddressPoolPrefix <String[]>]
+ [-UserPlaneDataInterfaceIpv4Address <String>] [-UserPlaneDataInterfaceIpv4Gateway <String>]
+ [-UserPlaneDataInterfaceIpv4Subnet <String>] [-UserPlaneDataInterfaceName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityPacketCoreControlPlaneExpanded
+```
+New-AzMobileNetworkAttachedDataNetwork -Name <String> -PacketCoreDataPlaneName <String>
+ -PacketCoreControlPlaneInputObject <IMobileNetworkIdentity> -DnsAddress <String[]> -Location <String>
+ [-NaptConfigurationEnabled <String>] [-NaptConfigurationPinholeLimit <Int32>] [-PinholeTimeoutIcmp <Int32>]
+ [-PinholeTimeoutTcp <Int32>] [-PinholeTimeoutUdp <Int32>] [-PortRangeMaxPort <Int32>]
+ [-PortRangeMinPort <Int32>] [-PortReuseHoldTimeTcp <Int32>] [-PortReuseHoldTimeUdp <Int32>] [-Tag <Hashtable>]
+ [-UserEquipmentAddressPoolPrefix <String[]>] [-UserEquipmentStaticAddressPoolPrefix <String[]>]
+ [-UserPlaneDataInterfaceIpv4Address <String>] [-UserPlaneDataInterfaceIpv4Gateway <String>]
+ [-UserPlaneDataInterfaceIpv4Subnet <String>] [-UserPlaneDataInterfaceName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzMobileNetworkAttachedDataNetwork -InputObject <IMobileNetworkIdentity> -DnsAddress <String[]>
+ -Location <String> [-NaptConfigurationEnabled <String>] [-NaptConfigurationPinholeLimit <Int32>]
+ [-PinholeTimeoutIcmp <Int32>] [-PinholeTimeoutTcp <Int32>] [-PinholeTimeoutUdp <Int32>]
+ [-PortRangeMaxPort <Int32>] [-PortRangeMinPort <Int32>] [-PortReuseHoldTimeTcp <Int32>]
+ [-PortReuseHoldTimeUdp <Int32>] [-Tag <Hashtable>] [-UserEquipmentAddressPoolPrefix <String[]>]
+ [-UserEquipmentStaticAddressPoolPrefix <String[]>] [-UserPlaneDataInterfaceIpv4Address <String>]
+ [-UserPlaneDataInterfaceIpv4Gateway <String>] [-UserPlaneDataInterfaceIpv4Subnet <String>]
+ [-UserPlaneDataInterfaceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates an attached data network.
+create an attached data network.
 Must be created in the same location as its parent packet core data plane.
 
 ## EXAMPLES
@@ -88,7 +146,52 @@ This configuration is mandatory - if you don't want DNS servers, you must provid
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -103,7 +206,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -118,7 +221,7 @@ The name of the attached data network.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded
 Aliases: AttachedDataNetworkName
 
 Required: True
@@ -132,8 +235,8 @@ Accept wildcard characters: False
 Whether NAPT is enabled for connections to this attached data network.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.NaptEnabled
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -150,7 +253,7 @@ For 4G networks, this is the SGi interface.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -175,12 +278,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PacketCoreControlPlaneInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: CreateViaIdentityPacketCoreControlPlaneExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PacketCoreControlPlaneName
 The name of the packet core control plane.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -190,12 +308,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PacketCoreDataPlaneInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: CreateViaIdentityPacketCoreDataPlaneExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PacketCoreDataPlaneName
 The name of the packet core data plane.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityPacketCoreControlPlaneExpanded
 Aliases:
 
 Required: True
@@ -211,7 +344,7 @@ Default for ICMP Echo is 30 seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -227,7 +360,7 @@ Default for TCP is 3 minutes.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -243,7 +376,7 @@ Default for UDP is 30 seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -258,7 +391,7 @@ The maximum port number
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -273,7 +406,7 @@ The minimum port number
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -289,7 +422,7 @@ Default for TCP is 2 minutes.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -305,7 +438,7 @@ Default for UDP is 1 minute.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -321,7 +454,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -336,7 +469,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -351,7 +484,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -368,7 +501,7 @@ If you define both, they must be of the same size.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -385,7 +518,7 @@ If both are defined, they must be of the same size.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -400,7 +533,7 @@ The IPv4 address.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -415,7 +548,7 @@ The default IPv4 gateway (router).
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -430,7 +563,7 @@ The IPv4 subnet.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -446,7 +579,7 @@ This should match one of the interfaces configured on your Azure Stack Edge devi
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPacketCoreDataPlaneExpanded, CreateViaIdentityPacketCoreControlPlaneExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -492,9 +625,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork
 
 ## NOTES
 

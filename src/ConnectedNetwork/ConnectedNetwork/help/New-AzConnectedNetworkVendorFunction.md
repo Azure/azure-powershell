@@ -8,21 +8,53 @@ schema: 2.0.0
 # New-AzConnectedNetworkVendorFunction
 
 ## SYNOPSIS
-Creates or updates a vendor network function.
+create a vendor network function.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzConnectedNetworkVendorFunction -LocationName <String> -ServiceKey <String> -VendorName <String>
- [-SubscriptionId <String>] [-SkuType <SkuType>] [-VendorConfiguration <INetworkFunctionVendorConfiguration[]>]
- [-VendorProvisioningState <VendorProvisioningState>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzConnectedNetworkVendorFunction -ServiceKey <String> -LocationName <String> [-SubscriptionId <String>]
+ -VendorName <String> [-SkuType <String>] [-VendorConfiguration <INetworkFunctionVendorConfiguration[]>]
+ [-VendorProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzConnectedNetworkVendorFunction -ServiceKey <String> -LocationName <String> [-SubscriptionId <String>]
+ -VendorName <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzConnectedNetworkVendorFunction -ServiceKey <String> -LocationName <String> [-SubscriptionId <String>]
+ -VendorName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityLocationExpanded
+```
+New-AzConnectedNetworkVendorFunction -ServiceKey <String> -VendorName <String>
+ -LocationInputObject <IConnectedNetworkIdentity> [-SkuType <String>]
+ [-VendorConfiguration <INetworkFunctionVendorConfiguration[]>] [-VendorProvisioningState <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityVendorExpanded
+```
+New-AzConnectedNetworkVendorFunction -ServiceKey <String> -VendorInputObject <IConnectedNetworkIdentity>
+ [-SkuType <String>] [-VendorConfiguration <INetworkFunctionVendorConfiguration[]>]
+ [-VendorProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a vendor network function.
+create a vendor network function.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 
@@ -79,12 +111,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LocationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+Parameter Sets: CreateViaIdentityLocationExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LocationName
 The Azure region where the network function resource was created by the customer.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -128,8 +205,8 @@ Accept wildcard characters: False
 The sku type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.SkuType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityLocationExpanded, CreateViaIdentityVendorExpanded
 Aliases:
 
 Required: False
@@ -144,7 +221,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -156,11 +233,10 @@ Accept wildcard characters: False
 
 ### -VendorConfiguration
 An array of network function vendor configurations.
-To construct, see NOTES section for VENDORCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionVendorConfiguration[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionVendorConfiguration[]
+Parameter Sets: CreateExpanded, CreateViaIdentityLocationExpanded, CreateViaIdentityVendorExpanded
 Aliases:
 
 Required: False
@@ -170,12 +246,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VendorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+Parameter Sets: CreateViaIdentityVendorExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VendorName
 The name of the vendor.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityLocationExpanded
 Aliases:
 
 Required: True
@@ -189,8 +280,8 @@ Accept wildcard characters: False
 The vendor controlled provisioning state of the vendor network function.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.VendorProvisioningState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityLocationExpanded, CreateViaIdentityVendorExpanded
 Aliases:
 
 Required: False
@@ -236,9 +327,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorNetworkFunction
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorNetworkFunction
 
 ## NOTES
 

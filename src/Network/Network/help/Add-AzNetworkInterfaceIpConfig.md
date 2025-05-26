@@ -16,9 +16,9 @@ Adds a network interface IP configuration to a network interface.
 ### SetByResource (Default)
 ```
 Add-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
- [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-Primary] [-Subnet <PSSubnet>]
- [-PublicIpAddress <PSPublicIpAddress>] [-LoadBalancerBackendAddressPool <PSBackendAddressPool[]>]
- [-LoadBalancerInboundNatRule <PSInboundNatRule[]>]
+ [-PrivateIPAddressPrefixLength <Int32>] [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>]
+ [-Primary] [-Subnet <PSSubnet>] [-PublicIpAddress <PSPublicIpAddress>]
+ [-LoadBalancerBackendAddressPool <PSBackendAddressPool[]>] [-LoadBalancerInboundNatRule <PSInboundNatRule[]>]
  [-ApplicationGatewayBackendAddressPool <PSApplicationGatewayBackendAddressPool[]>]
  [-ApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-GatewayLoadBalancerId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -27,10 +27,11 @@ Add-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterf
 ### SetByResourceId
 ```
 Add-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
- [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-Primary] [-SubnetId <String>]
- [-PublicIpAddressId <String>] [-LoadBalancerBackendAddressPoolId <String[]>]
+ [-PrivateIPAddressPrefixLength <Int32>] [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>]
+ [-Primary] [-SubnetId <String>] [-PublicIpAddressId <String>] [-LoadBalancerBackendAddressPoolId <String[]>]
  [-LoadBalancerInboundNatRuleId <String[]>] [-ApplicationGatewayBackendAddressPoolId <String[]>]
- [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -255,6 +256,21 @@ Specifies the static IP address of the network interface IP configuration.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateIPAddressPrefixLength
+Specifies the static IP address prefix length of the network interface IP configuration.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 

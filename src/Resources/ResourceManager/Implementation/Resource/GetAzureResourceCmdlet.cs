@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                             ResourceType,
                                             Name);
 
-                this.DefaultApiVersion = DetermineApiVersion(resourceId).Result;
+                DefaultApiVersion = DetermineApiVersion(resourceId);
 
                 return true;
             }
@@ -326,9 +326,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
 #pragma warning restore 618
 
-            var apiVersion = await this
-                .DetermineApiVersion(resourceId: resourceId)
-                .ConfigureAwait(continueOnCapturedContext: false);
+            var apiVersion = DetermineApiVersion(resourceId);
 
             var odataQuery = QueryFilterBuilder.CreateFilter(
                 subscriptionId: null,
@@ -485,10 +483,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             try
             {
-                var apiVersion = await this.DetermineApiVersion(
-                    resourceId: resource.Id,
-                    pre: this.Pre)
-                    .ConfigureAwait(continueOnCapturedContext: false);
+                var apiVersion = DetermineApiVersion(resource.Id);
 
                 return await this
                     .GetResourcesClient()
@@ -624,8 +619,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private bool IsResourceGroupLevelQuery()
         {
             return this.SubscriptionId.HasValue &&
-                this.ResourceGroupName != null &&
-                this.Name != null ||
+                this.ResourceGroupName != null ||
                 this.ResourceType != null;
         }
     }

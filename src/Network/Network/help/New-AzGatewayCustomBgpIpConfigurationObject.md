@@ -14,7 +14,8 @@ creates a new GatewayCustomBgpIpConfigurationObject.
 
 ```
 New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId <String> -CustomBgpIpAddress <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

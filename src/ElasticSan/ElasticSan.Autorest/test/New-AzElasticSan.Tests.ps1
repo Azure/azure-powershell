@@ -17,7 +17,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzElasticSan'))
 Describe 'New/Remove ElasticSan' {
     It 'CreateExpanded' {
         $elasticSanName = "testsan" + $env.RandomString
-        $elasticSan = New-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $elasticSanName -BaseSizeTib $env.BaseSizeTib -ExtendedCapacitySizeTib $env.ExtendedCapacitySizeTib -Location $env.ElasticSanLocation -SkuName "Premium_LRS" -Tag @{tag1="value1";tag2="value2"}
+        
+        $elasticSan = New-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $elasticSanName -Location $env.ElasticSanLocation -SkuName "Premium_LRS" -AvailabilityZone 1
+        $elasticSan.Name | Should -Be $elasticSanName
+        $elasticSan.BaseSizeTib | Should -Be 20
+        $elasticSan.ExtendedCapacitySizeTib | Should -Be 0
+
+        Remove-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $elasticSanName
+        $elasticSanList = Get-AzElasticSan
+        $elasticSanList.Name | Should -Not -Contain $elasticSanName
+
+        $elasticSan = New-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $elasticSanName -BaseSizeTib $env.BaseSizeTib -ExtendedCapacitySizeTib $env.ExtendedCapacitySizeTib -Location $env.ElasticSanLocation -SkuName "Premium_LRS" -AvailabilityZone 1 -Tag @{tag1="value1";tag2="value2"} 
         $elasticSan.Name | Should -Be $elasticSanName
         $elasticSan.BaseSizeTib | Should -Be $env.BaseSizeTib
         $elasticSan.ExtendedCapacitySizeTib | Should -Be $env.ExtendedCapacitySizeTib

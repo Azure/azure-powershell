@@ -28,12 +28,12 @@ $obj.JobSecret | Format-List
 $cabinetJobSecret = $obj.JobSecret.CabinetPodSecret | Format-List
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IUnencryptedCredentials
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IUnencryptedCredentials
 .Link
 https://learn.microsoft.com/powershell/module/az.databox/get-azdataboxjobcredential
 #>
 function Get-AzDataBoxJobCredential {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IUnencryptedCredentials])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IUnencryptedCredentials])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -205,12 +205,12 @@ Get-AzDataBoxJob -SubscriptionId "SubscriptionId"
 Get-AzDataBoxJob -ResourceGroupName "resourceGroupName"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource
 .Link
 https://learn.microsoft.com/powershell/module/az.databox/get-azdataboxjob
 #>
 function Get-AzDataBoxJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -476,7 +476,7 @@ $customerDiskDetails = New-AzDataBoxCustomerDiskJobDetailsObject -Type "DataBoxC
 New-AzDataBoxJob -Name "testJobName2" -SubscriptionId "YourSubscriptionId" -ResourceGroupName "YourResourceGroup" -TransferType "ExportFromAzure" -Detail $customerDiskDetails -Location "westus" -SkuName "DataBoxCustomerDisk"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -556,7 +556,7 @@ DETAIL <IJobDetails>: Details of a job run. This field will only be sent for exp
 https://learn.microsoft.com/powershell/module/az.databox/new-azdataboxjob
 #>
 function New-AzDataBoxJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -618,7 +618,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobDetails]
     # Details of a job run.
     # This field will only be sent for expand details filter.
     # To construct, see NOTES section for DETAIL properties and create a hash table.
@@ -643,8 +643,17 @@ param(
     ${SkuFamily},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ModelName])]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ModelName]
+    # The customer friendly name of the combination of version and capacity of the device.
+    # This field is necessary only at the time of ordering the newer generation device i.e.
+    # AzureDataBox120 and AzureDataBox525 as of Feb/2025
+    ${SkuModel},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IResourceTags]))]
     [System.Collections.Hashtable]
     # The list of key value pairs that describe the resource.
     # These tags can be used in viewing and grouping this resource (across resource groups).
@@ -652,7 +661,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IResourceIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IResourceIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # User Assigned Identities
     ${UserAssignedIdentity},
@@ -1228,7 +1237,7 @@ $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNS
 Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "SystemAssigned,UserAssigned" -UserAssignedIdentity @{"/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName" = @{}}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1283,7 +1292,7 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
 https://learn.microsoft.com/powershell/module/az.databox/update-azdataboxjob
 #>
 function Update-AzDataBoxJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1316,7 +1325,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IContactDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails]
     # Contact details for notification and shipping.
     # To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
     ${ContactDetail},
@@ -1367,7 +1376,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IKeyEncryptionKey]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey]
     # Key encryption key for the job.
     # To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
     ${KeyEncryptionKey},
@@ -1399,7 +1408,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress]
     # Shipping address where customer wishes to receive the device.
     # To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
     ${ReverseShippingDetail},
@@ -1413,7 +1422,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress]
     # Shipping address of the customer.
     # To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
     ${ShippingAddress},
@@ -1428,7 +1437,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResourceUpdateParameterTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResourceUpdateParameterTags]))]
     [System.Collections.Hashtable]
     # The list of key value pairs that describe the resource.
     # These tags can be used in viewing and grouping this resource (across resource groups).
@@ -1443,7 +1452,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IResourceIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IResourceIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # User Assigned Identities
     ${UserAssignedIdentity},
@@ -1605,7 +1614,7 @@ Create an in-memory object for ContactDetails.
 New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ContactDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ContactDetails
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1618,7 +1627,7 @@ NOTIFICATIONPREFERENCE <INotificationPreference[]>: Notification preference for 
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxContactDetailsObject
 #>
 function New-AzDataBoxContactDetailsObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ContactDetails])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ContactDetails])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1647,7 +1656,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.INotificationPreference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.INotificationPreference[]]
     # Notification preference for a job stage.
     # To construct, see NOTES section for NOTIFICATIONPREFERENCE properties and create a hash table.
     ${NotificationPreference},
@@ -1751,7 +1760,7 @@ $importDiskDetailsCollection = @{"XXXXXX"= @{ManifestFile = "xyz.txt"; ManifestH
 New-AzDataBoxCustomerDiskJobDetailsObject -Type "DataBoxCustomerDisk" -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -ImportDiskDetailsCollection $importDiskDetailsCollection -ReturnToCustomerPackageDetailCarrierAccountNumber "00000"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxCustomerDiskJobDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxCustomerDiskJobDetails
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1852,12 +1861,12 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxCustomerDiskJobDetailsObject
 #>
 function New-AzDataBoxCustomerDiskJobDetailsObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxCustomerDiskJobDetails])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxCustomerDiskJobDetails])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IContactDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails]
     # Contact details for notification and shipping.
     # To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
     ${ContactDetail},
@@ -1871,14 +1880,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataBoxCustomerDiskJobDetailsImportDiskDetailsCollection]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataBoxCustomerDiskJobDetailsImportDiskDetailsCollection]
     # Contains the map of disk serial number to the disk details for import jobs.
     # To construct, see NOTES section for IMPORTDISKDETAILSCOLLECTION properties and create a hash table.
     ${ImportDiskDetailsCollection},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataBoxCustomerDiskJobDetailsExportDiskDetailsCollection]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataBoxCustomerDiskJobDetailsExportDiskDetailsCollection]
     # Contains the map of disk serial number to the disk details for export jobs.
     # To construct, see NOTES section for EXPORTDISKDETAILSCOLLECTION properties and create a hash table.
     ${ExportDiskDetailsCollection},
@@ -1891,14 +1900,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataExportDetails[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataExportDetails[]]
     # Details of the data to be exported from azure.
     # To construct, see NOTES section for DATAEXPORTDETAIL properties and create a hash table.
     ${DataExportDetail},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataImportDetails[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataImportDetails[]]
     # Details of the data to be imported into azure.
     # To construct, see NOTES section for DATAIMPORTDETAIL properties and create a hash table.
     ${DataImportDetail},
@@ -1911,28 +1920,28 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IKeyEncryptionKey]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey]
     # Details about which key encryption type is being used.
     # To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
     ${KeyEncryptionKey},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IPreferences]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IPreferences]
     # Preferences for the order.
     # To construct, see NOTES section for PREFERENCE properties and create a hash table.
     ${Preference},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IReverseShippingDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IReverseShippingDetails]
     # Optional Reverse Shipping details for order.
     # To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
     ${ReverseShippingDetail},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress]
     # Shipping address of the customer.
     # To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
     ${ShippingAddress}
@@ -2028,7 +2037,7 @@ $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNS
 New-AzDataBoxDiskJobDetailsObject -Type "DataBoxDisk"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -Passkey $password -PreferredDisk @{"8" = 8; "4" = 2} -ExpectedDataSizeInTeraByte 18
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskJobDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetails
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2126,12 +2135,12 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxDiskJobDetailsObject
 #>
 function New-AzDataBoxDiskJobDetailsObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskJobDetails])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetails])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IContactDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails]
     # Contact details for notification and shipping.
     # To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
     ${ContactDetail},
@@ -2151,7 +2160,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataBoxDiskJobDetailsPreferredDisks]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataBoxDiskJobDetailsPreferredDisks]
     # User preference on what size disks are needed for the job.
     # The map is from the disk size in TB to the count.
     # Eg.
@@ -2162,14 +2171,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataExportDetails[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataExportDetails[]]
     # Details of the data to be exported from azure.
     # To construct, see NOTES section for DATAEXPORTDETAIL properties and create a hash table.
     ${DataExportDetail},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataImportDetails[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataImportDetails[]]
     # Details of the data to be imported into azure.
     # To construct, see NOTES section for DATAIMPORTDETAIL properties and create a hash table.
     ${DataImportDetail},
@@ -2182,28 +2191,28 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IKeyEncryptionKey]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey]
     # Details about which key encryption type is being used.
     # To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
     ${KeyEncryptionKey},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IPreferences]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IPreferences]
     # Preferences for the order.
     # To construct, see NOTES section for PREFERENCE properties and create a hash table.
     ${Preference},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IReverseShippingDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IReverseShippingDetails]
     # Optional Reverse Shipping details for order.
     # To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
     ${ReverseShippingDetail},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress]
     # Shipping address of the customer.
     # To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
     ${ShippingAddress}
@@ -2299,7 +2308,7 @@ $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNS
 New-AzDataBoxHeavyJobDetailsObject -Type "DataBoxHeavy"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -DevicePassword $password -ExpectedDataSizeInTeraByte 10
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxHeavyJobDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavyJobDetails
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2394,12 +2403,12 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxHeavyJobDetailsObject
 #>
 function New-AzDataBoxHeavyJobDetailsObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxHeavyJobDetails])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavyJobDetails])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IContactDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails]
     # Contact details for notification and shipping.
     # To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
     ${ContactDetail},
@@ -2425,14 +2434,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataExportDetails[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataExportDetails[]]
     # Details of the data to be exported from azure.
     # To construct, see NOTES section for DATAEXPORTDETAIL properties and create a hash table.
     ${DataExportDetail},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataImportDetails[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataImportDetails[]]
     # Details of the data to be imported into azure.
     # To construct, see NOTES section for DATAIMPORTDETAIL properties and create a hash table.
     ${DataImportDetail},
@@ -2445,28 +2454,28 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IKeyEncryptionKey]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey]
     # Details about which key encryption type is being used.
     # To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
     ${KeyEncryptionKey},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IPreferences]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IPreferences]
     # Preferences for the order.
     # To construct, see NOTES section for PREFERENCE properties and create a hash table.
     ${Preference},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IReverseShippingDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IReverseShippingDetails]
     # Optional Reverse Shipping details for order.
     # To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
     ${ReverseShippingDetail},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress]
     # Shipping address of the customer.
     # To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
     ${ShippingAddress}
@@ -2562,7 +2571,7 @@ $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNS
 New-AzDataBoxJobDetailsObject -Type "DataBox"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxJobDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2657,12 +2666,12 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxJobDetailsObject
 #>
 function New-AzDataBoxJobDetailsObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxJobDetails])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IContactDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails]
     # Contact details for notification and shipping.
     # To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
     ${ContactDetail},
@@ -2688,14 +2697,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataExportDetails[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataExportDetails[]]
     # Details of the data to be exported from azure.
     # To construct, see NOTES section for DATAEXPORTDETAIL properties and create a hash table.
     ${DataExportDetail},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataImportDetails[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataImportDetails[]]
     # Details of the data to be imported into azure.
     # To construct, see NOTES section for DATAIMPORTDETAIL properties and create a hash table.
     ${DataImportDetail},
@@ -2708,28 +2717,28 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IKeyEncryptionKey]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey]
     # Details about which key encryption type is being used.
     # To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
     ${KeyEncryptionKey},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IPreferences]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IPreferences]
     # Preferences for the order.
     # To construct, see NOTES section for PREFERENCE properties and create a hash table.
     ${Preference},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IReverseShippingDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IReverseShippingDetails]
     # Optional Reverse Shipping details for order.
     # To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
     ${ReverseShippingDetail},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress]
     # Shipping address of the customer.
     # To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
     ${ShippingAddress}
@@ -2822,7 +2831,7 @@ Create an in-memory object for KeyEncryptionKey.
 New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.KeyEncryptionKey
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2835,7 +2844,7 @@ IDENTITYPROPERTY <IIdentityProperties>: Managed identity properties used for key
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxKeyEncryptionKeyObject
 #>
 function New-AzDataBoxKeyEncryptionKeyObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.KeyEncryptionKey])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -2847,7 +2856,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IIdentityProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IIdentityProperties]
     # Managed identity properties used for key encryption.
     # To construct, see NOTES section for IDENTITYPROPERTY properties and create a hash table.
     ${IdentityProperty},
@@ -2954,12 +2963,12 @@ Create an in-memory object for ManagedDiskDetails.
 New-AzDataBoxManagedDiskDetailsObject -ResourceGroupId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName" -StagingStorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/stagingAccountName" -DataAccountType "ManagedDisk"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ManagedDiskDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ManagedDiskDetails
 .Link
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxManagedDiskDetailsObject
 #>
 function New-AzDataBoxManagedDiskDetailsObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ManagedDiskDetails])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ManagedDiskDetails])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -3081,12 +3090,12 @@ Create an in-memory object for ShippingAddress.
 New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShippingAddress
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShippingAddress
 .Link
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxShippingAddressObject
 #>
 function New-AzDataBoxShippingAddressObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShippingAddress])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShippingAddress])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -3250,12 +3259,12 @@ Create an in-memory object for StorageAccountDetails.
 New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/storageAccountName"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.StorageAccountDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.StorageAccountDetails
 .Link
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxStorageAccountDetailsObject
 #>
 function New-AzDataBoxStorageAccountDetailsObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.StorageAccountDetails])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.StorageAccountDetails])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -3371,7 +3380,7 @@ Create an in-memory object for TransferConfiguration.
 New-AzDataBoxTransferConfigurationObject -Type "TransferAll" -TransferAllDetail @{"IncludeDataAccountType"="StorageAccount";"IncludeTransferAllBlob"= "True"; "IncludeTransferAllFile"="True"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransferConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3397,7 +3406,7 @@ TRANSFERFILTERDETAIL <ITransferConfigurationTransferFilterDetails>: Map of filte
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxTransferConfigurationObject
 #>
 function New-AzDataBoxTransferConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransferConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -3409,7 +3418,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ITransferConfigurationTransferAllDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferAllDetails]
     # Map of filter type and the details to transfer all data.
     # This field is required only if the TransferConfigurationType is given as TransferAll.
     # To construct, see NOTES section for TRANSFERALLDETAIL properties and create a hash table.
@@ -3417,7 +3426,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ITransferConfigurationTransferFilterDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferFilterDetails]
     # Map of filter type and the details to filter.
     # This field is required only if the TransferConfigurationType is given as TransferUsingFilter.
     # To construct, see NOTES section for TRANSFERFILTERDETAIL properties and create a hash table.

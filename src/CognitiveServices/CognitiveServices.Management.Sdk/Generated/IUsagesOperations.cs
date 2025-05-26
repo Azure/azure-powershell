@@ -23,7 +23,9 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// Resource location.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
+        /// An OData filter expression that describes a subset of usages to return. The
+        /// supported parameter is name.value (name of the metric, can have an or of
+        /// multiple names).
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

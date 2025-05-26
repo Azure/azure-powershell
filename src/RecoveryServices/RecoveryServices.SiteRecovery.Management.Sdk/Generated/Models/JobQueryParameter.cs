@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="jobOutputType">The output type of the jobs.
-        /// Possible values include: 'Json', 'Xml', 'Excel'</param>
+        /// Possible values include: &#39;Json&#39;, &#39;Xml&#39;, &#39;Excel&#39;</param>
 
         /// <param name="jobName">The job Name.
         /// </param>

@@ -1393,8 +1393,8 @@ function Test-DatabaseUpdateWithPerDBCMK ($location = "eastus2euap")
 	# Setup
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
-	$encryptionProtector = "https://pstestkv.vault.azure.net/keys/testkey/f62d937858464f329ab4a8c2dc7e0fa4"
-	$umi = "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/pstest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
+	$encryptionProtector = "https://kvpstest.vault.azure.net/keys/pstestkey/1493a5e6d9e34b429276c02457e42c0c"
+	$umi = "/subscriptions/10a238d6-a139-46d0-818d-d091394072b6/resourceGroups/pstest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
 
 	# Create with per db cmk enabled
 	$databaseName = Get-DatabaseName
@@ -1405,7 +1405,7 @@ function Test-DatabaseUpdateWithPerDBCMK ($location = "eastus2euap")
 	Assert-AreEqual $databaseFromGet.EncryptionProtector $encryptionProtector
 
 	# Update the db with new EncryptionProtector
-	$encryptionProtector2 = "https://pstestkv.vault.azure.net/keys/testkey1/6218d117492a42eda0b6a9334c9a989d"
+	$encryptionProtector2 = "https://kvpstest.vault.azure.net/keys/pstestkey1/f6143120ccd3400c94e244799d6d00d1"
 	$dbAfterUpdate = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -EncryptionProtector $encryptionProtector2 -EncryptionProtectorAutoRotation:$false
 	
 	$databaseGetAfterUpdate = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName

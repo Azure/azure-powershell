@@ -15,7 +15,8 @@ Removes a probe configuration from a load balancer.
 
 ```
 Remove-AzLoadBalancerProbeConfig -LoadBalancer <PSLoadBalancer> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,5 +134,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzLoadBalancerProbeConfig](./New-AzLoadBalancerProbeConfig.md)
 
 [Set-AzLoadBalancerProbeConfig](./Set-AzLoadBalancerProbeConfig.md)
-
-

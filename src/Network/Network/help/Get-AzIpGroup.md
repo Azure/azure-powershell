@@ -20,7 +20,8 @@ Get-AzIpGroup [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <I
 
 ### IpGroupResourceIdParameterSet
 ```
-Get-AzIpGroup -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIpGroup -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

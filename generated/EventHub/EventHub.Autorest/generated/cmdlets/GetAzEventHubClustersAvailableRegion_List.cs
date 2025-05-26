@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAvailableClustersList))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"List the quantity of available pre-provisioned Event Hubs Clusters, indexed by Azure region.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.EventHub/availableClusterRegions", ApiVersion = "2023-01-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.EventHub/availableClusterRegions", ApiVersion = "2024-05-01-preview")]
     public partial class GetAzEventHubClustersAvailableRegion_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IContext

@@ -8,11 +8,20 @@ schema: 2.0.0
 # New-AzMobileNetworkSimPolicy
 
 ## SYNOPSIS
-Creates or updates a SIM policy.
+create a SIM policy.
 Must be created in the same location as its parent mobile network.
 
 ## SYNTAX
 
+### CreateViaIdentityExpanded (Default)
+```
+New-AzMobileNetworkSimPolicy -InputObject <IMobileNetworkIdentity> -DefaultSliceId <String> -Location <String>
+ -SliceConfiguration <ISliceConfiguration[]> -UeAmbrDownlink <String> -UeAmbrUplink <String>
+ [-RegistrationTimer <Int32>] [-RfspIndex <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpanded
 ```
 New-AzMobileNetworkSimPolicy -MobileNetworkName <String> -Name <String> -ResourceGroupName <String>
  -DefaultSliceId <String> -Location <String> -SliceConfiguration <ISliceConfiguration[]>
@@ -21,8 +30,30 @@ New-AzMobileNetworkSimPolicy -MobileNetworkName <String> -Name <String> -Resourc
  [<CommonParameters>]
 ```
 
+### CreateViaIdentityMobileNetworkExpanded
+```
+New-AzMobileNetworkSimPolicy -MobileNetworkInputObject <IMobileNetworkIdentity> -Name <String>
+ -DefaultSliceId <String> -Location <String> -SliceConfiguration <ISliceConfiguration[]>
+ -UeAmbrDownlink <String> -UeAmbrUplink <String> [-RegistrationTimer <Int32>] [-RfspIndex <Int32>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzMobileNetworkSimPolicy -MobileNetworkName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzMobileNetworkSimPolicy -MobileNetworkName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates a SIM policy.
+create a SIM policy.
 Must be created in the same location as its parent mobile network.
 
 ## EXAMPLES
@@ -85,7 +116,52 @@ Slice resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMobileNetworkExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -100,7 +176,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: True
@@ -110,12 +186,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MobileNetworkInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: CreateViaIdentityMobileNetworkExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MobileNetworkName
 The name of the mobile network.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -130,7 +221,7 @@ The name of the SIM policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityMobileNetworkExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: SimPolicyName
 
 Required: True
@@ -160,7 +251,7 @@ Interval for the UE periodic registration update procedure, in seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: False
@@ -176,7 +267,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -192,7 +283,7 @@ This is an optional setting and by default is unspecified.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: False
@@ -205,11 +296,10 @@ Accept wildcard characters: False
 ### -SliceConfiguration
 The allowed slices and the settings to use for them.
 The list must not contain duplicate items and must contain at least one item.
-To construct, see NOTES section for SLICECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISliceConfiguration[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISliceConfiguration[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: True
@@ -224,7 +314,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -239,7 +329,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: False
@@ -254,7 +344,7 @@ Downlink bit rate.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: True
@@ -269,7 +359,7 @@ Uplink bit rate.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMobileNetworkExpanded
 Aliases:
 
 Required: True
@@ -315,9 +405,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimPolicy
 
 ## NOTES
 

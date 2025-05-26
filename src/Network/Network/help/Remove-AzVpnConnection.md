@@ -15,7 +15,8 @@ Removes a VpnConnection.
 ### ByVpnConnectionName (Default)
 ```
 Remove-AzVpnConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String> [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnConnectionResourceId
@@ -27,7 +28,8 @@ Remove-AzVpnConnection -ResourceId <String> [-Force] [-PassThru] [-DefaultProfil
 ### ByVpnConnectionObject
 ```
 Remove-AzVpnConnection -InputObject <PSVpnConnection> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

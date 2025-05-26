@@ -153,18 +153,6 @@ try {
                     Remediation = "Please determine autorest v4 in Readme file."
                 }
             }
-            
-            If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
-            {
-                $ExceptionList += [GeneratedSdkIssue]@{
-                    Module = $ModuleName;
-                    Sdk = $_;
-                    Severity = 1;
-                    ProblemId = $GenSdkChanged
-                    Description = "Failed to set autorest.csharp@2.3.90 for $ModuleName."
-                    Remediation = ""
-                }
-            }
 
             If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
             {
@@ -196,7 +184,9 @@ try {
             # Prevent EOL changes detected
             git config --global core.safecrlf false
             git config --global core.autocrlf true
-            $diff = git diff ".\Generated"
+            # Use a single regex to ignore comments in .cs and .psd1 files
+            $diff = git diff --ignore-matching-lines="^\s*(//|/\*.*\*/|#)" ".\Generated"
+
             if($diff -ne $null){
                 $changes = $changes.replace("  ", "`n")
                 $ExceptionList += [GeneratedSdkIssue]@{

@@ -14,7 +14,8 @@ Create a new Azure Firewall Policy Application Rule Custon HTTP Header
 
 ```
 New-AzFirewallPolicyApplicationRuleCustomHttpHeader -HeaderName <String> -HeaderValue <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

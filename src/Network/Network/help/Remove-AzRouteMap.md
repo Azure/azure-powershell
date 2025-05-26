@@ -15,25 +15,29 @@ Remove a route map from a VirtualHub.
 ### ByRouteMapName (Default)
 ```
 Remove-AzRouteMap [-ResourceGroupName <String>] [-VirtualHubName <String>] [-Name <String>] [-AsJob] [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 Remove-AzRouteMap [-Name <String>] [-VirtualHubObject <PSVirtualHub>] [-AsJob] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByRouteMapObject
 ```
 Remove-AzRouteMap [-InputObject <PSRouteMap>] [-AsJob] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByRouteMapResourceId
 ```
 Remove-AzRouteMap [-ResourceId <String>] [-AsJob] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
