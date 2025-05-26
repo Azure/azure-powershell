@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
             }
 
             // Validate FileSizeInBytes
-            if (this.FileSizeInBytes < 1 || this.FileSizeInBytes > 4294967295)
+            if (this.FileSizeInBytes < 102400 || this.FileSizeInBytes > 4294967295)
             {
-                throw new ArgumentException("FileSizeInBytes must be between 1 byte and 4,294,967,295 bytes (4 GB). Default is 104,857,600 bytes (100 MB).");
+                throw new ArgumentException("FileSizeInBytes must be between 102400 byte and 4,294,967,295 bytes (4 GB). Default is 104,857,600 bytes (100 MB).");
             }
 
             // Validate SessionTimeLimitInSeconds
