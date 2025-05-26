@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCosmosDBThroughputBucketObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new CosmosDB Throughput Bucket Object (PSThroughputBucket).
 
 ## SYNTAX
 
@@ -18,16 +18,14 @@ New-AzCosmosDBThroughputBucketObject -Id <Int32> -MaxThroughputPercentage <Int32
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a new CosmosDB Throughput Bucket Object (PSThroughputBucket).
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $ThroughputBucket1 = New-AzCosmosDBThroughputBucketObject -Id 1 -MaxThroughputPercentage 20
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
