@@ -21,17 +21,18 @@ Create an in-memory object for SliceConfiguration.
 Create an in-memory object for SliceConfiguration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SliceConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SliceConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkSliceConfigurationObject
 #>
 function New-AzMobileNetworkSliceConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SliceConfiguration')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SliceConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(Mandatory, HelpMessage="The allowed data networks and the settings to use for them. The list must not contain duplicate items and must contain at least one item.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IDataNetworkConfiguration[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IDataNetworkConfiguration[]]
         $DataNetworkConfiguration,
         [Parameter(Mandatory, HelpMessage="Data network resource ID.")]
         [string]
@@ -42,7 +43,7 @@ function New-AzMobileNetworkSliceConfigurationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SliceConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SliceConfiguration]::New()
 
         if ($PSBoundParameters.ContainsKey('DataNetworkConfiguration')) {
             $Object.DataNetworkConfiguration = $DataNetworkConfiguration
