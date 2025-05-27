@@ -5,7 +5,7 @@
 # The configuration should look like this:
 #
 #     ### PSScriptAnalyzer Configuration
-#     ``` yaml
+#     ```yaml
 #     targetVersions:
 #     - "5.1"
 #     - "7.0"
@@ -17,7 +17,7 @@
 function Read-ComplianceConfiguration {
     $path = "README.md"
     $configMarker = "### PSScriptAnalyzer Configuration"
-    $backTicksYaml = '``` yaml'
+    $backTicksYaml = '```yaml'
     $backTicks = '```'
 
     $readme = Get-Content $path
@@ -41,8 +41,7 @@ function Read-ComplianceConfiguration {
     }
 
     if ("" -eq $yaml) {
-        Write-Error "No PSScriptAnalyzer Configuration found in README.md"
-        exit 2
+        Throw "No PSScriptAnalyzer Configuration found in README.md"
     }
 
     # Parse the YAML.
@@ -51,12 +50,10 @@ function Read-ComplianceConfiguration {
     # Confirm that there is at least one TargetVersion and that there are the
     # same number of TargetVersions as TargetProfiles.
     if ($yamlObj.targetVersions.Count -eq 0) {
-        Write-Error "No TargetVersions found in PSScriptAnalyzer Configuration."
-        exit 4
+        Throw "No TargetVersions found in PSScriptAnalyzer Configuration."
     }
     if ($yamlObj.targetVersions.Count -ne $yamlObj.targetProfiles.Count) {
-        Write-Error "Number of TargetVersions ($($yamlObj.targetVersions.Count)) and TargetProfiles ($($yamlObj.targetprofiles.Count)) do not match."
-        exit 6
+        Throw "Number of TargetVersions ($($yamlObj.targetVersions.Count)) and TargetProfiles ($($yamlObj.targetprofiles.Count)) do not match."
     }
 
     return $yamlObj
@@ -94,8 +91,7 @@ function Confirm-Compliance {
     $problems = $(Get-ChildItem -Path ./custom -Recurse -Include '*.ps1' | Invoke-ScriptAnalyzer -Settings $settings)
     if ("" -ne $problems) {
         Write-Output $problems
-        Write-Error 'ScriptAnalyzer found (possibly back-compatibility) issues.'
-        exit 5
+        Throw 'ScriptAnalyzer found (possibly back-compatibility) issues.'
     }
 }
 
@@ -105,8 +101,7 @@ function Confirm-CustomScript {
     # Get all *.ps1 files in the current directory
     $scripts = Get-ChildItem -Path ./custom -Recurse -Include '*.ps1'
     if ($scripts.Length -eq 0) {
-        Write-Error "No custom scripts found in the repository."
-        exit 3
+        Throw "No custom scripts found in the repository."
     }
 }
 
@@ -116,20 +111,17 @@ function Confirm-InAutorestEnv {
     # Get current working directory then confirm it ends in ".autorest"
     $cwd = Get-Location
     if ($cwd -notlike "*.autorest") {
-        Write-Error "This script should be run from an autorest directory."
-        exit 1
+        Throw "This script should be run from an autorest directory."
     }
 
 }
 
 # Confirm that the required modules are installed.
 if (-not(Get-InstalledModule -Name "powershell-yaml")) {
-    Write-Error "powershell-yaml module is required. Please install it."
-    exit 7
+    Throw "powershell-yaml module is required. Please install it."
 }
 if (-not(Get-InstalledModule -Name PSScriptAnalyzer)) {
-    Write-Error "PSScriptAnalyzer module is required. Please install it."
-    exit 7
+    Throw "PSScriptAnalyzer module is required. Please install it."
 }
 
 # Run the script.
