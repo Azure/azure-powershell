@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMobileNetwork_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.CmdletBreakingChange("14.5.0", "0.5.0", "2025/09/30")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetwork))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Description(@"create a mobile network.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Generated]
