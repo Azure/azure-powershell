@@ -210,6 +210,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Get-AzDataFactoryV2Dataset]()
+[Get-AzDataFactoryV2Dataset](Get-AzDataFactoryV2Dataset.md)
 
-[Remove-AzDataFactoryV2Dataset]()
+[Remove-AzDataFactoryV2Dataset](Remove-AzDataFactoryV2Dataset.md)

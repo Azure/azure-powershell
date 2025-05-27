@@ -76,11 +76,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_azureTrafficCollectorName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonString>("azureTrafficCollectorName"), out var __jsonAzureTrafficCollectorName) ? (string)__jsonAzureTrafficCollectorName : (string)AzureTrafficCollectorName;}
-            {_collectorPolicyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonString>("collectorPolicyName"), out var __jsonCollectorPolicyName) ? (string)__jsonCollectorPolicyName : (string)CollectorPolicyName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_azureTrafficCollectorName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonString>("azureTrafficCollectorName"), out var __jsonAzureTrafficCollectorName) ? (string)__jsonAzureTrafficCollectorName : (string)_azureTrafficCollectorName;}
+            {_collectorPolicyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonString>("collectorPolicyName"), out var __jsonCollectorPolicyName) ? (string)__jsonCollectorPolicyName : (string)_collectorPolicyName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

@@ -52,7 +52,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.0.0'; }, 
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.0.1'; }, 
                @{ModuleName = 'Az.Advisor'; RequiredVersion = '2.1.0'; }, 
                @{ModuleName = 'Az.Aks'; RequiredVersion = '7.0.0'; }, 
                @{ModuleName = 'Az.AnalysisServices'; RequiredVersion = '1.2.0'; }, 
@@ -109,7 +109,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.0.0'; },
                @{ModuleName = 'Az.Migrate'; RequiredVersion = '2.7.1'; }, 
                @{ModuleName = 'Az.Monitor'; RequiredVersion = '6.0.2'; }, 
                @{ModuleName = 'Az.MySql'; RequiredVersion = '1.3.0'; }, 
-               @{ModuleName = 'Az.Network'; RequiredVersion = '7.16.2'; }, 
+               @{ModuleName = 'Az.Network'; RequiredVersion = '7.17.0'; }, 
                @{ModuleName = 'Az.NetworkCloud'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.Nginx'; RequiredVersion = '1.2.0'; }, 
                @{ModuleName = 'Az.NotificationHubs'; RequiredVersion = '1.2.0'; }, 

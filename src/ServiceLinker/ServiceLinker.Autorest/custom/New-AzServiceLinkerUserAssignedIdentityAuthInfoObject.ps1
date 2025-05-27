@@ -21,39 +21,47 @@ Create an in-memory object for UserAssignedIdentityAuthInfo.
 Create an in-memory object for UserAssignedIdentityAuthInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.UserAssignedIdentityAuthInfo
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.UserAssignedIdentityAuthInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkeruserassignedidentityauthinfoobject
 #>
 function New-AzServiceLinkerUserAssignedIdentityAuthInfoObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.UserAssignedIdentityAuthInfo')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.UserAssignedIdentityAuthInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Client Id for userAssignedIdentity.")]
         [string]
         $ClientId,
+        [Parameter(HelpMessage="Optional, this value specifies the Azure role to be assigned.")]
+        [string[]]
+        $Role,
         [Parameter(HelpMessage="Subscription id for userAssignedIdentity.")]
         [string]
         $SubscriptionId,
-        [Parameter(DontShow, HelpMessage="The authentication type.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script='"userAssignedIdentity"')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType]
-        $AuthType
+        [Parameter(HelpMessage="Username created in the database which is mapped to a user in AAD.")]
+        [string]
+        $UserName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.UserAssignedIdentityAuthInfo]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.UserAssignedIdentityAuthInfo]::New()
 
         if ($PSBoundParameters.ContainsKey('ClientId')) {
             $Object.ClientId = $ClientId
         }
+        if ($PSBoundParameters.ContainsKey('DeleteOrUpdateBehavior')) {
+            $Object.DeleteOrUpdateBehavior = $DeleteOrUpdateBehavior
+        }
+        if ($PSBoundParameters.ContainsKey('Role')) {
+            $Object.Role = $Role
+        }
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             $Object.SubscriptionId = $SubscriptionId
         }
-        if ($PSBoundParameters.ContainsKey('AuthType')) {
-            $Object.AuthType = $AuthType
+        if ($PSBoundParameters.ContainsKey('UserName')) {
+            $Object.UserName = $UserName
         }
         return $Object
     }

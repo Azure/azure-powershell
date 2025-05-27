@@ -27,7 +27,7 @@ Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage -PacketCoreC
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,16 +53,20 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/trace-azmobilenetworkcollectpacketcorecontrolplanediagnosticpackage
 #>
 function Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='CollectExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CollectExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CollectViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CollectViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the packet core control plane.
     ${PacketCoreControlPlaneName},
 
     [Parameter(ParameterSetName='CollectExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CollectViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CollectViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -70,6 +74,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CollectExpanded')]
+    [Parameter(ParameterSetName='CollectViaJsonFilePath')]
+    [Parameter(ParameterSetName='CollectViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -80,14 +86,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CollectExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CollectViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The Storage Account Blob URL to upload the diagnostics package to.
     ${StorageAccountBlobUrl},
+
+    [Parameter(ParameterSetName='CollectViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Collect operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CollectViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Collect operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -157,6 +175,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -178,10 +205,10 @@ begin {
         $mapping = @{
             CollectExpanded = 'Az.MobileNetwork.private\Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage_CollectExpanded';
             CollectViaIdentityExpanded = 'Az.MobileNetwork.private\Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage_CollectViaIdentityExpanded';
+            CollectViaJsonFilePath = 'Az.MobileNetwork.private\Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage_CollectViaJsonFilePath';
+            CollectViaJsonString = 'Az.MobileNetwork.private\Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage_CollectViaJsonString';
         }
-        if (('CollectExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CollectExpanded', 'CollectViaJsonFilePath', 'CollectViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -195,6 +222,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

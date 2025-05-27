@@ -99,17 +99,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>Resource location.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource location.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Resource location.",
-        SerializedName = @"location",
-        PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
-
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -122,18 +111,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.HttpPipeline Pipeline { get; set; }
-
-        /// <summary>Resource ID.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Resource ID.",
-        SerializedName = @"id",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::System.Management.Automation.Alias("Id")]
-        public string ProfileId { get => _parametersBody.Id ?? null; set => _parametersBody.Id = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -150,18 +127,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
-
-        /// <summary>Resource tags.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Resource tags.",
-        SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what

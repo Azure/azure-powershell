@@ -25,17 +25,16 @@ Invoke-AzSelfHelpCheckNameAvailability -Scope <String>
  [-WhatIf] [<CommonParameters>]
 ```
 
-### PostViaIdentity
+### PostViaJsonFilePath
 ```
-Invoke-AzSelfHelpCheckNameAvailability -InputObject <ISelfHelpIdentity>
- -CheckNameAvailabilityRequest <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzSelfHelpCheckNameAvailability -Scope <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### PostViaIdentityExpanded
+### PostViaJsonString
 ```
-Invoke-AzSelfHelpCheckNameAvailability -InputObject <ISelfHelpIdentity> [-Name <String>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzSelfHelpCheckNameAvailability -Scope <String> -JsonString <String> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,11 +66,10 @@ Checks if resource name is avilabale/unique for the scope or not
 
 ### -CheckNameAvailabilityRequest
 The check availability request body.
-To construct, see NOTES section for CHECKNAMEAVAILABILITYREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ICheckNameAvailabilityRequest
-Parameter Sets: Post, PostViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ICheckNameAvailabilityRequest
+Parameter Sets: Post
 Aliases:
 
 Required: True
@@ -97,19 +95,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Post operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
-Parameter Sets: PostViaIdentity, PostViaIdentityExpanded
+Type: System.String
+Parameter Sets: PostViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Post operation
+
+```yaml
+Type: System.String
+Parameter Sets: PostViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -118,7 +130,7 @@ The name of the resource for which availability needs to be checked.
 
 ```yaml
 Type: System.String
-Parameter Sets: PostExpanded, PostViaIdentityExpanded
+Parameter Sets: PostExpanded
 Aliases:
 
 Required: False
@@ -133,7 +145,7 @@ scope = resourceUri of affected resource.\<br/\> For example: /subscriptions/0d0
 
 ```yaml
 Type: System.String
-Parameter Sets: Post, PostExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -148,7 +160,7 @@ The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: PostExpanded, PostViaIdentityExpanded
+Parameter Sets: PostExpanded
 Aliases:
 
 Required: False
@@ -194,13 +206,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ICheckNameAvailabilityRequest
-
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ICheckNameAvailabilityRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ICheckNameAvailabilityResponse
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ICheckNameAvailabilityResponse
 
 ## NOTES
 

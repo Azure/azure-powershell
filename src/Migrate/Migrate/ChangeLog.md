@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Implemented the Get-AzMigrateServerMigrationStatus cmdlet to retrieve the replication status of servers in Azure Migrate.
+* Fixed bugs in `New-AzMigrateLocalServerReplication` that caused HyperVSite or VMwareSite not found.
 
 ## Version 2.7.1
 

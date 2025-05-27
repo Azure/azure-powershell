@@ -20,14 +20,9 @@ create a network access rule.
 .Description
 create a network access rule.
 .Example
-
- New-AzNetworkSecurityPerimeterAccessRule -Name accessRule1 -ProfileName profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound' -Location eastus2euap
-
+New-AzNetworkSecurityPerimeterAccessRule -Name access-rule-test-1 -ProfileName profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound'
 .Example
-
-$emails = @("test123@microsoft.com", "test321@microsoft.com")
-New-AzNetworkSecurityPerimeterAccessRule -Name accessRule2 -ProfileName profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -EmailAddress $emails -Direction 'Outbound' -Location eastus2euap
-
+New-AzNetworkSecurityPerimeterAccessRule -Name access-rule-test-2 -ProfileName profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -EmailAddress @("test123@microsoft.com", "test321@microsoft.com") -Direction 'Outbound'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -55,16 +50,12 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 PARAMETER <INspAccessRule>: The NSP access rule resource
-  [Id <String>]: Resource ID.
-  [Location <String>]: Resource location.
-  [Tag <IResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
   [AddressPrefix <List<String>>]: Inbound address prefixes (IPv4/IPv6)
   [Direction <String>]: Direction that specifies whether the access rules is inbound/outbound.
-  [EmailAddress <List<String>>]: Outbound rules email address format.
-  [FullyQualifiedDomainName <List<String>>]: Outbound rules fully qualified domain name format.
-  [PhoneNumber <List<String>>]: Outbound rules phone number format.
-  [ServiceTag <List<String>>]: Inbound rules service tag names.
+  [EmailAddress <List<String>>]: Outbound rules in email address format. This access rule type is currently unavailable for use.
+  [FullyQualifiedDomainName <List<String>>]: Outbound rules in fully qualified domain name format.
+  [PhoneNumber <List<String>>]: Outbound rules in phone number format. This access rule type is currently unavailable for use.
+  [ServiceTag <List<String>>]: Inbound rules of type service tag. This access rule type is currently unavailable for use.
   [Subscription <List<ISubscriptionId>>]: List of subscription ids
     [Id <String>]: Subscription id in the ARM id format.
 .Link
@@ -189,11 +180,9 @@ create a NSP resource association.
 .Description
 create a NSP resource association.
 .Example
-
- $profileId = '/subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup-1/providers/Microsoft.Network/networkSecurityPerimeters/nsp3/profiles/profile2'
- $privateLinkResourceId = '/subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup-1/providers/Microsoft.KeyVault/vaults/rp4'
- New-AzNetworkSecurityPerimeterAssociation -Name association1 -SecurityPerimeterName nsp3 -ResourceGroupName ResourceGroup-1 -Location eastus2euap -AccessMode Learning -ProfileId $profileId -PrivateLinkResourceId $privateLinkResourceId
-
+$profileId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers/Microsoft.Network/networkSecurityPerimeters/nsp-test-1/profiles/profile-test-1'
+$privateLinkResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-2/providers/Microsoft.Sql/servers/sql-server-test-1'
+New-AzNetworkSecurityPerimeterAssociation -Name association-test-1 -SecurityPerimeterName nsp-test-1 -ResourceGroupName rg-test-1 -AccessMode Learning -ProfileId $profileId -PrivateLinkResourceId $privateLinkResourceId
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -221,10 +210,6 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 PARAMETER <INspAssociation>: The NSP resource association resource
-  [Id <String>]: Resource ID.
-  [Location <String>]: Resource location.
-  [Tag <IResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
   [AccessMode <String>]: Access mode on the association.
   [PrivateLinkResourceId <String>]: Resource ID.
   [ProfileId <String>]: Resource ID.
@@ -362,11 +347,8 @@ create NSP link resource.
 .Description
 create NSP link resource.
 .Example
-$remoteNsp = "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/psrg_ex/providers/Microsoft.Network/networkSecurityPerimeters/nsp7"
-New-AzNetworkSecurityPerimeterLink -Name exlink3 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6 -AutoApprovedRemotePerimeterResourceId $remoteNsp  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
-.Example
-$remoteNsp = "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/psrg_ex/providers/Microsoft.Network/networkSecurityPerimeters/nsp7"
-New-AzNetworkSecurityPerimeterLink -Name exlink4 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6 -AutoApprovedRemotePerimeterResourceId $remoteNsp  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
+$remotePerimeterId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers/Microsoft.Network/networkSecurityPerimeters/test-nsp-2"
+New-AzNetworkSecurityPerimeterLink -Name link-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName test-nsp-1 -AutoApprovedRemotePerimeterResourceId $remotePerimeterId  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -520,7 +502,7 @@ create NSP logging configuration.
 .Description
 create NSP logging configuration.
 .Example
-New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6 -EnabledLogCategory NspPublicOutboundPerimeterRulesAllowed
+New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -EnabledLogCategory @('NspPublicOutboundPerimeterRulesAllowed')
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -672,13 +654,7 @@ create a network profile.
 .Description
 create a network profile.
 .Example
-
- New-AzNetworkSecurityPerimeterProfile -Name profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
-.Example
-
- New-AzNetworkSecurityPerimeterProfile -Name profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+New-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -704,12 +680,6 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [ProfileName <String>]: The name of the NSP profile.
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-PARAMETER <INspProfile>: The network security perimeter profile resource
-  [Id <String>]: Resource ID.
-  [Location <String>]: Resource location.
-  [Tag <IResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeterprofile
 #>
@@ -832,13 +802,7 @@ create a Network Security Perimeter.
 .Description
 create a Network Security Perimeter.
 .Example
-
- New-AzNetworkSecurityPerimeter -ResourceGroupName ResourceGroup-1 -Name nsp1 -Location eastus2euap
-
-.Example
-
- New-AzNetworkSecurityPerimeter -ResourceGroupName ResourceGroup-1 -Name nsp2 -Location eastus2euap
-
+New-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1 -Location eastus2euap
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter
@@ -866,9 +830,8 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 PARAMETER <INetworkSecurityPerimeter>: The Network Security Perimeter resource
-  [Id <String>]: Resource ID.
-  [Location <String>]: Resource location.
-  [Tag <IResourceTags>]: Resource tags.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeter

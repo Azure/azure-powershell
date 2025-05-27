@@ -20,10 +20,10 @@ Deletes an NSP Logging configuration.
 .Description
 Deletes an NSP Logging configuration.
 .Example
-Remove-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3
+Remove-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
- $configObj = Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_Ex -SecurityPerimeterName ext-nsp11
- Remove-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject $configObj
+$configObj = Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Remove-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject $configObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity

@@ -50,15 +50,15 @@ module-version: 0.1.0
 title: MobileNetwork
 subject-prefix: $(service-name)
 
-resourcegroup-append: true
-identity-correction-for-post: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
+  - where:
+      verb: (.*)
+    set:
+      breaking-change:
+        deprecated-by-version: 0.5.0
+        deprecated-by-azversion: 14.5.0
+        change-effective-date: 2025/09/30
+
   # Change interopSettings type from <IAny> to <HashTable>
   - from: swagger-document
     where: $.definitions.PacketCoreControlPlanePropertiesFormat.properties.interopSettings
@@ -92,7 +92,7 @@ directive:
     transform: return $.replace(/\`any\`/g, "'any'")
 
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^BulkViaIdentity$|^Bulk$|^Collect$|^CollectViaIdentity$
+      variant: ^(Create|Update|Bulk|Collect)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
 
   - where:
@@ -148,17 +148,22 @@ directive:
       parameter-name: DefaultSlouseId
     set:
       parameter-name: DefaultSliceId
-
-  # Due to business requirements, the logic of some commands is customized and they need to be hidden
+  
+  # Due to business requirements, the update of some customized commands is using Get and PUT operation and they need to be replaced
+  - remove-operation: AttachedDataNetworks_UpdateTags
+  - remove-operation: DataNetworks_UpdateTags
+  - remove-operation: PacketCoreControlPlanes_UpdateTags
+  - remove-operation: PacketCoreDataPlanes_UpdateTags
+  - remove-operation: Services_UpdateTags
+  - remove-operation: SimGroups_UpdateTags
+  - remove-operation: SimPolicies_UpdateTags
+  - remove-operation: Slices_UpdateTags
+  # parameter set ServicePrecedence, SnssaiSst to be required
   - where:
       verb: Update
-      subject: ^AttachedDataNetwork$|^DataNetwork$|^PacketCoreControlPlane$|^PacketCoreDataPlane$|^Service$|^SimGroup$|^SimPolicy$|^Slice$
-      variant: ^UpdateViaIdentityExpanded$
-    remove: true
-  - where:
-      verb: Update
-      subject: ^AttachedDataNetwork$|^DataNetwork$|^PacketCoreControlPlane$|^PacketCoreDataPlane$|^Service$|^SimGroup$|^SimPolicy$|^Slice$
+      subject: ^Service$|^Slice$
     hide: true
+
   - where:
       verb: New
       subject: ^Site$
@@ -201,18 +206,24 @@ directive:
       subject: ^RollbackPacketCoreControlPlane$
     set:
       verb: Deploy
+  # - where:
+  #     subject: 
+  #     parameter-name: PacketCoreDataPlaneName PacketCoreControlPlaneName ServiceName
+  #   set:
+  #     parameter-name: Name
+  #     alias: PacketCoreDataPlaneName
 
   # Some of the parameters are of type Object and need to be expanded into a command for the convenience of the user
   # The following are commented out and their generated cmdlets may be renamed and custom logic
   # Do not delete this code
-  # - model-cmdlet:
-  #     - SliceConfiguration  # SlouseId -> SliceId
-  #     - DataNetworkConfiguration
-  #     - ServiceResourceId
-  #     - SiteResourceId
-  #     - SimStaticIPProperties # SlouseId -> SliceId
-  #     - PccRuleConfiguration
-  #     - ServiceDataFlowTemplate
+  - model-cmdlet:
+  #     - model-name: SliceConfiguration  # SlouseId -> SliceId
+      - model-name: DataNetworkConfiguration
+      - model-name: ServiceResourceId
+      - model-name: SiteResourceId
+  #     - model-name: SimStaticIPProperties # SlouseId -> SliceId
+      - model-name: PccRuleConfiguration
+      - model-name: ServiceDataFlowTemplate
 
   - where:
       model-name: MobileNetwork
