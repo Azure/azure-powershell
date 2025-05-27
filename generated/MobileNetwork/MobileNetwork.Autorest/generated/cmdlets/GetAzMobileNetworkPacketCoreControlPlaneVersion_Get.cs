@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
     /// [OpenAPI] Get=>GET:"/providers/Microsoft.MobileNetwork/packetCoreControlPlaneVersions/{versionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMobileNetworkPacketCoreControlPlaneVersion_Get")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.CmdletBreakingChange("14.5.0", "0.5.0", "2025/09/30")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreControlPlaneVersion))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Description(@"Gets information about the specified packet core control plane version.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Generated]
