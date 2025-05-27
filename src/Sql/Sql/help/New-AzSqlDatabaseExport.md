@@ -28,7 +28,7 @@ The get export database status request may be sent to retrieve status informatio
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 > [!IMPORTANT]
-> In order to make use of this cmdlet the firewall on the Azure SQL Server will need to be configured to "Allow Azure services and resources to access this server". If this is not configured then GatewayTimeout errors will be experienced. This is not required if a private link connection is established via the UseNetworkIsolation parameter.
+> In order to make use of this cmdlet the firewall on the Azure SQL Server will need to be configured to "Allow Azure services and resources to access this server". If this is not configured then GatewayTimeout errors will be experienced. This is not required if a Private Link connection is established via the UseNetworkIsolation parameter.
 
 ## EXAMPLES
 
@@ -79,7 +79,7 @@ New-AzSqlDatabaseExport `
     -StorageAccountResourceIdForPrivateLink "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
 ```
 
-This command creates an export request for the specified database using managed identity for authentication with connectivity over private-link.
+This command creates an export request for the specified database using managed identity for authentication with connectivity over Private Link.
 
 ## PARAMETERS
 
