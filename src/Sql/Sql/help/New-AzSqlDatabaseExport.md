@@ -103,7 +103,7 @@ Accept wildcard characters: False
 ### -AdministratorLoginPassword
 Specifies the password of the SQL administrator.
 
-This is mandatory. Currently, when using `-AuthenticationType ManagedIdentity` a dummy value must be provided, for example:
+This is mandatory. When using `-AuthenticationType ManagedIdentity` a dummy value must be provided, for example:
 
 ```
 $administratorPassword = ConvertTo-SecureString "AdministratorPassword" -AsPlainText -Force
@@ -247,7 +247,7 @@ Accept wildcard characters: False
 ### -StorageKey
 Specifies the access key for the storage account.
 
-Currently, when `-StorageKeyType ManagedIdentity` is provided, this should be the full resource ID of a user-assigned managed identity which has write access on the storage account for the StorageUri provided (for example via a [Storage Blob Data Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/storage#storage-blob-data-contributor) role assignment).
+When `-StorageKeyType ManagedIdentity` is provided, this should be the full resource ID of a user-assigned managed identity which has write access on the storage account for the StorageUri provided (for example via a [Storage Blob Data Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/storage#storage-blob-data-contributor) role assignment).
 
 ```yaml
 Type: System.String
