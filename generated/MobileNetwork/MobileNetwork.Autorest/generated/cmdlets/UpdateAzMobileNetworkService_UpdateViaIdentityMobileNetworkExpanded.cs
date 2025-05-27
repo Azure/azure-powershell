@@ -19,6 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzMobileNetworkService_UpdateViaIdentityMobileNetworkExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.CmdletBreakingChange("14.5.0", "0.5.0", "2025/09/30")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IService))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Description(@"update a service. Must be created in the same location as its parent mobile network.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Generated]
