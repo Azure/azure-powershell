@@ -1138,7 +1138,7 @@ function Test-WebAppPublishingProfile
 		Assert-AreEqual $serverFarm.Id $webapp.ServerFarmId
 
 		# Get web app publishing profile
-		[xml]$profile = Get-AzWebAppPublishingProfile -ResourceGroupName $rgname -Name $appName -OutputFile $profileFileName
+		[xml]$profile = Get-AzWebAppPublishingProfile -ResourceGroupName $rgname -Name $appName -OutputFile $profileFileName | ConvertFrom-SecureString -AsPlainText
 		$msDeployProfile = $profile.publishData.publishProfile | ? { $_.publishMethod -eq 'MSDeploy' } | Select -First 1
 		$pass = $msDeployProfile.userPWD
 
@@ -1152,14 +1152,14 @@ function Test-WebAppPublishingProfile
 		Assert-False { $pass -eq $newPass }
 
 		# Get web app publishing profile
-		[xml]$profile = $webapp | Get-AzWebAppPublishingProfile -OutputFile $profileFileName -Format FileZilla3
+		[xml]$profile = $webapp | Get-AzWebAppPublishingProfile -OutputFile $profileFileName -Format FileZilla3 | ConvertFrom-SecureString -AsPlainText
 		$fileZillaProfile = $profile.FileZilla3.Servers.Server
 
 		# Assert
 		Assert-True { $fileZillaProfile.Name -eq $appName }
 
 		# Get web app publishing profile without OutputFile
-		[xml]$profile = Get-AzWebAppPublishingProfile -ResourceGroupName $rgname -Name $appName
+		[xml]$profile = Get-AzWebAppPublishingProfile -ResourceGroupName $rgname -Name $appName | ConvertFrom-SecureString -AsPlainText
 
 		# Assert
 		Assert-NotNull $profile
@@ -1232,7 +1232,6 @@ function Test-PublishAzureWebAppFromWar
         $javaContainerVersion="8.5"
         $PropertiesObject = @{javaVersion = $javaVersion;javaContainer = $javaContainer;javaContainerVersion = $javaContainerVersion}
         New-AzResource -PropertyObject $PropertiesObject -ResourceGroupName $rgname -ResourceType Microsoft.Web/sites/config -ResourceName "$appName/web" -ApiVersion 2018-02-01 -Force
-
 		$warPath = Join-Path $ResourcesPath "HelloJava.war"
 		$publishedApp = Publish-AzWebApp -ResourceGroupName $rgname -Name $appName -ArchivePath $warPath -Force
 
