@@ -332,8 +332,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzVpnGateway]()
+[Get-AzVpnGateway](Get-AzVpnGateway.md)
 
-[Remove-AzVpnGateway]()
+[Remove-AzVpnGateway](Remove-AzVpnGateway.md)
 
-[Update-AzVpnGateway]()
+[Update-AzVpnGateway](Update-AzVpnGateway.md)
