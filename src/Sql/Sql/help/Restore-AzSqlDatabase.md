@@ -664,8 +664,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Recover an Azure SQL Database from an outage](http://go.microsoft.com/fwlink/?LinkId=746882)
 
-[Recover an Azure SQL Database from a user error](http://go.microsoft.com/fwlink/?LinkId=746944)
-
 [Get-AzSqlDatabase](./Get-AzSqlDatabase.md)
 
 [Get-AzSqlDatabaseGeoBackup](./Get-AzSqlDatabaseGeoBackup.md)
