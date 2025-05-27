@@ -19,6 +19,13 @@
 -->
 
 ## Upcoming Release
+* Upgrade Azure.Core to 1.45.0
+* Added definition of Bleu cloud so it can be used with commands like `Enter-AzVM`
+
+## Version 5.0.1
+* Force `Get-AzAccessToken` to always return SecureString as long as `AsSecureString` is set
+
+## Version 5.0.0
 * Changed the default output access token of `Get-AzAccessToken` from plain text to `SecureString`.
 * Removed the warning message about failing to initialize PSStyle in automation runbooks. [#26155]
 * Increased the timeout for tab-completion of location, resource group, etc. to 10 seconds.

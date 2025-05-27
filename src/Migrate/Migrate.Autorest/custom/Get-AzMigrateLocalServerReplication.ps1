@@ -147,7 +147,7 @@ function Get-AzMigrateLocalServerReplication {
         if ($parameterSet -eq 'GetBySDSID') {
             $machineIdArray = $DiscoveredMachineId.Split("/")
             if ($machineIdArray.Length -lt 11) {
-                throw "Invalid machine ID '$DiscoveredMachineId'"
+                throw "Invalid machine ARM ID '$DiscoveredMachineId'"
             }
             $siteType = $machineIdArray[7]
             $siteName = $machineIdArray[8]

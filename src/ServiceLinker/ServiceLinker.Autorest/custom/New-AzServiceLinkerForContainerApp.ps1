@@ -23,7 +23,7 @@ Create or update linker resource in container app.
 https://learn.microsoft.com/powershell/module/az.servicelinker/new-azservicelinkerforcontainerapp
 #>
 function New-AzServiceLinkerForContainerApp {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter()]
@@ -63,23 +63,23 @@ function New-AzServiceLinkerForContainerApp {
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IAuthInfoBase]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IAuthInfoBase]
         # The authentication type.
         # To construct, see NOTES section for AUTHINFO properties and create a hash table.
         ${AuthInfo},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("none", "dotnet", "java", "python", "go", "php", "ruby", "django", "nodejs", "springBoot", "kafka-springBoot")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script = '"none"')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType]
+        [System.String]
         # The application client type
         ${ClientType},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("Internal", "enable", "optOut")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType]
+        [System.String]
         # Optional, indicate whether to apply configurations on source application.
         # If enable, generate configurations and applied to the source application.
         # Default is enable.
@@ -88,7 +88,7 @@ function New-AzServiceLinkerForContainerApp {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoAdditionalConfigurations]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationInfoAdditionalConfigurations]))]
         [System.Collections.Hashtable]
         # A dictionary of additional configurations to be added.
         # Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
@@ -96,7 +96,7 @@ function New-AzServiceLinkerForContainerApp {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoCustomizedKeys]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationInfoCustomizedKeys]))]
         [System.Collections.Hashtable]
         # Optional.
         # A dictionary of default key name and customized key name mapping.
@@ -104,16 +104,16 @@ function New-AzServiceLinkerForContainerApp {
         ${ConfigurationInfoCustomizedKey},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("true", "false")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType]
+        [System.String]
         # Allow Azure services to access the target service if true.
         ${FirewallRuleAzureService},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("true", "false")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType]
+        [System.String]
         # Allow caller client IP to access the target service if true.
         # the property is used when connecting local application to target service.
         ${FirewallRuleCallerClientIP},
@@ -126,9 +126,9 @@ function New-AzServiceLinkerForContainerApp {
         ${FirewallRuleIPRange},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("Internal", "enable", "optOut")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType]
+        [System.String]
         # Optional.
         # Indicates public network solution.
         # If enable, enable public network access of target service with best try.
@@ -156,15 +156,15 @@ function New-AzServiceLinkerForContainerApp {
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ITargetServiceBase]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ITargetServiceBase]
         # The target service properties
         # To construct, see NOTES section for TARGETSERVICE properties and create a hash table.
         ${TargetService},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.VNetSolutionType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PSArgumentCompleterAttribute("serviceEndpoint", "privateLink")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.VNetSolutionType]
+        [System.String]
         # Type of VNet solution.
         ${VNetSolutionType},
 

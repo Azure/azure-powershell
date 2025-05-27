@@ -40,7 +40,7 @@ Invoke-LiveTestScenario -Name "Test_AKS_CRUD" -Description "Test AKS cluster CRU
 
     Write-Host "##[section]Start creating AKS cluster : New-AzAksCluster"
 
-    New-AzAksCluster -ResourceGroupName $rgName -Name $kubeName -SshKeyValue $sshKeyValue -ServicePrincipalIdAndSecret $servicePrincipalCredential -KubernetesVersion $kubeVersion -NodeName $sysNodeName -NodePoolMode System -NodeOsSKU AzureLinux -AutoUpgradeChannel node-image -NodeCount 2 -EnableNodeAutoScaling -NodeMinCount 1 -NodeMaxCount 3 -NetworkPlugin azure -NodeVnetSubnetID $snet.Id -LoadBalancerOutboundIp $pip.Id
+    New-AzAksCluster -ResourceGroupName $rgName -Name $kubeName -Location $location -SshKeyValue $sshKeyValue -ServicePrincipalIdAndSecret $servicePrincipalCredential -KubernetesVersion $kubeVersion -NodeName $sysNodeName -NodePoolMode System -NodeOsSKU AzureLinux -NodeVmSize Standard_D2s_v3 -AutoUpgradeChannel node-image -NodeCount 2 -EnableNodeAutoScaling -NodeMinCount 1 -NodeMaxCount 3 -NetworkPlugin azure -NodeVnetSubnetID $snet.Id -LoadBalancerOutboundIp $pip.Id
 
     Write-Host "##[section]Finished creating AKS cluster : New-AzAksCluster"
 
@@ -96,7 +96,7 @@ Invoke-LiveTestScenario -Name "Test_AKS_CRUD" -Description "Test AKS cluster CRU
     # step 3: create the second node pool
     Write-Host "##[section]Start to create AKS node pool : New-AzAksNodePool"
 
-    New-AzAksNodePool -ResourceGroupName $rgName -ClusterName $kubeName -Name $usrNodeName -Mode User -OsType Windows -OsSKU Windows2022 -VmSetType VirtualMachineScaleSets -Count 2
+    New-AzAksNodePool -ResourceGroupName $rgName -ClusterName $kubeName -Name $usrNodeName -Mode User -OsType Windows -OsSKU Windows2022 -VmSize Standard_D2s_v3 -VmSetType VirtualMachineScaleSets -Count 2
 
     Write-Host "##[section]Finished creating AKS node pool : New-AzAksNodePool"
 

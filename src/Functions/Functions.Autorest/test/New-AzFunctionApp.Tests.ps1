@@ -11,6 +11,8 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+$env:FunctionsTestMode = $true
+
 Describe 'New-AzFunctionApp' {
 
     It 'CustomDockerImage' {
