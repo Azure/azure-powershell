@@ -1,0 +1,108 @@
+{
+  "resourceType": "solutionConfigurations",
+  "apiVersion": "2024-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity"
+  },
+  "commands": [
+    {
+      "name": "Get-AzHybridConnectivitySolutionConfiguration",
+      "description": "Get a SolutionConfiguration",
+      "path": "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity/get-azhybridconnectivitysolutionconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceUri <String>",
+              "-SolutionConfiguration <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a SolutionConfiguration",
+          "parameters": [
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            },
+            {
+              "name": "-SolutionConfiguration",
+              "value": "[Path.solutionConfiguration]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzHybridConnectivitySolutionConfiguration",
+      "description": "Delete a SolutionConfiguration",
+      "path": "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity/remove-azhybridconnectivitysolutionconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceUri <String>",
+              "-SolutionConfiguration <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a SolutionConfiguration",
+          "parameters": [
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            },
+            {
+              "name": "-SolutionConfiguration",
+              "value": "[Path.solutionConfiguration]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sync-AzHybridConnectivitySolutionConfigurationNow",
+      "description": "Trigger immediate sync with source cloud",
+      "path": "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}/syncNow",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity/sync-azhybridconnectivitysolutionconfigurationnow"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceUri <String>",
+              "-SolutionConfiguration <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Trigger immediate sync with source cloud",
+          "parameters": [
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            },
+            {
+              "name": "-SolutionConfiguration",
+              "value": "[Path.solutionConfiguration]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
