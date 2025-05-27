@@ -27,14 +27,6 @@ variables:
   DataLocation: $(Pipeline.Workspace)/$(ArtifactsName)
   SuppressAzurePowerShellBreakingChangeWarnings: true
 
-schedules:
-- cron: "0 19 * * *"
-  displayName: Daily Live Test
-  branches:
-    include:
-    - main
-  always: true
-
 pr: none
 trigger: none
 
