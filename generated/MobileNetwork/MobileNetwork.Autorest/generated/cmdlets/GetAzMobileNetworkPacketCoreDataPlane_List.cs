@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
     /// [OpenAPI] ListByPacketCoreControlPlane=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/packetCoreDataPlanes"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMobileNetworkPacketCoreDataPlane_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.CmdletBreakingChange("14.5.0", "0.5.0", "2025/09/30")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreDataPlane))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Description(@"Lists all the packet core data planes associated with a packet core control plane.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Generated]

@@ -18,6 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
     /// [OpenAPI] Rollback=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/rollback"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet("Deploy", @"AzMobileNetworkRollbackPacketCoreControlPlane_Rollback", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.CmdletBreakingChange("14.5.0", "0.5.0", "2025/09/30")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Description(@"Roll back the specified packet core control plane to the previous version, \""rollbackVersion\"". Multiple consecutive rollbacks are not possible. This action may cause a service outage.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Generated]
