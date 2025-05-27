@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public int? CriticalAndSecurityPatchCount { get; set; }
         public int? OtherPatchCount { get; set; }
         public DateTime? StartDateTime { get; set; }
-        public IList<VirtualMachineSoftwarePatchProperties> Patches { get; set; }
+        public IList<VirtualMachineSoftwarePatchProperties> AvailablePatches { get; private set; }
         public ApiError Error { get; set; }
     }
 }
