@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.TestFx;
 using System.Collections.Generic;
 using Xunit.Abstractions;
-using Azure.Identity;
 using Azure.Core;
 using System;
 using System.Net.Http.Headers;
@@ -66,14 +66,13 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
                 .WithManagementClients(context =>
                 {
                     AdlsClientFactory.IsTest = true;
-                    var creds = new DefaultAzureCredential(new DefaultAzureCredentialOptions { 
-                        ExcludeSharedTokenCacheCredential = true,
-                        ExcludeVisualStudioCredential = true,
-                        ExcludeVisualStudioCodeCredential = true,
-                        ExcludeAzureCliCredential = true,
-                        ExcludeEnvironmentCredential = true,
-                        ExcludeManagedIdentityCredential = true
-                    });
+                    var azureContext = new AzureContext
+                    {
+                        Account = AzureRmProfileProvider.Instance.Profile.DefaultContext.Account,
+                        Environment = AzureRmProfileProvider.Instance.Profile.DefaultContext.Environment,
+                        Tenant = AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant
+                    };
+                    var creds = new DataLakeStoreTokenCredential(azureContext);
 
                     var handlers = context.AddHandlers(new TokenCredentialAdapter(creds), new AdlMockDelegatingHandler());
                     AdlsClientFactory.CustomDelegatingHAndler = handlers;

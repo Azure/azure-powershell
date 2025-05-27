@@ -7,8 +7,6 @@ using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.Net.Http;
 using Azure.Core;
-using Azure.Identity;
-
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -55,7 +53,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 }
                 else
                 {
-                    var tokenCredential = new DefaultAzureCredential();
+                    var tokenCredential = new DataLakeStoreTokenCredential(context);
                     client = AdlsClient.CreateClient(accntNm, tokenCredential, new string[] { });
                 }
                 client.AddUserAgentSuffix(AzurePowerShell.UserAgentValue.ToString());
