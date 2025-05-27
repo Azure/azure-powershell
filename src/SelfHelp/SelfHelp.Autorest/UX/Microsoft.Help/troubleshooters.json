@@ -7,7 +7,7 @@
   "commands": [
     {
       "name": "Get-AzSelfHelpTroubleshooter",
-      "description": "Gets troubleshooter instance result which includes the step status/result of the troubleshooter resource name that is being executed.<br/> Get API is used to retrieve the result of a Troubleshooter instance, which includes the status and result of each step in the Troubleshooter workflow.\nThis API requires the Troubleshooter resource name that was created using the Create API.",
+      "description": "Gets troubleshooter instance result which includes the step status/result of the troubleshooter resource name that is being executed.<br/> Get API is used to retrieve the result of a Troubleshooter instance, which includes the status and result of each step in the Troubleshooter workflow.\nThis API requires the Troubleshooter resource name that was created using the get API.",
       "path": "/{scope}/providers/Microsoft.Help/troubleshooters/{troubleshooterName}",
       "help": {
         "learnMore": {
@@ -24,7 +24,7 @@
       },
       "examples": [
         {
-          "description": "Gets troubleshooter instance result which includes the step status/result of the troubleshooter resource name that is being executed.<br/> Get API is used to retrieve the result of a Troubleshooter instance, which includes the status and result of each step in the Troubleshooter workflow. This API requires the Troubleshooter resource name that was created using the Create API.",
+          "description": "Gets troubleshooter instance result which includes the step status/result of the troubleshooter resource name that is being executed.<br/> Get API is used to retrieve the result of a Troubleshooter instance, which includes the status and result of each step in the Troubleshooter workflow. This API requires the Troubleshooter resource name that was created using the get API.",
           "parameters": [
             {
               "name": "-Name",
@@ -33,39 +33,6 @@
             {
               "name": "-Scope",
               "value": "[Path.scope]"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Invoke-AzSelfHelpContinueTroubleshooter",
-      "description": "Uses ‘stepId’ and ‘responses’ as the trigger to continue the troubleshooting steps for the respective troubleshooter resource name.\n<br/>Continue API is used to provide inputs that are required for the specific troubleshooter to progress into the next step in the process.\nThis API is used after the Troubleshooter has been created using the Create API.",
-      "path": "/{scope}/providers/Microsoft.Help/troubleshooters/{troubleshooterName}/continue",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.selfhelp/invoke-azselfhelpcontinuetroubleshooter"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-Scope <String>",
-              "-TroubleshooterName <String>"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Uses ‘stepId’ and ‘responses’ as the trigger to continue the troubleshooting steps for the respective troubleshooter resource name. <br/>Continue API is used to provide inputs that are required for the specific troubleshooter to progress into the next step in the process. This API is used after the Troubleshooter has been created using the Create API.",
-          "parameters": [
-            {
-              "name": "-Scope",
-              "value": "[Path.scope]"
-            },
-            {
-              "name": "-TroubleshooterName",
-              "value": "[Path.troubleshooterName]"
             }
           ]
         }
