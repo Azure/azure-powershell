@@ -21,7 +21,7 @@ New-AzCosmosDBSqlContainer -ResourceGroupName <String> -AccountName <String> -Da
  [-ConflictResolutionPolicyMode <String>] [-ConflictResolutionPolicyPath <String>]
  [-ConflictResolutionPolicyProcedure <String>] [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>]
  [-ClientEncryptionPolicy <PSSqlClientEncryptionPolicy>] [-AnalyticalStorageTtl <Int32>]
- [-VectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] [-DefaultProfile <IAzureContextContainer>] 
+ [-MaterializedViewDefinition <PSMaterializedViewDefinition>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,9 +33,8 @@ New-AzCosmosDBSqlContainer -Name <String> [-IndexingPolicy <PSSqlIndexingPolicy>
  [-ConflictResolutionPolicyMode <String>] [-ConflictResolutionPolicyPath <String>]
  [-ConflictResolutionPolicyProcedure <String>] [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>]
  [-ClientEncryptionPolicy <PSSqlClientEncryptionPolicy>] [-AnalyticalStorageTtl <Int32>]
- [-VectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] -ParentObject <PSSqlDatabaseGetResults> 
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ParentObject <PSSqlDatabaseGetResults> [-MaterializedViewDefinition <PSMaterializedViewDefinition>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -259,6 +258,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MaterializedViewDefinition
+Materializedview Definition
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSMaterializedViewDefinition
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

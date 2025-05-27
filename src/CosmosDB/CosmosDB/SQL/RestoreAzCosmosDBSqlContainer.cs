@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             List<RestorableDatabaseAccountGetResult> restorableDatabaseAccounts = this.CosmosDBManagementClient.RestorableDatabaseAccounts.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body.ToList();
             List<RestorableDatabaseAccountGetResult> accountsWithMatchingName = restorableDatabaseAccounts.Where(account => account.AccountName.Equals(this.AccountName, StringComparison.OrdinalIgnoreCase)).ToList();
 
-            if (this.RestoreTimestampInUtc!= null && this.RestoreTimestampInUtc != default(DateTime))
+            if (this.RestoreTimestampInUtc != null && this.RestoreTimestampInUtc != default(DateTime))
             {
                 if (this.RestoreTimestampInUtc.Kind == DateTimeKind.Unspecified)
                 {

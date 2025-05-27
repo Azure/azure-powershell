@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourcegroups/CosmosDBResourceGroup13?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlZ3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDEzP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourcegroups/CosmosDBResourceGroup13?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlZ3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDEzP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup13\",\r\n  \"name\": \"CosmosDBResourceGroup13\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup13\",\r\n  \"name\": \"CosmosDBResourceGroup13\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -555,13 +555,13 @@
           "Sun, 20 Nov 2022 03:48:40 GMT"
         ],
         "Content-Length": [
-          "21"
+          "22"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -813,7 +813,7 @@
           "Sun, 20 Nov 2022 03:49:12 GMT"
         ],
         "Content-Length": [
-          "21"
+          "22"
         ],
         "Content-Type": [
           "application/json"
@@ -1071,7 +1071,7 @@
           "Sun, 20 Nov 2022 03:49:43 GMT"
         ],
         "Content-Length": [
-          "21"
+          "22"
         ],
         "Content-Type": [
           "application/json"
@@ -1287,7 +1287,7 @@
       "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
-          "no-store, no-cache"
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
@@ -1323,7 +1323,13 @@
           "1584"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "255"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/West%20US/restorableDatabaseAccounts/ffb0bc06-ac03-4bd5-89b5-0fc6df8140d3/restorableSqlContainers/e22e8d09-bd55-44e3-9fb0-13184e9d8c7c\",\r\n      \"type\": \"Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableSqlContainers\",\r\n      \"name\": \"e22e8d09-bd55-44e3-9fb0-13184e9d8c7c\",\r\n      \"properties\": {\r\n        \"resource\": {\r\n          \"_rid\": \"0NFPJAAAAA==\",\r\n          \"eventTimestamp\": \"2022-11-20T03:49:51Z\",\r\n          \"ownerId\": \"TestCollectionInDB1\",\r\n          \"ownerResourceId\": \"HMo0AIiwZ9g=\",\r\n          \"operationType\": \"Create\",\r\n          \"container\": {\r\n            \"id\": \"TestCollectionInDB1\",\r\n            \"indexingPolicy\": {\r\n              \"indexingMode\": \"consistent\",\r\n              \"automatic\": true,\r\n              \"supportSpatialLegacyCoordinates\": false,\r\n              \"usePolygonsSmallerThanAHemisphere\": false,\r\n              \"includedPaths\": [\r\n                {\r\n                  \"path\": \"/*\"\r\n                },\r\n                {\r\n                  \"path\": \"/\\\"_ts\\\"/?\"\r\n                }\r\n              ],\r\n              \"excludedPaths\": [\r\n                {\r\n                  \"path\": \"/\\\"_etag\\\"/?\"\r\n                }\r\n              ]\r\n            },\r\n            \"partitionKey\": {\r\n              \"paths\": [\r\n                \"/foo/bar\"\r\n              ],\r\n              \"kind\": \"Hash\"\r\n            },\r\n            \"uniqueKeyPolicy\": {\r\n              \"uniqueKeys\": []\r\n            },\r\n            \"internalIndexingProperties\": {\r\n              \"enableIndexingFullFidelity\": true,\r\n              \"logicalIndexVersion\": 2,\r\n              \"indexEncodingOptions\": 65567\r\n            },\r\n            \"conflictResolutionPolicy\": {\r\n              \"mode\": \"LastWriterWins\",\r\n              \"conflictResolutionPath\": \"/_ts\",\r\n              \"conflictResolutionProcedure\": \"\"\r\n            },\r\n            \"backupPolicy\": {\r\n              \"type\": 1\r\n            },\r\n            \"allowMaterializedViews\": false,\r\n            \"geospatialConfig\": {\r\n              \"type\": \"Geography\"\r\n            },\r\n            \"typeSystemPolicy\": {\r\n              \"typeSystem\": \"CosmosCore\"\r\n            },\r\n            \"uniqueIndexNameEncodingMode\": 2,\r\n            \"_idxpolicyver\": 2,\r\n            \"_rid\": \"HMo0AIiwZ9g=\",\r\n            \"_self\": \"dbs/HMo0AA==/colls/HMo0AIiwZ9g=/\",\r\n            \"_etag\": \"\\\"00002f05-0000-0700-0000-6379a3df0000\\\"\",\r\n            \"_docs\": \"docs/\",\r\n            \"_sprocs\": \"sprocs/\",\r\n            \"_triggers\": \"triggers/\",\r\n            \"_udfs\": \"udfs/\",\r\n            \"_conflicts\": \"conflicts/\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
@@ -1422,7 +1428,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11970"
+          "11997"
         ],
         "x-ms-request-id": [
           "a4ed667c-7b95-4e72-bca9-b0d9b26cbcfc"
@@ -3207,6 +3213,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "12053b8f-cab5-4f5c-9c1a-870580142abd"
+    "SubscriptionId": "259fbb24-9bcd-4cfc-865c-fc33b22fe38a"
   }
 }

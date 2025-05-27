@@ -57,12 +57,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="createMode">Enum to indicate the mode of resource creation.
         /// Possible values include: &#39;Default&#39;, &#39;Restore&#39;</param>
 
+        /// <param name="materializedViewDefinition">The configuration for defining Materialized Views. This must be specified
+        /// only for creating a Materialized View container.
+        /// </param>
+
+        /// <param name="materializedViews">Materialized Views defined on the container.
+        /// </param>
+
         /// <param name="computedProperties">List of computed properties
         /// </param>
 
         /// <param name="vectorEmbeddingPolicy">The vector embedding policy for the container.
         /// </param>
-        public SqlContainerResource(string id, IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), ClientEncryptionPolicy clientEncryptionPolicy = default(ClientEncryptionPolicy), long? analyticalStorageTtl = default(long?), ResourceRestoreParameters restoreParameters = default(ResourceRestoreParameters), string createMode = default(string), System.Collections.Generic.IList<ComputedProperty> computedProperties = default(System.Collections.Generic.IList<ComputedProperty>), VectorEmbeddingPolicy vectorEmbeddingPolicy = default(VectorEmbeddingPolicy))
+
+        /// <param name="fullTextPolicy">The FullText policy for the container.
+        /// </param>
+        public SqlContainerResource(string id, IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), ClientEncryptionPolicy clientEncryptionPolicy = default(ClientEncryptionPolicy), long? analyticalStorageTtl = default(long?), ResourceRestoreParameters restoreParameters = default(ResourceRestoreParameters), string createMode = default(string), MaterializedViewDefinition materializedViewDefinition = default(MaterializedViewDefinition), System.Collections.Generic.IList<MaterializedViewDetails> materializedViews = default(System.Collections.Generic.IList<MaterializedViewDetails>), System.Collections.Generic.IList<ComputedProperty> computedProperties = default(System.Collections.Generic.IList<ComputedProperty>), VectorEmbeddingPolicy vectorEmbeddingPolicy = default(VectorEmbeddingPolicy), FullTextPolicy fullTextPolicy = default(FullTextPolicy))
 
         {
             this.Id = id;
@@ -75,8 +85,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.AnalyticalStorageTtl = analyticalStorageTtl;
             this.RestoreParameters = restoreParameters;
             this.CreateMode = createMode;
+            this.MaterializedViewDefinition = materializedViewDefinition;
+            this.MaterializedViews = materializedViews;
             this.ComputedProperties = computedProperties;
             this.VectorEmbeddingPolicy = vectorEmbeddingPolicy;
+            this.FullTextPolicy = fullTextPolicy;
             CustomInit();
         }
 
@@ -150,6 +163,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string CreateMode {get; set; }
 
         /// <summary>
+        /// Gets or sets the configuration for defining Materialized Views. This must
+        /// be specified only for creating a Materialized View container.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "materializedViewDefinition")]
+        public MaterializedViewDefinition MaterializedViewDefinition {get; set; }
+
+        /// <summary>
+        /// Gets or sets materialized Views defined on the container.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "materializedViews")]
+        public System.Collections.Generic.IList<MaterializedViewDetails> MaterializedViews {get; set; }
+
+        /// <summary>
         /// Gets or sets list of computed properties
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "computedProperties")]
@@ -160,6 +186,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vectorEmbeddingPolicy")]
         public VectorEmbeddingPolicy VectorEmbeddingPolicy {get; set; }
+
+        /// <summary>
+        /// Gets or sets the FullText policy for the container.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "fullTextPolicy")]
+        public FullTextPolicy FullTextPolicy {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -183,6 +215,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             if (this.ClientEncryptionPolicy != null)
             {
                 this.ClientEncryptionPolicy.Validate();
+            }
+
+
+            if (this.MaterializedViewDefinition != null)
+            {
+                this.MaterializedViewDefinition.Validate();
             }
 
 

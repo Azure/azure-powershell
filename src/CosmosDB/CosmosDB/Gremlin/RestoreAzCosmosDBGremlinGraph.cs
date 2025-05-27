@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 //Subtracting 1 second from delete timestamp to restore till end of logchain in no timestamp restore.
                 utcRestoreDateTime = latestCollectionDeleteTime.AddSeconds(-1);
             }
-            
+
 
             GremlinGraphGetResults readGremlinGraphGetResults = null;
             try

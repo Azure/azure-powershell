@@ -12,10 +12,10 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Cosmo
 
 ## Az.CosmosDB Cmdlets
 ### [Get-AzCosmosDBAccount](Get-AzCosmosDBAccount.md)
-Get Cosmos DB Account.
+Get CosmosDB Account.
 
 ### [Get-AzCosmosDBAccountKey](Get-AzCosmosDBAccountKey.md)
-Get Keys{"ConnectionKeys", "PrimaryReadOnly" or "Keys"} for the given Cosmos DB Account. 
+Get Keys{"ConnectionKeys", "PrimaryReadOnly" or "Keys"} for the given CosmosDB Account. 
 
 ### [Get-AzCosmosDBCassandraKeyspace](Get-AzCosmosDBCassandraKeyspace.md)
 Gets a CosmosDB Cassandra Keyspace.
@@ -66,11 +66,17 @@ Gets the CosmosDB MongoDB Collection.
 ### [Get-AzCosmosDBMongoDBCollectionBackupInformation](Get-AzCosmosDBMongoDBCollectionBackupInformation.md)
 Retrieves the latest restorable timestamp for a mongodb collection.
 
+### [Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput](Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput.md)
+Gets the Partition throughput distribution for a MongoDB collection.
+
 ### [Get-AzCosmosDBMongoDBCollectionThroughput](Get-AzCosmosDBMongoDBCollectionThroughput.md)
 Gets the CosmosDB throughput properties of MongoDB Collection.
 
 ### [Get-AzCosmosDBMongoDBDatabase](Get-AzCosmosDBMongoDBDatabase.md)
 Gets the CosmosDB MongoDB Database
+
+### [Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput](Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput.md)
+Gets the Partition throughput distribution for a MongoDB database.
 
 ### [Get-AzCosmosDBMongoDBDatabaseThroughput](Get-AzCosmosDBMongoDBDatabaseThroughput.md)
 Gets the CosmosDB throughput properties of MongoDB Database.
@@ -93,17 +99,26 @@ Gets the CosmosDB MongoDB User Definition.
 ### [Get-AzCosmosDBRestorableDatabaseAccount](Get-AzCosmosDBRestorableDatabaseAccount.md)
 Gets the restorable database account object
 
+### [Get-AzCosmosDBService](Get-AzCosmosDBService.md)
+Gets the CosmosDB Service
+
 ### [Get-AzCosmosDBSqlContainer](Get-AzCosmosDBSqlContainer.md)
 Gets the CosmosDB Sql Container.
 
 ### [Get-AzCosmosDBSqlContainerBackupInformation](Get-AzCosmosDBSqlContainerBackupInformation.md)
 Retrieves the latest restorable timestamp for a sql container.
 
+### [Get-AzCosmosDBSqlContainerPerPartitionThroughput](Get-AzCosmosDBSqlContainerPerPartitionThroughput.md)
+Gets the CosmosDB Sql Container Partition throughput.
+
 ### [Get-AzCosmosDBSqlContainerThroughput](Get-AzCosmosDBSqlContainerThroughput.md)
 Gets the throughput settings corresponding to a CosmosDB Sql Container.
 
 ### [Get-AzCosmosDBSqlDatabase](Get-AzCosmosDBSqlDatabase.md)
 Gets the CosmosDB Sql Database.
+
+### [Get-AzCosmosDBSqlDatabasePerPartitionThroughput](Get-AzCosmosDBSqlDatabasePerPartitionThroughput.md)
+Gets the CosmosDB Sql Database Partition throughput.
 
 ### [Get-AzCosmosDBSqlDatabaseThroughput](Get-AzCosmosDBSqlDatabaseThroughput.md)
 Gets the throughput settings corresponding to a CosmosDB Sql Database.
@@ -150,6 +165,24 @@ Gets the CosmosDB Table Role Assignment.
 ### [Get-AzCosmosDBTableRoleDefinition](Get-AzCosmosDBTableRoleDefinition.md)
 Gets the CosmosDB Table Role Definition.
 
+### [Get-AzCosmosDBGremlinRoleAssignment](Get-AzCosmosDBGremlinRoleAssignment.md)
+Gets the CosmosDB Gremlin Role Assignment.
+
+### [Get-AzCosmosDBGremlinRoleDefinition](Get-AzCosmosDBGremlinRoleDefinition.md)
+Gets the CosmosDB Gremlin Role Definition.
+
+### [Get-AzCosmosDBCassandraRoleAssignment](Get-AzCosmosDBCassandraRoleAssignment.md)
+Gets the CosmosDB Cassandra Role Assignment.
+
+### [Get-AzCosmosDBCassandraRoleDefinition](Get-AzCosmosDBCassandraRoleDefinition.md)
+Gets the CosmosDB Cassandra Role Definition.
+
+### [Get-AzCosmosDBMongoMIRoleAssignment](Get-AzCosmosDBMongoMIRoleAssignment.md)
+Gets the CosmosDB MongoMI Role Assignment.
+
+### [Get-AzCosmosDBMongoMIRoleDefinition](Get-AzCosmosDBMongoMIRoleDefinition.md)
+Gets the CosmosDB MongoMI Role Definition.
+
 ### [Get-AzCosmosDBTableThroughput](Get-AzCosmosDBTableThroughput.md)
 Gets the throughput of a CosmosDB Table.
 
@@ -158,9 +191,6 @@ Gets a Azure Managed Instances for Apache Cassandra cluster.
 
 ### [Get-AzManagedCassandraDatacenter](Get-AzManagedCassandraDatacenter.md)
 Gets a Azure Managed Instances for Apache Cassandra data center.
-
-### [Get-AzCosmosDBService](Get-AzCosmosDBService.md)
-Gets the Cosmos DB Service
 
 ### [Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration](Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
@@ -174,11 +204,17 @@ Use this to migrate autoscale throughput to manual throughput and vice versa.
 ### [Invoke-AzCosmosDBGremlinGraphThroughputMigration](Invoke-AzCosmosDBGremlinGraphThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
 
+### [Invoke-AzCosmosDBMongoDBCollectionMerge](Invoke-AzCosmosDBMongoDBCollectionMerge.md)
+Invoke Merge for the specified MongoDB collection.
+
 ### [Invoke-AzCosmosDBMongoDBCollectionThroughputMigration](Invoke-AzCosmosDBMongoDBCollectionThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
 
 ### [Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration](Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
+
+### [Invoke-AzCosmosDBSqlContainerMerge](Invoke-AzCosmosDBSqlContainerMerge.md)
+Invoke Merge for the specified Sql Container.
 
 ### [Invoke-AzCosmosDBSqlContainerThroughputMigration](Invoke-AzCosmosDBSqlContainerThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
@@ -190,10 +226,10 @@ Use this to migrate autoscale throughput to manual throughput and vice versa.
 Use this to migrate autoscale throughput to manual throughput and vice versa.
 
 ### [New-AzCosmosDBAccount](New-AzCosmosDBAccount.md)
-Create a new Cosmos DB Account.
+Create a new CosmosDB Account.
 
 ### [New-AzCosmosDBAccountKey](New-AzCosmosDBAccountKey.md)
-Regenerate a given Cosmos DB Account Key.
+Regenerate a given CosmosDB Account Key.
 
 ### [New-AzCosmosDBCassandraClusterKey](New-AzCosmosDBCassandraClusterKey.md)
 Creates a new CosmosDB Cassandra Cluster Key.
@@ -279,6 +315,12 @@ Creates a new CosmosDB MongoDB User Definition.
 ### [New-AzCosmosDBPermission](New-AzCosmosDBPermission.md)
 Creates a new CosmosDB Permission object to be used to create or update a Role Definition.
 
+### [New-AzCosmosDBPhysicalPartitionThroughputObject](New-AzCosmosDBPhysicalPartitionThroughputObject.md)
+Creates a new PhysicalPartitionThroughputObject
+
+### [New-AzCosmosDBService](New-AzCosmosDBService.md)
+Creates a new CosmosDB Service.
+
 ### [New-AzCosmosDBSqlCompositePath](New-AzCosmosDBSqlCompositePath.md)
 Creates a new object of type PSCompositePath. It can be passed as a parameter value for Set-AzCosmosDBSqlContainer.
 
@@ -336,6 +378,24 @@ Creates a new CosmosDB Table Role Assignment.
 ### [New-AzCosmosDBTableRoleDefinition](New-AzCosmosDBTableRoleDefinition.md)
 Creates a new CosmosDB Table Role Definition.
 
+### [New-AzCosmosDBGremlinRoleAssignment](New-AzCosmosDBGremlinRoleAssignment.md)
+Creates a new CosmosDB Gremlin Role Assignment.
+
+### [New-AzCosmosDBGremlinRoleDefinition](New-AzCosmosDBGremlinRoleDefinition.md)
+Creates a new CosmosDB Gremlin Role Definition.
+
+### [New-AzCosmosDBCassandraRoleAssignment](New-AzCosmosDBCassandraRoleAssignment.md)
+Creates a new CosmosDB Cassandra Role Assignment.
+
+### [New-AzCosmosDBCassandraRoleDefinition](New-AzCosmosDBCassandraRoleDefinition.md)
+Creates a new CosmosDB Cassandra Role Definition.
+
+### [New-AzCosmosDBMongoMIRoleAssignment](New-AzCosmosDBMongoMIRoleAssignment.md)
+Creates a new CosmosDB MongoMI Role Assignment.
+
+### [New-AzCosmosDBMongoMIRoleDefinition](New-AzCosmosDBMongoMIRoleDefinition.md)
+Creates a new CosmosDB MongoMI Role Definition.
+
 ### [New-AzCosmosDBTableToRestore](New-AzCosmosDBTableToRestore.md)
 Creates a new CosmosDB Table to Restore object(PSTableToRestore)
 
@@ -348,11 +408,8 @@ Creates a new Azure Managed Instances for Apache Cassandra cluster.
 ### [New-AzManagedCassandraDatacenter](New-AzManagedCassandraDatacenter.md)
 Create a new Azure Managed Instances for Apache Cassandra data center.
 
-### [New-AzCosmosDBService](New-AzCosmosDBService.md)
-Creates a new Cosmos DB Service
-
 ### [Remove-AzCosmosDBAccount](Remove-AzCosmosDBAccount.md)
-Remove a Cosmos DB Account.
+Remove a CosmosDB Account.
 
 ### [Remove-AzCosmosDBCassandraKeyspace](Remove-AzCosmosDBCassandraKeyspace.md)
 Deletes a CosmosDB Cassandra Keyspace.
@@ -377,6 +434,9 @@ Deletes a CosmosDB MongoDB Database.
 
 ### [Remove-AzCosmosDBMongoDBUserDefinition](Remove-AzCosmosDBMongoDBUserDefinition.md)
 Deletes an existing CosmosDB MongoDB User Definition.
+
+### [Remove-AzCosmosDBService](Remove-AzCosmosDBService.md)
+Deletes the CosmosDB Service.
 
 ### [Remove-AzCosmosDBSqlContainer](Remove-AzCosmosDBSqlContainer.md)
 Deletes the CosmosDB Sql Container.
@@ -408,26 +468,62 @@ Deletes the CosmosDB Table Role Assignment.
 ### [Remove-AzCosmosDBTableRoleDefinition](Remove-AzCosmosDBTableRoleDefinition.md)
 Deletes the CosmosDB Table Role Definition.
 
+### [Remove-AzCosmosDBGremlinRoleAssignment](Remove-AzCosmosDBGremlinRoleAssignment.md)
+Deletes the CosmosDB Gremlin Role Assignment.
+
+### [Remove-AzCosmosDBGremlinRoleDefinition](Remove-AzCosmosDBGremlinRoleDefinition.md)
+Deletes the CosmosDB Gremlin Role Definition.
+
+### [Remove-AzCosmosDBCassandraRoleAssignment](Remove-AzCosmosDBCassandraRoleAssignment.md)
+Deletes the CosmosDB Cassandra Role Assignment.
+
+### [Remove-AzCosmosDBCassandraRoleDefinition](Remove-AzCosmosDBCassandraRoleDefinition.md)
+Deletes the CosmosDB Cassandra Role Definition.
+
+### [Remove-AzCosmosDBMongoMIRoleAssignment](Remove-AzCosmosDBMongoMIRoleAssignment.md)
+Deletes the CosmosDB MongoMI Role Assignment.
+
+### [Remove-AzCosmosDBMongoMIRoleDefinition](Remove-AzCosmosDBMongoMIRoleDefinition.md)
+Deletes the CosmosDB MongoMI Role Definition.
+
 ### [Remove-AzManagedCassandraCluster](Remove-AzManagedCassandraCluster.md)
 Deletes a Azure Managed Instances for Apache Cassandra cluster.
 
 ### [Remove-AzManagedCassandraDatacenter](Remove-AzManagedCassandraDatacenter.md)
 Deletes a Azure Managed Instances for Apache Cassandra data center.
 
-### [Remove-AzCosmosDBService](Remove-AzCosmosDBService.md)
-Deletes a Cosmos DB Service
-
 ### [Restore-AzCosmosDBAccount](Restore-AzCosmosDBAccount.md)
 Restores an existing CosmosDB account (live or deleted) to a given timestamp to a new account
+
+### [Restore-AzCosmosDBGremlinDatabase](Restore-AzCosmosDBGremlinDatabase.md)
+Restore a deleted gremlin database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBGremlinGraph](Restore-AzCosmosDBGremlinGraph.md)
+Restore a deleted gremlin graph in a database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBMongoDBCollection](Restore-AzCosmosDBMongoDBCollection.md)
+Restore a deleted mongodb collection in a database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBMongoDBDatabase](Restore-AzCosmosDBMongoDBDatabase.md)
+Restore a deleted mongodb database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBSqlContainer](Restore-AzCosmosDBSqlContainer.md)
+Restore a deleted sql container in a database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBSqlDatabase](Restore-AzCosmosDBSqlDatabase.md)
+Restore a deleted sql database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBTable](Restore-AzCosmosDBTable.md)
+Restore a deleted table to a given timestamp in the same account
 
 ### [Update-AzCosmosDBAccount](Update-AzCosmosDBAccount.md)
 Update a CosmosDB account attributes.
 
 ### [Update-AzCosmosDBAccountFailoverPriority](Update-AzCosmosDBAccountFailoverPriority.md)
-Update Failover Region Priority of a Cosmos DB Account.
+Update Failover Region Priority of a CosmosDB Account.
 
 ### [Update-AzCosmosDBAccountRegion](Update-AzCosmosDBAccountRegion.md)
-Update Regions of a Cosmos DB Account.
+Update Regions of a CosmosDB Account.
 
 ### [Update-AzCosmosDBCassandraKeyspace](Update-AzCosmosDBCassandraKeyspace.md)
 Updates the CosmosDB Cassandra Keyspace. Performs a client side patch operation by reading the existing Keyspace.
@@ -459,11 +555,17 @@ Updates the throughput value of a CosmosDB Gremlin Graph.
 ### [Update-AzCosmosDBMongoDBCollection](Update-AzCosmosDBMongoDBCollection.md)
 Updates the CosmosDB MongoDB Collection. Performs a client side patch operation by reading the existing Collection.
 
+### [Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput](Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput.md)
+Updates the Partition Throughput for a MongoDB collection.
+
 ### [Update-AzCosmosDBMongoDBCollectionThroughput](Update-AzCosmosDBMongoDBCollectionThroughput.md)
 Updates the throughput value of a CosmosDB MongoDB Collection.
 
 ### [Update-AzCosmosDBMongoDBDatabase](Update-AzCosmosDBMongoDBDatabase.md)
 Updates the CosmosDB MongoDB Database. Performs a client side patch operation by reading the existing Database.
+
+### [Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput](Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput.md)
+Updates the Partition Throughput for a MongoDB database.
 
 ### [Update-AzCosmosDBMongoDBDatabaseThroughput](Update-AzCosmosDBMongoDBDatabaseThroughput.md)
 Updates the throughput value of a CosmosDB MongoDB Database.
@@ -477,11 +579,17 @@ Update an existing CosmosDB MongoDB User Definition.
 ### [Update-AzCosmosDBSqlContainer](Update-AzCosmosDBSqlContainer.md)
 Updates the CosmosDB Sql Container. Performs a client side patch operation by reading the existing Container.
 
+### [Update-AzCosmosDBSqlContainerPerPartitionThroughput](Update-AzCosmosDBSqlContainerPerPartitionThroughput.md)
+Updates the throughput of selected partitions in a CosmosDB Sql container.
+
 ### [Update-AzCosmosDBSqlContainerThroughput](Update-AzCosmosDBSqlContainerThroughput.md)
 Updates the throughput value of a CosmosDB Sql Container.
 
 ### [Update-AzCosmosDBSqlDatabase](Update-AzCosmosDBSqlDatabase.md)
 Updates the CosmosDB Sql Database. Performs a client side patch operation by reading the existing Database.
+
+### [Update-AzCosmosDBSqlDatabasePerPartitionThroughput](Update-AzCosmosDBSqlDatabasePerPartitionThroughput.md)
+Updates the throughput of selected partitions in a CosmosDB Sql database.
 
 ### [Update-AzCosmosDBSqlDatabaseThroughput](Update-AzCosmosDBSqlDatabaseThroughput.md)
 Updates the throughput value of a CosmosDB Sql Database.
@@ -509,6 +617,24 @@ Updates an existing CosmosDB Table Role Assignment.
 
 ### [Update-AzCosmosDBTableRoleDefinition](Update-AzCosmosDBTableRoleDefinition.md)
 Updates an existing CosmosDB Table Role Definition.
+
+### [Update-AzCosmosDBGremlinRoleAssignment](Update-AzCosmosDBGremlinRoleAssignment.md)
+Updates an existing CosmosDB Gremlin Role Assignment.
+
+### [Update-AzCosmosDBGremlinRoleDefinition](Update-AzCosmosDBGremlinRoleDefinition.md)
+Updates an existing CosmosDB Gremlin Role Definition.
+
+### [Update-AzCosmosDBCassandraRoleAssignment](Update-AzCosmosDBCassandraRoleAssignment.md)
+Updates an existing CosmosDB Cassandra Role Assignment.
+
+### [Update-AzCosmosDBCassandraRoleDefinition](Update-AzCosmosDBCassandraRoleDefinition.md)
+Updates an existing CosmosDB Cassandra Role Definition.
+
+### [Update-AzCosmosDBMongoMIRoleAssignment](Update-AzCosmosDBMongoMIRoleAssignment.md)
+Updates an existing CosmosDB MongoMI Role Assignment.
+
+### [Update-AzCosmosDBMongoMIRoleDefinition](Update-AzCosmosDBMongoMIRoleDefinition.md)
+Updates an existing CosmosDB MongoMI Role Definition.
 
 ### [Update-AzCosmosDBTableThroughput](Update-AzCosmosDBTableThroughput.md)
 Updates the throughput value of a CosmosDB Table.

@@ -16,8 +16,14 @@ Restores an existing CosmosDB account (live or deleted) to a given timestamp to 
 Restore-AzCosmosDBAccount -RestoreTimestampInUtc <DateTime> -SourceDatabaseAccountName <String>
  -Location <String> -TargetResourceGroupName <String> -TargetDatabaseAccountName <String>
  [-DatabasesToRestore <PSDatabaseToRestore[]>] [-GremlinDatabasesToRestore <PSGremlinDatabaseToRestore[]>]
+<<<<<<< HEAD
+ [-TablesToRestore <PSTablesToRestore>] [-AsJob] [-PublicNetworkAccess <String>] [-DisableTtl <Boolean>]
+ [-SourceBackupLocation <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+=======
  [-TablesToRestore <PSTablesToRestore>] [-PublicNetworkAccess <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-DisableTtl <Boolean>] [-Confirm] [<CommonParameters>]
+>>>>>>> pjohari/main
 ```
 
 ## DESCRIPTION
@@ -183,6 +189,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceBackupLocation
+This is the location of the source account where backups are located. Provide this value if the source and target are in different locations.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
