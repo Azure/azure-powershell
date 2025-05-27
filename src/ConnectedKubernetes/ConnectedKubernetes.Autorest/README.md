@@ -88,7 +88,7 @@ directive:
 ```
 
 ### PSScriptAnalyzer Configuration
-``` yaml
+```yaml
 targetVersions:
 - "5.1"
 - "7.0"
