@@ -207,7 +207,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Invoke-AzDataFactoryV2Pipeline]()
+[Invoke-AzDataFactoryV2Pipeline](Invoke-AzDataFactoryV2Pipeline.md)
 
-[Get-AzDataFactoryV2PipelineRun]()
+[Get-AzDataFactoryV2PipelineRun](Get-AzDataFactoryV2PipelineRun.md)
 
