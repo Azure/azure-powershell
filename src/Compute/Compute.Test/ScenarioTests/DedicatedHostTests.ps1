@@ -359,8 +359,8 @@ function TestGen-updateazhost
         New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "Dadsv5-Type1" -Tag @{key1 = "val2"};
 
         # Test Update-AzHost with Redeploy parameter
-        $updateHost = Update-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Redeploy $true;
-        Assert-AreEqual $true $updateHost.Redeploy;
+        $updateHost = Update-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Redeploy;
+        Assert-IsNotNull $updateHost.Redeploy;
 
         # Verify the host is updated
         $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;

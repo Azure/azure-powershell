@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         parameters.Sku = new Sku(this.Sku, null, null);
                     }
 
-                    if (this.IsParameterBound(c => c.Redeploy))
+                    if (this.Redeploy.IsPresent)
                     {
                         var redeployResult = DedicatedHostsClient.Redeploy(resourceGroupName, hostGroupName, Name);
                         WriteObject(redeployResult);
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             HelpMessage = "Redeploy the dedicated host. The operation will complete successfully once the dedicated host has migrated to a new node and is running. To determine the health of VMs deployed on the dedicated host after the redeploy check the Resource Health Center in the Azure Portal. Please refer to https://docs.microsoft.com/azure/service-health/resource-health-overview for more details.")]
-        public bool Redeploy { get; set; }
+        public SwitchParameter Redeploy { get; set; }
 
         [Parameter(
             ParameterSetName = "ResourceIdParameter",
