@@ -20,7 +20,6 @@
 
 ## Upcoming Release
 * Upgrade Azure.Core to 1.45.0
-* Added definition of Bleu cloud so it can be used with commands like `Enter-AzVM`
 
 ## Version 5.0.1
 * Force `Get-AzAccessToken` to always return SecureString as long as `AsSecureString` is set
