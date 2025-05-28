@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             { "azurecloud", "https://pas.windows.net/CheckMyAccess/Linux/.default" },
             { "azurechinacloud", "https://pas.chinacloudapi.cn/CheckMyAccess/Linux/.default" },
             { "azureusgovernment", "https://pasff.usgovcloudapi.net/CheckMyAccess/Linux/.default" },
-            { "bleu", "https://pas.identity.sovcloud-api.fr/CheckMyAccess/Linux/.default" },
         };
 
         private string CreateJwk(RSAParameters rsaKeyInfo, out string keyId)
