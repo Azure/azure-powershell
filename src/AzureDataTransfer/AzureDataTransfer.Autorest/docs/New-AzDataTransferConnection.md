@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataTransferConnection
 
 ## SYNOPSIS
-create the connection resource.
+Create the connection resource.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-create the connection resource.
+Create the connection resource.
 
 ## EXAMPLES
 

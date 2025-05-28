@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDataTransferConnection
 
 ## SYNOPSIS
-update the connection resource.
+Update the connection resource.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Update-AzDataTransferConnection -InputObject <IDataTransferIdentity> [-Direction
 ```
 
 ## DESCRIPTION
-update the connection resource.
+Update the connection resource.
 
 ## EXAMPLES
 
