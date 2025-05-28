@@ -21,6 +21,7 @@
 * Added fix for resume protection with AzureFileshare.
 * Added fix for Get backup item for MSSQL soft deleted items.
 * Added check to compare the VM resource group in the list of VMs returned for registration.
+* Added RetainRecoveryPointsAsPerPolicy as MUA protected operation in Disable-AzRecoveryServicesBackupProtection cmdlet.
 
 ## Version 7.7.1
 * Updated `GetAzureRmRecoveryServicesBackupSchedulePolicyObject` to default the `PolicySubType` to `Enhanced` for AzureVM.

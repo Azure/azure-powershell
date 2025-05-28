@@ -31,6 +31,7 @@ https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetwo
 #>
 function New-AzMobileNetworkSite {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISite])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.CmdletBreakingChange("14.5.0", "0.5.0", "2025/09/30")]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
