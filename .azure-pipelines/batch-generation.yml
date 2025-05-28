@@ -2,7 +2,7 @@ parameters:
 - name: AutorestVersion
   displayName: 'Version of Autorest that trigger batch generation'
   type: string
-  default: 'Default version'
+  default: '4.x.x'
 
 variables:
   IntermediateStepTimeoutInMinutes: 30
@@ -52,7 +52,7 @@ stages:
             $token = "$(GitHubToken)"
 
             $createBranchPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'create-branch.ps1'
-            & $createBranchPath -Owner 'Azure' -Repo 'azure-powershell' -BaseBranch 'main' -NewBranch $generationBranch -Token $token
+            & $createBranchPath -Owner 'Azure' -Repo 'azure-powershell' -BaseBranch "$(GenerationBaseBranch)" -NewBranch $generationBranch -Token $token
             Write-Host "##vso[task.setvariable variable=GenerationBranch;isOutput=true]$generationBranch"
 
       - task: PowerShell@2
@@ -490,3 +490,4 @@ stages:
                 & $notificationScriptPath -RepoRoot "$(Build.SourcesDirectory)"
             env:
               TEAMS_URL: $(TEAMS_URL)
+              FailedJobNotificationReceivers: $(FailedJobNotificationReceivers)

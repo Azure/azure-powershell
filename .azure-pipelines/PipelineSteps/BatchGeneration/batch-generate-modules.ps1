@@ -87,16 +87,25 @@ foreach ($moduleName in $sortedModuleNames) {
     if ($diff) {
         Write-Host "Changes detected in $moduleName, adding change log"
         $moduleResult.Changed = "Yes"
+
+        $date = Get-Date -Format "yy-MM-dd"
+        $newChangeLogEntry = "* Autorest version: $AutorestVersion - $date"
+        
+        $updatedContent = @()
         $changeLogPath = Join-Path $RepoRoot "src" $moduleName $moduleName "AutorestUpgradeLog.md"
+
         if (-not (Test-Path $changeLogPath)) {
             New-Item -Path $changeLogPath -ItemType File -Force | Out-Null
-            Add-Content -Path $changeLogPath -Value "## Autorest upgrade log"
+            $updatedContent += "## Autorest upgrade log"
+            $updatedContent += $newChangeLogEntry
+        } else{
+            $changeLogContent = Get-Content -Path $changeLogPath
+            $updatedContent += $changeLogContent[0]
+            $updatedContent += $newChangeLogEntry
+            $updatedContent += $changeLogContent[1..($changeLogContent.Count - 1)]
         }
-        $changeLogContent = Get-Content -Path $changeLogPath
-        $date = Get-Date -Format "dd/MM/yy"
-        $newChangeLogEntry = "* Autorest version: $AutorestVersion - $date"
-        $changeLogContent.Insert(1, $newChangeLogEntry)
-        Set-Content $changeLogPath -Value $changeLogContent
+        Set-Content $changeLogPath -Value $updatedContent
+
         $moduleResult.Changed = "Yes, Autorest Change Log Updated"
         Write-Host "New change log entry added to $changeLogPath"
     }
