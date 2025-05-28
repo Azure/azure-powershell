@@ -117,7 +117,7 @@ if (-not (Test-Path (Join-Path $parentModulePath "ChangeLog.md"))) {
 <#
     merge sub module to parent module psd1
 #>
-$parentModulePsd1Path = Join-Path $ParentModulePath "Az.$ModuleRootName.psd1"
+$parentModulePsd1Path = Join-Path $parentModulePath "Az.$ModuleRootName.psd1"
 Write-Host "Merging metadata of $SubModulePath/Az.$subModuleNameTrimmed.psd1 to $parentModulePsd1Path ..." -ForegroundColor DarkGreen
 $parentModuleMetadata = Import-LocalizedData -BaseDirectory $ParentModulePath -FileName "Az.$ModuleRootName.psd1"
 
