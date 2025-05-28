@@ -103,6 +103,11 @@ namespace Microsoft.Azure.Commands.Compute
                 cfg.CreateMap<AzureOperationResponse<FROM.VirtualMachine>, TO.PSAzureOperationResponse>()
                     .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode))
                     .ForMember(c => c.IsSuccessStatusCode, o => o.MapFrom(r => r.Response.IsSuccessStatusCode))
+                    .ForMember(c => c.ReasonPhrase, o => o.MapFrom(r => r.Response.ReasonPhrase))
+
+                cfg.CreateMap<AzureOperationResponse<FROM.VirtualMachine, FROM.VirtualMachinesCreateOrUpdateHeaders>, TO.PSAzureOperationResponse>()
+                    .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode))
+                    .ForMember(c => c.IsSuccessStatusCode, o => o.MapFrom(r => r.Response.IsSuccessStatusCode))
                     .ForMember(c => c.ReasonPhrase, o => o.MapFrom(r => r.Response.ReasonPhrase));
 
                 cfg.CreateMap<AzureOperationResponse<FROM.VirtualMachineCaptureResult>, TO.PSAzureOperationResponse>()
