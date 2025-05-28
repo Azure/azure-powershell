@@ -1205,36 +1205,31 @@ namespace Microsoft.Azure.Commands.Compute
 
                     var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
 
-                    if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
-                    {
-                        var currentBginfoVersion = GetBginfoExtension();
+					if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
+					{
+						var currentBginfoVersion = GetBginfoExtension();
 
-                        if (!string.IsNullOrEmpty(currentBginfoVersion))
-                        {
-                            var extensionParameters = new VirtualMachineExtension
-                            {
-                                Location = this.Location,
-                                Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
-                                VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-                                TypeHandlerVersion = currentBginfoVersion,
-                                AutoUpgradeMinorVersion = true,
-                            };
+						if (!string.IsNullOrEmpty(currentBginfoVersion))
+						{
+							var extensionParameters = new VirtualMachineExtension
+							{
+								Location = this.Location,
+								Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
+								VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+								TypeHandlerVersion = currentBginfoVersion,
+								AutoUpgradeMinorVersion = true,
+							};
 
-                            typeof(CM.ResourceWithOptionalLocation).GetRuntimeProperty("Name")
-                                .SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
-                            typeof(CM.ResourceWithOptionalLocation).GetRuntimeProperty("Type")
-                                .SetValue(extensionParameters, VirtualMachineExtensionType);
+							var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
+								this.ResourceGroupName,
+								this.VM.Name,
+								VirtualMachineBGInfoExtensionContext.ExtensionDefaultName, 
+								extensionParameters).GetAwaiter().GetResult();
+							psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
+						}
+					}
 
-                            var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
-                                this.ResourceGroupName,
-                                this.VM.Name,
-                                VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-                                extensionParameters).GetAwaiter().GetResult();
-                            psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
-                        }
-                    }
-
-                    WriteObject(psResult);
+					WriteObject(psResult);
                 });
             }
         }
