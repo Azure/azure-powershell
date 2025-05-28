@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.4.2
 * Fixed module name in module metadata
 
 ## Version 0.4.1

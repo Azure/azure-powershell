@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.7.2
 * Added fix for resume protection with AzureFileshare.
 * Added fix for Get backup item for MSSQL soft deleted items.
 * Added check to compare the VM resource group in the list of VMs returned for registration.
