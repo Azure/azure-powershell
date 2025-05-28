@@ -30,6 +30,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
         {
+            if (string.IsNullOrWhiteSpace(_accessToken.AccessToken))
+            {
+                throw new InvalidOperationException("Access token is null or empty.");
+            }
             var expiration = DateTimeOffset.UtcNow.AddHours(1);
             return new AccessToken(_accessToken.AccessToken, expiration);
         }
