@@ -17,7 +17,7 @@ async function main() {
     // for (const directive of yaml.directive) {
     //     console.log(directive);
     // }
-    utils.testCase();
+    //utils.testCase();
 }
 
 main().catch((error) => {

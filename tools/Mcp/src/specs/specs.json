@@ -13,16 +13,33 @@
             "callbackName": "generateByAutorest"
         },
         {
-            "name": "rename-cmdlet",
-            "description": "rename autorest generated powershell cmdlet by providing autorest directive to README.md",
+            "name": "no-inline",
+            "description": "Response of this tool instruct LLM to convert flattened models to no-inline models in parameter. Autorest flatten nested models by default as parameters, no-inline indicates that the model should not be flattened and should be used as a parameter. Group new no-inline directives under existing no-inline directives if they exist, otherwise create a new no-inline directive group. Example directive: '  - no-inline:\n      - Account'",
             "parameters": [
                 {
-                    "name": "directive",
-                    "description": "autorest directive to rename cmdlet. Should perform something like 'where subject' and 'set subject'. Look for example in README.md",
+                    "name": "modelNames",
+                    "description": "model names need to be no-inline",
+                    "type": "array"
+                },
+                {
+                    "name": "response",
+                    "description": "Add no-inline directives for models: ${0}. Please update README.md with the no-inline directive for each model.",
                     "type": "string"
                 }
             ],
-            "callbackName": "writeDirective"
+            "callbackName": "handleNoInline"
+        },
+        {
+            "name": "model-cmdlet",
+            "description": "Create a 'New-' cmdlet to create given models by adding model-cmdlet directives, use 'New-Az(subject-prefix)(ModelName)Object as cmdlet-name'. Group new model-cmdlet directives under existing model-cmdlet directives if they exist, otherwise create a new model-cmdlet directive group. Example directive: '  - model-cmdlet:\n      - model-name: Account\n        cmdlet-name: New-AzStorageAccount'",
+            "parameters": [
+                {
+                    "name": "modelNames",
+                    "description": "model names need to be created cmdlet",
+                    "type": "array"
+                }
+            ],
+            "callbackName": "handleModelCmdlet"
         },
         {
             "name": "polymophism",
