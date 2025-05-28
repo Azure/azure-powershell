@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(HelpMessage = "Gets or sets the Service Principal Application Id for accessing Azure Data Lake.")]
         public Guid ApplicationId { get; set; }
-
+        
         [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate file path for accessing Azure Data Lake.",
             ParameterSetName = CertificateFilePathSet)]
         public string CertificateFilePath { get; set; }

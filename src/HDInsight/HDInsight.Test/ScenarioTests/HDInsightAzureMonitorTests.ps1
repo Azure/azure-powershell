@@ -78,15 +78,14 @@ function Test-AzureMonitorAgentRelatedCommands{
 	# Create some resources that will be used throughout test 
 	try
 	{
-		$location = "East Asia"
+		$location = "East US 2"
 		# prepare parameter for creating parameter
 		# $params= Prepare-ClusterCreateParameter -location $location
-		$workspaceName = "yk-test-log-workspace2"
-		$resourceGroupName = "yukundemo1"
-		$clusterName = "ykc221"
+		$workspaceName = "ajkakaniWS"
+		$resourceGroupName = "ajkakaniEUS2-RG"
 
 		# create cluster that will be used throughout test
-		$cluster = Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
+		$cluster = Get-AzHDInsightCluster -ResourceGroupName "ajkakaniEUS2-RG" -ClusterName "aj5testcls"
 		Assert-NotNull $cluster
 
 

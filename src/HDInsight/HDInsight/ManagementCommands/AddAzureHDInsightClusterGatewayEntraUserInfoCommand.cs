@@ -24,34 +24,44 @@ using Microsoft.Azure.Management.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightClusterGatewayEntraUserInfo"), OutputType(typeof(EntraUserInfo))]
-    public class NewAzureHDInsightClusterGatewayEntraUserInfoCommand : HDInsightCmdletBase
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightClusterGatewayEntraUserInfo"), OutputType(typeof(EntraUserInfo))]
+    public class AddAzureHDInsightClusterGatewayEntraUserInfoCommand : HDInsightCmdletBase
     {
-        private readonly EntraUserInfo _entraUser;
         #region Input Parameter Definitions
 
-        [Parameter(HelpMessage = "Gets or sets the unique object ID of the Entra user or client ID of the enterprise applications.", Mandatory = true)]
+        [Alias("Id")]
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets the unique object ID of the Entra user or client ID of the enterprise applications.")]
         public string ObjectId { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the display name of the Entra user.", Mandatory = false)]
+        [Parameter(
+            Position = 0,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets the display name of the Entra user.")]
         public string DisplayName { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the User Principal Name (UPN) of the Entra user. It may be empty in certain cases, such as for enterprise applications.", Mandatory = true)]
+        [Alias("UserPrincipalName")]
+        [Parameter(
+            Position = 0,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets the User Principal Name (UPN) of the Entra user. It may be empty in certain cases, such as for enterprise applications.")]
         public string Upn { get; set; }
 
         #endregion
 
-        public NewAzureHDInsightClusterGatewayEntraUserInfoCommand()
-        {
-            _entraUser = new EntraUserInfo();
-        }
 
         public override void ExecuteCmdlet()
         {
-            _entraUser.ObjectId = ObjectId;
-            _entraUser.DisplayName = DisplayName;
-            _entraUser.Upn = Upn;
-            WriteObject(_entraUser);
+            var entraUser = new EntraUserInfo();
+            entraUser.ObjectId = ObjectId;
+            entraUser.DisplayName = DisplayName;
+            entraUser.Upn = Upn;
+            WriteObject(entraUser);
         }
     }
 }

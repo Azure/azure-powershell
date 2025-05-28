@@ -26,13 +26,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             Dictionary<string, string> gatewayConfig = GetExistingConfigurationsForType(configurations, Constants.ConfigurationKey.Gateway);
             bool isHttpCredentialBound = !string.IsNullOrEmpty(httpCredential?.UserName);
-            bool isRestAuthEntraUsersBound = restAuthEntraUsers != null;
-
+            bool isRestAuthEntraUsersBound = restAuthEntraUsers?.Any() == true;
+            
             if (isHttpCredentialBound && isRestAuthEntraUsersBound)
             {
                 throw new ParameterBindingException("Error: Cannot provide both HttpCredential and RestAuthEntraUsers parameters.");
             }
-
             if (!isHttpCredentialBound && !isRestAuthEntraUsersBound)
             {
                 throw new ParameterBindingException("Error: Either HttpCredential or RestAuthEntraUsers parameter must be provided.");
@@ -48,22 +47,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "false";
                 gatewayConfig[Constants.GatewayConfigurations.EntraUsers] = System.Text.Json.JsonSerializer.Serialize(restAuthEntraUsers);
             }
-            
-            //if (!string.IsNullOrEmpty(httpCredential?.UserName))
-            //{
-            //    gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "true";
-            //    gatewayConfig[Constants.GatewayConfigurations.UserNameKey] = httpCredential?.UserName;
-            //    gatewayConfig[Constants.GatewayConfigurations.PasswordKey] = httpCredential?.Password?.ConvertToString();
-            //}
-            //else if (restAuthEntraUsers!=null)
-            //{
-            //    gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "false";
-            //    gatewayConfig[Constants.GatewayConfigurations.EntraUsers] = System.Text.Json.JsonSerializer.Serialize(restAuthEntraUsers);
-            //}
-            //else
-            //{
-            //    gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "false";
-            //}
 
             configurations[Constants.ConfigurationKey.Gateway] = gatewayConfig;
         }
