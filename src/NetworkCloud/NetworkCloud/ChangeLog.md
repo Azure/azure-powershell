@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed parameters `-IdentityType`  for below commands to support for new Managed Identity setting. And `-IdentityUserAssignedIdentity` is renamed to `-UserAssignedIdentity`. `EnableSystemAssignedIdentity` is used to enable/disable system-assigned identities.
+  * Cmdlet `New-AzNetworkCloudCluster`
+  * Cmdlet `New-AzNetworkCloudClusterManager`
+  * Cmdlet `Update-AzNetworkCloudCluster`
+  * Cmdlet `Update-AzNetworkCloudClusterManager`
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
 
 ## Version 1.1.0
 * Upgraded nuget package to signed package.
