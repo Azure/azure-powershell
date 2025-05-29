@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 
     public class AdlsTests : DataLakeStoreTestRunner
     {
+        private readonly string AccountName = "sss-datalakestore-test-c17";
         private readonly string ResourceGroupLocation = "westus";
         private readonly string TestFileSystemPermissionResourceGroupLocation = "ukwest";
         private readonly string TestFileSystemResourceGroupLocation = "ukwest";
@@ -74,14 +75,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         {
             var workingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).AbsolutePath);
             var testLocation = Path.Combine(workingPath, "ScenarioTests", (this.GetType().Name + ".ps1"));
-            TestRunner.RunTestScript($"Test-DataLakeStoreFileSystem -fileToCopy '{testLocation}' -location '{TestFileSystemResourceGroupLocation}'");
+            TestRunner.RunTestScript($"Test-DataLakeStoreFileSystem -fileToCopy '{testLocation}' -location '{ResourceGroupLocation}' -accountName '{AccountName}'");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsFileSystemPermissions()
         {
-            TestRunner.RunTestScript($"Test-DataLakeStoreFileSystemPermissions -location '{TestFileSystemPermissionResourceGroupLocation}'");
+            TestRunner.RunTestScript($"Test-DataLakeStoreFileSystemPermissions -location '{ResourceGroupLocation}' -accountName '{AccountName}'");
         }
 
         [Fact]
@@ -93,9 +94,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAdlsEnumerateDeletedItem()
+        {
+            TestRunner.RunTestScript($"Test-EnumerateDataLakeStoreDeletedItem -location '{ResourceGroupLocation}' -accountName '{AccountName}'");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsEnumerateAndRestoreDeletedItem()
         {
-            TestRunner.RunTestScript($"Test-EnumerateAndRestoreDataLakeStoreDeletedItem -location '{ResourceGroupLocation}'");
+            TestRunner.RunTestScript($"Test-EnumerateAndRestoreDataLakeStoreDeletedItem -location '{ResourceGroupLocation} '-accountName '{AccountName}'");
         }
     }
 }

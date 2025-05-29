@@ -13,10 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.TestFx;
 using System.Collections.Generic;
 using Xunit.Abstractions;
+using Azure.Core;
+using System;
+using System.Net.Http.Headers;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
 {
@@ -57,18 +64,42 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) => new UrlDecodingRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
                 )
                 .WithManagementClients(context =>
+                {
+                    AdlsClientFactory.IsTest = true;
+                    var azureContext = new AzureContext
                     {
-                        AdlsClientFactory.IsTest = true;
-                        var creds = context.GetClientCredentials(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix);
-                        AdlsClientFactory.CustomDelegatingHAndler = context.AddHandlers(creds, new AdlMockDelegatingHandler());
-                        AdlsClientFactory.MockCredentials = creds;
-                        return new object();
-                    }
-                )
+                        Account = AzureRmProfileProvider.Instance.Profile.DefaultContext.Account,
+                        Environment = AzureRmProfileProvider.Instance.Profile.DefaultContext.Environment,
+                        Tenant = AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant
+                    };
+                    var creds = new DataLakeStoreTokenCredential(azureContext);
+
+                    var handlers = context.AddHandlers(new TokenCredentialAdapter(creds), new AdlMockDelegatingHandler());
+                    AdlsClientFactory.CustomDelegatingHAndler = handlers;
+                    AdlsClientFactory.MockCredentials = creds;
+                    return new object();
+                })
                 .WithCleanupAction(
                     () => AdlsClientFactory.IsTest = false
                 )
                 .Build();
+        }
+    }
+
+    public class TokenCredentialAdapter : Microsoft.Rest.ServiceClientCredentials
+    {
+        private readonly TokenCredential _tokenCredential;
+
+        public TokenCredentialAdapter(TokenCredential tokenCredential)
+        {
+            _tokenCredential = tokenCredential;
+        }
+
+        public override async Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var tokenRequestContext = new TokenRequestContext(new[] { "https://management.azure.com/.default" });
+            var accessToken = await _tokenCredential.GetTokenAsync(tokenRequestContext, cancellationToken).ConfigureAwait(false);
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken.Token);
         }
     }
 }
