@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (string.IsNullOrEmpty(this.FilePath) && string.IsNullOrEmpty(this.StorageAccountId))
                 {
-                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalFilePath: StorageLocation must have either storage id or local file path specified.");
+                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndFilePath: StorageLocation must have either storage id or file path specified.");
                 }
             }
             else
@@ -237,9 +237,9 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         throw new ArgumentException("FileCount must be between 1 and 10,000. Default is 10.");
                     }
-                    if (this.CaptureSettings.FileSizeInBytes < 1 || this.CaptureSettings.FileSizeInBytes > 4294967295)
+                    if (this.CaptureSettings.FileSizeInBytes < 102400 || this.CaptureSettings.FileSizeInBytes > 4294967295)
                     {
-                        throw new ArgumentException("FileSizeInBytes must be between 1 byte and 4,294,967,295 bytes (4 GB). Default is 104,857,600 bytes (100 MB).");
+                        throw new ArgumentException("FileSizeInBytes must be between 102400 byte and 4,294,967,295 bytes (4 GB). Default is 104,857,600 bytes (100 MB).");
                     }
                     if (this.CaptureSettings.SessionTimeLimitInSeconds < 1 || this.CaptureSettings.SessionTimeLimitInSeconds > 604800)
                     {

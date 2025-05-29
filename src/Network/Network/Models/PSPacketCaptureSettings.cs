@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         /// Gets or sets number of file count. Default value of count is 10 and maximum
         /// number is 10000.
         /// </summary>
-        [JsonProperty(Order = 2)]
+        [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public int? FileCount { get; set; }
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         /// Gets or sets maximum duration of the capture session in seconds is 604800s
         /// (7 days) for a file. Default value in second 86400s (1 day).
         /// </summary>
-        [JsonProperty(Order = 2)]
+        [JsonProperty(Order = 3)]
         [Ps1Xml(Target = ViewControl.Table)]
         public int? SessionTimeLimitInSeconds { get; set; }
     }

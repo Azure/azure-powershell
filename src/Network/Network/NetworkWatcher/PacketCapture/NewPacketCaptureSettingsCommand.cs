@@ -27,21 +27,21 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
              Mandatory = false,
              ValueFromPipeline = true,
              HelpMessage = "Number of file count.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public int? FileCount { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Number of bytes captured per packet.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public long? FileSizeInBytes { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Capture session in seconds.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public int? SessionTimeLimitInSeconds { get; set; }
 
         public override void Execute()
