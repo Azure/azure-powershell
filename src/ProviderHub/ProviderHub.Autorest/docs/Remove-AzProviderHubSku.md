@@ -30,9 +30,9 @@ Remove-AzProviderHubSku -ProviderRegistrationInputObject <IProviderHubIdentity> 
  -Sku <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityResourcetypeRegistration
+### DeleteViaIdentityResourceTypeRegistration
 ```
-Remove-AzProviderHubSku -ResourcetypeRegistrationInputObject <IProviderHubIdentity> -Sku <String>
+Remove-AzProviderHubSku -ResourceTypeRegistrationInputObject <IProviderHubIdentity> -Sku <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -149,12 +149,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourcetypeRegistrationInputObject
+### -ResourceTypeRegistrationInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
-Parameter Sets: DeleteViaIdentityResourcetypeRegistration
+Parameter Sets: DeleteViaIdentityResourceTypeRegistration
 Aliases:
 
 Required: True
@@ -169,7 +169,7 @@ The SKU.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityProviderRegistration, DeleteViaIdentityResourcetypeRegistration
+Parameter Sets: Delete, DeleteViaIdentityProviderRegistration, DeleteViaIdentityResourceTypeRegistration
 Aliases:
 
 Required: True

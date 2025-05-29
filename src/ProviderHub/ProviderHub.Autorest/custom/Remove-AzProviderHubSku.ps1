@@ -65,7 +65,7 @@ param(
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Parameter(ParameterSetName='DeleteViaIdentityProviderRegistration', Mandatory)]
-    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourceTypeRegistration', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The SKU.
@@ -91,11 +91,11 @@ param(
     # Identity Parameter
     ${ProviderRegistrationInputObject},
 
-    [Parameter(ParameterSetName='DeleteViaIdentityResourcetypeRegistration', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourceTypeRegistration', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
     # Identity Parameter
-    ${ResourcetypeRegistrationInputObject},
+    ${ResourceTypeRegistrationInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -167,7 +167,7 @@ begin {
             Delete = 'Az.ProviderHub.private\Remove-AzProviderHubSku_Delete';
             DeleteViaIdentity = 'Az.ProviderHub.private\Remove-AzProviderHubSku_DeleteViaIdentity';
             DeleteViaIdentityProviderRegistration = 'Az.ProviderHub.private\Remove-AzProviderHubSku_DeleteViaIdentityProviderRegistration';
-            DeleteViaIdentityResourcetypeRegistration = 'Az.ProviderHub.private\Remove-AzProviderHubSku_DeleteViaIdentityResourcetypeRegistration';
+            DeleteViaIdentityResourceTypeRegistration = 'Az.ProviderHub.private\Remove-AzProviderHubSku_DeleteViaIdentityResourcetypeRegistration';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
