@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Purview
-Module Guid: accceef6-8113-453a-a31c-4f2ce57893d6
+Module Guid: 916e89d4-aa43-465d-8eed-9bf98da41f1d
 Download Help Link: https://learn.microsoft.com/powershell/module/az.purview
 Help Version: 1.0.0.0
 Locale: en-US
@@ -39,5 +39,5 @@ Sets the default account for the scope.
 Checks if account name is available.
 
 ### [Update-AzPurviewAccount](Update-AzPurviewAccount.md)
-Updates an account
+Update an account
 

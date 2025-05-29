@@ -252,22 +252,22 @@ Create an in-memory object for AzureSynapseWorkspaceMsiScan.
 Create an in-memory object for AzureSynapseWorkspaceScanRuleset.
 
 ### [New-AzPurviewClassificationRule](New-AzPurviewClassificationRule.md)
-Creates or Updates a classification rule
+create a classification rule
 
 ### [New-AzPurviewCustomClassificationRuleObject](New-AzPurviewCustomClassificationRuleObject.md)
 Create an in-memory object for CustomClassificationRule.
 
 ### [New-AzPurviewDataSource](New-AzPurviewDataSource.md)
-Creates or Updates a data source
+create a data source
 
 ### [New-AzPurviewFilter](New-AzPurviewFilter.md)
-Creates or updates a filter
+create a filter
 
 ### [New-AzPurviewFilterObject](New-AzPurviewFilterObject.md)
 Create an in-memory object for Filter.
 
 ### [New-AzPurviewKeyVaultConnection](New-AzPurviewKeyVaultConnection.md)
-Creates an instance of a key vault connection
+create an instance of a key vault connection
 
 ### [New-AzPurviewOracleDataSourceObject](New-AzPurviewOracleDataSourceObject.md)
 Create an in-memory object for OracleDataSource.
@@ -294,10 +294,10 @@ Create an in-memory object for SapS4HanaDataSource.
 Create an in-memory object for SapS4HanaSapS4HanaCredentialScan.
 
 ### [New-AzPurviewScan](New-AzPurviewScan.md)
-Creates an instance of a scan
+create an instance of a scan
 
 ### [New-AzPurviewScanRuleset](New-AzPurviewScanRuleset.md)
-Creates or Updates a scan ruleset
+create a scan ruleset
 
 ### [New-AzPurviewSqlServerDatabaseCredentialScanObject](New-AzPurviewSqlServerDatabaseCredentialScanObject.md)
 Create an in-memory object for SqlServerDatabaseCredentialScan.
@@ -312,7 +312,7 @@ Create an in-memory object for SqlServerDatabaseScanRuleset.
 Create an in-memory object for TeradataDataSource.
 
 ### [New-AzPurviewTrigger](New-AzPurviewTrigger.md)
-Creates an instance of a trigger
+create an instance of a trigger
 
 ### [New-AzPurviewTriggerObject](New-AzPurviewTriggerObject.md)
 Create an in-memory object for Trigger.
@@ -354,5 +354,26 @@ Cancels a scan
 Checks if account name is available.
 
 ### [Update-AzPurviewAccount](Update-AzPurviewAccount.md)
-Updates an account
+update an account
+
+### [Update-AzPurviewClassificationRule](Update-AzPurviewClassificationRule.md)
+update a classification rule
+
+### [Update-AzPurviewDataSource](Update-AzPurviewDataSource.md)
+update a data source
+
+### [Update-AzPurviewFilter](Update-AzPurviewFilter.md)
+update a filter
+
+### [Update-AzPurviewKeyVaultConnection](Update-AzPurviewKeyVaultConnection.md)
+update an instance of a key vault connection
+
+### [Update-AzPurviewScan](Update-AzPurviewScan.md)
+update an instance of a scan
+
+### [Update-AzPurviewScanRuleset](Update-AzPurviewScanRuleset.md)
+update a scan ruleset
+
+### [Update-AzPurviewTrigger](Update-AzPurviewTrigger.md)
+update an instance of a trigger
 

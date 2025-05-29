@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzPurviewAccount
 
 ## SYNOPSIS
-Updates an account
+Update an account
 
 ## SYNTAX
 
@@ -28,7 +28,7 @@ Update-AzPurviewAccount -InputObject <IPurviewIdentity> [-ManagedResourceGroupNa
 ```
 
 ## DESCRIPTION
-Updates an account
+Update an account
 
 ## EXAMPLES
 
@@ -40,14 +40,14 @@ Update-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Tag @{"k"="v"}
 ```output
 CloudConnectorAwsExternalId      : xxxxxxxxxx-d074-4f8f-9d7f-10811b250738
 CreatedAt                        : 8/17/2021 6:18:57 AM
-CreatedBy                        : xxxxx.xxxxx@microsoft.com
+CreatedBy                        : xxxxx.Zhou@microsoft.com
 CreatedByObjectId                : xxxxxxx-5be9-4f43-abd2-04561777c8b0
 EndpointCatalog                  : https://test-pa.catalog.purview.azure.com
 EndpointGuardian                 : https://test-pa.guardian.purview.azure.com
 EndpointScan                     : https://test-pa.scan.purview.azure.com
 FriendlyName                     : test-pa
-Id                               : /subscriptions/xxxxxxxx-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg/providers/Microsoft.Purview/a 
-                                   ccounts/test-pa
+Id                               : /subscriptions/xxxxxxxx-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.Purview/a 
+                                   ccounts/bez-pa
 Identity                         : {
                                      "principalId": "xxxxxxxx-7956-4978-87e8-9ddd82cfe2b7",
                                      "tenantId": "xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c5a",
@@ -72,17 +72,17 @@ SkuCapacity                      : 1
 SkuName                          : Standard
 SystemData                       : {
                                      "createdAt": "2021-08-17T06:18:57.7274115Z",
-                                     "createdBy": "xxxxx.xxxxx@microsoft.com",
+                                     "createdBy": "xxxxx.Zhou@microsoft.com",
                                      "createdByType": "User",
                                      "lastModifiedAt": "xxxxxx-08-17T06:18:57.7274115Z",
-                                     "lastModifiedBy": "xxxxx.xxxxx@microsoft.com",
+                                     "lastModifiedBy": "Beisi.Zhou@microsoft.com",
                                      "lastModifiedByType": "User"
                                    }
 SystemDataCreatedAt              : 8/17/2021 6:18:57 AM
-SystemDataCreatedBy              : xxxxx.xxxxx@microsoft.com
+SystemDataCreatedBy              : xxxxx.Zhou@microsoft.com
 SystemDataCreatedByType          : User
 SystemDataLastModifiedAt         : 8/17/2021 6:18:57 AM
-SystemDataLastModifiedBy         : xxxxxx.xxxxx@microsoft.com
+SystemDataLastModifiedBy         : xxxxxx.Zhou@microsoft.com
 SystemDataLastModifiedByType     : User
 Tag                              : {
                                      "k": "v"
@@ -101,14 +101,14 @@ Update-AzPurviewAccount -InputObject $get -Tag @{"k"="v"}
 ```output
 CloudConnectorAwsExternalId      : xxxxxxxxxx-d074-4f8f-9d7f-10811b250738
 CreatedAt                        : 8/17/2021 6:18:57 AM
-CreatedBy                        : xxxxx.xxxxx@microsoft.com
+CreatedBy                        : xxxxx.Zhou@microsoft.com
 CreatedByObjectId                : xxxxxxx-5be9-4f43-abd2-04561777c8b0
 EndpointCatalog                  : https://test-pa.catalog.purview.azure.com
 EndpointGuardian                 : https://test-pa.guardian.purview.azure.com
 EndpointScan                     : https://test-pa.scan.purview.azure.com
 FriendlyName                     : test-pa
-Id                               : /subscriptions/xxxxxxxx-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg/providers/Microsoft.Purview/a 
-                                   ccounts/test-pa
+Id                               : /subscriptions/xxxxxxxx-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.Purview/a 
+                                   ccounts/bez-pa
 Identity                         : {
                                      "principalId": "xxxxxxxx-7956-4978-87e8-9ddd82cfe2b7",
                                      "tenantId": "xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c5a",
@@ -133,17 +133,17 @@ SkuCapacity                      : 1
 SkuName                          : Standard
 SystemData                       : {
                                      "createdAt": "2021-08-17T06:18:57.7274115Z",
-                                     "createdBy": "xxxxx.xxxxx@microsoft.com",
+                                     "createdBy": "xxxxx.Zhou@microsoft.com",
                                      "createdByType": "User",
                                      "lastModifiedAt": "xxxxxx-08-17T06:18:57.7274115Z",
-                                     "lastModifiedBy": "xxxxx.xxxxx@microsoft.com",
+                                     "lastModifiedBy": "Beisi.Zhou@microsoft.com",
                                      "lastModifiedByType": "User"
                                    }
 SystemDataCreatedAt              : 8/17/2021 6:18:57 AM
-SystemDataCreatedBy              : xxxxx.xxxxx@microsoft.com
+SystemDataCreatedBy              : xxxxx.Zhou@microsoft.com
 SystemDataCreatedByType          : User
 SystemDataLastModifiedAt         : 8/17/2021 6:18:57 AM
-SystemDataLastModifiedBy         : xxxxxx.xxxxx@microsoft.com
+SystemDataLastModifiedBy         : xxxxxx.Zhou@microsoft.com
 SystemDataLastModifiedByType     : User
 Tag                              : {
                                      "k": "v"
@@ -188,7 +188,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewIdentity
@@ -347,7 +346,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount
+### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IAccount
 
 ## NOTES
 
