@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
 
+## Version 0.3.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
 ## Version 0.2.1
 * Upgraded nuget package to signed package.
 

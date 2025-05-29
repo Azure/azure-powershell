@@ -22,6 +22,9 @@
 ## Upcoming Release
 * Added breaking change message for `New-AzVM` and `New-AzVmss` cmdlets.
 
+## Version 10.0.1
+* Added breaking change message for `New-AzVM` and `New-AzVmss` cmdlets.
+
 ## Version 10.0.0
 * Added new properties `Architecture`, `HyperVGeneration`, and `ImageDeprecationStatus` to be returned in `Get-AzVMImage` ListVMImage parameter set.
 * Deprecated `Get-AzVMSize` 'List Virtual Machine Size' parameter set. 

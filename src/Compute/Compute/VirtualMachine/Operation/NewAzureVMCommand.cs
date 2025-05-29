@@ -1161,7 +1161,8 @@ namespace Microsoft.Azure.Commands.Compute
                         SecurityProfile = this.VM.SecurityProfile,
                         CapacityReservation = this.VM.CapacityReservation,
                         UserData = this.VM.UserData,
-                        PlatformFaultDomain = this.VM.PlatformFaultDomain
+                        PlatformFaultDomain = this.VM.PlatformFaultDomain,
+                        Placement = this.VM.Placement
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;
