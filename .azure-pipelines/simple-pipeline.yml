@@ -3,12 +3,9 @@ trigger: none
 resources:
   pipelines:
     - pipeline: pipelineA
-      project: release       # 被触发 pipeline 所在项目
-      source: pipelineA     # 被触发 pipeline 的名字
-      trigger:
-        branches:
-          include:
-            - bernard-test-batch-generation-trigger
+      project: release 
+      source: \test\pipelineA  
+      trigger: true
 
 jobs:
 - job: SimpleJob
