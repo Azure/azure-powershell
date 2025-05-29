@@ -1,8 +1,8 @@
 {
-  "Update-AzNetworkCloudConsole+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2024-07-01+1": {
+  "Update-AzNetworkCloudConsole+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2025-02-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2024-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2025-02-01",
       "Content": "{\n  \"properties\": {\n    \"sshPublicKey\": {\n      \"keyData\": \"ssh-rsa REDACTED\"\n    },\n    \"expiration\": \"2023-07-02T01:27:03.0080000Z\"\n  },\n  \"tags\": {\n    \"tag1\": \"tag1\",\n    \"tag2\": \"tagUpdate\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,13 +18,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"7e0007b2-0000-0100-0000-649cc0a00000\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2024-07-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2025-02-01" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "4c0e8533-ced6-4157-9470-ed09eb465464" ],
         "x-ms-request-id": [ "702a298c-7d76-4753-ab29-495762b72da9" ],
         "x-ms-correlation-request-id": [ "d9a824bc-cbac-4277-a0cb-5adc56e22e48" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2024-07-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2025-02-01" ],
         "x-ms-routing-request-id": [ "EASTUS:20230628T232208Z:d9a824bc-cbac-4277-a0cb-5adc56e22e48" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -39,10 +39,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzNetworkCloudConsole+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2024-07-01+2": {
+  "Update-AzNetworkCloudConsole+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2025-02-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2024-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2025-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -80,10 +80,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzNetworkCloudConsole+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2024-07-01+3": {
+  "Update-AzNetworkCloudConsole+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2025-02-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2024-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2025-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
