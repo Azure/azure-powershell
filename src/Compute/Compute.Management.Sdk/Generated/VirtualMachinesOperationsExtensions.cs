@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.Compute
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -1249,7 +1251,7 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='vmName'>
             /// The name of the virtual machine.
             /// </param>
-            public static IPage<VirtualMachineSize> ListAvailableSizes(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
+            public static IEnumerable<VirtualMachineSize> ListAvailableSizes(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
             {
                 return operations.ListAvailableSizesAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
             }
@@ -1270,7 +1272,7 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<VirtualMachineSize>> ListAvailableSizesAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<VirtualMachineSize>> ListAvailableSizesAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListAvailableSizesWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2208,42 +2210,6 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task<IPage<VirtualMachine>> ListNextAsync(this IVirtualMachinesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists all available virtual machine sizes to which the specified virtual
-            /// machine can be resized.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<VirtualMachineSize> ListAvailableSizesNext(this IVirtualMachinesOperations operations, string nextPageLink)
-            {
-                return operations.ListAvailableSizesNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all available virtual machine sizes to which the specified virtual
-            /// machine can be resized.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<VirtualMachineSize>> ListAvailableSizesNextAsync(this IVirtualMachinesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListAvailableSizesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

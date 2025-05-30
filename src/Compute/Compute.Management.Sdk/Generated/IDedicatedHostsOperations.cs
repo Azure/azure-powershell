@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<string>>> ListAvailableSizesWithHttpMessagesAsync(string resourceGroupName, string hostGroupName, string hostName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<string>>> ListAvailableSizesWithHttpMessagesAsync(string resourceGroupName, string hostGroupName, string hostName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Redeploy the dedicated host. The operation will complete
         /// successfully once the dedicated host has migrated to a new node and
@@ -436,29 +436,5 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<DedicatedHost>>> ListByHostGroupNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Lists all available dedicated host sizes to which the specified
-        /// dedicated host can be resized. NOTE: The dedicated host sizes
-        /// provided can be used to only scale up the existing dedicated host.
-        /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<string>>> ListAvailableSizesNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

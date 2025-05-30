@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                AzureOperationResponse<IPage<VirtualMachineSize>> result = null;
+                AzureOperationResponse<IEnumerable<VirtualMachineSize>> result = null;
 
                 if (!string.IsNullOrEmpty(this.VMName))
                 {

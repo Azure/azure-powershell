@@ -46,6 +46,8 @@ directive:
       $.type = "string";
       $.enum = ["Generalized", "Specialized"];
       $["x-ms-enum"] = { "name": "OperatingSystemStateTypes", "modelAsString": false };
+  
+  # Description updates for various definitions
   - from: swagger-document
     where: $..definitions.Architecture
     transform: >
@@ -70,6 +72,67 @@ directive:
     where: $
     transform: >
       $.tags = [];
+
+  # Ensure VirtualMachineSizeListResult doesn't have nextLink property
+  - from: swagger-document
+    where: $.definitions.VirtualMachineSizeListResult
+    transform: |
+      if ($.properties && $.properties.nextLink) {
+        delete $.properties.nextLink;
+      }
+      return $;
+  - from: swagger-document
+    where: $.definitions.DedicatedHostSizeListResult
+    transform: |
+      if ($.properties && $.properties.nextLink) {
+        delete $.properties.nextLink;
+      }
+      return $;
+
+  # Set x-ms-pageable to null for VirtualMachineSizes_List operation
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/vmSizes"].get
+    transform: |
+      if ($["x-ms-pageable"]) {
+        $["x-ms-pageable"] = { "nextLinkName": null };
+      }
+      return $;
+
+  # Set x-ms-pageable to null for VirtualMachines_ListAvailableSizes operation
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/vmSizes"].get
+    transform: |
+      if ($["x-ms-pageable"]) {
+        $["x-ms-pageable"] = { "nextLinkName": null };
+      }
+      return $;
+  
+  # Set x-ms-pageable to null for AvailabilitySets_ListAvailableSizes operation
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/vmSizes"].get
+    transform: |
+      if ($["x-ms-pageable"]) {
+        $["x-ms-pageable"] = { "nextLinkName": null };
+      }
+      return $;
+  
+  # Set x-ms-pageable to null for DedicatedHosts_ListAvailableSizes operation
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/hostSizes"].get
+    transform: |
+      if ($["x-ms-pageable"]) {
+        $["x-ms-pageable"] = { "nextLinkName": null };
+      }
+      return $;
+
+  # Set x-ms-pageable to null for operations_list_ operation
+  - from: swagger-document
+    where: $.paths["/providers/Microsoft.Compute/operations"].get
+    transform: |
+      if ($["x-ms-pageable"]) {
+        $["x-ms-pageable"] = { "nextLinkName": null };
+      }
+      return $;
 
   # Remove existing PassNames and ComponentNames definitions
   - from: swagger-document

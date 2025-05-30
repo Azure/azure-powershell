@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.Compute
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -287,7 +289,7 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='hostName'>
             /// The name of the dedicated host.
             /// </param>
-            public static IPage<string> ListAvailableSizes(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
+            public static IEnumerable<string> ListAvailableSizes(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
             {
                 return operations.ListAvailableSizesAsync(resourceGroupName, hostGroupName, hostName).GetAwaiter().GetResult();
             }
@@ -312,7 +314,7 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<string>> ListAvailableSizesAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<string>> ListAvailableSizesAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListAvailableSizesWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -724,44 +726,6 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task<IPage<DedicatedHost>> ListByHostGroupNextAsync(this IDedicatedHostsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByHostGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists all available dedicated host sizes to which the specified dedicated
-            /// host can be resized. NOTE: The dedicated host sizes provided can be used to
-            /// only scale up the existing dedicated host.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<string> ListAvailableSizesNext(this IDedicatedHostsOperations operations, string nextPageLink)
-            {
-                return operations.ListAvailableSizesNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all available dedicated host sizes to which the specified dedicated
-            /// host can be resized. NOTE: The dedicated host sizes provided can be used to
-            /// only scale up the existing dedicated host.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<string>> ListAvailableSizesNextAsync(this IDedicatedHostsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListAvailableSizesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

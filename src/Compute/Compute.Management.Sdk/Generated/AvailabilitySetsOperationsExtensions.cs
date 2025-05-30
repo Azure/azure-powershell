@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.Compute
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -457,7 +459,7 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='availabilitySetName'>
             /// The name of the availability set.
             /// </param>
-            public static IPage<VirtualMachineSize> ListAvailableSizes(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName)
+            public static IEnumerable<VirtualMachineSize> ListAvailableSizes(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName)
             {
                 return operations.ListAvailableSizesAsync(resourceGroupName, availabilitySetName).GetAwaiter().GetResult();
             }
@@ -478,7 +480,7 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<VirtualMachineSize>> ListAvailableSizesAsync(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<VirtualMachineSize>> ListAvailableSizesAsync(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListAvailableSizesWithHttpMessagesAsync(resourceGroupName, availabilitySetName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -598,42 +600,6 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task<IPage<AvailabilitySet>> ListNextAsync(this IAvailabilitySetsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists all available virtual machine sizes that can be used to create a new
-            /// virtual machine in an existing availability set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<VirtualMachineSize> ListAvailableSizesNext(this IAvailabilitySetsOperations operations, string nextPageLink)
-            {
-                return operations.ListAvailableSizesNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all available virtual machine sizes that can be used to create a new
-            /// virtual machine in an existing availability set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<VirtualMachineSize>> ListAvailableSizesNextAsync(this IAvailabilitySetsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListAvailableSizesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
