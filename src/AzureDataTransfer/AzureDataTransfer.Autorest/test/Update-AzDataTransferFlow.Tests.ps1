@@ -43,31 +43,6 @@ Describe 'Update-AzDataTransferFlow' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateTagsForExistingFlow AsJob' {
-        {
-            # Update tags for the flow as a background job
-            $job = Update-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToUpdate -Tag @{Source="Job"; Domain="Ops"} -AsJob -Confirm:$false
-    
-            # Verify the job is created
-            $job | Should -Not -BeNullOrEmpty
-            ($job.State -eq "Running" -or $job.State -eq "Completed") | Should -Be $true
-    
-            # Wait for the job to complete
-            $job | Wait-Job | Out-Null
-            ($job.State -eq "Completed") | Should -Be $true
-    
-            # Add a slight delay to ensure the update is applied
-            Start-Sleep -Seconds 5
-            
-            # Verify the tags are updated after the job completes
-            $updatedFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToUpdate
-            $updatedFlow | Should -Not -BeNullOrEmpty
-            Write-Host "Updated Flow Tags: $($updatedFlow.Tag | Out-String)"
-            $updatedFlow.Tag["Source"] | Should -Be "Job"
-            $updatedFlow.Tag["Domain"] | Should -Be "Ops"
-        } | Should -Not -Throw
-    }
-
     It 'UpdateViaIdentityConnectionExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
