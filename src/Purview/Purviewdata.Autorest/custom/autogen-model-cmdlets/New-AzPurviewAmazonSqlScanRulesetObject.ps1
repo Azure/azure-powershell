@@ -16,17 +16,18 @@
 
 <#
 .Synopsis
-Create an in-memory object for AzureSynapseWorkspaceScanRuleset.
+Create an in-memory object for AmazonSqlScanRuleset.
 .Description
-Create an in-memory object for AzureSynapseWorkspaceScanRuleset.
+Create an in-memory object for AmazonSqlScanRuleset.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSynapseWorkspaceScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonsqlscanrulesetobject
 #>
-function New-AzPurviewAzureSynapseWorkspaceScanRulesetObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceScanRuleset')]
+function New-AzPurviewAmazonSqlScanRulesetObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlScanRuleset')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,18 +40,14 @@ function New-AzPurviewAzureSynapseWorkspaceScanRulesetObject {
         [Parameter()]
         [string[]]
         $IncludedCustomClassificationRuleName,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
+        [string]
         $Type
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceScanRuleset]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlScanRuleset]::New()
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
@@ -60,9 +57,6 @@ function New-AzPurviewAzureSynapseWorkspaceScanRulesetObject {
         }
         if ($PSBoundParameters.ContainsKey('IncludedCustomClassificationRuleName')) {
             $Object.IncludedCustomClassificationRuleName = $IncludedCustomClassificationRuleName
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         if ($PSBoundParameters.ContainsKey('Type')) {
             $Object.Type = $Type

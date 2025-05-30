@@ -16,17 +16,18 @@
 
 <#
 .Synopsis
-Create an in-memory object for AzureSqlDatabaseScanRuleset.
+Create an in-memory object for SqlServerDatabaseScanRuleset.
 .Description
-Create an in-memory object for AzureSqlDatabaseScanRuleset.
+Create an in-memory object for SqlServerDatabaseScanRuleset.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SqlServerDatabaseScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewsqlserverdatabasescanrulesetobject
 #>
-function New-AzPurviewAzureSqlDatabaseScanRulesetObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseScanRuleset')]
+function New-AzPurviewSqlServerDatabaseScanRulesetObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SqlServerDatabaseScanRuleset')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,18 +40,14 @@ function New-AzPurviewAzureSqlDatabaseScanRulesetObject {
         [Parameter()]
         [string[]]
         $IncludedCustomClassificationRuleName,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
+        [string]
         $Type
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseScanRuleset]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SqlServerDatabaseScanRuleset]::New()
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
@@ -60,9 +57,6 @@ function New-AzPurviewAzureSqlDatabaseScanRulesetObject {
         }
         if ($PSBoundParameters.ContainsKey('IncludedCustomClassificationRuleName')) {
             $Object.IncludedCustomClassificationRuleName = $IncludedCustomClassificationRuleName
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         if ($PSBoundParameters.ContainsKey('Type')) {
             $Object.Type = $Type

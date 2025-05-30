@@ -16,17 +16,18 @@
 
 <#
 .Synopsis
-Create an in-memory object for AmazonSqlScanRuleset.
+Create an in-memory object for AzurePostgreSqlScanRuleset.
 .Description
-Create an in-memory object for AmazonSqlScanRuleset.
+Create an in-memory object for AzurePostgreSqlScanRuleset.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzurePostgreSqlScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonSqlScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurepostgresqlscanrulesetobject
 #>
-function New-AzPurviewAmazonSqlScanRulesetObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlScanRuleset')]
+function New-AzPurviewAzurePostgreSqlScanRulesetObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzurePostgreSqlScanRuleset')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,18 +40,14 @@ function New-AzPurviewAmazonSqlScanRulesetObject {
         [Parameter()]
         [string[]]
         $IncludedCustomClassificationRuleName,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
+        [string]
         $Type
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlScanRuleset]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzurePostgreSqlScanRuleset]::New()
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
@@ -60,9 +57,6 @@ function New-AzPurviewAmazonSqlScanRulesetObject {
         }
         if ($PSBoundParameters.ContainsKey('IncludedCustomClassificationRuleName')) {
             $Object.IncludedCustomClassificationRuleName = $IncludedCustomClassificationRuleName
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         if ($PSBoundParameters.ContainsKey('Type')) {
             $Object.Type = $Type

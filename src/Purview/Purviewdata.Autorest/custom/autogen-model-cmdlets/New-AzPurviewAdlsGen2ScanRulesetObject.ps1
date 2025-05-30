@@ -16,17 +16,18 @@
 
 <#
 .Synopsis
-Create an in-memory object for AzureDataExplorerScanRuleset.
+Create an in-memory object for AdlsGen2ScanRuleset.
 .Description
-Create an in-memory object for AzureDataExplorerScanRuleset.
+Create an in-memory object for AdlsGen2ScanRuleset.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen2ScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewadlsgen2scanrulesetobject
 #>
-function New-AzPurviewAzureDataExplorerScanRulesetObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerScanRuleset')]
+function New-AzPurviewAdlsGen2ScanRulesetObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen2ScanRuleset')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,18 +40,21 @@ function New-AzPurviewAzureDataExplorerScanRulesetObject {
         [Parameter()]
         [string[]]
         $IncludedCustomClassificationRuleName,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ICustomFileExtension[]]
+        $ScanningRuleCustomFileExtension,
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AVRO", "ORC", "PARQUET", "JSON", "TXT", "XML", "Documents", "CSV", "PSV", "SSV", "TSV", "GZ", "DOC", "DOCM", "DOCX", "DOT", "ODP", "ODS", "ODT", "PDF", "POT", "PPS", "PPSX", "PPT", "PPTM", "PPTX", "XLC", "XLS", "XLSB", "XLSM", "XLSX", "XLT")]
+        [string[]]
+        $ScanningRuleFileExtension,
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
+        [string]
         $Type
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerScanRuleset]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen2ScanRuleset]::New()
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
@@ -61,8 +65,11 @@ function New-AzPurviewAzureDataExplorerScanRulesetObject {
         if ($PSBoundParameters.ContainsKey('IncludedCustomClassificationRuleName')) {
             $Object.IncludedCustomClassificationRuleName = $IncludedCustomClassificationRuleName
         }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
+        if ($PSBoundParameters.ContainsKey('ScanningRuleCustomFileExtension')) {
+            $Object.ScanningRuleCustomFileExtension = $ScanningRuleCustomFileExtension
+        }
+        if ($PSBoundParameters.ContainsKey('ScanningRuleFileExtension')) {
+            $Object.ScanningRuleFileExtension = $ScanningRuleFileExtension
         }
         if ($PSBoundParameters.ContainsKey('Type')) {
             $Object.Type = $Type

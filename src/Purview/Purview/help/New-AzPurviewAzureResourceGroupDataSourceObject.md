@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureResourceGroupDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazureresourcegroupdatasourceobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,8 @@ Create an in-memory object for AzureResourceGroupDataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureResourceGroupDataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-ResourceGroup <String>] [-SubscriptionId <String>]
- [<CommonParameters>]
+New-AzPurviewAzureResourceGroupDataSourceObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-ResourceGroup <String>] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +24,7 @@ Create an in-memory object for AzureResourceGroupDataSource.
 
 ### Example 1: Create Azure resource group data source object
 ```powershell
-New-AzPurviewAzureResourceGroupDataSourceObject -Kind 'AzureResourceGroup' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ResourceGroup 'rg' -SubscriptionId '6810b9ce-82d3-4562-9658-xxxxxxxxxx'
+New-AzPurviewAzureResourceGroupDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ResourceGroup 'rg' -SubscriptionId '6810b9ce-82d3-4562-9658-xxxxxxxxxx'
 ```
 
 ```output
@@ -74,20 +73,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroup
 
 ```yaml
@@ -123,7 +108,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureResourceGroupDataSource
 
 ## NOTES
 

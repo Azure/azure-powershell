@@ -8,17 +8,30 @@ schema: 2.0.0
 # New-AzPurviewKeyVaultConnection
 
 ## SYNOPSIS
-Creates an instance of a key vault connection
+Create an instance of a key vault connection
 
 ## SYNTAX
 
+### Create (Default)
 ```
 New-AzPurviewKeyVaultConnection -Endpoint <String> -KeyVaultName <String> -Body <IAzureKeyVault>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzPurviewKeyVaultConnection -Endpoint <String> -KeyVaultName <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzPurviewKeyVaultConnection -Endpoint <String> -KeyVaultName <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates an instance of a key vault connection
+Create an instance of a key vault connection
 
 ## EXAMPLES
 
@@ -41,11 +54,10 @@ Create a key vault connection named 'KeyVaultConnection2' in Purview.
 
 ### -Body
 .
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault
+Parameter Sets: Create
 Aliases:
 
 Required: True
@@ -78,6 +90,36 @@ Example: https://{accountName}.purview.azure.com
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -138,11 +180,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault
 
 ## NOTES
 

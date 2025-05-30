@@ -8,17 +8,30 @@ schema: 2.0.0
 # New-AzPurviewTrigger
 
 ## SYNOPSIS
-Creates an instance of a trigger
+Create an instance of a trigger
 
 ## SYNTAX
 
+### Create (Default)
 ```
 New-AzPurviewTrigger -Endpoint <String> -DataSourceName <String> -ScanName <String> -Body <ITrigger>
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzPurviewTrigger -Endpoint <String> -DataSourceName <String> -ScanName <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzPurviewTrigger -Endpoint <String> -DataSourceName <String> -ScanName <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates an instance of a trigger
+Create an instance of a trigger
 
 ## EXAMPLES
 
@@ -58,11 +71,10 @@ Create trigger for a full scan starting 02/17/22 1:31 PM UTC and ending 7/20/202
 
 ### -Body
 .
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
+Parameter Sets: Create
 Aliases:
 
 Required: True
@@ -110,6 +122,36 @@ Example: https://{accountName}.purview.azure.com
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -170,11 +212,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
 
 ## NOTES
 
