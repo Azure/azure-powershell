@@ -40,15 +40,15 @@ Describe 'Update-AzDataTransferConnection' {
 
             # Verify the tags are updated
             $updatedConnection | Should -Not -BeNullOrEmpty
-            $updatedConnection.Tags.Environment | Should -Be "Production"
-            $updatedConnection.Tags.Department | Should -Be "IT"
+            $updatedConnection.Tag["Environment"] | Should -Be "Production"
+            $updatedConnection.Tag["Department"] | Should -Be "IT"
         } | Should -Not -Throw
     }
 
     It 'UpdateTagsForExistingConnection AsJob' {
         {
             # Update tags for the connection as a background job
-            $job = Update-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToUpdate -Tag @{Source="Job"; Status="Completed"} -AsJob -Confirm:$false
+            $job = Update-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToUpdate -Tag @{Source="Job"; Domain="Ops"} -AsJob -Confirm:$false
     
             # Verify the job is created
             $job | Should -Not -BeNullOrEmpty
@@ -61,8 +61,8 @@ Describe 'Update-AzDataTransferConnection' {
             # Verify the tags are updated after the job completes
             $updatedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToUpdate
             $updatedConnection | Should -Not -BeNullOrEmpty
-            $updatedConnection.Tags.Source | Should -Be "Job"
-            $updatedConnection.Tags.Status | Should -Be "Completed"
+            $updatedConnection.Tag["Source"] | Should -Be "Job"
+            $updatedConnection.Tag["Domain"] | Should -Be "Ops"
         } | Should -Not -Throw
     }
 
