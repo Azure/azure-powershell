@@ -91,9 +91,9 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "File path.")]
+             HelpMessage = "Local File path.")]
         [ValidateNotNullOrEmpty]
-        public string FilePath { get; set; }
+        public string LocalFilePath { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -191,9 +191,9 @@ namespace Microsoft.Azure.Commands.Network
             #region Capture Settings Validations
             if (this.ContinuousCapture == null)
             {
-                if (string.IsNullOrEmpty(this.FilePath) && string.IsNullOrEmpty(this.StorageAccountId))
+                if (string.IsNullOrEmpty(this.LocalFilePath) && string.IsNullOrEmpty(this.StorageAccountId))
                 {
-                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndFilePath: StorageLocation must have either storage id or file path specified.");
+                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalFilePath: StorageLocation must have either storage id or local file path specified.");
                 }
             }
             else
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException("InvalidRequestPropertiesInPacketCaptureRequest: TimeLimitInSecond is not supported in packet capture request.");
                 }
 
-                if (this.FilePath != null)
+                if (this.LocalFilePath != null)
                 {
                     throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalPath: StorageLocation must have either storage id or local path specified.");
                 }
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                packetCaptureProperties.StorageLocation.FilePath = this.FilePath;
+                packetCaptureProperties.StorageLocation.FilePath = this.LocalFilePath;
             }
 
             packetCaptureProperties.StorageLocation.StorageId = this.StorageAccountId;

@@ -625,13 +625,13 @@ function Test-PacketCaptureV2 {
         $s1 = New-AzPacketCaptureScopeConfig -Include "0", "1"
 
         #Create packet capture
-        $job = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -Name $pcName -TargetId $vmss.Id -TargetType "azurevmss" -FilePath C:\captures\Capture.cap -Filter $f1, $f2 -AsJob -TimeLimitInSecond 1200
+        $job = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -Name $pcName -TargetId $vmss.Id -TargetType "azurevmss" -LocalFilePath C:\tmp\Capture.cap -Filter $f1, $f2 -AsJob -TimeLimitInSecond 1200
         $job | Wait-Job
-        $job2 = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -Name $pcName2 -TargetId $vmss.Id -TargetType "azurevmss" -Scope $s1 -FilePath C:\captures\Capture.cap -AsJob
+        $job2 = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -Name $pcName2 -TargetId $vmss.Id -TargetType "azurevmss" -Scope $s1 -LocalFilePath C:\tmp\Capture.cap -AsJob
         $job2 | Wait-Job
-        
+
         Start-TestSleep -Seconds 2
-       
+
         #Get packet capture
         $job = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName -AsJob
         $job | Wait-Job
@@ -639,28 +639,28 @@ function Test-PacketCaptureV2 {
         $job2 = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2 -AsJob
         $job2 | Wait-Job
         $pc2 = $job2 | Receive-Job
-        
+
         #Verification
         Assert-AreEqual $pc.Name $pcName
         Assert-AreEqual $pc.Filters[0].LocalPort 80
         Assert-AreEqual $pc.Filters[0].Protocol TCP
         Assert-AreEqual $pc.Filters[0].RemoteIPAddress 127.0.0.1-127.0.0.255
         Assert-AreEqual $pc.Filters[1].LocalIPAddress 127.0.0.1; 127.0.0.5
-        Assert-AreEqual $pc.StorageLocation.FilePath C:\captures\Capture.cap
+        Assert-AreEqual $pc.StorageLocation.FilePath C:\tmp\Capture.cap
         Assert-AreEqual "Succeeded" $pc.ProvisioningState
         Assert-AreEqual $pc.TargetType AzureVMSS
-       
+
         Assert-AreEqual $pc2.Name $pcName2
-        Assert-AreEqual $pc2.StorageLocation.FilePath C:\captures\Capture.cap
+        Assert-AreEqual $pc2.StorageLocation.FilePath C:\tmp\Capture.cap
         Assert-AreEqual "Succeeded" $pc2.ProvisioningState
         Assert-AreEqual $pc2.TargetType AzureVMSS
-       
+
         #Stop packet capture
         $job = Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName -AsJob
         $job | Wait-Job
         $job2 = Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2 -AsJob
         $job2 | Wait-Job
-        
+
         #Remove packet capture
         $job = Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName -AsJob
         $job | Wait-Job
@@ -670,7 +670,7 @@ function Test-PacketCaptureV2 {
     finally {
         # Cleanup
         Clean-ResourceGroup $resourceGroupName
-        Clean-ResourceGroup $nwRgName
+        #Clean-ResourceGroup $nwRgName
     }
 }
 
@@ -763,7 +763,7 @@ function Test-PacketCaptureV2WithRingBuffer {
     finally {
        # Cleanup
        Clean-ResourceGroup $resourceGroupName
-       Clean-ResourceGroup $nwRgName
+       #Clean-ResourceGroup $nwRgName
     }
 }
 
