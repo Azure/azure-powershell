@@ -1,6 +1,6 @@
 {
   "resourceType": "machines/runCommands",
-  "apiVersion": "2024-07-31-preview",
+  "apiVersion": "2024-11-10-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine"
   },
