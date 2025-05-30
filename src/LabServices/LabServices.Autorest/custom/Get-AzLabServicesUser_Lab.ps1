@@ -13,11 +13,11 @@
 # ----------------------------------------------------------------------------------
 
 function Get-AzLabServicesUser_Lab {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
         ${Lab},
    
         [Parameter()]

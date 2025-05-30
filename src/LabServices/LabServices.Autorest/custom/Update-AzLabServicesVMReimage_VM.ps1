@@ -13,11 +13,11 @@
 # ----------------------------------------------------------------------------------
 
 function Update-AzLabServicesVMReimage_VM {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine]
     ${VM},
 
     [Parameter()]
