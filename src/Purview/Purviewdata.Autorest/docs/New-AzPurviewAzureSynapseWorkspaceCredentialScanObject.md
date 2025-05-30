@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSynapseWorkspaceCredentialScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresynapseworkspacecredentialscanobject
 schema: 2.0.0
 ---
 
@@ -13,11 +13,10 @@ Create an in-memory object for AzureSynapseWorkspaceCredentialScan.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureSynapseWorkspaceCredentialScanObject -Kind <ScanAuthorizationType>
- [-CollectionReferenceName <String>] [-CollectionType <String>] [-ConnectedViaReferenceName <String>]
- [-CredentialReferenceName <String>] [-CredentialType <CredentialType>]
- [-ResourceType <IExpandingResourceScanPropertiesResourceTypes>] [-ScanRulesetName <String>]
- [-ScanRulesetType <ScanRulesetType>] [-Worker <Int32>] [<CommonParameters>]
+New-AzPurviewAzureSynapseWorkspaceCredentialScanObject [-CollectionReferenceName <String>]
+ [-CollectionType <String>] [-ConnectedViaReferenceName <String>] [-CredentialReferenceName <String>]
+ [-CredentialType <String>] [-ResourceType <IExpandingResourceScanPropertiesResourceTypes>]
+ [-ScanRulesetName <String>] [-ScanRulesetType <String>] [-Worker <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +26,7 @@ Create an in-memory object for AzureSynapseWorkspaceCredentialScan.
 
 ### Example 1: Create Azure Synapse Workspace Credential scan object
 ```powershell
-New-AzPurviewAzureSynapseWorkspaceCredentialScanObject -Kind 'AzureSynapseWorkspaceCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp' -ScanRulesetName 'AzureSynapseSQL' -ScanRulesetType 'System'
+New-AzPurviewAzureSynapseWorkspaceCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp' -ScanRulesetName 'AzureSynapseSQL' -ScanRulesetType 'System'
 ```
 
 ```output
@@ -118,7 +117,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -129,26 +128,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceType
-To construct, see NOTES section for RESOURCETYPE properties and create a hash table.
+
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IExpandingResourceScanPropertiesResourceTypes
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IExpandingResourceScanPropertiesResourceTypes
 Parameter Sets: (All)
 Aliases:
 
@@ -178,7 +162,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -211,7 +195,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceCredentialScan
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSynapseWorkspaceCredentialScan
 
 ## NOTES
 

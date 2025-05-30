@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureStorageDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurestoragedatasourceobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create an in-memory object for AzureStorageDataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureStorageDataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-Endpoint <String>] [-Location <String>] [-ResourceGroup <String>]
- [-ResourceName <String>] [-SubscriptionId <String>] [<CommonParameters>]
+New-AzPurviewAzureStorageDataSourceObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-Endpoint <String>] [-Location <String>] [-ResourceGroup <String>] [-ResourceName <String>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Create an in-memory object for AzureStorageDataSource.
 
 ### Example 1: Create Azure Storage data source object
 ```powershell
-New-AzPurviewAzureStorageDataSourceObject -Kind 'AzureStorage' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Endpoint 'https://bnsrpause.blob.core.windows.net'
+New-AzPurviewAzureStorageDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Endpoint 'https://bnsrpause.blob.core.windows.net'
 ```
 
 ```output
@@ -88,21 +88,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,7 +161,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageDataSource
 
 ## NOTES
 

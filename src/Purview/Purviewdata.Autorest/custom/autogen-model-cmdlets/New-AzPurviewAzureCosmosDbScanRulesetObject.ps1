@@ -16,17 +16,18 @@
 
 <#
 .Synopsis
-Create an in-memory object for AmazonS3ScanRuleset.
+Create an in-memory object for AzureCosmosDbScanRuleset.
 .Description
-Create an in-memory object for AmazonS3ScanRuleset.
+Create an in-memory object for AzureCosmosDbScanRuleset.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3ScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureCosmosDbScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3ScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurecosmosdbscanrulesetobject
 #>
-function New-AzPurviewAmazonS3ScanRulesetObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3ScanRuleset')]
+function New-AzPurviewAzureCosmosDbScanRulesetObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureCosmosDbScanRuleset')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,24 +41,13 @@ function New-AzPurviewAmazonS3ScanRulesetObject {
         [string[]]
         $IncludedCustomClassificationRuleName,
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ICustomFileExtension[]]
-        $ScanningRuleCustomFileExtension,
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType[]]
-        $ScanningRuleFileExtension,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind,
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
+        [string]
         $Type
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3ScanRuleset]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureCosmosDbScanRuleset]::New()
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
@@ -67,15 +57,6 @@ function New-AzPurviewAmazonS3ScanRulesetObject {
         }
         if ($PSBoundParameters.ContainsKey('IncludedCustomClassificationRuleName')) {
             $Object.IncludedCustomClassificationRuleName = $IncludedCustomClassificationRuleName
-        }
-        if ($PSBoundParameters.ContainsKey('ScanningRuleCustomFileExtension')) {
-            $Object.ScanningRuleCustomFileExtension = $ScanningRuleCustomFileExtension
-        }
-        if ($PSBoundParameters.ContainsKey('ScanningRuleFileExtension')) {
-            $Object.ScanningRuleFileExtension = $ScanningRuleFileExtension
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         if ($PSBoundParameters.ContainsKey('Type')) {
             $Object.Type = $Type

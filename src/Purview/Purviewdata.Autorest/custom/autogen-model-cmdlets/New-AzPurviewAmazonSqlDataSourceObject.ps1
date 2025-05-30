@@ -21,12 +21,13 @@ Create an in-memory object for AmazonSqlDataSource.
 Create an in-memory object for AmazonSqlDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonSqlDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonsqldatasourceobject
 #>
 function New-AzPurviewAmazonSqlDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlDataSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -44,15 +45,11 @@ function New-AzPurviewAmazonSqlDataSourceObject {
         $ServerEndpoint,
         [Parameter()]
         [string]
-        $VpcEndpointServiceName,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind
+        $VpcEndpointServiceName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('CollectionReferenceName')) {
             $Object.CollectionReferenceName = $CollectionReferenceName
@@ -68,9 +65,6 @@ function New-AzPurviewAmazonSqlDataSourceObject {
         }
         if ($PSBoundParameters.ContainsKey('VpcEndpointServiceName')) {
             $Object.VpcEndpointServiceName = $VpcEndpointServiceName
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

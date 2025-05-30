@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureDataExplorerCredentialScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuredataexplorercredentialscanobject
 schema: 2.0.0
 ---
 
@@ -13,10 +13,10 @@ Create an in-memory object for AzureDataExplorerCredentialScan.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureDataExplorerCredentialScanObject -Kind <ScanAuthorizationType>
- [-CollectionReferenceName <String>] [-CollectionType <String>] [-ConnectedViaReferenceName <String>]
- [-CredentialReferenceName <String>] [-CredentialType <CredentialType>] [-Database <String>]
- [-ScanRulesetName <String>] [-ScanRulesetType <ScanRulesetType>] [-Worker <Int32>] [<CommonParameters>]
+New-AzPurviewAzureDataExplorerCredentialScanObject [-CollectionReferenceName <String>]
+ [-CollectionType <String>] [-ConnectedViaReferenceName <String>] [-CredentialReferenceName <String>]
+ [-CredentialType <String>] [-Database <String>] [-ScanRulesetName <String>] [-ScanRulesetType <String>]
+ [-Worker <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ Create an in-memory object for AzureDataExplorerCredentialScan.
 
 ### Example 1: Create Azure Data Explorer Credential scan object
 ```powershell
-New-AzPurviewAzureDataExplorerCredentialScanObject -Kind 'AzureDataExplorerCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'svcp' -CredentialType 'ServicePrincipal' -ScanRulesetName 'AzureDataExplorer' -ScanRulesetType 'System'
+New-AzPurviewAzureDataExplorerCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'svcp' -CredentialType 'ServicePrincipal' -ScanRulesetName 'AzureDataExplorer' -ScanRulesetType 'System'
 ```
 
 ```output
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,21 +142,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ScanRulesetName
 
 
@@ -176,7 +161,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -209,7 +194,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerCredentialScan
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureDataExplorerCredentialScan
 
 ## NOTES
 

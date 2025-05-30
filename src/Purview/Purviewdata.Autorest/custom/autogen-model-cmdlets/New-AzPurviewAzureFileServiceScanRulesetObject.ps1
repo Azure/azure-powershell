@@ -16,17 +16,18 @@
 
 <#
 .Synopsis
-Create an in-memory object for AzureStorageScanRuleset.
+Create an in-memory object for AzureFileServiceScanRuleset.
 .Description
-Create an in-memory object for AzureStorageScanRuleset.
+Create an in-memory object for AzureFileServiceScanRuleset.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureFileServiceScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurefileservicescanrulesetobject
 #>
-function New-AzPurviewAzureStorageScanRulesetObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageScanRuleset')]
+function New-AzPurviewAzureFileServiceScanRulesetObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureFileServiceScanRuleset')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,24 +41,20 @@ function New-AzPurviewAzureStorageScanRulesetObject {
         [string[]]
         $IncludedCustomClassificationRuleName,
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ICustomFileExtension[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ICustomFileExtension[]]
         $ScanningRuleCustomFileExtension,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AVRO", "ORC", "PARQUET", "JSON", "TXT", "XML", "Documents", "CSV", "PSV", "SSV", "TSV", "GZ", "DOC", "DOCM", "DOCX", "DOT", "ODP", "ODS", "ODT", "PDF", "POT", "PPS", "PPSX", "PPT", "PPTM", "PPTX", "XLC", "XLS", "XLSB", "XLSM", "XLSX", "XLT")]
+        [string[]]
         $ScanningRuleFileExtension,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
+        [string]
         $Type
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageScanRuleset]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureFileServiceScanRuleset]::New()
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
@@ -73,9 +70,6 @@ function New-AzPurviewAzureStorageScanRulesetObject {
         }
         if ($PSBoundParameters.ContainsKey('ScanningRuleFileExtension')) {
             $Object.ScanningRuleFileExtension = $ScanningRuleFileExtension
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         if ($PSBoundParameters.ContainsKey('Type')) {
             $Object.Type = $Type

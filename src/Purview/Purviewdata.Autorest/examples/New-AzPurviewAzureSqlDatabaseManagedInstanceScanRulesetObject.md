@@ -1,6 +1,6 @@
 ### Example 1: Create Azure SQL Database Managed Instance custom scanruleset object
 ```powershell
-New-AzPurviewAzureSqlDatabaseManagedInstanceScanRulesetObject -Kind 'AzureSqlDatabaseManagedInstance' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+New-AzPurviewAzureSqlDatabaseManagedInstanceScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
 ```
 
 ```output

@@ -1,6 +1,6 @@
 ### Example 1: Create Azure resource group Credential scan object
 ```powershell
-New-AzPurviewAzureResourceGroupCredentialScanObject -Kind 'AzureResourceGroupCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp'
+New-AzPurviewAzureResourceGroupCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp'
 ```
 
 ```output

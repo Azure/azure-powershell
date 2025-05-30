@@ -21,12 +21,13 @@ Create an in-memory object for SapEccDataSource.
 Create an in-memory object for SapEccDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapEccDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapEccDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewSapEccDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewsapeccdatasourceobject
 #>
 function New-AzPurviewSapEccDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapEccDataSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapEccDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -41,15 +42,11 @@ function New-AzPurviewSapEccDataSourceObject {
         $CollectionType,
         [Parameter()]
         [string]
-        $SystemNumber,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind
+        $SystemNumber
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapEccDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapEccDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('ApplicationServer')) {
             $Object.ApplicationServer = $ApplicationServer
@@ -62,9 +59,6 @@ function New-AzPurviewSapEccDataSourceObject {
         }
         if ($PSBoundParameters.ContainsKey('SystemNumber')) {
             $Object.SystemNumber = $SystemNumber
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

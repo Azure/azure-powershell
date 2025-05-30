@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSubscriptionDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresubscriptiondatasourceobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,8 @@ Create an in-memory object for AzureSubscriptionDataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureSubscriptionDataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-SubscriptionId <String>]
- [<CommonParameters>]
+New-AzPurviewAzureSubscriptionDataSourceObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +24,7 @@ Create an in-memory object for AzureSubscriptionDataSource.
 
 ### Example 1: Create Azure Subscription data source object
 ```powershell
-New-AzPurviewAzureSubscriptionDataSourceObject -Kind 'AzureSubscription' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -SubscriptionId '6810b9ce-82d3-4562-9658-xxxxxxxxxx'
+New-AzPurviewAzureSubscriptionDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -SubscriptionId '6810b9ce-82d3-4562-9658-xxxxxxxxxx'
 ```
 
 ```output
@@ -73,20 +72,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 
 ```yaml
@@ -108,7 +93,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSubscriptionDataSource
 
 ## NOTES
 

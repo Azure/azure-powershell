@@ -21,12 +21,13 @@ Create an in-memory object for OracleDataSource.
 Create an in-memory object for OracleDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OracleDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.OracleDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewOracleDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurvieworacledatasourceobject
 #>
 function New-AzPurviewOracleDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OracleDataSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.OracleDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -44,15 +45,11 @@ function New-AzPurviewOracleDataSourceObject {
         $Port,
         [Parameter()]
         [string]
-        $Service,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind
+        $Service
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OracleDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.OracleDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('CollectionReferenceName')) {
             $Object.CollectionReferenceName = $CollectionReferenceName
@@ -68,9 +65,6 @@ function New-AzPurviewOracleDataSourceObject {
         }
         if ($PSBoundParameters.ContainsKey('Service')) {
             $Object.Service = $Service
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }
