@@ -14,6 +14,130 @@
 
 <#
 .SYNOPSIS
+Test Create Azure HDInsight Cluster With WASB Storage And MSI
+#>
+
+function Test-CreateClusterWithWasbAndMSI{
+	try{
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameter
+		$storageAccountKey=Get-AzStorageAccountKey -ResourceGroupName "yukundemo1" -Name "yk01wasb666666666666"
+		$storageAccountKey=$storageAccountKey[0].Value
+		$clusterParams = @{
+			ClusterType                     = $params.clusterType
+			ClusterSizeInNodes              = $params.clusterSizeInNodes
+			ResourceGroupName               = $params.resourceGroupName
+			ClusterName                     = $params.clusterName
+			HttpCredential                  = $params.httpCredential
+			SshCredential                   = $params.sshCredential
+			Location                        = $params.location
+			MinSupportedTlsVersion          = $params.minSupportedTlsVersion
+			VirtualNetworkId                = $params.virtualNetworkId
+			SubnetName                      = "default"
+			Version                         = "5.1"
+			StorageAccountType              = "AzureStorage"
+			StorageContainer                = $params.clusterName
+			StorageAccountKey               = $storageAccountKey
+			StorageAccountResourceId        = "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.Storage/storageAccounts/yk01wasb666666666666"
+			StorageAccountManagedIdentity   = "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/yk-test-msi"
+        }
+		# test create cluster
+		$cluster = New-AzHDInsightCluster @clusterParams
+		Assert-NotNull $cluster
+	}
+	finally
+	{
+		# Delete cluster and resource group
+		# Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
+	}
+}
+
+
+
+
+<#
+.SYNOPSIS
+Test Create Entra HDInsight Cluster 
+#>
+
+function Test-CreateEntraCluster{
+	try{
+		 $params= Prepare-ClusterCreateParameter
+		 $user1 = Add-AzHDInsightClusterGatewayEntraUserInfo -ObjectId "745addd7-cb2c-4023-903f-cf9d71b4385f" -DisplayName "Yukun Li (Beyondsoft)"  -Upn "v-yukunli_microsoft.com#EXT#@securehadooprc.onmicrosoft.com"
+		 $user2 = Get-AzADUser -ObjectId "9cd85b81-c262-44da-bc33-96c3b8c182d3" | Add-AzHDInsightClusterGatewayEntraUserInfo
+		 $user3 = Get-AzADUser -First 3 |  Add-AzHDInsightClusterGatewayEntraUserInfo
+		 $users = @($user1) + @($user2) + $user3
+		 $clusterParams = @{
+			ClusterType                     = $params.clusterType
+			ClusterSizeInNodes              = $params.clusterSizeInNodes
+			ResourceGroupName               = $params.resourceGroupName
+			ClusterName                     = $params.clusterName
+			SshCredential                   = $params.sshCredential
+			Location                        = $params.location
+			MinSupportedTlsVersion          = $params.minSupportedTlsVersion
+			VirtualNetworkId                = $params.virtualNetworkId
+			SubnetName                      = "default"
+			Version                         = "5.1"
+			StorageContainer                = $params.clusterName
+			StorageAccountKey               = $params.storageAccountKey
+			StorageAccountResourceId        = $params.storageAccountResourceId
+			RestAuthEntraUsers              = $users
+        }
+		$resultCluster = New-AzHDInsightCluster @clusterParams
+		Assert-NotNull $resultCluster
+	}
+
+	finally
+	{
+		# Delete cluster and resource group
+		# Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
+	}
+}
+
+
+
+<#
+.SYNOPSIS
+Test Update Entra User And Get Entra User
+#>
+
+function Test-UpdateAndGetEntraUserInfo{
+	try{
+		# prepare parameter for creating parameter
+		$resourceGroupName = "group-ps-test35"
+		$clusterName = "az19882"
+
+		$user1 = Add-AzHDInsightClusterGatewayEntraUserInfo -ObjectId "745addd7-cb2c-4023-903f-cf9d71b4385f" -DisplayName "Yukun Li (Beyondsoft)"  -Upn "v-yukunli_microsoft.com#EXT#@securehadooprc.onmicrosoft.com"
+		$resultEntraUsers = Get-AzHDInsightClusterGatewayEntraUserInfo -ResourceGroupName $resourceGroupName -ClusterName $clusterName
+		Assert-AreEqual $user1.ObjectId      $resultEntraUsers[0].ObjectId
+		Assert-AreEqual $user1.DisplayName   $resultEntraUsers[0].DisplayName
+		Assert-AreEqual $user1.Upn           $resultEntraUsers[0].Upn
+
+		$user2 = Get-AzADUser -ObjectId "9cd85b81-c262-44da-bc33-96c3b8c182d3" | Add-AzHDInsightClusterGatewayEntraUserInfo
+		Set-AzHDInsightGatewayCredential -ResourceGroupName $resourceGroupName -ClusterName $clusterName -RestAuthEntraUsers $user2
+		$resultEntraUsers = Get-AzHDInsightClusterGatewayEntraUserInfo -ResourceGroupName $resourceGroupName -ClusterName $clusterName
+		Assert-AreEqual $user2.ObjectId      $resultEntraUsers[1].ObjectId
+		Assert-AreEqual $user2.DisplayName   $resultEntraUsers[1].DisplayName
+		Assert-AreEqual $user2.Upn           $resultEntraUsers[1].Upn
+
+		$user3 = Get-AzADUser -First 3 |  Add-AzHDInsightClusterGatewayEntraUserInfo
+		Set-AzHDInsightGatewayCredential -ResourceGroupName $resourceGroupName -ClusterName $clusterName -RestAuthEntraUsers $user3
+		$resultEntraUsers = Get-AzHDInsightClusterGatewayEntraUserInfo -ResourceGroupName $resourceGroupName -ClusterName $clusterName
+		Assert-AreEqual $user3[0].ObjectId      $resultEntraUsers[2].ObjectId
+		Assert-AreEqual $user3[0].DisplayName   $resultEntraUsers[2].DisplayName
+		Assert-AreEqual $user3[0].Upn           $resultEntraUsers[2].Upn
+	}
+
+	finally
+	{
+		# Delete cluster and resource group
+		# Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
+	}
+}
+
+
+<#
+.SYNOPSIS
 Test Create and resize Azure HDInsight Cluster
 #>
 
@@ -30,7 +154,7 @@ function Test-ClusterRelatedCommands{
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential  -VirtualNetworkId $params.virtualNetworkId -SubnetName "default" `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -Version "5.1"
 
 		Assert-NotNull $cluster
 		
@@ -41,7 +165,7 @@ function Test-ClusterRelatedCommands{
 		#test Set-AzHDInsightClusterSize
 		$resizeCluster = Set-AzHDInsightClusterSize -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup `
 		-TargetInstanceCount 3
-		Assert-AreEqual $resizeCluster.CoresUsed 40
+		Assert-AreEqual $resizeCluster.CoresUsed 32
 	}
 	finally
 	{
@@ -290,16 +414,16 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
 		#"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
-		$vnetId= "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn"
+		$vnetId= "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.Network/virtualNetworks/yk01networkeastasia"
 		$subnetName="default"
 
 		# create cluster
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
-		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType "Spark" `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
-		-VirtualNetworkId $vnetId -SubnetName $subnetName -Version 4.0 `
+		-VirtualNetworkId $vnetId -SubnetName $subnetName -Version "5.1" `
 		-ResourceProviderConnection Outbound -PrivateLink Enabled -PublicIpTagType FirstPartyUsage -PublicIpTag HDInsight
 
 		Assert-AreEqual $cluster.NetworkProperties.ResourceProviderConnection Outbound
@@ -408,9 +532,9 @@ function Test-ClusterEnableSecureChannelCommands{
 
 		# test create cluster
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
-		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType "Spark" `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
-		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential -Version "5.1" `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EnableSecureChannel $enableSecureChannel -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 
 		Assert-NotNull $cluster
@@ -544,8 +668,8 @@ function Test-UpdateClusterTags{
 		# prepare parameter for creating parameter
 		#$params= Prepare-ClusterCreateParameter
 
-		$rg="yuchen-devrp"
-		$clusterName="yuchen-hadoop-002"
+		$rg="group-ps-test1721"
+		$clusterName="az16040"
 
 		# Update cluster tags
 		$tags = New-Object 'System.Collections.Generic.Dictionary[System.String,System.String]'
@@ -567,8 +691,8 @@ Test Update cluster System Assigned Identity
 function Test-UpdateClusterSystemAssigned{
 	try
 	{
-		$rg="yuchen-ps-test"
-		$clusterName="h1-spark"
+		$rg="yukundemo1"
+		$clusterName="ykc20wasb"
 
 		$cluster = Update-AzHDInsightCluster -ResourceGroupName $rg -ClusterName $clusterName -IdentityType SystemAssigned
 
@@ -589,13 +713,13 @@ Test Update cluster User Assigned Identity
 function Test-UpdateClusterUserAssigned{
 	try
 	{
-		$rg="yuchen-ps-test"
-		$clusterName="h1-spark"
+		$rg="yukundemo1"
+		$clusterName="ykc20wasb"
 
 		# Define the list of Identity IDs
 		$identityIds = @(
-			"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/yuchen-ps-test/providers/microsoft.managedidentity/userassignedidentities/hdi-msi",
-			"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/yuchen-devrp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdiwasbmsi"
+			"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/yk-test-msi",
+			"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/yk-test-msi-east-asia"
 		)
 
 		$cluster = Update-AzHDInsightCluster -ResourceGroupName $rg -ClusterName $clusterName -IdentityType UserAssigned -IdentityId $identityIds

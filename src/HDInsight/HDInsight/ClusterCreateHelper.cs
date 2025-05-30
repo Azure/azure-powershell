@@ -22,18 +22,30 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     public static class ClusterCreateHelper
     {
-        public static void AddClusterCredentialToGatewayConfig(PSCredential httpCredential, IDictionary<string, Dictionary<string, string>> configurations)
+        public static void AddClusterCredentialToGatewayConfig(PSCredential httpCredential, IDictionary<string, Dictionary<string, string>> configurations, IList<EntraUserInfo> restAuthEntraUsers )
         {
             Dictionary<string, string> gatewayConfig = GetExistingConfigurationsForType(configurations, Constants.ConfigurationKey.Gateway);
-            if (!string.IsNullOrEmpty(httpCredential?.UserName))
+            bool isHttpCredentialBound = !string.IsNullOrEmpty(httpCredential?.UserName);
+            bool isRestAuthEntraUsersBound = restAuthEntraUsers?.Any() == true;
+            
+            if (isHttpCredentialBound && isRestAuthEntraUsersBound)
+            {
+                throw new ParameterBindingException("Error: Cannot provide both HttpCredential and RestAuthEntraUsers parameters.");
+            }
+            if (!isHttpCredentialBound && !isRestAuthEntraUsersBound)
+            {
+                throw new ParameterBindingException("Error: Either HttpCredential or RestAuthEntraUsers parameter must be provided.");
+            }
+            if (isHttpCredentialBound)
             {
                 gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "true";
                 gatewayConfig[Constants.GatewayConfigurations.UserNameKey] = httpCredential?.UserName;
                 gatewayConfig[Constants.GatewayConfigurations.PasswordKey] = httpCredential?.Password?.ConvertToString();
             }
-            else
+            if (isRestAuthEntraUsersBound)
             {
                 gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "false";
+                gatewayConfig[Constants.GatewayConfigurations.EntraUsers] = System.Text.Json.JsonSerializer.Serialize(restAuthEntraUsers);
             }
 
             configurations[Constants.ConfigurationKey.Gateway] = gatewayConfig;

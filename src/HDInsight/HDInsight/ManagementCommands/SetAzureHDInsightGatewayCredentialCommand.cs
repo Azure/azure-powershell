@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(
             Position = 1,
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Gets or sets the login for the cluster's user.")]
         public PSCredential HttpCredential
@@ -92,6 +93,12 @@ namespace Microsoft.Azure.Commands.HDInsight
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets list of Entra users for gateway access.")]
+        public List<EntraUserInfo> RestAuthEntraUsers { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background.")]
         public SwitchParameter AsJob { get; set; }
 
@@ -99,12 +106,33 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            var updateGatewaySettingsParameters = new UpdateGatewaySettingsParameters
+            bool isHttpCredentialBound = this.IsParameterBound(c => c.HttpCredential);
+            bool isRestAuthEntraUsersBound = this.IsParameterBound(c => c.RestAuthEntraUsers);
+
+            if (isHttpCredentialBound && isRestAuthEntraUsersBound)
             {
-                IsCredentialEnabled = true,
-                UserName = HttpCredential.UserName,
-                Password = HttpCredential.Password.ConvertToString()
-            };
+                throw new ParameterBindingException("Error: Cannot provide both HttpCredential and RestAuthEntraUsers parameters.");
+            }
+
+            if (!isHttpCredentialBound && !isRestAuthEntraUsersBound)
+            {
+                throw new ParameterBindingException("Error: Either HttpCredential or RestAuthEntraUsers parameter must be provided.");
+            }
+
+            var updateGatewaySettingsParameters = new UpdateGatewaySettingsParameters();
+            if (isHttpCredentialBound)
+            {
+                updateGatewaySettingsParameters.IsCredentialEnabled = true;
+                updateGatewaySettingsParameters.UserName = HttpCredential.UserName;
+                updateGatewaySettingsParameters.Password = HttpCredential.Password.ConvertToString();
+            }
+
+            if (isRestAuthEntraUsersBound)
+            {
+                updateGatewaySettingsParameters.IsCredentialEnabled = false;
+                updateGatewaySettingsParameters.RestAuthEntraUsers = RestAuthEntraUsers;
+            }
+
 
             if (this.IsParameterBound(c => c.ResourceId))
             {
@@ -124,7 +152,9 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ResourceGroupName = GetResourceGroupByAccountName(Name);
             }
 
-            if (ShouldProcess(Name, "set gateway http credential"))
+            string action = isHttpCredentialBound ? "set gateway HTTP credential" : "set gateway Entra users";
+
+            if (ShouldProcess(Name, action))
             {
                 HDInsightManagementClient.UpdateGatewayCredential(ResourceGroupName, Name, updateGatewaySettingsParameters);
                 WriteObject(new AzureHDInsightGatewaySettings(HDInsightManagementClient.GetGatewaySettings(ResourceGroupName, Name)));
