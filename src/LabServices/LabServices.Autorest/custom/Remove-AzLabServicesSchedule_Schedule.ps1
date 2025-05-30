@@ -17,7 +17,7 @@ function Remove-AzLabServicesSchedule_Schedule {
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Schedule]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Schedule]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     ${Schedule},
 

@@ -42,6 +42,12 @@ Get-AzLabServicesLabPlan [-SubscriptionId <String[]>] -ResourceId <String> [-Def
  [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzLabServicesLabPlan -InputObject <ILabServicesIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Retrieves the properties of a Lab Plan.
 
@@ -92,6 +98,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -146,7 +167,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: List, ListByLabPlanName, Get, List1, ResourceId
 Aliases:
 
 Required: False
@@ -161,11 +182,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+
 ### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan
 
 ## NOTES
 
