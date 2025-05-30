@@ -15,20 +15,28 @@
 
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSApplicationGatewayFirewallPolicyManagedRules
+    public partial class PSApplicationGatewayFirewallPolicyException
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public List<PSApplicationGatewayFirewallPolicyManagedRuleSet> ManagedRuleSets { get; set; }
+        public string MatchVariable { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public List<PSApplicationGatewayFirewallPolicyExclusion> Exclusions { get; set; }
+        public List<string> Values { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public List<PSApplicationGatewayFirewallPolicyException> Exceptions { get; set; }
+        public string ValueMatchOperator { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string SelectorMatchOperator { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string Selector { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public List<PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet> ExceptionManagedRuleSets { get; set; }
     }
 }
