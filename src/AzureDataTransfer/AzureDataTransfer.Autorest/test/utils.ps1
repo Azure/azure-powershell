@@ -46,9 +46,33 @@ function setupEnv() {
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
-        $envFile = 'localEnv.json'
+        $envFile = 'env.json'
     }
-    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+    # Check if the env.json file already exists
+    if (-Not (Test-Path -Path (Join-Path $PSScriptRoot $envFile))) {
+        Write-Host "env.json file does not exist. Creating a new one..."
+        Set-Content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+    } else {
+        Write-Host "env.json file already exists. Skipping creation."
+    }
+
+    # Define the path to the env.json file
+    $envFilePath = Join-Path $PSScriptRoot 'env.json'
+
+    # Check if the env.json file exists
+    if (Test-Path -Path $envFilePath) {
+        # Load the JSON file and convert it to a PowerShell object
+        $envData = Get-Content -Path $envFilePath | ConvertFrom-Json
+
+        # Iterate through each key-value pair in the JSON object and add it to $env
+        foreach ($key in $envData.PSObject.Properties.Name) {
+            $env.$key = $envData.$key
+        }
+
+        Write-Host "Environment variables loaded from env.json."
+    } else {
+        Write-Host "env.json file not found. Skipping environment variable setup."
+    }
 }
 function cleanupEnv() {
     # Clean resources you create for testing

@@ -99,7 +99,7 @@ Describe 'Remove-AzDataTransferConnection' {
     
             # Verify the job is created
             $job | Should -Not -BeNullOrEmpty
-            $job.State | Should -Be "Running" -Or "Completed"
+            ($job.State -eq "Running" -or $job.State -eq "Completed") | Should -Be $true
     
             # Wait for the job to complete
             $job | Wait-Job | Out-Null

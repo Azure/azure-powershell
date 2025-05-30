@@ -17,6 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Deny-AzDataTransferConnection
 $connectionToDenyName = "test-connection-to-deny-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
 $connectionToDenyAsJobName = "test-connection-to-deny-as-job-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
 
+Write-Host "Connection names for denial - $connectionToDenyName, $connectionToDenyAsJobName"
+
 Describe 'Deny-AzDataTransferConnection' {
     $connectionParams = @{
         Location             =  $env.Location
@@ -33,7 +35,7 @@ Describe 'Deny-AzDataTransferConnection' {
     $connectionToDeny = New-AzDataTransferConnection @connectionParams
     $connectionToDenyId = $connectionToDeny.Id
 
-    $connectionParams = @{
+    $connectionAsJobParams = @{
         Location             =  $env.Location
         PipelineName         =  $env.PipelineName
         Direction            = "Receive"
@@ -45,13 +47,15 @@ Describe 'Deny-AzDataTransferConnection' {
         Name                 = $connectionToDenyAsJobName
         PrimaryContact       = "faikh@microsoft.com"
     }
-    $connectionToDenyAsJob = New-AzDataTransferConnection @connectionParams
+    $connectionToDenyAsJob = New-AzDataTransferConnection @connectionAsJobParams
     $connectionToDenyAsJobId = $connectionToDenyAsJob.Id
 
     It 'Deny' {
         {
             # Deny the connection
-            $deniedConnection = Deny-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $connectionToDenyId -StatusReason "Rejected for testing" -Confirm:$false | Should -Not -Throw
+            { $deniedConnection = Deny-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $connectionToDenyId -StatusReason "Rejected for testing" -Confirm:$false } | Should -Not -Throw
+
+            $deniedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToDenyName
 
             # Verify the connection is denied
             $deniedConnection.Status | Should -Be "Rejected"
@@ -61,7 +65,7 @@ Describe 'Deny-AzDataTransferConnection' {
     It 'Deny when already denied' {
         {
             # Ensure the connection is already denied
-            Deny-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $env.ConnectionRejectedId -StatusReason "Rejected for testing" -Confirm:$false | Should -Throw
+            { Deny-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $env.ConnectionRejectedId -StatusReason "Rejected for testing" -Confirm:$false } | Should -Throw
 
             # Verify the connection is still denied
             $deniedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $env.ConnectionRejected
@@ -72,11 +76,11 @@ Describe 'Deny-AzDataTransferConnection' {
     It 'Deny when already approved' {
         {
             # Attempt to deny the approved connection
-            Deny-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $env.ConnectionApprovedId -StatusReason "Rejecting for testing" -Confirm:$false | Should -Throw
+            { Deny-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $env.ConnectionApprovedId -StatusReason "Rejecting for testing" -Confirm:$false } | Should -Throw
 
-            # Verify the connection is now denied
+            # Verify the connection is still approved
             $approvedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $env.ConnectionApproved
-            $deniedConnection.Status | Should -Be "Approved"
+            $approvedConnection.Status | Should -Be "Approved"
         } | Should -Not -Throw
     }
 
@@ -87,14 +91,14 @@ Describe 'Deny-AzDataTransferConnection' {
     
             # Verify the job is created
             $job | Should -Not -BeNullOrEmpty
-            $job.State | Should -Be "Running" -Or "Completed"
+            ($job.State -eq "Running" -or $job.State -eq "Completed") | Should -Be $true
     
             # Wait for the job to complete
             $job | Wait-Job | Out-Null
     
             # Verify the connection is rejected after the job completes
             $deniedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToDenyAsJobName
-            $deniedConnection.Status | Should -Be "Approved"
+            $deniedConnection.Status | Should -Be "Rejected"
         } | Should -Not -Throw
     }
     

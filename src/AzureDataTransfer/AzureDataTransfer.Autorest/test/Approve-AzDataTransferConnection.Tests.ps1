@@ -17,6 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Approve-AzDataTransferConnect
 $connectionToApproveName = "test-connection-to-approve-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
 $connectionToApproveAsJobName = "test-connection-to-approve-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
 
+Write-Host "Connection names: $connectionToApproveName, $connectionToApproveAsJobName"
+
 Describe 'Approve-AzDataTransferConnection' {
     $connectionParams = @{
         Location             = $env.Location
@@ -61,7 +63,7 @@ Describe 'Approve-AzDataTransferConnection' {
     It 'Approve when already approved' {
         {
             # Attempt to approve and approved connection
-            Approve-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $env.ConnectionApprovedId -StatusReason "Approved for processing" -Confirm:$false | Should -Throw
+            { Approve-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $env.ConnectionApprovedId -StatusReason "Approved for processing" -Confirm:$false } | Should -Throw -ErrorId "ConnectionAlreadyReviewed"
 
             # Verify the connection is still approved
             $approvedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $env.ConnectionApproved
@@ -72,7 +74,7 @@ Describe 'Approve-AzDataTransferConnection' {
     It 'Approve when already rejected' {
         {
             # Attempt to approve a rejected connection
-            Approve-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $env.ConnectionRejectedId -StatusReason "Approving for testing" -Confirm:$false | Should -Throw
+            { Approve-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $env.ConnectionRejectedId -StatusReason "Approving for testing" -Confirm:$false } | Should -Throw -ErrorId "ConnectionAlreadyReviewed"
 
             # Verify the connection is still rejected
             $rejectedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $env.ConnectionRejected
@@ -87,7 +89,7 @@ Describe 'Approve-AzDataTransferConnection' {
     
             # Verify the job is created
             $job | Should -Not -BeNullOrEmpty
-            $job.State | Should -Be "Running" -Or "Completed"
+            ($job.State -eq "Running" -or $job.State -eq "Completed") | Should -Be $true
     
             # Wait for the job to complete
             $job | Wait-Job | Out-Null
