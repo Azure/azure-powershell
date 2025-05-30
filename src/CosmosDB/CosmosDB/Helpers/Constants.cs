@@ -160,6 +160,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ResetPartitionThroughputLayoutHelpMessage = "Set this switch to reset the throughput layout for all partitions.";
         public const string PhysicalPartitionThroughputInfosHelpMessage = "List of PhysicalPartitionInfo objects for which throughput needs to be retrieved..";
         public const string PhysicalPartitionIdsHelpMessage = "List of PhysicalPartitionId for which throughput needs to be retrieved.";
+        public const string VectorEmbeddingPolicyVectorEmbeddingHelpMessage = "Represents a vector embedding. A vector embedding is used to define a vector field in the documents.";
+        public const string VectorEmbeddingPathHelpMessage = "The path to the vector field in the document.";
+        public const string VectorEmbeddingDataTypeHelpMessage = "Indicates the data type of vector.";
+        public const string VectorEmbeddingDistanceFunctionHelpMessage = "The distance function to use for distance calculation in between vectors.";
+        public const string VectorEmbeddingDimensionsHelpMessage = "The number of dimensions in the vector.";
+        public const string IndexingPolicyVectorIndexHelpMessage = "Array of strings containing path to the vector field in the document.";
 
         //SQL Client Side Encryption
         public const string ClientEncryptionKeyName = "Client Encryption Key name.";
