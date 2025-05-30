@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDataTransferFlow'))
 Describe 'Remove-AzDataTransferFlow' {
     It 'Delete' {
         {
-            $flowToDelete = "test-flow-to-delete-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+            $flowToDelete = "test-flow-to-delete-1-" + $env.RunId
             Write-Host "Flow name: $flowToDelete"
 
             $flowParams = @{
@@ -43,7 +43,7 @@ Describe 'Remove-AzDataTransferFlow' {
 
     It 'Delete and return result' {
         {
-            $flowToDelete = "test-flow-to-delete-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+            $flowToDelete = "test-flow-to-delete-2-" + $env.RunId
             Write-Host "Flow name: $flowToDelete"
 
             $flowParams = @{
@@ -71,7 +71,7 @@ Describe 'Remove-AzDataTransferFlow' {
     It 'Delete AsJob' {
         {
             # Create a new flow to delete
-            $flowToDelete = "test-flow-asjob-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+            $flowToDelete = "test-flow-delete-asjob-" + $env.RunId
             Write-Host "Flow name: $flowToDelete"
     
             $flowParams = @{
@@ -97,7 +97,8 @@ Describe 'Remove-AzDataTransferFlow' {
     
             # Wait for the job to complete
             $job | Wait-Job | Out-Null
-    
+            ($job.State -eq "Completed") | Should -Be $true
+
             # Ensure the flow is deleted
             $deletedFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToDelete -ErrorAction SilentlyContinue
             $deletedFlow | Should -BeNullOrEmpty

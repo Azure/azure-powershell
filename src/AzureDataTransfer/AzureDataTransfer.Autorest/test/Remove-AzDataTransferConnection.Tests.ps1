@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDataTransferConnecti
 Describe 'Remove-AzDataTransferConnection' {
     It 'Delete' {
         { 
-            $connectionToRemove = "test-connection-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+            $connectionToRemove = "test-connection-delete-1-" + $env.RunId
             Write-Host "Connection name: $connectionToRemove"
 
             $connectionParams = @{
@@ -45,7 +45,7 @@ Describe 'Remove-AzDataTransferConnection' {
 
     It 'Delete and return result' {
         {
-            $connectionToRemove = "test-connection-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+            $connectionToRemove = "test-connection-delete-2-" + $env.RunId
             Write-Host "Connection name: $connectionToRemove"
 
             $connectionParams = @{
@@ -75,7 +75,7 @@ Describe 'Remove-AzDataTransferConnection' {
     It 'Delete AsJob' {
         {
             # Create a new connection to remove
-            $connectionToRemove = "test-connection-asjob-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+            $connectionToRemove = "test-connection-delete-asjob-" + $env.RunId
             Write-Host "Connection name: $connectionToRemove"
             
             $connectionParams = @{
@@ -103,6 +103,7 @@ Describe 'Remove-AzDataTransferConnection' {
     
             # Wait for the job to complete
             $job | Wait-Job | Out-Null
+            ($job.State -eq "Completed") | Should -Be $true
     
             # Ensure the connection is deleted
             $deletedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToRemove -ErrorAction SilentlyContinue

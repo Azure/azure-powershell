@@ -46,6 +46,7 @@ Describe 'Disable-AzDataTransferFlow' {
     
             # Wait for the job to complete
             $job | Wait-Job | Out-Null
+            ($job.State -eq "Completed") | Should -Be $true
     
             # Verify the flow is disabled after the job completes
             $disabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinkedSend -Name $env.SendFlow

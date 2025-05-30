@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Approve-AzDataTransferConnect
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-$connectionToApproveName = "test-connection-to-approve-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
-$connectionToApproveAsJobName = "test-connection-to-approve-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+$connectionToApproveName = "test-connection-to-approve-" + $env.RunId
+$connectionToApproveAsJobName = "test-connection-to-approve-asjob-" + $env.RunId
 
 Write-Host "Connection names: $connectionToApproveName, $connectionToApproveAsJobName"
 
@@ -93,6 +93,7 @@ Describe 'Approve-AzDataTransferConnection' {
     
             # Wait for the job to complete
             $job | Wait-Job | Out-Null
+            ($job.State -eq "Completed") | Should -Be $true
     
             # Verify the connection is approved after the job completes
             $approvedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToApproveAsJobName

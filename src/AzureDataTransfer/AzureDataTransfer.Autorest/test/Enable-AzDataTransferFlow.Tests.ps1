@@ -46,6 +46,7 @@ Describe 'Enable-AzDataTransferFlow' {
     
             # Wait for the job to complete
             $job | Wait-Job | Out-Null
+            ($job.State -eq "Completed") | Should -Be $true
     
             # Verify the flow is enabled after the job completes
             $enabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.RecvFlow

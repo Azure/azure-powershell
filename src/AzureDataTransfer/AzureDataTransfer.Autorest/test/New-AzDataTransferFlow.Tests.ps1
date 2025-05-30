@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDataTransferFlow'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-$flowToCreate = "test-flow-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
-$flowToCreateAsJob = "test-flow-as-job-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+$flowToCreate = "test-flow-create-" + $env.RunId
+$flowToCreateAsJob = "test-flow-create-as-job-" + $env.RunId
 
 Write-Host "Flow names: $flowToCreate, $flowToCreateAsJob"
 
@@ -69,6 +69,7 @@ Describe 'New-AzDataTransferFlow' {
     
             # Wait for the job to complete
             $job | Wait-Job | Out-Null
+            ($job.State -eq "Completed") | Should -Be $true
     
             # Verify the flow is created after the job completes
             $createdFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToCreateAsJob

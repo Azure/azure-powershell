@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDataTransferConnection'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-$connectionToCreate = "test-connection-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
-$connectionToCreateAsJob = "test-connection-as-job-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+$connectionToCreate = "test-connection-create-" + $env.RunId
+$connectionToCreateAsJob = "test-connection-create-as-job-" + $env.RunId
 
 Write-Host "Connection names - $connectionToCreate, $connectionToCreateAsJob"
 
@@ -87,6 +87,7 @@ Describe 'New-AzDataTransferConnection' {
     
             # Wait for the job to complete
             $job | Wait-Job | Out-Null
+            ($job.State -eq "Completed") | Should -Be $true
     
             # Verify the connection is created after the job completes
             $createdConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToCreateAsJob

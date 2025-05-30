@@ -14,20 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Deny-AzDataTransferConnection
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-$connectionToDenyName = "test-connection-to-deny-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
-$connectionToDenyAsJobName = "test-connection-to-deny-as-job-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+$connectionToDenyName = "test-connection-to-deny-" + $env.RunId
+$connectionToDenyAsJobName = "test-connection-to-deny-as-job-" + $env.RunId
 
 Write-Host "Connection names for denial - $connectionToDenyName, $connectionToDenyAsJobName"
 
 Describe 'Deny-AzDataTransferConnection' {
     $connectionParams = @{
-        Location             =  $env.Location
-        PipelineName         =  $env.PipelineName
+        Location             = $env.Location
+        PipelineName         = $env.PipelineName
         Direction            = "Receive"
         FlowType             = "Mission"
-        ResourceGroupName    =  $env.ResourceGroupName
+        ResourceGroupName    = $env.ResourceGroupName
         Justification        = "Receive side for PS testing"
-        RemoteSubscriptionId =  $env.SubscriptionId
+        RemoteSubscriptionId = $env.SubscriptionId
         RequirementId        = 0
         Name                 = $connectionToDenyName
         PrimaryContact       = "faikh@microsoft.com"
@@ -95,6 +95,7 @@ Describe 'Deny-AzDataTransferConnection' {
     
             # Wait for the job to complete
             $job | Wait-Job | Out-Null
+            ($job.State -eq "Completed") | Should -Be $true
     
             # Verify the connection is rejected after the job completes
             $deniedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToDenyAsJobName

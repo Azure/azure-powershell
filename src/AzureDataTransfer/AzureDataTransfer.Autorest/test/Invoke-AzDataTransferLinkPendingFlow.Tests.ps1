@@ -14,13 +14,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzDataTransferLinkPend
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-$testRecvFlowName = "test-receive-flow-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
-$testSendFlowName = "test-send-flow-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+$testRecvFlowName = "test-receive-flow-" + $env.RunId
+$testSendFlowName = "test-send-flow-" + $env.RunId
 
 Write-Host "Flow names: $testRecvFlowName, $testSendFlowName"
 
-$testRecvFlowAsJobName = "test-receive-flow-asjob-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
-$testSendFlowAsJobName = "test-send-flow-asjob-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+$testRecvFlowAsJobName = "test-receive-flow-asjob-" + $env.RunId
+$testSendFlowAsJobName = "test-send-flow-asjob-" + $env.RunId
 
 Write-Host "Flow names for AsJob: $testRecvFlowAsJobName, $testSendFlowAsJobName"
 
@@ -109,6 +109,7 @@ Describe 'Invoke-AzDataTransferLinkPendingFlow' {
     
             # Wait for the job to complete
             $job | Wait-Job | Out-Null
+            ($job.State -eq "Completed") | Should -Be $true
     
             # Verify the flow is linked after the job completes
             $linkedFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $testRecvFlowAsJobName
