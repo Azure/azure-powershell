@@ -8,20 +8,40 @@ schema: 2.0.0
 # New-AzProviderHubNotificationRegistration
 
 ## SYNOPSIS
-Creates or updates a notification registration.
+Create a notification registration.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzProviderHubNotificationRegistration -Name <String> -ProviderNamespace <String>
- [-SubscriptionId <String>] [-IncludedEvent <String[]>] [-MessageScope <MessageScope>]
- [-NotificationEndpoint <INotificationEndpoint[]>] [-NotificationMode <NotificationMode>]
- [-ProvisioningState <ProvisioningState>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-IncludedEvent <String[]>] [-MessageScope <String>]
+ [-NotificationEndpoint <INotificationEndpoint[]>] [-NotificationMode <String>] [-ProvisioningState <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityProviderRegistrationExpanded
+```
+New-AzProviderHubNotificationRegistration -Name <String>
+ -ProviderRegistrationInputObject <IProviderHubIdentity> [-IncludedEvent <String[]>] [-MessageScope <String>]
+ [-NotificationEndpoint <INotificationEndpoint[]>] [-NotificationMode <String>] [-ProvisioningState <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzProviderHubNotificationRegistration -Name <String> -ProviderNamespace <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzProviderHubNotificationRegistration -Name <String> -ProviderNamespace <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a notification registration.
+Create a notification registration.
 
 ## EXAMPLES
 
@@ -74,10 +94,40 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -88,8 +138,8 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MessageScope
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -116,11 +166,10 @@ Accept wildcard characters: False
 
 ### -NotificationEndpoint
 .
-To construct, see NOTES section for NOTIFICATIONENDPOINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationEndpoint[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.INotificationEndpoint[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -134,8 +183,8 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -150,7 +199,7 @@ The name of the resource provider hosted within ProviderHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -160,12 +209,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProviderRegistrationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+Parameter Sets: CreateViaIdentityProviderRegistrationExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProvisioningState
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -180,7 +244,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -226,9 +290,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationRegistration
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.INotificationRegistration
 
 ## NOTES
 

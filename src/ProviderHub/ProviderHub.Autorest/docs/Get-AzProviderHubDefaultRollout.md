@@ -30,6 +30,12 @@ Get-AzProviderHubDefaultRollout -InputObject <IProviderHubIdentity> [-DefaultPro
  [<CommonParameters>]
 ```
 
+### GetViaIdentityProviderRegistration
+```
+Get-AzProviderHubDefaultRollout -ProviderRegistrationInputObject <IProviderHubIdentity> -RolloutName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the default rollout details.
 
@@ -82,7 +88,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
@@ -111,12 +116,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProviderRegistrationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+Parameter Sets: GetViaIdentityProviderRegistration
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -RolloutName
 The rollout name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityProviderRegistration
 Aliases:
 
 Required: True
@@ -150,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRollout
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IDefaultRollout
 
 ## NOTES
 
