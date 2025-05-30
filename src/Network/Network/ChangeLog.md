@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 
+* Added properties 'ContinuousCapture', 'LocalPath', and 'CaptureSettings' to Packet capture V2 command along with update the old parameter as 'FilePath' as well as support for it for the following cmdlets:
+	- `New-AzPacketCaptureSettingsConfig`
+    - `New-AzNetworkWatcherPacketCaptureV2`
+
 ## Version 7.17.0
 * Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:
 	- `New-AzNatGateway`
