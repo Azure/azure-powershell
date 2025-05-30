@@ -1,126 +1,5 @@
 # Upcoming breaking changes in Azure PowerShell
 
-## Az.Accounts
-
-### `Get-AzAccessToken`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The Token property of the output type will be changed from String to SecureString. Add the [-AsSecureString] switch to avoid the impact of this upcoming breaking change.
-  - This change is expected to take effect from Az.Accounts version: 5.0.0 and Az version: 14.0.0
-
-## Az.Aks
-
-### `Get-AzAksMaintenanceConfiguration`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IMaintenanceConfiguration' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration'
-  - The following properties in the output type are being deprecated : 'TimeInWeek Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek' 'NotAllowedTime Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan'
-  - The following properties are being added to the output type : 'TimeInWeek System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek]' 'NotAllowedTime System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan]'
-  - Change description : The type of property 'TimeInWeek' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IMaintenanceConfiguration' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek[]' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek]',The type of property 'NotAllowedTime' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IMaintenanceConfiguration' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan]' 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '7.0.0'
-
-### `Get-AzAksManagedClusterOSOption`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfile' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOSOptionProfile'
-  - The following properties in the output type are being deprecated : 'OSOptionPropertyList Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOSOptionProperty'
-  - The following properties are being added to the output type : 'OSOptionPropertyList System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOSOptionProperty]'
-  - Change description : The type of property 'OSOptionPropertyList' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOSOptionProperty' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOSOptionProperty]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '7.0.0'
-
-### `Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOutboundEnvironmentEndpoint' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOutboundEnvironmentEndpoint'
-  - The following properties in the output type are being deprecated : 'Endpoint Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IEndpointDependency'
-  - The following properties are being added to the output type : 'Endpoint System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IEndpointDependency]'
-  - Change description : The type of property 'Endpoint' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOutboundEnvironmentEndpoint' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IEndpointDependency' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IEndpointDependency]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '7.0.0'
-
-### `Get-AzAksNodePoolUpgradeProfile`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolUpgradeProfile' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeProfile'
-  - The following properties in the output type are being deprecated : 'Upgrade Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeProfilePropertiesUpgradesItem'
-  - The following properties are being added to the output type : 'Upgrade System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeProfilePropertiesUpgradesItem]'
-  - Change description : The type of property 'Upgrade' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolUpgradeProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeProfilePropertiesUpgradesItem' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeProfilePropertiesUpgradesItem]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '7.0.0'
-
-### `Get-AzAksUpgradeProfile`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IManagedClusterUpgradeProfile' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterUpgradeProfile'
-  - The following properties in the output type are being deprecated : 'AgentPoolProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfile' 'ControlPlaneProfileUpgrade Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfileUpgradesItem'
-  - The following properties are being added to the output type : 'AgentPoolProfile System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfile]' 'ControlPlaneProfileUpgrade System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfileUpgradesItem]'
-  - Change description : The type of property 'AgentPoolProfile' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IManagedClusterUpgradeProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfile' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfile]'.,The type of property 'ControlPlaneProfileUpgrade' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IManagedClusterUpgradeProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfileUpgradesItem' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfileUpgradesItem]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '7.0.0'
-
-### `Get-AzAksVersion`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOrchestratorVersionProfileListResult'
-  - The following properties in the output type are being deprecated : 'Orchestrator Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOrchestratorVersionProfile'
-  - The following properties are being added to the output type : 'Orchestrator System.Collections.Generic.List1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOrchestratorVersionProfile]'
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '7.0.0'
-
-### `New-AzAksCluster`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The default value of -NodeVmSize will be changing from 'Standard_DS2_V2 (Linux), Standard_DS2_V3 (Windows)' to being dynamically selected by the AKS resource provider based on quota and capacity.
-  - This change is expected to take effect from Az.Aks version: 7.0.0 and Az version: 14.0.0
-
-### `New-AzAksMaintenanceConfiguration`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IMaintenanceConfiguration' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration'
-  - The following properties in the output type are being deprecated : 'TimeInWeek Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek' 'NotAllowedTime Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan'
-  - The following properties are being added to the output type : 'TimeInWeek System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek]' 'NotAllowedTime System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan]'
-  - Change description : The type of property 'TimeInWeek' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IMaintenanceConfiguration' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek[]' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek]',The type of property 'NotAllowedTime' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IMaintenanceConfiguration' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan]' 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '7.0.0'
-
-## Az.AppConfiguration
-
-### `Get-AzAppConfigurationStore`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStore'
-  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference'
-  - The following properties are being added to the output type : 'PrivateEndpointConnection System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference]'
-  - Change description : The type of property 'PrivateEndpointConnection' of type 'Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference]' 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `New-AzAppConfigurationStore`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStore'
-  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference'
-  - The following properties are being added to the output type : 'PrivateEndpointConnection System.Collections.Generic.List1[Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference]'
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Update-AzAppConfigurationStore`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStore'
-  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference'
-  - The following properties are being added to the output type : 'PrivateEndpointConnection System.Collections.Generic.List1[Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference]'
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
 ## Az.Blueprint
 
 ### `Export-AzBlueprintWithArtifact`
@@ -201,285 +80,19 @@
   - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
   - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
 
-## Az.Cdn
-
-### `Clear-AzCdnEndpointContent`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'ContentPath, Domain' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Clear-AzFrontDoorCdnEndpointContent`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'ContentPath, Domain' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Get-AzCdnEdgeNode`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'IPAddressGroup' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEdgeNode' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IIPAddressGroup' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IIPAddressGroup]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Get-AzCdnEndpoint`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Get-AzCdnOriginGroup`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Get-AzFrontDoorCdnEndpoint`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Get-AzFrontDoorCdnOriginGroup`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Get-AzFrontDoorCdnRoute`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'PatternsToMatch, CompressionSettingContentTypesToCompress' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Get-AzFrontDoorCdnRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'Condition' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Import-AzCdnEndpointContent`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'ContentPath, Domain' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `New-AzCdnEndpoint`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `New-AzCdnManagedHttpsParametersObject`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  Add new mandatory parameter CertificateSourceParameterTypeName.
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `New-AzCdnOriginGroup`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `New-AzCdnUserManagedHttpsParametersObject`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  Add new mandatory parameter CertificateSourceParameterTypeName.
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `New-AzFrontDoorCdnEndpoint`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `New-AzFrontDoorCdnOriginGroup`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `New-AzFrontDoorCdnRoute`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'PatternsToMatch, CompressionSettingContentTypesToCompress' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `New-AzFrontDoorCdnRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'Condition' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-Action`
-    - The parameter : 'Action' is changing.
-    The type of the parameter is changing from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction'.
-    - Change description : The element type for parameter 'Action' has been changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction'. 
-    - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-    - The change is expected to take effect from version : '5.0.0'
-
-### `Remove-AzCdnEndpoint`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Remove-AzCdnOriginGroup`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Remove-AzFrontDoorCdnEndpoint`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Remove-AzFrontDoorCdnOriginGroup`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Remove-AzFrontDoorCdnRoute`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'PatternsToMatch, CompressionSettingContentTypesToCompress' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Remove-AzFrontDoorCdnRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'Condition' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Start-AzCdnEndpoint`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Stop-AzCdnEndpoint`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Update-AzCdnEndpoint`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Update-AzCdnOriginGroup`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Update-AzFrontDoorCdnEndpoint`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Update-AzFrontDoorCdnOriginGroup`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Update-AzFrontDoorCdnRoute`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'PatternsToMatch, CompressionSettingContentTypesToCompress' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-### `Update-AzFrontDoorCdnRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : The type of property 'Condition' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '5.0.0'
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-Action`
-    - The parameter : 'Action' is changing.
-    The type of the parameter is changing from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction'.
-    - Change description : The element type for parameter 'Action' has been changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction'. 
-    - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-    - The change is expected to take effect from version : '5.0.0'
-
 ## Az.Compute
 
-### `Get-AzVMSize`
+### `New-AzVM`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The "ListVirtualMachineSize" parameter set will be deprecated as its API: "Virtual Machine Sizes - List" is deprecated. For listing available VM sizes by subscription or location, please use instead "Get-AzComputeResourceSku". Other parameter sets: "List Available Sizes for Availability Set" and "List Available Sizes for Virtual Machine" will continue to be supported.
-  - This change is expected to take effect from Az.Compute version: 10.0.0 and Az version: 14.0.0
+  - The default VM size will change from 'Standard_D2s_v3' to 'Standard_D2s_v5'.
+  - This change is expected to take effect from Az.Compute version: 11.0.0 and Az version: 15.0.0
+
+### `New-AzVmss`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - In the next breaking change period (Nov 2025), the default VM size will change from 'Standard_Ds1_v2' to 'Standard_D2s_v5'.
+  - This change is expected to take effect from Az.Compute version: 11.0.0 and Az version: 15.0.0
 
 ## Az.ContainerInstance
 
@@ -499,64 +112,6 @@
     - Change description : Removing the default value of OSType parameter. 
     - This change will take effect on '5/21/2025'- The change is expected to take effect from Az version : '14.0.0'
     - The change is expected to take effect from version : '5.0.0'
-
-## Az.ManagedServiceIdentity
-
-### `Get-AzFederatedIdentityCredential`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential' is changing
-  - The following properties in the output type are being deprecated : 'Audience <System.String[]>'
-  - The following properties are being added to the output type : 'Audience <System.Collections.Generic.List`1[System.String]>'
-  - Change description : The type of property 'Audience' of type 'FederatedIdentityCredential' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `New-AzFederatedIdentityCredential`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential' is changing
-  - The following properties in the output type are being deprecated : 'Audience <System.String[]>'
-  - The following properties are being added to the output type : 'Audience <System.Collections.Generic.List`1[System.String]>'
-  - Change description : The type of property 'Audience' of type 'FederatedIdentityCredential' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-Audience`
-    - The parameter : 'Audience' is changing.
-    The type of the parameter is changing from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-    - Change description : The type of property 'Audience' of type 'FederatedIdentityCredential' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
-    - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-    - The change is expected to take effect from version : '2.0.0'
-
-### `Remove-AzFederatedIdentityCredential`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'bool' is changing
-  - The following properties in the output type are being deprecated : 'Audience <System.String[]>'
-  - The following properties are being added to the output type : 'Audience <System.Collections.Generic.List`1[System.String]>'
-  - Change description : The type of property 'Audience' of type 'FederatedIdentityCredential' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Update-AzFederatedIdentityCredential`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential' is changing
-  - The following properties in the output type are being deprecated : 'Audience <System.String[]>'
-  - The following properties are being added to the output type : 'Audience <System.Collections.Generic.List`1[System.String]>'
-  - Change description : The type of property 'Audience' of type 'FederatedIdentityCredential' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-Audience`
-    - The parameter : 'Audience' is changing.
-    The type of the parameter is changing from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-    - Change description : The type of property 'Audience' of type 'FederatedIdentityCredential' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
-    - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-    - The change is expected to take effect from version : '2.0.0'
 
 ## Az.Maps
 
@@ -716,6 +271,365 @@
   - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
   - The change is expected to take effect from version : '0.3.0'
 
+## Az.MobileNetwork
+
+### `Deploy-AzMobileNetworkReinstallPacketCoreControlPlane`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Deploy-AzMobileNetworkRollbackPacketCoreControlPlane`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Get-AzMobileNetwork`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Get-AzMobileNetworkAttachedDataNetwork`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Get-AzMobileNetworkDataNetwork`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Get-AzMobileNetworkPacketCoreControlPlane`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Get-AzMobileNetworkPacketCoreControlPlaneVersion`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Get-AzMobileNetworkPacketCoreDataPlane`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Get-AzMobileNetworkService`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Get-AzMobileNetworkSim`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Get-AzMobileNetworkSimGroup`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Get-AzMobileNetworkSimPolicy`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Get-AzMobileNetworkSite`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Get-AzMobileNetworkSlice`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `New-AzMobileNetwork`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `New-AzMobileNetworkAttachedDataNetwork`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `New-AzMobileNetworkDataNetwork`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `New-AzMobileNetworkPacketCoreControlPlane`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `New-AzMobileNetworkPacketCoreDataPlane`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `New-AzMobileNetworkService`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `New-AzMobileNetworkSim`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `New-AzMobileNetworkSimGroup`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `New-AzMobileNetworkSimPolicy`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `New-AzMobileNetworkSite`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `New-AzMobileNetworkSlice`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Remove-AzMobileNetwork`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Remove-AzMobileNetworkAttachedDataNetwork`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Remove-AzMobileNetworkBulkSimDelete`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Remove-AzMobileNetworkDataNetwork`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Remove-AzMobileNetworkPacketCoreControlPlane`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Remove-AzMobileNetworkPacketCoreDataPlane`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Remove-AzMobileNetworkService`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Remove-AzMobileNetworkSim`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Remove-AzMobileNetworkSimGroup`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Remove-AzMobileNetworkSimPolicy`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Remove-AzMobileNetworkSite`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Remove-AzMobileNetworkSlice`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Update-AzMobileNetwork`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Update-AzMobileNetworkAttachedDataNetwork`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Update-AzMobileNetworkBulkSimUpload`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Update-AzMobileNetworkBulkSimUploadEncrypted`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Update-AzMobileNetworkDataNetwork`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Update-AzMobileNetworkPacketCoreControlPlane`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Update-AzMobileNetworkPacketCoreDataPlane`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Update-AzMobileNetworkService`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Update-AzMobileNetworkSim`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Update-AzMobileNetworkSimGroup`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Update-AzMobileNetworkSimPolicy`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Update-AzMobileNetworkSite`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
+### `Update-AzMobileNetworkSlice`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
+  - The change is expected to take effect from version : '0.5.0'
+
 ## Az.RecoveryServices
 
 ### `Get-AzRecoveryServicesBackupSchedulePolicyObject`
@@ -723,38 +637,6 @@
 - Cmdlet breaking-change will happen to all parameter sets
   - May 2025 onwards, this command will return a schedule policy object for Enhanced policy by default for AzureVM workload
   - This change is expected to take effect from Az.RecoveryServices version: 8.0.0 and Az version: 14.0.0
-
-## Az.Resources
-
-### `Get-AzResource`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The API version for the resource type will be updated to use the default version instead of the latest.
-  - This change is expected to take effect from Az.Resources version: 8.0.0 and Az version: 14.0.0
-
-### `Invoke-AzResourceAction`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The API version for the resource type will be updated to use the default version instead of the latest.
-  - This change is expected to take effect from Az.Resources version: 8.0.0 and Az version: 14.0.0
-
-### `New-AzResource`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The API version for the resource type will be updated to use the default version instead of the latest.
-  - This change is expected to take effect from Az.Resources version: 8.0.0 and Az version: 14.0.0
-
-### `Remove-AzResource`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The API version for the resource type will be updated to use the default version instead of the latest.
-  - This change is expected to take effect from Az.Resources version: 8.0.0 and Az version: 14.0.0
-
-### `Set-AzResource`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The API version for the resource type will be updated to use the default version instead of the latest.
-  - This change is expected to take effect from Az.Resources version: 8.0.0 and Az version: 14.0.0
 
 ## Az.SpringCloud
 
@@ -1365,19 +1247,4 @@
   - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
   - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
   - The change is expected to take effect from version : '0.3.2'
-
-## Az.Storage
-
-### `Set-AzStorageFileContent`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The ContentHash properties will be removed from the uploaded Azure file when file size > 1TB, or upload with Oauth credencial, or with -DisAllowTrailingDot.
-  - This change is expected to take effect from Az.Storage version: 9.0.0 and Az version: 14.0.0
-
-### `Start-AzStorageAccountMigration`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  A prompt that needs users' confirmation will be added when converting the account's redundancy configuration. Suppress it with -Force.
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '9.0.0'
 
