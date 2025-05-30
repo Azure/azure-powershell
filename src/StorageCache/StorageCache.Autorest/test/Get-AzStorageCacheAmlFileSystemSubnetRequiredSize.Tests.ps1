@@ -18,8 +18,4 @@ Describe 'Get-AzStorageCacheAmlFileSystemSubnetRequiredSize' {
     It 'GetExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'GetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

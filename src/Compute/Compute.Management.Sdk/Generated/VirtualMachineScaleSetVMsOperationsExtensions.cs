@@ -358,10 +358,12 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='expand'>
             /// The expand expression to apply on the operation. 'InstanceView' will
             /// retrieve the instance view of the virtual machine. 'UserData' will retrieve
-            /// the UserData of the virtual machine. Possible values include:
-            /// 'instanceView', 'userData'
+            /// the UserData of the virtual machine. 'resiliencyView' will retrieve the
+            /// instance view of the Virtual machine (if applicable) and include
+            /// 'resilientVMDeletionStatus' as part of it. Possible values include:
+            /// 'instanceView', 'userData', 'resiliencyView'
             /// </param>
-            public static VirtualMachineScaleSetVM Get(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, InstanceViewTypes? expand = default(InstanceViewTypes?))
+            public static VirtualMachineScaleSetVM Get(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, VmssVMInstanceViewTypes? expand = default(VmssVMInstanceViewTypes?))
             {
                 return operations.GetAsync(resourceGroupName, vmScaleSetName, instanceId, expand).GetAwaiter().GetResult();
             }
@@ -384,13 +386,15 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='expand'>
             /// The expand expression to apply on the operation. 'InstanceView' will
             /// retrieve the instance view of the virtual machine. 'UserData' will retrieve
-            /// the UserData of the virtual machine. Possible values include:
-            /// 'instanceView', 'userData'
+            /// the UserData of the virtual machine. 'resiliencyView' will retrieve the
+            /// instance view of the Virtual machine (if applicable) and include
+            /// 'resilientVMDeletionStatus' as part of it. Possible values include:
+            /// 'instanceView', 'userData', 'resiliencyView'
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualMachineScaleSetVM> GetAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, InstanceViewTypes? expand = default(InstanceViewTypes?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetVM> GetAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, VmssVMInstanceViewTypes? expand = default(VmssVMInstanceViewTypes?), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, expand, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -501,7 +505,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <summary>
             /// Power off (stop) a virtual machine in a VM scale set. Note that resources
             /// are still attached and you are getting charged for the resources. Instead,
-            /// use deallocate to release resources and avoid charges.
+            /// use deallocate to release resources and avoid charges. Additionally, this
+            /// operation is not allowed on a virtual machine that is being deallocated or
+            /// already has been deallocated.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -528,7 +534,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <summary>
             /// Power off (stop) a virtual machine in a VM scale set. Note that resources
             /// are still attached and you are getting charged for the resources. Instead,
-            /// use deallocate to release resources and avoid charges.
+            /// use deallocate to release resources and avoid charges. Additionally, this
+            /// operation is not allowed on a virtual machine that is being deallocated or
+            /// already has been deallocated.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1259,7 +1267,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <summary>
             /// Power off (stop) a virtual machine in a VM scale set. Note that resources
             /// are still attached and you are getting charged for the resources. Instead,
-            /// use deallocate to release resources and avoid charges.
+            /// use deallocate to release resources and avoid charges. Additionally, this
+            /// operation is not allowed on a virtual machine that is being deallocated or
+            /// already has been deallocated.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1286,7 +1296,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <summary>
             /// Power off (stop) a virtual machine in a VM scale set. Note that resources
             /// are still attached and you are getting charged for the resources. Instead,
-            /// use deallocate to release resources and avoid charges.
+            /// use deallocate to release resources and avoid charges. Additionally, this
+            /// operation is not allowed on a virtual machine that is being deallocated or
+            /// already has been deallocated.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

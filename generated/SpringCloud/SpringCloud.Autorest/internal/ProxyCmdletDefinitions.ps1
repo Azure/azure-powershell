@@ -27,13 +27,35 @@ Get an resource upload URL for an App, which may be artifacts or source archive.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IResourceUploadDefinition
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceUploadDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the build service agent pool resource.
   [AppName <String>]: The name of the App resource.
   [BindingName <String>]: The name of the Binding resource.
@@ -58,10 +80,11 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudappresourceuploadurl
 #>
 function Get-AzSpringCloudAppResourceUploadUrl {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IResourceUploadDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceUploadDefinition])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySpring', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the App resource.
@@ -92,8 +115,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySpring', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${SpringInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -151,16 +179,27 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.SpringCloud.private\Get-AzSpringCloudAppResourceUploadUrl_Get';
             GetViaIdentity = 'Az.SpringCloud.private\Get-AzSpringCloudAppResourceUploadUrl_GetViaIdentity';
+            GetViaIdentitySpring = 'Az.SpringCloud.private\Get-AzSpringCloudAppResourceUploadUrl_GetViaIdentitySpring';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -200,53 +239,177 @@ Get a KPack build result log download URL.
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 .Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildResultLog
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BUILDINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+BUILDSERVICEINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
 https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildservicebuildresultlog
 #>
 function Get-AzSpringCloudBuildServiceBuildResultLog {
-[OutputType([System.String])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildResultLog])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityBuildService', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySpring', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the build resource.
     ${BuildName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySpring', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the build service resource.
     ${BuildServiceName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityBuild', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityBuildService', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySpring', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the build result resource.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the resource group that contains the resource.
     # You can obtain this value from the Azure Resource Manager API or the portal.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the Service resource.
     ${ServiceName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # Gets subscription ID which uniquely identify the Microsoft Azure subscription.
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityBuild', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${BuildInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityBuildService', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${BuildServiceInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySpring', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${SpringInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -304,15 +467,29 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuildResultLog_Get';
+            GetViaIdentity = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuildResultLog_GetViaIdentity';
+            GetViaIdentityBuild = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuildResultLog_GetViaIdentityBuild';
+            GetViaIdentityBuildService = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuildResultLog_GetViaIdentityBuildService';
+            GetViaIdentitySpring = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuildResultLog_GetViaIdentitySpring';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -355,13 +532,79 @@ Get a KPack build result.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuildResult
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+BUILDINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+BUILDSERVICEINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
 INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the build service agent pool resource.
   [AppName <String>]: The name of the App resource.
   [BindingName <String>]: The name of the Binding resource.
@@ -386,10 +629,12 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildservicebuildresult
 #>
 function Get-AzSpringCloudBuildServiceBuildResult {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuildResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildResult])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityBuildService', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySpring', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
@@ -397,6 +642,7 @@ param(
     ${BuildName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySpring', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
@@ -404,6 +650,9 @@ param(
     ${BuildServiceName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityBuild', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityBuildService', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySpring', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the build result resource.
@@ -437,8 +686,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityBuild', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${BuildInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityBuildService', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${BuildServiceInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySpring', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${SpringInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -496,17 +762,30 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuildResult_Get';
             GetViaIdentity = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuildResult_GetViaIdentity';
+            GetViaIdentityBuild = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuildResult_GetViaIdentityBuild';
+            GetViaIdentityBuildService = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuildResult_GetViaIdentityBuildService';
+            GetViaIdentitySpring = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuildResult_GetViaIdentitySpring';
             List = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuildResult_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -549,13 +828,57 @@ Get a KPack build.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuild
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+BUILDSERVICEINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
 INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the build service agent pool resource.
   [AppName <String>]: The name of the App resource.
   [BindingName <String>]: The name of the Binding resource.
@@ -580,10 +903,11 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildservicebuild
 #>
 function Get-AzSpringCloudBuildServiceBuild {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuild])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySpring', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
@@ -591,6 +915,8 @@ param(
     ${BuildServiceName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityBuildService', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySpring', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the build resource.
@@ -624,8 +950,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityBuildService', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${BuildServiceInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySpring', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${SpringInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -683,17 +1020,29 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuild_Get';
             GetViaIdentity = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuild_GetViaIdentity';
+            GetViaIdentityBuildService = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuild_GetViaIdentityBuildService';
+            GetViaIdentitySpring = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuild_GetViaIdentitySpring';
             List = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceBuild_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -736,7 +1085,7 @@ Get an resource upload URL for build service, which may be artifacts or source a
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IResourceUploadDefinition
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceUploadDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -763,14 +1112,37 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [ServiceRegistryName <String>]: The name of Service Registry.
   [StackName <String>]: The name of the stack resource.
   [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
 https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildserviceresourceuploadurl
 #>
 function Get-AzSpringCloudBuildServiceResourceUploadUrl {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IResourceUploadDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceUploadDefinition])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySpring', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the build service resource.
@@ -801,8 +1173,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySpring', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${SpringInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -860,16 +1237,27 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceResourceUploadUrl_Get';
             GetViaIdentity = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceResourceUploadUrl_GetViaIdentity';
+            GetViaIdentitySpring = 'Az.SpringCloud.private\Get-AzSpringCloudBuildServiceResourceUploadUrl_GetViaIdentitySpring';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -910,12 +1298,12 @@ Lists all of the available REST API operations of the Microsoft.AppPlatform prov
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IOperationDetail
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IOperationDetail
 .Link
 https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudoperation
 #>
 function Get-AzSpringCloudOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IOperationDetail])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IOperationDetail])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -974,12 +1362,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.SpringCloud.private\Get-AzSpringCloudOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1011,14 +1405,16 @@ end {
 
 <#
 .Synopsis
-Create a new App or update an exiting App.
+create a new App or create an exiting App.
 .Description
-Create a new App or update an exiting App.
+create a new App or create an exiting App.
 .Example
 New-AzSpringCloudApp -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name tools
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1027,11 +1423,33 @@ To create the parameters described below, construct a hash table containing the 
 LOADEDCERTIFICATE <ILoadedCertificate[]>: Collection of loaded certificates
   ResourceId <String>: Resource Id of loaded certificate
   [LoadTrustStore <Boolean?>]: Indicate whether the certificate will be loaded into default trust store, only work for Java runtime.
+
+SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
 https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudapp
 #>
 function New-AzSpringCloudApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1041,20 +1459,26 @@ param(
     # The name of the App resource.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the resource group that contains the resource.
     # You can obtain this value from the Azure Resource Manager API or the portal.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the Service resource.
     ${ServiceName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -1062,93 +1486,123 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${SpringInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResourcePropertiesAddonConfigs]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResourcePropertiesAddonConfigs]))]
     [System.Collections.Hashtable]
     # Collection of addons
     ${AddonConfig},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicate if end to end TLS is enabled.
     ${EnableEndToEndTl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Fully qualified dns Name.
     ${Fqdn},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicate if only https is allowed.
     ${HttpsOnly},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Principal Id of system-assigned managed identity.
     ${IdentityPrincipalId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Tenant Id of system-assigned managed identity.
     ${IdentityTenantId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType]
-    # Type of the managed identity
-    ${IdentityType},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ILoadedCertificate[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ILoadedCertificate[]]
     # Collection of loaded certificates
-    # To construct, see NOTES section for LOADEDCERTIFICATE properties and create a hash table.
     ${LoadedCertificate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # The GEO location of the application, always the same with its parent resource
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Mount path of the persistent disk
     ${PersistentDiskMountPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.Int32]
     # Size of the persistent disk in GB
     ${PersistentDiskSizeInGb},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether the App exposes public endpoint
     ${Public},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Mount path of the temporary disk
     ${TemporaryDiskMountPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.Int32]
     # Size of the temporary disk in GB
     ${TemporaryDiskSizeInGb},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1218,15 +1672,28 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.SpringCloud.private\New-AzSpringCloudApp_CreateExpanded';
+            CreateViaIdentitySpringExpanded = 'Az.SpringCloud.private\New-AzSpringCloudApp_CreateViaIdentitySpringExpanded';
+            CreateViaJsonFilePath = 'Az.SpringCloud.private\New-AzSpringCloudApp_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.SpringCloud.private\New-AzSpringCloudApp_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1258,49 +1725,108 @@ end {
 
 <#
 .Synopsis
-Create or update a KPack build.
+create a KPack build.
 .Description
-Create or update a KPack build.
+create a KPack build.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuild
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BUILDSERVICEINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
 https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildservicebuild
 #>
 function New-AzSpringCloudBuildServiceBuild {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuild])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
-    [System.String]
-    # The name of the build service resource.
-    ${BuildServiceName},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the build resource.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [System.String]
+    # The name of the build service resource.
+    ${BuildServiceName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the resource group that contains the resource.
     # You can obtain this value from the Azure Resource Manager API or the portal.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the Service resource.
     ${ServiceName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -1308,30 +1834,62 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityBuildServiceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${BuildServiceInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${SpringInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityBuildServiceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # The resource id of agent pool
     ${AgentPoolId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityBuildServiceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # The resource id of builder to build the source code
     ${BuilderId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityBuildServiceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuildPropertiesEnv]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildPropertiesEnv]))]
     [System.Collections.Hashtable]
     # The environment variables for this build
     ${Env},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityBuildServiceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # The relative path of source code
     ${RelativePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1389,15 +1947,29 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.SpringCloud.private\New-AzSpringCloudBuildServiceBuild_CreateExpanded';
+            CreateViaIdentityBuildServiceExpanded = 'Az.SpringCloud.private\New-AzSpringCloudBuildServiceBuild_CreateViaIdentityBuildServiceExpanded';
+            CreateViaIdentitySpringExpanded = 'Az.SpringCloud.private\New-AzSpringCloudBuildServiceBuild_CreateViaIdentitySpringExpanded';
+            CreateViaJsonFilePath = 'Az.SpringCloud.private\New-AzSpringCloudBuildServiceBuild_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.SpringCloud.private\New-AzSpringCloudBuildServiceBuild_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1429,21 +2001,21 @@ end {
 
 <#
 .Synopsis
-Create a new Service or update an exiting Service.
+create a new Service or create an exiting Service.
 .Description
-Create a new Service or update an exiting Service.
+create a new Service or create an exiting Service.
 .Example
 New-AzSpringCloud -ResourceGroupName springcloudrg -Name spring-pwsh01 -Location eastus
 .Example
 New-AzSpringCloud -ResourceGroupName springcloudrg -Name espring-pwsh01 -Location eastus -SkuTier "Enterprise" -SkuName "E0"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IServiceResource
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResource
 .Link
 https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloud
 #>
 function New-AzSpringCloud {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IServiceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1468,72 +2040,84 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # The GEO location of the resource.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Name of the resource group containing network resources for customer apps in Azure Spring Apps
     ${NetworkProfileResourceGroup},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Azure Spring Apps service reserved CIDR
     ${NetworkProfileServiceCidr},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Name of the resource group containing network resources of Azure Spring Apps Service Runtime
     ${NetworkProfileServiceResourceGroup},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Fully qualified resource Id of the subnet to host Azure Spring Apps Service Runtime
     ${NetworkProfileServiceSubnetId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Fully qualified resource Id of the subnet to host customer apps in Azure Spring Apps
     ${NetworkProfileSubnetId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.Int32]
     # Current capacity of the target resource
     ${SkuCapacity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Name of the Sku
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # Tier of the Sku
     ${SkuTier},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Tags of the service which is a list of key value pairs that describe the resource.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${ZoneRedundant},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1603,15 +2187,27 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.SpringCloud.private\New-AzSpringCloud_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.SpringCloud.private\New-AzSpringCloud_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.SpringCloud.private\New-AzSpringCloud_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1681,6 +2277,28 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [ServiceRegistryName <String>]: The name of Service Registry.
   [StackName <String>]: The name of the stack resource.
   [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
 https://learn.microsoft.com/powershell/module/az.springcloud/remove-azspringcloudregistry
 #>
@@ -1713,8 +2331,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentitySpring', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${SpringInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1790,19 +2413,307 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.SpringCloud.private\Remove-AzSpringCloudRegistry_Delete';
             DeleteViaIdentity = 'Az.SpringCloud.private\Remove-AzSpringCloudRegistry_DeleteViaIdentity';
+            DeleteViaIdentitySpring = 'Az.SpringCloud.private\Remove-AzSpringCloudRegistry_DeleteViaIdentitySpring';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        if (('Delete', 'DeleteViaIdentitySpring') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
             $PSBoundParameters['Name'] = 'default'
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+update a KPack build.
+.Description
+update a KPack build.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BUILDSERVICEINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+.Link
+https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloudbuildservicebuild
+#>
+function Update-AzSpringCloudBuildServiceBuild {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentitySpringExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [System.String]
+    # The name of the build service resource.
+    ${BuildServiceName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityBuildServiceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentitySpringExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [System.String]
+    # The name of the build resource.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [System.String]
+    # The name of the resource group that contains the resource.
+    # You can obtain this value from the Azure Resource Manager API or the portal.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [System.String]
+    # The name of the Service resource.
+    ${ServiceName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Gets subscription ID which uniquely identify the Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityBuildServiceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${BuildServiceInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentitySpringExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${SpringInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # The resource id of agent pool
+    ${AgentPoolId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # The resource id of builder to build the source code
+    ${BuilderId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildPropertiesEnv]))]
+    [System.Collections.Hashtable]
+    # The environment variables for this build
+    ${Env},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # The relative path of source code
+    ${RelativePath},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudBuildServiceBuild_UpdateExpanded';
+            UpdateViaIdentityBuildServiceExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudBuildServiceBuild_UpdateViaIdentityBuildServiceExpanded';
+            UpdateViaIdentityExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudBuildServiceBuild_UpdateViaIdentityExpanded';
+            UpdateViaIdentitySpringExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudBuildServiceBuild_UpdateViaIdentitySpringExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

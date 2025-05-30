@@ -120,8 +120,7 @@
 | Database for MariaDB           | `Az.MariaDb`                    | [![MariaDb]][MariaDbGallery]                                       | [Changelog][MariaDbChangeLog]                    |
 | Marketplace                    | `Az.Marketplace`                | [![Marketplace]][MarketplaceGallery]                               | [Changelog][MarketplaceChangeLog]                |
 | Marketplace Ordering           | `Az.MarketplaceOrdering`        | [![MarketplaceOrdering]][MarketplaceOrderingGallery]               | [Changelog][MarketplaceOrderingChangeLog]        |
-| Managed DevOps Pools           | `Az.Mdp`                        | [![Mdp]][MdpGallery]                                               | [Changelog][MdpChangeLog]                        |
-| Media                          | `Az.Media`                      | [![Media]][MediaGallery]                                           | [Changelog][MediaChangeLog]                      |
+| Managed DevOps Pools           | `Az.Mdp`                        | [![Mdp]][MdpGallery]                                               | [Changelog][MdpChangeLog]                      |
 | Migrate                        | `Az.Migrate`                    | [![Migrate]][MigrateGallery]                                       | [Changelog][MigrateChangeLog]                    |
 | Mixed Reality                  | `Az.MixedReality`               | [![MixedReality]][MixedRealityGallery]                             | [Changelog][MixedRealityChangeLog]               |
 | Mobile Network                 | `Az.MobileNetwork`              | [![MobileNetwork]][MobileNetworkGallery]                           | [Changelog][MobileNetworkChangeLog]              |
@@ -224,6 +223,7 @@
 [Cdn]:                        https://img.shields.io/powershellgallery/v/Az.Cdn.svg?style=flat-square&label=Az.Cdn
 [ChangeAnalysis]:             https://img.shields.io/powershellgallery/v/Az.ChangeAnalysis.svg?style=flat-square&label=Az.ChangeAnalysis
 [CloudService]:               https://img.shields.io/powershellgallery/v/Az.CloudService.svg?style=flat-square&label=Az.CloudService
+[CodeSigning]:                https://img.shields.io/powershellgallery/v/Az.CodeSigning.svg?style=flat-square&label=Az.CodeSigning
 [CognitiveServices]:          https://img.shields.io/powershellgallery/v/Az.CognitiveServices.svg?style=flat-square&label=Az.CognitiveServices
 [Communication]:              https://img.shields.io/powershellgallery/v/Az.Communication.svg?style=flat-square&label=Az.Communication
 [Compute]:                    https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute
@@ -307,7 +307,6 @@
 [Marketplace]:                https://img.shields.io/powershellgallery/v/Az.Marketplace.svg?style=flat-square&label=Az.Marketplace
 [MarketplaceOrdering]:        https://img.shields.io/powershellgallery/v/Az.MarketplaceOrdering.svg?style=flat-square&label=Az.MarketplaceOrdering
 [Mdp]:                        https://img.shields.io/powershellgallery/v/Az.Mdp.svg?style=flat-square&label=Az.Mdp
-[Media]:                      https://img.shields.io/powershellgallery/v/Az.Media.svg?style=flat-square&label=Az.Media
 [Migrate]:                    https://img.shields.io/powershellgallery/v/Az.Migrate.svg?style=flat-square&label=Az.Migrate
 [MixedReality]:               https://img.shields.io/powershellgallery/v/Az.MixedReality.svg?style=flat-square&label=Az.MixedReality
 [MobileNetwork]:              https://img.shields.io/powershellgallery/v/Az.MobileNetwork.svg?style=flat-square&label=Az.MobileNetwork
@@ -406,6 +405,7 @@
 [CdnGallery]:                        https://www.powershellgallery.com/packages/Az.Cdn/
 [ChangeAnalysisGallery]:             https://www.powershellgallery.com/packages/Az.ChangeAnalysis/
 [CloudServiceGallery]:               https://www.powershellgallery.com/packages/Az.CloudService/
+[CodeSigningGallery]:                https://www.powershellgallery.com/packages/Az.CodeSigning/
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
 [CommunicationGallery]:              https://www.powershellgallery.com/packages/Az.Communication/
 [ComputeGallery]:                    https://www.powershellgallery.com/packages/Az.Compute/
@@ -489,7 +489,6 @@
 [MarketplaceGallery]:                https://www.powershellgallery.com/packages/Az.Marketplace/
 [MarketplaceOrderingGallery]:        https://www.powershellgallery.com/packages/Az.MarketplaceOrdering/
 [MdpGallery]:                        https://www.powershellgallery.com/packages/Az.Mdp/
-[MediaGallery]:                      https://www.powershellgallery.com/packages/Az.Media/
 [MigrateGallery]:                    https://www.powershellgallery.com/packages/Az.Migrate/
 [MixedRealityGallery]:               https://www.powershellgallery.com/packages/Az.MixedReality/
 [MobileNetworkGallery]:              https://www.powershellgallery.com/packages/Az.MobileNetwork/
@@ -586,6 +585,7 @@
 [CdnChangeLog]:                        ../src/Cdn/Cdn/ChangeLog.md
 [ChangeAnalysisChangeLog]:             ../src/ChangeAnalysis/ChangeAnalysis/ChangeLog.md
 [CloudServiceChangeLog]:               ../src/CloudService/CloudService/ChangeLog.md
+[CodeSigningChangeLog]:                ../src/CodeSigning/CodeSigning/ChangeLog.md
 [CognitiveServicesChangeLog]:          ../src/CognitiveServices/CognitiveServices/ChangeLog.md
 [CommunicationChangeLog]:              ../src/Communication/Communication/ChangeLog.md
 [ComputeChangeLog]:                    ../src/Compute/Compute/ChangeLog.md
@@ -669,7 +669,6 @@
 [MarketplaceChangeLog]:                ../src/Marketplace/Marketplace/ChangeLog.md
 [MarketplaceOrderingChangeLog]:        ../src/MarketplaceOrdering/MarketplaceOrdering/ChangeLog.md
 [MdpChangeLog]:                        ../src/Mdp/Mdp/ChangeLog.md
-[MediaChangeLog]:                      ../src/Media/Media/ChangeLog.md
 [MigrateChangeLog]:                    ../src/Migrate/Migrate/ChangeLog.md
 [MixedRealityChangeLog]:               ../src/MixedReality/MixedReality/ChangeLog.md
 [MobileNetworkChangeLog]:              ../src/MobileNetwork/MobileNetwork/ChangeLog.md

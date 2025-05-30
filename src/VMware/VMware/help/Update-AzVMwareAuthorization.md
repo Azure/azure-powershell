@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareAuthorization
 
 ## SYNOPSIS
-Update a ExpressRouteAuthorization
+update a ExpressRouteAuthorization
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Update-AzVMwareAuthorization -InputObject <IVMwareIdentity> [-ExpressRouteId <St
 ```
 
 ## DESCRIPTION
-Update a ExpressRouteAuthorization
+update a ExpressRouteAuthorization
 
 ## EXAMPLES
 

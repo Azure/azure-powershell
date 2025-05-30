@@ -6,6 +6,8 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Cmdlets;
     using System;
 
     /// <summary>Solution discovery using natural language processing.</summary>
@@ -13,12 +15,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
     /// [OpenAPI] Post=>POST:"/providers/Microsoft.Help/discoverSolutions"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzSelfHelpDiscoverySolutionNlpTenantScope_Post", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionNlpMetadataResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IDiscoveryNlpResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Description(@"Solution discovery using natural language processing.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.HttpPath(Path = "/providers/Microsoft.Help/discoverSolutions", ApiVersion = "2024-03-01-preview")]
     public partial class InvokeAzSelfHelpDiscoverySolutionNlpTenantScope_Post : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -34,10 +37,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.SelfHelp Client => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.ClientAPI;
@@ -53,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
         /// <summary>Backing field for <see cref="DiscoverSolutionRequest" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpRequest _discoverSolutionRequest;
+        private Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IDiscoveryNlpRequest _discoverSolutionRequest;
 
         /// <summary>Discover NLP request.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Discover NLP request.", ValueFromPipeline = true)]
@@ -62,8 +80,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         ReadOnly = false,
         Description = @"Discover NLP request.",
         SerializedName = @"discoverSolutionRequest",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpRequest) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpRequest DiscoverSolutionRequest { get => this._discoverSolutionRequest; set => this._discoverSolutionRequest = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IDiscoveryNlpRequest) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Body)]
+        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IDiscoveryNlpRequest DiscoverSolutionRequest { get => this._discoverSolutionRequest; set => this._discoverSolutionRequest = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -91,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -114,24 +136,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpResponse">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IDiscoveryNlpResponse">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IDiscoveryNlpResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IDiscoveryNlpResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -154,6 +176,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -175,7 +202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="InvokeAzSelfHelpDiscoverySolutionNlpTenantScope_Post" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="InvokeAzSelfHelpDiscoverySolutionNlpTenantScope_Post" /> cmdlet class.
         /// </summary>
         public InvokeAzSelfHelpDiscoverySolutionNlpTenantScope_Post()
         {
@@ -226,8 +253,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -283,7 +335,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -301,7 +353,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=DiscoverSolutionRequest})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -339,12 +391,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -361,15 +413,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=DiscoverSolutionRequest })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=DiscoverSolutionRequest })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -379,12 +431,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpResponse">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IDiscoveryNlpResponse">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IDiscoveryNlpResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpResponse> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IDiscoveryNlpResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -396,9 +448,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IDiscoveryNlpResponse
+                var result = (await response);
                 // response should be returning an array of some kind. +Pageable
                 // nested-array / value / <none>
-                WriteObject((await response).Value, true);
+                if (null != result.Value)
+                {
+                    if (0 == _responseSize && 1 == result.Value.Count)
+                    {
+                        _firstResponse = result.Value[0];
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        var values = new System.Collections.Generic.List<System.Management.Automation.PSObject>();
+                        foreach( var value in result.Value )
+                        {
+                            values.Add(value.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(values, true);
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

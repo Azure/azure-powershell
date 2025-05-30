@@ -86,12 +86,17 @@ function Invoke-SubModuleGeneration {
     )
     Write-Host "----------Start code generation for $GenerateDirectory----------" -ForegroundColor DarkGreen
     Set-Location -Path $GenerateDirectory
-    if ($IsInvokedByPipeline) {
-        npx autorest --max-memory-size=8192 >> $GenerateLog
+    $tspLocationPath = Join-Path $GenerateDirectory "tsp-location.yaml"
+    if (Test-Path $tspLocationPath) {
+        tsp-client update >> $GenerateLog
     } else {
-        autorest --max-memory-size=8192 >> $GenerateLog
+        if ($IsInvokedByPipeline) {
+            npx autorest --max-memory-size=8192 >> $GenerateLog
+        } else {
+            autorest --max-memory-size=8192 >> $GenerateLog
+        }
     }
-    
+
     if ($lastexitcode -ne 0) {
         return $false
     } else {
@@ -220,5 +225,26 @@ function New-GenerateInfoJson {
     else{
         Write-Host "Generating generate-info.json file: $generateInfoJsonPath"
         $generateInfoJson | Set-Content -Path $generateInfoJsonPath -Force
+    }
+}
+
+function Update-MappingJson {
+    Param(
+        [string]
+        ${ModuleName},
+        [string]
+        ${RepoRoot}
+    )
+    process {
+        Write-Host "Updating MappingJson: CreateMappings_rules.json." -ForegroundColor Yellow
+        $MappingPath = Join-Path $RepoRoot "tools" "CreateMappings_rules.json"
+        $MappingObject = Get-Content -Path $MappingPath | ConvertFrom-Json
+        Foreach ($Item in $MappingObject) {
+            If ($ModuleName -eq $Item.regex -or $ModuleName -eq $Item.module) {
+                return
+            }
+        }
+        $MappingObject = $MappingObject + @{module = $ModuleName; alias = $ModuleName }
+        ConvertTo-Json $MappingObject -Depth 1 | Set-Content -Path $MappingPath
     }
 }

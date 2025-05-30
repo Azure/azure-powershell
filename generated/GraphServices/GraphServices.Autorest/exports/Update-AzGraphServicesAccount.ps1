@@ -16,16 +16,16 @@
 
 <#
 .Synopsis
-Update account details.
+update account details.
 .Description
-Update account details.
+update account details.
 .Example
 Update-AzGraphServicesAccount -ResourceGroupName myRG -Name myGraphAppBilling
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IGraphServicesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.Api20230413.IAccountResource
+Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,16 +40,20 @@ INPUTOBJECT <IGraphServicesIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.graphservices/update-azgraphservicesaccount
 #>
 function Update-AzGraphServicesAccount {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.Api20230413.IAccountResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IAccountResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Category('Path')]
     [System.String]
     # The name of the resource.
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -57,6 +61,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -67,16 +73,28 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IGraphServicesIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.Api20230413.ITagUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.ITagUpdateTags]))]
     [System.Collections.Hashtable]
     # List of key value pairs that describe the resource.
     # This will overwrite the existing tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -134,6 +152,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -155,10 +182,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.GraphServices.private\Update-AzGraphServicesAccount_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.GraphServices.private\Update-AzGraphServicesAccount_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.GraphServices.private\Update-AzGraphServicesAccount_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.GraphServices.private\Update-AzGraphServicesAccount_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -172,6 +199,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

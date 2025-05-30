@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ADDomainServices.private.dll'
   FormatsToProcess = './Az.ADDomainServices.format.ps1xml'
-  FunctionsToExport = 'Get-AzADDomainService', 'New-AzADDomainService', 'New-AzADDomainServiceForestTrustObject', 'New-AzADDomainServiceReplicaSetObject', 'Remove-AzADDomainService', 'Update-AzADDomainService', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzADDomainService', 'New-AzADDomainService', 'New-AzADDomainServiceForestTrustObject', 'New-AzADDomainServiceReplicaSetObject', 'Remove-AzADDomainService', 'Update-AzADDomainService'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'AdDomainServices'

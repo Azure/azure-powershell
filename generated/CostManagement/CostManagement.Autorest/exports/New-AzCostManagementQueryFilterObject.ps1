@@ -16,97 +16,107 @@
 
 <#
 .Synopsis
-Create a in-memory object for QueryFilter
+Create an in-memory object for QueryFilter.
 .Description
-Create a in-memory object for QueryFilter
+Create an in-memory object for QueryFilter.
 .Example
 $orDimension = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Value @('East US', 'West Europe')
 $orTag = New-AzCostManagementQueryComparisonExpressionObject -Name 'Environment' -Value @('UAT', 'Prod')
 New-AzCostManagementQueryFilterObject -or @((New-AzCostManagementQueryFilterObject -Dimensions $orDimension), (New-AzCostManagementQueryFilterObject -Tag $orTag))
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryFilter
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryFilter
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 AND <IQueryFilter[]>: The logical "AND" expression. Must have at least 2 items.
-  [And <IQueryFilter[]>]: The logical "AND" expression. Must have at least 2 items.
+  [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
+      Name <String>: The name of the column to use in comparison.
+      Value <List<String>>: Array of values to use for comparison
+    [Not <IQueryFilter>]: The logical "NOT" expression.
+    [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
+    [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
   [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
-    Name <String>: The name of the column to use in comparison.
-    Value <String[]>: Array of values to use for comparison
   [Not <IQueryFilter>]: The logical "NOT" expression.
-  [Or <IQueryFilter[]>]: The logical "OR" expression. Must have at least 2 items.
+  [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
   [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
 
-DIMENSIONS <IQueryComparisonExpression>: Has comparison expression for a dimensions.
+DIMENSIONS <IQueryComparisonExpression>: Has comparison expression for a dimension.
   Name <String>: The name of the column to use in comparison.
-  Value <String[]>: Array of values to use for comparison
+  Value <List<String>>: Array of values to use for comparison
 
 NOT <IQueryFilter>: The logical "NOT" expression.
-  [And <IQueryFilter[]>]: The logical "AND" expression. Must have at least 2 items.
+  [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
+      Name <String>: The name of the column to use in comparison.
+      Value <List<String>>: Array of values to use for comparison
+    [Not <IQueryFilter>]: The logical "NOT" expression.
+    [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
+    [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
   [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
-    Name <String>: The name of the column to use in comparison.
-    Value <String[]>: Array of values to use for comparison
   [Not <IQueryFilter>]: The logical "NOT" expression.
-  [Or <IQueryFilter[]>]: The logical "OR" expression. Must have at least 2 items.
+  [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
   [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
 
 OR <IQueryFilter[]>: The logical "OR" expression. Must have at least 2 items.
-  [And <IQueryFilter[]>]: The logical "AND" expression. Must have at least 2 items.
+  [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [And <List<IQueryFilter>>]: The logical "AND" expression. Must have at least 2 items.
+    [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
+      Name <String>: The name of the column to use in comparison.
+      Value <List<String>>: Array of values to use for comparison
+    [Not <IQueryFilter>]: The logical "NOT" expression.
+    [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
+    [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
   [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
-    Name <String>: The name of the column to use in comparison.
-    Value <String[]>: Array of values to use for comparison
   [Not <IQueryFilter>]: The logical "NOT" expression.
-  [Or <IQueryFilter[]>]: The logical "OR" expression. Must have at least 2 items.
+  [Or <List<IQueryFilter>>]: The logical "OR" expression. Must have at least 2 items.
   [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
 
 TAG <IQueryComparisonExpression>: Has comparison expression for a tag.
   Name <String>: The name of the column to use in comparison.
-  Value <String[]>: Array of values to use for comparison
+  Value <List<String>>: Array of values to use for comparison
 .Link
-https://learn.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryFilterObject
+https://learn.microsoft.com/powershell/module/Az.CostManagement/new-azcostmanagementqueryfilterobject
 #>
 function New-AzCostManagementQueryFilterObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryFilter])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryFilter])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryFilter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryFilter[]]
     # The logical "AND" expression.
     # Must have at least 2 items.
-    # To construct, see NOTES section for AND properties and create a hash table.
     ${And},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryComparisonExpression]
-    # Has comparison expression for a dimensions.
-    # To construct, see NOTES section for DIMENSIONS properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryComparisonExpression]
+    # Has comparison expression for a dimension.
     ${Dimensions},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryFilter]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryFilter]
     # The logical "NOT" expression.
-    # To construct, see NOTES section for NOT properties and create a hash table.
     ${Not},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryFilter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryFilter[]]
     # The logical "OR" expression.
     # Must have at least 2 items.
-    # To construct, see NOTES section for OR properties and create a hash table.
     ${Or},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryComparisonExpression]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IQueryComparisonExpression]
     # Has comparison expression for a tag.
-    # To construct, see NOTES section for TAG properties and create a hash table.
     ${Tag}
 )
 
@@ -117,6 +127,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -145,6 +158,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

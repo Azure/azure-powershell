@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzElasticMonitor
 
 ## SYNOPSIS
-Update a monitor resource.
+update a monitor resource.
 
 ## SYNTAX
 
@@ -22,6 +22,18 @@ Update-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-Subscriptio
 ```
 Update-AzElasticMonitor -InputObject <IElasticIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzElasticMonitor -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzElasticMonitor -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Upgrade
@@ -44,7 +56,7 @@ Update-AzElasticMonitor -InputObject <IElasticIdentity> -Body <IElasticMonitorUp
 ```
 
 ## DESCRIPTION
-Update a monitor resource.
+update a monitor resource.
 
 ## EXAMPLES
 
@@ -93,10 +105,9 @@ Accept wildcard characters: False
 
 ### -Body
 Upgrade elastic monitor version
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorUpgrade
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorUpgrade
 Parameter Sets: Upgrade, UpgradeViaIdentity
 Aliases:
 
@@ -125,7 +136,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
@@ -139,12 +149,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Upgrade, UpgradeExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString, Upgrade, UpgradeExpanded
 Aliases: MonitorName
 
 Required: True
@@ -175,7 +215,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Upgrade, UpgradeExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString, Upgrade, UpgradeExpanded
 Aliases:
 
 Required: True
@@ -191,7 +231,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Upgrade, UpgradeExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString, Upgrade, UpgradeExpanded
 Aliases:
 
 Required: False
@@ -267,13 +307,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorUpgrade
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorUpgrade
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResource
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource
 
 ### System.Boolean
 

@@ -110,8 +110,8 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
             Mandatory = false,
             HelpMessage = HelpMessages.StorageSyncServiceIdentityTypeParameter)]
         [ValidateSet(StorageSyncServiceIdentityType.systemAssigned,
-            StorageSyncServiceIdentityType.userAssigned,
-            StorageSyncServiceIdentityType.systemAssignedUserAssigned,
+            //StorageSyncServiceIdentityType.userAssigned,
+            //StorageSyncServiceIdentityType.systemAssignedUserAssigned,
             StorageSyncServiceIdentityType.none,
             IgnoreCase = true)]
         public string IdentityType { get; set; }
@@ -205,6 +205,11 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                             { this.UserAssignedIdentityId, new UserAssignedIdentity() }
                         };
                     }
+                }
+                else
+                {
+                    // Set Default
+                    createParameters.Identity = new ManagedServiceIdentity() { Type = StorageSyncModels.ManagedServiceIdentityType.SystemAssigned };
                 }
 
                 Target = string.Join("/", ResourceGroupName, Name);

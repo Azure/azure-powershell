@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates the properties of an existing order item.
+update the properties of an existing order item.
 .Description
-Updates the properties of an existing order item.
+update the properties of an existing order item.
 .Example
 $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName "ContactName2" -EmailList @("emailId") -Phone Phone
 $DebugPreference = "Continue"
@@ -40,7 +40,7 @@ $updatedOrderItem.ForwardAddressContactDetail | Format-List
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEdgeOrderIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource
+Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,7 +48,7 @@ To create the parameters described below, construct a hash table containing the 
 
 FORWARDADDRESSCONTACTDETAIL <IContactDetails>: Contact details for the address
   ContactName <String>: Contact name of the person.
-  EmailList <String[]>: List of Email-ids to be notified about job progress.
+  EmailList <List<String>>: List of Email-ids to be notified about job progress.
   Phone <String>: Phone number of the contact person.
   [Mobile <String>]: Mobile number of the contact person.
   [PhoneExtension <String>]: Phone extension number of the contact person.
@@ -56,7 +56,7 @@ FORWARDADDRESSCONTACTDETAIL <IContactDetails>: Contact details for the address
 FORWARDADDRESSSHIPPINGADDRESS <IShippingAddress>: Shipping details for the address
   Country <String>: Name of the Country.
   StreetAddress1 <String>: Street Address line 1.
-  [AddressType <AddressType?>]: Type of address.
+  [AddressType <String>]: Type of address.
   [City <String>]: Name of the City.
   [CompanyName <String>]: Name of the company.
   [PostalCode <String>]: Postal code.
@@ -76,22 +76,24 @@ INPUTOBJECT <IEdgeOrderIdentity>: Identity Parameter
 
 PREFERENCE <IPreferences>: Customer preference.
   [EncryptionPreference <IEncryptionPreferences>]: Preferences related to the Encryption.
-    [DoubleEncryptionStatus <DoubleEncryptionStatus?>]: Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
+    [DoubleEncryptionStatus <String>]: Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
   [ManagementResourcePreference <IManagementResourcePreferences>]: Preferences related to the Management resource.
     [PreferredManagementResourceId <String>]: Customer preferred Management resource ARM ID
-  [NotificationPreference <INotificationPreference[]>]: Notification preferences.
+  [NotificationPreference <List<INotificationPreference>>]: Notification preferences.
     SendNotification <Boolean>: Notification is required or not.
-    StageName <NotificationStageName>: Name of the stage.
+    StageName <String>: Name of the stage.
   [TransportPreference <ITransportPreferences>]: Preferences related to the shipment logistics of the order.
-    PreferredShipmentType <TransportShipmentTypes>: Indicates Shipment Logistics type that the customer preferred.
+    PreferredShipmentType <String>: Indicates Shipment Logistics type that the customer preferred.
 .Link
 https://learn.microsoft.com/powershell/module/az.edgeorder/update-azedgeorderitem
 #>
 function Update-AzEdgeOrderItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('OrderItemName')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Path')]
     [System.String]
@@ -99,6 +101,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -106,6 +110,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -116,44 +122,57 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEdgeOrderIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IContactDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IContactDetails]
     # Contact details for the address
-    # To construct, see NOTES section for FORWARDADDRESSCONTACTDETAIL properties and create a hash table.
     ${ForwardAddressContactDetail},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IShippingAddress]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IShippingAddress]
     # Shipping details for the address
-    # To construct, see NOTES section for FORWARDADDRESSSHIPPINGADDRESS properties and create a hash table.
     ${ForwardAddressShippingAddress},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
     [System.String[]]
     # Additional notification email list.
     ${NotificationEmailList},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IPreferences]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IPreferences]
     # Customer preference.
-    # To construct, see NOTES section for PREFERENCE properties and create a hash table.
     ${Preference},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemUpdateParameterTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdateParameterTags]))]
     [System.Collections.Hashtable]
     # The list of key value pairs that describe the resource.
     # These tags can be used in viewing and grouping this resource (across resource groups).
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -223,6 +242,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -244,10 +272,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.EdgeOrder.private\Update-AzEdgeOrderItem_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.EdgeOrder.private\Update-AzEdgeOrderItem_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.EdgeOrder.private\Update-AzEdgeOrderItem_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.EdgeOrder.private\Update-AzEdgeOrderItem_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -261,6 +289,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

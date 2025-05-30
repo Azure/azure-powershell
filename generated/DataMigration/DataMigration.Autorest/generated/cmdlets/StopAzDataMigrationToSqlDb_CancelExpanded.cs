@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description(@"Stop in-progress database migration to SQL Db.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel", ApiVersion = "2022-03-30-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel", ApiVersion = "2025-03-15-preview")]
     public partial class StopAzDataMigrationToSqlDb_CancelExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener
     {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Migration Operation Input</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.MigrationOperationInput();
+        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IMigrationOperationInput _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MigrationOperationInput();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]

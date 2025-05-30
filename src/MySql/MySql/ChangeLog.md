@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.0
+- Enhanced `Restore-AzMySqlFlexibleServer` functionality with GeoRestore support
+
 ## Version 1.3.0
 * Upgraded nuget package to signed package.
 

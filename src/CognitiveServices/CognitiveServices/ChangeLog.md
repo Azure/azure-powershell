@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.16.0
+* Updated SDK via autorest.powershell.
+* Added Get, New, Remove cmdlets for AzCognitiveServicesAccountRaiPolicy, AzCognitiveServicesAccountRaiBlocklist, AzCognitiveServicesAccountRaiBlocklistItem.
+* Added Get cmdlets for AzCognitiveServicesRaiContentFilters, AzCognitiveServicesAccountDeploymentSku, AzCognitiveServicesModelCapacity.
+* Added Get, New cmdlets for AzCognitiveServicesAccountDefenderForAISetting.
+
 ## Version 1.15.0
 * Upgraded nuget package to signed package.
 

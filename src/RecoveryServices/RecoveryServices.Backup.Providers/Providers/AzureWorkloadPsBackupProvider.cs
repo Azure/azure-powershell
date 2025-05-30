@@ -129,6 +129,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
 
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
+            
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAProtected = true;
 
             // do validations
             ValidateAzureWorkloadDisableProtectionRequest(itemBase);
@@ -152,7 +155,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 protectedItemUri,
                 serviceClientRequest,
                 vaultName: vaultName,
-                resourceGroupName: resourceGroupName);
+                resourceGroupName: resourceGroupName,
+                auxiliaryAccessToken,
+                isMUAProtected,
+                true);
         }
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
@@ -929,6 +935,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         keyValueDict, item.Id);
 
                     properties.PolicyId = policy.Id;
+
+                    Logger.Instance.WriteDebug("Successfully parsed Item URI");
                 }
             }
 
@@ -937,6 +945,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Properties = properties
             };
 
+            Logger.Instance.WriteDebug("checking for MUA for modify policy");
             // check for MUA
             bool isMUAProtected = false;
             if (isMUAOperation && oldPolicy != null && newPolicy != null)
@@ -947,7 +956,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 isMUAProtected = true;
             }
-
+            
+            Logger.Instance.WriteDebug("Entering CreateOrUpdateProtectedItem");
             return ServiceClientAdapter.CreateOrUpdateProtectedItem(
                 containerUri,
                 protectedItemUri,
@@ -966,6 +976,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string containerName = (string)ProviderData[ContainerParams.Name];
             string backupManagementType = (string)ProviderData[ContainerParams.BackupManagementType];
             string workloadType = (string)ProviderData[ContainerParams.ContainerType];
+            string vmResourceGroupName = (string)ProviderData[ContainerParams.ResourceGroupName];
             ContainerBase containerBase =
                 (ContainerBase)ProviderData[ContainerParams.Container];
             AzureVmWorkloadContainer container = (AzureVmWorkloadContainer)ProviderData[ContainerParams.Container];
@@ -981,8 +992,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             List<ProtectableContainerResource> unregisteredVmContainers =
                     GetUnRegisteredVmContainers(vaultName, vaultResourceGroupName);
             ProtectableContainerResource unregisteredVmContainer = unregisteredVmContainers.Find(
-                vmContainer => string.Compare(vmContainer.Name.Split(';').Last(),
-                containerName, true) == 0);
+                vmContainer => {
+                    string[] containerNameSplit = vmContainer.Name.Split(';');
+                    int containerNameSplitLen = containerNameSplit.Length;
+                    bool vmNameMatch = string.Compare(containerNameSplit[containerNameSplitLen - 1], containerName, true) == 0;
+                    bool rgNameMatch = string.Compare(containerNameSplit[containerNameSplitLen - 2], vmResourceGroupName, true) == 0;
+                
+                    return vmNameMatch && rgNameMatch;
+                });
 
             if (unregisteredVmContainer != null || container != null)
             {

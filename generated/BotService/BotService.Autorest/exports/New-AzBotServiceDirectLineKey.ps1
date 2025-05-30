@@ -23,18 +23,18 @@ Regenerates secret keys and returns them for the DirectLine Channel of a particu
 New-AzBotServiceDirectLineKey -ChannelName 'DirectLineChannel' -ResourceGroupName botTest-rg -ResourceName botTest1 -Key key1 -SiteName siteName
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotChannel
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannel
 .Link
 https://learn.microsoft.com/powershell/module/az.botservice/new-azbotservicedirectlinekey
 #>
 function New-AzBotServiceDirectLineKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotChannel])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannel])]
 [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.RegenerateKeysChannelName])]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.PSArgumentCompleterAttribute("WebChatChannel", "DirectLineChannel")]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.RegenerateKeysChannelName]
+    [System.String]
     # The name of the Channel resource for which keys are to be regenerated.
     ${ChannelName},
 
@@ -57,18 +57,30 @@ param(
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Key])]
+    [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.PSArgumentCompleterAttribute("key1", "key2")]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Key]
+    [System.String]
     # Determines which key is to be regenerated
     ${Key},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The site name
     ${SiteName},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Regenerate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Json string supplied to the Regenerate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -126,6 +138,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -146,10 +167,10 @@ begin {
 
         $mapping = @{
             RegenerateExpanded = 'Az.BotService.private\New-AzBotServiceDirectLineKey_RegenerateExpanded';
+            RegenerateViaJsonFilePath = 'Az.BotService.private\New-AzBotServiceDirectLineKey_RegenerateViaJsonFilePath';
+            RegenerateViaJsonString = 'Az.BotService.private\New-AzBotServiceDirectLineKey_RegenerateViaJsonString';
         }
-        if (('RegenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('RegenerateExpanded', 'RegenerateViaJsonFilePath', 'RegenerateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -163,6 +184,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

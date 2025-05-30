@@ -8,26 +8,40 @@ schema: 2.0.0
 # New-AzDynatraceMonitor
 
 ## SYNOPSIS
-Create a MonitorResource
+create a MonitorResource
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AccountId <String>] [-AccountRegionId <String>] [-EnvironmentId <String>]
- [-EnvironmentIngestionKey <String>] [-EnvironmentLandingUrl <String>]
+ [-SubscriptionId <String>] [-AccountId <String>] [-AccountRegionId <String>] [-EnableSystemAssignedIdentity]
+ [-EnvironmentId <String>] [-EnvironmentIngestionKey <String>] [-EnvironmentLandingUrl <String>]
  [-EnvironmentLogsIngestionEndpoint <String>] [-EnvironmentUserId <String>]
- [-IdentityType <ManagedIdentityType>] [-MarketplaceSubscriptionStatus <MarketplaceSubscriptionStatus>]
- [-MonitoringStatus <MonitoringStatus>] [-PlanBillingCycle <String>] [-PlanDetail <String>]
- [-PlanEffectiveDate <DateTime>] [-PlanUsageType <String>] [-SingleSignOnAadDomain <String[]>]
- [-SingleSignOnEnterpriseAppId <String>] [-SingleSignOnState <SingleSignOnStates>] [-SingleSignOnUrl <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-UserCountry <String>] [-UserEmailAddress <String>]
- [-UserFirstName <String>] [-UserLastName <String>] [-UserPhoneNumber <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MarketplaceSubscriptionStatus <String>] [-MonitoringStatus <String>] [-PlanBillingCycle <String>]
+ [-PlanDetail <String>] [-PlanEffectiveDate <DateTime>] [-PlanUsageType <String>]
+ [-SingleSignOnAadDomain <String[]>] [-SingleSignOnEnterpriseAppId <String>] [-SingleSignOnState <String>]
+ [-SingleSignOnUrl <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-UserCountry <String>]
+ [-UserEmailAddress <String>] [-UserFirstName <String>] [-UserLastName <String>] [-UserPhoneNumber <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a MonitorResource
+create a MonitorResource
 
 ## EXAMPLES
 
@@ -51,7 +65,7 @@ Account Id of the account this environment is linked to
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -66,7 +80,7 @@ Region in which the account is created
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -107,12 +121,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnvironmentId
 Id of the environment created
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -127,7 +156,7 @@ Ingestion key of the environment
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -142,7 +171,7 @@ Landing URL for Dynatrace environment
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -157,7 +186,7 @@ Ingestion endpoint used for sending logs
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -172,7 +201,7 @@ User id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -182,15 +211,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The type of managed identity assigned to this resource.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.ManagedIdentityType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -202,7 +246,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -216,8 +260,8 @@ Accept wildcard characters: False
 Marketplace subscription status.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MarketplaceSubscriptionStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -231,8 +275,8 @@ Accept wildcard characters: False
 Status of the monitor.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MonitoringStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -278,7 +322,7 @@ this could be enum
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -293,7 +337,7 @@ plan id as published by Dynatrace
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -308,7 +352,7 @@ date when plan was applied
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -324,7 +368,7 @@ this could be enum
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -355,7 +399,7 @@ array of Aad(azure active directory) domains
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -370,7 +414,7 @@ Version of the Dynatrace agent installed on the VM.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -384,8 +428,8 @@ Accept wildcard characters: False
 State of Single Sign On
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -400,7 +444,7 @@ The login URL specific to this Dynatrace Environment
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -430,7 +474,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -441,11 +485,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-The identities assigned to this resource by the user.
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -460,7 +505,7 @@ Country of the user
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -475,7 +520,7 @@ Email of the user used by Dynatrace for contacting them if needed
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -490,7 +535,7 @@ First Name of the user
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -505,7 +550,7 @@ Last Name of the user
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -520,7 +565,7 @@ Phone number of the user used by Dynatrace for contacting them if needed
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -568,7 +613,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource
 
 ## NOTES
 

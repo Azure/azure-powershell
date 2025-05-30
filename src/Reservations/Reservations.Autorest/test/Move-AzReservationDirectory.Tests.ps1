@@ -31,21 +31,14 @@ Describe 'Move-AzReservationDirectory' {
     }
 
     It 'Change' {
-        $request = @{ DestinationTenantId = "30000000-aaaa-bbbb-cccc-100000000004" }
-        $response = Move-AzReservationDirectory -ReservationOrderId "50000000-aaaa-bbbb-cccc-200000000005" -Body $request
+        $json = "DestinationTenantId=30000000-aaaa-bbbb-cccc-100000000004"
+        $response = Move-AzReservationDirectory -ReservationOrderId "50000000-aaaa-bbbb-cccc-200000000005" -JsonString $json
         ExecuteTestCases($response)
     }
 
     It 'ChangeViaIdentityExpanded' {
         $identity = @{ ReservationOrderId = "30000000-aaaa-bbbb-cccc-200000000018" }
         $response = Move-AzReservationDirectory -InputObject $identity -DestinationTenantId "30000000-aaaa-bbbb-cccc-100000000004"
-        ExecuteTestCases($response)
-    }
-
-    It 'ChangeViaIdentity' {
-        $identity = @{ ReservationOrderId = "40000000-aaaa-bbbb-cccc-200000000007" }
-        $request = @{ DestinationTenantId = "30000000-aaaa-bbbb-cccc-100000000004" }
-        $response = Move-AzReservationDirectory -InputObject $identity -Body $request
         ExecuteTestCases($response)
     }
 }

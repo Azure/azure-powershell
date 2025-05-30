@@ -34,6 +34,11 @@ function Start-TestSleep {
 $env = @{}
 function setupEnv() {
 
+    # Set the test mode for the Az.Functions module
+    # This is requried to support playback mode (given that we need to have the same values in teh payload for each function app creation)
+    # Currently this flag is used to have a constant share name when creation an app
+    $env:FunctionsTestMode = $true
+
     <#
     $localEnvFilePath = Join-Path $PSScriptRoot 'localEnv.json'
     if (Test-Path $localEnvFilePath)
@@ -232,11 +237,6 @@ function setupEnv() {
     $newApplInsightsName = $functionNamePowerShell + "-new"
     $newApplInsights = New-AzApplicationInsights -ResourceGroupName $env.resourceGroupNameWindowsPremium -Name $newApplInsightsName -Location $location
     $env.add('newApplInsights', $newApplInsights) | Out-Null
-
-    # Set the test mode for the Az.Functions module
-    # This is requried to support playback mode (given that we need to have the same values in teh payload for each function app creation)
-    # Currently this flag is used to have a constant share name when creation an app
-    $env:FunctionsTestMode = $true
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

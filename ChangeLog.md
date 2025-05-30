@@ -1,3 +1,343 @@
+## 14.1.0 - June 2025
+#### Az.Accounts 5.0.2
+* Upgrade Azure.Core to 1.45.0
+
+#### Az.Compute 10.0.1
+* Added breaking change message for 'New-AzVM' and 'New-AzVmss' cmdlets.
+
+#### Az.DataFactory 1.19.3
+* Added more support for SparkV2 and HiveV2 connection properties.
+
+#### Az.Migrate 2.8.0
+* Implemented the Get-AzMigrateServerMigrationStatus cmdlet to retrieve the replication status of servers in Azure Migrate.
+* Fixed bugs in 'New-AzMigrateLocalServerReplication' that caused HyperVSite or VMwareSite not found.
+
+#### Az.MySql 1.4.0
+- Enhanced 'Restore-AzMySqlFlexibleServer' functionality with GeoRestore support
+
+#### Az.Network 7.17.0
+* Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:
+	- 'New-AzNatGateway'
+	- 'Set-AzNatGateway'
+* Added property 'DefaultPublicNatGateway' to VirtualNetwork.
+* Onboarded 'Microsoft.FluidRelay/fluidRelayServers' to private link cmdlets
+* Added cmdlet 'Get-AzLoadBalancerRuleHealth' for Load Balancer Rule Health.
+* Added property 'EnableConnectionTracking' to Load Balancing Rule, as well as support for it for the following cmdlets:
+    - 'Add-AzLoadBalancerRuleConfig'
+    - 'New-AzLoadBalancerRuleConfig'
+    - 'Set-AzLoadBalancerRuleConfig'
+* Added cmdlet for migration of basic IP based deployment to Standard IP based VMSS deployments for VirtualNetworkGateways
+    - 'New-AzVirtualNetworkGatewayMigrationParameter'
+    - 'Invoke-AzVirtualNetworkGatewayPrepareMigration'
+    - 'Invoke-AzVirtualNetworkGatewayExecuteMigration'
+    - 'Invoke-AzVirtualNetworkGatewayCommitMigration'
+    - 'Invoke-AzVirtualNetworkGatewayAbortMigration'
+* Added cmdlets for CRUD operations of NetworkSecurityPerimeter service
+    - Cmdlets for NetworkSecurityPerimeter operations
+        - 'New-AzNetworkSecurityPerimeter'
+        - 'Get-AzNetworkSecurityPerimeter'
+        - 'Update-AzNetworkSecurityPerimeter'
+        - 'Remove-AzNetworkSecurityPerimeter'
+    - Cmdlets for NetworkSecurityPerimeter profile operations
+        - 'New-AzNetworkSecurityPerimeterProfile'
+        - 'Get-AzNetworkSecurityPerimeterProfile'
+        - 'Remove-AzNetworkSecurityPerimeterProfile'
+    - Cmdlets for NetworkSecurityPerimeter association operations
+        - 'New-AzNetworkSecurityPerimeterAssociation'
+        - 'Get-AzNetworkSecurityPerimeterAssociation'
+        - 'Update-AzNetworkSecurityPerimeterAssociation'
+        - 'Remove-AzNetworkSecurityPerimeterAssociation'
+    - Cmdlets for NetworkSecurityPerimeter access rule operations
+        - 'New-AzNetworkSecurityPerimeterAccessRule'
+        - 'Get-AzNetworkSecurityPerimeterAccessRule'
+        - 'Update-AzNetworkSecurityPerimeterAccessRule'
+        - 'Remove-AzNetworkSecurityPerimeterAccessRule'
+    - Cmdlets for NetworkSecurityPerimeter link operations
+        - 'New-AzNetworkSecurityPerimeterLink'
+        - 'Get-AzNetworkSecurityPerimeterLink'
+        - 'Update-AzNetworkSecurityPerimeterLink'
+        - 'Remove-AzNetworkSecurityPerimeterLink'
+    - Cmdlets for NetworkSecurityPerimeter link reference operations
+        - 'Get-AzNetworkSecurityPerimeterLinkReference'
+        - 'Remove-AzNetworkSecurityPerimeterLinkReference'
+    - Cmdlets for NetworkSecurityPerimeter logging configuration operations
+        - 'New-AzNetworkSecurityPerimeterLoggingConfiguration'
+        - 'Get-AzNetworkSecurityPerimeterLoggingConfiguration'
+        - 'Update-AzNetworkSecurityPerimeterLoggingConfiguration'
+        - 'Remove-AzNetworkSecurityPerimeterLoggingConfiguration'
+    - Cmdlet to get NetworkSecurityPerimeter associable resource types
+        - 'Get-AzNetworkSecurityPerimeterAssociableResourceType'
+* Updated cmdlet to add the property of 'PartnerManagedResource', and updated corresponding cmdlets.
+    - 'Get-AzNetworkVirtualAppliance'
+* Added cmdlet to retrieve boot diagnostic logs for a given NetworkVirtualAppliance VM instance:
+    - 'Get-AzNetworkVirtualApplianceBootDiagnostics'
+* Added etag property to Azure Virtual Network Manager -> IpamPool, VerifierWorkspace data models
+* Onboarded ExpressRoute cmdlets to manage Microsoft Peering Advertised prefix validation:
+    - 'Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig'
+    - 'Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig'
+    - 'Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig'
+    - 'Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig'
+* Updated cmdlets to support Advanced Connectivity feature for Azure VPN gateway.
+    - 'New-AzVirtualNetworkGateway'
+    - 'Get-AzVirtualNetworkGateway'
+    - 'Get-AzVirtualNetworkGatewayConnection'
+* Deleted NetworkWatcher cmdlets for 'Classic' Connection Monitor
+    - 'Start-AzNetworkWatcherConnectionMonitor'
+    - 'Get-AzNetworkWatcherConnectionMonitorReport'
+* Updated cmdlets to support topology-specific connectivity capabilities:
+    - 'New-AzNetworkManagerConnectivityConfiguration'
+    - 'Set-AzNetworkManagerConnectivityConfiguration'
+    - 'Get-AzNetworkManagerConnectivityConfiguration'
+
+#### Az.Oracle 1.1.1
+* Fixed module name in module metadata
+
+#### Az.PostgreSql 1.3.0
+* Added support for Geo-restore in 'Restore-AzPostgreSqlFlexibleServer' cmdlets.
+    - Automatically determined the paired region for the source server during geo-restore.
+    - Enhanced validation for private access and DNS zone configurations during restore operations.
+
+#### Az.RecoveryServices 7.7.2
+* Added fix for resume protection with AzureFileshare.
+* Added fix for Get backup item for MSSQL soft deleted items.
+* Added check to compare the VM resource group in the list of VMs returned for registration.
+* Added RetainRecoveryPointsAsPerPolicy as MUA protected operation in Disable-AzRecoveryServicesBackupProtection cmdlet.
+
+## 14.0.0 - May 2025
+#### Az.Accounts 5.0.0
+* Changed the default output access token of 'Get-AzAccessToken' from plain text to 'SecureString'.
+* Removed the warning message about failing to initialize PSStyle in automation runbooks. [#26155]
+* Increased the timeout for tab-completion of location, resource group, etc. to 10 seconds.
+
+#### Az.Aks 7.0.0
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Updated the default value of '-NodeVmSize' parameter in 'New-AzAksCluster' and '-VmSize' parameter in 'New-AzAksNodePool' from 'Standard_D2_V2' to being dynamically selected by the AKS resource provider based on quota and capacity in the next major release.
+
+#### Az.AppConfiguration 2.0.0
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.Cdn 5.0.0
+* Upgraded Api version to 2025-04-15
+* Added support for cipher
+* Added support for migration from classic cdn to afdx
+
+#### Az.Compute 10.0.0
+* Added new properties 'Architecture', 'HyperVGeneration', and 'ImageDeprecationStatus' to be returned in 'Get-AzVMImage' ListVMImage parameter set.
+* Deprecated 'Get-AzVMSize' 'List Virtual Machine Size' parameter set. 
+* Added new parameters 'EnableAutomaticZoneRebalance', 'AutomaticZoneRebalanceStrategy' and 'AutomaticZoneRebalanceBehavior' to 'New-AzVmssConfig' and 'Update-AzVmss' cmdlets for VMSS Automatic Zone Rebalancing. 
+
+#### Az.EventHub 5.3.0
+* Added parameters 'MaxReplicationLagDurationInSeconds' and 'Replicalocation' in cmdlets 'New-AzEventHubNamespace' & 'Set-AzEventHubNamespace'
+* Added new cmdlets for doing namespace failover - 'Start-AzEventHubNamespaceFailOver'
+* Added new cmdlets for generating replication object for Replication parameter - 'New-AzEventHubLocationsNameObject'
+
+#### Az.Functions 4.2.1
+* Updated API client to latest commit for version 2023-12-01
+* Refreshed stack definitions
+* Enforced runtime EOL policy for function app creation: block expired, warn if within 6 months
+
+#### Az.ManagedServiceIdentity 2.0.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.Migrate 2.7.1
+* Added validation for Data.Replication
+  - Added validation to protect virtual machines in 'New-AzMigrateLocalServerReplication'
+
+#### Az.Network 7.16.2
+* Onboarded 'Microsoft.FluidRelay/fluidRelayServers' to private link cmdlets
+
+#### Az.RecoveryServices 7.7.1
+* Updated 'GetAzureRmRecoveryServicesBackupSchedulePolicyObject' to default the 'PolicySubType' to 'Enhanced' for AzureVM.
+* Updated Azure Backup SDK version to support protecting TVM with standard policy.
+
+#### Az.RedisEnterpriseCache 1.5.0
+* Added support for listing all SKUs a cluster can scale to.
+* Added a new enum: NoCluster for Clustering policy.
+
+#### Az.Resources 8.0.0
+* [Breaking Change] Updated API version of resource types from latest to DefaultApiVersion for cmdlets '*-AzResource' and 'Invoke-AzResourceAction'.
+
+#### Az.Sql 6.0.4
+* Added server level action groups in enum of action groups to be able to be configured via auditing.
+
+#### Az.StackHCI 2.6.0
+* Added EOL Message for 22H2
+
+#### Az.Storage 9.0.0
+* Removed MD5 from blob and file upload in some scenarios
+    - 'Set-AzStorageFileContent'
+    - 'Set-AzStorageBlobContent'
+* Added prompt for customer confirmation for long running account migration operation .
+    - 'Start-AzStorageAccountMigration'
+
+## 13.5.0 - May 2025
+#### Az.Accounts 4.2.0
+* Updated warning message about MFA. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314
+* Fixed token in auxiliary authentication header.
+* Collected authentication method for telemetry in end process of cmdlet.
+
+#### Az.Compute 9.3.0
+* Added new cmdlets 'Add-AzVmssSkuProfileVMSize' and 'Remove-AzVmssSkuProfileVMSize' to add and remove VM sizes to and from the VMSS SkuProfile.
+* Added new parameters 'ZonePlacementPolicy', 'IncludeZone', 'ExcludeZone', and 'AlignRegionalDisksToVMZone' to cmdlets 'New-AzVM' and 'New-AzVmConfig'
+* Added new parameter 'AlignRegionalDisksToVMZone' to cmdlet 'Update-AzVM'.
+* VM/VMSS related cmdlets will now use 2024-11-01 ComputeRP API calls.
+
+#### Az.DataFactory 1.19.2
+* Added more support for M365 connection properties.
+* Added more support for SnowfalkeV2 connection properties.
+* Added more support for AzureDatabricks connection properties.
+
+#### Az.DataProtection 2.7.0
+* Added new cmdlet for validate for Modify backup - Test-AzDataProtectionBackupInstanceUpdate.
+* Added new parameters for UAMI based restore in Initialize-AzDataProtectionRestoreRequest cmdlet.
+
+#### Az.ElasticSan 1.4.0
+* Changed parameters 'BaseSizeTiB' and 'ExtendedCapacitySizeTiB' in cmdlet 'New-AzElasticSan' to be optional.
+    - 'New-AzElasticSan'
+
+#### Az.FrontDoor 1.13.0
+* Added support for Captcha
+
+#### Az.MarketplaceOrdering 2.2.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.Network 7.16.1
+* Onboarded 'Microsoft.DocumentDB/mongoClusters' to private link cmdlets
+
+#### Az.RecoveryServices 7.7.0
+* Fix for reprotect cmdlet in Azure Site Recovery for Azure to Azure provider.
+* Deprecated the 'Token' parameter for cross-tenant authentication in MUA scenarios for handling breaking change in Get-AzAccessToken cmdlet, use parameter 'SecureToken' going forward.
+
+#### Az.ResourceGraph 1.2.1
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.Resources 7.11.0
+* Added SuppressDiagnostics Parameter to Test-Deployment cmdlets.
+* Added PotentialChanges to WhatIf result.
+
+#### Az.Sql 6.0.3
+* Added Information message to 'Set-AzSqlInstance' for migrating Azure Sql database with GeoDr links to Azure Sql Hyperscale Edition
+
+#### Az.Storage 8.4.0
+* When create Storage context, allowed user input StorageAccountName
+    - 'New-AzStorageContext'
+* Reported error when user create user delegation SAS with a storage context not contains StorageAccountName.
+    - 'New-AzStorageBlobSASToken'
+    - 'New-AzStorageContainerSASToken'
+    - 'New-AzDataLakeGen2SasToken'
+
+#### Az.Synapse 3.2.1
+* Fixed an error of not correctly setting the cmdlet context
+
+#### Az.Websites 3.4.1
+* Added AppServicePlan management support for Pv4 and Pmv4 tiers.
+
+## 13.4.0 - April 2025
+#### Az.Accounts 4.1.0
+* Added AppConfiguration ResourceId and Suffix endpoints for Mooncake and USGov clouds to fix issue [#24219]
+
+#### Az.Aks 6.1.1
+* Preannounced breaking change: The default value of '-NodeVmSize' parameter of 'New-AzAksCluster' will be changing from 'Standard_DS2_V2 (Linux), Standard_DS2_V3 (Windows)' to being dynamically selected by the AKS resource provider based on quota and capacity in the next major release.
+* The code base is going to be refactored, the following cmdlet adds a BreakingChange announcement:
+  * 'Get-AzAksMaintenanceConfiguration'
+  * 'Get-AzAksManagedClusterOSOption'
+  * 'Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint'
+  * 'Get-AzAksNodePoolUpgradeProfile'
+  * 'Get-AzAksUpgradeProfile'
+  * 'Get-AzAksVersion'
+  * 'New-AzAksMaintenanceConfiguration'
+
+#### Az.AppConfiguration 1.4.1
+* The code base is going to be refactored, the following cmdlet adds a BreakingChange announcement:
+  * 'Get-AzAppConfigurationStore'
+  * 'New-AzAppConfigurationStore'
+  * 'Update-AzAppConfigurationStore'
+
+#### Az.Cdn 3.3.1
+* This upgrade contains no changes in cdn powershell commandline tool, it only notifies user that we are going to upgrade the version of autorest, and will bring some breaking changes.
+
+#### Az.CognitiveServices 1.16.0
+* Updated SDK via autorest.powershell.
+* Added Get, New, Remove cmdlets for AzCognitiveServicesAccountRaiPolicy, AzCognitiveServicesAccountRaiBlocklist, AzCognitiveServicesAccountRaiBlocklistItem.
+* Added Get cmdlets for AzCognitiveServicesRaiContentFilters, AzCognitiveServicesAccountDeploymentSku, AzCognitiveServicesModelCapacity.
+* Added Get, New cmdlets for AzCognitiveServicesAccountDefenderForAISetting.
+
+#### Az.Compute 9.2.0
+* Added new parameter '-ReplicationMode' to 'New-AzGalleryImageVersion' cmdlet.
+* Added new parameter 'BlockDeletionBeforeEndOfLife' parameter to 'New-AzGalleryImageVersion' and 'Update-AzGalleryImageVersion' cmdlets.
+* Updated 'New-AzVM', 'New-AzVmss', 'Update-AzVM', and 'Update-AzVmss' to pass 'Standard' as an input of '-SecurityType' parameter.
+* Added breaking change message for 'Get-AzVMSize'.
+
+#### Az.CosmosDB 1.18.0
+* Added support for creating containers with Vector Embedding Policy.
+* GAd Per Partition Automatic Failover GA
+* GAd Per Region Per Partition Autoscale GA
+
+#### Az.ManagedServiceIdentity 1.3.1
+* Added breaking change announcement for the following cmdlets due to migrating autorest from v3 to v4.
+  * 'Get-AzFederatedIdentityCredential'
+  * 'New-AzFederatedIdentityCredential'
+  * 'Update-AzFederatedIdentityCredential'
+
+#### Az.Monitor 6.0.2
+* Pipeline Group upgraded API version to 2024-10-01-preview
+
+#### Az.Network 7.15.1
+* Updated VirtualNetworkGatewayConnection cmdlets to pass AuxilaryAuthHeader for referenced resourceIds i.e. LocalNetworkGateway2, VirtualNetworkGateway2. This is needed in case referenced resourceIds are in different AAD Tenant.
+    - 'New-AzVirtualNetworkGatewayConnection'
+    - 'Set-AzVirtualNetworkGatewayConnection'
+
+#### Az.RecoveryServices 7.6.0
+* Azure Site Recovery support for shared disk scenario for Azure to Azure provider.
+* Removed warning about ensuring Enhanced Policy for Trusted Launch VMs when configuring protection for Azure VMs.
+* Added warning 'Starting in May 2025, Trusted Launch virtual machines can be protected with both standard and enhanced policies via PS and CLI' in Enable-AzRecoveryServicesBackupProtection.
+* Added breaking change announcement for Get-AzRecoveryServicesBackupSchedulePolicyObject that this command will return a Enhanced policy object by default for IaaSVM workload.
+* Added support for PremiumV2_LRS and UltraSSD_LRS target disk types for Azure to Azure replication.
+* Added logs to enable better debugging for Modify protection with MSSQL workload.
+* Added Cross region restore support for new regions - israelnorthwest, southwestus, southcentralus2, southeastus3, southeastus5.
+
+#### Az.Resources 7.10.0
+* Fixed the issue that Get-AzReource not working with '-ExpandProperties'. [#11248]
+* Updated Resources SDK to 2024-11-01.
+* Added breaking change announcement for the following cmdlets due to API version for resource type may change.
+    - 'Get-AzResource'
+    - 'New-AzResource'
+    - 'Set-AzResource'
+    - 'Remove-AzResource'
+    - 'Invoke-AzResourceAction'
+* Added ValidationLevel Parameter to WhatIf and Validate cmdlets for deployments.
+
+#### Az.Storage 8.3.0
+* Supported NFS File Share and NFS file and directory properties
+    - 'Get-AzStorageFile'
+    - 'Get-AzStorageFileContent'
+    - 'New-AzStorageDirectory'
+    - 'Remove-AzStorageFile'
+    - 'Set-AzStorageFileContent'
+    - 'Start-AzStorageFileCopy'
+* Supported File share properties: Protocol, EnableSnapshotVirtualDirectoryAccess.
+    - 'New-AzStorageShare'
+    - 'Get-AzStorageShare'
+* Supported create hard link in NFS File Share 
+    - 'New-AzStorageFileHardLink'
+* Added warning message for upcoming breaking change on upload Azure file
+    - 'Set-AzStorageFileContent'
+* Added warning messages for an upcoming breaking change when converting the account's redundancy configuration
+    - 'Start-AzStorageAccountMigration'
+
+#### Az.StorageSync 2.5.0
+* Fixed the bug in server registration
+* Improved the error message for Set-AzStorageSyncServiceIdentity cmdlet
+* Added RoleAssignmentExists check
+* Added AssignIdentity to Set-AzStorageSyncServer
+* Added a default behavior of system assigned identity to StorageSyncService provisioning
+
+#### Az.Synapse 3.2.0
+* Supported copyComputeScale and pipelineExternalComputeScale in 'Set-AzSynapseIntegrationRuntime' Command
+
+#### Az.Websites 3.4.0
+* Add support for pull based deployments from a URL with MSI authentication in 'Publish-AzWebApp'
+
 ## 13.3.0 - March 2025
 #### Az.CosmosDB 1.17.0
 * Added support for Cosmos DB Table role definition and role assignment related cmdlets.

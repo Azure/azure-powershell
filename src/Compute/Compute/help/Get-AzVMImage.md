@@ -16,7 +16,7 @@ Gets all the versions of a VMImage.
 ### ListVMImage
 ```
 Get-AzVMImage -Location <String> [-EdgeZone <String>] -PublisherName <String> -Offer <String> -Skus <String>
- [-Top <Int32>] [-OrderBy <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-Top <Int32>] [-OrderBy <String>] [-Expand <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -32,66 +32,88 @@ The **Get-AzVMImage** cmdlet gets all the versions of a VMImage.
 
 ## EXAMPLES
 
-### Example 1: Get VMImage objects
+### Example 1: List VM Image objects
 ```powershell
-Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter"
+Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2025-datacenter"
 ```
 
 ```output
-Version        Skus               Offer         PublisherName          Location  Id
--------        ----               -----         -------------          --------  --
-4.127.20180315 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
-4.127.20180510 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
-4.127.20180815 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
-4.127.20180912 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
-4.127.20181010 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
-4.127.20181125 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
-4.127.20190104 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
-4.127.20190115 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
-4.127.20190204 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
-4.127.20190218 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+Version           Location  PublisherName          HyperVGeneration Architecture ImageDeprecationStatus
+-------           --------  -------------          ---------------- ------------ ----------------------
+26100.2033.241004 centralus MicrosoftWindowsServer
+26100.2314.241107 centralus MicrosoftWindowsServer
+26100.2605.241207 centralus MicrosoftWindowsServer
+26100.2894.250113 centralus MicrosoftWindowsServer
+26100.3194.250210 centralus MicrosoftWindowsServer
+26100.3476.250306 centralus MicrosoftWindowsServer
+26100.3775.250406 centralus MicrosoftWindowsServer
+
 ```
 
 This command gets all the versions of VMImage that match the specified values.
 
-### Example 2: Get VMImage object
+### Example 2: List VM Image objects with Image Deprecation Status
 ```powershell
-Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter" -Version 4.127.20180315
+Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2025-datacenter" -Expand properties/imageDeprecationStatus
 ```
 
 ```output
-Id               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/centralus/
-                   Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter
-                   /Versions/4.127.20180315
-Location         : centralus
-PublisherName    : MicrosoftWindowsServer
-Offer            : windowsserver
-Skus             : 2012-R2-Datacenter
-Version          : 4.127.20180315
-Name             : 4.127.20180315
-OSDiskImage      : {
-                     "operatingSystem": "Windows"
-                   }
-PurchasePlan     : null
-DataDiskImages   : []
+Version           Location  PublisherName          HyperVGeneration Architecture ImageDeprecationStatus
+-------           --------  -------------          ---------------- ------------ ----------------------
+26100.2033.241004 centralus MicrosoftWindowsServer V1               x64          Microsoft.Azure.Management.Compute.Mo…
+26100.2314.241107 centralus MicrosoftWindowsServer V1               x64          Microsoft.Azure.Management.Compute.Mo…
+26100.2605.241207 centralus MicrosoftWindowsServer V1               x64          Microsoft.Azure.Management.Compute.Mo…
+26100.2894.250113 centralus MicrosoftWindowsServer V1               x64          Microsoft.Azure.Management.Compute.Mo…
+26100.3194.250210 centralus MicrosoftWindowsServer V1               x64          Microsoft.Azure.Management.Compute.Mo…
+26100.3476.250306 centralus MicrosoftWindowsServer V1               x64          Microsoft.Azure.Management.Compute.Mo…
+26100.3775.250406 centralus MicrosoftWindowsServer V1               x64          Microsoft.Azure.Management.Compute.Mo…
+```
+
+This command gets all the versions of VMImage that match the specified values with image deprecation statuses.
+
+### Example 3: Get VMImage object
+```powershell
+Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2025-datacenter" -Version 26100.2033.241004
+```
+
+```output
+Id                     : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/cent
+                         ralus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-d
+                         atacenter/Versions/26100.2033.241004
+Location               : centralus
+PublisherName          : MicrosoftWindowsServer
+Offer                  : windowsserver
+Skus                   : 2025-datacenter
+Version                : 26100.2033.241004
+FilterExpression       :
+Name                   : 26100.2033.241004
+HyperVGeneration       : V1
+OSDiskImage            : {
+                           "operatingSystem": "Windows"
+                         }
+PurchasePlan           : null
+DataDiskImages         : []
+ImageDeprecationStatus : {
+                           "imageState": "Active",
+                           "scheduledDeprecationTime": null,
+                           "alternativeOption": null
+                         }
 ```
 
 This command gets a specific version of VMImage that matches the specified values.
 
-### Example 3: Get VMImage objects
+### Example 4: Get VMImage objects
 ```powershell
-Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter" -Version 4.127.2018*
+Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2025-datacenter" -Version 26100.2* -Expand properties
 ```
 
 ```output
-Version        Skus               Offer         PublisherName          Location  Id
--------        ----               -----         -------------          --------  --
-4.127.20180315 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
-4.127.20180510 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
-4.127.20180815 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
-4.127.20180912 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
-4.127.20181010 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
-4.127.20181125 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+Version           Location  PublisherName          HyperVGeneration Architecture ImageDeprecationStatus
+-------           --------  -------------          ---------------- ------------ ----------------------
+26100.2033.241004 centralus MicrosoftWindowsServer V1               x64
+26100.2314.241107 centralus MicrosoftWindowsServer V1               x64
+26100.2605.241207 centralus MicrosoftWindowsServer V1               x64
+26100.2894.250113 centralus MicrosoftWindowsServer V1               x64
 ```
 
 This command gets all the versions of VMImage that match the specified values with filtering over version.
@@ -119,6 +141,21 @@ Set the extended location name for EdgeZone. If not set, VM Image will be querie
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Expand
+The expand expression to apply on the operation. Possible values are: 'properties', and 'properties/imageDeprecationStatus'
+
+```yaml
+Type: System.String
+Parameter Sets: ListVMImage
 Aliases:
 
 Required: False

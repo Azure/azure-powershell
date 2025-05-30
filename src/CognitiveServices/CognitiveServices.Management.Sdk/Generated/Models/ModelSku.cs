@@ -38,7 +38,10 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
         /// <param name="rateLimits">The list of rateLimit.
         /// </param>
-        public ModelSku(string name = default(string), string usageName = default(string), System.DateTime? deprecationDate = default(System.DateTime?), CapacityConfig capacity = default(CapacityConfig), System.Collections.Generic.IList<CallRateLimit> rateLimits = default(System.Collections.Generic.IList<CallRateLimit>))
+
+        /// <param name="cost">The list of billing meter info.
+        /// </param>
+        public ModelSku(string name = default(string), string usageName = default(string), System.DateTime? deprecationDate = default(System.DateTime?), CapacityConfig capacity = default(CapacityConfig), System.Collections.Generic.IList<CallRateLimit> rateLimits = default(System.Collections.Generic.IList<CallRateLimit>), System.Collections.Generic.IList<BillingMeterInfo> cost = default(System.Collections.Generic.IList<BillingMeterInfo>))
 
         {
             this.Name = name;
@@ -46,6 +49,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
             this.DeprecationDate = deprecationDate;
             this.Capacity = capacity;
             this.RateLimits = rateLimits;
+            this.Cost = cost;
             CustomInit();
         }
 
@@ -84,5 +88,11 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "rateLimits")]
         public System.Collections.Generic.IList<CallRateLimit> RateLimits {get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of billing meter info.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "cost")]
+        public System.Collections.Generic.IList<BillingMeterInfo> Cost {get; set; }
     }
 }

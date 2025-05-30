@@ -14,7 +14,8 @@ Create a route map rule action parameter for the rule action.
 
 ```
 New-AzRouteMapRuleActionParameter [-RoutePrefix <String[]>] [-Community <String[]>] [-AsPath <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

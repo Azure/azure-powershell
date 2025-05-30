@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="recoveryPointType">The recovery point type.
-        /// Possible values include: 'NotSpecified', 'ApplicationConsistent',
-        /// 'CrashConsistent'</param>
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;ApplicationConsistent&#39;,
+        /// &#39;CrashConsistent&#39;</param>
         public MigrationRecoveryPointProperties(System.DateTime? recoveryPointTime = default(System.DateTime?), string recoveryPointType = default(string))
 
         {

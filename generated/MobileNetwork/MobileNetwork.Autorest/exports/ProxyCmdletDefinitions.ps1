@@ -29,7 +29,7 @@ Deploy-AzMobileNetworkReinstallPacketCoreControlPlane -PacketCoreControlPlaneNam
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -55,7 +55,7 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/deploy-azmobilenetworkreinstallpacketcorecontrolplane
 #>
 function Deploy-AzMobileNetworkReinstallPacketCoreControlPlane {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='Reinstall', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Reinstall', Mandatory)]
@@ -82,7 +82,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -153,6 +152,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -175,9 +183,7 @@ begin {
             Reinstall = 'Az.MobileNetwork.private\Deploy-AzMobileNetworkReinstallPacketCoreControlPlane_Reinstall';
             ReinstallViaIdentity = 'Az.MobileNetwork.private\Deploy-AzMobileNetworkReinstallPacketCoreControlPlane_ReinstallViaIdentity';
         }
-        if (('Reinstall') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Reinstall') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -191,6 +197,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -249,7 +258,7 @@ Deploy-AzMobileNetworkRollbackPacketCoreControlPlane -PacketCoreControlPlaneName
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -275,7 +284,7 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/deploy-azmobilenetworkrollbackpacketcorecontrolplane
 #>
 function Deploy-AzMobileNetworkRollbackPacketCoreControlPlane {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='Rollback', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Rollback', Mandatory)]
@@ -302,7 +311,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -373,6 +381,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -395,9 +412,7 @@ begin {
             Rollback = 'Az.MobileNetwork.private\Deploy-AzMobileNetworkRollbackPacketCoreControlPlane_Rollback';
             RollbackViaIdentity = 'Az.MobileNetwork.private\Deploy-AzMobileNetworkRollbackPacketCoreControlPlane_RollbackViaIdentity';
         }
-        if (('Rollback') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Rollback') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -411,6 +426,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -467,7 +485,7 @@ Get-AzMobileNetworkAttachedDataNetwork -PacketCoreControlPlaneName azps=mn-pccp 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -489,14 +507,50 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+PACKETCORECONTROLPLANEINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+PACKETCOREDATAPLANEINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworkattacheddatanetwork
 #>
 function Get-AzMobileNetworkAttachedDataNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPacketCoreControlPlane', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPacketCoreDataPlane', Mandatory)]
     [Alias('AttachedDataNetworkName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -511,6 +565,7 @@ param(
     ${PacketCoreControlPlaneName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPacketCoreControlPlane', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -537,8 +592,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityPacketCoreControlPlane', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${PacketCoreControlPlaneInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityPacketCoreDataPlane', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${PacketCoreDataPlaneInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -596,6 +662,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -617,11 +692,11 @@ begin {
         $mapping = @{
             Get = 'Az.MobileNetwork.private\Get-AzMobileNetworkAttachedDataNetwork_Get';
             GetViaIdentity = 'Az.MobileNetwork.private\Get-AzMobileNetworkAttachedDataNetwork_GetViaIdentity';
+            GetViaIdentityPacketCoreControlPlane = 'Az.MobileNetwork.private\Get-AzMobileNetworkAttachedDataNetwork_GetViaIdentityPacketCoreControlPlane';
+            GetViaIdentityPacketCoreDataPlane = 'Az.MobileNetwork.private\Get-AzMobileNetworkAttachedDataNetwork_GetViaIdentityPacketCoreDataPlane';
             List = 'Az.MobileNetwork.private\Get-AzMobileNetworkAttachedDataNetwork_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -635,6 +710,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -691,7 +769,7 @@ Get-AzMobileNetworkDataNetwork -MobileNetworkName azps-mn -ResourceGroupName azp
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IDataNetwork
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IDataNetwork
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -713,11 +791,28 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworkdatanetwork
 #>
 function Get-AzMobileNetworkDataNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IDataNetwork])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IDataNetwork])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -728,6 +823,7 @@ param(
     ${MobileNetworkName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityMobileNetwork', Mandatory)]
     [Alias('DataNetworkName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -754,8 +850,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityMobileNetwork', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -813,6 +914,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -834,11 +944,10 @@ begin {
         $mapping = @{
             Get = 'Az.MobileNetwork.private\Get-AzMobileNetworkDataNetwork_Get';
             GetViaIdentity = 'Az.MobileNetwork.private\Get-AzMobileNetworkDataNetwork_GetViaIdentity';
+            GetViaIdentityMobileNetwork = 'Az.MobileNetwork.private\Get-AzMobileNetworkDataNetwork_GetViaIdentityMobileNetwork';
             List = 'Az.MobileNetwork.private\Get-AzMobileNetworkDataNetwork_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -852,6 +961,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -908,7 +1020,7 @@ Get-AzMobileNetworkPacketCoreControlPlaneVersion -VersionName pmn-2301-0-1
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlaneVersion
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreControlPlaneVersion
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -934,7 +1046,7 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworkpacketcorecontrolplaneversion
 #>
 function Get-AzMobileNetworkPacketCoreControlPlaneVersion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlaneVersion])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreControlPlaneVersion])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -947,7 +1059,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1006,6 +1117,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1036,6 +1156,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1094,7 +1217,7 @@ Get-AzMobileNetworkPacketCoreControlPlane -ResourceGroupName azps_test_group -Na
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlane
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreControlPlane
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1120,7 +1243,7 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworkpacketcorecontrolplane
 #>
 function Get-AzMobileNetworkPacketCoreControlPlane {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlane])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreControlPlane])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1151,7 +1274,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1210,6 +1332,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1234,9 +1365,7 @@ begin {
             List = 'Az.MobileNetwork.private\Get-AzMobileNetworkPacketCoreControlPlane_List';
             List1 = 'Az.MobileNetwork.private\Get-AzMobileNetworkPacketCoreControlPlane_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1250,6 +1379,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1306,7 +1438,7 @@ Get-AzMobileNetworkPacketCoreDataPlane -PacketCoreControlPlaneName azps-mn-pccp 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreDataPlane
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreDataPlane
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1328,14 +1460,32 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+PACKETCORECONTROLPLANEINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworkpacketcoredataplane
 #>
 function Get-AzMobileNetworkPacketCoreDataPlane {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreDataPlane])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreDataPlane])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPacketCoreControlPlane', Mandatory)]
     [Alias('PacketCoreDataPlaneName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -1369,8 +1519,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityPacketCoreControlPlane', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${PacketCoreControlPlaneInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1428,6 +1583,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1449,11 +1613,10 @@ begin {
         $mapping = @{
             Get = 'Az.MobileNetwork.private\Get-AzMobileNetworkPacketCoreDataPlane_Get';
             GetViaIdentity = 'Az.MobileNetwork.private\Get-AzMobileNetworkPacketCoreDataPlane_GetViaIdentity';
+            GetViaIdentityPacketCoreControlPlane = 'Az.MobileNetwork.private\Get-AzMobileNetworkPacketCoreDataPlane_GetViaIdentityPacketCoreControlPlane';
             List = 'Az.MobileNetwork.private\Get-AzMobileNetworkPacketCoreDataPlane_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1467,6 +1630,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1523,7 +1689,7 @@ Get-AzMobileNetworkService -MobileNetworkName azps-mn -ResourceGroupName azps_te
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IService
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1545,11 +1711,28 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworkservice
 #>
 function Get-AzMobileNetworkService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IService])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1560,6 +1743,7 @@ param(
     ${MobileNetworkName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityMobileNetwork', Mandatory)]
     [Alias('ServiceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -1587,8 +1771,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityMobileNetwork', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1646,6 +1835,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1667,11 +1865,10 @@ begin {
         $mapping = @{
             Get = 'Az.MobileNetwork.private\Get-AzMobileNetworkService_Get';
             GetViaIdentity = 'Az.MobileNetwork.private\Get-AzMobileNetworkService_GetViaIdentity';
+            GetViaIdentityMobileNetwork = 'Az.MobileNetwork.private\Get-AzMobileNetworkService_GetViaIdentityMobileNetwork';
             List = 'Az.MobileNetwork.private\Get-AzMobileNetworkService_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1685,6 +1882,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1743,7 +1943,7 @@ Get-AzMobileNetworkSimGroup -ResourceGroupName azps_test_group -Name azps-mn-sim
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimGroup
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1769,7 +1969,7 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworksimgroup
 #>
 function Get-AzMobileNetworkSimGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimGroup])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1800,7 +2000,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1859,6 +2058,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1883,9 +2091,7 @@ begin {
             List = 'Az.MobileNetwork.private\Get-AzMobileNetworkSimGroup_List';
             List1 = 'Az.MobileNetwork.private\Get-AzMobileNetworkSimGroup_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1899,6 +2105,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1955,7 +2164,7 @@ Get-AzMobileNetworkSimPolicy -MobileNetworkName azps-mn -ResourceGroupName azps_
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimPolicy
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1977,11 +2186,28 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworksimpolicy
 #>
 function Get-AzMobileNetworkSimPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimPolicy])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1992,6 +2218,7 @@ param(
     ${MobileNetworkName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityMobileNetwork', Mandatory)]
     [Alias('SimPolicyName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -2018,8 +2245,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityMobileNetwork', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2077,6 +2309,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2098,11 +2339,10 @@ begin {
         $mapping = @{
             Get = 'Az.MobileNetwork.private\Get-AzMobileNetworkSimPolicy_Get';
             GetViaIdentity = 'Az.MobileNetwork.private\Get-AzMobileNetworkSimPolicy_GetViaIdentity';
+            GetViaIdentityMobileNetwork = 'Az.MobileNetwork.private\Get-AzMobileNetworkSimPolicy_GetViaIdentityMobileNetwork';
             List = 'Az.MobileNetwork.private\Get-AzMobileNetworkSimPolicy_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2116,6 +2356,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2172,7 +2415,7 @@ Get-AzMobileNetworkSim -GroupName azps-mn-simgroup -ResourceGroupName azps_test_
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISim
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISim
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2194,11 +2437,28 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+SIMGROUPINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworksim
 #>
 function Get-AzMobileNetworkSim {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISim])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISim])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2210,6 +2470,7 @@ param(
     ${GroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySimGroup', Mandatory)]
     [Alias('SimName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -2236,8 +2497,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySimGroup', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${SimGroupInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2295,6 +2561,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2316,11 +2591,10 @@ begin {
         $mapping = @{
             Get = 'Az.MobileNetwork.private\Get-AzMobileNetworkSim_Get';
             GetViaIdentity = 'Az.MobileNetwork.private\Get-AzMobileNetworkSim_GetViaIdentity';
+            GetViaIdentitySimGroup = 'Az.MobileNetwork.private\Get-AzMobileNetworkSim_GetViaIdentitySimGroup';
             List = 'Az.MobileNetwork.private\Get-AzMobileNetworkSim_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2334,6 +2608,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2390,7 +2667,7 @@ Get-AzMobileNetworkSite -ResourceGroupName azps_test_group -MobileNetworkName az
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISite
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISite
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2412,11 +2689,28 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworksite
 #>
 function Get-AzMobileNetworkSite {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISite])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISite])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2427,6 +2721,7 @@ param(
     ${MobileNetworkName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityMobileNetwork', Mandatory)]
     [Alias('SiteName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -2453,8 +2748,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityMobileNetwork', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2512,6 +2812,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2533,11 +2842,10 @@ begin {
         $mapping = @{
             Get = 'Az.MobileNetwork.private\Get-AzMobileNetworkSite_Get';
             GetViaIdentity = 'Az.MobileNetwork.private\Get-AzMobileNetworkSite_GetViaIdentity';
+            GetViaIdentityMobileNetwork = 'Az.MobileNetwork.private\Get-AzMobileNetworkSite_GetViaIdentityMobileNetwork';
             List = 'Az.MobileNetwork.private\Get-AzMobileNetworkSite_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2551,6 +2859,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2607,7 +2918,7 @@ Get-AzMobileNetworkSlice -MobileNetworkName azps-mn -ResourceGroupName azps_test
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISlice
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISlice
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2629,11 +2940,28 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworkslice
 #>
 function Get-AzMobileNetworkSlice {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISlice])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISlice])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2652,6 +2980,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityMobileNetwork', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the network slice.
@@ -2669,8 +2998,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityMobileNetwork', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2728,6 +3062,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2749,11 +3092,10 @@ begin {
         $mapping = @{
             Get = 'Az.MobileNetwork.private\Get-AzMobileNetworkSlice_Get';
             GetViaIdentity = 'Az.MobileNetwork.private\Get-AzMobileNetworkSlice_GetViaIdentity';
+            GetViaIdentityMobileNetwork = 'Az.MobileNetwork.private\Get-AzMobileNetworkSlice_GetViaIdentityMobileNetwork';
             List = 'Az.MobileNetwork.private\Get-AzMobileNetworkSlice_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2767,6 +3109,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2825,7 +3170,7 @@ Get-AzMobileNetwork -ResourceGroupName azps_test_group -Name azps-mn
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IMobileNetwork
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetwork
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2851,7 +3196,7 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetwork
 #>
 function Get-AzMobileNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IMobileNetwork])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetwork])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2882,7 +3227,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -2941,6 +3285,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2965,9 +3318,7 @@ begin {
             List = 'Az.MobileNetwork.private\Get-AzMobileNetwork_List';
             List1 = 'Az.MobileNetwork.private\Get-AzMobileNetwork_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2981,6 +3332,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3026,59 +3380,150 @@ end {
 
 <#
 .Synopsis
-Creates or updates an attached data network.
+create an attached data network.
 Must be created in the same location as its parent packet core data plane.
 .Description
-Creates or updates an attached data network.
+create an attached data network.
 Must be created in the same location as its parent packet core data plane.
 .Example
 $dns=@("1.1.1.1", "1.1.1.2")
 
 New-AzMobileNetworkAttachedDataNetwork -Name azps-mn-adn -PacketCoreControlPlaneName azps-mn-pccp -PacketCoreDataPlaneName azps-mn-pcdp -ResourceGroupName azps_test_group -DnsAddress $dns -Location eastus -UserPlaneDataInterfaceIpv4Address 10.0.0.10 -UserPlaneDataInterfaceIpv4Gateway 10.0.0.1 -UserPlaneDataInterfaceIpv4Subnet 10.0.0.0/24 -UserPlaneDataInterfaceName N6
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+PACKETCORECONTROLPLANEINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+PACKETCOREDATAPLANEINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworkattacheddatanetwork
 #>
 function New-AzMobileNetworkAttachedDataNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('AttachedDataNetworkName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the attached data network.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the packet core control plane.
     ${PacketCoreControlPlaneName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the packet core data plane.
     ${PacketCoreDataPlaneName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${PacketCoreControlPlaneInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${PacketCoreDataPlaneInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String[]]
@@ -3086,20 +3531,29 @@ param(
     # This configuration is mandatory - if you don't want DNS servers, you must provide an empty array.
     ${DnsAddress},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.NaptEnabled])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.NaptEnabled]
+    [System.String]
     # Whether NAPT is enabled for connections to this attached data network.
     ${NaptConfigurationEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # Maximum number of UDP and TCP pinholes that can be open simultaneously on the core interface.
@@ -3107,61 +3561,88 @@ param(
     # For 4G networks, this is the SGi interface.
     ${NaptConfigurationPinholeLimit},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # Pinhole timeout for ICMP pinholes in seconds.
     # Default for ICMP Echo is 30 seconds.
     ${PinholeTimeoutIcmp},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # Pinhole timeout for TCP pinholes in seconds.
     # Default for TCP is 3 minutes.
     ${PinholeTimeoutTcp},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # Pinhole timeout for UDP pinholes in seconds.
     # Default for UDP is 30 seconds.
     ${PinholeTimeoutUdp},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # The maximum port number
     ${PortRangeMaxPort},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # The minimum port number
     ${PortRangeMinPort},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # Minimum time in seconds that will pass before a TCP port that was used by a closed pinhole can be reused.
     # Default for TCP is 2 minutes.
     ${PortReuseHoldTimeTcp},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # Minimum time in seconds that will pass before a UDP port that was used by a closed pinhole can be reused.
     # Default for UDP is 1 minute.
     ${PortReuseHoldTimeUdp},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String[]]
@@ -3170,7 +3651,10 @@ param(
     # If you define both, they must be of the same size.
     ${UserEquipmentAddressPoolPrefix},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String[]]
@@ -3179,30 +3663,54 @@ param(
     # If both are defined, they must be of the same size.
     ${UserEquipmentStaticAddressPoolPrefix},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The IPv4 address.
     ${UserPlaneDataInterfaceIpv4Address},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The default IPv4 gateway (router).
     ${UserPlaneDataInterfaceIpv4Gateway},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The IPv4 subnet.
     ${UserPlaneDataInterfaceIpv4Subnet},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreDataPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The logical name for this interface.
     # This should match one of the interfaces configured on your Azure Stack Edge device.
     ${UserPlaneDataInterfaceName},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3272,6 +3780,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3292,10 +3809,13 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkAttachedDataNetwork_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkAttachedDataNetwork_CreateViaIdentityExpanded';
+            CreateViaIdentityPacketCoreControlPlaneExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkAttachedDataNetwork_CreateViaIdentityPacketCoreControlPlaneExpanded';
+            CreateViaIdentityPacketCoreDataPlaneExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkAttachedDataNetwork_CreateViaIdentityPacketCoreDataPlaneExpanded';
+            CreateViaJsonFilePath = 'Az.MobileNetwork.private\New-AzMobileNetworkAttachedDataNetwork_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MobileNetwork.private\New-AzMobileNetworkAttachedDataNetwork_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3309,6 +3829,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3354,68 +3877,147 @@ end {
 
 <#
 .Synopsis
-Creates or updates a data network.
+create a data network.
 Must be created in the same location as its parent mobile network.
 .Description
-Creates or updates a data network.
+create a data network.
 Must be created in the same location as its parent mobile network.
 .Example
 New-AzMobileNetworkDataNetwork -MobileNetworkName azps-mn -Name azps-mn-datanetwork -ResourceGroupName azps_test_group -Location eastus
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IDataNetwork
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IDataNetwork
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworkdatanetwork
 #>
 function New-AzMobileNetworkDataNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IDataNetwork])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IDataNetwork])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the mobile network.
     ${MobileNetworkName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('DataNetworkName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the data network.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # An optional description for this data network.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3485,6 +4087,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3505,10 +4116,12 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkDataNetwork_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkDataNetwork_CreateViaIdentityExpanded';
+            CreateViaIdentityMobileNetworkExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkDataNetwork_CreateViaIdentityMobileNetworkExpanded';
+            CreateViaJsonFilePath = 'Az.MobileNetwork.private\New-AzMobileNetworkDataNetwork_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MobileNetwork.private\New-AzMobileNetworkDataNetwork_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3522,6 +4135,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3567,20 +4183,39 @@ end {
 
 <#
 .Synopsis
-Creates or updates a packet core control plane.
+create a packet core control plane.
 .Description
-Creates or updates a packet core control plane.
+create a packet core control plane.
 .Example
 $siteResourceId = New-AzMobileNetworkSiteResourceIdObject -Id /subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/sites/azps-mn-site
 
 New-AzMobileNetworkPacketCoreControlPlane -Name azps-mn-pccp -ResourceGroupName azps_test_group -LocalDiagnosticAccessAuthenticationType Password -Location eastus -PlatformType AKS-HCI -Site $siteResourceId -Sku G0 -ControlPlaneAccessInterfaceIpv4Address 192.168.1.10 -ControlPlaneAccessInterfaceIpv4Gateway 192.168.1.1 -ControlPlaneAccessInterfaceIpv4Subnet 192.168.1.0/24 -ControlPlaneAccessInterfaceName N2 -CoreNetworkTechnology 5GC
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlane
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreControlPlane
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 
 SITE <ISiteResourceId[]>: Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
   Id <String>: Site resource ID.
@@ -3588,161 +4223,181 @@ SITE <ISiteResourceId[]>: Site(s) under which this packet core control plane sho
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworkpacketcorecontrolplane
 #>
 function New-AzMobileNetworkPacketCoreControlPlane {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlane])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreControlPlane])]
+[CmdletBinding(DefaultParameterSetName='CreateViaIdentityExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('PacketCoreControlPlaneName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the packet core control plane.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.AuthenticationType])]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("AAD", "Password")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.AuthenticationType]
+    [System.String]
     # How to authenticate users who access local diagnostics APIs.
     ${LocalDiagnosticAccessAuthenticationType},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PlatformType])]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("AKS-HCI", "3P-AZURE-STACK-HCI")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PlatformType]
+    [System.String]
     # The platform type where packet core is deployed.
     ${PlatformType},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISiteResourceId[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISiteResourceId[]]
     # Site(s) under which this packet core control plane should be deployed.
     # The sites must be in the same location as the packet core control plane.
-    # To construct, see NOTES section for SITE properties and create a hash table.
     ${Site},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku])]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("G0", "G1", "G2", "G5", "G10")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku]
+    [System.String]
     # The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
     ${Sku},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Azure Stack Edge device resource ID.
     ${AzureStackEdgeDeviceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Azure Stack HCI cluster resource ID.
     ${AzureStackHciClusterId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Azure Arc connected cluster resource ID.
     ${ConnectedClusterId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The IPv4 address.
     ${ControlPlaneAccessInterfaceIpv4Address},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The default IPv4 gateway (router).
     ${ControlPlaneAccessInterfaceIpv4Gateway},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The IPv4 subnet.
     ${ControlPlaneAccessInterfaceIpv4Subnet},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The logical name for this interface.
     # This should match one of the interfaces configured on your Azure Stack Edge device.
     ${ControlPlaneAccessInterfaceName},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.CoreNetworkType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("5GC", "EPC")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.CoreNetworkType]
+    [System.String]
     # The core network technology generation (5G core or EPC / 4G core).
     ${CoreNetworkTechnology},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Azure Arc custom location resource ID.
     ${CustomLocationId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The certificate URL, unversioned.
     # For example: https://contosovault.vault.azure.net/certificates/ingress.
     ${HttpsServerCertificateUrl},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlanePropertiesFormatInteropSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreControlPlanePropertiesFormatInteropSettings]))]
     [System.Collections.Hashtable]
     # Settings to allow interoperability with third party components e.g.
     # RANs and UEs.
     ${InteropSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # The MTU (in bytes) signaled to the UE.
@@ -3750,11 +4405,33 @@ param(
     # The MTU set on the user plane access link is calculated to be 60 bytes greater than this value to allow for GTP encapsulation.
     ${UeMtu},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The version of the packet core software that is deployed.
     ${Version},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3824,6 +4501,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3844,10 +4530,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreControlPlane_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreControlPlane_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreControlPlane_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreControlPlane_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3861,6 +4548,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3906,87 +4596,172 @@ end {
 
 <#
 .Synopsis
-Creates or updates a packet core data plane.
+create a packet core data plane.
 Must be created in the same location as its parent packet core control plane.
 .Description
-Creates or updates a packet core data plane.
+create a packet core data plane.
 Must be created in the same location as its parent packet core control plane.
 .Example
 New-AzMobileNetworkPacketCoreDataPlane -Name azps-mn-pcdp -PacketCoreControlPlaneName azps-mn-pccp -ResourceGroupName azps_test_group -Location eastus -UserPlaneAccessInterfaceIpv4Address 10.0.1.10 -UserPlaneAccessInterfaceIpv4Gateway 10.0.1.1 -UserPlaneAccessInterfaceIpv4Subnet 10.0.1.0/24 -UserPlaneAccessInterfaceName N3
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreDataPlane
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreDataPlane
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+PACKETCORECONTROLPLANEINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworkpacketcoredataplane
 #>
 function New-AzMobileNetworkPacketCoreDataPlane {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreDataPlane])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreDataPlane])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('PacketCoreDataPlaneName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the packet core data plane.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the packet core control plane.
     ${PacketCoreControlPlaneName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${PacketCoreControlPlaneInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The IPv4 address.
     ${UserPlaneAccessInterfaceIpv4Address},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The default IPv4 gateway (router).
     ${UserPlaneAccessInterfaceIpv4Gateway},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The IPv4 subnet.
     ${UserPlaneAccessInterfaceIpv4Subnet},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPacketCoreControlPlaneExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The logical name for this interface.
     # This should match one of the interfaces configured on your Azure Stack Edge device.
     ${UserPlaneAccessInterfaceName},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4056,6 +4831,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4076,10 +4860,12 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreDataPlane_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreDataPlane_CreateViaIdentityExpanded';
+            CreateViaIdentityPacketCoreControlPlaneExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreDataPlane_CreateViaIdentityPacketCoreControlPlaneExpanded';
+            CreateViaJsonFilePath = 'Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreDataPlane_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreDataPlane_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4093,6 +4879,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4138,10 +4927,10 @@ end {
 
 <#
 .Synopsis
-Creates or updates a service.
+create a service.
 Must be created in the same location as its parent mobile network.
 .Description
-Creates or updates a service.
+create a service.
 Must be created in the same location as its parent mobile network.
 .Example
 $ServiceDataFlowTemplate = New-AzMobileNetworkServiceDataFlowTemplateObject -Direction "Bidirectional" -Protocol "255" -RemoteIPList "any" -TemplateName azps-mn-flow-template
@@ -4150,45 +4939,86 @@ $PccRule = New-AzMobileNetworkPccRuleConfigurationObject -RuleName azps-mn-servi
 
 New-AzMobileNetworkService -MobileNetworkName azps-mn -Name azps-mn-service -ResourceGroupName azps_test_group -Location eastus -PccRule $PccRule -ServicePrecedence 0 -MaximumBitRateDownlink "1 Gbps" -MaximumBitRateUplink "500 Mbps" -ServiceQoPolicyAllocationAndRetentionPriorityLevel 9 -ServiceQoPolicyFiveQi 9 -ServiceQoPolicyPreemptionCapability 'MayPreempt' -ServiceQoPolicyPreemptionVulnerability 'Preemptable'
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IService
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
 PCCRULE <IPccRuleConfiguration[]>: The set of data flow policy rules that make up this service.
   RuleName <String>: The name of the rule. This must be unique within the parent service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
   RulePrecedence <Int32>: A precedence value that is used to decide between data flow policy rules when identifying the QoS values to use for a particular SIM. A lower value means a higher priority. This value should be unique among all data flow policy rules configured in the mobile network.
-  ServiceDataFlowTemplate <IServiceDataFlowTemplate[]>: The set of data flow templates to use for this data flow policy rule.
-    Direction <SdfDirection>: The direction of this flow.
-    Protocol <String[]>: A list of the allowed protocol(s) for this flow. If you want this flow to be able to use any protocol within the internet protocol suite, use the value `ip`. If you only want to allow a selection of protocols, you must use the corresponding IANA Assigned Internet Protocol Number for each protocol, as described in https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml. For example, for UDP, you must use 17. If you use the value `ip` then you must leave the field `port` unspecified.
-    RemoteIPList <String[]>: The remote IP address(es) to which UEs will connect for this flow. If you want to allow connections on any IP address, use the value 'any'. Otherwise, you must provide each of the remote IP addresses to which the packet core instance will connect for this flow. You must provide each IP address in CIDR notation, including the netmask (for example, 192.0.2.54/24).
+  ServiceDataFlowTemplate <List<IServiceDataFlowTemplate>>: The set of data flow templates to use for this data flow policy rule.
+    Direction <String>: The direction of this flow.
+    Protocol <List<String>>: A list of the allowed protocol(s) for this flow. If you want this flow to be able to use any protocol within the internet protocol suite, use the value `ip`. If you only want to allow a selection of protocols, you must use the corresponding IANA Assigned Internet Protocol Number for each protocol, as described in https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml. For example, for UDP, you must use 17. If you use the value `ip` then you must leave the field `port` unspecified.
+    RemoteIPList <List<String>>: The remote IP address(es) to which UEs will connect for this flow. If you want to allow connections on any IP address, use the value 'any'. Otherwise, you must provide each of the remote IP addresses to which the packet core instance will connect for this flow. You must provide each IP address in CIDR notation, including the netmask (for example, 192.0.2.54/24).
     TemplateName <String>: The name of the data flow template. This must be unique within the parent data flow policy rule. You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
-    [Port <String[]>]: The port(s) to which UEs will connect for this flow. You can specify zero or more ports or port ranges. If you specify one or more ports or port ranges then you must specify a value other than `ip` in the `protocol` field. This is an optional setting. If you do not specify it then connections will be allowed on all ports. Port ranges must be specified as <FirstPort>-<LastPort>. For example: [`8080`, `8082-8085`].
+    [Port <List<String>>]: The port(s) to which UEs will connect for this flow. You can specify zero or more ports or port ranges. If you specify one or more ports or port ranges then you must specify a value other than `ip` in the `protocol` field. This is an optional setting. If you do not specify it then connections will be allowed on all ports. Port ranges must be specified as <FirstPort>-<LastPort>. For example: [`8080`, `8082-8085`].
   [GuaranteedBitRateDownlink <String>]: Downlink bit rate.
   [GuaranteedBitRateUplink <String>]: Uplink bit rate.
   [RuleQoPolicyAllocationAndRetentionPriorityLevel <Int32?>]: QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
   [RuleQoPolicyFiveQi <Int32?>]: 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
   [RuleQoPolicyMaximumBitRateDownlink <String>]: Downlink bit rate.
   [RuleQoPolicyMaximumBitRateUplink <String>]: Uplink bit rate.
-  [RuleQoPolicyPreemptionCapability <PreemptionCapability?>]: QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-  [RuleQoPolicyPreemptionVulnerability <PreemptionVulnerability?>]: QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-  [TrafficControl <TrafficControlPermission?>]: Determines whether flows that match this data flow policy rule are permitted.
+  [RuleQoPolicyPreemptionCapability <String>]: QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+  [RuleQoPolicyPreemptionVulnerability <String>]: QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+  [TrafficControl <String>]: Determines whether flows that match this data flow policy rule are permitted.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworkservice
 #>
 function New-AzMobileNetworkService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IService])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IService])]
+[CmdletBinding(DefaultParameterSetName='CreateViaIdentityExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the mobile network.
     ${MobileNetworkName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('ServiceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -4196,35 +5026,56 @@ param(
     # You must not use any of the following reserved strings - 'default', 'requested' or 'service'
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPccRuleConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPccRuleConfiguration[]]
     # The set of data flow policy rules that make up this service.
-    # To construct, see NOTES section for PCCRULE properties and create a hash table.
     ${PccRule},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # A precedence value that is used to decide between services when identifying the QoS values to use for a particular SIM.
@@ -4232,19 +5083,25 @@ param(
     # This value should be unique among all services configured in the mobile network.
     ${ServicePrecedence},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Downlink bit rate.
     ${MaximumBitRateDownlink},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Uplink bit rate.
     ${MaximumBitRateUplink},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # QoS Flow allocation and retention priority (ARP) level.
@@ -4254,7 +5111,9 @@ param(
     # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
     ${ServiceQoPolicyAllocationAndRetentionPriorityLevel},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # 5G QoS Flow Indicator value.
@@ -4262,30 +5121,48 @@ param(
     # See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
     ${ServiceQoPolicyFiveQi},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreempt", "MayPreempt")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability]
+    [System.String]
     # QoS Flow preemption capability.
     # The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level.
     # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
     ${ServiceQoPolicyPreemptionCapability},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreemptable", "Preemptable")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability]
+    [System.String]
     # QoS Flow preemption vulnerability.
     # The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level.
     # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
     ${ServiceQoPolicyPreemptionVulnerability},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4355,6 +5232,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4375,10 +5261,12 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkService_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkService_CreateViaIdentityExpanded';
+            CreateViaIdentityMobileNetworkExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkService_CreateViaIdentityMobileNetworkExpanded';
+            CreateViaJsonFilePath = 'Az.MobileNetwork.private\New-AzMobileNetworkService_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MobileNetwork.private\New-AzMobileNetworkService_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4392,6 +5280,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4437,83 +5328,134 @@ end {
 
 <#
 .Synopsis
-Creates or updates a SIM group.
+create a SIM group.
 .Description
-Creates or updates a SIM group.
+create a SIM group.
 .Example
 New-AzMobileNetworkSimGroup -Name azps-mn-simgroup -ResourceGroupName azps_test_group -Location eastus -MobileNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn"
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimGroup
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimGroup
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworksimgroup
 #>
 function New-AzMobileNetworkSimGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('SimGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the SIM Group.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The key URL, unversioned.
     # For example: https://contosovault.vault.azure.net/keys/azureKey.
     ${EncryptionKeyUrl},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Mobile network resource ID.
     ${MobileNetworkId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4583,6 +5525,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4603,10 +5554,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSimGroup_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSimGroup_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.MobileNetwork.private\New-AzMobileNetworkSimGroup_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MobileNetwork.private\New-AzMobileNetworkSimGroup_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4620,6 +5572,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4665,10 +5620,10 @@ end {
 
 <#
 .Synopsis
-Creates or updates a SIM policy.
+create a SIM policy.
 Must be created in the same location as its parent mobile network.
 .Description
-Creates or updates a SIM policy.
+create a SIM policy.
 Must be created in the same location as its parent mobile network.
 .Example
 $ServiceResourceId = New-AzMobileNetworkServiceResourceIdObject -Id "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/services/azps-mn-service"
@@ -4679,115 +5634,199 @@ $SliceConfiguration = New-AzMobileNetworkSliceConfigurationObject -DataNetworkCo
 
 New-AzMobileNetworkSimPolicy -MobileNetworkName azps-mn -Name azps-mn-simpolicy -ResourceGroupName azps_test_group -Location eastus -DefaultSliceId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/slices/azps-mn-slice" -SliceConfiguration $SliceConfiguration -UeAmbrDownlink "1 Gbps" -UeAmbrUplink "500 Mbps" -RegistrationTimer 3240
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimPolicy
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
 SLICECONFIGURATION <ISliceConfiguration[]>: The allowed slices and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
-  DataNetworkConfiguration <IDataNetworkConfiguration[]>: The allowed data networks and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
-    AllowedService <IServiceResourceId[]>: List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
+  DataNetworkConfiguration <List<IDataNetworkConfiguration>>: The allowed data networks and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
+    AllowedService <List<IServiceResourceId>>: List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
       Id <String>: Service resource ID.
     DataNetworkId <String>: Data network resource ID.
     SessionAmbrDownlink <String>: Downlink bit rate.
     SessionAmbrUplink <String>: Uplink bit rate.
-    [AdditionalAllowedSessionType <PduSessionType[]>]: Allowed session types in addition to the default session type. Must not duplicate the default session type.
+    [AdditionalAllowedSessionType <List<String>>]: Allowed session types in addition to the default session type. Must not duplicate the default session type.
     [AllocationAndRetentionPriorityLevel <Int32?>]: Default QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-    [DefaultSessionType <PduSessionType?>]: The default PDU session type, which is used if the UE does not request a specific session type.
+    [DefaultSessionType <String>]: The default PDU session type, which is used if the UE does not request a specific session type.
     [FiveQi <Int32?>]: Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
     [MaximumNumberOfBufferedPacket <Int32?>]: The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
-    [PreemptionCapability <PreemptionCapability?>]: Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-    [PreemptionVulnerability <PreemptionVulnerability?>]: Default QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+    [PreemptionCapability <String>]: Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+    [PreemptionVulnerability <String>]: Default QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
   DefaultDataNetworkId <String>: Data network resource ID.
   SlouseId <String>: Slice resource ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworksimpolicy
 #>
 function New-AzMobileNetworkSimPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimPolicy])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimPolicy])]
+[CmdletBinding(DefaultParameterSetName='CreateViaIdentityExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the mobile network.
     ${MobileNetworkName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('SimPolicyName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the SIM policy.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Slice resource ID.
     ${DefaultSliceId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISliceConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISliceConfiguration[]]
     # The allowed slices and the settings to use for them.
     # The list must not contain duplicate items and must contain at least one item.
-    # To construct, see NOTES section for SLICECONFIGURATION properties and create a hash table.
     ${SliceConfiguration},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Downlink bit rate.
     ${UeAmbrDownlink},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Uplink bit rate.
     ${UeAmbrUplink},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # Interval for the UE periodic registration update procedure, in seconds.
     ${RegistrationTimer},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # RAT/Frequency Selection Priority Index, defined in 3GPP TS 36.413.
     # This is an optional setting and by default is unspecified.
     ${RfspIndex},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4857,6 +5896,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4877,10 +5925,12 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSimPolicy_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSimPolicy_CreateViaIdentityExpanded';
+            CreateViaIdentityMobileNetworkExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSimPolicy_CreateViaIdentityMobileNetworkExpanded';
+            CreateViaJsonFilePath = 'Az.MobileNetwork.private\New-AzMobileNetworkSimPolicy_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MobileNetwork.private\New-AzMobileNetworkSimPolicy_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4894,6 +5944,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4939,20 +5992,56 @@ end {
 
 <#
 .Synopsis
-Creates or updates a SIM.
+create a SIM.
 .Description
-Creates or updates a SIM.
+create a SIM.
 .Example
 $staticIp = New-AzMobileNetworkSimStaticIPPropertiesObject -StaticIPIpv4Address 10.0.0.20
 
 New-AzMobileNetworkSim -GroupName azps-mn-simgroup -Name azps-mn-sim -ResourceGroupName azps_test_group  -InternationalMobileSubscriberIdentity 000000000000001 -AuthenticationKey 00112233445566778899AABBCCDDEEFF -DeviceType Mobile -IntegratedCircuitCardIdentifier 8900000000000000001 -OperatorKeyCode 00000000000000000000000000000001 -SimPolicyId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/simPolicies/azps-mn-simpolicy" -StaticIPConfiguration $staticIp
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISim
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISim
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+SIMGROUPINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 
 STATICIPCONFIGURATION <ISimStaticIPProperties[]>: A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
   [AttachedDataNetworkId <String>]: Attached data network resource ID.
@@ -4962,82 +6051,128 @@ STATICIPCONFIGURATION <ISimStaticIPProperties[]>: A list of static IP addresses 
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworksim
 #>
 function New-AzMobileNetworkSim {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISim])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISim])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('SimGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the SIM Group.
     ${GroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentitySimGroupExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('SimName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the SIM.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentitySimGroupExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${SimGroupInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentitySimGroupExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The international mobile subscriber identity (IMSI) for the SIM.
     ${InternationalMobileSubscriberIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySimGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The Ki value for the SIM.
     ${AuthenticationKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySimGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'.
     # The Azure portal allows SIMs to be grouped and filtered based on this value.
     ${DeviceType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySimGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The integrated circuit card ID (ICCID) for the SIM.
     ${IntegratedCircuitCardIdentifier},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySimGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The Opc value for the SIM.
     ${OperatorKeyCode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySimGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # SIM policy resource ID.
     ${SimPolicyId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySimGroupExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimStaticIPProperties[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimStaticIPProperties[]]
     # A list of static IP addresses assigned to this SIM.
     # Each address is assigned at a defined network scope, made up of {attached data network, slice}.
-    # To construct, see NOTES section for STATICIPCONFIGURATION properties and create a hash table.
     ${StaticIPConfiguration},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5107,6 +6242,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5127,10 +6271,12 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSim_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSim_CreateViaIdentityExpanded';
+            CreateViaIdentitySimGroupExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSim_CreateViaIdentitySimGroupExpanded';
+            CreateViaJsonFilePath = 'Az.MobileNetwork.private\New-AzMobileNetworkSim_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MobileNetwork.private\New-AzMobileNetworkSim_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5144,6 +6290,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5189,79 +6338,162 @@ end {
 
 <#
 .Synopsis
-Creates or updates a network slice.
+create a network slice.
 Must be created in the same location as its parent mobile network.
 .Description
-Creates or updates a network slice.
+create a network slice.
 Must be created in the same location as its parent mobile network.
 .Example
 New-AzMobileNetworkSlice -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -SliceName azps-mn-slice -Location eastus -SnssaiSst 1 -SnssaiSd "1abcde"
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISlice
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISlice
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworkslice
 #>
 function New-AzMobileNetworkSlice {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISlice])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISlice])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the mobile network.
     ${MobileNetworkName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the network slice.
     ${SliceName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # Slice/service type (SST).
     ${SnssaiSst},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # An optional description for this network slice.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Slice differentiator (SD).
     ${SnssaiSd},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMobileNetworkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5331,6 +6563,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5351,10 +6592,12 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSlice_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSlice_CreateViaIdentityExpanded';
+            CreateViaIdentityMobileNetworkExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSlice_CreateViaIdentityMobileNetworkExpanded';
+            CreateViaJsonFilePath = 'Az.MobileNetwork.private\New-AzMobileNetworkSlice_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MobileNetwork.private\New-AzMobileNetworkSlice_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5368,6 +6611,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5413,66 +6659,117 @@ end {
 
 <#
 .Synopsis
-Creates or updates a mobile network.
+create a mobile network.
 .Description
-Creates or updates a mobile network.
+create a mobile network.
 .Example
 New-AzMobileNetwork -Name azps-mn -ResourceGroupName azps_test_group -Location eastus -PublicLandMobileNetworkIdentifierMcc 001 -PublicLandMobileNetworkIdentifierMnc 01 -Tag @{"china"="move"}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IMobileNetwork
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetwork
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetwork
 #>
 function New-AzMobileNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IMobileNetwork])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetwork])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('MobileNetworkName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the mobile network.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Mobile country code (MCC).
     ${PublicLandMobileNetworkIdentifierMcc},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Mobile network code (MNC).
     ${PublicLandMobileNetworkIdentifierMnc},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5542,6 +6839,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5562,10 +6868,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.MobileNetwork.private\New-AzMobileNetwork_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.MobileNetwork.private\New-AzMobileNetwork_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.MobileNetwork.private\New-AzMobileNetwork_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MobileNetwork.private\New-AzMobileNetwork_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5579,6 +6886,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5655,6 +6965,40 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+PACKETCORECONTROLPLANEINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+PACKETCOREDATAPLANEINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/remove-azmobilenetworkattacheddatanetwork
 #>
@@ -5663,6 +7007,8 @@ function Remove-AzMobileNetworkAttachedDataNetwork {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityPacketCoreControlPlane', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityPacketCoreDataPlane', Mandatory)]
     [Alias('AttachedDataNetworkName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -5676,6 +7022,7 @@ param(
     ${PacketCoreControlPlaneName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityPacketCoreControlPlane', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the packet core data plane.
@@ -5699,8 +7046,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityPacketCoreControlPlane', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${PacketCoreControlPlaneInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityPacketCoreDataPlane', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${PacketCoreDataPlaneInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5776,6 +7134,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5797,10 +7164,10 @@ begin {
         $mapping = @{
             Delete = 'Az.MobileNetwork.private\Remove-AzMobileNetworkAttachedDataNetwork_Delete';
             DeleteViaIdentity = 'Az.MobileNetwork.private\Remove-AzMobileNetworkAttachedDataNetwork_DeleteViaIdentity';
+            DeleteViaIdentityPacketCoreControlPlane = 'Az.MobileNetwork.private\Remove-AzMobileNetworkAttachedDataNetwork_DeleteViaIdentityPacketCoreControlPlane';
+            DeleteViaIdentityPacketCoreDataPlane = 'Az.MobileNetwork.private\Remove-AzMobileNetworkAttachedDataNetwork_DeleteViaIdentityPacketCoreDataPlane';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5814,6 +7181,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5869,7 +7239,7 @@ Remove-AzMobileNetworkBulkSimDelete -ResourceGroupName azps_test_group -SimGroup
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5895,10 +7265,12 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/remove-azmobilenetworkbulksimdelete
 #>
 function Remove-AzMobileNetworkBulkSimDelete {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='BulkExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -5906,12 +7278,16 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the SIM Group.
     ${SimGroupName},
 
     [Parameter(ParameterSetName='BulkExpanded')]
+    [Parameter(ParameterSetName='BulkViaJsonFilePath')]
+    [Parameter(ParameterSetName='BulkViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -5922,15 +7298,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaIdentityExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String[]]
     # A list of SIM resource names to delete.
     ${Sim},
+
+    [Parameter(ParameterSetName='BulkViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Bulk operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='BulkViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Bulk operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -6006,6 +7394,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6027,10 +7424,10 @@ begin {
         $mapping = @{
             BulkExpanded = 'Az.MobileNetwork.private\Remove-AzMobileNetworkBulkSimDelete_BulkExpanded';
             BulkViaIdentityExpanded = 'Az.MobileNetwork.private\Remove-AzMobileNetworkBulkSimDelete_BulkViaIdentityExpanded';
+            BulkViaJsonFilePath = 'Az.MobileNetwork.private\Remove-AzMobileNetworkBulkSimDelete_BulkViaJsonFilePath';
+            BulkViaJsonString = 'Az.MobileNetwork.private\Remove-AzMobileNetworkBulkSimDelete_BulkViaJsonString';
         }
-        if (('BulkExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('BulkExpanded', 'BulkViaJsonFilePath', 'BulkViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6044,6 +7441,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6120,6 +7520,23 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/remove-azmobilenetworkdatanetwork
 #>
@@ -6134,6 +7551,7 @@ param(
     ${MobileNetworkName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityMobileNetwork', Mandatory)]
     [Alias('DataNetworkName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -6158,8 +7576,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityMobileNetwork', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -6235,6 +7658,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6256,10 +7688,9 @@ begin {
         $mapping = @{
             Delete = 'Az.MobileNetwork.private\Remove-AzMobileNetworkDataNetwork_Delete';
             DeleteViaIdentity = 'Az.MobileNetwork.private\Remove-AzMobileNetworkDataNetwork_DeleteViaIdentity';
+            DeleteViaIdentityMobileNetwork = 'Az.MobileNetwork.private\Remove-AzMobileNetworkDataNetwork_DeleteViaIdentityMobileNetwork';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6273,6 +7704,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6381,7 +7815,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -6458,6 +7891,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6480,9 +7922,7 @@ begin {
             Delete = 'Az.MobileNetwork.private\Remove-AzMobileNetworkPacketCoreControlPlane_Delete';
             DeleteViaIdentity = 'Az.MobileNetwork.private\Remove-AzMobileNetworkPacketCoreControlPlane_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6496,6 +7936,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6572,6 +8015,23 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+PACKETCORECONTROLPLANEINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/remove-azmobilenetworkpacketcoredataplane
 #>
@@ -6580,6 +8040,7 @@ function Remove-AzMobileNetworkPacketCoreDataPlane {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityPacketCoreControlPlane', Mandatory)]
     [Alias('PacketCoreDataPlaneName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -6610,8 +8071,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityPacketCoreControlPlane', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${PacketCoreControlPlaneInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -6687,6 +8153,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6708,10 +8183,9 @@ begin {
         $mapping = @{
             Delete = 'Az.MobileNetwork.private\Remove-AzMobileNetworkPacketCoreDataPlane_Delete';
             DeleteViaIdentity = 'Az.MobileNetwork.private\Remove-AzMobileNetworkPacketCoreDataPlane_DeleteViaIdentity';
+            DeleteViaIdentityPacketCoreControlPlane = 'Az.MobileNetwork.private\Remove-AzMobileNetworkPacketCoreDataPlane_DeleteViaIdentityPacketCoreControlPlane';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6725,6 +8199,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6801,6 +8278,23 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/remove-azmobilenetworkservice
 #>
@@ -6815,6 +8309,7 @@ param(
     ${MobileNetworkName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityMobileNetwork', Mandatory)]
     [Alias('ServiceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -6840,8 +8335,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityMobileNetwork', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -6917,6 +8417,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6938,10 +8447,9 @@ begin {
         $mapping = @{
             Delete = 'Az.MobileNetwork.private\Remove-AzMobileNetworkService_Delete';
             DeleteViaIdentity = 'Az.MobileNetwork.private\Remove-AzMobileNetworkService_DeleteViaIdentity';
+            DeleteViaIdentityMobileNetwork = 'Az.MobileNetwork.private\Remove-AzMobileNetworkService_DeleteViaIdentityMobileNetwork';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6955,6 +8463,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7063,7 +8574,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -7140,6 +8650,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7162,9 +8681,7 @@ begin {
             Delete = 'Az.MobileNetwork.private\Remove-AzMobileNetworkSimGroup_Delete';
             DeleteViaIdentity = 'Az.MobileNetwork.private\Remove-AzMobileNetworkSimGroup_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -7178,6 +8695,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7254,6 +8774,23 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/remove-azmobilenetworksimpolicy
 #>
@@ -7268,6 +8805,7 @@ param(
     ${MobileNetworkName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityMobileNetwork', Mandatory)]
     [Alias('SimPolicyName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -7292,8 +8830,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityMobileNetwork', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -7369,6 +8912,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7390,10 +8942,9 @@ begin {
         $mapping = @{
             Delete = 'Az.MobileNetwork.private\Remove-AzMobileNetworkSimPolicy_Delete';
             DeleteViaIdentity = 'Az.MobileNetwork.private\Remove-AzMobileNetworkSimPolicy_DeleteViaIdentity';
+            DeleteViaIdentityMobileNetwork = 'Az.MobileNetwork.private\Remove-AzMobileNetworkSimPolicy_DeleteViaIdentityMobileNetwork';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -7407,6 +8958,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7483,6 +9037,23 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+SIMGROUPINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/remove-azmobilenetworksim
 #>
@@ -7498,6 +9069,7 @@ param(
     ${GroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentitySimGroup', Mandatory)]
     [Alias('SimName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -7522,8 +9094,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentitySimGroup', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${SimGroupInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -7599,6 +9176,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7620,10 +9206,9 @@ begin {
         $mapping = @{
             Delete = 'Az.MobileNetwork.private\Remove-AzMobileNetworkSim_Delete';
             DeleteViaIdentity = 'Az.MobileNetwork.private\Remove-AzMobileNetworkSim_DeleteViaIdentity';
+            DeleteViaIdentitySimGroup = 'Az.MobileNetwork.private\Remove-AzMobileNetworkSim_DeleteViaIdentitySimGroup';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -7637,6 +9222,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7715,6 +9303,23 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/remove-azmobilenetworksite
 #>
@@ -7729,6 +9334,7 @@ param(
     ${MobileNetworkName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityMobileNetwork', Mandatory)]
     [Alias('SiteName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
@@ -7753,8 +9359,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityMobileNetwork', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -7830,6 +9441,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7851,10 +9471,9 @@ begin {
         $mapping = @{
             Delete = 'Az.MobileNetwork.private\Remove-AzMobileNetworkSite_Delete';
             DeleteViaIdentity = 'Az.MobileNetwork.private\Remove-AzMobileNetworkSite_DeleteViaIdentity';
+            DeleteViaIdentityMobileNetwork = 'Az.MobileNetwork.private\Remove-AzMobileNetworkSite_DeleteViaIdentityMobileNetwork';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -7868,6 +9487,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7944,6 +9566,23 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   [SliceName <String>]: The name of the network slice.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/remove-azmobilenetworkslice
 #>
@@ -7965,6 +9604,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityMobileNetwork', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the network slice.
@@ -7981,8 +9621,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityMobileNetwork', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -8058,6 +9703,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8079,10 +9733,9 @@ begin {
         $mapping = @{
             Delete = 'Az.MobileNetwork.private\Remove-AzMobileNetworkSlice_Delete';
             DeleteViaIdentity = 'Az.MobileNetwork.private\Remove-AzMobileNetworkSlice_DeleteViaIdentity';
+            DeleteViaIdentityMobileNetwork = 'Az.MobileNetwork.private\Remove-AzMobileNetworkSlice_DeleteViaIdentityMobileNetwork';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -8096,6 +9749,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8204,7 +9860,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -8281,6 +9936,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8303,9 +9967,7 @@ begin {
             Delete = 'Az.MobileNetwork.private\Remove-AzMobileNetwork_Delete';
             DeleteViaIdentity = 'Az.MobileNetwork.private\Remove-AzMobileNetwork_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -8319,6 +9981,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8375,7 +10040,7 @@ Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage -PacketCoreC
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8401,16 +10066,20 @@ INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/trace-azmobilenetworkcollectpacketcorecontrolplanediagnosticpackage
 #>
 function Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='CollectExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CollectExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CollectViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CollectViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the packet core control plane.
     ${PacketCoreControlPlaneName},
 
     [Parameter(ParameterSetName='CollectExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CollectViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CollectViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -8418,6 +10087,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CollectExpanded')]
+    [Parameter(ParameterSetName='CollectViaJsonFilePath')]
+    [Parameter(ParameterSetName='CollectViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -8428,14 +10099,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CollectExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CollectViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The Storage Account Blob URL to upload the diagnostics package to.
     ${StorageAccountBlobUrl},
+
+    [Parameter(ParameterSetName='CollectViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Collect operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CollectViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Collect operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -8505,6 +10188,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8526,10 +10218,10 @@ begin {
         $mapping = @{
             CollectExpanded = 'Az.MobileNetwork.private\Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage_CollectExpanded';
             CollectViaIdentityExpanded = 'Az.MobileNetwork.private\Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage_CollectViaIdentityExpanded';
+            CollectViaJsonFilePath = 'Az.MobileNetwork.private\Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage_CollectViaJsonFilePath';
+            CollectViaJsonString = 'Az.MobileNetwork.private\Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage_CollectViaJsonString';
         }
-        if (('CollectExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CollectExpanded', 'CollectViaJsonFilePath', 'CollectViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -8543,6 +10235,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8588,2352 +10283,133 @@ end {
 
 <#
 .Synopsis
-Bulk upload SIMs in encrypted form to a SIM group.
-The SIM credentials must be encrypted.
+update an attached data network.
+Must be created in the same location as its parent packet core data plane.
 .Description
-Bulk upload SIMs in encrypted form to a SIM group.
-The SIM credentials must be encrypted.
-.Example
-$sim1 = @{Name = "BulkSim01"; InternationalMobileSubscriberIdentity = "0000000001"; AuthenticationKey = "00000000000000000000000000000001"; OperatorKeyCode = "00000000000000000000000000000001"}
-$sim2 = @{Name = "BulkSim02"; InternationalMobileSubscriberIdentity = "0000000002"; AuthenticationKey = "00000000000000000000000000000002"; OperatorKeyCode = "00000000000000000000000000000002"}
-$sims = @($sim1,$sim2)
-Update-AzMobileNetworkBulkSimUploadEncrypted -ResourceGroupName rf4-pctt-env-1 -SimGroupName SimGroup01 -Sim $sims -AzureKeyIdentifier 123 -EncryptedTransportKey 123 -SignedTransportKey 456 -VendorKeyFingerprint 123 -Version 1
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
-  [AttachedDataNetworkName <String>]: The name of the attached data network.
-  [DataNetworkName <String>]: The name of the data network.
-  [Id <String>]: Resource identity path
-  [MobileNetworkName <String>]: The name of the mobile network.
-  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
-  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
-  [SimGroupName <String>]: The name of the SIM Group.
-  [SimName <String>]: The name of the SIM.
-  [SimPolicyName <String>]: The name of the SIM policy.
-  [SiteName <String>]: The name of the mobile network site.
-  [SliceName <String>]: The name of the network slice.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [VersionName <String>]: The name of the packet core control plane version.
-
-SIM <ISimNameAndEncryptedProperties[]>: A list of SIMs to upload, with encrypted properties.
-  InternationalMobileSubscriberIdentity <String>: The international mobile subscriber identity (IMSI) for the SIM.
-  Name <String>: The name of the SIM.
-  [DeviceType <String>]: An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'. The Azure portal allows SIMs to be grouped and filtered based on this value.
-  [EncryptedCredentials <String>]: The encrypted SIM credentials.
-  [IntegratedCircuitCardIdentifier <String>]: The integrated circuit card ID (ICCID) for the SIM.
-  [SimPolicyId <String>]: SIM policy resource ID.
-  [StaticIPConfiguration <ISimStaticIPProperties[]>]: A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
-    [AttachedDataNetworkId <String>]: Attached data network resource ID.
-    [SlouseId <String>]: Slice resource ID.
-    [StaticIPIpv4Address <String>]: The IPv4 address assigned to the SIM at this network scope. This address must be in the userEquipmentStaticAddressPoolPrefix defined in the attached data network.
-.Link
-https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkbulksimuploadencrypted
-#>
-function Update-AzMobileNetworkBulkSimUploadEncrypted {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus])]
-[CmdletBinding(DefaultParameterSetName='BulkViaIdentityExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the SIM Group.
-    ${SimGroupName},
-
-    [Parameter(ParameterSetName='BulkExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='BulkViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.Int32]
-    # An identifier for the Azure SIM onboarding public key used for encrypted upload.
-    ${AzureKeyIdentifier},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The transport key used for encrypting SIM credentials, encrypted using the SIM onboarding public key.
-    ${EncryptedTransportKey},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The encrypted transport key, signed using the SIM vendor private key.
-    ${SignedTransportKey},
-
-    [Parameter(Mandatory)]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimNameAndEncryptedProperties[]]
-    # A list of SIMs to upload, with encrypted properties.
-    # To construct, see NOTES section for SIM properties and create a hash table.
-    ${Sim},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The fingerprint of the SIM vendor public key.
-    # The private counterpart is used for signing the encrypted transport key.
-    ${VendorKeyFingerprint},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.Int32]
-    # The upload file format version.
-    ${Version},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            BulkExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUploadEncrypted_BulkExpanded';
-            BulkViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUploadEncrypted_BulkViaIdentityExpanded';
-        }
-        if (('BulkExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Bulk upload SIMs to a SIM group.
-.Description
-Bulk upload SIMs to a SIM group.
-.Example
-$sim1 = @{Name = "BulkSim01"; InternationalMobileSubscriberIdentity = "0000000001"; AuthenticationKey = "00000000000000000000000000000001"; OperatorKeyCode = "00000000000000000000000000000001"}
-$sim2 = @{Name = "BulkSim02"; InternationalMobileSubscriberIdentity = "0000000002"; AuthenticationKey = "00000000000000000000000000000002"; OperatorKeyCode = "00000000000000000000000000000002"}
-$sims = @($sim1,$sim2)
-Update-AzMobileNetworkBulkSimUpload -ResourceGroupName azps_test_group -SimGroupName SimGroup01 -Sim $sims
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
-  [AttachedDataNetworkName <String>]: The name of the attached data network.
-  [DataNetworkName <String>]: The name of the data network.
-  [Id <String>]: Resource identity path
-  [MobileNetworkName <String>]: The name of the mobile network.
-  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
-  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
-  [SimGroupName <String>]: The name of the SIM Group.
-  [SimName <String>]: The name of the SIM.
-  [SimPolicyName <String>]: The name of the SIM policy.
-  [SiteName <String>]: The name of the mobile network site.
-  [SliceName <String>]: The name of the network slice.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [VersionName <String>]: The name of the packet core control plane version.
-
-SIM <ISimNameAndProperties[]>: A list of SIMs to upload.
-  InternationalMobileSubscriberIdentity <String>: The international mobile subscriber identity (IMSI) for the SIM.
-  Name <String>: The name of the SIM.
-  [AuthenticationKey <String>]: The Ki value for the SIM.
-  [DeviceType <String>]: An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'. The Azure portal allows SIMs to be grouped and filtered based on this value.
-  [IntegratedCircuitCardIdentifier <String>]: The integrated circuit card ID (ICCID) for the SIM.
-  [OperatorKeyCode <String>]: The Opc value for the SIM.
-  [SimPolicyId <String>]: SIM policy resource ID.
-  [StaticIPConfiguration <ISimStaticIPProperties[]>]: A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
-    [AttachedDataNetworkId <String>]: Attached data network resource ID.
-    [SlouseId <String>]: Slice resource ID.
-    [StaticIPIpv4Address <String>]: The IPv4 address assigned to the SIM at this network scope. This address must be in the userEquipmentStaticAddressPoolPrefix defined in the attached data network.
-.Link
-https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkbulksimupload
-#>
-function Update-AzMobileNetworkBulkSimUpload {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus])]
-[CmdletBinding(DefaultParameterSetName='BulkViaIdentityExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the SIM Group.
-    ${SimGroupName},
-
-    [Parameter(ParameterSetName='BulkExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='BulkViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(Mandatory)]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimNameAndProperties[]]
-    # A list of SIMs to upload.
-    # To construct, see NOTES section for SIM properties and create a hash table.
-    ${Sim},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            BulkExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUpload_BulkExpanded';
-            BulkViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUpload_BulkViaIdentityExpanded';
-        }
-        if (('BulkExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Updates site tags.
-.Description
-Updates site tags.
-.Example
-Update-AzMobileNetworkSite -MobileNetworkName azps-mn -SiteName azps-mn-site -ResourceGroupName azps_test_group -Tag @{"site"="123"}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISite
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
-  [AttachedDataNetworkName <String>]: The name of the attached data network.
-  [DataNetworkName <String>]: The name of the data network.
-  [Id <String>]: Resource identity path
-  [MobileNetworkName <String>]: The name of the mobile network.
-  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
-  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
-  [SimGroupName <String>]: The name of the SIM Group.
-  [SimName <String>]: The name of the SIM.
-  [SimPolicyName <String>]: The name of the SIM policy.
-  [SiteName <String>]: The name of the mobile network site.
-  [SliceName <String>]: The name of the network slice.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [VersionName <String>]: The name of the packet core control plane version.
-.Link
-https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworksite
-#>
-function Update-AzMobileNetworkSite {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISite])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the mobile network.
-    ${MobileNetworkName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the mobile network site.
-    ${SiteName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObjectTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            UpdateExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkSite_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkSite_UpdateViaIdentityExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Updates mobile network tags.
-.Description
-Updates mobile network tags.
-.Example
-Update-AzMobileNetwork -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -Tag @{"123"="abc"}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IMobileNetwork
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
-  [AttachedDataNetworkName <String>]: The name of the attached data network.
-  [DataNetworkName <String>]: The name of the data network.
-  [Id <String>]: Resource identity path
-  [MobileNetworkName <String>]: The name of the mobile network.
-  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
-  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
-  [SimGroupName <String>]: The name of the SIM Group.
-  [SimName <String>]: The name of the SIM.
-  [SimPolicyName <String>]: The name of the SIM policy.
-  [SiteName <String>]: The name of the mobile network site.
-  [SliceName <String>]: The name of the network slice.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [VersionName <String>]: The name of the packet core control plane version.
-.Link
-https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetwork
-#>
-function Update-AzMobileNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IMobileNetwork])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the mobile network.
-    ${MobileNetworkName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObjectTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            UpdateExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetwork_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetwork_UpdateViaIdentityExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create an in-memory object for DataNetworkConfiguration.
-.Description
-Create an in-memory object for DataNetworkConfiguration.
-.Example
-$ServiceResourceId = New-AzMobileNetworkServiceResourceIdObject -Id "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/services/azps-mn-service"
-
-New-AzMobileNetworkDataNetworkConfigurationObject -AllowedService $ServiceResourceId -DataNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/dataNetworks/azps-mn-datanetwork" -SessionAmbrDownlink "1 Gbps" -SessionAmbrUplink "500 Mbps" -FiveQi 9 -AllocationAndRetentionPriorityLevel 9 -DefaultSessionType 'IPv4' -MaximumNumberOfBufferedPacket 200 -PreemptionCapability 'NotPreempt' -PreemptionVulnerability 'Preemptable'
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkConfiguration
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-ALLOWEDSERVICE <IServiceResourceId[]>: List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
-  Id <String>: Service resource ID.
-.Link
-https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkDataNetworkConfigurationObject
-#>
-function New-AzMobileNetworkDataNetworkConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkConfiguration])]
-[CmdletBinding(PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IServiceResourceId[]]
-    # List of services that can be used as part of this SIM policy.
-    # The list must not contain duplicate items and must contain at least one item.
-    # The services must be in the same location as the SIM policy.
-    # To construct, see NOTES section for ALLOWEDSERVICE properties and create a hash table.
-    ${AllowedService},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Data network resource ID.
-    ${DataNetworkId},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Downlink bit rate.
-    ${SessionAmbrDownlink},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Uplink bit rate.
-    ${SessionAmbrUplink},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PduSessionType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PduSessionType[]]
-    # Allowed session types in addition to the default session type.
-    # Must not duplicate the default session type.
-    ${AdditionalAllowedSessionType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.Int32]
-    # Default QoS Flow allocation and retention priority (ARP) level.
-    # Flows with higher priority preempt flows with lower priority, if the settings of preemptionCapability and preemptionVulnerability allow it.
-    # 1 is the highest level of priority.
-    # If this field is not specified then 5qi is used to derive the ARP value.
-    # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-    ${AllocationAndRetentionPriorityLevel},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PduSessionType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PduSessionType]
-    # The default PDU session type, which is used if the UE does not request a specific session type.
-    ${DefaultSessionType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.Int32]
-    # Default QoS Flow 5G QoS Indicator value.
-    # The 5QI identifies a specific QoS forwarding treatment to be provided to a flow.
-    # This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow.
-    # The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85.
-    # See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
-    ${FiveQi},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.Int32]
-    # The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering.
-    # See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description.
-    # This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
-    ${MaximumNumberOfBufferedPacket},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability]
-    # Default QoS Flow preemption capability.
-    # The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level.
-    # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-    ${PreemptionCapability},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability]
-    # Default QoS Flow preemption vulnerability.
-    # The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level.
-    # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-    ${PreemptionVulnerability}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            __AllParameterSets = 'Az.MobileNetwork.custom\New-AzMobileNetworkDataNetworkConfigurationObject';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create an in-memory object for PccRuleConfiguration.
-.Description
-Create an in-memory object for PccRuleConfiguration.
-.Example
-$ServiceDataFlowTemplate = New-AzMobileNetworkServiceDataFlowTemplateObject -Direction "Bidirectional" -Protocol "255" -RemoteIPList "any" -TemplateName azps-mn-flow-template
-
-New-AzMobileNetworkPccRuleConfigurationObject -RuleName azps-mn-service-rule -RulePrecedence 0 -ServiceDataFlowTemplate $ServiceDataFlowTemplate -TrafficControl 'Enabled' -RuleQoPolicyPreemptionVulnerability 'Preemptable' -RuleQoPolicyPreemptionCapability 'NotPreempt' -RuleQoPolicyAllocationAndRetentionPriorityLevel 9 -RuleQoPolicyMaximumBitRateDownlink "1 Gbps" -RuleQoPolicyMaximumBitRateUplink "500 Mbps"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleConfiguration
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-SERVICEDATAFLOWTEMPLATE <IServiceDataFlowTemplate[]>: The set of data flow templates to use for this data flow policy rule.
-  Direction <SdfDirection>: The direction of this flow.
-  Protocol <String[]>: A list of the allowed protocol(s) for this flow. If you want this flow to be able to use any protocol within the internet protocol suite, use the value `ip`. If you only want to allow a selection of protocols, you must use the corresponding IANA Assigned Internet Protocol Number for each protocol, as described in https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml. For example, for UDP, you must use 17. If you use the value `ip` then you must leave the field `port` unspecified.
-  RemoteIPList <String[]>: The remote IP address(es) to which UEs will connect for this flow. If you want to allow connections on any IP address, use the value 'any'. Otherwise, you must provide each of the remote IP addresses to which the packet core instance will connect for this flow. You must provide each IP address in CIDR notation, including the netmask (for example, 192.0.2.54/24).
-  TemplateName <String>: The name of the data flow template. This must be unique within the parent data flow policy rule. You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
-  [Port <String[]>]: The port(s) to which UEs will connect for this flow. You can specify zero or more ports or port ranges. If you specify one or more ports or port ranges then you must specify a value other than `ip` in the `protocol` field. This is an optional setting. If you do not specify it then connections will be allowed on all ports. Port ranges must be specified as <FirstPort>-<LastPort>. For example: [`8080`, `8082-8085`].
-.Link
-https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkPccRuleConfigurationObject
-#>
-function New-AzMobileNetworkPccRuleConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleConfiguration])]
-[CmdletBinding(PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The name of the rule.
-    # This must be unique within the parent service.
-    # You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
-    ${RuleName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.Int32]
-    # A precedence value that is used to decide between data flow policy rules when identifying the QoS values to use for a particular SIM.
-    # A lower value means a higher priority.
-    # This value should be unique among all data flow policy rules configured in the mobile network.
-    ${RulePrecedence},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IServiceDataFlowTemplate[]]
-    # The set of data flow templates to use for this data flow policy rule.
-    # To construct, see NOTES section for SERVICEDATAFLOWTEMPLATE properties and create a hash table.
-    ${ServiceDataFlowTemplate},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Downlink bit rate.
-    ${GuaranteedBitRateDownlink},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Uplink bit rate.
-    ${GuaranteedBitRateUplink},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.Int32]
-    # QoS Flow allocation and retention priority (ARP) level.
-    # Flows with higher priority preempt flows with lower priority, if the settings of preemptionCapability and preemptionVulnerability allow it.
-    # 1 is the highest level of priority.
-    # If this field is not specified then 5qi is used to derive the ARP value.
-    # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-    ${RuleQoPolicyAllocationAndRetentionPriorityLevel},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.Int32]
-    # QoS Flow 5G QoS Indicator value.
-    # The 5QI identifies a specific QoS forwarding treatment to be provided to a flow.
-    # This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow.
-    # The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85.
-    # See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
-    ${RuleQoPolicyFiveQi},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Downlink bit rate.
-    ${RuleQoPolicyMaximumBitRateDownlink},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Uplink bit rate.
-    ${RuleQoPolicyMaximumBitRateUplink},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability]
-    # QoS Flow preemption capability.
-    # The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level.
-    # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-    ${RuleQoPolicyPreemptionCapability},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability]
-    # QoS Flow preemption vulnerability.
-    # The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level.
-    # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-    ${RuleQoPolicyPreemptionVulnerability},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.TrafficControlPermission])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.TrafficControlPermission]
-    # Determines whether flows that match this data flow policy rule are permitted.
-    ${TrafficControl}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            __AllParameterSets = 'Az.MobileNetwork.custom\New-AzMobileNetworkPccRuleConfigurationObject';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create an in-memory object for ServiceDataFlowTemplate.
-.Description
-Create an in-memory object for ServiceDataFlowTemplate.
-.Example
-New-AzMobileNetworkServiceDataFlowTemplateObject -Direction "Bidirectional" -Protocol "255" -RemoteIPList "any" -TemplateName azps-mn-flow-template
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceDataFlowTemplate
-.Link
-https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkServiceDataFlowTemplateObject
-#>
-function New-AzMobileNetworkServiceDataFlowTemplateObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceDataFlowTemplate])]
-[CmdletBinding(PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.SdfDirection])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.SdfDirection]
-    # The direction of this flow.
-    ${Direction},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String[]]
-    # A list of the allowed protocol(s) for this flow.
-    # If you want this flow to be able to use any protocol within the internet protocol suite, use the value ip.
-    # If you only want to allow a selection of protocols, you must use the corresponding IANA Assigned Internet Protocol Number for each protocol, as described in https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml.
-    # For example, for UDP, you must use 17.
-    # If you use the value ip then you must leave the field port unspecified.
-    ${Protocol},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String[]]
-    # The remote IP address(es) to which UEs will connect for this flow.
-    # If you want to allow connections on any IP address, use the value 'any'.
-    # Otherwise, you must provide each of the remote IP addresses to which the packet core instance will connect for this flow.
-    # You must provide each IP address in CIDR notation, including the netmask (for example, 192.0.2.54/24).
-    ${RemoteIPList},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The name of the data flow template.
-    # This must be unique within the parent data flow policy rule.
-    # You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
-    ${TemplateName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String[]]
-    # The port(s) to which UEs will connect for this flow.
-    # You can specify zero or more ports or port ranges.
-    # If you specify one or more ports or port ranges then you must specify a value other than ip in the protocol field.
-    # This is an optional setting.
-    # If you do not specify it then connections will be allowed on all ports.
-    # Port ranges must be specified as <FirstPort>-<LastPort>.
-    # For example: [8080, 8082-8085].
-    ${Port}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            __AllParameterSets = 'Az.MobileNetwork.custom\New-AzMobileNetworkServiceDataFlowTemplateObject';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create an in-memory object for ServiceResourceId.
-.Description
-Create an in-memory object for ServiceResourceId.
-.Example
-New-AzMobileNetworkServiceResourceIdObject -Id "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/services/azps-mn-service"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceResourceId
-.Link
-https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkServiceResourceIdObject
-#>
-function New-AzMobileNetworkServiceResourceIdObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceResourceId])]
-[CmdletBinding(PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Service resource ID.
-    ${Id}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            __AllParameterSets = 'Az.MobileNetwork.custom\New-AzMobileNetworkServiceResourceIdObject';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create an in-memory object for SimStaticIPProperties.
-.Description
-Create an in-memory object for SimStaticIPProperties.
-.Example
-New-AzMobileNetworkSimStaticIPPropertiesObject -StaticIPIpv4Address 10.0.0.20
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimStaticIPProperties
-.Link
-https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkSimStaticIPPropertiesObject
-#>
-function New-AzMobileNetworkSimStaticIPPropertiesObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimStaticIPProperties])]
-[CmdletBinding(PositionalBinding=$false)]
-param(
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Attached data network resource ID.
-    ${AttachedDataNetworkId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Slice resource ID.
-    ${SliceId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The IPv4 address assigned to the SIM at this network scope.
-    # This address must be in the userEquipmentStaticAddressPoolPrefix defined in the attached data network.
-    ${StaticIPIpv4Address}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            __AllParameterSets = 'Az.MobileNetwork.custom\New-AzMobileNetworkSimStaticIPPropertiesObject';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Creates or updates a mobile network site.
-Must be created in the same location as its parent mobile network.
-.Description
-Creates or updates a mobile network site.
-Must be created in the same location as its parent mobile network.
-.Example
-New-AzMobileNetworkSite -MobileNetworkName azps-mn -Name azps-mn-site -ResourceGroupName azps_test_group -Location eastus -Tag @{"site"="123"}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISite
-.Link
-https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworksite
-#>
-function New-AzMobileNetworkSite {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISite])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the mobile network.
-    ${MobileNetworkName},
-
-    [Parameter(Mandatory)]
-    [Alias('SiteName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the mobile network site.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # New-AzMobileNetworkDataNetwork
-    # The name of the data network.
-    ${DataNetworkName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PlatformType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PlatformType]
-    # New-AzMobileNetworkPacketCoreControlPlane
-    # The platform type where packet core is deployed.
-    ${PlatformType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The logical name for this interface.
-    # This should match one of the interfaces configured on your Azure Stack Edge device.
-    ${ControlPlaneAccessInterfaceName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The IPv4 address.
-    ${ControlPlaneAccessInterfaceIpv4Address},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The default IPv4 gateway (router).
-    ${ControlPlaneAccessInterfaceIpv4Gateway},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The IPv4 subnet.
-    ${ControlPlaneAccessInterfaceIpv4Subnet},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Azure Arc custom location resource ID.
-    ${CustomLocationId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Azure Stack Edge device resource ID.
-    ${AzureStackEdgeDeviceId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.AuthenticationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.AuthenticationType]
-    # How to authenticate users who access local diagnostics APIs.
-    ${LocalDiagnosticAccessAuthenticationType},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.CoreNetworkType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.CoreNetworkType]
-    # The core network technology generation (5G core or EPC / 4G core).
-    ${CoreNetworkTechnology},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku]
-    # The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
-    ${Sku},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # New-AzMobileNetworkPacketCoreDataPlane
-    # The IPv4 address.
-    ${UserPlaneAccessInterfaceIpv4Address},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The default IPv4 gateway (router).
-    ${UserPlaneAccessInterfaceIpv4Gateway},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The IPv4 subnet.
-    ${UserPlaneAccessInterfaceIpv4Subnet},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The logical name for this interface.
-    # This should match one of the interfaces configured on your Azure Stack Edge device.
-    ${UserPlaneAccessInterfaceName},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String[]]
-    # New-AzMobileNetworkAttachedDataNetwork
-    # The DNS servers to signal to UEs to use for this attached data network.
-    # This configuration is mandatory - if you don't want DNS servers, you must provide an empty array.
-    ${DnsAddress},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.NaptEnabled])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.NaptEnabled]
-    # Whether NAPT is enabled for connections to this attached data network.
-    ${NaptConfigurationEnabled},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The IPv4 address.
-    ${UserPlaneDataInterfaceIpv4Address},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The default IPv4 gateway (router).
-    ${UserPlaneDataInterfaceIpv4Gateway},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The IPv4 subnet.
-    ${UserPlaneDataInterfaceIpv4Subnet},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The logical name for this interface.
-    # This should match one of the interfaces configured on your Azure Stack Edge device.
-    ${UserPlaneDataInterfaceName},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String[]]
-    # The user equipment (UE) address pool prefixes for the attached data network from which the packet core instance will dynamically assign IP addresses to UEs.The packet core instance assigns an IP address to a UE when the UE sets up a PDU session.
-    # You must define at least one of userEquipmentAddressPoolPrefix and userEquipmentStaticAddressPoolPrefix.
-    # If you define both, they must be of the same size.
-    ${UserEquipmentAddressPoolPrefix},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String[]]
-    # The user equipment (UE) address pool prefixes for the attached data network from which the packet core instance will assign static IP addresses to UEs.The packet core instance assigns an IP address to a UE when the UE sets up a PDU session.
-    # The static IP address for a specific UE is set in StaticIPConfiguration on the corresponding SIM resource.At least one of userEquipmentAddressPoolPrefix and userEquipmentStaticAddressPoolPrefix must be defined.
-    # If both are defined, they must be of the same size.
-    ${UserEquipmentStaticAddressPoolPrefix},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            CreateExpanded = 'Az.MobileNetwork.custom\New-AzMobileNetworkSite';
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create an in-memory object for SiteResourceId.
-.Description
-Create an in-memory object for SiteResourceId.
-.Example
-New-AzMobileNetworkSiteResourceIdObject -Id "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/sites/azps-mn-site"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SiteResourceId
-.Link
-https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkSiteResourceIdObject
-#>
-function New-AzMobileNetworkSiteResourceIdObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SiteResourceId])]
-[CmdletBinding(PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Site resource ID.
-    ${Id}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            __AllParameterSets = 'Az.MobileNetwork.custom\New-AzMobileNetworkSiteResourceIdObject';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create an in-memory object for SliceConfiguration.
-.Description
-Create an in-memory object for SliceConfiguration.
-.Example
-$ServiceResourceId = New-AzMobileNetworkServiceResourceIdObject -Id "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/services/azps-mn-service"
-
-$DataNetworkConfiguration = New-AzMobileNetworkDataNetworkConfigurationObject -AllowedService $ServiceResourceId -DataNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/dataNetworks/azps-mn-datanetwork" -SessionAmbrDownlink "1 Gbps" -SessionAmbrUplink "500 Mbps" -FiveQi 9 -AllocationAndRetentionPriorityLevel 9 -DefaultSessionType 'IPv4' -MaximumNumberOfBufferedPacket 200 -PreemptionCapability 'NotPreempt' -PreemptionVulnerability 'Preemptable'
-
-New-AzMobileNetworkSliceConfigurationObject -DataNetworkConfiguration $DataNetworkConfiguration -DefaultDataNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/dataNetworks/azps-mn-datanetwork" -SliceId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/slices/azps-mn-slice"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SliceConfiguration
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-DATANETWORKCONFIGURATION <IDataNetworkConfiguration[]>: The allowed data networks and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
-  AllowedService <IServiceResourceId[]>: List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
-    Id <String>: Service resource ID.
-  DataNetworkId <String>: Data network resource ID.
-  SessionAmbrDownlink <String>: Downlink bit rate.
-  SessionAmbrUplink <String>: Uplink bit rate.
-  [AdditionalAllowedSessionType <PduSessionType[]>]: Allowed session types in addition to the default session type. Must not duplicate the default session type.
-  [AllocationAndRetentionPriorityLevel <Int32?>]: Default QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-  [DefaultSessionType <PduSessionType?>]: The default PDU session type, which is used if the UE does not request a specific session type.
-  [FiveQi <Int32?>]: Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
-  [MaximumNumberOfBufferedPacket <Int32?>]: The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
-  [PreemptionCapability <PreemptionCapability?>]: Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-  [PreemptionVulnerability <PreemptionVulnerability?>]: Default QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-.Link
-https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkSliceConfigurationObject
-#>
-function New-AzMobileNetworkSliceConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SliceConfiguration])]
-[CmdletBinding(PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IDataNetworkConfiguration[]]
-    # The allowed data networks and the settings to use for them.
-    # The list must not contain duplicate items and must contain at least one item.
-    # To construct, see NOTES section for DATANETWORKCONFIGURATION properties and create a hash table.
-    ${DataNetworkConfiguration},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Data network resource ID.
-    ${DefaultDataNetworkId},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Slice resource ID.
-    ${SliceId}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            __AllParameterSets = 'Az.MobileNetwork.custom\New-AzMobileNetworkSliceConfigurationObject';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Updates an attached data network.
-.Description
-Updates an attached data network.
+update an attached data network.
+Must be created in the same location as its parent packet core data plane.
 .Example
 Update-AzMobileNetworkAttachedDataNetwork -AttachedDataNetworkName azps-mn-adn -PacketCoreControlPlaneName azps-mn-pccp -PacketCoreDataPlaneName azps_test_group -ResourceGroupName -Tag @{"abc"="123"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+PACKETCORECONTROLPLANEINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+PACKETCOREDATAPLANEINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkattacheddatanetwork
 #>
 function Update-AzMobileNetworkAttachedDataNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityPacketCoreControlPlaneExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityPacketCoreDataPlaneExpanded', Mandatory)]
+    [Alias('AttachedDataNetworkName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the attached data network.
-    ${AttachedDataNetworkName},
+    ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the packet core control plane.
     ${PacketCoreControlPlaneName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityPacketCoreControlPlaneExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the packet core data plane.
     ${PacketCoreDataPlaneName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityPacketCoreControlPlaneExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${PacketCoreControlPlaneInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityPacketCoreDataPlaneExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${PacketCoreDataPlaneInputObject},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -10944,9 +10420,9 @@ param(
     ${DnsAddress},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.NaptEnabled])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.NaptEnabled]
+    [System.String]
     # Whether NAPT is enabled for connections to this attached data network.
     ${NaptConfigurationEnabled},
 
@@ -11006,6 +10482,13 @@ param(
     ${PortReuseHoldTimeUdp},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String[]]
@@ -11049,13 +10532,6 @@ param(
     ${UserPlaneDataInterfaceName},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObjectTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
@@ -11063,6 +10539,12 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -11083,6 +10565,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -11111,6 +10599,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11130,11 +10627,12 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.MobileNetwork.custom\Update-AzMobileNetworkAttachedDataNetwork';
+            UpdateExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkAttachedDataNetwork_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkAttachedDataNetwork_UpdateViaIdentityExpanded';
+            UpdateViaIdentityPacketCoreControlPlaneExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkAttachedDataNetwork_UpdateViaIdentityPacketCoreControlPlaneExpanded';
+            UpdateViaIdentityPacketCoreDataPlaneExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkAttachedDataNetwork_UpdateViaIdentityPacketCoreDataPlaneExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -11148,6 +10646,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11193,48 +10694,677 @@ end {
 
 <#
 .Synopsis
-Updates data network.
+Bulk upload SIMs in encrypted form to a SIM group.
+The SIM credentials must be encrypted.
 .Description
-Updates data network.
+Bulk upload SIMs in encrypted form to a SIM group.
+The SIM credentials must be encrypted.
 .Example
-Update-AzMobileNetworkDataNetwork -MobileNetworkName azps-mn -DataNetworkName azps-mn-datanetwork -ResourceGroupName azps_test_group -Tag @{"abc"="12"}
+$sim1 = @{Name = "BulkSim01"; InternationalMobileSubscriberIdentity = "0000000001"; AuthenticationKey = "00000000000000000000000000000001"; OperatorKeyCode = "00000000000000000000000000000001"}
+$sim2 = @{Name = "BulkSim02"; InternationalMobileSubscriberIdentity = "0000000002"; AuthenticationKey = "00000000000000000000000000000002"; OperatorKeyCode = "00000000000000000000000000000002"}
+$sims = @($sim1,$sim2)
+Update-AzMobileNetworkBulkSimUploadEncrypted -ResourceGroupName rf4-pctt-env-1 -SimGroupName SimGroup01 -Sim $sims -AzureKeyIdentifier 123 -EncryptedTransportKey 123 -SignedTransportKey 456 -VendorKeyFingerprint 123 -Version 1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IDataNetwork
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+SIM <ISimNameAndEncryptedProperties[]>: A list of SIMs to upload, with encrypted properties.
+  Name <String>: The name of the SIM.
+  [DeviceType <String>]: An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'. The Azure portal allows SIMs to be grouped and filtered based on this value.
+  [EncryptedCredentials <String>]: The encrypted SIM credentials.
+  [IntegratedCircuitCardIdentifier <String>]: The integrated circuit card ID (ICCID) for the SIM.
+  [InternationalMobileSubscriberIdentity <String>]: The international mobile subscriber identity (IMSI) for the SIM.
+  [SimPolicyId <String>]: SIM policy resource ID.
+  [StaticIPConfiguration <List<ISimStaticIPProperties>>]: A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
+    [AttachedDataNetworkId <String>]: Attached data network resource ID.
+    [SlouseId <String>]: Slice resource ID.
+    [StaticIPIpv4Address <String>]: The IPv4 address assigned to the SIM at this network scope. This address must be in the userEquipmentStaticAddressPoolPrefix defined in the attached data network.
 .Link
-https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkdatanetwork
+https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkbulksimuploadencrypted
 #>
-function Update-AzMobileNetworkDataNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IDataNetwork])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Update-AzMobileNetworkBulkSimUploadEncrypted {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus])]
+[CmdletBinding(DefaultParameterSetName='BulkViaIdentityExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the data network.
-    ${DataNetworkName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the mobile network.
-    ${MobileNetworkName},
-
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the SIM Group.
+    ${SimGroupName},
+
+    [Parameter(ParameterSetName='BulkExpanded')]
+    [Parameter(ParameterSetName='BulkViaJsonFilePath')]
+    [Parameter(ParameterSetName='BulkViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='BulkViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Int32]
+    # An identifier for the Azure SIM onboarding public key used for encrypted upload.
+    ${AzureKeyIdentifier},
+
+    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The transport key used for encrypting SIM credentials, encrypted using the SIM onboarding public key.
+    ${EncryptedTransportKey},
+
+    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The encrypted transport key, signed using the SIM vendor private key.
+    ${SignedTransportKey},
+
+    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaIdentityExpanded', Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimNameAndEncryptedProperties[]]
+    # A list of SIMs to upload, with encrypted properties.
+    ${Sim},
+
+    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The fingerprint of the SIM vendor public key.
+    # The private counterpart is used for signing the encrypted transport key.
+    ${VendorKeyFingerprint},
+
+    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Int32]
+    # The upload file format version.
+    ${Version},
+
+    [Parameter(ParameterSetName='BulkViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Bulk operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='BulkViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Bulk operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            BulkExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUploadEncrypted_BulkExpanded';
+            BulkViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUploadEncrypted_BulkViaIdentityExpanded';
+            BulkViaJsonFilePath = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUploadEncrypted_BulkViaJsonFilePath';
+            BulkViaJsonString = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUploadEncrypted_BulkViaJsonString';
+        }
+        if (('BulkExpanded', 'BulkViaJsonFilePath', 'BulkViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Bulk upload SIMs to a SIM group.
+.Description
+Bulk upload SIMs to a SIM group.
+.Example
+$sim1 = @{Name = "BulkSim01"; InternationalMobileSubscriberIdentity = "0000000001"; AuthenticationKey = "00000000000000000000000000000001"; OperatorKeyCode = "00000000000000000000000000000001"}
+$sim2 = @{Name = "BulkSim02"; InternationalMobileSubscriberIdentity = "0000000002"; AuthenticationKey = "00000000000000000000000000000002"; OperatorKeyCode = "00000000000000000000000000000002"}
+$sims = @($sim1,$sim2)
+Update-AzMobileNetworkBulkSimUpload -ResourceGroupName azps_test_group -SimGroupName SimGroup01 -Sim $sims
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+SIM <ISimNameAndProperties[]>: A list of SIMs to upload.
+  Name <String>: The name of the SIM.
+  [AuthenticationKey <String>]: The Ki value for the SIM.
+  [DeviceType <String>]: An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'. The Azure portal allows SIMs to be grouped and filtered based on this value.
+  [IntegratedCircuitCardIdentifier <String>]: The integrated circuit card ID (ICCID) for the SIM.
+  [InternationalMobileSubscriberIdentity <String>]: The international mobile subscriber identity (IMSI) for the SIM.
+  [OperatorKeyCode <String>]: The Opc value for the SIM.
+  [SimPolicyId <String>]: SIM policy resource ID.
+  [StaticIPConfiguration <List<ISimStaticIPProperties>>]: A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
+    [AttachedDataNetworkId <String>]: Attached data network resource ID.
+    [SlouseId <String>]: Slice resource ID.
+    [StaticIPIpv4Address <String>]: The IPv4 address assigned to the SIM at this network scope. This address must be in the userEquipmentStaticAddressPoolPrefix defined in the attached data network.
+.Link
+https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkbulksimupload
+#>
+function Update-AzMobileNetworkBulkSimUpload {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus])]
+[CmdletBinding(DefaultParameterSetName='BulkViaIdentityExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the SIM Group.
+    ${SimGroupName},
+
+    [Parameter(ParameterSetName='BulkExpanded')]
+    [Parameter(ParameterSetName='BulkViaJsonFilePath')]
+    [Parameter(ParameterSetName='BulkViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='BulkViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='BulkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BulkViaIdentityExpanded', Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimNameAndProperties[]]
+    # A list of SIMs to upload.
+    ${Sim},
+
+    [Parameter(ParameterSetName='BulkViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Bulk operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='BulkViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Bulk operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            BulkExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUpload_BulkExpanded';
+            BulkViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUpload_BulkViaIdentityExpanded';
+            BulkViaJsonFilePath = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUpload_BulkViaJsonFilePath';
+            BulkViaJsonString = 'Az.MobileNetwork.private\Update-AzMobileNetworkBulkSimUpload_BulkViaJsonString';
+        }
+        if (('BulkExpanded', 'BulkViaJsonFilePath', 'BulkViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+update a data network.
+Must be created in the same location as its parent mobile network.
+.Description
+update a data network.
+Must be created in the same location as its parent mobile network.
+.Example
+Update-AzMobileNetworkDataNetwork -MobileNetworkName azps-mn -DataNetworkName azps-mn-datanetwork -ResourceGroupName azps_test_group -Tag @{"abc"="12"}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IDataNetwork
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+.Link
+https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkdatanetwork
+#>
+function Update-AzMobileNetworkDataNetwork {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IDataNetwork])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the mobile network.
+    ${MobileNetworkName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMobileNetworkExpanded', Mandatory)]
+    [Alias('DataNetworkName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the data network.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityMobileNetworkExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
@@ -11244,7 +11374,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObjectTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -11257,6 +11387,12 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -11277,6 +11413,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -11305,6 +11447,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11324,11 +11475,11 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.MobileNetwork.custom\Update-AzMobileNetworkDataNetwork';
+            UpdateExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkDataNetwork_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkDataNetwork_UpdateViaIdentityExpanded';
+            UpdateViaIdentityMobileNetworkExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkDataNetwork_UpdateViaIdentityMobileNetworkExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -11342,6 +11493,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11387,20 +11541,37 @@ end {
 
 <#
 .Synopsis
-Updates packet core control planes.
+update a packet core control plane.
 .Description
-Updates packet core control planes.
+update a packet core control plane.
 .Example
 Update-AzMobileNetworkPacketCoreControlPlane -PacketCoreControlPlaneName azps-mn-pccp -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlane
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreControlPlane
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 
 SITE <ISiteResourceId[]>: Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
   Id <String>: Site resource ID.
@@ -11408,58 +11579,35 @@ SITE <ISiteResourceId[]>: Site(s) under which this packet core control plane sho
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkpacketcorecontrolplane
 #>
 function Update-AzMobileNetworkPacketCoreControlPlane {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlane])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreControlPlane])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('PacketCoreControlPlaneName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the packet core control plane.
-    ${PacketCoreControlPlaneName},
+    ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.AuthenticationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.AuthenticationType]
-    # How to authenticate users who access local diagnostics APIs.
-    ${LocalDiagnosticAccessAuthenticationType},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PlatformType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PlatformType]
-    # The platform type where packet core is deployed.
-    ${PlatformType},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISiteResourceId[]]
-    # Site(s) under which this packet core control plane should be deployed.
-    # The sites must be in the same location as the packet core control plane.
-    # To construct, see NOTES section for SITE properties and create a hash table.
-    ${Site},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku]
-    # The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
-    ${Sku},
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
@@ -11505,9 +11653,9 @@ param(
     ${ControlPlaneAccessInterfaceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.CoreNetworkType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("5GC", "EPC")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.CoreNetworkType]
+    [System.String]
     # The core network technology generation (5G core or EPC / 4G core).
     ${CoreNetworkTechnology},
 
@@ -11519,34 +11667,60 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The certificate URL, unversioned.
     # For example: https://contosovault.vault.azure.net/certificates/ingress.
     ${HttpsServerCertificateUrl},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlanePropertiesFormatInteropSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreControlPlanePropertiesFormatInteropSettings]))]
     [System.Collections.Hashtable]
     # Settings to allow interoperability with third party components e.g.
     # RANs and UEs.
     ${InteropSetting},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("AAD", "Password")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # How to authenticate users who access local diagnostics APIs.
+    ${LocalDiagnosticAccessAuthenticationType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("AKS-HCI", "3P-AZURE-STACK-HCI")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The platform type where packet core is deployed.
+    ${PlatformType},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISiteResourceId[]]
+    # Site(s) under which this packet core control plane should be deployed.
+    # The sites must be in the same location as the packet core control plane.
+    ${Site},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("G0", "G1", "G2", "G5", "G10")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
+    ${Sku},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
@@ -11557,17 +11731,18 @@ param(
     ${UeMtu},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # The version of the packet core software that is deployed.
     ${Version},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObjectTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -11577,6 +11752,12 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -11597,6 +11778,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -11625,6 +11812,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11644,11 +11840,10 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.MobileNetwork.custom\Update-AzMobileNetworkPacketCoreControlPlane';
+            UpdateExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkPacketCoreControlPlane_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkPacketCoreControlPlane_UpdateViaIdentityExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -11662,6 +11857,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11707,48 +11905,109 @@ end {
 
 <#
 .Synopsis
-Updates packet core data planes.
+update a packet core data plane.
+Must be created in the same location as its parent packet core control plane.
 .Description
-Updates packet core data planes.
+update a packet core data plane.
+Must be created in the same location as its parent packet core control plane.
 .Example
 Update-AzMobileNetworkPacketCoreDataPlane -PacketCoreControlPlaneName azps-mn-pccp -PacketCoreDataPlaneName azps-mn-pcdp -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreDataPlane
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreDataPlane
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+PACKETCORECONTROLPLANEINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkpacketcoredataplane
 #>
 function Update-AzMobileNetworkPacketCoreDataPlane {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreDataPlane])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreDataPlane])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityPacketCoreControlPlaneExpanded', Mandatory)]
+    [Alias('PacketCoreDataPlaneName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the packet core data plane.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the packet core control plane.
     ${PacketCoreControlPlaneName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the packet core data plane.
-    ${PacketCoreDataPlaneName},
-
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityPacketCoreControlPlaneExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${PacketCoreControlPlaneInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
@@ -11776,11 +12035,1173 @@ param(
     ${UserPlaneAccessInterfaceName},
 
     [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkPacketCoreDataPlane_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkPacketCoreDataPlane_UpdateViaIdentityExpanded';
+            UpdateViaIdentityPacketCoreControlPlaneExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkPacketCoreDataPlane_UpdateViaIdentityPacketCoreControlPlaneExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+update a SIM group.
+.Description
+update a SIM group.
+.Example
+Update-AzMobileNetworkSimGroup -SimGroupName azps-mn-simgroup -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimGroup
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+.Link
+https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworksimgroup
+#>
+function Update-AzMobileNetworkSimGroup {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimGroup])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('SimGroupName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the SIM Group.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObjectTags]))]
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The key URL, unversioned.
+    # For example: https://contosovault.vault.azure.net/keys/azureKey.
+    ${EncryptionKeyUrl},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Mobile network resource ID.
+    ${MobileNetworkId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkSimGroup_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkSimGroup_UpdateViaIdentityExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+update a SIM policy.
+Must be created in the same location as its parent mobile network.
+.Description
+update a SIM policy.
+Must be created in the same location as its parent mobile network.
+.Example
+Update-AzMobileNetworkSimPolicy -MobileNetworkName azps-mn -SimPolicyName azps-mn-simpolicy -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimPolicy
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+SLICECONFIGURATION <ISliceConfiguration[]>: The allowed slices and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
+  DataNetworkConfiguration <List<IDataNetworkConfiguration>>: The allowed data networks and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
+    AllowedService <List<IServiceResourceId>>: List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
+      Id <String>: Service resource ID.
+    DataNetworkId <String>: Data network resource ID.
+    SessionAmbrDownlink <String>: Downlink bit rate.
+    SessionAmbrUplink <String>: Uplink bit rate.
+    [AdditionalAllowedSessionType <List<String>>]: Allowed session types in addition to the default session type. Must not duplicate the default session type.
+    [AllocationAndRetentionPriorityLevel <Int32?>]: Default QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+    [DefaultSessionType <String>]: The default PDU session type, which is used if the UE does not request a specific session type.
+    [FiveQi <Int32?>]: Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
+    [MaximumNumberOfBufferedPacket <Int32?>]: The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
+    [PreemptionCapability <String>]: Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+    [PreemptionVulnerability <String>]: Default QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+  DefaultDataNetworkId <String>: Data network resource ID.
+  SlouseId <String>: Slice resource ID.
+.Link
+https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworksimpolicy
+#>
+function Update-AzMobileNetworkSimPolicy {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimPolicy])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the mobile network.
+    ${MobileNetworkName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMobileNetworkExpanded', Mandatory)]
+    [Alias('SimPolicyName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the SIM policy.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityMobileNetworkExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Slice resource ID.
+    ${DefaultSliceId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Int32]
+    # Interval for the UE periodic registration update procedure, in seconds.
+    ${RegistrationTimer},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Int32]
+    # RAT/Frequency Selection Priority Index, defined in 3GPP TS 36.413.
+    # This is an optional setting and by default is unspecified.
+    ${RfspIndex},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISliceConfiguration[]]
+    # The allowed slices and the settings to use for them.
+    # The list must not contain duplicate items and must contain at least one item.
+    ${SliceConfiguration},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Downlink bit rate.
+    ${UeAmbrDownlink},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Uplink bit rate.
+    ${UeAmbrUplink},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkSimPolicy_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkSimPolicy_UpdateViaIdentityExpanded';
+            UpdateViaIdentityMobileNetworkExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkSimPolicy_UpdateViaIdentityMobileNetworkExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+update a SIM.
+.Description
+update a SIM.
+.Example
+Update-AzMobileNetworkSim -GroupName azps-mn-simgroup -Name azps-mn-sim -ResourceGroupName azps_test_group -AuthenticationKey 00112233445566778899AABBCCDDEEFF -DeviceType Mobile -IntegratedCircuitCardIdentifier 8900000000000000001 -OperatorKeyCode 00000000000000000000000000000001 -SimPolicyId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/simPolicies/azps-mn-simpolicy"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISim
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+SIMGROUPINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+STATICIPCONFIGURATION <ISimStaticIPProperties[]>: A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
+  [AttachedDataNetworkId <String>]: Attached data network resource ID.
+  [SlouseId <String>]: Slice resource ID.
+  [StaticIPIpv4Address <String>]: The IPv4 address assigned to the SIM at this network scope. This address must be in the userEquipmentStaticAddressPoolPrefix defined in the attached data network.
+.Link
+https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworksim
+#>
+function Update-AzMobileNetworkSim {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISim])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('SimGroupName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the SIM Group.
+    ${GroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentitySimGroupExpanded', Mandatory)]
+    [Alias('SimName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the SIM.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentitySimGroupExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${SimGroupInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The Ki value for the SIM.
+    ${AuthenticationKey},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'.
+    # The Azure portal allows SIMs to be grouped and filtered based on this value.
+    ${DeviceType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The integrated circuit card ID (ICCID) for the SIM.
+    ${IntegratedCircuitCardIdentifier},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The Opc value for the SIM.
+    ${OperatorKeyCode},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # SIM policy resource ID.
+    ${SimPolicyId},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimStaticIPProperties[]]
+    # A list of static IP addresses assigned to this SIM.
+    # Each address is assigned at a defined network scope, made up of {attached data network, slice}.
+    ${StaticIPConfiguration},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkSim_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkSim_UpdateViaIdentityExpanded';
+            UpdateViaIdentitySimGroupExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkSim_UpdateViaIdentitySimGroupExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+update site tags.
+.Description
+update site tags.
+.Example
+Update-AzMobileNetworkSite -MobileNetworkName azps-mn -SiteName azps-mn-site -ResourceGroupName azps_test_group -Tag @{"site"="123"}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISite
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+.Link
+https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworksite
+#>
+function Update-AzMobileNetworkSite {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISite])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the mobile network.
+    ${MobileNetworkName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMobileNetworkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the mobile network site.
+    ${SiteName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityMobileNetworkExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityMobileNetworkExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITagsObjectTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -11838,6 +13259,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11857,11 +13287,13 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.MobileNetwork.custom\Update-AzMobileNetworkPacketCoreDataPlane';
+            UpdateExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkSite_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkSite_UpdateViaIdentityExpanded';
+            UpdateViaIdentityMobileNetworkExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkSite_UpdateViaIdentityMobileNetworkExpanded';
+            UpdateViaJsonFilePath = 'Az.MobileNetwork.private\Update-AzMobileNetworkSite_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.MobileNetwork.private\Update-AzMobileNetworkSite_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -11875,6 +13307,1653 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+update mobile network tags.
+.Description
+update mobile network tags.
+.Example
+Update-AzMobileNetwork -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -Tag @{"123"="abc"}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetwork
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+.Link
+https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetwork
+#>
+function Update-AzMobileNetwork {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetwork])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the mobile network.
+    ${MobileNetworkName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITagsObjectTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetwork_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetwork_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.MobileNetwork.private\Update-AzMobileNetwork_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.MobileNetwork.private\Update-AzMobileNetwork_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for DataNetworkConfiguration.
+.Description
+Create an in-memory object for DataNetworkConfiguration.
+.Example
+$ServiceResourceId = New-AzMobileNetworkServiceResourceIdObject -Id "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/services/azps-mn-service"
+
+New-AzMobileNetworkDataNetworkConfigurationObject -AllowedService $ServiceResourceId -DataNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/dataNetworks/azps-mn-datanetwork" -SessionAmbrDownlink "1 Gbps" -SessionAmbrUplink "500 Mbps" -FiveQi 9 -AllocationAndRetentionPriorityLevel 9 -DefaultSessionType 'IPv4' -MaximumNumberOfBufferedPacket 200 -PreemptionCapability 'NotPreempt' -PreemptionVulnerability 'Preemptable'
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkConfiguration
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+ALLOWEDSERVICE <IServiceResourceId[]>: List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
+  Id <String>: Service resource ID.
+.Link
+https://learn.microsoft.com/powershell/module/Az.MobileNetwork/new-azmobilenetworkdatanetworkconfigurationobject
+#>
+function New-AzMobileNetworkDataNetworkConfigurationObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkConfiguration])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IServiceResourceId[]]
+    # List of services that can be used as part of this SIM policy.
+    # The list must not contain duplicate items and must contain at least one item.
+    # The services must be in the same location as the SIM policy.
+    ${AllowedService},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Data network resource ID.
+    ${DataNetworkId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Downlink bit rate.
+    ${SessionAmbrDownlink},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Uplink bit rate.
+    ${SessionAmbrUplink},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("IPv4", "IPv6")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String[]]
+    # Allowed session types in addition to the default session type.
+    # Must not duplicate the default session type.
+    ${AdditionalAllowedSessionType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Int32]
+    # Default QoS Flow allocation and retention priority (ARP) level.
+    # Flows with higher priority preempt flows with lower priority, if the settings of preemptionCapability and preemptionVulnerability allow it.
+    # 1 is the highest level of priority.
+    # If this field is not specified then 5qi is used to derive the ARP value.
+    # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+    ${AllocationAndRetentionPriorityLevel},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("IPv4", "IPv6")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The default PDU session type, which is used if the UE does not request a specific session type.
+    ${DefaultSessionType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Int32]
+    # Default 5G QoS Flow Indicator value.
+    # The 5QI identifies a specific QoS forwarding treatment to be provided to a flow.
+    # See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
+    ${FiveQi},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Int32]
+    # The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering.
+    # See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description.
+    # This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
+    ${MaximumNumberOfBufferedPacket},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreempt", "MayPreempt")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Default QoS Flow preemption capability.
+    # The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level.
+    # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+    ${PreemptionCapability},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreemptable", "Preemptable")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Default QoS Flow preemption vulnerability.
+    # The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level.
+    # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+    ${PreemptionVulnerability}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.MobileNetwork.custom\New-AzMobileNetworkDataNetworkConfigurationObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for PccRuleConfiguration.
+.Description
+Create an in-memory object for PccRuleConfiguration.
+.Example
+$ServiceDataFlowTemplate = New-AzMobileNetworkServiceDataFlowTemplateObject -Direction "Bidirectional" -Protocol "255" -RemoteIPList "any" -TemplateName azps-mn-flow-template
+
+New-AzMobileNetworkPccRuleConfigurationObject -RuleName azps-mn-service-rule -RulePrecedence 0 -ServiceDataFlowTemplate $ServiceDataFlowTemplate -TrafficControl 'Enabled' -RuleQoPolicyPreemptionVulnerability 'Preemptable' -RuleQoPolicyPreemptionCapability 'NotPreempt' -RuleQoPolicyAllocationAndRetentionPriorityLevel 9 -RuleQoPolicyMaximumBitRateDownlink "1 Gbps" -RuleQoPolicyMaximumBitRateUplink "500 Mbps"
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleConfiguration
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+SERVICEDATAFLOWTEMPLATE <IServiceDataFlowTemplate[]>: The set of data flow templates to use for this data flow policy rule.
+  Direction <String>: The direction of this flow.
+  Protocol <List<String>>: A list of the allowed protocol(s) for this flow. If you want this flow to be able to use any protocol within the internet protocol suite, use the value `ip`. If you only want to allow a selection of protocols, you must use the corresponding IANA Assigned Internet Protocol Number for each protocol, as described in https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml. For example, for UDP, you must use 17. If you use the value `ip` then you must leave the field `port` unspecified.
+  RemoteIPList <List<String>>: The remote IP address(es) to which UEs will connect for this flow. If you want to allow connections on any IP address, use the value 'any'. Otherwise, you must provide each of the remote IP addresses to which the packet core instance will connect for this flow. You must provide each IP address in CIDR notation, including the netmask (for example, 192.0.2.54/24).
+  TemplateName <String>: The name of the data flow template. This must be unique within the parent data flow policy rule. You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
+  [Port <List<String>>]: The port(s) to which UEs will connect for this flow. You can specify zero or more ports or port ranges. If you specify one or more ports or port ranges then you must specify a value other than `ip` in the `protocol` field. This is an optional setting. If you do not specify it then connections will be allowed on all ports. Port ranges must be specified as <FirstPort>-<LastPort>. For example: [`8080`, `8082-8085`].
+.Link
+https://learn.microsoft.com/powershell/module/Az.MobileNetwork/new-azmobilenetworkpccruleconfigurationobject
+#>
+function New-AzMobileNetworkPccRuleConfigurationObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleConfiguration])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The name of the rule.
+    # This must be unique within the parent service.
+    # You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
+    ${RuleName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Int32]
+    # A precedence value that is used to decide between data flow policy rules when identifying the QoS values to use for a particular SIM.
+    # A lower value means a higher priority.
+    # This value should be unique among all data flow policy rules configured in the mobile network.
+    ${RulePrecedence},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IServiceDataFlowTemplate[]]
+    # The set of data flow templates to use for this data flow policy rule.
+    ${ServiceDataFlowTemplate},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Downlink bit rate.
+    ${GuaranteedBitRateDownlink},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Uplink bit rate.
+    ${GuaranteedBitRateUplink},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Int32]
+    # QoS Flow allocation and retention priority (ARP) level.
+    # Flows with higher priority preempt flows with lower priority, if the settings of preemptionCapability and preemptionVulnerability allow it.
+    # 1 is the highest level of priority.
+    # If this field is not specified then 5qi is used to derive the ARP value.
+    # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+    ${RuleQoPolicyAllocationAndRetentionPriorityLevel},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Int32]
+    # 5G QoS Flow Indicator value.
+    # The 5QI identifies a specific QoS forwarding treatment to be provided to a flow.
+    # See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
+    ${RuleQoPolicyFiveQi},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Downlink bit rate.
+    ${RuleQoPolicyMaximumBitRateDownlink},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Uplink bit rate.
+    ${RuleQoPolicyMaximumBitRateUplink},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreempt", "MayPreempt")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # QoS Flow preemption capability.
+    # The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level.
+    # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+    ${RuleQoPolicyPreemptionCapability},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreemptable", "Preemptable")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # QoS Flow preemption vulnerability.
+    # The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level.
+    # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+    ${RuleQoPolicyPreemptionVulnerability},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("Enabled", "Blocked")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Determines whether flows that match this data flow policy rule are permitted.
+    ${TrafficControl}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.MobileNetwork.custom\New-AzMobileNetworkPccRuleConfigurationObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for ServiceDataFlowTemplate.
+.Description
+Create an in-memory object for ServiceDataFlowTemplate.
+.Example
+New-AzMobileNetworkServiceDataFlowTemplateObject -Direction "Bidirectional" -Protocol "255" -RemoteIPList "any" -TemplateName azps-mn-flow-template
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceDataFlowTemplate
+.Link
+https://learn.microsoft.com/powershell/module/Az.MobileNetwork/new-azmobilenetworkservicedataflowtemplateobject
+#>
+function New-AzMobileNetworkServiceDataFlowTemplateObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceDataFlowTemplate])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("Uplink", "Downlink", "Bidirectional")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The direction of this flow.
+    ${Direction},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String[]]
+    # A list of the allowed protocol(s) for this flow.
+    # If you want this flow to be able to use any protocol within the internet protocol suite, use the value ip.
+    # If you only want to allow a selection of protocols, you must use the corresponding IANA Assigned Internet Protocol Number for each protocol, as described in https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml.
+    # For example, for UDP, you must use 17.
+    # If you use the value ip then you must leave the field port unspecified.
+    ${Protocol},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String[]]
+    # The remote IP address(es) to which UEs will connect for this flow.
+    # If you want to allow connections on any IP address, use the value 'any'.
+    # Otherwise, you must provide each of the remote IP addresses to which the packet core instance will connect for this flow.
+    # You must provide each IP address in CIDR notation, including the netmask (for example, 192.0.2.54/24).
+    ${RemoteIPList},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The name of the data flow template.
+    # This must be unique within the parent data flow policy rule.
+    # You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
+    ${TemplateName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String[]]
+    # The port(s) to which UEs will connect for this flow.
+    # You can specify zero or more ports or port ranges.
+    # If you specify one or more ports or port ranges then you must specify a value other than ip in the protocol field.
+    # This is an optional setting.
+    # If you do not specify it then connections will be allowed on all ports.
+    # Port ranges must be specified as <FirstPort>-<LastPort>.
+    # For example: [8080, 8082-8085].
+    ${Port}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.MobileNetwork.custom\New-AzMobileNetworkServiceDataFlowTemplateObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for ServiceResourceId.
+.Description
+Create an in-memory object for ServiceResourceId.
+.Example
+New-AzMobileNetworkServiceResourceIdObject -Id "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/services/azps-mn-service"
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceResourceId
+.Link
+https://learn.microsoft.com/powershell/module/Az.MobileNetwork/new-azmobilenetworkserviceresourceidobject
+#>
+function New-AzMobileNetworkServiceResourceIdObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceResourceId])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Service resource ID.
+    ${Id}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.MobileNetwork.custom\New-AzMobileNetworkServiceResourceIdObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for SimStaticIPProperties.
+.Description
+Create an in-memory object for SimStaticIPProperties.
+.Example
+New-AzMobileNetworkSimStaticIPPropertiesObject -StaticIPIpv4Address 10.0.0.20
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimStaticIPProperties
+.Link
+https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkSimStaticIPPropertiesObject
+#>
+function New-AzMobileNetworkSimStaticIPPropertiesObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimStaticIPProperties])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Attached data network resource ID.
+    ${AttachedDataNetworkId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Slice resource ID.
+    ${SliceId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The IPv4 address assigned to the SIM at this network scope.
+    # This address must be in the userEquipmentStaticAddressPoolPrefix defined in the attached data network.
+    ${StaticIPIpv4Address}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.MobileNetwork.custom\New-AzMobileNetworkSimStaticIPPropertiesObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Creates or updates a mobile network site.
+Must be created in the same location as its parent mobile network.
+.Description
+Creates or updates a mobile network site.
+Must be created in the same location as its parent mobile network.
+.Example
+New-AzMobileNetworkSite -MobileNetworkName azps-mn -Name azps-mn-site -ResourceGroupName azps_test_group -Location eastus -Tag @{"site"="123"}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISite
+.Link
+https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworksite
+#>
+function New-AzMobileNetworkSite {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISite])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the mobile network.
+    ${MobileNetworkName},
+
+    [Parameter(Mandatory)]
+    [Alias('SiteName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the mobile network site.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # New-AzMobileNetworkDataNetwork
+    # The name of the data network.
+    ${DataNetworkName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("AKS-HCI", "3P-AZURE-STACK-HCI")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # New-AzMobileNetworkPacketCoreControlPlane
+    # The platform type where packet core is deployed.
+    ${PlatformType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The logical name for this interface.
+    # This should match one of the interfaces configured on your Azure Stack Edge device.
+    ${ControlPlaneAccessInterfaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The IPv4 address.
+    ${ControlPlaneAccessInterfaceIpv4Address},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The default IPv4 gateway (router).
+    ${ControlPlaneAccessInterfaceIpv4Gateway},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The IPv4 subnet.
+    ${ControlPlaneAccessInterfaceIpv4Subnet},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Azure Arc custom location resource ID.
+    ${CustomLocationId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Azure Stack Edge device resource ID.
+    ${AzureStackEdgeDeviceId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("AAD", "Password")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # How to authenticate users who access local diagnostics APIs.
+    ${LocalDiagnosticAccessAuthenticationType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("5GC", "EPC")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The core network technology generation (5G core or EPC / 4G core).
+    ${CoreNetworkTechnology},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("G0", "G1", "G2", "G5", "G10")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
+    ${Sku},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # New-AzMobileNetworkPacketCoreDataPlane
+    # The IPv4 address.
+    ${UserPlaneAccessInterfaceIpv4Address},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The default IPv4 gateway (router).
+    ${UserPlaneAccessInterfaceIpv4Gateway},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The IPv4 subnet.
+    ${UserPlaneAccessInterfaceIpv4Subnet},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The logical name for this interface.
+    # This should match one of the interfaces configured on your Azure Stack Edge device.
+    ${UserPlaneAccessInterfaceName},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String[]]
+    # New-AzMobileNetworkAttachedDataNetwork
+    # The DNS servers to signal to UEs to use for this attached data network.
+    # This configuration is mandatory - if you don't want DNS servers, you must provide an empty array.
+    ${DnsAddress},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Whether NAPT is enabled for connections to this attached data network.
+    ${NaptConfigurationEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The IPv4 address.
+    ${UserPlaneDataInterfaceIpv4Address},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The default IPv4 gateway (router).
+    ${UserPlaneDataInterfaceIpv4Gateway},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The IPv4 subnet.
+    ${UserPlaneDataInterfaceIpv4Subnet},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The logical name for this interface.
+    # This should match one of the interfaces configured on your Azure Stack Edge device.
+    ${UserPlaneDataInterfaceName},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String[]]
+    # The user equipment (UE) address pool prefixes for the attached data network from which the packet core instance will dynamically assign IP addresses to UEs.The packet core instance assigns an IP address to a UE when the UE sets up a PDU session.
+    # You must define at least one of userEquipmentAddressPoolPrefix and userEquipmentStaticAddressPoolPrefix.
+    # If you define both, they must be of the same size.
+    ${UserEquipmentAddressPoolPrefix},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String[]]
+    # The user equipment (UE) address pool prefixes for the attached data network from which the packet core instance will assign static IP addresses to UEs.The packet core instance assigns an IP address to a UE when the UE sets up a PDU session.
+    # The static IP address for a specific UE is set in StaticIPConfiguration on the corresponding SIM resource.At least one of userEquipmentAddressPoolPrefix and userEquipmentStaticAddressPoolPrefix must be defined.
+    # If both are defined, they must be of the same size.
+    ${UserEquipmentStaticAddressPoolPrefix},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.MobileNetwork.custom\New-AzMobileNetworkSite';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for SiteResourceId.
+.Description
+Create an in-memory object for SiteResourceId.
+.Example
+New-AzMobileNetworkSiteResourceIdObject -Id "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/sites/azps-mn-site"
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SiteResourceId
+.Link
+https://learn.microsoft.com/powershell/module/Az.MobileNetwork/new-azmobilenetworksiteresourceidobject
+#>
+function New-AzMobileNetworkSiteResourceIdObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SiteResourceId])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Site resource ID.
+    ${Id}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.MobileNetwork.custom\New-AzMobileNetworkSiteResourceIdObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for SliceConfiguration.
+.Description
+Create an in-memory object for SliceConfiguration.
+.Example
+$ServiceResourceId = New-AzMobileNetworkServiceResourceIdObject -Id "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/services/azps-mn-service"
+
+$DataNetworkConfiguration = New-AzMobileNetworkDataNetworkConfigurationObject -AllowedService $ServiceResourceId -DataNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/dataNetworks/azps-mn-datanetwork" -SessionAmbrDownlink "1 Gbps" -SessionAmbrUplink "500 Mbps" -FiveQi 9 -AllocationAndRetentionPriorityLevel 9 -DefaultSessionType 'IPv4' -MaximumNumberOfBufferedPacket 200 -PreemptionCapability 'NotPreempt' -PreemptionVulnerability 'Preemptable'
+
+New-AzMobileNetworkSliceConfigurationObject -DataNetworkConfiguration $DataNetworkConfiguration -DefaultDataNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/dataNetworks/azps-mn-datanetwork" -SliceId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/slices/azps-mn-slice"
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SliceConfiguration
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DATANETWORKCONFIGURATION <IDataNetworkConfiguration[]>: The allowed data networks and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
+  AllowedService <List<IServiceResourceId>>: List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
+    Id <String>: Service resource ID.
+  DataNetworkId <String>: Data network resource ID.
+  SessionAmbrDownlink <String>: Downlink bit rate.
+  SessionAmbrUplink <String>: Uplink bit rate.
+  [AdditionalAllowedSessionType <List<String>>]: Allowed session types in addition to the default session type. Must not duplicate the default session type.
+  [AllocationAndRetentionPriorityLevel <Int32?>]: Default QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+  [DefaultSessionType <String>]: The default PDU session type, which is used if the UE does not request a specific session type.
+  [FiveQi <Int32?>]: Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
+  [MaximumNumberOfBufferedPacket <Int32?>]: The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
+  [PreemptionCapability <String>]: Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+  [PreemptionVulnerability <String>]: Default QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+.Link
+https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkSliceConfigurationObject
+#>
+function New-AzMobileNetworkSliceConfigurationObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SliceConfiguration])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IDataNetworkConfiguration[]]
+    # The allowed data networks and the settings to use for them.
+    # The list must not contain duplicate items and must contain at least one item.
+    ${DataNetworkConfiguration},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Data network resource ID.
+    ${DefaultDataNetworkId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Slice resource ID.
+    ${SliceId}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.MobileNetwork.custom\New-AzMobileNetworkSliceConfigurationObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11929,63 +15008,111 @@ Update-AzMobileNetworkService -MobileNetworkName azps-mn -ServiceName azps-mn-se
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IService
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
 PCCRULE <IPccRuleConfiguration[]>: The set of data flow policy rules that make up this service.
   RuleName <String>: The name of the rule. This must be unique within the parent service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
   RulePrecedence <Int32>: A precedence value that is used to decide between data flow policy rules when identifying the QoS values to use for a particular SIM. A lower value means a higher priority. This value should be unique among all data flow policy rules configured in the mobile network.
-  ServiceDataFlowTemplate <IServiceDataFlowTemplate[]>: The set of data flow templates to use for this data flow policy rule.
-    Direction <SdfDirection>: The direction of this flow.
-    Protocol <String[]>: A list of the allowed protocol(s) for this flow. If you want this flow to be able to use any protocol within the internet protocol suite, use the value `ip`. If you only want to allow a selection of protocols, you must use the corresponding IANA Assigned Internet Protocol Number for each protocol, as described in https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml. For example, for UDP, you must use 17. If you use the value `ip` then you must leave the field `port` unspecified.
-    RemoteIPList <String[]>: The remote IP address(es) to which UEs will connect for this flow. If you want to allow connections on any IP address, use the value 'any'. Otherwise, you must provide each of the remote IP addresses to which the packet core instance will connect for this flow. You must provide each IP address in CIDR notation, including the netmask (for example, 192.0.2.54/24).
+  ServiceDataFlowTemplate <List<IServiceDataFlowTemplate>>: The set of data flow templates to use for this data flow policy rule.
+    Direction <String>: The direction of this flow.
+    Protocol <List<String>>: A list of the allowed protocol(s) for this flow. If you want this flow to be able to use any protocol within the internet protocol suite, use the value `ip`. If you only want to allow a selection of protocols, you must use the corresponding IANA Assigned Internet Protocol Number for each protocol, as described in https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml. For example, for UDP, you must use 17. If you use the value `ip` then you must leave the field `port` unspecified.
+    RemoteIPList <List<String>>: The remote IP address(es) to which UEs will connect for this flow. If you want to allow connections on any IP address, use the value 'any'. Otherwise, you must provide each of the remote IP addresses to which the packet core instance will connect for this flow. You must provide each IP address in CIDR notation, including the netmask (for example, 192.0.2.54/24).
     TemplateName <String>: The name of the data flow template. This must be unique within the parent data flow policy rule. You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
-    [Port <String[]>]: The port(s) to which UEs will connect for this flow. You can specify zero or more ports or port ranges. If you specify one or more ports or port ranges then you must specify a value other than `ip` in the `protocol` field. This is an optional setting. If you do not specify it then connections will be allowed on all ports. Port ranges must be specified as <FirstPort>-<LastPort>. For example: [`8080`, `8082-8085`].
+    [Port <List<String>>]: The port(s) to which UEs will connect for this flow. You can specify zero or more ports or port ranges. If you specify one or more ports or port ranges then you must specify a value other than `ip` in the `protocol` field. This is an optional setting. If you do not specify it then connections will be allowed on all ports. Port ranges must be specified as <FirstPort>-<LastPort>. For example: [`8080`, `8082-8085`].
   [GuaranteedBitRateDownlink <String>]: Downlink bit rate.
   [GuaranteedBitRateUplink <String>]: Uplink bit rate.
   [RuleQoPolicyAllocationAndRetentionPriorityLevel <Int32?>]: QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
   [RuleQoPolicyFiveQi <Int32?>]: 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
   [RuleQoPolicyMaximumBitRateDownlink <String>]: Downlink bit rate.
   [RuleQoPolicyMaximumBitRateUplink <String>]: Uplink bit rate.
-  [RuleQoPolicyPreemptionCapability <PreemptionCapability?>]: QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-  [RuleQoPolicyPreemptionVulnerability <PreemptionVulnerability?>]: QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-  [TrafficControl <TrafficControlPermission?>]: Determines whether flows that match this data flow policy rule are permitted.
+  [RuleQoPolicyPreemptionCapability <String>]: QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+  [RuleQoPolicyPreemptionVulnerability <String>]: QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+  [TrafficControl <String>]: Determines whether flows that match this data flow policy rule are permitted.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkservice
 #>
 function Update-AzMobileNetworkService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IService])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the mobile network.
     ${MobileNetworkName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMobileNetworkExpanded', Mandatory)]
+    [Alias('ServiceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the service.
     # You must not use any of the following reserved strings - 'default', 'requested' or 'service'
-    ${ServiceName},
+    ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityMobileNetworkExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
@@ -11998,9 +15125,8 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPccRuleConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPccRuleConfiguration[]]
     # The set of data flow policy rules that make up this service.
-    # To construct, see NOTES section for PCCRULE properties and create a hash table.
     ${PccRule},
 
     [Parameter()]
@@ -12028,26 +15154,24 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
-    # QoS Flow 5G QoS Indicator value.
+    # 5G QoS Flow Indicator value.
     # The 5QI identifies a specific QoS forwarding treatment to be provided to a flow.
-    # This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow.
-    # The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85.
-    # See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+    # See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
     ${ServiceQoPolicyFiveQi},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreempt", "MayPreempt")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability]
+    [System.String]
     # QoS Flow preemption capability.
     # The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level.
     # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
     ${ServiceQoPolicyPreemptionCapability},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("NotPreemptable", "Preemptable")]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability]
+    [System.String]
     # QoS Flow preemption vulnerability.
     # The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level.
     # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
@@ -12055,7 +15179,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObjectTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -12068,6 +15192,12 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -12088,6 +15218,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -12116,6 +15252,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -12136,10 +15281,10 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.MobileNetwork.custom\Update-AzMobileNetworkService';
+            UpdateViaIdentityMobileNetworkExpanded = 'Az.MobileNetwork.custom\Update-AzMobileNetworkService';
+            UpdateViaIdentityExpanded = 'Az.MobileNetwork.custom\Update-AzMobileNetworkService';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -12153,466 +15298,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
         }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Updates SIM group.
-.Description
-Updates SIM group.
-.Example
-Update-AzMobileNetworkSimGroup -SimGroupName azps-mn-simgroup -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimGroup
-.Link
-https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworksimgroup
-#>
-function Update-AzMobileNetworkSimGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimGroup])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the SIM Group.
-    ${SimGroupName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The key URL, unversioned.
-    # For example: https://contosovault.vault.azure.net/keys/azureKey.
-    ${EncryptionKeyUrl},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Mobile network resource ID.
-    ${MobileNetworkId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObjectTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            UpdateExpanded = 'Az.MobileNetwork.custom\Update-AzMobileNetworkSimGroup';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Updates SIM policy.
-.Description
-Updates SIM policy.
-.Example
-Update-AzMobileNetworkSimPolicy -MobileNetworkName azps-mn -SimPolicyName azps-mn-simpolicy -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimPolicy
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-SLICECONFIGURATION <ISliceConfiguration[]>: The allowed slices and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
-  DataNetworkConfiguration <IDataNetworkConfiguration[]>: The allowed data networks and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
-    AllowedService <IServiceResourceId[]>: List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
-      Id <String>: Service resource ID.
-    DataNetworkId <String>: Data network resource ID.
-    SessionAmbrDownlink <String>: Downlink bit rate.
-    SessionAmbrUplink <String>: Uplink bit rate.
-    [AdditionalAllowedSessionType <PduSessionType[]>]: Allowed session types in addition to the default session type. Must not duplicate the default session type.
-    [AllocationAndRetentionPriorityLevel <Int32?>]: Default QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-    [DefaultSessionType <PduSessionType?>]: The default PDU session type, which is used if the UE does not request a specific session type.
-    [FiveQi <Int32?>]: Default 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
-    [MaximumNumberOfBufferedPacket <Int32?>]: The maximum number of downlink packets to buffer at the user plane for High Latency Communication - Extended Buffering. See 3GPP TS29.272 v15.10.0 section 7.3.188 for a full description. This maximum is not guaranteed because there is a internal limit on buffered packets across all PDU sessions.
-    [PreemptionCapability <PreemptionCapability?>]: Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-    [PreemptionVulnerability <PreemptionVulnerability?>]: Default QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-  DefaultDataNetworkId <String>: Data network resource ID.
-  SlouseId <String>: Slice resource ID.
-.Link
-https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworksimpolicy
-#>
-function Update-AzMobileNetworkSimPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimPolicy])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the mobile network.
-    ${MobileNetworkName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the SIM policy.
-    ${SimPolicyName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Slice resource ID.
-    ${DefaultSliceId},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISliceConfiguration[]]
-    # The allowed slices and the settings to use for them.
-    # The list must not contain duplicate items and must contain at least one item.
-    # To construct, see NOTES section for SLICECONFIGURATION properties and create a hash table.
-    ${SliceConfiguration},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Downlink bit rate.
-    ${UeAmbrDownlink},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Uplink bit rate.
-    ${UeAmbrUplink},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.Int32]
-    # Interval for the UE periodic registration update procedure, in seconds.
-    ${RegistrationTimer},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.Int32]
-    # RAT/Frequency Selection Priority Index, defined in 3GPP TS 36.413.
-    # This is an optional setting and by default is unspecified.
-    ${RfspIndex},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObjectTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            UpdateExpanded = 'Az.MobileNetwork.custom\Update-AzMobileNetworkSimPolicy';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -12667,39 +15355,90 @@ Update-AzMobileNetworkSlice -MobileNetworkName azps-mn -ResourceGroupName azps_t
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISlice
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISlice
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
+
+MOBILENETWORKINPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkslice
 #>
 function Update-AzMobileNetworkSlice {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISlice])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISlice])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the mobile network.
     ${MobileNetworkName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMobileNetworkExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the network slice.
     ${SliceName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityMobileNetworkExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${MobileNetworkInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
+    # Identity Parameter
+    ${InputObject},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
@@ -12721,7 +15460,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObjectTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -12734,6 +15473,12 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -12754,6 +15499,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -12782,6 +15533,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -12802,10 +15562,10 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.MobileNetwork.custom\Update-AzMobileNetworkSlice';
+            UpdateViaIdentityMobileNetworkExpanded = 'Az.MobileNetwork.custom\Update-AzMobileNetworkSlice';
+            UpdateViaIdentityExpanded = 'Az.MobileNetwork.custom\Update-AzMobileNetworkSlice';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -12819,6 +15579,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

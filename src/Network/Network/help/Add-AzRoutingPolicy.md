@@ -14,7 +14,8 @@ Add a Routing Policy to the Routing Intent object.
 
 ```
 Add-AzRoutingPolicy -RoutingIntent <PSRoutingIntent> -Destination <String[]> -NextHop <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

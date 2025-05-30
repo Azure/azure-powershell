@@ -20,14 +20,12 @@ Get Async Operation status
 .Description
 Get Async Operation status
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzKubernetesConfigFluxOperationStatus -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -FluxConfigurationName azpstestflux-k8s -ResourceGroupName azps_test_group -OperationId e9871335-7ba8-4100-8cb4-73b3464eb863
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IOperationStatusResult
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IOperationStatusResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -49,7 +47,7 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azk
 #>
 function Get-AzKubernetesConfigFluxOperationStatus {
     [Alias('Get-AzK8sConfigFluxOperationStatus')]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IOperationStatusResult])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IOperationStatusResult])]
     [CmdletBinding(DefaultParameterSetName = 'Get', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]
@@ -72,7 +70,7 @@ function Get-AzKubernetesConfigFluxOperationStatus {
         # Name of the Flux Configuration.
         ${FluxConfigurationName},
 
-        [Parameter(ParameterSetName = 'Get', Mandatory)]
+        [Parameter(ParameterSetName='Get', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # operation Id
@@ -151,7 +149,7 @@ function Get-AzKubernetesConfigFluxOperationStatus {
     process {
         try {
             $hasInputObject = $PSBoundParameters.Remove('InputObject')
-
+            
             if ($hasInputObject) {
                 $null = $PSBoundParameters.Add('InputObject', $InputObject)
             }
