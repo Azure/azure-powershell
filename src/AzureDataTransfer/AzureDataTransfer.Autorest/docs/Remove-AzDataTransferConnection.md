@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name for the connection to perform the operation on.
+The name for the connection that is to be requested.
 
 ```yaml
 Type: System.String

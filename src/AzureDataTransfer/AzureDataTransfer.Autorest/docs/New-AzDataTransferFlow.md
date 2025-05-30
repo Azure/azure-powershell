@@ -15,20 +15,14 @@ Create the flow resource.
 ### CreateExpanded (Default)
 ```
 New-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-ApiFlowOptionApiMode <String>] [-ApiFlowOptionAudienceOverride <String>]
- [-ApiFlowOptionCname <String>] [-ApiFlowOptionIdentityTranslation <String>]
- [-ApiFlowOptionRemoteCallingModeClientId <String>] [-ApiFlowOptionRemoteEndpoint <String>]
- [-ApiFlowOptionSenderClientId <String>] [-ConnectionId <String>] [-ConnectionLocation <String>]
- [-ConnectionSubscriptionName <String>] [-ConsumerGroup <String>] [-CustomerManagedKeyVaultUri <String>]
- [-DataType <String>] [-DestinationEndpoint <String[]>] [-DestinationEndpointPort <Int64[]>]
- [-EnableSystemAssignedIdentity] [-EventHubId <String>] [-FlowType <String>]
- [-MessagingOptionBillingTier <String>] [-Passphrase <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
- [-PropertiesConnectionName <String>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
- [-SchemaDirection <String>] [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>]
- [-SchemaType <String>] [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-SourceAddress <String[]>]
- [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
- [-StorageContainerName <String>] [-StorageTableName <String>] [-StreamId <String>] [-StreamLatency <Int64>]
+ [-SubscriptionId <String>] [-CustomerManagedKeyVaultUri <String>] [-DataType <String>]
+ [-DestinationEndpoint <String[]>] [-DestinationEndpointPort <Int64[]>] [-EnableSystemAssignedIdentity]
+ [-FlowType <String>] [-MessagingOptionBillingTier <String>] [-Passphrase <String>] [-PlanName <String>]
+ [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
+ [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
+ [-ServiceBusQueueId <String>] [-SourceAddressList <String[]>] [-Status <String>] [-StorageAccountId <String>]
+ [-StorageAccountName <String>] [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>]
  [-StreamProtocol <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -126,111 +120,6 @@ This example creates a new flow named `Flow01` in the connection `Connection01` 
 
 ## PARAMETERS
 
-### -ApiFlowOptionApiMode
-Remote Calling Mode in the Azure Data Transfer API Flow, which describes how the API Flow will be invoked
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ApiFlowOptionAudienceOverride
-Optional field to override the audience of the remote endpoint
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ApiFlowOptionCname
-Unique CNAME to represent the Azure Data Transfer API Flow instance
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ApiFlowOptionIdentityTranslation
-Flag for if Azure Data Transfer API Flow should extract the user token
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ApiFlowOptionRemoteCallingModeClientId
-Remote stub app registration Client ID
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ApiFlowOptionRemoteEndpoint
-Remote host to which communication needs to be made
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ApiFlowOptionSenderClientId
-Sender's app user assigned Manage Identity client ID
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AsJob
 Run the command as a job
 
@@ -246,38 +135,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConnectionId
-Id of the connection
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectionLocation
-Location of the connection
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ConnectionName
-The name for the connection to perform the operation on.
+The name for the connection that is to be requested.
 
 ```yaml
 Type: System.String
@@ -285,36 +144,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectionSubscriptionName
-Name of the subscription with the connection
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConsumerGroup
-Event Hub Consumer Group
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -337,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataType
-Type of data to transfer via the flow.
+Transfer Storage Blobs or Tables
 
 ```yaml
 Type: System.String
@@ -402,21 +231,6 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EventHubId
-Event Hub ID
-
-```yaml
-Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -503,7 +317,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name for the flow to perform the operation on.
+The name for the flow that is to be onboarded.
 
 ```yaml
 Type: System.String
@@ -614,21 +428,6 @@ Accept wildcard characters: False
 
 ### -PlanVersion
 The version of the desired product/artifact.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesConnectionName
-Name of the connection
 
 ```yaml
 Type: System.String
@@ -793,7 +592,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceAddress
+### -SourceAddressList
 A source IP address or CIDR range
 
 ```yaml
@@ -855,21 +654,6 @@ Accept wildcard characters: False
 
 ### -StorageContainerName
 Storage Container Name
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageTableName
-Storage Table Name
 
 ```yaml
 Type: System.String

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Deny-AzDataTransferConnection
 
 ## SYNOPSIS
-Rejects the specified connection request in a pipeline.
+Rejects the specified connection in a pipeline.
 
 ## SYNTAX
 
@@ -54,7 +54,7 @@ Deny-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String>
 ```
 
 ## DESCRIPTION
-Rejects the specified connection request in a pipeline.
+Rejects the specified connection in a pipeline.
 
 ## EXAMPLES
 
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -PipelineName
-The name for the pipeline to perform the operation on.
+The name for the pipeline that is to be requested.
 
 ```yaml
 Type: System.String

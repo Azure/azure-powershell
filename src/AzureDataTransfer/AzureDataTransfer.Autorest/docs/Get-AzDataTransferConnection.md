@@ -12,7 +12,7 @@ Gets connection resource.
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
 Get-AzDataTransferConnection [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -29,7 +29,7 @@ Get-AzDataTransferConnection -InputObject <IDataTransferIdentity> [-DefaultProfi
  [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
 Get-AzDataTransferConnection -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name for the connection to perform the operation on.
+The name for the connection that is to be requested.
 
 ```yaml
 Type: System.String
@@ -144,7 +144,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True

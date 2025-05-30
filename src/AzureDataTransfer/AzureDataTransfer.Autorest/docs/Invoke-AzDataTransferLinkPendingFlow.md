@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionName
-The name for the connection to perform the operation on.
+The name for the connection that is to be requested.
 
 ```yaml
 Type: System.String
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -FlowName
-The name for the flow to perform the operation on.
+The name for the flow that is to be onboarded.
 
 ```yaml
 Type: System.String

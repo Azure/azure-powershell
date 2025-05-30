@@ -12,7 +12,7 @@ Gets pipeline resource.
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
 Get-AzDataTransferPipeline [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -29,7 +29,7 @@ Get-AzDataTransferPipeline -InputObject <IDataTransferIdentity> [-DefaultProfile
  [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
 Get-AzDataTransferPipeline -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name for the pipeline to perform the operation on.
+The name for the pipeline that is to be requested.
 
 ```yaml
 Type: System.String
@@ -147,7 +147,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True

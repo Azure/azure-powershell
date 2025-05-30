@@ -1,6 +1,6 @@
 {
   "resourceType": "connections/flows",
-  "apiVersion": "2025-05-21",
+  "apiVersion": "2024-09-27",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.datatransfer"
   },
