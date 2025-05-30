@@ -25,7 +25,6 @@ Create an in-memory object for AmazonS3DataSource.
 ### Example 1: Create AmazonS3 data source object
 ```powershell
 New-AzPurviewAmazonS3DataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServiceUrl s3://multicloud-e2e-2
-New-AzPurviewDataSource -Endpoint 'https://parv-brs-2.purview.azure.com/' -Name 'DS4' -Body $obj
 ```
 
 ```output

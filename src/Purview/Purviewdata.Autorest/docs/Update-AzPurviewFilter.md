@@ -23,27 +23,20 @@ Update a filter
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a filter
 ```powershell
-{{ Add code here }}
+Update-AzPurviewFilter -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan1ForDemo' -ExcludeUriPrefix @('https://foo.file.core.windows.net/share1/user/temp') -IncludeUriPrefix @('https://foo.file.core.windows.net/share1/user','https://foo.file.core.windows.net/share1/aggregated')
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ExcludeUriPrefix  : {https://foo.file.core.windows.net/share1/user/temp}
+Id                : datasources/DataScanTestData-Parv/scans/Scan1ForDemo/filters/custom
+IncludeUriPrefix  : {https://foo.file.core.windows.net/share1/user,
+                    https://foo.file.core.windows.net/share1/aggregated}
+Name              : custom
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Update a filter
 
 ## PARAMETERS
 

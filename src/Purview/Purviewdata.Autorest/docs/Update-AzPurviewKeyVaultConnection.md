@@ -22,27 +22,19 @@ Update an instance of a key vault connection
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an instance of a key vault connection
 ```powershell
-{{ Add code here }}
+Update-AzPurviewKeyVaultConnection -Endpoint 'https://parv-brs-2.purview.azure.com/' -KeyVaultName KeyVaultConnection2 -BaseUrl 'https://datascankv.vault.azure.net/' -Description 'This is a key vault'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+BaseUrl           : https://datascankv.vault.azure.net/
+Description       : This is a key vault
+Id                : keyVaults/KeyVaultConnection2
+Name              : KeyVaultConnection2
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Update an instance of a key vault connection
 
 ## PARAMETERS
 

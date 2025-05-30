@@ -22,27 +22,29 @@ Update a data source
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a data source
 ```powershell
-{{ Add code here }}
+Update-AzPurviewDataSource -Endpoint 'https://parv-brs-2.purview.azure.com/' -Name 'NewDataSource' -Kind SqlServerDatabase
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+CollectionLastModifiedAt : 2/15/2022 10:36:25 AM
+CollectionReferenceName  : parv-brs-2
+CollectionType           : CollectionReference
+CreatedAt                : 2/15/2022 10:36:25 AM
+Endpoint                 : https://datascantest.blob.core.windows.net/
+Id                       : datasources/NewDataSource
+Kind                     : SqlServerDatabase
+LastModifiedAt           : 2/15/2022 10:36:25 AM
+Location                 :
+Name                     : NewDataSource
+ResourceGroup            :
+ResourceName             :
+Scan                     :
+SubscriptionId           :
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Update a data source
 
 ## PARAMETERS
 

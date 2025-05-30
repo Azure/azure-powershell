@@ -22,27 +22,28 @@ Update a scan ruleset
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a scan ruleset
 ```powershell
-{{ Add code here }}
+Update-AzPurviewScanRuleset -Endpoint 'https://parv-brs-2.purview.azure.com/' -Name 'Rule1' -Kind AmazonPostgreSql
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+CreatedAt                            : 2/17/2022 3:35:07 PM
+Description                          : desc
+ExcludedSystemClassification         : {MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER, MICROSOFT.SECURITY.COMMON_PASSWORDS}
+Id                                   : scanrulesets/Rule1
+IncludedCustomClassificationRuleName : {ClassificationRule2}
+Kind                                 : AmazonPostgreSql
+LastModifiedAt                       : 2/17/2022 3:35:07 PM
+Name                                 : Rule1
+ScanningRuleCustomFileExtension      :
+ScanningRuleFileExtension            : {CSV, JSON, PSV, SSV…}
+Status                               : Enabled
+Type                                 : Custom
+Version                              : 1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Update a scan ruleset
 
 ## PARAMETERS
 
