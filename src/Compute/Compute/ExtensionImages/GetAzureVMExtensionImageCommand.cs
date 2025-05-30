@@ -51,13 +51,12 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (string.IsNullOrEmpty(this.Version) || WildcardPattern.ContainsWildcardCharacters(this.Version))
                 {
-                    var filter = new ODataQuery<VirtualMachineExtensionImage>(this.FilterExpression);
 
                     var result = this.VirtualMachineExtensionImageClient.ListVersionsWithHttpMessagesAsync(
                         this.Location.Canonicalize(),
                         this.PublisherName,
                         this.Type,
-                        odataQuery: filter).GetAwaiter().GetResult();
+                        filter: this.FilterExpression).GetAwaiter().GetResult();
 
                     var images = from r in result.Body
                                  select new PSVirtualMachineExtensionImage

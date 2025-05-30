@@ -37,13 +37,19 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the GalleryApplicationVersionUpdate
         /// class.
         /// </summary>
+        /// <param name="publishingProfile">The publishing profile of a gallery
+        /// image version.</param>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="provisioningState">Possible values include:
-        /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
-        /// 'Migrating'</param>
+        /// <param name="safetyProfile">The safety profile of the Gallery
+        /// Application Version.</param>
+        /// <param name="provisioningState">The provisioning state, which only
+        /// appears in the response. Possible values include: 'Creating',
+        /// 'Updating', 'Failed', 'Succeeded', 'Deleting', 'Migrating'</param>
+        /// <param name="replicationStatus">This is the replication status of
+        /// the gallery image version.</param>
         public GalleryApplicationVersionUpdate(GalleryApplicationVersionPublishingProfile publishingProfile, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), GalleryApplicationVersionSafetyProfile safetyProfile = default(GalleryApplicationVersionSafetyProfile), string provisioningState = default(string), ReplicationStatus replicationStatus = default(ReplicationStatus))
             : base(id, name, type, tags)
         {
@@ -60,23 +66,27 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets the publishing profile of a gallery image version.
         /// </summary>
         [JsonProperty(PropertyName = "properties.publishingProfile")]
         public GalleryApplicationVersionPublishingProfile PublishingProfile { get; set; }
 
         /// <summary>
+        /// Gets or sets the safety profile of the Gallery Application Version.
         /// </summary>
         [JsonProperty(PropertyName = "properties.safetyProfile")]
         public GalleryApplicationVersionSafetyProfile SafetyProfile { get; set; }
 
         /// <summary>
-        /// Gets possible values include: 'Creating', 'Updating', 'Failed',
+        /// Gets the provisioning state, which only appears in the response.
+        /// Possible values include: 'Creating', 'Updating', 'Failed',
         /// 'Succeeded', 'Deleting', 'Migrating'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
 
         /// <summary>
+        /// Gets this is the replication status of the gallery image version.
         /// </summary>
         [JsonProperty(PropertyName = "properties.replicationStatus")]
         public ReplicationStatus ReplicationStatus { get; private set; }

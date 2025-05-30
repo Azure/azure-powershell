@@ -31,6 +31,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the ImageVersionSecurityProfile
         /// class.
         /// </summary>
+        /// <param name="uefiSettings">Contains UEFI settings for the image
+        /// version.</param>
         public ImageVersionSecurityProfile(GalleryImageVersionUefiSettings uefiSettings = default(GalleryImageVersionUefiSettings))
         {
             UefiSettings = uefiSettings;
@@ -43,6 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets contains UEFI settings for the image version.
         /// </summary>
         [JsonProperty(PropertyName = "uefiSettings")]
         public GalleryImageVersionUefiSettings UefiSettings { get; set; }

@@ -34,10 +34,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the DiskEncryptionSetUpdate class.
         /// </summary>
-        /// <param name="encryptionType">Possible values include:
+        /// <param name="encryptionType">The type of key used to encrypt the
+        /// data of the disk. Possible values include:
         /// 'EncryptionAtRestWithCustomerKey',
         /// 'EncryptionAtRestWithPlatformAndCustomerKeys',
         /// 'ConfidentialVmEncryptedWithCustomerKey'</param>
+        /// <param name="activeKey">Key Vault Key Url to be used for server
+        /// side encryption of Managed Disks and Snapshots</param>
         /// <param name="rotationToLatestKeyVersionEnabled">Set this flag to
         /// true to enable auto-updating of this disk encryption set to the
         /// latest key version.</param>
@@ -45,6 +48,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// to access key vault in a different tenant. Setting the value to
         /// 'None' will clear the property.</param>
         /// <param name="tags">Resource tags</param>
+        /// <param name="identity">The managed identity for the disk encryption
+        /// set. It should be given permission on the key vault before it can
+        /// be used to encrypt disks.</param>
         public DiskEncryptionSetUpdate(string encryptionType = default(string), KeyForDiskEncryptionSet activeKey = default(KeyForDiskEncryptionSet), bool? rotationToLatestKeyVersionEnabled = default(bool?), string federatedClientId = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), EncryptionSetIdentity identity = default(EncryptionSetIdentity))
         {
             EncryptionType = encryptionType;
@@ -62,8 +68,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets possible values include:
-        /// 'EncryptionAtRestWithCustomerKey',
+        /// Gets or sets the type of key used to encrypt the data of the disk.
+        /// Possible values include: 'EncryptionAtRestWithCustomerKey',
         /// 'EncryptionAtRestWithPlatformAndCustomerKeys',
         /// 'ConfidentialVmEncryptedWithCustomerKey'
         /// </summary>
@@ -71,6 +77,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string EncryptionType { get; set; }
 
         /// <summary>
+        /// Gets or sets key Vault Key Url to be used for server side
+        /// encryption of Managed Disks and Snapshots
         /// </summary>
         [JsonProperty(PropertyName = "properties.activeKey")]
         public KeyForDiskEncryptionSet ActiveKey { get; set; }
@@ -97,6 +105,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
+        /// Gets or sets the managed identity for the disk encryption set. It
+        /// should be given permission on the key vault before it can be used
+        /// to encrypt disks.
         /// </summary>
         [JsonProperty(PropertyName = "identity")]
         public EncryptionSetIdentity Identity { get; set; }

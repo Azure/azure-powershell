@@ -31,9 +31,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineScaleSetsApproveRollingUpgradeHeaders class.
         /// </summary>
-        public VirtualMachineScaleSetsApproveRollingUpgradeHeaders(string location = default(string))
+        /// <param name="location">The Location header contains the URL where
+        /// the status of the long running operation can be checked.</param>
+        /// <param name="retryAfter">The Retry-After header can indicate how
+        /// long the client should wait before polling the operation
+        /// status.</param>
+        public VirtualMachineScaleSetsApproveRollingUpgradeHeaders(string location = default(string), int? retryAfter = default(int?))
         {
             Location = location;
+            RetryAfter = retryAfter;
             CustomInit();
         }
 
@@ -43,9 +49,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets the Location header contains the URL where the status
+        /// of the long running operation can be checked.
         /// </summary>
         [JsonProperty(PropertyName = "Location")]
         public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Retry-After header can indicate how long the
+        /// client should wait before polling the operation status.
+        /// </summary>
+        [JsonProperty(PropertyName = "Retry-After")]
+        public int? RetryAfter { get; set; }
 
     }
 }

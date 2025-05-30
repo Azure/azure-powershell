@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// class.
         /// </summary>
         /// <param name="name">The name of the region.</param>
+        /// <param name="extendedLocation">The name of the extended
+        /// location.</param>
         /// <param name="extendedLocationReplicaCount">The number of replicas
         /// of the Image Version to be created per extended location. This
         /// property is updatable.</param>
@@ -36,6 +38,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// to be used to store the image. This property is not updatable.
         /// Possible values include: 'Standard_LRS', 'Standard_ZRS',
         /// 'StandardSSD_LRS', 'Premium_LRS'</param>
+        /// <param name="encryption">Optional. Allows users to provide customer
+        /// managed keys for encrypting the OS and data disks in the gallery
+        /// artifact.</param>
         public GalleryTargetExtendedLocation(string name = default(string), GalleryExtendedLocation extendedLocation = default(GalleryExtendedLocation), int? extendedLocationReplicaCount = default(int?), string storageAccountType = default(string), EncryptionImages encryption = default(EncryptionImages))
         {
             Name = name;
@@ -58,6 +63,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the extended location.
         /// </summary>
         [JsonProperty(PropertyName = "extendedLocation")]
         public GalleryExtendedLocation ExtendedLocation { get; set; }
@@ -78,6 +84,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string StorageAccountType { get; set; }
 
         /// <summary>
+        /// Gets or sets optional. Allows users to provide customer managed
+        /// keys for encrypting the OS and data disks in the gallery artifact.
         /// </summary>
         [JsonProperty(PropertyName = "encryption")]
         public EncryptionImages Encryption { get; set; }

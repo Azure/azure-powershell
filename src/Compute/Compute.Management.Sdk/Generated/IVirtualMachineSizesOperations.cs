@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Skus](https://docs.microsoft.com/rest/api/compute/resourceskus/list)
         /// </summary>
         /// <param name='location'>
-        /// The location upon which virtual-machine-sizes is queried.
+        /// The name of Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

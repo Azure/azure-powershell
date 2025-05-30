@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             {
                 ResourceGroupName = rgName,
                 VmssName = vmssName,
-                Name = ext.Name,
+                Name = ext.VmName,
                 Publisher = ext.Publisher,
                 Type = ext.Type,
                 TypeHandlerVersion = ext.TypeHandlerVersion,

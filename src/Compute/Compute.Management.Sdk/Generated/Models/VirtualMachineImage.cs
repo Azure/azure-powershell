@@ -44,12 +44,22 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags.md).</param>
         /// <param name="extendedLocation">The extended location of the Virtual
         /// Machine.</param>
-        /// <param name="hyperVGeneration">Possible values include: 'V1',
-        /// 'V2'</param>
+        /// <param name="plan">Used for establishing the purchase context of
+        /// any 3rd Party artifact through MarketPlace.</param>
+        /// <param name="osDiskImage">Contains the os disk image
+        /// information.</param>
+        /// <param name="dataDiskImages">The list of data disk images
+        /// information.</param>
+        /// <param name="automaticOSUpgradeProperties">Describes automatic OS
+        /// upgrade properties on the image.</param>
+        /// <param name="hyperVGeneration">Specifies the HyperVGeneration Type.
+        /// Possible values include: 'V1', 'V2'</param>
         /// <param name="disallowed">Specifies disallowed configuration for the
         /// VirtualMachine created from the image</param>
-        /// <param name="architecture">Possible values include: 'x64',
-        /// 'Arm64'</param>
+        /// <param name="architecture">Specifies the Architecture Type.
+        /// Possible values include: 'x64', 'Arm64'</param>
+        /// <param name="imageDeprecationStatus">Describes image deprecation
+        /// status properties on the image.</param>
         public VirtualMachineImage(string name, string location, string id = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), PurchasePlan plan = default(PurchasePlan), OSDiskImage osDiskImage = default(OSDiskImage), IList<DataDiskImage> dataDiskImages = default(IList<DataDiskImage>), AutomaticOSUpgradeProperties automaticOSUpgradeProperties = default(AutomaticOSUpgradeProperties), string hyperVGeneration = default(string), DisallowedConfiguration disallowed = default(DisallowedConfiguration), IList<VirtualMachineImageFeature> features = default(IList<VirtualMachineImageFeature>), string architecture = default(string), ImageDeprecationStatus imageDeprecationStatus = default(ImageDeprecationStatus))
             : base(name, location, id, tags, extendedLocation)
         {
@@ -71,27 +81,34 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets used for establishing the purchase context of any 3rd
+        /// Party artifact through MarketPlace.
         /// </summary>
         [JsonProperty(PropertyName = "properties.plan")]
         public PurchasePlan Plan { get; set; }
 
         /// <summary>
+        /// Gets or sets contains the os disk image information.
         /// </summary>
         [JsonProperty(PropertyName = "properties.osDiskImage")]
         public OSDiskImage OsDiskImage { get; set; }
 
         /// <summary>
+        /// Gets or sets the list of data disk images information.
         /// </summary>
         [JsonProperty(PropertyName = "properties.dataDiskImages")]
         public IList<DataDiskImage> DataDiskImages { get; set; }
 
         /// <summary>
+        /// Gets or sets describes automatic OS upgrade properties on the
+        /// image.
         /// </summary>
         [JsonProperty(PropertyName = "properties.automaticOSUpgradeProperties")]
         public AutomaticOSUpgradeProperties AutomaticOSUpgradeProperties { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'V1', 'V2'
+        /// Gets or sets specifies the HyperVGeneration Type. Possible values
+        /// include: 'V1', 'V2'
         /// </summary>
         [JsonProperty(PropertyName = "properties.hyperVGeneration")]
         public string HyperVGeneration { get; set; }
@@ -109,12 +126,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         public IList<VirtualMachineImageFeature> Features { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'x64', 'Arm64'
+        /// Gets or sets specifies the Architecture Type. Possible values
+        /// include: 'x64', 'Arm64'
         /// </summary>
         [JsonProperty(PropertyName = "properties.architecture")]
         public string Architecture { get; set; }
 
         /// <summary>
+        /// Gets or sets describes image deprecation status properties on the
+        /// image.
         /// </summary>
         [JsonProperty(PropertyName = "properties.imageDeprecationStatus")]
         public ImageDeprecationStatus ImageDeprecationStatus { get; set; }

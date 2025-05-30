@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location upon which virtual-machine-sizes is queried.
+            /// The name of Azure region.
             /// </param>
             public static IEnumerable<VirtualMachineSize> List(this IVirtualMachineSizesOperations operations, string location)
             {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location upon which virtual-machine-sizes is queried.
+            /// The name of Azure region.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

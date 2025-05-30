@@ -57,6 +57,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="publicIPAllocationMethod">Specify the public IP
         /// allocation type. Possible values include: 'Dynamic',
         /// 'Static'</param>
+        /// <param name="sku">Describes the public IP Sku. It can only be set
+        /// with OrchestrationMode as Flexible.</param>
         public VirtualMachinePublicIPAddressConfiguration(string name, int? idleTimeoutInMinutes = default(int?), string deleteOption = default(string), VirtualMachinePublicIPAddressDnsSettingsConfiguration dnsSettings = default(VirtualMachinePublicIPAddressDnsSettingsConfiguration), IList<VirtualMachineIpTag> ipTags = default(IList<VirtualMachineIpTag>), SubResource publicIPPrefix = default(SubResource), string publicIPAddressVersion = default(string), string publicIPAllocationMethod = default(string), PublicIPAddressSku sku = default(PublicIPAddressSku))
         {
             Name = name;
@@ -133,6 +135,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string PublicIPAllocationMethod { get; set; }
 
         /// <summary>
+        /// Gets or sets describes the public IP Sku. It can only be set with
+        /// OrchestrationMode as Flexible.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public PublicIPAddressSku Sku { get; set; }

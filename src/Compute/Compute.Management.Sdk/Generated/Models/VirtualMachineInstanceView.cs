@@ -52,8 +52,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// status on the virtual machine.</param>
         /// <param name="disks">The virtual machine disk information.</param>
         /// <param name="extensions">The extensions information.</param>
-        /// <param name="vmHealth">The application health status for the VM,
-        /// provided through Application Health Extension.</param>
+        /// <param name="vmHealth">The health status for the VM.</param>
         /// <param name="bootDiagnostics">Boot Diagnostics is a debugging
         /// feature which allows you to view Console Output and Screenshot to
         /// diagnose VM status. You can easily view the output of your console
@@ -166,8 +165,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public IList<VirtualMachineExtensionInstanceView> Extensions { get; set; }
 
         /// <summary>
-        /// Gets the application health status for the VM, provided through
-        /// Application Health Extension.
+        /// Gets the health status for the VM.
         /// </summary>
         [JsonProperty(PropertyName = "vmHealth")]
         public VirtualMachineHealthStatus VmHealth { get; private set; }

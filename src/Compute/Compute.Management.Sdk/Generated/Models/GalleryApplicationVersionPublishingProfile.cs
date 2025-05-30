@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// GalleryApplicationVersionPublishingProfile class.
         /// </summary>
+        /// <param name="source">The source image from which the Image Version
+        /// is going to be created.</param>
         /// <param name="targetRegions">The target regions where the Image
         /// Version is going to be replicated to. This property is
         /// updatable.</param>
@@ -59,6 +61,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="targetExtendedLocations">The target extended locations
         /// where the Image Version is going to be replicated to. This property
         /// is updatable.</param>
+        /// <param name="settings">Additional settings for the VM app that
+        /// contains the target package and config file name when it is
+        /// deployed to target VM or VM scale set.</param>
         /// <param name="advancedSettings">Optional. Additional settings to
         /// pass to the vm-application-manager extension. For advanced use
         /// only.</param>
@@ -84,6 +89,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets the source image from which the Image Version is going
+        /// to be created.
         /// </summary>
         [JsonProperty(PropertyName = "source")]
         public UserArtifactSource Source { get; set; }
@@ -94,6 +101,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         public UserArtifactManage ManageActions { get; set; }
 
         /// <summary>
+        /// Gets or sets additional settings for the VM app that contains the
+        /// target package and config file name when it is deployed to target
+        /// VM or VM scale set.
         /// </summary>
         [JsonProperty(PropertyName = "settings")]
         public UserArtifactSettings Settings { get; set; }

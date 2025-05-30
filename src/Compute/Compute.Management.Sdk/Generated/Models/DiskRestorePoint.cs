@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// Properties of disk restore point
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DiskRestorePoint : ProxyOnlyResource
+    public partial class DiskRestorePoint : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the DiskRestorePoint class.
@@ -57,10 +57,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// keys.</param>
         /// <param name="supportsHibernation">Indicates the OS on a disk
         /// supports hibernation.</param>
-        /// <param name="networkAccessPolicy">Possible values include:
-        /// 'AllowAll', 'AllowPrivate', 'DenyAll'</param>
-        /// <param name="publicNetworkAccess">Possible values include:
-        /// 'Enabled', 'Disabled'</param>
+        /// <param name="networkAccessPolicy">Policy for accessing the disk via
+        /// network. Possible values include: 'AllowAll', 'AllowPrivate',
+        /// 'DenyAll'</param>
+        /// <param name="publicNetworkAccess">Policy for controlling export on
+        /// the disk. Possible values include: 'Enabled', 'Disabled'</param>
         /// <param name="diskAccessId">ARM id of the DiskAccess resource for
         /// using private endpoints on disks.</param>
         /// <param name="completionPercent">Percentage complete for the
@@ -171,14 +172,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         public bool? SupportsHibernation { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'AllowAll', 'AllowPrivate',
-        /// 'DenyAll'
+        /// Gets or sets policy for accessing the disk via network. Possible
+        /// values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkAccessPolicy")]
         public string NetworkAccessPolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'Enabled', 'Disabled'
+        /// Gets or sets policy for controlling export on the disk. Possible
+        /// values include: 'Enabled', 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public string PublicNetworkAccess { get; set; }
