@@ -1,9 +1,3 @@
-parameters:
-- name: AutorestVersion
-  displayName: 'Version of Autorest that trigger batch generation'
-  type: string
-  default: '4.x.x'
-
 variables:
   IntermediateStepTimeoutInMinutes: 30
   GenerateTimeoutInMinutes: 120
@@ -22,6 +16,13 @@ variables:
   MacOSAgentPoolVMImage: macOS-latest
 
 trigger: none
+
+resources:
+  pipelines:
+    - pipeline: autorestRelease
+      project: release 
+      source: "autorest.powershell - Publish on commit - OneBranch"  
+      trigger: true
 
 stages:
   - stage: Generate
@@ -56,6 +57,19 @@ stages:
             Write-Host "##vso[task.setvariable variable=GenerationBranch;isOutput=true]$generationBranch"
 
       - task: PowerShell@2
+        name: version
+        displayName: 'Get latest Autorest Version'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            $autorestPowershellUrl = "https://registry.npmjs.org/@autorest/powershell"
+            $response = Invoke-RestMethod -Uri $autorestPowershellUrl -Method Get
+            $latestAutorestVersion = $response.'dist-tags'.latest
+            Write-Host "Latest version of Autorest Powershell is $latestAutorestVersion"
+            Write-Host "##vso[task.setvariable variable=LatestAutorestVersion;isOutput=true]$latestAutorestVersion"
+
+      - task: PowerShell@2
         name: mtrx
         displayName: 'Generate Build Targets Matrix'
         inputs:
@@ -80,6 +94,7 @@ stages:
         )
       variables:
         GenerationBranch: $[dependencies.prepare.outputs['checkout.GenerationBranch']]
+        LatestAutorestVersion: $[dependencies.prepare.outputs['version.LatestAutorestVersion']]
       timeoutInMinutes: ${{ variables.GenerateTimeoutInMinutes }}
       pool: ${{ variables.WindowsAgentPoolName }}
       strategy:
@@ -107,7 +122,7 @@ stages:
             git checkout "$(GenerationBranch)"
 
             $batchGenerateModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'batch-generate-modules.ps1'
-            & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)" -AutorestVersion "${{ parameters.AutorestVersion }}"
+            & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)" -AutorestVersion "$(LatestAutorestVersion)"
           workingDirectory: $(Build.SourcesDirectory)
 
       - task: PublishPipelineArtifact@1
@@ -122,6 +137,7 @@ stages:
     condition: always()
     variables:
       GenerationBranch: $[stageDependencies.Generate.prepare.outputs['checkout.GenerationBranch']]
+      LatestAutorestVersion: $[stageDependencies.Generate.prepare.outputs['version.LatestAutorestVersion']]
     jobs:
     - job: filter
       displayName: 'Filter Changed Modules'
@@ -170,7 +186,7 @@ stages:
             }
             
             git add .
-            git commit -m "Autorest Upgrade - ${{ parameters.AutorestVersion }}"
+            git commit -m "Autorest Upgrade - $(LatestAutorestVersion)"
             git push origin "$(GenerationBranch)"
 
       - task: PowerShell@2
