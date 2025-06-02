@@ -16,21 +16,21 @@ Updates the throughput value of a CosmosDB Gremlin Graph.
 ```
 Update-AzCosmosDBGremlinGraphThroughput -DatabaseName <String> [-Name <String>] -ResourceGroupName <String>
  -AccountName <String> [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>]
- [-ThroughputBuckets <PSThroughputBucket[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ThroughputBucketsObject <PSThroughputBucket[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Update-AzCosmosDBGremlinGraphThroughput [-Name <String>] -ParentObject <PSGremlinDatabaseGetResults>
- [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>] [-ThroughputBuckets <PSThroughputBucket[]>]
+ [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>] [-ThroughputBucketsObject <PSThroughputBucket[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Update-AzCosmosDBGremlinGraphThroughput [-Name <String>] -InputObject <PSGremlinGraphGetResults>
- [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>] [-ThroughputBuckets <PSThroughputBucket[]>]
+ [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>] [-ThroughputBucketsObject <PSThroughputBucket[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -190,7 +190,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ThroughputBuckets
+### -ThroughputBucketsObject
 Array of throughput buckets to be applied to the Cosmos DB resource.
 
 ```yaml
