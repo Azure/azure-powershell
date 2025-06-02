@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Enabled setting the authentication scope for SSH cmdlets by `Set-AzEnvironment -SshAuthScope <String>`.
 
 ## Version 5.0.2
 * Upgrade Azure.Core to 1.45.0
