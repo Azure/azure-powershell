@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed the issue that context is not cleared when WAM is enabled.
 
 ## Version 5.0.2
 * Upgrade Azure.Core to 1.45.0
