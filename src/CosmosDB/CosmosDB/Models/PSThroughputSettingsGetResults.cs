@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             MinimumThroughput = throughputSettingsGetResults.Resource.MinimumThroughput;
             OfferReplacePending = throughputSettingsGetResults.Resource.OfferReplacePending;
             AutoscaleSettings = new PSAutoscaleSettingsResource(throughputSettingsGetResults.Resource.AutoscaleSettings);
-            ThroughputBuckets = throughputSettingsGetResults.Resource.ThroughputBuckets?.Select(t => new PSThroughputBucket(t)).ToArray();
+            ThroughputBucketsObject = throughputSettingsGetResults.Resource.ThroughputBuckets?.Select(t => new PSThroughputBucket(t)).ToArray();
         }
 
         /// <summary>
@@ -70,6 +70,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// <summary>
         /// Gets or sets the throughput buckets of the resource
         /// </summary>
-        public PSThroughputBucket[] ThroughputBuckets { get; set; }
+        public PSThroughputBucket[] ThroughputBucketsObject { get; set; }
     }
 }

@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ThroughputTypeHelpMessage = "Throughput type to migrate to. Possible values are: Autoscale, Manual.";
 
         // Throughput bucketing help messages
-        public const string ThroughputBucketsHelpMessage = "Array of throughput buckets to be applied to the Cosmos DB resource.";
+        public const string ThroughputBucketsObjectHelpMessage = "Array of throughput buckets to be applied to the Cosmos DB resource.";
         public const string ThroughputBucketIdHelpMessage = "The ID of the throughput bucket.";
         public const string ThroughputBucketMaxThroughputHelpMessage = "The maximum throughput of the throughput bucket.";
 

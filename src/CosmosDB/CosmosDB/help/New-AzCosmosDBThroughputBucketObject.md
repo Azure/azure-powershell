@@ -24,7 +24,7 @@ Creates a new CosmosDB Throughput Bucket Object (PSThroughputBucket).
 
 ### Example 1
 ```powershell
-PS C:\> $ThroughputBucket1 = New-AzCosmosDBThroughputBucketObject -Id 1 -MaxThroughputPercentage 20
+New-AzCosmosDBThroughputBucketObject -Id 1 -MaxThroughputPercentage 20
 ```
 
 ## PARAMETERS

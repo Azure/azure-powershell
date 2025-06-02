@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public int? AutoscaleMaxThroughput { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.ThroughputBucketsHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.ThroughputBucketsObjectHelpMessage)]
         [ValidateNotNull]
-        public PSThroughputBucket[] ThroughputBuckets { get; set; }
+        public PSThroughputBucket[] ThroughputBucketsObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 PopulateFromInputObject();
             }
 
-            ThroughputSettingsUpdateParameters throughputSettingsUpdateParameters = ThroughputHelper.CreateThroughputSettingsObject(Throughput, AutoscaleMaxThroughput, ThroughputBuckets);
+            ThroughputSettingsUpdateParameters throughputSettingsUpdateParameters = ThroughputHelper.CreateThroughputSettingsObject(Throughput, AutoscaleMaxThroughput, ThroughputBucketsObject);
 
             CallSDKMethod(throughputSettingsUpdateParameters);
         }
