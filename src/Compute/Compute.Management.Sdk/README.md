@@ -134,6 +134,24 @@ directive:
       }
       return $;
 
+  # Remove x-ms-client-name from VirtualMachineScaleSetExtension name property
+  - from: swagger-document
+    where: $.definitions.VirtualMachineScaleSetExtension.properties.name
+    transform: |
+      if ($["x-ms-client-name"]) {
+        delete $["x-ms-client-name"];
+      }
+      return $;
+
+  # Remove x-ms-client-name from VirtualMachineScaleSetExtension name property
+  - from: swagger-document
+    where: $.definitions.VirtualMachineScaleSetVMExtension.properties.name
+    transform: |
+      if ($["x-ms-client-name"]) {
+        delete $["x-ms-client-name"];
+      }
+      return $;
+
   # Remove existing PassNames and ComponentNames definitions
   - from: swagger-document
     where: $.definitions

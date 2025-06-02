@@ -74,8 +74,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// protected settings that are passed by reference, and consumed from
         /// key vault</param>
         /// <param name="type">Resource type</param>
-        /// <param name="vmName">Resource name</param>
-        public VirtualMachineScaleSetExtension(string id = default(string), string forceUpdateTag = default(string), string publisher = default(string), string virtualMachineScaleSetExtensionPropertiesType = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), bool? enableAutomaticUpgrade = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), IList<string> provisionAfterExtensions = default(IList<string>), bool? suppressFailures = default(bool?), KeyVaultSecretReference protectedSettingsFromKeyVault = default(KeyVaultSecretReference), string type = default(string), string vmName = default(string))
+        /// <param name="name">Resource name</param>
+        public VirtualMachineScaleSetExtension(string id = default(string), string forceUpdateTag = default(string), string publisher = default(string), string virtualMachineScaleSetExtensionPropertiesType = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), bool? enableAutomaticUpgrade = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), IList<string> provisionAfterExtensions = default(IList<string>), bool? suppressFailures = default(bool?), KeyVaultSecretReference protectedSettingsFromKeyVault = default(KeyVaultSecretReference), string type = default(string), string name = default(string))
             : base(id)
         {
             ForceUpdateTag = forceUpdateTag;
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             SuppressFailures = suppressFailures;
             ProtectedSettingsFromKeyVault = protectedSettingsFromKeyVault;
             Type = type;
-            VmName = vmName;
+            Name = name;
             CustomInit();
         }
 
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets resource name
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string VmName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Validate the object.

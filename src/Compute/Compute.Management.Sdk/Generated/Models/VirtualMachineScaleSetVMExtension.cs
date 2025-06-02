@@ -75,8 +75,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// names after which this extension needs to be provisioned.</param>
         /// <param name="location">The location of the extension.</param>
         /// <param name="type">Resource type</param>
-        /// <param name="vmName">Resource name</param>
-        public VirtualMachineScaleSetVMExtension(string id = default(string), string forceUpdateTag = default(string), string publisher = default(string), string virtualMachineExtensionPropertiesType = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), bool? enableAutomaticUpgrade = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), VirtualMachineExtensionInstanceView instanceView = default(VirtualMachineExtensionInstanceView), bool? suppressFailures = default(bool?), KeyVaultSecretReference protectedSettingsFromKeyVault = default(KeyVaultSecretReference), IList<string> provisionAfterExtensions = default(IList<string>), string location = default(string), string type = default(string), string vmName = default(string))
+        /// <param name="name">Resource name</param>
+        public VirtualMachineScaleSetVMExtension(string id = default(string), string forceUpdateTag = default(string), string publisher = default(string), string virtualMachineExtensionPropertiesType = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), bool? enableAutomaticUpgrade = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), VirtualMachineExtensionInstanceView instanceView = default(VirtualMachineExtensionInstanceView), bool? suppressFailures = default(bool?), KeyVaultSecretReference protectedSettingsFromKeyVault = default(KeyVaultSecretReference), IList<string> provisionAfterExtensions = default(IList<string>), string location = default(string), string type = default(string), string name = default(string))
             : base(id)
         {
             ForceUpdateTag = forceUpdateTag;
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             ProvisionAfterExtensions = provisionAfterExtensions;
             Location = location;
             Type = type;
-            VmName = vmName;
+            Name = name;
             CustomInit();
         }
 
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets resource name
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string VmName { get; private set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// Validate the object.

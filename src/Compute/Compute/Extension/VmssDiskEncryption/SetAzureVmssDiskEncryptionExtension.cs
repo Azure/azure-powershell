@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 this.ExtensionType = this.ExtensionType ?? AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultName;
                 vmssExtensionParameters = new VirtualMachineScaleSetExtension
                 {
-                    VmName = this.ExtensionName,
+                    Name = this.ExtensionName,
                     Publisher = this.ExtensionPublisherName,
                     VirtualMachineScaleSetExtensionPropertiesType = this.ExtensionType,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultVersion,
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 this.ExtensionType = this.ExtensionType ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
                 vmssExtensionParameters = new VirtualMachineScaleSetExtension
                 {
-                    VmName = this.ExtensionName,
+                    Name = this.ExtensionName,
                     Publisher = this.ExtensionPublisherName,
                     VirtualMachineScaleSetExtensionPropertiesType = this.ExtensionType,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
