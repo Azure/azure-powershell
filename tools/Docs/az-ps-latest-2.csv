@@ -1,4 +1,4 @@
-pac0,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Accounts.5.0.2.zip;sourceType=sa]Az.Accounts,5.0.2
+pac0,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Accounts.5.1.0.zip;sourceType=sa]Az.Accounts,5.1.0
 pac1,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MongoDB.0.1.0.zip;sourceType=sa]Az.MongoDB,0.1.0
 pac2,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Monitor.6.0.2.zip;sourceType=sa]Az.Monitor,6.0.2
 pac3,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MonitoringSolutions.0.2.0.zip;sourceType=sa]Az.MonitoringSolutions,0.2.0

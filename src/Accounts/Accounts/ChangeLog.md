@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.1.0
 * Enabled setting the authentication scope for SSH cmdlets by `Set-AzEnvironment -SshAuthScope <String>`.
 
 ## Version 5.0.2
