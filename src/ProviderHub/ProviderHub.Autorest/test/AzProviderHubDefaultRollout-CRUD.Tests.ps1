@@ -15,7 +15,7 @@ Describe 'AzProviderHubDefaultRollout-CRUD' {
     It 'Create, get, list, cancel, and delete DefaultRollout' {
         $row2Timespan = New-TimeSpan -Hours 4
 
-        $defaultRollout = New-AzProviderHubDefaultRollout -ProviderNamespace $env.ProviderNamespace -RolloutName "psDefaultRollout" -RestOfTheWorldGroupTwoWaitDuration $row2Timespan -CanarySkipRegion "brazilus" -NoWait
+        $defaultRollout = New-AzProviderHubDefaultRollout -ProviderNamespace $env.ProviderNamespace -RolloutName "psDefaultRollout" -SpecificationRestOfTheWorldGroupOneRegion $row2Timespan -SpecificationCanarySkipRegion "brazilus" -NoWait
         $defaultRollout | Should -Not -BeNullOrEmpty
 
         $defaultRollout = Get-AzProviderHubDefaultRollout -ProviderNamespace $env.ProviderNamespace -RolloutName "psDefaultRollout"
