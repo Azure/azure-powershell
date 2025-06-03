@@ -24,6 +24,19 @@ Add-AzPurviewAccountRootCollectionAdmin -InputObject <IPurviewIdentity> -ObjectI
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### AddViaJsonFilePath
+```
+Add-AzPurviewAccountRootCollectionAdmin -AccountName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### AddViaJsonString
+```
+Add-AzPurviewAccountRootCollectionAdmin -AccountName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Add the administrator for root collection associated with this account.
 
@@ -51,7 +64,7 @@ The name of the account.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded
+Parameter Sets: AddExpanded, AddViaJsonFilePath, AddViaJsonString
 Aliases:
 
 Required: True
@@ -62,7 +75,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -78,7 +92,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewIdentity
@@ -92,12 +105,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Add operation
+
+```yaml
+Type: System.String
+Parameter Sets: AddViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Add operation
+
+```yaml
+Type: System.String
+Parameter Sets: AddViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 Gets or sets the object identifier of the admin.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AddExpanded, AddViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -127,7 +170,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded
+Parameter Sets: AddExpanded, AddViaJsonFilePath, AddViaJsonString
 Aliases:
 
 Required: True
@@ -142,7 +185,7 @@ The subscription identifier
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded
+Parameter Sets: AddExpanded, AddViaJsonFilePath, AddViaJsonString
 Aliases:
 
 Required: False
