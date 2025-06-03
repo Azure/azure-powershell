@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added breaking change message for `New-AzVM` and `New-AzVmss` cmdlets.
 
 ## Version 10.0.1
 * Added breaking change message for `New-AzVM` and `New-AzVmss` cmdlets.
