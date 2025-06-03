@@ -116,7 +116,7 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-### -Values
+### -Value
 Allowed values for the matchVariable.
 ```yaml
 Type: System.String[]
