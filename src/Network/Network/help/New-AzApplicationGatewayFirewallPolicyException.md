@@ -20,7 +20,7 @@ New-AzApplicationGatewayFirewallPolicyException -MatchVariable <String> -Value <
 ```
 
 ## DESCRIPTION
-The **New-AzApplicationGatewayFirewallPolicyException** cmdlet a new exception rule list for firewall policy.
+The **New-AzApplicationGatewayFirewallPolicyException** cmdlet creates a new exception rule list for the firewall policy.
 
 ## EXAMPLES
 
