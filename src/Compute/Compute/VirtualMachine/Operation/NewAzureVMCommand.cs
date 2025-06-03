@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Commands.Compute
                 CM.ExtendedLocation extLoc = null;
                 if (_cmdlet.EdgeZone != null)
                 {
-                    extLoc = new CM.ExtendedLocation { Name = _cmdlet.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                    extLoc = new CM.ExtendedLocation { Name = _cmdlet.EdgeZone, Type = CM.ExtendedLocationType.EdgeZone };
                 }
 
                 if (_cmdlet.DiskFile == null)
@@ -997,7 +997,7 @@ namespace Microsoft.Azure.Commands.Compute
             CM.ExtendedLocation ExtendedLocation = null;
             if (this.EdgeZone != null)
             {
-                ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationType.EdgeZone };
             }
 
             // Normal TL defaulting check, minimal params
@@ -1184,7 +1184,7 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
-                    Rest.Azure.AzureOperationResponse<VirtualMachine> result;
+                    Rest.Azure.AzureOperationResponse<VirtualMachine, VirtualMachinesCreateOrUpdateHeaders> result;
 
                     if (this.IsParameterBound(c => c.SshKeyName))
                     {
@@ -1207,36 +1207,31 @@ namespace Microsoft.Azure.Commands.Compute
 
                     var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
 
-                    if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
-                    {
-                        var currentBginfoVersion = GetBginfoExtension();
+					if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
+					{
+						var currentBginfoVersion = GetBginfoExtension();
 
-                        if (!string.IsNullOrEmpty(currentBginfoVersion))
-                        {
-                            var extensionParameters = new VirtualMachineExtension
-                            {
-                                Location = this.Location,
-                                Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
-                                VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-                                TypeHandlerVersion = currentBginfoVersion,
-                                AutoUpgradeMinorVersion = true,
-                            };
+						if (!string.IsNullOrEmpty(currentBginfoVersion))
+						{
+							var extensionParameters = new VirtualMachineExtension
+							{
+								Location = this.Location,
+								Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
+								VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+								TypeHandlerVersion = currentBginfoVersion,
+								AutoUpgradeMinorVersion = true,
+							};
 
-                            typeof(CM.ResourceWithOptionalLocation).GetRuntimeProperty("Name")
-                                .SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
-                            typeof(CM.ResourceWithOptionalLocation).GetRuntimeProperty("Type")
-                                .SetValue(extensionParameters, VirtualMachineExtensionType);
+							var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
+								this.ResourceGroupName,
+								this.VM.Name,
+								VirtualMachineBGInfoExtensionContext.ExtensionDefaultName, 
+								extensionParameters).GetAwaiter().GetResult();
+							psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
+						}
+					}
 
-                            var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
-                                this.ResourceGroupName,
-                                this.VM.Name,
-                                VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-                                extensionParameters).GetAwaiter().GetResult();
-                            psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
-                        }
-                    }
-
-                    WriteObject(psResult);
+					WriteObject(psResult);
                 });
             }
         }
@@ -1557,7 +1552,7 @@ namespace Microsoft.Azure.Commands.Compute
             SM.ExtendedLocation extendedLocation = null;
             if (this.EdgeZone != null)
             {
-                extendedLocation = new SM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                extendedLocation = new SM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationType.EdgeZone };
             }
 
             var storaeAccountParameter = new StorageAccountCreateParameters

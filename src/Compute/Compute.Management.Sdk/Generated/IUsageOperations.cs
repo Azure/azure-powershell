@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Compute
         /// the subscription.
         /// </summary>
         /// <param name='location'>
-        /// The location for which resource usage is queried.
+        /// The name of Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

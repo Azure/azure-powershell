@@ -24,18 +24,18 @@ namespace Microsoft.Azure.Management.Compute
     public static partial class OperationsExtensions
     {
             /// <summary>
-            /// Gets a list of compute operations.
+            /// List the operations for the provider
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IEnumerable<ComputeOperationValue> List(this IOperations operations)
+            public static IEnumerable<object> List(this IOperations operations)
             {
                 return operations.ListAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets a list of compute operations.
+            /// List the operations for the provider
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<ComputeOperationValue>> ListAsync(this IOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<object>> ListAsync(this IOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {

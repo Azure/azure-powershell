@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="location">Resource location</param>
         /// <param name="uniqueId">The unique id of this shared
         /// gallery.</param>
+        /// <param name="artifactTags">The artifact tags of a shared gallery
+        /// resource.</param>
         public SharedGallery(string name = default(string), string location = default(string), string uniqueId = default(string), IDictionary<string, string> artifactTags = default(IDictionary<string, string>))
             : base(name, location, uniqueId)
         {
@@ -52,6 +54,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets the artifact tags of a shared gallery resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.artifactTags")]
         public IDictionary<string, string> ArtifactTags { get; private set; }

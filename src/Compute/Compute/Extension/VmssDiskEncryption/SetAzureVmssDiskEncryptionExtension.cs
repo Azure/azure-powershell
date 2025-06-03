@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 {
                     Name = this.ExtensionName,
                     Publisher = this.ExtensionPublisherName,
-                    Type1 = this.ExtensionType,
+                    VirtualMachineScaleSetExtensionPropertiesType = this.ExtensionType,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultVersion,
                     Settings = SettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent,
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 {
                     Name = this.ExtensionName,
                     Publisher = this.ExtensionPublisherName,
-                    Type1 = this.ExtensionType,
+                    VirtualMachineScaleSetExtensionPropertiesType = this.ExtensionType,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
                     Settings = SettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent,
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             if (updateVmss)
             {
                 // update VMss
-                AzureOperationResponse<VirtualMachineScaleSet> updateEncryptionIdentity = null;
+                AzureOperationResponse<VirtualMachineScaleSet, VirtualMachineScaleSetsCreateOrUpdateHeaders> updateEncryptionIdentity = null;
                 updateEncryptionIdentity = this.VirtualMachineScaleSetClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName, vmssParameters.Name, vmssParameters).GetAwaiter().GetResult();
 

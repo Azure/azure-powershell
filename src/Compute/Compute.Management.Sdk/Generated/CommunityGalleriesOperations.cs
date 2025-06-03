@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Get a community gallery by gallery public name.
         /// </summary>
         /// <param name='location'>
-        /// Resource location.
+        /// The name of Azure region.
         /// </param>
         /// <param name='publicGalleryName'>
         /// The public name of the community gallery.
@@ -90,6 +90,13 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
             }
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "location", 1);
+                }
+            }
             if (publicGalleryName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "publicGalleryName");
@@ -102,9 +109,9 @@ namespace Microsoft.Azure.Management.Compute
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("location", location);
                 tracingParameters.Add("publicGalleryName", publicGalleryName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }

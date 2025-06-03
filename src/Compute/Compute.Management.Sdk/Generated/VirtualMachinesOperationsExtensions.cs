@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location for which virtual machines under the subscription are queried.
+            /// The name of Azure region.
             /// </param>
             public static IPage<VirtualMachine> ListByLocation(this IVirtualMachinesOperations operations, string location)
             {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location for which virtual machines under the subscription are queried.
+            /// The name of Azure region.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -54,538 +54,6 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task<IPage<VirtualMachine>> ListByLocationAsync(this IVirtualMachinesOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByLocationWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Captures the VM by copying virtual hard disks of the VM and outputs a
-            /// template that can be used to create similar VMs.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Capture Virtual Machine operation.
-            /// </param>
-            public static VirtualMachineCaptureResult Capture(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineCaptureParameters parameters)
-            {
-                return operations.CaptureAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Captures the VM by copying virtual hard disks of the VM and outputs a
-            /// template that can be used to create similar VMs.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Capture Virtual Machine operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineCaptureResult> CaptureAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineCaptureParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CaptureWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// The operation to create or update a virtual machine. Please note some
-            /// properties can be set only during virtual machine creation.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Create Virtual Machine operation.
-            /// </param>
-            /// <param name='ifMatch'>
-            /// The ETag of the transformation. Omit this value to always overwrite the
-            /// current resource. Specify the last-seen ETag value to prevent accidentally
-            /// overwriting concurrent changes.
-            /// </param>
-            /// <param name='ifNoneMatch'>
-            /// Set to '*' to allow a new record set to be created, but to prevent updating
-            /// an existing record set. Other values will result in error from server as
-            /// they are not supported.
-            /// </param>
-            public static VirtualMachine CreateOrUpdate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachine parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to create or update a virtual machine. Please note some
-            /// properties can be set only during virtual machine creation.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Create Virtual Machine operation.
-            /// </param>
-            /// <param name='ifMatch'>
-            /// The ETag of the transformation. Omit this value to always overwrite the
-            /// current resource. Specify the last-seen ETag value to prevent accidentally
-            /// overwriting concurrent changes.
-            /// </param>
-            /// <param name='ifNoneMatch'>
-            /// Set to '*' to allow a new record set to be created, but to prevent updating
-            /// an existing record set. Other values will result in error from server as
-            /// they are not supported.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachine> CreateOrUpdateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachine parameters, string ifMatch = default(string), string ifNoneMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// The operation to update a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Update Virtual Machine operation.
-            /// </param>
-            /// <param name='ifMatch'>
-            /// The ETag of the transformation. Omit this value to always overwrite the
-            /// current resource. Specify the last-seen ETag value to prevent accidentally
-            /// overwriting concurrent changes.
-            /// </param>
-            /// <param name='ifNoneMatch'>
-            /// Set to '*' to allow a new record set to be created, but to prevent updating
-            /// an existing record set. Other values will result in error from server as
-            /// they are not supported.
-            /// </param>
-            public static VirtualMachine Update(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
-            {
-                return operations.UpdateAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to update a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Update Virtual Machine operation.
-            /// </param>
-            /// <param name='ifMatch'>
-            /// The ETag of the transformation. Omit this value to always overwrite the
-            /// current resource. Specify the last-seen ETag value to prevent accidentally
-            /// overwriting concurrent changes.
-            /// </param>
-            /// <param name='ifNoneMatch'>
-            /// Set to '*' to allow a new record set to be created, but to prevent updating
-            /// an existing record set. Other values will result in error from server as
-            /// they are not supported.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachine> UpdateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// The operation to delete a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='forceDeletion'>
-            /// Optional parameter to force delete virtual machines.
-            /// NOTE: As of api-version 2024-11-01, we are rolling out a feature where if
-            /// the forceDeletion parameter is unspecified OR not explicitly set to false,
-            /// AND all of the VM's attached disks including the OS disk are marked with
-            /// the delete option, then the VM will be force deleted. For more details on
-            /// how to configure delete options for a VM's resources, see [Delete a VM and
-            /// attached
-            /// resources](https://learn.microsoft.com/en-us/azure/virtual-machines/delete).
-            /// To avoid defaulting to force delete, ensure that the forceDeletion
-            /// parameter is explicitly set to false. This feature is expected to rollout
-            /// by end of March 2025.
-            /// </param>
-            public static void Delete(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? forceDeletion = default(bool?))
-            {
-                operations.DeleteAsync(resourceGroupName, vmName, forceDeletion).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to delete a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='forceDeletion'>
-            /// Optional parameter to force delete virtual machines.
-            /// NOTE: As of api-version 2024-11-01, we are rolling out a feature where if
-            /// the forceDeletion parameter is unspecified OR not explicitly set to false,
-            /// AND all of the VM's attached disks including the OS disk are marked with
-            /// the delete option, then the VM will be force deleted. For more details on
-            /// how to configure delete options for a VM's resources, see [Delete a VM and
-            /// attached
-            /// resources](https://learn.microsoft.com/en-us/azure/virtual-machines/delete).
-            /// To avoid defaulting to force delete, ensure that the forceDeletion
-            /// parameter is explicitly set to false. This feature is expected to rollout
-            /// by end of March 2025.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? forceDeletion = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vmName, forceDeletion, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Retrieves information about the model view or the instance view of a
-            /// virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation. 'InstanceView' retrieves a
-            /// snapshot of the runtime properties of the virtual machine that is managed
-            /// by the platform and can change outside of control plane operations.
-            /// 'UserData' retrieves the UserData property as part of the VM model view
-            /// that was provided by the user during the VM Create/Update operation.
-            /// Possible values include: 'instanceView', 'userData'
-            /// </param>
-            public static VirtualMachine Get(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, InstanceViewTypes? expand = default(InstanceViewTypes?))
-            {
-                return operations.GetAsync(resourceGroupName, vmName, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Retrieves information about the model view or the instance view of a
-            /// virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation. 'InstanceView' retrieves a
-            /// snapshot of the runtime properties of the virtual machine that is managed
-            /// by the platform and can change outside of control plane operations.
-            /// 'UserData' retrieves the UserData property as part of the VM model view
-            /// that was provided by the user during the VM Create/Update operation.
-            /// Possible values include: 'instanceView', 'userData'
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachine> GetAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, InstanceViewTypes? expand = default(InstanceViewTypes?), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vmName, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Retrieves information about the run-time state of a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            public static VirtualMachineInstanceView InstanceView(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
-            {
-                return operations.InstanceViewAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Retrieves information about the run-time state of a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineInstanceView> InstanceViewAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.InstanceViewWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Converts virtual machine disks from blob-based to managed disks. Virtual
-            /// machine must be stop-deallocated before invoking this operation.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            public static void ConvertToManagedDisks(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
-            {
-                operations.ConvertToManagedDisksAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Converts virtual machine disks from blob-based to managed disks. Virtual
-            /// machine must be stop-deallocated before invoking this operation.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ConvertToManagedDisksAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.ConvertToManagedDisksWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Shuts down the virtual machine and releases the compute resources. You are
-            /// not billed for the compute resources that this virtual machine uses.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='hibernate'>
-            /// Optional parameter to hibernate a virtual machine.
-            /// </param>
-            public static void Deallocate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? hibernate = default(bool?))
-            {
-                operations.DeallocateAsync(resourceGroupName, vmName, hibernate).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Shuts down the virtual machine and releases the compute resources. You are
-            /// not billed for the compute resources that this virtual machine uses.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='hibernate'>
-            /// Optional parameter to hibernate a virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeallocateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? hibernate = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeallocateWithHttpMessagesAsync(resourceGroupName, vmName, hibernate, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Sets the OS state of the virtual machine to generalized. It is recommended
-            /// to sysprep the virtual machine before performing this operation. For
-            /// Windows, please refer to [Create a managed image of a generalized VM in
-            /// Azure](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource).
-            /// For Linux, please refer to [How to create an image of a virtual machine or
-            /// VHD](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image).
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            public static void Generalize(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
-            {
-                operations.GeneralizeAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Sets the OS state of the virtual machine to generalized. It is recommended
-            /// to sysprep the virtual machine before performing this operation. For
-            /// Windows, please refer to [Create a managed image of a generalized VM in
-            /// Azure](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource).
-            /// For Linux, please refer to [How to create an image of a virtual machine or
-            /// VHD](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image).
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task GeneralizeAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.GeneralizeWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Lists all of the virtual machines in the specified resource group. Use the
-            /// nextLink property in the response to get the next page of virtual machines.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='filter'>
-            /// The system query option to filter VMs returned in the response. Allowed
-            /// value is 'virtualMachineScaleSet/id' eq
-            /// /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}'
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on operation. 'instanceView' enables
-            /// fetching run time status of all Virtual Machines, this can only be
-            /// specified if a valid $filter option is specified. Possible values include:
-            /// 'instanceView'
-            /// </param>
-            public static IPage<VirtualMachine> List(this IVirtualMachinesOperations operations, string resourceGroupName, string filter = default(string), string expand = default(string))
-            {
-                return operations.ListAsync(resourceGroupName, filter, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all of the virtual machines in the specified resource group. Use the
-            /// nextLink property in the response to get the next page of virtual machines.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='filter'>
-            /// The system query option to filter VMs returned in the response. Allowed
-            /// value is 'virtualMachineScaleSet/id' eq
-            /// /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}'
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on operation. 'instanceView' enables
-            /// fetching run time status of all Virtual Machines, this can only be
-            /// specified if a valid $filter option is specified. Possible values include:
-            /// 'instanceView'
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<VirtualMachine>> ListAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string filter = default(string), string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, filter, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -652,32 +120,323 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Lists all available virtual machine sizes to which the specified virtual
-            /// machine can be resized.
+            /// Lists all of the virtual machines in the specified resource group. Use the
+            /// nextLink property in the response to get the next page of virtual machines.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='filter'>
+            /// The system query option to filter VMs returned in the response. Allowed
+            /// value is 'virtualMachineScaleSet/id' eq
+            /// /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}'
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on operation. 'instanceView' enables
+            /// fetching run time status of all Virtual Machines, this can only be
+            /// specified if a valid $filter option is specified. Possible values include:
+            /// 'instanceView'
+            /// </param>
+            public static IPage<VirtualMachine> List(this IVirtualMachinesOperations operations, string resourceGroupName, string filter = default(string), string expand = default(string))
+            {
+                return operations.ListAsync(resourceGroupName, filter, expand).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists all of the virtual machines in the specified resource group. Use the
+            /// nextLink property in the response to get the next page of virtual machines.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='filter'>
+            /// The system query option to filter VMs returned in the response. Allowed
+            /// value is 'virtualMachineScaleSet/id' eq
+            /// /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}'
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on operation. 'instanceView' enables
+            /// fetching run time status of all Virtual Machines, this can only be
+            /// specified if a valid $filter option is specified. Possible values include:
+            /// 'instanceView'
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<VirtualMachine>> ListAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string filter = default(string), string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, filter, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Retrieves information about the model view or the instance view of a
+            /// virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
             /// </param>
-            public static IEnumerable<VirtualMachineSize> ListAvailableSizes(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation. 'InstanceView' retrieves a
+            /// snapshot of the runtime properties of the virtual machine that is managed
+            /// by the platform and can change outside of control plane operations.
+            /// 'UserData' retrieves the UserData property as part of the VM model view
+            /// that was provided by the user during the VM Create/Update operation.
+            /// Possible values include: 'instanceView', 'userData', 'resiliencyView'
+            /// </param>
+            public static VirtualMachine Get(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, InstanceViewTypes? expand = default(InstanceViewTypes?))
             {
-                return operations.ListAvailableSizesAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, vmName, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Lists all available virtual machine sizes to which the specified virtual
-            /// machine can be resized.
+            /// Retrieves information about the model view or the instance view of a
+            /// virtual machine.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation. 'InstanceView' retrieves a
+            /// snapshot of the runtime properties of the virtual machine that is managed
+            /// by the platform and can change outside of control plane operations.
+            /// 'UserData' retrieves the UserData property as part of the VM model view
+            /// that was provided by the user during the VM Create/Update operation.
+            /// Possible values include: 'instanceView', 'userData', 'resiliencyView'
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachine> GetAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, InstanceViewTypes? expand = default(InstanceViewTypes?), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vmName, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to create or update a virtual machine. Please note some
+            /// properties can be set only during virtual machine creation.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Create Virtual Machine operation.
+            /// </param>
+            /// <param name='ifMatch'>
+            /// The ETag of the transformation. Omit this value to always overwrite the
+            /// current resource. Specify the last-seen ETag value to prevent accidentally
+            /// overwriting concurrent changes.
+            /// </param>
+            /// <param name='ifNoneMatch'>
+            /// Set to '*' to allow a new record set to be created, but to prevent updating
+            /// an existing record set. Other values will result in error from server as
+            /// they are not supported.
+            /// </param>
+            public static VirtualMachine CreateOrUpdate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachine parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to create or update a virtual machine. Please note some
+            /// properties can be set only during virtual machine creation.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Create Virtual Machine operation.
+            /// </param>
+            /// <param name='ifMatch'>
+            /// The ETag of the transformation. Omit this value to always overwrite the
+            /// current resource. Specify the last-seen ETag value to prevent accidentally
+            /// overwriting concurrent changes.
+            /// </param>
+            /// <param name='ifNoneMatch'>
+            /// Set to '*' to allow a new record set to be created, but to prevent updating
+            /// an existing record set. Other values will result in error from server as
+            /// they are not supported.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachine> CreateOrUpdateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachine parameters, string ifMatch = default(string), string ifNoneMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to update a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Update Virtual Machine operation.
+            /// </param>
+            /// <param name='ifMatch'>
+            /// The ETag of the transformation. Omit this value to always overwrite the
+            /// current resource. Specify the last-seen ETag value to prevent accidentally
+            /// overwriting concurrent changes.
+            /// </param>
+            /// <param name='ifNoneMatch'>
+            /// Set to '*' to allow a new record set to be created, but to prevent updating
+            /// an existing record set. Other values will result in error from server as
+            /// they are not supported.
+            /// </param>
+            public static VirtualMachine Update(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
+            {
+                return operations.UpdateAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to update a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Update Virtual Machine operation.
+            /// </param>
+            /// <param name='ifMatch'>
+            /// The ETag of the transformation. Omit this value to always overwrite the
+            /// current resource. Specify the last-seen ETag value to prevent accidentally
+            /// overwriting concurrent changes.
+            /// </param>
+            /// <param name='ifNoneMatch'>
+            /// Set to '*' to allow a new record set to be created, but to prevent updating
+            /// an existing record set. Other values will result in error from server as
+            /// they are not supported.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachine> UpdateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to delete a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='forceDeletion'>
+            /// Optional parameter to force delete virtual machines.
+            /// </param>
+            public static void Delete(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? forceDeletion = default(bool?))
+            {
+                operations.DeleteAsync(resourceGroupName, vmName, forceDeletion).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to delete a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='forceDeletion'>
+            /// Optional parameter to force delete virtual machines.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? forceDeletion = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vmName, forceDeletion, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Assess patches on the VM.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            public static VirtualMachineAssessPatchesResult AssessPatches(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
+            {
+                return operations.AssessPatchesAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Assess patches on the VM.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -685,25 +444,419 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<VirtualMachineSize>> ListAvailableSizesAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineAssessPatchesResult> AssessPatchesAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListAvailableSizesWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.AssessPatchesWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// The operation to power off (stop) a virtual machine. The virtual machine
-            /// can be restarted with the same provisioned resources. You are still charged
-            /// for this virtual machine. NOTE: This operation is not allowed on a virtual
-            /// machine that is being deallocated or has already been deallocated.
+            /// Attach and detach data disks to/from the virtual machine.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the attach and detach data disks operation on the
+            /// virtual machine.
+            /// </param>
+            public static StorageProfile AttachDetachDataDisks(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, AttachDetachDataDisksRequest parameters)
+            {
+                return operations.AttachDetachDataDisksAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Attach and detach data disks to/from the virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the attach and detach data disks operation on the
+            /// virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<StorageProfile> AttachDetachDataDisksAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, AttachDetachDataDisksRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.AttachDetachDataDisksWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Captures the VM by copying virtual hard disks of the VM and outputs a
+            /// template that can be used to create similar VMs.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Capture Virtual Machine operation.
+            /// </param>
+            public static VirtualMachineCaptureResult Capture(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineCaptureParameters parameters)
+            {
+                return operations.CaptureAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Captures the VM by copying virtual hard disks of the VM and outputs a
+            /// template that can be used to create similar VMs.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Capture Virtual Machine operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineCaptureResult> CaptureAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineCaptureParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CaptureWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Converts virtual machine disks from blob-based to managed disks. Virtual
+            /// machine must be stop-deallocated before invoking this operation.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            public static void ConvertToManagedDisks(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
+            {
+                operations.ConvertToManagedDisksAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Converts virtual machine disks from blob-based to managed disks. Virtual
+            /// machine must be stop-deallocated before invoking this operation.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task ConvertToManagedDisksAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.ConvertToManagedDisksWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Shuts down the virtual machine and releases the compute resources. You are
+            /// not billed for the compute resources that this virtual machine uses.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='hibernate'>
+            /// Optional parameter to hibernate a virtual machine.
+            /// </param>
+            public static void Deallocate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? hibernate = default(bool?))
+            {
+                operations.DeallocateAsync(resourceGroupName, vmName, hibernate).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Shuts down the virtual machine and releases the compute resources. You are
+            /// not billed for the compute resources that this virtual machine uses.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='hibernate'>
+            /// Optional parameter to hibernate a virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeallocateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? hibernate = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeallocateWithHttpMessagesAsync(resourceGroupName, vmName, hibernate, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Sets the OS state of the virtual machine to generalized. It is recommended
+            /// to sysprep the virtual machine before performing this operation. For
+            /// Windows, please refer to [Create a managed image of a generalized VM in
+            /// Azure](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource).
+            /// For Linux, please refer to [How to create an image of a virtual machine or
+            /// VHD](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image).
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            public static void Generalize(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
+            {
+                operations.GeneralizeAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Sets the OS state of the virtual machine to generalized. It is recommended
+            /// to sysprep the virtual machine before performing this operation. For
+            /// Windows, please refer to [Create a managed image of a generalized VM in
+            /// Azure](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource).
+            /// For Linux, please refer to [How to create an image of a virtual machine or
+            /// VHD](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image).
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task GeneralizeAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.GeneralizeWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Installs patches on the VM.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='installPatchesInput'>
+            /// Input for InstallPatches as directly received by the API
+            /// </param>
+            public static VirtualMachineInstallPatchesResult InstallPatches(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineInstallPatchesParameters installPatchesInput)
+            {
+                return operations.InstallPatchesAsync(resourceGroupName, vmName, installPatchesInput).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Installs patches on the VM.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='installPatchesInput'>
+            /// Input for InstallPatches as directly received by the API
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineInstallPatchesResult> InstallPatchesAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineInstallPatchesParameters installPatchesInput, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.InstallPatchesWithHttpMessagesAsync(resourceGroupName, vmName, installPatchesInput, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Retrieves information about the run-time state of a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            public static VirtualMachineInstanceView InstanceView(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
+            {
+                return operations.InstanceViewAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Retrieves information about the run-time state of a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineInstanceView> InstanceViewAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.InstanceViewWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Migrate a virtual machine from availability set to Flexible Virtual Machine
+            /// Scale Set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Migrate Virtual Machine operation.
+            /// </param>
+            public static void MigrateToVMScaleSet(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, MigrateVMToVirtualMachineScaleSetInput parameters = default(MigrateVMToVirtualMachineScaleSetInput))
+            {
+                operations.MigrateToVMScaleSetAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Migrate a virtual machine from availability set to Flexible Virtual Machine
+            /// Scale Set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Migrate Virtual Machine operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task MigrateToVMScaleSetAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, MigrateVMToVirtualMachineScaleSetInput parameters = default(MigrateVMToVirtualMachineScaleSetInput), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.MigrateToVMScaleSetWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// The operation to perform maintenance on a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            public static void PerformMaintenance(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
+            {
+                operations.PerformMaintenanceAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to perform maintenance on a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task PerformMaintenanceAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.PerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// The operation to power off (stop) a virtual machine. The virtual machine
+            /// can be restarted with the same provisioned resources. You are still charged
+            /// for this virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -713,7 +866,7 @@ namespace Microsoft.Azure.Management.Compute
             /// indicates non-graceful shutdown whereas false indicates otherwise. Default
             /// value for this flag is false if not specified
             /// </param>
-            public static void PowerOff(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? skipShutdown = false)
+            public static void PowerOff(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? skipShutdown = default(bool?))
             {
                 operations.PowerOffAsync(resourceGroupName, vmName, skipShutdown).GetAwaiter().GetResult();
             }
@@ -721,14 +874,13 @@ namespace Microsoft.Azure.Management.Compute
             /// <summary>
             /// The operation to power off (stop) a virtual machine. The virtual machine
             /// can be restarted with the same provisioned resources. You are still charged
-            /// for this virtual machine. NOTE: This operation is not allowed on a virtual
-            /// machine that is being deallocated or has already been deallocated.
+            /// for this virtual machine.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -741,7 +893,7 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task PowerOffAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? skipShutdown = false, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task PowerOffAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? skipShutdown = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.PowerOffWithHttpMessagesAsync(resourceGroupName, vmName, skipShutdown, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -753,7 +905,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -770,7 +922,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -784,80 +936,6 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// The operation to restart a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            public static void Restart(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
-            {
-                operations.RestartAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to restart a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task RestartAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.RestartWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// The operation to start a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            public static void Start(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
-            {
-                operations.StartAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to start a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task StartAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.StartWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
             /// Shuts down the virtual machine, moves it to a new node, and powers it back
             /// on.
             /// </summary>
@@ -865,7 +943,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -883,7 +961,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -909,7 +987,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -935,7 +1013,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -952,6 +1030,43 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
+            /// The operation to restart a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            public static void Restart(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
+            {
+                operations.RestartAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to restart a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task RestartAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.RestartWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// The operation to retrieve SAS URIs for a virtual machine's boot diagnostic
             /// logs.
             /// </summary>
@@ -959,7 +1074,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -982,7 +1097,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1004,266 +1119,13 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// The operation to perform maintenance on a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            public static void PerformMaintenance(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
-            {
-                operations.PerformMaintenanceAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to perform maintenance on a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task PerformMaintenanceAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.PerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// The operation to simulate the eviction of spot virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            public static void SimulateEviction(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
-            {
-                operations.SimulateEvictionAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to simulate the eviction of spot virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task SimulateEvictionAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.SimulateEvictionWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Assess patches on the VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            public static VirtualMachineAssessPatchesResult AssessPatches(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
-            {
-                return operations.AssessPatchesAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Assess patches on the VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineAssessPatchesResult> AssessPatchesAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.AssessPatchesWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Installs patches on the VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='installPatchesInput'>
-            /// Input for InstallPatches as directly received by the API
-            /// </param>
-            public static VirtualMachineInstallPatchesResult InstallPatches(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineInstallPatchesParameters installPatchesInput)
-            {
-                return operations.InstallPatchesAsync(resourceGroupName, vmName, installPatchesInput).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Installs patches on the VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='installPatchesInput'>
-            /// Input for InstallPatches as directly received by the API
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineInstallPatchesResult> InstallPatchesAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineInstallPatchesParameters installPatchesInput, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.InstallPatchesWithHttpMessagesAsync(resourceGroupName, vmName, installPatchesInput, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Attach and detach data disks to/from the virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the attach and detach data disks operation on the
-            /// virtual machine.
-            /// </param>
-            public static StorageProfile AttachDetachDataDisks(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, AttachDetachDataDisksRequest parameters)
-            {
-                return operations.AttachDetachDataDisksAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Attach and detach data disks to/from the virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the attach and detach data disks operation on the
-            /// virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<StorageProfile> AttachDetachDataDisksAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, AttachDetachDataDisksRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.AttachDetachDataDisksWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Migrate a virtual machine from availability set to Flexible Virtual Machine
-            /// Scale Set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Migrate Virtual Machine operation.
-            /// </param>
-            public static void MigrateToVMScaleSet(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, MigrateVMToVirtualMachineScaleSetInput parameters = default(MigrateVMToVirtualMachineScaleSetInput))
-            {
-                operations.MigrateToVMScaleSetAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Migrate a virtual machine from availability set to Flexible Virtual Machine
-            /// Scale Set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Migrate Virtual Machine operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task MigrateToVMScaleSetAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, MigrateVMToVirtualMachineScaleSetInput parameters = default(MigrateVMToVirtualMachineScaleSetInput), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.MigrateToVMScaleSetWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
             /// Run command on the VM.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1283,7 +1145,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1303,48 +1165,116 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Captures the VM by copying virtual hard disks of the VM and outputs a
-            /// template that can be used to create similar VMs.
+            /// The operation to simulate the eviction of spot virtual machine.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
             /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Capture Virtual Machine operation.
-            /// </param>
-            public static VirtualMachineCaptureResult BeginCapture(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineCaptureParameters parameters)
+            public static void SimulateEviction(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
             {
-                return operations.BeginCaptureAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
+                operations.SimulateEvictionAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Captures the VM by copying virtual hard disks of the VM and outputs a
-            /// template that can be used to create similar VMs.
+            /// The operation to simulate the eviction of spot virtual machine.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Capture Virtual Machine operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualMachineCaptureResult> BeginCaptureAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineCaptureParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task SimulateEvictionAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCaptureWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
+                (await operations.SimulateEvictionWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// The operation to start a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            public static void Start(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
+            {
+                operations.StartAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to start a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task StartAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.StartWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Lists all available virtual machine sizes to which the specified virtual
+            /// machine can be resized.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            public static IEnumerable<VirtualMachineSize> ListAvailableSizes(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
+            {
+                return operations.ListAvailableSizesAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists all available virtual machine sizes to which the specified virtual
+            /// machine can be resized.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IEnumerable<VirtualMachineSize>> ListAvailableSizesAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListAvailableSizesWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1358,7 +1288,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1389,7 +1319,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1425,7 +1355,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1455,7 +1385,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1491,23 +1421,13 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
             /// </param>
             /// <param name='forceDeletion'>
             /// Optional parameter to force delete virtual machines.
-            /// NOTE: As of api-version 2024-11-01, we are rolling out a feature where if
-            /// the forceDeletion parameter is unspecified OR not explicitly set to false,
-            /// AND all of the VM's attached disks including the OS disk are marked with
-            /// the delete option, then the VM will be force deleted. For more details on
-            /// how to configure delete options for a VM's resources, see [Delete a VM and
-            /// attached
-            /// resources](https://learn.microsoft.com/en-us/azure/virtual-machines/delete).
-            /// To avoid defaulting to force delete, ensure that the forceDeletion
-            /// parameter is explicitly set to false. This feature is expected to rollout
-            /// by end of March 2025.
             /// </param>
             public static void BeginDelete(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? forceDeletion = default(bool?))
             {
@@ -1521,23 +1441,13 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
             /// </param>
             /// <param name='forceDeletion'>
             /// Optional parameter to force delete virtual machines.
-            /// NOTE: As of api-version 2024-11-01, we are rolling out a feature where if
-            /// the forceDeletion parameter is unspecified OR not explicitly set to false,
-            /// AND all of the VM's attached disks including the OS disk are marked with
-            /// the delete option, then the VM will be force deleted. For more details on
-            /// how to configure delete options for a VM's resources, see [Delete a VM and
-            /// attached
-            /// resources](https://learn.microsoft.com/en-us/azure/virtual-machines/delete).
-            /// To avoid defaulting to force delete, ensure that the forceDeletion
-            /// parameter is explicitly set to false. This feature is expected to rollout
-            /// by end of March 2025.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -1548,6 +1458,142 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
+            /// Assess patches on the VM.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            public static VirtualMachineAssessPatchesResult BeginAssessPatches(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
+            {
+                return operations.BeginAssessPatchesAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Assess patches on the VM.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineAssessPatchesResult> BeginAssessPatchesAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginAssessPatchesWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Attach and detach data disks to/from the virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the attach and detach data disks operation on the
+            /// virtual machine.
+            /// </param>
+            public static StorageProfile BeginAttachDetachDataDisks(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, AttachDetachDataDisksRequest parameters)
+            {
+                return operations.BeginAttachDetachDataDisksAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Attach and detach data disks to/from the virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the attach and detach data disks operation on the
+            /// virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<StorageProfile> BeginAttachDetachDataDisksAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, AttachDetachDataDisksRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginAttachDetachDataDisksWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Captures the VM by copying virtual hard disks of the VM and outputs a
+            /// template that can be used to create similar VMs.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Capture Virtual Machine operation.
+            /// </param>
+            public static VirtualMachineCaptureResult BeginCapture(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineCaptureParameters parameters)
+            {
+                return operations.BeginCaptureAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Captures the VM by copying virtual hard disks of the VM and outputs a
+            /// template that can be used to create similar VMs.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Capture Virtual Machine operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineCaptureResult> BeginCaptureAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineCaptureParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCaptureWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Converts virtual machine disks from blob-based to managed disks. Virtual
             /// machine must be stop-deallocated before invoking this operation.
             /// </summary>
@@ -1555,7 +1601,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1573,7 +1619,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1594,7 +1640,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1615,7 +1661,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1632,16 +1678,143 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// The operation to power off (stop) a virtual machine. The virtual machine
-            /// can be restarted with the same provisioned resources. You are still charged
-            /// for this virtual machine. NOTE: This operation is not allowed on a virtual
-            /// machine that is being deallocated or has already been deallocated.
+            /// Installs patches on the VM.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='installPatchesInput'>
+            /// Input for InstallPatches as directly received by the API
+            /// </param>
+            public static VirtualMachineInstallPatchesResult BeginInstallPatches(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineInstallPatchesParameters installPatchesInput)
+            {
+                return operations.BeginInstallPatchesAsync(resourceGroupName, vmName, installPatchesInput).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Installs patches on the VM.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='installPatchesInput'>
+            /// Input for InstallPatches as directly received by the API
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineInstallPatchesResult> BeginInstallPatchesAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineInstallPatchesParameters installPatchesInput, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginInstallPatchesWithHttpMessagesAsync(resourceGroupName, vmName, installPatchesInput, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Migrate a virtual machine from availability set to Flexible Virtual Machine
+            /// Scale Set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Migrate Virtual Machine operation.
+            /// </param>
+            public static void BeginMigrateToVMScaleSet(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, MigrateVMToVirtualMachineScaleSetInput parameters = default(MigrateVMToVirtualMachineScaleSetInput))
+            {
+                operations.BeginMigrateToVMScaleSetAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Migrate a virtual machine from availability set to Flexible Virtual Machine
+            /// Scale Set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Migrate Virtual Machine operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginMigrateToVMScaleSetAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, MigrateVMToVirtualMachineScaleSetInput parameters = default(MigrateVMToVirtualMachineScaleSetInput), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginMigrateToVMScaleSetWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// The operation to perform maintenance on a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            public static void BeginPerformMaintenance(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
+            {
+                operations.BeginPerformMaintenanceAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to perform maintenance on a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginPerformMaintenanceAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginPerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// The operation to power off (stop) a virtual machine. The virtual machine
+            /// can be restarted with the same provisioned resources. You are still charged
+            /// for this virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1651,7 +1824,7 @@ namespace Microsoft.Azure.Management.Compute
             /// indicates non-graceful shutdown whereas false indicates otherwise. Default
             /// value for this flag is false if not specified
             /// </param>
-            public static void BeginPowerOff(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? skipShutdown = false)
+            public static void BeginPowerOff(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? skipShutdown = default(bool?))
             {
                 operations.BeginPowerOffAsync(resourceGroupName, vmName, skipShutdown).GetAwaiter().GetResult();
             }
@@ -1659,14 +1832,13 @@ namespace Microsoft.Azure.Management.Compute
             /// <summary>
             /// The operation to power off (stop) a virtual machine. The virtual machine
             /// can be restarted with the same provisioned resources. You are still charged
-            /// for this virtual machine. NOTE: This operation is not allowed on a virtual
-            /// machine that is being deallocated or has already been deallocated.
+            /// for this virtual machine.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1679,7 +1851,7 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginPowerOffAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? skipShutdown = false, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginPowerOffAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? skipShutdown = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginPowerOffWithHttpMessagesAsync(resourceGroupName, vmName, skipShutdown, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -1691,7 +1863,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1708,7 +1880,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1722,80 +1894,6 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// The operation to restart a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            public static void BeginRestart(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
-            {
-                operations.BeginRestartAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to restart a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginRestartAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginRestartWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// The operation to start a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            public static void BeginStart(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
-            {
-                operations.BeginStartAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to start a virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginStartAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginStartWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
             /// Shuts down the virtual machine, moves it to a new node, and powers it back
             /// on.
             /// </summary>
@@ -1803,7 +1901,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1821,7 +1919,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1847,7 +1945,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1873,7 +1971,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1890,30 +1988,30 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// The operation to perform maintenance on a virtual machine.
+            /// The operation to restart a virtual machine.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
             /// </param>
-            public static void BeginPerformMaintenance(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
+            public static void BeginRestart(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
             {
-                operations.BeginPerformMaintenanceAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
+                operations.BeginRestartAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// The operation to perform maintenance on a virtual machine.
+            /// The operation to restart a virtual machine.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -1921,188 +2019,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginPerformMaintenanceAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginRestartAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginPerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Assess patches on the VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            public static VirtualMachineAssessPatchesResult BeginAssessPatches(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
-            {
-                return operations.BeginAssessPatchesAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Assess patches on the VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineAssessPatchesResult> BeginAssessPatchesAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginAssessPatchesWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Installs patches on the VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='installPatchesInput'>
-            /// Input for InstallPatches as directly received by the API
-            /// </param>
-            public static VirtualMachineInstallPatchesResult BeginInstallPatches(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineInstallPatchesParameters installPatchesInput)
-            {
-                return operations.BeginInstallPatchesAsync(resourceGroupName, vmName, installPatchesInput).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Installs patches on the VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='installPatchesInput'>
-            /// Input for InstallPatches as directly received by the API
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineInstallPatchesResult> BeginInstallPatchesAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineInstallPatchesParameters installPatchesInput, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginInstallPatchesWithHttpMessagesAsync(resourceGroupName, vmName, installPatchesInput, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Attach and detach data disks to/from the virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the attach and detach data disks operation on the
-            /// virtual machine.
-            /// </param>
-            public static StorageProfile BeginAttachDetachDataDisks(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, AttachDetachDataDisksRequest parameters)
-            {
-                return operations.BeginAttachDetachDataDisksAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Attach and detach data disks to/from the virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the attach and detach data disks operation on the
-            /// virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<StorageProfile> BeginAttachDetachDataDisksAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, AttachDetachDataDisksRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginAttachDetachDataDisksWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Migrate a virtual machine from availability set to Flexible Virtual Machine
-            /// Scale Set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Migrate Virtual Machine operation.
-            /// </param>
-            public static void BeginMigrateToVMScaleSet(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, MigrateVMToVirtualMachineScaleSetInput parameters = default(MigrateVMToVirtualMachineScaleSetInput))
-            {
-                operations.BeginMigrateToVMScaleSetAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Migrate a virtual machine from availability set to Flexible Virtual Machine
-            /// Scale Set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Migrate Virtual Machine operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginMigrateToVMScaleSetAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, MigrateVMToVirtualMachineScaleSetInput parameters = default(MigrateVMToVirtualMachineScaleSetInput), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginMigrateToVMScaleSetWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginRestartWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -2112,7 +2031,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -2132,7 +2051,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
             /// The name of the virtual machine.
@@ -2149,6 +2068,43 @@ namespace Microsoft.Azure.Management.Compute
                 {
                     return _result.Body;
                 }
+            }
+
+            /// <summary>
+            /// The operation to start a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            public static void BeginStart(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
+            {
+                operations.BeginStartAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to start a virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginStartAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginStartWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -2188,42 +2144,6 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Lists all of the virtual machines in the specified resource group. Use the
-            /// nextLink property in the response to get the next page of virtual machines.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<VirtualMachine> ListNext(this IVirtualMachinesOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all of the virtual machines in the specified resource group. Use the
-            /// nextLink property in the response to get the next page of virtual machines.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<VirtualMachine>> ListNextAsync(this IVirtualMachinesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Lists all of the virtual machines in the specified subscription. Use the
             /// nextLink property in the response to get the next page of virtual machines.
             /// </summary>
@@ -2254,6 +2174,42 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task<IPage<VirtualMachine>> ListAllNextAsync(this IVirtualMachinesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists all of the virtual machines in the specified resource group. Use the
+            /// nextLink property in the response to get the next page of virtual machines.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<VirtualMachine> ListNext(this IVirtualMachinesOperations operations, string nextPageLink)
+            {
+                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists all of the virtual machines in the specified resource group. Use the
+            /// nextLink property in the response to get the next page of virtual machines.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<VirtualMachine>> ListNextAsync(this IVirtualMachinesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

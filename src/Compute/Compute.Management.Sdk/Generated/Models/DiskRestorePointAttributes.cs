@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the DiskRestorePointAttributes class.
         /// </summary>
         /// <param name="id">Resource Id</param>
+        /// <param name="encryption">Encryption at rest settings for disk
+        /// restore point. It is an optional property that can be specified in
+        /// the input while creating a restore point.</param>
         /// <param name="sourceDiskRestorePoint">Resource Id of the source disk
         /// restore point.</param>
         public DiskRestorePointAttributes(string id = default(string), RestorePointEncryption encryption = default(RestorePointEncryption), ApiEntityReference sourceDiskRestorePoint = default(ApiEntityReference))
@@ -46,6 +49,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets encryption at rest settings for disk restore point. It
+        /// is an optional property that can be specified in the input while
+        /// creating a restore point.
         /// </summary>
         [JsonProperty(PropertyName = "encryption")]
         public RestorePointEncryption Encryption { get; set; }

@@ -22,13 +22,53 @@ namespace Microsoft.Azure.Management.Compute
     public static partial class CommunityGalleryImagesOperationsExtensions
     {
             /// <summary>
+            /// List community gallery images inside a gallery.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The name of Azure region.
+            /// </param>
+            /// <param name='publicGalleryName'>
+            /// The public name of the community gallery.
+            /// </param>
+            public static IPage<CommunityGalleryImage> List(this ICommunityGalleryImagesOperations operations, string location, string publicGalleryName)
+            {
+                return operations.ListAsync(location, publicGalleryName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// List community gallery images inside a gallery.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The name of Azure region.
+            /// </param>
+            /// <param name='publicGalleryName'>
+            /// The public name of the community gallery.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<CommunityGalleryImage>> ListAsync(this ICommunityGalleryImagesOperations operations, string location, string publicGalleryName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListWithHttpMessagesAsync(location, publicGalleryName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get a community gallery image.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
+            /// The name of Azure region.
             /// </param>
             /// <param name='publicGalleryName'>
             /// The public name of the community gallery.
@@ -48,7 +88,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
+            /// The name of Azure region.
             /// </param>
             /// <param name='publicGalleryName'>
             /// The public name of the community gallery.
@@ -62,46 +102,6 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task<CommunityGalleryImage> GetAsync(this ICommunityGalleryImagesOperations operations, string location, string publicGalleryName, string galleryImageName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(location, publicGalleryName, galleryImageName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// List community gallery images inside a gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// Resource location.
-            /// </param>
-            /// <param name='publicGalleryName'>
-            /// The public name of the community gallery.
-            /// </param>
-            public static IPage<CommunityGalleryImage> List(this ICommunityGalleryImagesOperations operations, string location, string publicGalleryName)
-            {
-                return operations.ListAsync(location, publicGalleryName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// List community gallery images inside a gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// Resource location.
-            /// </param>
-            /// <param name='publicGalleryName'>
-            /// The public name of the community gallery.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<CommunityGalleryImage>> ListAsync(this ICommunityGalleryImagesOperations operations, string location, string publicGalleryName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListWithHttpMessagesAsync(location, publicGalleryName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

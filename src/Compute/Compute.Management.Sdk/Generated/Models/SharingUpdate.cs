@@ -11,7 +11,6 @@
 namespace Microsoft.Azure.Management.Compute.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -20,7 +19,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// <summary>
     /// Specifies information about the gallery sharing profile update.
     /// </summary>
-    public partial class SharingUpdate : IResource
+    public partial class SharingUpdate
     {
         /// <summary>
         /// Initializes a new instance of the SharingUpdate class.

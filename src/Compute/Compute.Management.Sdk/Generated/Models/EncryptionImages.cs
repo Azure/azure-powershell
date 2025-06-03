@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the EncryptionImages class.
         /// </summary>
+        /// <param name="osDiskImage">Contains encryption settings for an OS
+        /// disk image.</param>
         /// <param name="dataDiskImages">A list of encryption specifications
         /// for data disk images.</param>
         public EncryptionImages(OSDiskImageEncryption osDiskImage = default(OSDiskImageEncryption), IList<DataDiskImageEncryption> dataDiskImages = default(IList<DataDiskImageEncryption>))
@@ -47,6 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets contains encryption settings for an OS disk image.
         /// </summary>
         [JsonProperty(PropertyName = "osDiskImage")]
         public OSDiskImageEncryption OsDiskImage { get; set; }
