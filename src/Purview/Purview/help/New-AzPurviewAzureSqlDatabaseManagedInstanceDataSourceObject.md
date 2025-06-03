@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatabasemanagedinstancedatasourceobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create an in-memory object for AzureSqlDatabaseManagedInstanceDataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureSqlDatabaseManagedInstanceDataSourceObject -Kind <DataSourceType>
- [-CollectionReferenceName <String>] [-CollectionType <String>] [-Location <String>] [-ResourceGroup <String>]
- [-ResourceName <String>] [-ServerEndpoint <String>] [-SubscriptionId <String>]
+New-AzPurviewAzureSqlDatabaseManagedInstanceDataSourceObject [-CollectionReferenceName <String>]
+ [-CollectionType <String>] [-Location <String>] [-ResourceGroup <String>] [-ResourceName <String>]
+ [-ServerEndpoint <String>] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Create an in-memory object for AzureSqlDatabaseManagedInstanceDataSource.
 
 ### Example 1: Create Azure SQL database managed instance data source object
 ```powershell
-New-AzPurviewAzureSqlDatabaseManagedInstanceDataSourceObject -Kind 'AzureSqlDatabaseManagedInstance' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint 'tcp:sqlause.public.3b6a39.database.windows.net,3342'
+New-AzPurviewAzureSqlDatabaseManagedInstanceDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint 'tcp:sqlause.public.3b6a39.database.windows.net,3342'
 ```
 
 ```output
@@ -72,20 +72,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -169,7 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseManagedInstanceDataSource
 
 ## NOTES
 

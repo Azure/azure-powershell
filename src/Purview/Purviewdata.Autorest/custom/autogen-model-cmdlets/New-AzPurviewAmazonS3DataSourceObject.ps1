@@ -21,12 +21,13 @@ Create an in-memory object for AmazonS3DataSource.
 Create an in-memory object for AmazonS3DataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3DataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonS3DataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonS3DataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazons3datasourceobject
 #>
 function New-AzPurviewAmazonS3DataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3DataSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonS3DataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -41,15 +42,11 @@ function New-AzPurviewAmazonS3DataSourceObject {
         $RoleArn,
         [Parameter()]
         [string]
-        $ServiceUrl,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind
+        $ServiceUrl
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3DataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonS3DataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('CollectionReferenceName')) {
             $Object.CollectionReferenceName = $CollectionReferenceName
@@ -62,9 +59,6 @@ function New-AzPurviewAmazonS3DataSourceObject {
         }
         if ($PSBoundParameters.ContainsKey('ServiceUrl')) {
             $Object.ServiceUrl = $ServiceUrl
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureMySqlDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuremysqldatasourceobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create an in-memory object for AzureMySqlDataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureMySqlDataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-Location <String>] [-Port <Int32>] [-ResourceGroup <String>]
- [-ResourceName <String>] [-ServerEndpoint <String>] [-SubscriptionId <String>]
+New-AzPurviewAzureMySqlDataSourceObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-Location <String>] [-Port <Int32>] [-ResourceGroup <String>] [-ResourceName <String>]
+ [-ServerEndpoint <String>] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Create an in-memory object for AzureMySqlDataSource.
 
 ### Example 1: Create Azure MySQL data source object
 ```powershell
-New-AzPurviewAzureMySqlDataSourceObject -Kind 'AzureMySql' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Port 3306 -ServerEndpoint 'nause.mysql.database.azure.com'
+New-AzPurviewAzureMySqlDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Port 3306 -ServerEndpoint 'nause.mysql.database.azure.com'
 ```
 
 ```output
@@ -73,20 +73,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -184,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureMySqlDataSource
 
 ## NOTES
 

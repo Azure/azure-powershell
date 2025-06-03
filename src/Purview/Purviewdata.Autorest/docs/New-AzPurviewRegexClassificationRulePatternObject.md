@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewRegexClassificationRulePatternObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewregexclassificationrulepatternobject
 schema: 2.0.0
 ---
 
@@ -58,7 +58,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.RegexClassificationRulePattern
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.RegexClassificationRulePattern
 
 ## NOTES
 
