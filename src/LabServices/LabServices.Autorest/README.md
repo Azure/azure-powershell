@@ -99,6 +99,10 @@ directive:
           ],
           "format": "password"
         }
+  # Fix bug that the words of create or update will be replaced
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/"Publish or re-publish a lab. This will publish all lab resources, such as virtual machines."/g, '"Publish or re-publish a lab. This will create or update all lab resources, such as virtual machines."');
   # change VirtualMachine to VM
   - where:
       subject: ^(.*)(VirtualMachine)(.*)$

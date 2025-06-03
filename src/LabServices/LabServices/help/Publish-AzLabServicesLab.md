@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Publish or re-publish a lab.
-This will publish all lab resources, such as virtual machines.
+This will create or update all lab resources, such as virtual machines.
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Publish-AzLabServicesLab -InputObject <ILabServicesIdentity> [-DefaultProfile <P
 
 ## DESCRIPTION
 Publish or re-publish a lab.
-This will publish all lab resources, such as virtual machines.
+This will create or update all lab resources, such as virtual machines.
 
 ## EXAMPLES
 

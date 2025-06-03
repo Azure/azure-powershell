@@ -55,7 +55,7 @@ Operation to create a lab user.
 
 ### [Publish-AzLabServicesLab](Publish-AzLabServicesLab.md)
 Publish or re-publish a lab.
-This will publish all lab resources, such as virtual machines.
+This will create or update all lab resources, such as virtual machines.
 
 ### [Remove-AzLabServicesLab](Remove-AzLabServicesLab.md)
 Operation to delete a lab resource.

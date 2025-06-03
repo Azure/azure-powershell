@@ -45,7 +45,7 @@
     },
     {
       "name": "Publish-AzLabServicesLab",
-      "description": "Publish or re-publish a lab.\nThis will publish all lab resources, such as virtual machines.",
+      "description": "Publish or re-publish a lab.\nThis will create or update all lab resources, such as virtual machines.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/publish",
       "help": {
         "learnMore": {
@@ -63,7 +63,7 @@
       },
       "examples": [
         {
-          "description": "Publish or re-publish a lab. This will publish all lab resources, such as virtual machines.",
+          "description": "Publish or re-publish a lab. This will create or update all lab resources, such as virtual machines.",
           "parameters": [
             {
               "name": "-Name",
