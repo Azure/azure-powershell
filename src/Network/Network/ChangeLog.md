@@ -19,7 +19,8 @@
 --->
 
 ## Upcoming Release
-
+* Added property 'GeoLocationXFFHeader' and 'ClientAddrXFFHeader' as VariableName in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
+* Fixed bug in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable` to add "GeoLocation" as a valid input for VariableName
 ## Version 7.17.0
 * Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:
 	- `New-AzNatGateway`

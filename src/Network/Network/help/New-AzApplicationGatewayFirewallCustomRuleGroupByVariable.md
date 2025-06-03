@@ -53,7 +53,7 @@ User Session clause variable.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: ClientAddr, GeoLocation, None
+Accepted values: ClientAddr, GeoLocation, None, ClientAddrXFFHeader, GeoLocationXFFHeader
 
 Required: True
 Position: Named
