@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Onboarded Application Gateway WAF Exceptions cmdlet.
+    - `New-AzApplicationGatewayFirewallPolicyException`  
 
 ## Version 7.17.0
 * Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:
@@ -105,9 +107,7 @@
 ## Version 7.16.0
 * Updated Add-AzNetworkInterfaceIpConfig and New-AzNetworkInterfaceIpConfig cmdlets to add new parameter PrivateIpAddressPrefixLength.
     - `Add-AzNetworkInterfaceIpConfig`
-    - `New-AzNetworkInterfaceIpConfig`
-* Onboarded Application Gateway WAF Exceptions cmdlet.
-    - `New-AzApplicationGatewayFirewallPolicyException`   
+    - `New-AzNetworkInterfaceIpConfig` 
 
 ## Version 7.15.1
 * Updated VirtualNetworkGatewayConnection cmdlets to pass AuxilaryAuthHeader for referenced resourceIds i.e. LocalNetworkGateway2, VirtualNetworkGateway2. This is needed in case referenced resourceIds are in different AAD Tenant.
