@@ -76,8 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -96,7 +95,7 @@ The reference to the DNS resolver outbound endpoints that are used to route DNS 
 To construct, see NOTES section for DNSRESOLVEROUTBOUNDENDPOINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ISubResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -257,9 +256,35 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsForwardingRuleset
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsForwardingRuleset
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+DNSRESOLVEROUTBOUNDENDPOINT <ISubResource[]>: The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers.
+  - `Id <String>`: Resource ID.
+
+INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
+  - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
+  - `[DnsResolverDomainListName <String>]`: The name of the DNS resolver domain list.
+  - `[DnsResolverName <String>]`: The name of the DNS resolver.
+  - `[DnsResolverPolicyName <String>]`: The name of the DNS resolver policy.
+  - `[DnsResolverPolicyVirtualNetworkLinkName <String>]`: The name of the DNS resolver policy virtual network link for the DNS resolver policy.
+  - `[DnsSecurityRuleName <String>]`: The name of the DNS security rule.
+  - `[ForwardingRuleName <String>]`: The name of the forwarding rule.
+  - `[Id <String>]`: Resource identity path
+  - `[InboundEndpointName <String>]`: The name of the inbound endpoint for the DNS resolver.
+  - `[OutboundEndpointName <String>]`: The name of the outbound endpoint for the DNS resolver.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
+  - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
+  - `[VirtualNetworkName <String>]`: The name of the virtual network.
 
 ## RELATED LINKS
 

@@ -15,8 +15,7 @@ Updates a DNS security rule.
 ### UpdateExpanded (Default)
 ```
 Update-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-ActionBlockResponseCode <BlockResponseCode>] [-ActionType <ActionType>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-ActionType <ActionType>]
  [-DnsResolverDomainList <ISubResource[]>] [-DnsSecurityRuleState <DnsSecurityRuleState>] [-Priority <Int32>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -24,9 +23,9 @@ Update-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDnsResolverPolicyDnsSecurityRule -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
- [-ActionBlockResponseCode <BlockResponseCode>] [-ActionType <ActionType>]
- [-DnsResolverDomainList <ISubResource[]>] [-DnsSecurityRuleState <DnsSecurityRuleState>] [-Priority <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ActionType <ActionType>] [-DnsResolverDomainList <ISubResource[]>]
+ [-DnsSecurityRuleState <DnsSecurityRuleState>] [-Priority <Int32>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,25 +57,9 @@ Location Name                                Type                               
 -------- ----                                ----                                     ----
 westus2  psdnssecurityrulename33nmy1fz       Microsoft.Network/dnsSecurityRules       "0000efd6-0000-0800-0000-60401c7c0000"
 ```
-
 This command updates an existing DNS Security Rules by identity ( removing tag ).
 
 ## PARAMETERS
-
-### -ActionBlockResponseCode
-The response code for block actions.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.BlockResponseCode
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ActionType
 The type of action to take.
@@ -109,8 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -129,7 +111,7 @@ DNS resolver policy domains lists that the DNS security rule applies to.
 To construct, see NOTES section for DNSRESOLVERDOMAINLIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ISubResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -335,9 +317,35 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsSecurityRule
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+DNSRESOLVERDOMAINLIST <ISubResource[]>: DNS resolver policy domains lists that the DNS security rule applies to.
+  - `Id <String>`: Resource ID.
+
+INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
+  - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
+  - `[DnsResolverDomainListName <String>]`: The name of the DNS resolver domain list.
+  - `[DnsResolverName <String>]`: The name of the DNS resolver.
+  - `[DnsResolverPolicyName <String>]`: The name of the DNS resolver policy.
+  - `[DnsResolverPolicyVirtualNetworkLinkName <String>]`: The name of the DNS resolver policy virtual network link for the DNS resolver policy.
+  - `[DnsSecurityRuleName <String>]`: The name of the DNS security rule.
+  - `[ForwardingRuleName <String>]`: The name of the forwarding rule.
+  - `[Id <String>]`: Resource identity path
+  - `[InboundEndpointName <String>]`: The name of the inbound endpoint for the DNS resolver.
+  - `[OutboundEndpointName <String>]`: The name of the outbound endpoint for the DNS resolver.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
+  - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
+  - `[VirtualNetworkName <String>]`: The name of the virtual network.
 
 ## RELATED LINKS
 

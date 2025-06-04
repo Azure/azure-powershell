@@ -73,9 +73,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.TargetDnsServer
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.TargetDnsServer
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 
