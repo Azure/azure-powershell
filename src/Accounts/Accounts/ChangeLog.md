@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Elimate the current disabling of WAM when using a device code authentication flow.
 * Enabled setting the authentication scope for SSH cmdlets by `Set-AzEnvironment -SshAuthScope <String>`.
 
 ## Version 5.0.2
