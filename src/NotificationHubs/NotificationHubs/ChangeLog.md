@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed "Microsoft.Azure.Management.NotificationHubs" Version "2.3.2-preview" PackageReference
 
 ## Version 1.2.0
 * Upgraded nuget package to signed package.
