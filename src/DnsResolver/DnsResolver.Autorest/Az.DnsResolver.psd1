@@ -1,7 +1,7 @@
 @{
   GUID = '9435e7a6-441e-47d6-a9a8-fce807710d97'
   RootModule = './Az.DnsResolver.psm1'
-  ModuleVersion = '0.3.0'
+  ModuleVersion = '1.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -15,6 +15,7 @@
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
+      Prerelease = preview
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'DnsResolver'
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'

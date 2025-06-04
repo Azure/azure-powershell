@@ -77,7 +77,7 @@ input-file:
   - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/stable/2025-05-01/dnsresolver.json
   - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/stable/2025-05-01/dnsresolverpolicy.json
 
-module-version: 0.3.0
+module-version: 1.2.0-preview
 title: DnsResolver
 subject-prefix: DnsResolver
 
