@@ -23,7 +23,7 @@ Download and install kubectl and kubelogin.
 
 ## EXAMPLES
 
-### Example 1: Install the lateset version of kubectl and kubelogin
+### Example 1: Install the latestversion of kubectl and kubelogin
 ```powershell
 Install-AzAksCliTool
 ```

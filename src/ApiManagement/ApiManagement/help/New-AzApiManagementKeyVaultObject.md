@@ -18,7 +18,7 @@ New-AzApiManagementKeyVaultObject -SecretIdentifier <String> [-IdentityClientId 
 ```
 
 ## DESCRIPTION
-The **New-AzApiManagementKeyVaultObject** cmdlet creates an instance of PsApiManagementKeyVaultObjecte.
+The **New-AzApiManagementKeyVaultObject** cmdlet creates an instance of PsApiManagementKeyVaultObject.
 
 ## EXAMPLES
 
