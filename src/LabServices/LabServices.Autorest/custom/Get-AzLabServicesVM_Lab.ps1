@@ -13,11 +13,11 @@
 # ----------------------------------------------------------------------------------
 
 function Get-AzLabServicesVM_Lab {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
         ${Lab},
    
         [Parameter()]

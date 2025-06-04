@@ -13,11 +13,11 @@
 # ----------------------------------------------------------------------------------
 
 function New-AzLabServicesSchedule_Lab {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         ${Lab},
     
@@ -38,7 +38,9 @@ function New-AzLabServicesSchedule_Lab {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Daily", "Weekly")]
+        [System.String]
+        # The frequency of the schedule.
         ${RecurrencePatternFrequency},
     
         [Parameter()]
@@ -48,7 +50,9 @@ function New-AzLabServicesSchedule_Lab {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+        [System.String[]]
+        # The days of the week on which the schedule is active.
         ${RecurrencePatternWeekDay},
     
         [Parameter()]

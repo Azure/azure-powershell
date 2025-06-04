@@ -45,13 +45,13 @@ Returns the properties for a lab virtual machine.
 Operation to create a lab resource.
 
 ### [New-AzLabServicesLabPlan](New-AzLabServicesLabPlan.md)
-Operation to create or update a Lab Plan resource.
+Operation to create a Lab Plan resource.
 
 ### [New-AzLabServicesSchedule](New-AzLabServicesSchedule.md)
-Operation to create or update a lab schedule.
+Operation to create a lab schedule.
 
 ### [New-AzLabServicesUser](New-AzLabServicesUser.md)
-Operation to create or update a lab user.
+Operation to create a lab user.
 
 ### [Publish-AzLabServicesLab](Publish-AzLabServicesLab.md)
 Publish or re-publish a lab.
@@ -105,7 +105,7 @@ Operation to update a lab resource.
 Operation to update a Lab Plan resource.
 
 ### [Update-AzLabServicesPlanImage](Update-AzLabServicesPlanImage.md)
-Updates an image resource.
+Update an image resource.
 
 ### [Update-AzLabServicesQuota](Update-AzLabServicesQuota.md)
 API to update the lab quota.
