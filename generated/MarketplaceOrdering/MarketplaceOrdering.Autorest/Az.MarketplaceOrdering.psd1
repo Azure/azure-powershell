@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.MarketplaceOrdering.private.dll'
   FormatsToProcess = './Az.MarketplaceOrdering.format.ps1xml'
-  FunctionsToExport = 'Get-AzMarketplaceTerms', 'Invoke-AzMarketplaceSignTerms', 'Set-AzMarketplaceTerms', 'Stop-AzMarketplaceTerms', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzMarketplaceTerms', 'Invoke-AzMarketplaceSignTerms', 'Set-AzMarketplaceTerms', 'Stop-AzMarketplaceTerms'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'MarketplaceOrdering'

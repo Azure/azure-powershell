@@ -17,7 +17,8 @@ Creates a Firewall Network Rule.
 New-AzFirewallNetworkRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
  [-SourceIpGroup <String[]>] [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>]
  [-DestinationFqdn <String[]>] -DestinationPort <String[]> -Protocol <String[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

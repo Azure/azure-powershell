@@ -6,20 +6,25 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Updates an attached data network tags.</summary>
+    /// <summary>
+    /// update an attached data network. Must be created in the same location as its parent packet core data plane.
+    /// </summary>
     /// <remarks>
-    /// [OpenAPI] UpdateTags=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/packetCoreDataPlanes/{packetCoreDataPlaneName}/attachedDataNetworks/{attachedDataNetworkName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/packetCoreDataPlanes/{packetCoreDataPlaneName}/attachedDataNetworks/{attachedDataNetworkName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/packetCoreDataPlanes/{packetCoreDataPlaneName}/attachedDataNetworks/{attachedDataNetworkName}"
     /// </remarks>
-    [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzMobileNetworkAttachedDataNetwork_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Description(@"Updates an attached data network tags.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.CmdletBreakingChange("14.5.0", "0.5.0", "2025/09/30")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Description(@"update an attached data network. Must be created in the same location as its parent packet core data plane.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/packetCoreDataPlanes/{packetCoreDataPlaneName}/attachedDataNetworks/{attachedDataNetworkName}", ApiVersion = "2022-11-01")]
     public partial class UpdateAzMobileNetworkAttachedDataNetwork_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,27 +40,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>Tags object for patch operations.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObject _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.TagsObject();
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>Backing field for <see cref="AttachedDataNetworkName" /> property.</summary>
-        private string _attachedDataNetworkName;
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
 
-        /// <summary>The name of the attached data network.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the attached data network.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the attached data network.",
-        SerializedName = @"attachedDataNetworkName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Path)]
-        public string AttachedDataNetworkName { get => this._attachedDataNetworkName; set => this._attachedDataNetworkName = value; }
+        /// <summary>
+        /// Attached data network resource. Must be created in the same location as its parent packet core data plane.
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.AttachedDataNetwork();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
+
+        /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.MobileNetwork Client => Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Module.Instance.ClientAPI;
@@ -69,6 +82,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>
+        /// The DNS servers to signal to UEs to use for this attached data network. This configuration is mandatory - if you don't
+        /// want DNS servers, you must provide an empty array.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DNS servers to signal to UEs to use for this attached data network. This configuration is mandatory - if you don't want DNS servers, you must provide an empty array.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The DNS servers to signal to UEs to use for this attached data network. This configuration is mandatory - if you don't want DNS servers, you must provide an empty array.",
+        SerializedName = @"dnsAddresses",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] DnsAddress { get => _parametersBody.DnsAddress?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.DnsAddress = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -92,6 +123,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
 
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>Backing field for <see cref="Name" /> property.</summary>
+        private string _name;
+
+        /// <summary>The name of the attached data network.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the attached data network.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The name of the attached data network.",
+        SerializedName = @"attachedDataNetworkName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("AttachedDataNetworkName")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Path)]
+        public string Name { get => this._name; set => this._name = value; }
+
+        /// <summary>Whether NAPT is enabled for connections to this attached data network.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether NAPT is enabled for connections to this attached data network.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether NAPT is enabled for connections to this attached data network.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string NaptConfigurationEnabled { get => _parametersBody.NaptConfigurationEnabled ?? null; set => _parametersBody.NaptConfigurationEnabled = value; }
+
+        /// <summary>
+        /// Maximum number of UDP and TCP pinholes that can be open simultaneously on the core interface. For 5G networks, this is
+        /// the N6 interface. For 4G networks, this is the SGi interface.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Maximum number of UDP and TCP pinholes that can be open simultaneously on the core interface. For 5G networks, this is the N6 interface. For 4G networks, this is the SGi interface.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Maximum number of UDP and TCP pinholes that can be open simultaneously on the core interface. For 5G networks, this is the N6 interface. For 4G networks, this is the SGi interface.",
+        SerializedName = @"pinholeLimits",
+        PossibleTypes = new [] { typeof(int) })]
+        public int NaptConfigurationPinholeLimit { get => _parametersBody.NaptConfigurationPinholeLimit ?? default(int); set => _parametersBody.NaptConfigurationPinholeLimit = value; }
+
+        /// <summary>
+        /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
+        /// asynchronously.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
         /// <summary>Backing field for <see cref="PacketCoreControlPlaneName" /> property.</summary>
         private string _packetCoreControlPlaneName;
@@ -122,9 +202,94 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
         public string PacketCoreDataPlaneName { get => this._packetCoreDataPlaneName; set => this._packetCoreDataPlaneName = value; }
 
         /// <summary>
+        /// Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 30 seconds.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 30 seconds.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Pinhole timeout for ICMP pinholes in seconds. Default for ICMP Echo is 30 seconds.",
+        SerializedName = @"icmp",
+        PossibleTypes = new [] { typeof(int) })]
+        public int PinholeTimeoutIcmp { get => _parametersBody.PinholeTimeoutIcmp ?? default(int); set => _parametersBody.PinholeTimeoutIcmp = value; }
+
+        /// <summary>Pinhole timeout for TCP pinholes in seconds. Default for TCP is 3 minutes.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Pinhole timeout for TCP pinholes in seconds. Default for TCP is 3 minutes.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Pinhole timeout for TCP pinholes in seconds. Default for TCP is 3 minutes.",
+        SerializedName = @"tcp",
+        PossibleTypes = new [] { typeof(int) })]
+        public int PinholeTimeoutTcp { get => _parametersBody.PinholeTimeoutTcp ?? default(int); set => _parametersBody.PinholeTimeoutTcp = value; }
+
+        /// <summary>Pinhole timeout for UDP pinholes in seconds. Default for UDP is 30 seconds.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Pinhole timeout for UDP pinholes in seconds. Default for UDP is 30 seconds.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Pinhole timeout for UDP pinholes in seconds. Default for UDP is 30 seconds.",
+        SerializedName = @"udp",
+        PossibleTypes = new [] { typeof(int) })]
+        public int PinholeTimeoutUdp { get => _parametersBody.PinholeTimeoutUdp ?? default(int); set => _parametersBody.PinholeTimeoutUdp = value; }
+
+        /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>The maximum port number</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum port number")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The maximum port number",
+        SerializedName = @"maxPort",
+        PossibleTypes = new [] { typeof(int) })]
+        public int PortRangeMaxPort { get => _parametersBody.PortRangeMaxPort ?? default(int); set => _parametersBody.PortRangeMaxPort = value; }
+
+        /// <summary>The minimum port number</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The minimum port number")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The minimum port number",
+        SerializedName = @"minPort",
+        PossibleTypes = new [] { typeof(int) })]
+        public int PortRangeMinPort { get => _parametersBody.PortRangeMinPort ?? default(int); set => _parametersBody.PortRangeMinPort = value; }
+
+        /// <summary>
+        /// Minimum time in seconds that will pass before a TCP port that was used by a closed pinhole can be reused. Default for
+        /// TCP is 2 minutes.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Minimum time in seconds that will pass before a TCP port that was used by a closed pinhole can be reused. Default for TCP is 2 minutes.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Minimum time in seconds that will pass before a TCP port that was used by a closed pinhole can be reused. Default for TCP is 2 minutes.",
+        SerializedName = @"tcp",
+        PossibleTypes = new [] { typeof(int) })]
+        public int PortReuseHoldTimeTcp { get => _parametersBody.PortReuseHoldTimeTcp ?? default(int); set => _parametersBody.PortReuseHoldTimeTcp = value; }
+
+        /// <summary>
+        /// Minimum time in seconds that will pass before a UDP port that was used by a closed pinhole can be reused. Default for
+        /// UDP is 1 minute.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Minimum time in seconds that will pass before a UDP port that was used by a closed pinhole can be reused. Default for UDP is 1 minute.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Minimum time in seconds that will pass before a UDP port that was used by a closed pinhole can be reused. Default for UDP is 1 minute.",
+        SerializedName = @"udp",
+        PossibleTypes = new [] { typeof(int) })]
+        public int PortReuseHoldTimeUdp { get => _parametersBody.PortReuseHoldTimeUdp ?? default(int); set => _parametersBody.PortReuseHoldTimeUdp = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -170,7 +335,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -183,32 +349,113 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObjectTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObjectTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+
+        /// <summary>
+        /// The user equipment (UE) address pool prefixes for the attached data network from which the packet core instance will dynamically
+        /// assign IP addresses to UEs.The packet core instance assigns an IP address to a UE when the UE sets up a PDU session. You
+        /// must define at least one of userEquipmentAddressPoolPrefix and userEquipmentStaticAddressPoolPrefix. If you define both,
+        /// they must be of the same size.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The user equipment (UE) address pool prefixes for the attached data network from which the packet core instance will dynamically assign IP addresses to UEs.The packet core instance assigns an IP address to a UE when the UE sets up a PDU session. You must define at least one of userEquipmentAddressPoolPrefix and userEquipmentStaticAddressPoolPrefix. If you define both, they must be of the same size.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The user equipment (UE) address pool prefixes for the attached data network from which the packet core instance will dynamically assign IP addresses to UEs.The packet core instance assigns an IP address to a UE when the UE sets up a PDU session. You must define at least one of userEquipmentAddressPoolPrefix and userEquipmentStaticAddressPoolPrefix. If you define both, they must be of the same size.",
+        SerializedName = @"userEquipmentAddressPoolPrefix",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] UserEquipmentAddressPoolPrefix { get => _parametersBody.UserEquipmentAddressPoolPrefix?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.UserEquipmentAddressPoolPrefix = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
+        /// <summary>
+        /// The user equipment (UE) address pool prefixes for the attached data network from which the packet core instance will assign
+        /// static IP addresses to UEs.The packet core instance assigns an IP address to a UE when the UE sets up a PDU session. The
+        /// static IP address for a specific UE is set in StaticIPConfiguration on the corresponding SIM resource.At least one of
+        /// userEquipmentAddressPoolPrefix and userEquipmentStaticAddressPoolPrefix must be defined. If both are defined, they must
+        /// be of the same size.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The user equipment (UE) address pool prefixes for the attached data network from which the packet core instance will assign static IP addresses to UEs.The packet core instance assigns an IP address to a UE when the UE sets up a PDU session. The static IP address for a specific UE is set in StaticIPConfiguration on the corresponding SIM resource.At least one of userEquipmentAddressPoolPrefix and userEquipmentStaticAddressPoolPrefix must be defined. If both are defined, they must be of the same size.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The user equipment (UE) address pool prefixes for the attached data network from which the packet core instance will assign static IP addresses to UEs.The packet core instance assigns an IP address to a UE when the UE sets up a PDU session. The static IP address for a specific UE is set in StaticIPConfiguration on the corresponding SIM resource.At least one of userEquipmentAddressPoolPrefix and userEquipmentStaticAddressPoolPrefix must be defined. If both are defined, they must be of the same size.",
+        SerializedName = @"userEquipmentStaticAddressPoolPrefix",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] UserEquipmentStaticAddressPoolPrefix { get => _parametersBody.UserEquipmentStaticAddressPoolPrefix?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.UserEquipmentStaticAddressPoolPrefix = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
+        /// <summary>The IPv4 address.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The IPv4 address.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The IPv4 address.",
+        SerializedName = @"ipv4Address",
+        PossibleTypes = new [] { typeof(string) })]
+        public string UserPlaneDataInterfaceIpv4Address { get => _parametersBody.UserPlaneDataInterfaceIpv4Address ?? null; set => _parametersBody.UserPlaneDataInterfaceIpv4Address = value; }
+
+        /// <summary>The default IPv4 gateway (router).</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The default IPv4 gateway (router).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The default IPv4 gateway (router).",
+        SerializedName = @"ipv4Gateway",
+        PossibleTypes = new [] { typeof(string) })]
+        public string UserPlaneDataInterfaceIpv4Gateway { get => _parametersBody.UserPlaneDataInterfaceIpv4Gateway ?? null; set => _parametersBody.UserPlaneDataInterfaceIpv4Gateway = value; }
+
+        /// <summary>The IPv4 subnet.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The IPv4 subnet.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The IPv4 subnet.",
+        SerializedName = @"ipv4Subnet",
+        PossibleTypes = new [] { typeof(string) })]
+        public string UserPlaneDataInterfaceIpv4Subnet { get => _parametersBody.UserPlaneDataInterfaceIpv4Subnet ?? null; set => _parametersBody.UserPlaneDataInterfaceIpv4Subnet = value; }
+
+        /// <summary>
+        /// The logical name for this interface. This should match one of the interfaces configured on your Azure Stack Edge device.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The logical name for this interface. This should match one of the interfaces configured on your Azure Stack Edge device.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The logical name for this interface. This should match one of the interfaces configured on your Azure Stack Edge device.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        public string UserPlaneDataInterfaceName { get => _parametersBody.UserPlaneDataInterfaceName ?? null; set => _parametersBody.UserPlaneDataInterfaceName = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork">Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork">Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -228,9 +475,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
             ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Events.CmdletBeginProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
         }
 
+        /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
+        /// <returns>a duplicate instance of UpdateAzMobileNetworkAttachedDataNetwork_UpdateExpanded</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets.UpdateAzMobileNetworkAttachedDataNetwork_UpdateExpanded Clone()
+        {
+            var clone = new UpdateAzMobileNetworkAttachedDataNetwork_UpdateExpanded();
+            clone.__correlationId = this.__correlationId;
+            clone.__processRecordId = this.__processRecordId;
+            clone.DefaultProfile = this.DefaultProfile;
+            clone.InvocationInformation = this.InvocationInformation;
+            clone.Proxy = this.Proxy;
+            clone.Pipeline = this.Pipeline;
+            clone.AsJob = this.AsJob;
+            clone.Break = this.Break;
+            clone.ProxyCredential = this.ProxyCredential;
+            clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
+            clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
+            clone.HttpPipelineAppend = this.HttpPipelineAppend;
+            clone._parametersBody = this._parametersBody;
+            clone.SubscriptionId = this.SubscriptionId;
+            clone.ResourceGroupName = this.ResourceGroupName;
+            clone.PacketCoreControlPlaneName = this.PacketCoreControlPlaneName;
+            clone.PacketCoreDataPlaneName = this.PacketCoreDataPlaneName;
+            clone.Name = this.Name;
+            return clone;
+        }
+
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -281,8 +559,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Events.Information:
                     {
-                        var data = messageData();
-                        WriteInformation(data.Message, new string[]{});
+                        // When an operation supports asjob, Information messages must go thru verbose.
+                        WriteVerbose($"INFORMATION: {(messageData().Message ?? global::System.String.Empty)}");
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Events.Debug:
@@ -295,8 +573,67 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
+                    case Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Events.DelayBeforePolling:
+                    {
+                        var data = messageData();
+                        if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
+                                var location = response.GetFirstHeader(@"Location");
+                                var uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? response.RequestMessage.RequestUri.AbsoluteUri : location : asyncOperation;
+                                WriteObject(new Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PowerShell.AsyncOperationResponse { Target = uri });
+                                // do nothing more.
+                                data.Cancel();
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
+                        break;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -313,11 +650,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'AttachedDataNetworksUpdateTags' operation"))
+                if (ShouldProcess($"Call remote 'AttachedDataNetworksCreateOrUpdate' operation"))
                 {
-                    using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener)this).Token) )
+                    if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
-                        asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener)this).Token);
+                        var instance = this.Clone();
+                        var job = new Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PowerShell.AsyncJob(instance, this.MyInvocation.Line, this.MyInvocation.MyCommand.Name, this._cancellationTokenSource.Token, this._cancellationTokenSource.Cancel);
+                        JobRepository.Add(job);
+                        var task = instance.ProcessRecordAsync();
+                        job.Monitor(task);
+                        WriteObject(job);
+                    }
+                    else
+                    {
+                        using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener)this).Token) )
+                        {
+                            asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener)this).Token);
+                        }
                     }
                 }
             }
@@ -352,7 +701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -365,12 +714,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.AttachedDataNetworksUpdateTags(SubscriptionId, ResourceGroupName, PacketCoreControlPlaneName, PacketCoreDataPlaneName, AttachedDataNetworkName, _parametersBody, onOk, onDefault, this, Pipeline);
+                    _parametersBody = await this.Client.AttachedDataNetworksGetWithResult(SubscriptionId, ResourceGroupName, PacketCoreControlPlaneName, PacketCoreDataPlaneName, Name, this, Pipeline);
+                    this.Update_parametersBody();
+                    await this.Client.AttachedDataNetworksCreateOrUpdate(SubscriptionId, ResourceGroupName, PacketCoreControlPlaneName, PacketCoreDataPlaneName, Name, _parametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,PacketCoreControlPlaneName=PacketCoreControlPlaneName,PacketCoreDataPlaneName=PacketCoreDataPlaneName,AttachedDataNetworkName=AttachedDataNetworkName,body=_parametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,PacketCoreControlPlaneName=PacketCoreControlPlaneName,PacketCoreDataPlaneName=PacketCoreDataPlaneName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -390,11 +741,83 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzMobileNetworkAttachedDataNetwork_UpdateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzMobileNetworkAttachedDataNetwork_UpdateExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzMobileNetworkAttachedDataNetwork_UpdateExpanded()
         {
 
+        }
+
+        private void Update_parametersBody()
+        {
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
+            {
+                this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ITrackedResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DnsAddress")))
+            {
+                this.DnsAddress = (string[])(this.MyInvocation?.BoundParameters["DnsAddress"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UserEquipmentAddressPoolPrefix")))
+            {
+                this.UserEquipmentAddressPoolPrefix = (string[])(this.MyInvocation?.BoundParameters["UserEquipmentAddressPoolPrefix"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UserEquipmentStaticAddressPoolPrefix")))
+            {
+                this.UserEquipmentStaticAddressPoolPrefix = (string[])(this.MyInvocation?.BoundParameters["UserEquipmentStaticAddressPoolPrefix"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("NaptConfigurationPinholeLimit")))
+            {
+                this.NaptConfigurationPinholeLimit = (int)(this.MyInvocation?.BoundParameters["NaptConfigurationPinholeLimit"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UserPlaneDataInterfaceName")))
+            {
+                this.UserPlaneDataInterfaceName = (string)(this.MyInvocation?.BoundParameters["UserPlaneDataInterfaceName"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UserPlaneDataInterfaceIpv4Address")))
+            {
+                this.UserPlaneDataInterfaceIpv4Address = (string)(this.MyInvocation?.BoundParameters["UserPlaneDataInterfaceIpv4Address"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UserPlaneDataInterfaceIpv4Subnet")))
+            {
+                this.UserPlaneDataInterfaceIpv4Subnet = (string)(this.MyInvocation?.BoundParameters["UserPlaneDataInterfaceIpv4Subnet"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UserPlaneDataInterfaceIpv4Gateway")))
+            {
+                this.UserPlaneDataInterfaceIpv4Gateway = (string)(this.MyInvocation?.BoundParameters["UserPlaneDataInterfaceIpv4Gateway"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("NaptConfigurationEnabled")))
+            {
+                this.NaptConfigurationEnabled = (string)(this.MyInvocation?.BoundParameters["NaptConfigurationEnabled"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PortRangeMinPort")))
+            {
+                this.PortRangeMinPort = (int)(this.MyInvocation?.BoundParameters["PortRangeMinPort"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PortRangeMaxPort")))
+            {
+                this.PortRangeMaxPort = (int)(this.MyInvocation?.BoundParameters["PortRangeMaxPort"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PinholeTimeoutTcp")))
+            {
+                this.PinholeTimeoutTcp = (int)(this.MyInvocation?.BoundParameters["PinholeTimeoutTcp"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PinholeTimeoutUdp")))
+            {
+                this.PinholeTimeoutUdp = (int)(this.MyInvocation?.BoundParameters["PinholeTimeoutUdp"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PinholeTimeoutIcmp")))
+            {
+                this.PinholeTimeoutIcmp = (int)(this.MyInvocation?.BoundParameters["PinholeTimeoutIcmp"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PortReuseHoldTimeTcp")))
+            {
+                this.PortReuseHoldTimeTcp = (int)(this.MyInvocation?.BoundParameters["PortReuseHoldTimeTcp"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PortReuseHoldTimeUdp")))
+            {
+                this.PortReuseHoldTimeUdp = (int)(this.MyInvocation?.BoundParameters["PortReuseHoldTimeUdp"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>
@@ -416,12 +839,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -438,15 +861,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, PacketCoreControlPlaneName=PacketCoreControlPlaneName, PacketCoreDataPlaneName=PacketCoreDataPlaneName, AttachedDataNetworkName=AttachedDataNetworkName, body=_parametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, PacketCoreControlPlaneName=PacketCoreControlPlaneName, PacketCoreDataPlaneName=PacketCoreDataPlaneName, AttachedDataNetworkName=AttachedDataNetworkName, body=_parametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -456,12 +879,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork">Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork">Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork> response)
         {
             using( NoSynchronizationContext )
             {
@@ -473,8 +896,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

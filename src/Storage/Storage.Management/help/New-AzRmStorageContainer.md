@@ -16,7 +16,7 @@ Creates a Storage blob container
 ```
 New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
  [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>] [-EnableImmutableStorageWithVersioning]
- [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

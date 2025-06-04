@@ -16,14 +16,14 @@ Gets a specified local user or lists all local users in a storage account.
 ```
 Get-AzStorageLocalUser [-ResourceGroupName] <String> [-StorageAccountName] <String> [-UserName <String>]
  [-MaxPageSize <Int32>] [-Filter <String>] [-IncludeNFSv3] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Get-AzStorageLocalUser -StorageAccount <PSStorageAccount> [-UserName <String>] [-MaxPageSize <Int32>]
  [-Filter <String>] [-IncludeNFSv3] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -159,21 +159,6 @@ The maximum number of local users that will be included in the list response
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

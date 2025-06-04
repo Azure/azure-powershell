@@ -63,6 +63,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             options.DisableInstanceDiscovery = interactiveParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
             var browserCredential = new InteractiveBrowserCredential(options);
 
+            CheckTokenCachePersistanceEnabled = () =>
+            {
+                return options?.TokenCachePersistenceOptions != null && !(options.TokenCachePersistenceOptions is UnsafeTokenCacheOptions);
+            };
+            CollectTelemetry(browserCredential, options);
+
             TracingAdapter.Information($"{DateTime.Now:T} - [InteractiveWamAuthenticator] Calling InteractiveBrowserCredential.AuthenticateAsync with TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}', RedirectUri:'{options.RedirectUri}'");
             var authTask = browserCredential.AuthenticateAsync(requestContext, cancellationToken);
 

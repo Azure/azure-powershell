@@ -15,8 +15,8 @@ Creates the virtual network gateway natRule object.
 ```
 New-AzVirtualNetworkGatewayNatRule -Name <String> -Type <String> -Mode <String> -InternalMapping <String[]>
  -ExternalMapping <String[]> [-InternalPortRange <String[]>] [-ExternalPortRange <String[]>]
- [-IpConfigurationId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IpConfigurationId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

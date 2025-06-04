@@ -16,27 +16,27 @@ Fetch the report summary of a single storage task assignment's instances
 ```
 Get-AzStorageTaskAssignmentInstancesReport -AccountName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-Filter <String>] [-Maxpagesize <Int32>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzStorageTaskAssignmentInstancesReport -AccountName <String> -ResourceGroupName <String>
  -StorageTaskAssignmentName <String> [-SubscriptionId <String[]>] [-Filter <String>] [-Maxpagesize <Int32>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityStorageAccount
 ```
 Get-AzStorageTaskAssignmentInstancesReport -StorageTaskAssignmentName <String>
  -StorageAccountInputObject <IStorageIdentity> [-Filter <String>] [-Maxpagesize <Int32>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzStorageTaskAssignmentInstancesReport -InputObject <IStorageIdentity> [-Filter <String>]
- [-Maxpagesize <Int32>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Maxpagesize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 ### -Filter
 Optional.
 When specified, it can be used to query using reporting properties.
-See [Constructing Filter Strings](https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details.
+See [Constructing Filter Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details.
 
 ```yaml
 Type: System.String
@@ -189,21 +189,6 @@ Optional, specifies the maximum number of storage task assignment instances to b
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

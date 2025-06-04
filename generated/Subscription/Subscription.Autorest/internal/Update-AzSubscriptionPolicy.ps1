@@ -16,41 +16,53 @@
 
 <#
 .Synopsis
-Create or Update Subscription tenant policy for user's tenant.
+add Subscription tenant policy for user's tenant.
 .Description
-Create or Update Subscription tenant policy for user's tenant.
+add Subscription tenant policy for user's tenant.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IGetTenantPolicyResponse
+Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.IGetTenantPolicyResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.subscription/update-azsubscriptionpolicy
 #>
 function Update-AzSubscriptionPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IGetTenantPolicyResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.IGetTenantPolicyResponse])]
 [CmdletBinding(DefaultParameterSetName='AddExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter()]
+    [Parameter(ParameterSetName='AddExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Blocks the entering of subscriptions into user's tenant.
     ${BlockSubscriptionsIntoTenant},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='AddExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Blocks the leaving of subscriptions from user's tenant.
     ${BlockSubscriptionsLeavingTenant},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='AddExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String[]]
     # List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant.
     ${ExemptedPrincipal},
+
+    [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Add operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='AddViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Json string supplied to the Add operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -108,12 +120,20 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             AddExpanded = 'Az.Subscription.private\Update-AzSubscriptionPolicy_AddExpanded';
+            AddViaJsonFilePath = 'Az.Subscription.private\Update-AzSubscriptionPolicy_AddViaJsonFilePath';
+            AddViaJsonString = 'Az.Subscription.private\Update-AzSubscriptionPolicy_AddViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

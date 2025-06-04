@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.PowerShell;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     [System.ComponentModel.TypeConverter(typeof(AnyTypeConverter))]
     public partial class Any
     {
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models
             return ToJsonString();
         }
     }
-    /// Any object
+    /// Anything
     [System.ComponentModel.TypeConverter(typeof(AnyTypeConverter))]
     public partial interface IAny
 

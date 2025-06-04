@@ -41,7 +41,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Identity = netAppAccount.Identity?.ConvertToPs(),
                 DisableShowmount = netAppAccount.DisableShowmount,
                 Encryption = netAppAccount.Encryption?.ConvertToPs(),
-                SystemData = netAppAccount.SystemData?.ToPsSystemData()
+                SystemData = netAppAccount.SystemData?.ToPsSystemData(),
+                MultiAdStatus = netAppAccount.MultiAdStatus
             };
         }
 
@@ -62,7 +63,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             return new PSEncryptionIdentity
             {
                 PrincipalId = identity.PrincipalId,
-                UserAssignedIdentity = identity.UserAssignedIdentity
+                UserAssignedIdentity = identity.UserAssignedIdentity,
+                FederatedClientId = identity.FederatedClientId
             };
         }
 
@@ -70,7 +72,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             return new EncryptionIdentity(principalId: encryptionIdentity.PrincipalId)
             {
-                UserAssignedIdentity = encryptionIdentity.UserAssignedIdentity
+                UserAssignedIdentity = encryptionIdentity.UserAssignedIdentity,
+                FederatedClientId = encryptionIdentity.FederatedClientId
             };
         }
 
@@ -163,7 +166,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             {
                 KeySource = encryption.KeySource,
                 Identity = encryption.Identity?.ConvertFromPs(),
-                KeyVaultProperties = encryption.KeyVaultProperties?.ConvertFromPs()
+                KeyVaultProperties = encryption.KeyVaultProperties?.ConvertFromPs(),
             };
         }
 

@@ -69,6 +69,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// IP Address Manager Pool resource name.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The entity state (ETag) version of the pool to update. This value can be
+        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
+        /// </param>
         /// <param name='body'>
         /// Pool resource object to create/update.
         /// </param>
@@ -84,7 +88,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IpamPool,IpamPoolsCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, IpamPool body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IpamPool,IpamPoolsCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, IpamPool body, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updates the specific Pool resource.
@@ -101,6 +105,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// IP Address Manager Pool resource name.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The entity state (ETag) version of the pool to update. This value can be
+        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
+        /// </param>
         /// <param name='body'>
         /// Pool resource object to update partially.
         /// </param>
@@ -116,7 +124,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IpamPool>> UpdateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, IpamPoolUpdate body = default(IpamPoolUpdate), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IpamPool>> UpdateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, string ifMatch = default(string), IpamPoolUpdate body = default(IpamPoolUpdate), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the specific Pool resource.
@@ -162,6 +170,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// Pool resource name.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The entity state (ETag) version of the pool to update. This value can be
+        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -171,7 +183,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<IpamPoolsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<IpamPoolsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get the Pool Usage.
@@ -246,6 +258,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// IP Address Manager Pool resource name.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The entity state (ETag) version of the pool to update. This value can be
+        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
+        /// </param>
         /// <param name='body'>
         /// Pool resource object to create/update.
         /// </param>
@@ -261,7 +277,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IpamPool,IpamPoolsCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, IpamPool body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IpamPool,IpamPoolsCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, IpamPool body, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete the Pool resource.
@@ -278,6 +294,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// Pool resource name.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The entity state (ETag) version of the pool to update. This value can be
+        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -287,7 +307,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<IpamPoolsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<IpamPoolsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets list of Pool resources at Network Manager level.

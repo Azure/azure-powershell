@@ -8,20 +8,67 @@ schema: 2.0.0
 # New-AzCdnOriginGroup
 
 ## SYNOPSIS
-Creates a new origin group within the specified endpoint.
+create a new origin group within the specified endpoint.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzCdnOriginGroup -EndpointName <String> -Name <String> -ProfileName <String> -ResourceGroupName <String>
+New-AzCdnOriginGroup -Name <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-HealthProbeSetting <IHealthProbeParameters>] [-Origin <IResourceReference[]>]
  [-ResponseBasedOriginErrorDetectionSetting <IResponseBasedOriginErrorDetectionParameters>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzCdnOriginGroup -Name <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzCdnOriginGroup -Name <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityProfileExpanded
+```
+New-AzCdnOriginGroup -Name <String> -EndpointName <String> -ProfileInputObject <ICdnIdentity>
+ [-HealthProbeSetting <IHealthProbeParameters>] [-Origin <IResourceReference[]>]
+ [-ResponseBasedOriginErrorDetectionSetting <IResponseBasedOriginErrorDetectionParameters>]
+ [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityProfile
+```
+New-AzCdnOriginGroup -Name <String> -EndpointName <String> -ProfileInputObject <ICdnIdentity>
+ -OriginGroup <IOriginGroup> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityEndpointExpanded
+```
+New-AzCdnOriginGroup -Name <String> -EndpointInputObject <ICdnIdentity>
+ [-HealthProbeSetting <IHealthProbeParameters>] [-Origin <IResourceReference[]>]
+ [-ResponseBasedOriginErrorDetectionSetting <IResponseBasedOriginErrorDetectionParameters>]
+ [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityEndpoint
+```
+New-AzCdnOriginGroup -Name <String> -EndpointInputObject <ICdnIdentity> -OriginGroup <IOriginGroup>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a new origin group within the specified endpoint.
+create a new origin group within the specified endpoint.
 
 ## EXAMPLES
 
@@ -73,12 +120,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EndpointInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: CreateViaIdentityEndpointExpanded, CreateViaIdentityEndpoint
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EndpointName
 Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityProfileExpanded, CreateViaIdentityProfile
 Aliases:
 
 Required: True
@@ -90,14 +152,43 @@ Accept wildcard characters: False
 
 ### -HealthProbeSetting
 Health probe settings to the origin that is used to determine the health of the origin.
-To construct, see NOTES section for HEALTHPROBESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IHealthProbeParameters
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityEndpointExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,11 +227,10 @@ Accept wildcard characters: False
 
 ### -Origin
 The source of the content being delivered via CDN within given origin group.
-To construct, see NOTES section for ORIGIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceReference[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityEndpointExpanded
 Aliases:
 
 Required: False
@@ -150,12 +240,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OriginGroup
+Origin group comprising of origins is used for load balancing to origins when the content cannot be served from CDN.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup
+Parameter Sets: CreateViaIdentityProfile, CreateViaIdentityEndpoint
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: CreateViaIdentityProfileExpanded, CreateViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
 Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -170,7 +290,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -183,11 +303,10 @@ Accept wildcard characters: False
 ### -ResponseBasedOriginErrorDetectionSetting
 The JSON object that contains the properties to determine origin health using real requests/responses.
 This property is currently not supported.
-To construct, see NOTES section for RESPONSEBASEDORIGINERRORDETECTIONSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResponseBasedOriginErrorDetectionParameters
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityEndpointExpanded
 Aliases:
 
 Required: False
@@ -202,7 +321,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -219,7 +338,7 @@ This property is currently not supported.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityEndpointExpanded
 Aliases:
 
 Required: False
@@ -265,9 +384,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup
 
 ## NOTES
 

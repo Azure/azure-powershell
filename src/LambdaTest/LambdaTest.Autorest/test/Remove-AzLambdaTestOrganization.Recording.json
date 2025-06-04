@@ -1,0 +1,43 @@
+{
+  "Remove-AzLambdaTestOrganization+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/abdul-test/providers/LambdaTest.HyperExecute/organizations/test-cli-instance-test-1?api-version=2024-02-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/abdul-test/providers/LambdaTest.HyperExecute/organizations/test-cli-instance-test-1?api-version=2024-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "88902c86-0997-4f1a-ba07-d7103b1a230d" ],
+        "CommandName": [ "Remove-AzLambdaTestOrganization" ],
+        "FullCommandName": [ "Remove-AzLambdaTestOrganization_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.LambdaTest/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-request-id": [ "c2e61992-ccf7-403a-b822-3bb6295f01d5" ],
+        "x-ms-correlation-request-id": [ "c2e61992-ccf7-403a-b822-3bb6295f01d5" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20250411T234348Z:c2e61992-ccf7-403a-b822-3bb6295f01d5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 00F462B8147E4F388459AE3BEC1C82F2 Ref B: MAA201060514011 Ref C: 2025-04-11T23:43:46Z" ],
+        "Date": [ "Fri, 11 Apr 2025 23:43:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

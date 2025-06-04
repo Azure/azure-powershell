@@ -1,14 +1,14 @@
 ---
 external help file: Az.ConnectedNetwork-help.xml
 Module Name: Az.ConnectedNetwork
-online version: https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionVendorConfigurationObject
+online version: https://learn.microsoft.com/powershell/module/Az.ConnectedNetwork/new-azconnectednetworkfunctionvendorconfigurationobject
 schema: 2.0.0
 ---
 
 # New-AzConnectedNetworkFunctionVendorConfigurationObject
 
 ## SYNOPSIS
-Create a in-memory object for NetworkFunctionVendorConfiguration
+Create an in-memory object for NetworkFunctionVendorConfiguration.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzConnectedNetworkFunctionVendorConfigurationObject [-NetworkInterface <INet
 ```
 
 ## DESCRIPTION
-Create a in-memory object for NetworkFunctionVendorConfiguration
+Create an in-memory object for NetworkFunctionVendorConfiguration.
 
 ## EXAMPLES
 
@@ -44,10 +44,9 @@ Creating a ssh key identity, Then using those to create vendor configuration obj
 
 ### -NetworkInterface
 The network interface configurations.
-To construct, see NOTES section for NETWORKINTERFACE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkInterface[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkInterface[]
 Parameter Sets: (All)
 Aliases:
 
@@ -71,9 +70,7 @@ Specifies the name of the administrator account.
 
  **Max-length (Linux):** 64 characters 
 
- **Max-length (Windows):** 20 characters  
-
-\<li\> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://learn.microsoft.com/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm-).
+ **Max-length (Windows):** 20 characters
 
 ```yaml
 Type: System.String
@@ -99,9 +96,7 @@ The maximum length of the binary array is 65535 bytes.
 
 
  customData is passed to the VM to be saved as a file.
-For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) 
-
- For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://learn.microsoft.com/azure/virtual-machines/linux/using-cloud-init).
+For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/)
 
 ```yaml
 Type: System.String
@@ -147,10 +142,9 @@ Accept wildcard characters: False
 
 ### -SshPublicKey
 The list of SSH public keys used to authenticate with linux based VMs.
-To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +162,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionVendorConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionVendorConfiguration
 
 ## NOTES
 

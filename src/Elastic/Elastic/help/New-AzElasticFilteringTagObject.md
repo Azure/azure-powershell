@@ -1,24 +1,24 @@
 ---
 external help file: Az.Elastic-help.xml
 Module Name: Az.Elastic
-online version: https://learn.microsoft.com/powershell/module/az.Elastic/new-AzElasticFilteringTagObject
+online version: https://learn.microsoft.com/powershell/module/Az.Elastic/new-azelasticfilteringtagobject
 schema: 2.0.0
 ---
 
 # New-AzElasticFilteringTagObject
 
 ## SYNOPSIS
-Create a in-memory object for FilteringTag
+Create an in-memory object for FilteringTag.
 
 ## SYNTAX
 
 ```
-New-AzElasticFilteringTagObject [-Action <TagAction>] [-Name <String>] [-Value <String>]
+New-AzElasticFilteringTagObject [-Action <String>] [-Name <String>] [-Value <String>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for FilteringTag
+Create an in-memory object for FilteringTag.
 
 ## EXAMPLES
 
@@ -42,7 +42,7 @@ This command creates a in-memory object for FilteringTag used when creating tag 
 Valid actions for a filtering tag.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.TagAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +90,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.FilteringTag
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.FilteringTag
 
 ## NOTES
 

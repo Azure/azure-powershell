@@ -23,18 +23,18 @@ Create an in-memory object for FilteringTag.
 New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.FilteringTag
+Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.FilteringTag
 .Link
-https://learn.microsoft.com/powershell/module/Az.Datadog/new-AzDatadogFilteringTagObject
+https://learn.microsoft.com/powershell/module/Az.Datadog/new-azdatadogfilteringtagobject
 #>
 function New-AzDatadogFilteringTagObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.FilteringTag])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.FilteringTag])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Support.TagAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("Include", "Exclude")]
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Support.TagAction]
+    [System.String]
     # Valid actions for a filtering tag.
     # Exclusion takes priority over inclusion.
     ${Action},
@@ -59,6 +59,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -87,6 +90,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
