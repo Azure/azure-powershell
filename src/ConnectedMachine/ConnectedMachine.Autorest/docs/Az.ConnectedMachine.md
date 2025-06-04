@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ConnectedMachine
-Module Guid: 259a0542-8329-4b9e-8f72-dab0efc583e9
+Module Guid: 48dc5375-cf11-47a3-818f-8cc8059a85b9
 Download Help Link: https://learn.microsoft.com/powershell/module/az.connectedmachine
 Help Version: 1.0.0.0
 Locale: en-US
@@ -16,6 +16,15 @@ API to register a new machine and thereby create a tracked resource in ARM
 
 ### [Get-AzConnectedExtensionMetadata](Get-AzConnectedExtensionMetadata.md)
 Gets an Extension Metadata based on location, publisher, extensionType and version
+
+### [Get-AzConnectedExtensionMetadataV2](Get-AzConnectedExtensionMetadataV2.md)
+Gets an Extension Metadata based on location, publisher, extensionType and version
+
+### [Get-AzConnectedExtensionPublisher](Get-AzConnectedExtensionPublisher.md)
+Gets all Extension publishers based on the location
+
+### [Get-AzConnectedExtensionType](Get-AzConnectedExtensionType.md)
+Gets all Extension types based on location and publisher
 
 ### [Get-AzConnectedLicense](Get-AzConnectedLicense.md)
 Retrieves information about the view of a license.

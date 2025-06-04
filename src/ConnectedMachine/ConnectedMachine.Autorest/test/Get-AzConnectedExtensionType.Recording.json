@@ -1,0 +1,45 @@
+{
+  "Get-AzConnectedExtensionType+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.HybridCompute/locations/eastus/publishers/Microsoft.Azure.AzureDefenderForServers/extensionTypes?api-version=2024-11-10-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridCompute/locations/eastus/publishers/Microsoft.Azure.AzureDefenderForServers/extensionTypes?api-version=2024-11-10-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "318d8cf3-6df8-494c-9dae-dc17ee98fda5" ],
+        "CommandName": [ "Get-AzConnectedExtensionType" ],
+        "FullCommandName": [ "Get-AzConnectedExtensionType_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.ConnectedMachine/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "d36a351d-228d-4a78-a89e-f5a5900e19df" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-correlation-request-id": [ "d1bdd5f7-f273-468a-b8fe-6306009ce409" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250523T032706Z:d1bdd5f7-f273-468a-b8fe-6306009ce409" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3B739392248A479BB09D05C2D3FAABFB Ref B: MNZ221060618033 Ref C: 2025-05-23T03:27:05Z" ],
+        "Date": [ "Fri, 23 May 2025 03:27:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.azuredefenderforservers/extensionTypes/mde.linux\",\"name\":\"mde.linux\"},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus/publishers/microsoft.azure.azuredefenderforservers/extensionTypes/mde.windows\",\"name\":\"mde.windows\"}]}",
+      "isContentBase64": false
+    }
+  }
+}
