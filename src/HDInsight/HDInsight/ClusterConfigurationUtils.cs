@@ -11,6 +11,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Identity;
+using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.Graph;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -122,5 +125,74 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     !key.EndsWith(defaultAccount, StringComparison.OrdinalIgnoreCase)
                     select key.Remove(0, Constants.ClusterConfiguration.StorageAccountKeyPrefix.Length)).ToList();
         }
+
+        public static List<EntraUserInfo> GetHDInsightGatewayEntraUser(string EntraUserData)
+        {
+            List<EntraUserInfo> restAuthEntraUsers = new List<EntraUserInfo>();
+            if (String.IsNullOrEmpty(EntraUserData))
+            {
+                return restAuthEntraUsers;
+            }
+            bool parsedFromJson = false;
+            try
+            {
+                var jsonEntraUsers = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(EntraUserData);
+                if (jsonEntraUsers != null && jsonEntraUsers.Count > 0)
+                    foreach (var userDict in jsonEntraUsers)
+                    {
+                        var dict = new Dictionary<string, string>(userDict, StringComparer.OrdinalIgnoreCase);
+                        string objectId = dict.ContainsKey("ObjectId") ? dict["ObjectId"] : null;
+                        string upn = dict.ContainsKey("Upn") ? dict["Upn"] : null;
+                        string displayName = dict.ContainsKey("DisplayName") ? dict["DisplayName"] : null;
+                        restAuthEntraUsers.Add(
+                            new EntraUserInfo
+                            {
+                                ObjectId = objectId,
+                                DisplayName = displayName,
+                                Upn = upn
+                            }
+                        );
+                    }
+                parsedFromJson = true;
+            }
+            catch
+            { // Ignore JSON parse errors
+            }
+            if (!parsedFromJson)
+            {
+                try
+                {
+                    var userdata = EntraUserData
+                     .Split(new[] { ';',','}, StringSplitOptions.RemoveEmptyEntries)
+                     .Select(s => s.Trim())
+                     .Where(s => !string.IsNullOrEmpty(s))
+                     .ToList();
+                    var graphClient = new GraphServiceClient(new DefaultAzureCredential());
+                    foreach (var data in userdata)
+                    {
+                        try
+                        {
+                            var user = graphClient.Users[data].GetAsync().GetAwaiter().GetResult();
+                            restAuthEntraUsers.Add(new EntraUserInfo
+                            {
+                                ObjectId = user.Id,
+                                DisplayName = user.DisplayName,
+                                Upn = user.UserPrincipalName
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception($"Failed to resolve Entra user from input: {data}", ex);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Failed to resolve EntraUserData from input: {EntraUserData}", ex);
+                }
+            }
+            return restAuthEntraUsers;
+        }
+
     }
 }

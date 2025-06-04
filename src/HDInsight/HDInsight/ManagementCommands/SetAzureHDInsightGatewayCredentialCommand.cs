@@ -94,10 +94,8 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Gets or sets list of Entra users for gateway access.")]
-        public List<EntraUserInfo> RestAuthEntraUsers { get; set; }
+            HelpMessage = "Gets or sets the Entra user data. Accepts a JSON array of user objects with 'ObjectId', 'DisplayName', and 'Upn' fields, or one or more ObjectIds/UPNs separated by ';' or ','. Whitespace around entries is ignored.")]
+        public string EntraUserData { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background.")]
         public SwitchParameter AsJob { get; set; }
@@ -106,9 +104,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            bool isHttpCredentialBound = this.IsParameterBound(c => c.HttpCredential);
-            bool isRestAuthEntraUsersBound = this.IsParameterBound(c => c.RestAuthEntraUsers);
-
+            bool isHttpCredentialBound = this.HttpCredential != null;
+            bool isRestAuthEntraUsersBound = this.EntraUserData != null;
+            List<EntraUserInfo> RestAuthEntraUsers = ClusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserData);
             if (isHttpCredentialBound && isRestAuthEntraUsersBound)
             {
                 throw new ParameterBindingException("Error: Cannot provide both HttpCredential and RestAuthEntraUsers parameters.");
@@ -125,9 +123,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 updateGatewaySettingsParameters.IsCredentialEnabled = true;
                 updateGatewaySettingsParameters.UserName = HttpCredential.UserName;
                 updateGatewaySettingsParameters.Password = HttpCredential.Password.ConvertToString();
-            }
-
-            if (isRestAuthEntraUsersBound)
+            }else if (isRestAuthEntraUsersBound)
             {
                 updateGatewaySettingsParameters.IsCredentialEnabled = false;
                 updateGatewaySettingsParameters.RestAuthEntraUsers = RestAuthEntraUsers;

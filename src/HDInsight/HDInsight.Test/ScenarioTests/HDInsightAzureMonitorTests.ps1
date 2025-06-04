@@ -78,14 +78,14 @@ function Test-AzureMonitorAgentRelatedCommands{
 	# Create some resources that will be used throughout test 
 	try
 	{
-		$location = "East US 2"
+		# $location = "East Asia"
 		# prepare parameter for creating parameter
 		# $params= Prepare-ClusterCreateParameter -location $location
-		$workspaceName = "ajkakaniWS"
-		$resourceGroupName = "ajkakaniEUS2-RG"
+		$workspaceName = "yk-test-log-workspace2"
+		$resourceGroupName = "yukundemo1"
 
 		# create cluster that will be used throughout test
-		$cluster = Get-AzHDInsightCluster -ResourceGroupName "ajkakaniEUS2-RG" -ClusterName "aj5testcls"
+		$cluster = Get-AzHDInsightCluster -ResourceGroupName "yukundemo13778" -ClusterName "az47424"
 		Assert-NotNull $cluster
 
 
@@ -102,7 +102,7 @@ function Test-AzureMonitorAgentRelatedCommands{
 
 		Assert-NotNull $workspaceId
 		Assert-NotNull $primaryKey
-		Enable-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroup $cluster.ResourceGroup -WorkspaceId $workspaceId -Primary  $primaryKey
+		Enable-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroup $cluster.ResourceGroup -WorkspaceId $workspaceId -PrimaryKey  $primaryKey
 		
 		$result = Get-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
 		Assert-True {$result.ClusterMonitoringEnabled}

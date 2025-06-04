@@ -63,10 +63,10 @@ Test Create Entra HDInsight Cluster
 function Test-CreateEntraCluster{
 	try{
 		 $params= Prepare-ClusterCreateParameter
-		 $user1 = Add-AzHDInsightClusterGatewayEntraUserInfo -ObjectId "745addd7-cb2c-4023-903f-cf9d71b4385f" -DisplayName "Yukun Li (Beyondsoft)"  -Upn "v-yukunli_microsoft.com#EXT#@securehadooprc.onmicrosoft.com"
-		 $user2 = Get-AzADUser -ObjectId "9cd85b81-c262-44da-bc33-96c3b8c182d3" | Add-AzHDInsightClusterGatewayEntraUserInfo
-		 $user3 = Get-AzADUser -First 3 |  Add-AzHDInsightClusterGatewayEntraUserInfo
-		 $users = @($user1) + @($user2) + $user3
+		 $params.resourceGroupName = "yukundemo13778"
+		 $_entraUserDataJson =
+			'[{"objectId": "745addd7-cb2c-4023-903f-cf9d71b4385f","displayName": "Yukun Li (Beyondsoft)","upn": "v-yukunli_microsoft.com#EXT#@securehadooprc.onmicrosoft.com"},{"objectId": "9cd85b81-c262-44da-bc33-96c3b8c182d3","displayName": "Yukun Li (Beyondsoft)","upn": "v-yukunli@microsoft.com"}]'
+		 $_entraUserData = "v-yukunli@microsoft.com,f012fdcd-b8d9-407f-9d33-29f88776ec44;'chris.carter_hfleducation.org#EXT#@microsoft.onmicrosoft.com,;_mdbuild@microsoft.com"
 		 $clusterParams = @{
 			ClusterType                     = $params.clusterType
 			ClusterSizeInNodes              = $params.clusterSizeInNodes
@@ -81,7 +81,8 @@ function Test-CreateEntraCluster{
 			StorageContainer                = $params.clusterName
 			StorageAccountKey               = $params.storageAccountKey
 			StorageAccountResourceId        = $params.storageAccountResourceId
-			RestAuthEntraUsers              = $users
+		    #EntraUserData                   = $_entraUserDataJson
+			EntraUserData                   = $_entraUserData
         }
 		$resultCluster = New-AzHDInsightCluster @clusterParams
 		Assert-NotNull $resultCluster
@@ -104,28 +105,34 @@ Test Update Entra User And Get Entra User
 function Test-UpdateAndGetEntraUserInfo{
 	try{
 		# prepare parameter for creating parameter
-		$resourceGroupName = "group-ps-test35"
-		$clusterName = "az19882"
-
-		$user1 = Add-AzHDInsightClusterGatewayEntraUserInfo -ObjectId "745addd7-cb2c-4023-903f-cf9d71b4385f" -DisplayName "Yukun Li (Beyondsoft)"  -Upn "v-yukunli_microsoft.com#EXT#@securehadooprc.onmicrosoft.com"
+		$resourceGroupName = "yukundemo13778"
+		$clusterName = "az19632"
+		$entraUserDataJson = 
+		'[
+			{
+				"ObjectId": "da3fd550-ebe9-451d-be9e-19dd0c83de5a",
+				"displayName": "BMP SQL User",
+				"uPn": "_pBMPSQL@microsoft.com"
+			},
+			{
+				"objectId": "57eea4c7-d293-4ba5-86d5-49a4c7a7c0f5",
+				"displayName": "SAP MDG Production SQL user",
+				"upn": "_pdgpsql@microsoft.com"
+			}
+		]'
+		$entraUserData = "_dpssql@microsoft.com , _eecbn@microsoft.com;"
 		$resultEntraUsers = Get-AzHDInsightClusterGatewayEntraUserInfo -ResourceGroupName $resourceGroupName -ClusterName $clusterName
-		Assert-AreEqual $user1.ObjectId      $resultEntraUsers[0].ObjectId
-		Assert-AreEqual $user1.DisplayName   $resultEntraUsers[0].DisplayName
-		Assert-AreEqual $user1.Upn           $resultEntraUsers[0].Upn
 
-		$user2 = Get-AzADUser -ObjectId "9cd85b81-c262-44da-bc33-96c3b8c182d3" | Add-AzHDInsightClusterGatewayEntraUserInfo
-		Set-AzHDInsightGatewayCredential -ResourceGroupName $resourceGroupName -ClusterName $clusterName -RestAuthEntraUsers $user2
-		$resultEntraUsers = Get-AzHDInsightClusterGatewayEntraUserInfo -ResourceGroupName $resourceGroupName -ClusterName $clusterName
-		Assert-AreEqual $user2.ObjectId      $resultEntraUsers[1].ObjectId
-		Assert-AreEqual $user2.DisplayName   $resultEntraUsers[1].DisplayName
-		Assert-AreEqual $user2.Upn           $resultEntraUsers[1].Upn
+		Assert-AreEqual "9cd85b81-c262-44da-bc33-96c3b8c182d3"      $resultEntraUsers[0].ObjectId
 
-		$user3 = Get-AzADUser -First 3 |  Add-AzHDInsightClusterGatewayEntraUserInfo
-		Set-AzHDInsightGatewayCredential -ResourceGroupName $resourceGroupName -ClusterName $clusterName -RestAuthEntraUsers $user3
+		Set-AzHDInsightGatewayCredential -ResourceGroupName $resourceGroupName -ClusterName $clusterName -EntraUserData $entraUserDataJson
 		$resultEntraUsers = Get-AzHDInsightClusterGatewayEntraUserInfo -ResourceGroupName $resourceGroupName -ClusterName $clusterName
-		Assert-AreEqual $user3[0].ObjectId      $resultEntraUsers[2].ObjectId
-		Assert-AreEqual $user3[0].DisplayName   $resultEntraUsers[2].DisplayName
-		Assert-AreEqual $user3[0].Upn           $resultEntraUsers[2].Upn
+		Assert-AreEqual "da3fd550-ebe9-451d-be9e-19dd0c83de5a"      $resultEntraUsers[4].ObjectId
+
+		Set-AzHDInsightGatewayCredential -ResourceGroupName $resourceGroupName -ClusterName $clusterName -EntraUserData $entraUserData
+		$resultEntraUsers = Get-AzHDInsightClusterGatewayEntraUserInfo -ResourceGroupName $resourceGroupName -ClusterName $clusterName
+		Assert-AreEqual "_dpssql@microsoft.com"                     $resultEntraUsers[6].Upn
+
 	}
 
 	finally

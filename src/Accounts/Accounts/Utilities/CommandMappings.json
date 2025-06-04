@@ -3245,7 +3245,6 @@
       "New-AzHDInsightCluster": {},
       "New-AzHDInsightClusterAutoscaleConfiguration": {},
       "New-AzHDInsightClusterAutoscaleScheduleCondition": {},
-      "Add-AzHDInsightClusterGatewayEntraUserInfo": {},
       "New-AzHDInsightClusterConfig": {},
       "New-AzHDInsightHiveJobDefinition": {},
       "New-AzHDInsightIPConfiguration": {},

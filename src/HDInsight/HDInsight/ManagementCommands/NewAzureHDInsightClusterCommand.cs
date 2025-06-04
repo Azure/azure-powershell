@@ -85,11 +85,6 @@ namespace Microsoft.Azure.Commands.HDInsight
         public PSCredential HttpCredential { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "Gets or sets list of Entra users for gateway access.")]
-        public List<EntraUserInfo> RestAuthEntraUsers { get; set; }
-
-        [Parameter(
             Position = 5,
             HelpMessage = "Gets or sets the Storage Resource Id for the Storage Account.")]
         public string StorageAccountResourceId { get; set; }
@@ -106,6 +101,10 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(
             HelpMessage = "Enable secure channel or not, it's an optional field.")]
         public bool? EnableSecureChannel { get; set; }
+
+        [Parameter(
+            HelpMessage = "Gets or sets the Entra user data. Accepts a JSON array of user objects with 'ObjectId', 'DisplayName', and 'Upn' fields, or one or more ObjectIds/UPNs separated by ';' or ','. Whitespace around entries is ignored.")]
+        public string EntraUserData { get; set; }
 
         [Parameter(ValueFromPipeline = true,
             HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster.")]
@@ -311,7 +310,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(HelpMessage = "Gets or sets the Service Principal Application Id for accessing Azure Data Lake.")]
         public Guid ApplicationId { get; set; }
-        
+
         [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate file path for accessing Azure Data Lake.",
             ParameterSetName = CertificateFilePathSet)]
         public string CertificateFilePath { get; set; }
@@ -428,7 +427,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                 clusterConfigurations.Add(config.Key, config.Value);
             }
 
-            // Add cluster username/password to gateway config.
+            // Add cluster username/password or EntraUserInfo to gateway config.
+            List<EntraUserInfo> RestAuthEntraUsers = ClusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserData);
             ClusterCreateHelper.AddClusterCredentialToGatewayConfig(HttpCredential, clusterConfigurations, RestAuthEntraUsers);
 
             // Construct OS Profile

@@ -95,7 +95,6 @@ CmdletsToExport = 'Add-AzHDInsightClusterIdentity', 'Add-AzHDInsightComponentVer
                'New-AzHDInsightCluster', 
                'New-AzHDInsightClusterAutoscaleConfiguration', 
                'New-AzHDInsightClusterAutoscaleScheduleCondition', 
-               'Add-AzHDInsightClusterGatewayEntraUserInfo',
                'New-AzHDInsightClusterConfig', 'New-AzHDInsightHiveJobDefinition', 
                'New-AzHDInsightIPConfiguration', 
                'New-AzHDInsightMapReduceJobDefinition', 

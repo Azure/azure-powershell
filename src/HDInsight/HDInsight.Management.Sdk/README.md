@@ -29,7 +29,7 @@ skip-csproj: true
 
 ###
 ``` yaml
-commit: 70d66773d8c2cd474e2b4439e1ba8526180f3c52
+commit: 881a35f96dbb1f7cf7c83dd00ed29a628804464d
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2025-01-15-preview/applications.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2025-01-15-preview/cluster.json

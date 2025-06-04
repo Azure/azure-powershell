@@ -114,7 +114,7 @@ function Prepare-ClusterCreateParameter{
       [string] $resourceGroupName="group-ps-test",
 	  [string] $storageAccountName="storagepstest",
       [string] $clusterType="Hadoop",
-      [string] $virtualNetworkId="/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.Network/virtualNetworks/yk01networkeastasia",
+      [string] $virtualNetworkId="/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.Network/virtualNetworks/yk02networkeastasia",
       [string] $subnet="default"
     )
 
