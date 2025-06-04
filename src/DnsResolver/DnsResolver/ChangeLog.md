@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Adding domain list post request for using storage based larger domain lists
+* Remove BlockResponseCode from DNS security rule action types
+* Remove requirement of domains in domain list for cases with storage based domain list usage
+
 ## Version 1.1.1
 * Upgraded nuget package to signed package.
 

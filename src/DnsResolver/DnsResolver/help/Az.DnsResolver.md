@@ -41,6 +41,9 @@ Gets properties of a DNS security rule for a DNS resolver policy.
 ### [Get-AzDnsResolverPolicyVirtualNetworkLink](Get-AzDnsResolverPolicyVirtualNetworkLink.md)
 Gets properties of a DNS resolver policy virtual network link.
 
+### [Invoke-AzDnsResolverBulkDnsResolverDomainList](Invoke-AzDnsResolverBulkDnsResolverDomainList.md)
+Uploads or downloads the list of domains for a DNS Resolver Domain List from a storage link.
+
 ### [New-AzDnsForwardingRuleset](New-AzDnsForwardingRuleset.md)
 Creates or updates a DNS forwarding ruleset.
 

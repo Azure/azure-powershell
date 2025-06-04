@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/invoke-azdnsresolverbulkdnsresolverdomainlist
 schema: 2.0.0
@@ -15,30 +15,31 @@ Uploads or downloads the list of domains for a DNS Resolver Domain List from a s
 ### BulkExpanded (Default)
 ```
 Invoke-AzDnsResolverBulkDnsResolverDomainList -DnsResolverDomainListName <String> -ResourceGroupName <String>
- -Action <Action> -StorageUrl <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -Action <Action> -StorageUrl <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Bulk
 ```
 Invoke-AzDnsResolverBulkDnsResolverDomainList -DnsResolverDomainListName <String> -ResourceGroupName <String>
- -Parameter <IDnsResolverDomainListBulk> [-SubscriptionId <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -Parameter <IDnsResolverDomainListBulk>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### BulkViaIdentity
-```
-Invoke-AzDnsResolverBulkDnsResolverDomainList -InputObject <IDnsResolverIdentity>
- -Parameter <IDnsResolverDomainListBulk> [-IfMatch <String>] [-IfNoneMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### BulkViaIdentityExpanded
 ```
-Invoke-AzDnsResolverBulkDnsResolverDomainList -InputObject <IDnsResolverIdentity> -Action <Action>
- -StorageUrl <String> [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzDnsResolverBulkDnsResolverDomainList -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
+ [-IfNoneMatch <String>] -Action <Action> -StorageUrl <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### BulkViaIdentity
+```
+Invoke-AzDnsResolverBulkDnsResolverDomainList -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
+ [-IfNoneMatch <String>] -Parameter <IDnsResolverDomainListBulk> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,9 +53,9 @@ Invoke-AzDnsResolverBulkDnsResolverDomainList -ResourceGroupName exampleResource
 ```
 
 ```output
-Location Name                     Type                                     Etag
--------- ----                     ----                                     ----
-westus2  exampleDomainListName    Microsoft.Network/dnsResolverDomainLists "00008cd5-0000-0800-0000-604016c90000"
+Location Name                     Type                                  Etag
+-------- ----                     ----                                  ----
+westus2  exampleDomainListName    Microsoft.Network/dnsResolverPolicies "00008cd5-0000-0800-0000-604016c90000"
 ```
 
 This command runs the POST on the domain list to upload the domains from a storage url with sas token.
@@ -65,9 +66,9 @@ Invoke-AzDnsResolverBulkDnsResolverDomainList -ResourceGroupName exampleResource
 ```
 
 ```output
-Location Name                     Type                                     Etag
--------- ----                     ----                                     ----
-westus2  exampleDomainListName    Microsoft.Network/dnsResolverDomainLists "00008cd5-0000-0800-0000-604016c90000"
+Location Name                     Type                                  Etag
+-------- ----                     ----                                  ----
+westus2  exampleDomainListName    Microsoft.Network/dnsResolverPolicies "00008cd5-0000-0800-0000-604016c90000"
 ```
 
 This command runs the POST on the domain list to download the domains to a storage url with sas token.
@@ -105,7 +106,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -124,7 +126,7 @@ The name of the DNS resolver domain list.
 
 ```yaml
 Type: System.String
-Parameter Sets: Bulk, BulkExpanded
+Parameter Sets: BulkExpanded, Bulk
 Aliases:
 
 Required: True
@@ -173,7 +175,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-Parameter Sets: BulkViaIdentity, BulkViaIdentityExpanded
+Parameter Sets: BulkViaIdentityExpanded, BulkViaIdentity
 Aliases:
 
 Required: True
@@ -220,7 +222,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Bulk, BulkExpanded
+Parameter Sets: BulkExpanded, Bulk
 Aliases:
 
 Required: True
@@ -251,7 +253,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Bulk, BulkExpanded
+Parameter Sets: BulkExpanded, Bulk
 Aliases:
 
 Required: False
@@ -307,32 +309,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
-  - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
-  - `[DnsResolverDomainListName <String>]`: The name of the DNS resolver domain list.
-  - `[DnsResolverName <String>]`: The name of the DNS resolver.
-  - `[DnsResolverPolicyName <String>]`: The name of the DNS resolver policy.
-  - `[DnsResolverPolicyVirtualNetworkLinkName <String>]`: The name of the DNS resolver policy virtual network link for the DNS resolver policy.
-  - `[DnsSecurityRuleName <String>]`: The name of the DNS security rule.
-  - `[ForwardingRuleName <String>]`: The name of the forwarding rule.
-  - `[Id <String>]`: Resource identity path
-  - `[InboundEndpointName <String>]`: The name of the inbound endpoint for the DNS resolver.
-  - `[OutboundEndpointName <String>]`: The name of the outbound endpoint for the DNS resolver.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
-  - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
-  - `[VirtualNetworkName <String>]`: The name of the virtual network.
-
-PARAMETER <IDnsResolverDomainListBulk>: Describes a DNS resolver domain list for bulk UPLOAD or DOWNLOAD operations.
-  - `Action <Action>`: The action to take in the request, Upload or Download.
-  - `StorageUrl <String>`: The storage account blob file URL to be used in the bulk upload or download request of DNS resolver domain list.
-
 ## RELATED LINKS
-
