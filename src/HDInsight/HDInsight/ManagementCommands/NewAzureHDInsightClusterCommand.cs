@@ -103,8 +103,12 @@ namespace Microsoft.Azure.Commands.HDInsight
         public bool? EnableSecureChannel { get; set; }
 
         [Parameter(
-            HelpMessage = "Gets or sets the Entra user data. Accepts a JSON array of user objects with 'ObjectId', 'DisplayName', and 'Upn' fields, or one or more ObjectIds/UPNs separated by ';' or ','. Whitespace around entries is ignored.")]
-        public string EntraUserData { get; set; }
+            HelpMessage = "Gets or sets the Entra user data. Accepts one or more ObjectId/UPN separated by ','.")]
+        public string EntraUserIdentity { get; set; }
+
+        [Parameter(
+            HelpMessage = "Gets or sets a list of Entra users as an array of hashtables. Each hashtable should contain keys such as ObjectId, UPN, and DisplayName.")]
+        public Hashtable[] EntraUserFullInfo { get; set; }
 
         [Parameter(ValueFromPipeline = true,
             HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster.")]
@@ -428,7 +432,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
 
             // Add cluster username/password or EntraUserInfo to gateway config.
-            List<EntraUserInfo> RestAuthEntraUsers = ClusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserData);
+            List<EntraUserInfo> RestAuthEntraUsers = ClusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserIdentity, EntraUserFullInfo);
             ClusterCreateHelper.AddClusterCredentialToGatewayConfig(HttpCredential, clusterConfigurations, RestAuthEntraUsers);
 
             // Construct OS Profile

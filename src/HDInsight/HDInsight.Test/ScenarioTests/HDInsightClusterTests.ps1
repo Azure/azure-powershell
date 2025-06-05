@@ -64,9 +64,9 @@ function Test-CreateEntraCluster{
 	try{
 		 $params= Prepare-ClusterCreateParameter
 		 $params.resourceGroupName = "yukundemo13778"
-		 $_entraUserDataJson =
-			'[{"objectId": "745addd7-cb2c-4023-903f-cf9d71b4385f","displayName": "Yukun Li (Beyondsoft)","upn": "v-yukunli_microsoft.com#EXT#@securehadooprc.onmicrosoft.com"},{"objectId": "9cd85b81-c262-44da-bc33-96c3b8c182d3","displayName": "Yukun Li (Beyondsoft)","upn": "v-yukunli@microsoft.com"}]'
-		 $_entraUserData = "v-yukunli@microsoft.com,f012fdcd-b8d9-407f-9d33-29f88776ec44;'chris.carter_hfleducation.org#EXT#@microsoft.onmicrosoft.com,;_mdbuild@microsoft.com"
+		 $entraUserFullInfo = @(@{ ObjectId = "516648dd-1fb7-4bd6-bddb-d38c13d3b646"; Upn = "_dpssql@microsoft.com"; DisplayName = "DPS SQL minion" },
+							@{ objectId = "a2e31431-d7de-43db-a5a5-56ece4c71f75"; upn = "_ipsback@microsoft.com"; displayName = "IPS Backup" })
+		 $entraUserIdentity = "v-yukunli@microsoft.com , f012fdcd-b8d9-407f-9d33-29f88776ec44, _mdbuild@microsoft.com"
 		 $clusterParams = @{
 			ClusterType                     = $params.clusterType
 			ClusterSizeInNodes              = $params.clusterSizeInNodes
@@ -81,8 +81,9 @@ function Test-CreateEntraCluster{
 			StorageContainer                = $params.clusterName
 			StorageAccountKey               = $params.storageAccountKey
 			StorageAccountResourceId        = $params.storageAccountResourceId
-		    #EntraUserData                   = $_entraUserDataJson
-			EntraUserData                   = $_entraUserData
+		    # EntraUserFullInfo               = $entraUserFullInfo
+			EntraUserIdentity               = $entraUserIdentity
+			# HttpCredential                  = $params.httpCredential
         }
 		$resultCluster = New-AzHDInsightCluster @clusterParams
 		Assert-NotNull $resultCluster
@@ -106,33 +107,17 @@ function Test-UpdateAndGetEntraUserInfo{
 	try{
 		# prepare parameter for creating parameter
 		$resourceGroupName = "yukundemo13778"
-		$clusterName = "az19632"
-		$entraUserDataJson = 
-		'[
-			{
-				"ObjectId": "da3fd550-ebe9-451d-be9e-19dd0c83de5a",
-				"displayName": "BMP SQL User",
-				"uPn": "_pBMPSQL@microsoft.com"
-			},
-			{
-				"objectId": "57eea4c7-d293-4ba5-86d5-49a4c7a7c0f5",
-				"displayName": "SAP MDG Production SQL user",
-				"upn": "_pdgpsql@microsoft.com"
-			}
-		]'
-		$entraUserData = "_dpssql@microsoft.com , _eecbn@microsoft.com;"
+		$clusterName = "ykcc01"
+		$entraUserFullInfo = @(
+			@{ObjectId = "e2af296c-0509-4653-8851-1dd19e5d951e"; Upn = "v-shuaitong@microsoft.com"; DisplayName = "Shuai Tong (Beyondsoft)" },
+			@{objectId = "438eee54-a90f-48d4-af98-476079328b8c"; upn = "v-weidongguo@microsoft.com"; displayName = "Wei dong Guo (Beyondsoft)" }
+		)
+		$entraUserIdentity = "v-yukunli@microsoft.com ,zhezhou@microsoft.com"
 		$resultEntraUsers = Get-AzHDInsightClusterGatewayEntraUserInfo -ResourceGroupName $resourceGroupName -ClusterName $clusterName
-
-		Assert-AreEqual "9cd85b81-c262-44da-bc33-96c3b8c182d3"      $resultEntraUsers[0].ObjectId
-
-		Set-AzHDInsightGatewayCredential -ResourceGroupName $resourceGroupName -ClusterName $clusterName -EntraUserData $entraUserDataJson
+		Assert-AreEqual "f012fdcd-b8d9-407f-9d33-29f88776ec44"      $resultEntraUsers[0].ObjectId
+		Set-AzHDInsightGatewayCredential -ResourceGroupName $resourceGroupName -ClusterName $clusterName -EntraUserIdentity $entraUserIdentity
 		$resultEntraUsers = Get-AzHDInsightClusterGatewayEntraUserInfo -ResourceGroupName $resourceGroupName -ClusterName $clusterName
-		Assert-AreEqual "da3fd550-ebe9-451d-be9e-19dd0c83de5a"      $resultEntraUsers[4].ObjectId
-
-		Set-AzHDInsightGatewayCredential -ResourceGroupName $resourceGroupName -ClusterName $clusterName -EntraUserData $entraUserData
-		$resultEntraUsers = Get-AzHDInsightClusterGatewayEntraUserInfo -ResourceGroupName $resourceGroupName -ClusterName $clusterName
-		Assert-AreEqual "_dpssql@microsoft.com"                     $resultEntraUsers[6].Upn
-
+		Set-AzHDInsightGatewayCredential -ResourceGroupName $resourceGroupName -ClusterName $clusterName -EntraUserFullInfo $entraUserFullInfo
 	}
 
 	finally

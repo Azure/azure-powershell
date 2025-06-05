@@ -15,8 +15,10 @@ using Azure.Identity;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.Graph;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -126,44 +128,23 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     select key.Remove(0, Constants.ClusterConfiguration.StorageAccountKeyPrefix.Length)).ToList();
         }
 
-        public static List<EntraUserInfo> GetHDInsightGatewayEntraUser(string EntraUserData)
+        public static List<EntraUserInfo> GetHDInsightGatewayEntraUser(string EntraUserIdentity, Hashtable[] EntraUserFullInfo)
         {
             List<EntraUserInfo> restAuthEntraUsers = new List<EntraUserInfo>();
-            if (String.IsNullOrEmpty(EntraUserData))
+            if (String.IsNullOrEmpty(EntraUserIdentity) && (EntraUserFullInfo == null || EntraUserFullInfo.Length == 0))
             {
                 return restAuthEntraUsers;
             }
-            bool parsedFromJson = false;
-            try
+            if(!string.IsNullOrWhiteSpace(EntraUserIdentity) && (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
             {
-                var jsonEntraUsers = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(EntraUserData);
-                if (jsonEntraUsers != null && jsonEntraUsers.Count > 0)
-                    foreach (var userDict in jsonEntraUsers)
-                    {
-                        var dict = new Dictionary<string, string>(userDict, StringComparer.OrdinalIgnoreCase);
-                        string objectId = dict.ContainsKey("ObjectId") ? dict["ObjectId"] : null;
-                        string upn = dict.ContainsKey("Upn") ? dict["Upn"] : null;
-                        string displayName = dict.ContainsKey("DisplayName") ? dict["DisplayName"] : null;
-                        restAuthEntraUsers.Add(
-                            new EntraUserInfo
-                            {
-                                ObjectId = objectId,
-                                DisplayName = displayName,
-                                Upn = upn
-                            }
-                        );
-                    }
-                parsedFromJson = true;
+                throw new ArgumentException("Cannot provide both EntraUserIdentity and EntraUserFullInfo parameters.");
             }
-            catch
-            { // Ignore JSON parse errors
-            }
-            if (!parsedFromJson)
+            if (!string.IsNullOrWhiteSpace(EntraUserIdentity))
             {
                 try
                 {
-                    var userdata = EntraUserData
-                     .Split(new[] { ';',','}, StringSplitOptions.RemoveEmptyEntries)
+                    var userdata = EntraUserIdentity
+                     .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                      .Select(s => s.Trim())
                      .Where(s => !string.IsNullOrEmpty(s))
                      .ToList();
@@ -188,7 +169,31 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception($"Failed to resolve EntraUserData from input: {EntraUserData}", ex);
+                    throw new FormatException($"Invalid format in EntraUserIdentity. Expected comma-separated ObjectIds or UPNs, but got: \"{EntraUserIdentity}\"", ex);
+                }
+            }
+            else if (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0)
+            {
+                var userDicts = EntraUserFullInfo.Select(user =>
+                {
+                    var dict = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                    foreach (DictionaryEntry entry in user)
+                    {
+                        dict[entry.Key.ToString() ?? ""] = entry.Value.ToString() ?? "";
+                    }
+                    return (IDictionary<string, string>)dict;
+                });
+                foreach (var userDict in userDicts)
+                {
+                    string objectId = userDict.TryGetValue("ObjectId", out var oid) ? oid : null;
+                    string upn = userDict.TryGetValue("Upn", out var u) ? u : null;
+                    string displayName = userDict.TryGetValue("DisplayName", out var dn) ? dn : null;
+                    restAuthEntraUsers.Add(new EntraUserInfo
+                    {
+                        ObjectId = objectId,
+                        DisplayName = displayName,
+                        Upn = upn
+                    });
                 }
             }
             return restAuthEntraUsers;

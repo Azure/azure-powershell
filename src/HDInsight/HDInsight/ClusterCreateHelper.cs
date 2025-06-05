@@ -30,19 +30,17 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             
             if (isHttpCredentialBound && isRestAuthEntraUsersBound)
             {
-                throw new ParameterBindingException("Error: Cannot provide both HttpCredential and RestAuthEntraUsers parameters.");
-            }
-            if (!isHttpCredentialBound && !isRestAuthEntraUsersBound)
+                throw new ArgumentException("Only one of HttpCredential, EntraUserIdentity, or EntraUserFullInfo can be provided.");
+            }else if (!isHttpCredentialBound && !isRestAuthEntraUsersBound)
             {
-                throw new ParameterBindingException("Error: Either HttpCredential or RestAuthEntraUsers parameter must be provided.");
+                throw new ArgumentException("One of HttpCredential, EntraUserIdentity, or EntraUserFullInfo must be provided.");
             }
             if (isHttpCredentialBound)
             {
                 gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "true";
                 gatewayConfig[Constants.GatewayConfigurations.UserNameKey] = httpCredential?.UserName;
                 gatewayConfig[Constants.GatewayConfigurations.PasswordKey] = httpCredential?.Password?.ConvertToString();
-            }
-            if (isRestAuthEntraUsersBound)
+            } else if (isRestAuthEntraUsersBound)
             {
                 gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "false";
                 gatewayConfig[Constants.GatewayConfigurations.EntraUsers] = System.Text.Json.JsonSerializer.Serialize(restAuthEntraUsers);

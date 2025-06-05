@@ -21,7 +21,10 @@ using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
@@ -94,8 +97,12 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            HelpMessage = "Gets or sets the Entra user data. Accepts a JSON array of user objects with 'ObjectId', 'DisplayName', and 'Upn' fields, or one or more ObjectIds/UPNs separated by ';' or ','. Whitespace around entries is ignored.")]
-        public string EntraUserData { get; set; }
+            HelpMessage = "Gets or sets the Entra user data. Accepts one or more ObjectId/UPN separated by ','.")]
+        public string EntraUserIdentity { get; set; }
+
+        [Parameter(
+            HelpMessage = "Gets or sets a list of Entra users as an array of hashtables. Each hashtable should contain keys such as ObjectId, UPN, and DisplayName.")]
+        public Hashtable[] EntraUserFullInfo { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background.")]
         public SwitchParameter AsJob { get; set; }
@@ -105,16 +112,14 @@ namespace Microsoft.Azure.Commands.HDInsight
         public override void ExecuteCmdlet()
         {
             bool isHttpCredentialBound = this.HttpCredential != null;
-            bool isRestAuthEntraUsersBound = this.EntraUserData != null;
-            List<EntraUserInfo> RestAuthEntraUsers = ClusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserData);
+            List<EntraUserInfo> RestAuthEntraUsers = ClusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserIdentity, EntraUserFullInfo);
+            bool isRestAuthEntraUsersBound = RestAuthEntraUsers?.Any() == true;
             if (isHttpCredentialBound && isRestAuthEntraUsersBound)
             {
-                throw new ParameterBindingException("Error: Cannot provide both HttpCredential and RestAuthEntraUsers parameters.");
-            }
-
-            if (!isHttpCredentialBound && !isRestAuthEntraUsersBound)
+                throw new ArgumentException("Only one of HttpCredential, EntraUserIdentity, or EntraUserFullInfo can be provided.");
+            } else if (!isHttpCredentialBound && !isRestAuthEntraUsersBound)
             {
-                throw new ParameterBindingException("Error: Either HttpCredential or RestAuthEntraUsers parameter must be provided.");
+                throw new ArgumentException("One of HttpCredential, EntraUserIdentity, or EntraUserFullInfo must be provided.");
             }
 
             var updateGatewaySettingsParameters = new UpdateGatewaySettingsParameters();
