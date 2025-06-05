@@ -21,6 +21,20 @@ Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage -PacketCoreC
  [<CommonParameters>]
 ```
 
+### CollectViaJsonString
+```
+Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage -PacketCoreControlPlaneName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CollectViaJsonFilePath
+```
+Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage -PacketCoreControlPlaneName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### CollectViaIdentityExpanded
 ```
 Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage -InputObject <IMobileNetworkIdentity>
@@ -77,7 +91,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
@@ -88,6 +101,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Collect operation
+
+```yaml
+Type: System.String
+Parameter Sets: CollectViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Collect operation
+
+```yaml
+Type: System.String
+Parameter Sets: CollectViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -111,7 +154,7 @@ The name of the packet core control plane.
 
 ```yaml
 Type: System.String
-Parameter Sets: CollectExpanded
+Parameter Sets: CollectExpanded, CollectViaJsonString, CollectViaJsonFilePath
 Aliases:
 
 Required: True
@@ -127,7 +170,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CollectExpanded
+Parameter Sets: CollectExpanded, CollectViaJsonString, CollectViaJsonFilePath
 Aliases:
 
 Required: True
@@ -142,7 +185,7 @@ The Storage Account Blob URL to upload the diagnostics package to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CollectExpanded, CollectViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -157,7 +200,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CollectExpanded
+Parameter Sets: CollectExpanded, CollectViaJsonString, CollectViaJsonFilePath
 Aliases:
 
 Required: False
@@ -207,7 +250,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus
 
 ## NOTES
 

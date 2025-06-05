@@ -4620,7 +4620,7 @@ Get-AzScVmmVMDisk -vmName "test-vm" -ResourceGroupName "test-rg-01" -DiskName "d
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.VirtualDisk
 .Link
-https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvmdisk
+https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvmdisk
 #>
 function Get-AzScVmmVMDisk {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.VirtualDisk])]
@@ -4958,9 +4958,9 @@ end {
 
 <#
 .Synopsis
-Implements GuestAgent GET method.
+Implements Azure Arc agent GET method.
 .Description
-Implements GuestAgent GET method.
+Implements Azure Arc agent GET method.
 .Example
 Get-AzScVmmVMGuestAgent -Name "test-vm" -ResourceGroupName "test-rg-01"
 
@@ -5154,7 +5154,7 @@ Get-AzScVmmVMNic -vmName "test-vm" -ResourceGroupName "test-rg-01" -NicName "nic
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterface
 .Link
-https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvmnic
+https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvmnic
 #>
 function Get-AzScVmmVMNic {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterface])]
@@ -7619,9 +7619,9 @@ end {
 
 <#
 .Synopsis
-The operation to create the extension on a virtual machine where Guest Management is enabled.
+The operation to create the extension on a virtual machine where Azure Arc agent is installed.
 .Description
-The operation to create the extension on a virtual machine where Guest Management is enabled.
+The operation to create the extension on a virtual machine where Azure Arc agent is installed.
 .Example
 New-AzScVmmVMExtension -vmName 'test-vm' -ResourceGroupName 'test-rg-01' -Location 'eastus' -ExtensionName 'RunCommand' -Type 'CustomScriptExtension' -Publisher 'Microsoft.Compute' -Setting @{"commandToExecute"= "whoami"}
 
@@ -7899,9 +7899,9 @@ end {
 
 <#
 .Synopsis
-Enables Guest Management on the Virtual Machine.
+Installs Azure Arc agent on the Virtual Machine.
 .Description
-Enables Guest Management on the Virtual Machine by installing GuestAgent.
+Installs Azure Arc agent on the Virtual Machine
 .Example
 $securePassword = ConvertTo-SecureString "*****" -AsPlainText -Force
 New-AzScVmmVMGuestAgent -Name "test-vm" -ResourceGroupName "test-rg-01" -CredentialsPassword $securePassword -CredentialsUsername 'testUser'

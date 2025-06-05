@@ -16,7 +16,8 @@ Create a SaaS Network Virtual Appliance resource.
 ```
 New-AzSaaSNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Location <String>
  -VirtualHubId <String> [-Tag <Hashtable>] [-Force] [-AsJob] -DelegatedServiceName <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet

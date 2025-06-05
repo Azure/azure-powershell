@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support
 {
 
+    /// <summary>The type of identity that created the resource.</summary>
     public partial struct CreatedByType :
         System.IEquatable<CreatedByType>
     {

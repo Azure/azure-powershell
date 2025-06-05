@@ -15,7 +15,8 @@ Updates a network manager routing configuration.
 ### ByInputObject (Default)
 ```
 Set-AzNetworkManagerRoutingConfiguration -InputObject <PSNetworkManagerRoutingConfiguration> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByName
@@ -28,7 +29,8 @@ Set-AzNetworkManagerRoutingConfiguration -Name <String> -ResourceGroupName <Stri
 ### ByResourceId
 ```
 Set-AzNetworkManagerRoutingConfiguration -ResourceId <String> [-Description <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

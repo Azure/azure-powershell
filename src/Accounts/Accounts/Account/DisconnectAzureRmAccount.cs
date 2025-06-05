@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
                     {
-                        AzureSession.Instance.AuthenticationFactory.RemoveUser(azureAccount, null);
+                        AzureSession.Instance.AuthenticationFactory.RemoveUser(azureAccount, environment: null);
                     }
 
                     if (AzureRmProfileProvider.Instance.Profile != null)

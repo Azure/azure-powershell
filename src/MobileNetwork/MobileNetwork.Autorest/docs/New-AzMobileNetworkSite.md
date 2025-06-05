@@ -18,15 +18,15 @@ New-AzMobileNetworkSite -MobileNetworkName <String> -Name <String> -ResourceGrou
  -Location <String> [-DataNetworkName <String>] [-SubscriptionId <String>] [-AzureStackEdgeDeviceId <String>]
  [-ControlPlaneAccessInterfaceIpv4Address <String>] [-ControlPlaneAccessInterfaceIpv4Gateway <String>]
  [-ControlPlaneAccessInterfaceIpv4Subnet <String>] [-ControlPlaneAccessInterfaceName <String>]
- [-CoreNetworkTechnology <CoreNetworkType>] [-CustomLocationId <String>] [-DnsAddress <String[]>]
- [-LocalDiagnosticAccessAuthenticationType <AuthenticationType>] [-NaptConfigurationEnabled <NaptEnabled>]
- [-PlatformType <PlatformType>] [-Sku <BillingSku>] [-Tag <Hashtable>]
- [-UserEquipmentAddressPoolPrefix <String[]>] [-UserEquipmentStaticAddressPoolPrefix <String[]>]
- [-UserPlaneAccessInterfaceIpv4Address <String>] [-UserPlaneAccessInterfaceIpv4Gateway <String>]
- [-UserPlaneAccessInterfaceIpv4Subnet <String>] [-UserPlaneAccessInterfaceName <String>]
- [-UserPlaneDataInterfaceIpv4Address <String>] [-UserPlaneDataInterfaceIpv4Gateway <String>]
- [-UserPlaneDataInterfaceIpv4Subnet <String>] [-UserPlaneDataInterfaceName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CoreNetworkTechnology <String>] [-CustomLocationId <String>] [-DnsAddress <String[]>]
+ [-LocalDiagnosticAccessAuthenticationType <String>] [-NaptConfigurationEnabled <String>]
+ [-PlatformType <String>] [-Sku <String>] [-Tag <Hashtable>] [-UserEquipmentAddressPoolPrefix <String[]>]
+ [-UserEquipmentStaticAddressPoolPrefix <String[]>] [-UserPlaneAccessInterfaceIpv4Address <String>]
+ [-UserPlaneAccessInterfaceIpv4Gateway <String>] [-UserPlaneAccessInterfaceIpv4Subnet <String>]
+ [-UserPlaneAccessInterfaceName <String>] [-UserPlaneDataInterfaceIpv4Address <String>]
+ [-UserPlaneDataInterfaceIpv4Gateway <String>] [-UserPlaneDataInterfaceIpv4Subnet <String>]
+ [-UserPlaneDataInterfaceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 The core network technology generation (5G core or EPC / 4G core).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.CoreNetworkType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -225,7 +225,7 @@ Accept wildcard characters: False
 How to authenticate users who access local diagnostics APIs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.AuthenticationType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -285,7 +285,7 @@ Accept wildcard characters: False
 Whether NAPT is enabled for connections to this attached data network.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.NaptEnabled
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -316,7 +316,7 @@ New-AzMobileNetworkPacketCoreControlPlane
 The platform type where packet core is deployed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PlatformType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -347,7 +347,7 @@ Accept wildcard characters: False
 The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -583,7 +583,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISite
 
 ## NOTES
 

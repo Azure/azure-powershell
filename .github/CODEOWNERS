@@ -1,12 +1,12 @@
+# @wyunchi-ms @dolauli @isra-fel are from the Azure PowerShell team. Adding them ensures they can merge the PR for those modules.
 # To make sure Network PRs go to the right branch, e.g. network-april
-/src/Network/    @Joanna-Yang-Art @htippanaboya
-/src/Compute/    @EdwinBernal1 @grizzlytheodore @ntangy @sandido
-/src/PolicyInsights/  @pilor
-/src/Batch/ @wiboris @dpwatrous
+/src/Compute/    @EdwinBernal1 @grizzlytheodore @ntangy @sandido @wyunchi-ms @dolauli @isra-fel @VeryEarly @YanaXu @vidai-msft @NoriZC @notyashhh @Pan-Qi @msJinLei
+/src/PolicyInsights/  @pilor @wyunchi-ms @dolauli @isra-fel @VeryEarly @YanaXu @vidai-msft @NoriZC @notyashhh @Pan-Qi @msJinLei
+/src/Batch/ @wiboris @dpwatrous @wyunchi-ms @dolauli @isra-fel @VeryEarly @YanaXu @vidai-msft @NoriZC @notyashhh @Pan-Qi @msJinLei
 
 # Make sure Device Registry team gets notified of any DeviceRegistry PRs:
 # PRLabel: %Device Registry
-/src/DeviceRegistry/ @marcodalessandro @rohankhandelwal @riteshrao @davidemontanari
+/src/DeviceRegistry/ @marcodalessandro @rohankhandelwal @riteshrao @davidemontanari @wyunchi-ms @dolauli @isra-fel @VeryEarly @YanaXu @vidai-msft @NoriZC @notyashhh @Pan-Qi @msJinLei
 
 # Make sure changes to .github folder go through our team's double check
-/.github/        @isra-fel
+/.github/        @wyunchi-ms @dolauli @isra-fel

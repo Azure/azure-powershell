@@ -14,7 +14,7 @@ Create an in-memory object for ServicePrincipalSecretAuthInfo.
 
 ```
 New-AzServiceLinkerServicePrincipalSecretAuthInfoObject -ClientId <String> -PrincipalId <String>
- -Secret <String> [<CommonParameters>]
+ -Secret <String> [-Role <String[]>] [-UserName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,6 +69,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Role
+Optional, this value specifies the Azure roles to be assigned.
+Automatically .
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Secret
 Secret for servicePrincipal auth.
 
@@ -84,6 +100,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserName
+Username created in the database which is mapped to a user in AAD.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -91,7 +122,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ServicePrincipalSecretAuthInfo
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ServicePrincipalSecretAuthInfo
 
 ## NOTES
 

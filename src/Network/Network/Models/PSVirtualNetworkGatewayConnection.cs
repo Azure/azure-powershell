@@ -41,6 +41,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string ConnectionMode { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public List<PSTunnelConfig> TunnelProperties;
+
         public string SharedKey { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]

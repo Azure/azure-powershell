@@ -158,7 +158,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzRecoveryServicesBackupContainer]()
+[Get-AzRecoveryServicesBackupContainer](Get-AzRecoveryServicesBackupContainer.md)
 
-[Get-AzRecoveryServicesBackupItem]()
+[Get-AzRecoveryServicesBackupItem](Get-AzRecoveryServicesBackupItem.md)
 

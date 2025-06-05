@@ -58,27 +58,15 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^(Create)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentityExpanded$
     remove: true
   # Remove the set-* cmdlet
   - where:
       verb: Set
     remove: true
-
-  # To remove non-expanded update variants:
-  - where:
-      variant: ^Update(?!.*?Expanded)
-    remove: true
-
-  # 1. Field 'identity' is required => IdentityType and IdentityUserAssignedIdentity are required
-  # 2. Hide IdentityType as only 'UserAssigned' is valid value so far
-  # 3. Wrap UserAssignedIdentity with UserAssignedIdentityId to simplify customer's input 
-  # 4. Field 'properties' is required => Source, Customize and Distribute are required
-  # Rename IdentityUserAssignedIdentity to UserAssignedIdentity
-  - where:
-      parameter-name: IdentityUserAssignedIdentity
-    set:
-      parameter-name: UserAssignedIdentity
 
   # Rename *-AzImageBuildVirtualMachineImage(.*) -> *-AzImageBuild(.*)
   - where:
@@ -86,10 +74,36 @@ directive:
     set:
       subject: $2
 
+  # Add required for template
+  # - from: swagger-document
+  #   where: $.definitions.ImageTemplate
+  #   transform: $['required'] = ["identity","properties"]
+  # - from: swagger-document
+  #   where: $.definitions.ImageTemplateProperties
+  #   transform: $['required'] = ["source","distribute","customize"]
+  # Customize New-AzImageBuilderTemplate, remove parameter EnableSystemAssignedIdentity
   - where:
       subject: Template
       variant: ^CreateExpanded$
     hide: true
+
+  # To remove update for Trigger since there is no properties
+  - where:
+      subject: Trigger
+      verb: Update
+    remove: true
+  # Remove Update [Update template not support](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/image-builder-troubleshoot#update-or-upgrade-of-image-templates-is-currently-not-supported)
+  - where:
+      subject: Template
+      verb: Update
+    remove: true
+  
+  # Rename JsonTemplatePath -> JsonFilePath and keep JsonTemplatePath as alias in New-AzImageBuildTemplate
+  - where:
+      subject: Template
+      parameter-name: JsonFilePath
+    set:
+      alias: JsonTemplatePath
 
   # Rename ImageTemplateName -> Name and keep ImageTemplateName as alias in *-AzImageBuildTemplate
   - where:
@@ -148,35 +162,32 @@ directive:
           - ResourceGroupName
 
   # Generate models and combine them as 1 cmdlet
-  # - model-cmdlet:
-  #   ########### ImageTemplateCustomizer ############
-  #   # Combine as 1 cmdlet named New-AzImageBuilderTemplateCustomizerObject
-  #   - ImageTemplateCustomizer
-  #   - ImageTemplateShellCustomizer
-  #   - ImageTemplateRestartCustomizer
-  #   - ImageTemplateWindowsUpdateCustomizer
-  #   - ImageTemplatePowerShellCustomizer
-  #   - ImageTemplateFileCustomizer
-  #   ########## ImageTemplateDistributor ###########
-  #   # Combine as 1 cmdlet named New-AzImageBuilderTemplateDistributorObject
-  #   - ImageTemplateDistributor
-  #   - ImageTemplateManagedImageDistributor
-  #   - ImageTemplateSharedImageDistributor
-  #   - ImageTemplateVhdDistributor
-  #   ############# ImageTemplateSource ##############
-  #   # Combine as 1 cmdlet named New-AzImageBuilderTemplateSourceObject
-  #   - ImageTemplateSource
-  #   # Note: publisher, offer, sku and version are required
-  #   - ImageTemplatePlatformImageSource 
-  #   - ImageTemplateManagedImageSource
-  #   - ImageTemplateSharedImageVersionSource
-  #   ########## ImageTemplateInVMValidator ###########
-  #   # Combine as 1 cmdlet named New-AzImageBuilderTemplateValidatorObject
-  #   - ImageTemplateInVMValidator
-  #   - ImageTemplateShellValidator
-  #   - ImageTemplatePowerShellValidator
-  #   ########## AzImageBuilderTemplateDistributorVersioning ###########
-  #   - DistributeVersioner
-  #   - DistributeVersionerLatest
-  #   - DistributeVersionerSource
+  - model-cmdlet:
+    ########### ImageTemplateCustomizer ############
+    # Combine as 1 cmdlet named New-AzImageBuilderTemplateCustomizerObject
+    # - model-name: ImageTemplateShellCustomizer
+    # - model-name: ImageTemplateRestartCustomizer
+    # - model-name: ImageTemplateWindowsUpdateCustomizer
+    # - model-name: ImageTemplatePowerShellCustomizer
+    # - model-name: ImageTemplateFileCustomizer
+    ########## ImageTemplateDistributor ###########
+    # Combine as 1 cmdlet named New-AzImageBuilderTemplateDistributorObject
+    # - model-name: ImageTemplateManagedImageDistributor
+    # - model-name: ImageTemplateSharedImageDistributor
+    # - model-name: ImageTemplateVhdDistributor
+    ############# ImageTemplateSource ##############
+    # Combine as 1 cmdlet named New-AzImageBuilderTemplateSourceObject
+    # Note: publisher, offer, sku and version are required
+    # - model-name: ImageTemplatePlatformImageSource
+    # - model-name: ImageTemplateManagedImageSource
+    # - model-name: ImageTemplateSharedImageVersionSource
+    ########## ImageTemplateInVMValidator ###########
+    # Combine as 1 cmdlet named New-AzImageBuilderTemplateValidatorObject
+    # - model-name: ImageTemplateShellValidator
+    # - model-name: ImageTemplatePowerShellValidator
+    ########## AzImageBuilderTemplateDistributorVersioning parent model name: DistributeVersioner ########### 
+    - model-name: DistributeVersionerLatest
+      cmdlet-name: New-AzImageBuilderTemplateDistributeVersionerLatestObject
+    - model-name: DistributeVersionerSource
+      cmdlet-name: New-AzImageBuilderTemplateDistributeVersionerSourceObject
 ```
