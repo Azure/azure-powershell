@@ -1,8 +1,8 @@
 {
-  "Test-AzRelayName+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Relay/checkNameAvailability?api-version=2021-11-01+1": {
+  "Test-AzRelayName+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Relay/checkNameAvailability?api-version=2021-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Relay/checkNameAvailability?api-version=2021-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Relay/checkNameAvailability?api-version=2021-11-01",
       "Content": "{\r\n  \"name\": \"relaynamespace-01\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,22 +17,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "4b2d5236-49e1-4b09-b775-b1a63255b2c2_M9SN1_M9SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
-        "x-ms-correlation-request-id": [ "5bc38661-0b5e-4de6-824d-cfaf6abbbe63" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230403T093908Z:5bc38661-0b5e-4de6-824d-cfaf6abbbe63" ],
+        "x-ms-correlation-request-id": [ "0ef55e4f-6fe1-46e6-89a8-71fc39dfb4d8" ],
+        "x-ms-client-request-id": [ "b06df45c-3bc2-4d1b-bafa-8628d096fa49_RP" ],
+        "x-ms-messaging-activity-id": [ "5c833ac5-6c8c-4b04-ad88-ba2214088f57" ],
+        "x-ms-messaging-routing-id": [ "CENTRALINDIA|CENTRALINDIA|G1|2025-06-05T02:13:13" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=0f876fc3-c749-4607-ad50-c13ef1569cea/centralindia/bf43851a-7b69-4254-b616-353d68961724" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "0ef55e4f-6fe1-46e6-89a8-71fc39dfb4d8" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20250605T021313Z:0ef55e4f-6fe1-46e6-89a8-71fc39dfb4d8" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 03 Apr 2023 09:39:07 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BC37044186C54DB1965597D126E2DD5B Ref B: MAA201060515047 Ref C: 2025-06-05T02:13:13Z" ],
+        "Date": [ "Thu, 05 Jun 2025 02:13:13 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "53" ],
+        "Content-Length": [ "75" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"nameAvailable\":true,\"reason\":\"None\",\"message\":null}",
+      "Content": "{\"nameAvailable\":true,\"reason\":\"None\",\"message\":\"Namespace name available\"}",
       "isContentBase64": false
     }
   }

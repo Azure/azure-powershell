@@ -113,7 +113,7 @@ Description of hybrid connection resource.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection
 Parameter Sets: Update
 Aliases:
 
@@ -238,11 +238,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection
 
 ## NOTES
 

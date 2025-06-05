@@ -27,9 +27,9 @@ This operation is idempotent.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,7 +50,7 @@ INPUTOBJECT <IWcfRelay>: Description of the WCF relay resource.
 https://learn.microsoft.com/powershell/module/az.relay/set-azwcfrelay
 #>
 function Set-AzWcfRelay {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -81,7 +81,7 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay]
     # Description of the WCF relay resource.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
@@ -95,9 +95,9 @@ param(
     ${UserMetadata},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.Relaytype])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("NetTcp", "Http")]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.Relaytype]
+    [System.String]
     # WCF relay type.
     ${WcfRelayType},
 
