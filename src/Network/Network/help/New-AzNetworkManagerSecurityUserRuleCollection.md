@@ -16,7 +16,8 @@ Creates a security user rule collection.
 New-AzNetworkManagerSecurityUserRuleCollection -Name <String> -SecurityUserConfigurationName <String>
  -NetworkManagerName <String> -ResourceGroupName <String> [-Description <String>]
  -AppliesToGroup <PSNetworkManagerSecurityUserGroupItem[]> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

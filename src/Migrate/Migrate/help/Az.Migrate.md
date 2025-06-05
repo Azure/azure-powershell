@@ -47,6 +47,9 @@ Gets the details of registered recovery services provider.
 ### [Get-AzMigrateRunAsAccount](Get-AzMigrateRunAsAccount.md)
 Method to get run as account.
 
+### [Get-AzMigrateServerMigrationStatus](Get-AzMigrateServerMigrationStatus.md)
+Retrieves the details of the replicating server status.
+
 ### [Get-AzMigrateServerReplication](Get-AzMigrateServerReplication.md)
 Retrieves the details of the replicating server.
 

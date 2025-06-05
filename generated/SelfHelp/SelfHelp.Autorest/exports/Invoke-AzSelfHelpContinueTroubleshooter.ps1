@@ -18,11 +18,11 @@
 .Synopsis
 Uses ‘stepId’ and ‘responses’ as the trigger to continue the troubleshooting steps for the respective troubleshooter resource name.
 <br/>Continue API is used to provide inputs that are required for the specific troubleshooter to progress into the next step in the process.
-This API is used after the Troubleshooter has been created using the Create API.
+This API is used after the Troubleshooter has been created using the continue API.
 .Description
 Uses ‘stepId’ and ‘responses’ as the trigger to continue the troubleshooting steps for the respective troubleshooter resource name.
 <br/>Continue API is used to provide inputs that are required for the specific troubleshooter to progress into the next step in the process.
-This API is used after the Troubleshooter has been created using the Create API.
+This API is used after the Troubleshooter has been created using the continue API.
 .Example
 $continueRequest = [ordered]@{ 
     "StepId" ="15ebac6c-96a1-4a67-ae9d-b06011d232ff" 
@@ -31,7 +31,7 @@ $continueRequest = [ordered]@{
 Invoke-AzSelfHelpContinueTroubleshooter  -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba"  -TroubleshooterName  "02d59989-f8a9-4b69-9919-1ef51df4eff6" -ContinueRequestBody $continueRequest 
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IContinueRequestBody
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IContinueRequestBody
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
 .Outputs
@@ -42,9 +42,9 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CONTINUEREQUESTBODY <IContinueRequestBody>: Troubleshooter ContinueRequest body.
-  [Response <ITroubleshooterResponse[]>]: 
+  [Response <List<ITroubleshooterResponse>>]: 
     [QuestionId <String>]: id of the question.
-    [QuestionType <QuestionType?>]: Type of Question
+    [QuestionType <String>]: Type of Question
     [Response <String>]: Response key for SingleInput. For Multi-line test/open ended question it is free form text
   [StepId <String>]: Unique id of the result.
 
@@ -60,7 +60,7 @@ INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
 
 RESPONSE <ITroubleshooterResponse[]>: .
   [QuestionId <String>]: id of the question.
-  [QuestionType <QuestionType?>]: Type of Question
+  [QuestionType <String>]: Type of Question
   [Response <String>]: Response key for SingleInput. For Multi-line test/open ended question it is free form text
 .Link
 https://learn.microsoft.com/powershell/module/az.selfhelp/invoke-azselfhelpcontinuetroubleshooter
@@ -71,6 +71,8 @@ function Invoke-AzSelfHelpContinueTroubleshooter {
 param(
     [Parameter(ParameterSetName='Continue', Mandatory)]
     [Parameter(ParameterSetName='ContinueExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ContinueViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ContinueViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
     # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
@@ -78,6 +80,8 @@ param(
 
     [Parameter(ParameterSetName='Continue', Mandatory)]
     [Parameter(ParameterSetName='ContinueExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ContinueViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ContinueViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
     # Troubleshooter resource Name.
@@ -88,24 +92,21 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Continue', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ContinueViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IContinueRequestBody]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IContinueRequestBody]
     # Troubleshooter ContinueRequest body.
-    # To construct, see NOTES section for CONTINUEREQUESTBODY properties and create a hash table.
     ${ContinueRequestBody},
 
     [Parameter(ParameterSetName='ContinueExpanded')]
     [Parameter(ParameterSetName='ContinueViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITroubleshooterResponse[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ITroubleshooterResponse[]]
     # .
-    # To construct, see NOTES section for RESPONSE properties and create a hash table.
     ${Response},
 
     [Parameter(ParameterSetName='ContinueExpanded')]
@@ -114,6 +115,18 @@ param(
     [System.String]
     # Unique id of the result.
     ${StepId},
+
+    [Parameter(ParameterSetName='ContinueViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Continue operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ContinueViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Json string supplied to the Continue operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -177,6 +190,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -200,6 +222,8 @@ begin {
             ContinueExpanded = 'Az.SelfHelp.private\Invoke-AzSelfHelpContinueTroubleshooter_ContinueExpanded';
             ContinueViaIdentity = 'Az.SelfHelp.private\Invoke-AzSelfHelpContinueTroubleshooter_ContinueViaIdentity';
             ContinueViaIdentityExpanded = 'Az.SelfHelp.private\Invoke-AzSelfHelpContinueTroubleshooter_ContinueViaIdentityExpanded';
+            ContinueViaJsonFilePath = 'Az.SelfHelp.private\Invoke-AzSelfHelpContinueTroubleshooter_ContinueViaJsonFilePath';
+            ContinueViaJsonString = 'Az.SelfHelp.private\Invoke-AzSelfHelpContinueTroubleshooter_ContinueViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -208,6 +232,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -8,35 +8,50 @@ schema: 2.0.0
 # New-AzImportExport
 
 ## SYNOPSIS
-Creates a new job or updates an existing job in the specified subscription.
+create a new job or create an existing job in the specified subscription.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzImportExport -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AcceptLanguage <String>] [-ClientTenantId <String>] [-BackupDriveManifest] [-BlobListBlobPath <String[]>]
  [-BlobListBlobPathPrefix <String[]>] [-CancelRequested] [-DeliveryPackageCarrierName <String>]
  [-DeliveryPackageDriveCount <Int64>] [-DeliveryPackageShipDate <String>]
  [-DeliveryPackageTrackingNumber <String>] [-DiagnosticsPath <String>] [-DriveList <IDriveStatus[]>]
- [-EncryptionKeyKekType <EncryptionKekType>] [-EncryptionKeyKekUrl <String>]
- [-EncryptionKeyKekVaultId <String>] [-ExportBlobListBlobPath <String>] [-IncompleteBlobListUri <String>]
- [-JobType <String>] [-Location <String>] [-LogLevel <String>] [-PercentComplete <Int64>]
- [-ProvisioningState <String>] [-ReturnAddressCity <String>] [-ReturnAddressCountryOrRegion <String>]
- [-ReturnAddressEmail <String>] [-ReturnAddressPhone <String>] [-ReturnAddressPostalCode <String>]
- [-ReturnAddressRecipientName <String>] [-ReturnAddressStateOrProvince <String>]
- [-ReturnAddressStreetAddress1 <String>] [-ReturnAddressStreetAddress2 <String>]
- [-ReturnPackageCarrierName <String>] [-ReturnPackageDriveCount <Int64>] [-ReturnPackageShipDate <String>]
- [-ReturnPackageTrackingNumber <String>] [-ReturnShippingCarrierAccountNumber <String>]
- [-ReturnShippingCarrierName <String>] [-ShippingInformationCity <String>]
- [-ShippingInformationCountryOrRegion <String>] [-ShippingInformationPhone <String>]
- [-ShippingInformationPostalCode <String>] [-ShippingInformationRecipientName <String>]
- [-ShippingInformationStateOrProvince <String>] [-ShippingInformationStreetAddress1 <String>]
- [-ShippingInformationStreetAddress2 <String>] [-State <String>] [-StorageAccountId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EncryptionKeyKekType <String>] [-EncryptionKeyKekUrl <String>] [-EncryptionKeyKekVaultId <String>]
+ [-ExportBlobListBlobPath <String>] [-IncompleteBlobListUri <String>] [-JobType <String>] [-Location <String>]
+ [-LogLevel <String>] [-PercentComplete <Int64>] [-ProvisioningState <String>] [-ReturnAddressCity <String>]
+ [-ReturnAddressCountryOrRegion <String>] [-ReturnAddressEmail <String>] [-ReturnAddressPhone <String>]
+ [-ReturnAddressPostalCode <String>] [-ReturnAddressRecipientName <String>]
+ [-ReturnAddressStateOrProvince <String>] [-ReturnAddressStreetAddress1 <String>]
+ [-ReturnAddressStreetAddress2 <String>] [-ReturnPackageCarrierName <String>]
+ [-ReturnPackageDriveCount <Int64>] [-ReturnPackageShipDate <String>] [-ReturnPackageTrackingNumber <String>]
+ [-ReturnShippingCarrierAccountNumber <String>] [-ReturnShippingCarrierName <String>]
+ [-ShippingInformationCity <String>] [-ShippingInformationCountryOrRegion <String>]
+ [-ShippingInformationPhone <String>] [-ShippingInformationPostalCode <String>]
+ [-ShippingInformationRecipientName <String>] [-ShippingInformationStateOrProvince <String>]
+ [-ShippingInformationStreetAddress1 <String>] [-ShippingInformationStreetAddress2 <String>] [-State <String>]
+ [-StorageAccountId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzImportExport -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-AcceptLanguage <String>] [-ClientTenantId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzImportExport -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-AcceptLanguage <String>] [-ClientTenantId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new job or updates an existing job in the specified subscription.
+create a new job or create an existing job in the specified subscription.
 
 ## EXAMPLES
 
@@ -77,7 +92,7 @@ Indicates whether the manifest files on the drives should be copied to block blo
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -92,7 +107,7 @@ A collection of blob-path strings.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -107,7 +122,7 @@ A collection of blob-prefix strings.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -122,7 +137,7 @@ Indicates whether a request has been submitted to cancel the job.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -168,7 +183,7 @@ The name of the carrier that is used to ship the import or export drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -183,7 +198,7 @@ The number of drives included in the package.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -198,7 +213,7 @@ The date when the package is shipped.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -213,7 +228,7 @@ The tracking number of the package.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -228,7 +243,7 @@ The virtual blob directory to which the copy logs and backups of drive manifest 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -241,11 +256,10 @@ Accept wildcard characters: False
 ### -DriveList
 List of up to ten drives that comprise the job.
 The drive list is a required element for an import job; it is not specified for export jobs.
-To construct, see NOTES section for DRIVELIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IDriveStatus[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -259,8 +273,8 @@ Accept wildcard characters: False
 The type of kek encryption key
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.EncryptionKekType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -275,7 +289,7 @@ Specifies the url for kek encryption key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -290,7 +304,7 @@ Specifies the keyvault resource id for kek encryption key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -306,7 +320,7 @@ If the blob is in root container, the URI must begin with $root.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -322,7 +336,7 @@ If all blobs were exported successfully, then this element is not included in th
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -337,10 +351,40 @@ The type of job
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -352,7 +396,7 @@ Specifies the supported Azure location where the job should be created
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -368,7 +412,7 @@ Indicates whether error logging or verbose logging will be enabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -398,7 +442,7 @@ Overall percentage completed for the job.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -413,7 +457,7 @@ Specifies the provisioning state of the job.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -443,7 +487,7 @@ The city name to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -458,7 +502,7 @@ The country or region to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -473,7 +517,7 @@ Email address of the recipient of the returned drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -488,7 +532,7 @@ Phone number of the recipient of the returned drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -503,7 +547,7 @@ The postal code to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -518,7 +562,7 @@ The name of the recipient who will receive the hard drives when they are returne
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -533,7 +577,7 @@ The state or province to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -548,7 +592,7 @@ The first line of the street address to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -563,7 +607,7 @@ The second line of the street address to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -578,7 +622,7 @@ The name of the carrier that is used to ship the import or export drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -593,7 +637,7 @@ The number of drives included in the package.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -608,7 +652,7 @@ The date when the package is shipped.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -623,7 +667,7 @@ The tracking number of the package.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -638,7 +682,7 @@ The customer's account number with the carrier.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -653,7 +697,7 @@ The carrier's name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -668,7 +712,7 @@ The city name to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -683,7 +727,7 @@ The country or region to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -698,7 +742,7 @@ Phone number of the recipient of the returned drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -713,7 +757,7 @@ The postal code to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -728,7 +772,7 @@ The name of the recipient who will receive the hard drives when they are returne
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -743,7 +787,7 @@ The state or province to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -758,7 +802,7 @@ The first line of the street address to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -773,7 +817,7 @@ The second line of the street address to use when returning the drives.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -788,7 +832,7 @@ Current state of the job.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -803,7 +847,7 @@ The resource identifier of the storage account where data will be imported to or
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -833,7 +877,7 @@ Specifies the tags that will be assigned to the job.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -881,7 +925,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse
+### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponse
 
 ## NOTES
 

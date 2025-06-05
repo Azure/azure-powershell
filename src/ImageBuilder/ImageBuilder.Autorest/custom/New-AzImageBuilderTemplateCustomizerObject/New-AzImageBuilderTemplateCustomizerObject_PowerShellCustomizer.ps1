@@ -21,15 +21,16 @@ Create an in-memory object for ImageTemplateCustomizer.
 Create an in-memory object for ImageTemplateCustomizer.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePowerShellCustomizer
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplatePowerShellCustomizer
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatecustomizerobject
 #>
 function New-AzImageBuilderTemplateCustomizerObject_PowerShellCustomizer {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePowerShellCustomizer')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplatePowerShellCustomizer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-
+        
         [Parameter(HelpMessage="Array of PowerShell commands to execute.")]
         [string[]]
         $Inline,
@@ -51,17 +52,13 @@ function New-AzImageBuilderTemplateCustomizerObject_PowerShellCustomizer {
         [Parameter(HelpMessage="Friendly Name to provide context on what this customization step does.")]
         [string]
         $Name,
-        # Change it to switch parameter
-        # [Parameter(Mandatory, HelpMessage="The type of customization tool you want to use on the Image. For example, `"Shell`" can be shell customizer.")]
-        # [string]
-        # $Type
         [Parameter(Mandatory, HelpMessage="Runs the specified PowerShell on the VM (Windows). Corresponds to Packer powershell provisioner. Exactly one of 'scriptUri' or 'inline' can be specified.")]
         [Switch]
         $PowerShellCustomizer
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePowerShellCustomizer]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplatePowerShellCustomizer]::New()
 
         if ($PSBoundParameters.ContainsKey('Inline')) {
             $Object.Inline = $Inline
@@ -83,9 +80,6 @@ function New-AzImageBuilderTemplateCustomizerObject_PowerShellCustomizer {
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
-        }
-        if ($PowerShellCustomizer.IsPresent) {
-            $Object.Type = "PowerShell"
         }
         return $Object
     }

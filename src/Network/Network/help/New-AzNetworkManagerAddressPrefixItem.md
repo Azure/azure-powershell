@@ -72,7 +72,7 @@ AddressPrefix Type.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: IPPrefix, ServiceTag
+Accepted values: IPPrefix, ServiceTag, NetworkGroup
 
 Required: True
 Position: Named

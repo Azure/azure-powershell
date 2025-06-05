@@ -6,6 +6,8 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Cmdlets;
     using System;
 
     /// <summary>Creating or Updating a Spatial Anchors Account.</summary>
@@ -13,12 +15,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/spatialAnchorsAccounts/{accountName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMixedRealitySpatialAnchorsAccount_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.CmdletBreakingChange("14.5.0", "0.3.0", "2025/09/30")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Description(@"Creating or Updating a Spatial Anchors Account.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MixedReality/spatialAnchorsAccounts/{accountName}", ApiVersion = "2021-03-01-preview")]
     public partial class NewAzMixedRealitySpatialAnchorsAccount_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -34,13 +38,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
+
         /// <summary>SpatialAnchorsAccount Response.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount _spatialAnchorsAccountBody = new Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.SpatialAnchorsAccount();
+        private Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount _spatialAnchorsAccountBody = new Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.SpatialAnchorsAccount();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.MixedReality.MixedReality Client => Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Module.Instance.ClientAPI;
@@ -55,6 +74,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _spatialAnchorsAccountBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -66,18 +92,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
-
-        /// <summary>The identity type.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identity type.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The identity type.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType IdentityType { get => _spatialAnchorsAccountBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType)""); set => _spatialAnchorsAccountBody.IdentityType = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -144,9 +158,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
         ReadOnly = false,
         Description = @"This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.",
         SerializedName = @"tier",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.SkuTier) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.SkuTier))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.SkuTier KindTier { get => _spatialAnchorsAccountBody.KindTier ?? ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.SkuTier)""); set => _spatialAnchorsAccountBody.KindTier = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
+        public string KindTier { get => _spatialAnchorsAccountBody.KindTier ?? null; set => _spatialAnchorsAccountBody.KindTier = value; }
 
         /// <summary>The geo-location where the resource lives</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The geo-location where the resource lives")]
@@ -184,7 +198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The identity type.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identity type.")]
@@ -194,9 +208,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
         ReadOnly = false,
         Description = @"The identity type.",
         SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType PlanType { get => _spatialAnchorsAccountBody.PlanType ?? ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType)""); set => _spatialAnchorsAccountBody.PlanType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.PSArgumentCompleterAttribute("SystemAssigned")]
+        public string PlanType { get => _spatialAnchorsAccountBody.PlanType ?? null; set => _spatialAnchorsAccountBody.PlanType = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -290,9 +304,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
         ReadOnly = false,
         Description = @"This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.",
         SerializedName = @"tier",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.SkuTier) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.SkuTier))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.SkuTier SkuTier { get => _spatialAnchorsAccountBody.SkuTier ?? ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.SkuTier)""); set => _spatialAnchorsAccountBody.SkuTier = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
+        public string SkuTier { get => _spatialAnchorsAccountBody.SkuTier ?? null; set => _spatialAnchorsAccountBody.SkuTier = value; }
 
         /// <summary>The name of the storage account associated with this accountId</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the storage account associated with this accountId")]
@@ -321,7 +335,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MixedReality.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -334,44 +349,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10.ITrackedResourceTags Tag { get => _spatialAnchorsAccountBody.Tag ?? null /* object */; set => _spatialAnchorsAccountBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ITrackedResourceTags Tag { get => _spatialAnchorsAccountBody.Tag ?? null /* object */; set => _spatialAnchorsAccountBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount">Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount">Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ICloudError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount">Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount">Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -394,6 +409,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -458,8 +478,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -469,7 +514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzMixedRealitySpatialAnchorsAccount_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzMixedRealitySpatialAnchorsAccount_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzMixedRealitySpatialAnchorsAccount_CreateExpanded()
         {
@@ -523,7 +568,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -536,12 +581,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.SpatialAnchorsAccountsCreate(SubscriptionId, ResourceGroupName, Name, _spatialAnchorsAccountBody, onOk, onCreated, onDefault, this, Pipeline);
+                    await this.Client.SpatialAnchorsAccountsCreate(SubscriptionId, ResourceGroupName, Name, _spatialAnchorsAccountBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_spatialAnchorsAccountBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -577,12 +622,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount">Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount">Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount> response)
+        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount> response)
         {
             using( NoSynchronizationContext )
             {
@@ -594,8 +639,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
                     return ;
                 }
                 // onCreated - response for 201 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
 
@@ -603,12 +666,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ICloudError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -625,15 +688,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_spatialAnchorsAccountBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_spatialAnchorsAccountBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -643,12 +706,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount">Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount">Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount> response)
         {
             using( NoSynchronizationContext )
             {
@@ -660,8 +723,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ISpatialAnchorsAccount
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

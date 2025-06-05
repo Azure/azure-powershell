@@ -176,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModel
+### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModel
 
 ## NOTES
 

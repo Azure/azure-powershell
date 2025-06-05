@@ -17,7 +17,7 @@ Change Key Vault/Managed HSM that is used for encryption of volumes under NetApp
 Invoke-AzNetAppFilesAccountChangeKeyVault -ResourceGroupName <String> [-Location <String>] -Name <String>
  [-KeyVaultUri <String>] [-KeyVaultKeyName <String>] [-KeyVaultResourceId <String>]
  [-KeyVaultPrivateEndpoint <System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSANFKeyVaultPrivateEndpoint]>]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,14 +25,14 @@ Invoke-AzNetAppFilesAccountChangeKeyVault -ResourceGroupName <String> [-Location
 ```
 Invoke-AzNetAppFilesAccountChangeKeyVault -ResourceGroupName <String> [-Location <String>] -Name <String>
  -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Invoke-AzNetAppFilesAccountChangeKeyVault -ResourceGroupName <String> [-Location <String>] -Name <String>
  -InputObject <PSNetAppFilesAccount> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,7 +61,7 @@ Changes what Key Vault/Managed HSM is used for Volumes in NetAppAccount "MyAccou
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The account object to invoke ChangeKeyVaultconvert on
 
 ```yaml
-Type: PSNetAppFilesAccount
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 The name of KeyVault key
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 The resource ID of KeyVault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 The Uri of KeyVault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 The location of the resource
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 The name of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -182,24 +182,9 @@ Accept wildcard characters: False
 Return whether the specified NetApp Accounts KeyVault was successfully changed
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -212,7 +197,7 @@ Accept wildcard characters: False
 The resource group of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -227,7 +212,7 @@ Accept wildcard characters: False
 The resource id of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -242,7 +227,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -258,7 +243,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

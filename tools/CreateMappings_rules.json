@@ -362,10 +362,6 @@
     "alias": "Billing"
   },
   {
-    "regex": "Media",
-    "alias": "Media Services"
-  },
-  {
     "regex": "UsageAggregates",
     "alias": "Usage Aggregates"
   },
@@ -968,4 +964,16 @@
     "module": "Pinecone",
     "alias": "Pinecone"
   },
+  {
+    "alias": "LambdaTest",
+    "module": "LambdaTest"
+  },
+  {
+    "alias": "Carbon",
+    "module": "Carbon"
+  },
+  {
+    "alias": "MongoDB",
+    "module": "MongoDB"
+  }
 ]

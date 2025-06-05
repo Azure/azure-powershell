@@ -15,26 +15,26 @@ Get the storage task assignment properties
 ### List (Default)
 ```
 Get-AzStorageTaskAssignment -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Maxpagesize <Int32>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Maxpagesize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzStorageTaskAssignment -AccountName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityStorageAccount
 ```
 Get-AzStorageTaskAssignment -Name <String> -StorageAccountInputObject <IStorageIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzStorageTaskAssignment -InputObject <IStorageIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,21 +172,6 @@ Parameter Sets: Get, GetViaIdentityStorageAccount
 Aliases: StorageTaskAssignmentName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

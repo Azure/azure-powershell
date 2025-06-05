@@ -88,5 +88,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVirtualNetworkGateway](./Get-AzVirtualNetworkGateway.md)
 
 [Set-AzVirtualNetworkGatewayDefaultSite](./Set-AzVirtualNetworkGatewayDefaultSite.md)
-
-

@@ -212,6 +212,9 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='skus'>
         /// A valid image SKU.
         /// </param>
+        /// <param name='expand'>
+        /// The expand expression to apply on the operation.
+        /// </param>
         /// <param name='top'>
         /// </param>
         /// <param name='orderby'>
@@ -231,7 +234,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<VirtualMachineImage>>> ListWithPropertiesWithHttpMessagesAsync(string location, string publisherName, string offer, string skus, int? top = default(int?), string orderby = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IList<VirtualMachineImage>>> ListWithPropertiesWithHttpMessagesAsync(string location, string publisherName, string offer, string skus, string expand, int? top = default(int?), string orderby = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
@@ -250,6 +253,6 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<VirtualMachineImage>>> ListWithPropertiesNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IList<VirtualMachineImage>>> ListWithPropertiesNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

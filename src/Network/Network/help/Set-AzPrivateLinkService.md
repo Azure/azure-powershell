@@ -105,5 +105,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzPrivateLinkService](./New-AzPrivateLinkService.md)
 
 [Remove-AzPrivateLinkService](./Remove-AzPrivateLinkService.md)
-
-

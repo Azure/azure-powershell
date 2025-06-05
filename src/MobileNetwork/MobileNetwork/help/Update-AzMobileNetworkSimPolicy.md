@@ -8,20 +8,40 @@ schema: 2.0.0
 # Update-AzMobileNetworkSimPolicy
 
 ## SYNOPSIS
-Updates SIM policy.
+update a SIM policy.
+Must be created in the same location as its parent mobile network.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-Update-AzMobileNetworkSimPolicy -MobileNetworkName <String> -SimPolicyName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultSliceId <String>] [-SliceConfiguration <ISliceConfiguration[]>]
- [-UeAmbrDownlink <String>] [-UeAmbrUplink <String>] [-RegistrationTimer <Int32>] [-RfspIndex <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzMobileNetworkSimPolicy -MobileNetworkName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultSliceId <String>] [-RegistrationTimer <Int32>] [-RfspIndex <Int32>]
+ [-SliceConfiguration <ISliceConfiguration[]>] [-Tag <Hashtable>] [-UeAmbrDownlink <String>]
+ [-UeAmbrUplink <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityMobileNetworkExpanded
+```
+Update-AzMobileNetworkSimPolicy -Name <String> -MobileNetworkInputObject <IMobileNetworkIdentity>
+ [-DefaultSliceId <String>] [-RegistrationTimer <Int32>] [-RfspIndex <Int32>]
+ [-SliceConfiguration <ISliceConfiguration[]>] [-Tag <Hashtable>] [-UeAmbrDownlink <String>]
+ [-UeAmbrUplink <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzMobileNetworkSimPolicy -InputObject <IMobileNetworkIdentity> [-DefaultSliceId <String>]
+ [-RegistrationTimer <Int32>] [-RfspIndex <Int32>] [-SliceConfiguration <ISliceConfiguration[]>]
+ [-Tag <Hashtable>] [-UeAmbrDownlink <String>] [-UeAmbrUplink <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates SIM policy.
+update a SIM policy.
+Must be created in the same location as its parent mobile network.
 
 ## EXAMPLES
 
@@ -39,6 +59,21 @@ eastus   azps-mn-simpolicy azps_test_group   Succeeded         3240             
 Updates SIM policy.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -71,15 +106,75 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MobileNetworkInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: UpdateViaIdentityMobileNetworkExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MobileNetworkName
 The name of the mobile network.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the SIM policy.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMobileNetworkExpanded
+Aliases: SimPolicyName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -107,7 +202,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -133,28 +228,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SimPolicyName
-The name of the SIM policy.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SliceConfiguration
 The allowed slices and the settings to use for them.
 The list must not contain duplicate items and must contain at least one item.
-To construct, see NOTES section for SLICECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISliceConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISliceConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -170,7 +249,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -265,7 +344,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimPolicy
 
 ## NOTES
 

@@ -8,26 +8,41 @@ schema: 2.0.0
 # New-AzDeviceUpdateAccount
 
 ## SYNOPSIS
-Creates or updates Account.
+create Account.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzDeviceUpdateAccount -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-Sku <Sku>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-EnableSystemAssignedIdentity]
+ [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <String>] [-Sku <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzDeviceUpdateAccount -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzDeviceUpdateAccount -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates Account.
+create Account.
 
 ## EXAMPLES
 
 ### Example 1: Creates or updates Account.
 ```powershell
-New-AzDeviceUpdateAccount -Name azpstest-account -ResourceGroupName azpstest_gp -Location eastus -IdentityType 'SystemAssigned' -PublicNetworkAccess 'Enabled' -Sku 'Standard'
+New-AzDeviceUpdateAccount -Name azpstest-account -ResourceGroupName azpstest_gp -Location eastus -EnableSystemAssignedIdentity:$true -PublicNetworkAccess 'Enabled' -Sku 'Standard'
 ```
 
 ```output
@@ -71,15 +86,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -91,7 +136,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -133,11 +178,10 @@ Accept wildcard characters: False
 
 ### -PrivateEndpointConnection
 List of private endpoint connections associated with the account.
-To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IPrivateEndpointConnection[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateEndpointConnection[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -151,8 +195,8 @@ Accept wildcard characters: False
 Whether or not public network access is allowed for the account.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Support.PublicNetworkAccess
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -181,8 +225,8 @@ Accept wildcard characters: False
 Device Update Sku
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Support.Sku
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -212,7 +256,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -223,13 +267,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -277,7 +320,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IAccount
+### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IAccount
 
 ## NOTES
 

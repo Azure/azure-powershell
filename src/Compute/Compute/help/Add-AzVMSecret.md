@@ -24,7 +24,7 @@ Add-AzVMSecret [-VM] <PSVirtualMachine> [[-SourceVaultId] <String>] [[-Certifica
 The **Add-AzVMSecret** cmdlet adds a secret to a virtual machine.
 This value lets you add a certificate to the virtual machine.
 The secret must be stored in a Key Vault.
-For more information about Key Vault, see [What is Azure Key Vault?](https://azure.microsoft.com/documentation/articles/key-vault-whatis/).
+For more information about Key Vault, see [What is Azure Key Vault?](/azure/key-vault/general/overview).
 For more information about the cmdlets, see [Azure Key Vault Cmdlets](/powershell/module/az.keyvault) or the [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet.
 
 > [!NOTE] 

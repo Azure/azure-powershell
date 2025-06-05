@@ -18,7 +18,7 @@ Update-AzStorageTaskAssignment -AccountName <String> -Name <String> -ResourceGro
  [-SubscriptionId <String>] [-Description <String>] [-Enabled] [-EndBy <DateTime>] [-Interval <Int32>]
  [-IntervalUnit <String>] [-ReportPrefix <String>] [-StartFrom <DateTime>] [-StartOn <DateTime>]
  [-TargetExcludePrefix <String[]>] [-TargetPrefix <String[]>] [-TriggerType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ Update-AzStorageTaskAssignment -Name <String> -StorageAccountInputObject <IStora
  [-Description <String>] [-Enabled] [-EndBy <DateTime>] [-Interval <Int32>] [-IntervalUnit <String>]
  [-ReportPrefix <String>] [-StartFrom <DateTime>] [-StartOn <DateTime>] [-TargetExcludePrefix <String[]>]
  [-TargetPrefix <String[]>] [-TriggerType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -36,7 +36,7 @@ Update-AzStorageTaskAssignment -Name <String> -StorageAccountInputObject <IStora
 Update-AzStorageTaskAssignment -InputObject <IStorageIdentity> [-Description <String>] [-Enabled]
  [-EndBy <DateTime>] [-Interval <Int32>] [-IntervalUnit <String>] [-ReportPrefix <String>]
  [-StartFrom <DateTime>] [-StartOn <DateTime>] [-TargetExcludePrefix <String[]>] [-TargetPrefix <String[]>]
- [-TriggerType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-TriggerType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -253,21 +253,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -30,6 +30,12 @@ Get-AzMobileNetworkPacketCoreDataPlane -InputObject <IMobileNetworkIdentity> [-D
  [<CommonParameters>]
 ```
 
+### GetViaIdentityPacketCoreControlPlane
+```
+Get-AzMobileNetworkPacketCoreDataPlane -Name <String>
+ -PacketCoreControlPlaneInputObject <IMobileNetworkIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets information about the specified packet core data plane.
 
@@ -81,7 +87,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
@@ -100,13 +105,28 @@ The name of the packet core data plane.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityPacketCoreControlPlane
 Aliases: PacketCoreDataPlaneName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PacketCoreControlPlaneInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: GetViaIdentityPacketCoreControlPlane
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -165,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreDataPlane
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreDataPlane
 
 ## NOTES
 

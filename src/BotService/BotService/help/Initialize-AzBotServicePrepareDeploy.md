@@ -114,7 +114,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot
+### Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBot
 
 ## NOTES
 

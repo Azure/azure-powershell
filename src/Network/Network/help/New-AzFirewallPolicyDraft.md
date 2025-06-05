@@ -20,7 +20,8 @@ New-AzFirewallPolicyDraft -AzureFirewallPolicyName <String> -ResourceGroupName <
  [-SqlSetting <PSAzureFirewallPolicySqlSetting>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>] [-PrivateRange <String[]>]
  [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByParentInputObjectParameterSet
@@ -30,8 +31,8 @@ New-AzFirewallPolicyDraft -FirewallPolicyObject <PSAzureFirewallPolicy> [-Threat
  [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
  [-PrivateRange <String[]>] [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>]
- [-Snat <PSAzureFirewallPolicySNAT>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Snat <PSAzureFirewallPolicySNAT>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

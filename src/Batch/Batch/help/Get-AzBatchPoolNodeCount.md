@@ -194,8 +194,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzBatchAccountKey]()
+[Get-AzBatchAccountKey](Get-AzBatchAccountKey.md)
 
-[Get-AzBatchJob]()
+[Get-AzBatchJob](Get-AzBatchJob.md)
 
-[Azure Batch Cmdlets]()
+[Azure Batch Cmdlets](Az.Batch.md)
