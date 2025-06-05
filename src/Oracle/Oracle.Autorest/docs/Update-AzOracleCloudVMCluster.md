@@ -18,9 +18,9 @@ Update-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> [-Subsc
  [-ComputeNode <String[]>] [-CpuCoreCount <Int32>] [-DataCollectionOptionIsDiagnosticsEventsEnabled]
  [-DataCollectionOptionIsHealthMonitoringEnabled] [-DataCollectionOptionIsIncidentLogsEnabled]
  [-DataStorageSizeInTb <Double>] [-DbNodeStorageSizeInGb <Int32>] [-DisplayName <String>]
- [-LicenseModel <String>] [-MemorySizeInGb <Int32>] [-OcpuCount <Single>] [-SshPublicKey <String[]>]
- [-StorageSizeInGb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-FileSystemConfigurationDetail <IFileSystemConfigurationDetails[]>] [-LicenseModel <String>]
+ [-MemorySizeInGb <Int32>] [-OcpuCount <Single>] [-SshPublicKey <String[]>] [-StorageSizeInGb <Int32>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -28,9 +28,10 @@ Update-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> [-Subsc
 Update-AzOracleCloudVMCluster -InputObject <IOracleIdentity> [-ComputeNode <String[]>] [-CpuCoreCount <Int32>]
  [-DataCollectionOptionIsDiagnosticsEventsEnabled] [-DataCollectionOptionIsHealthMonitoringEnabled]
  [-DataCollectionOptionIsIncidentLogsEnabled] [-DataStorageSizeInTb <Double>] [-DbNodeStorageSizeInGb <Int32>]
- [-DisplayName <String>] [-LicenseModel <String>] [-MemorySizeInGb <Int32>] [-OcpuCount <Single>]
- [-SshPublicKey <String[]>] [-StorageSizeInGb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DisplayName <String>] [-FileSystemConfigurationDetail <IFileSystemConfigurationDetails[]>]
+ [-LicenseModel <String>] [-MemorySizeInGb <Int32>] [-OcpuCount <Single>] [-SshPublicKey <String[]>]
+ [-StorageSizeInGb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -278,6 +279,21 @@ Display Name
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FileSystemConfigurationDetail
+Array of mount path and size.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 

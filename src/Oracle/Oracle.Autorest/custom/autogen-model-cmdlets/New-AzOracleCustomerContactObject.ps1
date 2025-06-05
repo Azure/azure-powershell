@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.CustomerContact
 https://learn.microsoft.com/powershell/module/Az.Oracle/new-azoraclecustomercontactobject
 #>
 function New-AzOracleCustomerContactObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.CustomerContact')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -246,6 +246,7 @@ The percentage assigned to DATA storage (user data and database files).
 The remaining percentage is assigned to RECO storage (database redo logs, archive logs, and recovery manager backups).
 Accepted values are 35, 40, 60 and 80.
 The default is 80 percent assigned to DATA storage.
+See [Storage Configuration](/Content/Database/Concepts/exaoverview.htm#Exadata) in the Exadata documentation for details on the impact of the configuration settings on storage.
 
 ```yaml
 Type: System.Int32
@@ -676,6 +677,7 @@ Accept wildcard characters: False
 
 ### -TimeZone
 The time zone of the cloud VM cluster.
+For details, see [Exadata Infrastructure Time Zones](/Content/Database/References/timezones.htm).
 
 ```yaml
 Type: System.String

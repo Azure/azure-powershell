@@ -188,7 +188,7 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionPeriodInDay
-Retention period, in days, for long-term backups.
+Retention period, in days
 
 ```yaml
 Type: System.Int32

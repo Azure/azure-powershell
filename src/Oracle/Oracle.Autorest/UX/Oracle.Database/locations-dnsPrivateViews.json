@@ -1,6 +1,6 @@
 {
   "resourceType": "locations/dnsPrivateViews",
-  "apiVersion": "2023-09-01",
+  "apiVersion": "2025-03-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.oracle"
   },

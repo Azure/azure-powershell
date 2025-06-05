@@ -570,7 +570,7 @@ Accept wildcard characters: False
 ```
 
 ### -PeerDbId
-The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer database.
+The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current peer database.
 
 ```yaml
 Type: System.String
