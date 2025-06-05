@@ -502,7 +502,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableOidcIssuer
-Whether to enalbe OIDC issuer feature.
+Whether to enable OIDC issuer feature.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

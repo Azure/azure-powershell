@@ -34,7 +34,7 @@ Update-AzSmartGroupState -State <String> -InputObject <PSSmartGroup> [-DefaultPr
 Update-AzSmartGroupState -SmartGroupId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529" -State "Acknowledged"
 ```
 
-This cmdlet updates the smart group state to Acknowleged.
+This cmdlet updates the smart group state to Acknowledged.
 
 ## PARAMETERS
 
