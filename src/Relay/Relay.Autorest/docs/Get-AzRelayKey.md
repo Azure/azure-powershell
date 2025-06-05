@@ -227,7 +227,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAccessKeys
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys
 
 ## NOTES
 
