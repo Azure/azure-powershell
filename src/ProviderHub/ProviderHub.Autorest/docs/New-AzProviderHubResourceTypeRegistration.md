@@ -12,6 +12,7 @@ Creates or updates a resource type.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> -ResourceType <String>
  [-SubscriptionId <String>] [-AllowedUnauthorizedAction <String[]>]
@@ -21,20 +22,60 @@ New-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> -ResourceT
  [-DefaultApiVersion <String>] [-DisallowedActionVerb <String[]>] [-EnableAsyncOperation]
  [-EnableThirdPartyS2S] [-Endpoint <IResourceTypeEndpoint[]>] [-ExtendedLocation <IExtendedLocationOptions[]>]
  [-FeatureRuleRequiredFeaturesPolicy <String>] [-IdentityManagementApplicationId <String>]
- [-IdentityManagementType <IdentityManagementTypes>] [-IsPureProxy]
- [-LinkedAccessCheck <ILinkedAccessCheck[]>] [-LoggingRule <ILoggingRule[]>] [-MarketplaceType <String>]
- [-ProvisioningState <ProvisioningState>] [-Regionality <Regionality>]
- [-RequestHeaderOptionOptInHeader <OptInHeaderType>] [-RequiredFeature <String[]>]
- [-ResourceCreationBeginRequest <ExtensionOptionType[]>]
- [-ResourceCreationBeginResponse <ExtensionOptionType[]>] [-ResourceDeletionPolicy <ResourceDeletionPolicy>]
- [-ResourceMovePolicyCrossResourceGroupMoveEnabled] [-ResourceMovePolicyCrossSubscriptionMoveEnabled]
- [-ResourceMovePolicyValidationRequired] [-RoutingType <RoutingType>] [-ServiceTreeInfo <IServiceTreeInfo[]>]
+ [-IdentityManagementType <String>] [-IsPureProxy] [-LinkedAccessCheck <ILinkedAccessCheck[]>]
+ [-LoggingRule <ILoggingRule[]>] [-MarketplaceType <String>] [-ProvisioningState <String>]
+ [-Regionality <String>] [-RequestHeaderOptionOptInHeader <String>] [-RequiredFeature <String[]>]
+ [-ResourceCreationBeginRequest <String[]>] [-ResourceCreationBeginResponse <String[]>]
+ [-ResourceDeletionPolicy <String>] [-ResourceMovePolicyCrossResourceGroupMoveEnabled]
+ [-ResourceMovePolicyCrossSubscriptionMoveEnabled] [-ResourceMovePolicyValidationRequired]
+ [-RoutingType <String>] [-ServiceTreeInfo <IServiceTreeInfo[]>]
  [-SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan>]
  [-SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]
  [-SubscriptionStateRule <ISubscriptionStateRule[]>] [-SwaggerSpecification <ISwaggerSpecification[]>]
- [-TemplateDeploymentOptionPreflightOption <PreflightOption[]>] [-TemplateDeploymentOptionPreflightSupported]
+ [-TemplateDeploymentOptionPreflightOption <String[]>] [-TemplateDeploymentOptionPreflightSupported]
  [-ThrottlingRule <IThrottlingRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### CreateViaIdentityProviderRegistrationExpanded
+```
+New-AzProviderHubResourceTypeRegistration -ProviderNamespace <String>
+ -ProviderRegistrationInputObject <IProviderHubIdentity> -ResourceType <String> [-SubscriptionId <String>]
+ [-AllowedUnauthorizedAction <String[]>] [-AuthorizationActionMapping <IAuthorizationActionMapping[]>]
+ [-CheckNameAvailabilitySpecificationEnableDefaultValidation]
+ [-CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation <String[]>]
+ [-DefaultApiVersion <String>] [-DisallowedActionVerb <String[]>] [-EnableAsyncOperation]
+ [-EnableThirdPartyS2S] [-Endpoint <IResourceTypeEndpoint[]>] [-ExtendedLocation <IExtendedLocationOptions[]>]
+ [-FeatureRuleRequiredFeaturesPolicy <String>] [-IdentityManagementApplicationId <String>]
+ [-IdentityManagementType <String>] [-IsPureProxy] [-LinkedAccessCheck <ILinkedAccessCheck[]>]
+ [-LoggingRule <ILoggingRule[]>] [-MarketplaceType <String>] [-ProvisioningState <String>]
+ [-Regionality <String>] [-RequestHeaderOptionOptInHeader <String>] [-RequiredFeature <String[]>]
+ [-ResourceCreationBeginRequest <String[]>] [-ResourceCreationBeginResponse <String[]>]
+ [-ResourceDeletionPolicy <String>] [-ResourceMovePolicyCrossResourceGroupMoveEnabled]
+ [-ResourceMovePolicyCrossSubscriptionMoveEnabled] [-ResourceMovePolicyValidationRequired]
+ [-RoutingType <String>] [-ServiceTreeInfo <IServiceTreeInfo[]>]
+ [-SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan>]
+ [-SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]
+ [-SubscriptionStateRule <ISubscriptionStateRule[]>] [-SwaggerSpecification <ISwaggerSpecification[]>]
+ [-TemplateDeploymentOptionPreflightOption <String[]>] [-TemplateDeploymentOptionPreflightSupported]
+ [-ThrottlingRule <IThrottlingRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> -ResourceType <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-FeatureRuleRequiredFeaturesPolicy <String>]
+ [-ResourceDeletionPolicy <String>] [-SwaggerSpecification <ISwaggerSpecification[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> -ResourceType <String>
+ -JsonString <String> [-SubscriptionId <String>] [-FeatureRuleRequiredFeaturesPolicy <String>]
+ [-ResourceDeletionPolicy <String>] [-SwaggerSpecification <ISwaggerSpecification[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,7 +116,7 @@ Create/Update a nested resource type registration.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -105,8 +146,8 @@ Accept wildcard characters: False
 To construct, see NOTES section for AUTHORIZATIONACTIONMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IAuthorizationActionMapping[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAuthorizationActionMapping[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -121,7 +162,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -136,7 +177,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -151,7 +192,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -162,7 +203,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -181,7 +223,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -196,7 +238,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -211,7 +253,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -226,8 +268,8 @@ Accept wildcard characters: False
 To construct, see NOTES section for ENDPOINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeEndpoint[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeEndpoint[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -242,8 +284,8 @@ Accept wildcard characters: False
 To construct, see NOTES section for EXTENDEDLOCATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtendedLocationOptions[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IExtendedLocationOptions[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -273,7 +315,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -287,8 +329,8 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -303,10 +345,40 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -318,8 +390,8 @@ Accept wildcard characters: False
 To construct, see NOTES section for LINKEDACCESSCHECK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedAccessCheck[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ILinkedAccessCheck[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -334,8 +406,8 @@ Accept wildcard characters: False
 To construct, see NOTES section for LOGGINGRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILoggingRule[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ILoggingRule[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -350,7 +422,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -390,12 +462,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProviderRegistrationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+Parameter Sets: CreateViaIdentityProviderRegistrationExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProvisioningState
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -409,8 +496,8 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.Regionality
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -424,8 +511,8 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -440,7 +527,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -454,8 +541,8 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -469,8 +556,8 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -484,7 +571,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceDeletionPolicy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -500,7 +587,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -515,7 +602,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -530,7 +617,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -559,8 +646,8 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.RoutingType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -575,8 +662,8 @@ Accept wildcard characters: False
 To construct, see NOTES section for SERVICETREEINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IServiceTreeInfo[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IServiceTreeInfo[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -606,7 +693,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -621,8 +708,8 @@ Accept wildcard characters: False
 To construct, see NOTES section for SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideAction[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISubscriptionStateOverrideAction[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -637,8 +724,8 @@ Accept wildcard characters: False
 To construct, see NOTES section for SUBSCRIPTIONSTATERULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateRule[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISubscriptionStateRule[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -653,7 +740,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SWAGGERSPECIFICATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISwaggerSpecification[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISwaggerSpecification[]
 Parameter Sets: (All)
 Aliases:
 
@@ -668,8 +755,8 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -684,7 +771,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -699,8 +786,8 @@ Accept wildcard characters: False
 To construct, see NOTES section for THROTTLINGRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingRule[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IThrottlingRule[]
+Parameter Sets: CreateExpanded, CreateViaIdentityProviderRegistrationExpanded
 Aliases:
 
 Required: False
@@ -746,9 +833,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeRegistration
 
 ## NOTES
 
