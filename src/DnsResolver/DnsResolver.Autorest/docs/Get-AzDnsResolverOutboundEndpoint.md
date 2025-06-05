@@ -46,6 +46,7 @@ Name         Type                                             Etag
 sampleOutbound Microsoft.Network/dnsResolvers/outboundEndpoints "0a001a28-0000-0800-0000-60e3846a0000"
 sampleOutbound2 Microsoft.Network/dnsResolvers/outboundEndpoints "0a001a27-0000-0800-0000-60e3846a0000"
 ```
+
 This command gets all outbound endpoints under the DNS resolver in a resource group.
 
 ### Example 2: Get single outbound endpoint by name
@@ -64,7 +65,8 @@ This command gets an outbound endpoint under the DNS resolver in a resource grou
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -184,29 +186,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IOutboundEndpoint
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
-  - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
-  - `[DnsResolverDomainListName <String>]`: The name of the DNS resolver domain list.
-  - `[DnsResolverName <String>]`: The name of the DNS resolver.
-  - `[DnsResolverPolicyName <String>]`: The name of the DNS resolver policy.
-  - `[DnsResolverPolicyVirtualNetworkLinkName <String>]`: The name of the DNS resolver policy virtual network link for the DNS resolver policy.
-  - `[DnsSecurityRuleName <String>]`: The name of the DNS security rule.
-  - `[ForwardingRuleName <String>]`: The name of the forwarding rule.
-  - `[Id <String>]`: Resource identity path
-  - `[InboundEndpointName <String>]`: The name of the inbound endpoint for the DNS resolver.
-  - `[OutboundEndpointName <String>]`: The name of the outbound endpoint for the DNS resolver.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
-  - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
-  - `[VirtualNetworkName <String>]`: The name of the virtual network.
 
 ## RELATED LINKS
 

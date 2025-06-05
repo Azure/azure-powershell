@@ -15,7 +15,7 @@
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
-      Prerelease = preview
+      Prerelease = 'preview'
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'DnsResolver'
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'

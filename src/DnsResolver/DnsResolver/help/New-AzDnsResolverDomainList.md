@@ -85,6 +85,7 @@ Accept wildcard characters: False
 
 ### -Domain
 The domains in the domain list.
+Will be null if user is using large domain list.
 
 ```yaml
 Type: System.String[]
