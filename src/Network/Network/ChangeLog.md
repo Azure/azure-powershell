@@ -19,12 +19,14 @@
 --->
 
 ## Upcoming Release
-* Onboarded Application Gateway WAF Exceptions cmdlet.
-    - `New-AzApplicationGatewayFirewallPolicyException`
-    
-* Added properties 'ContinuousCapture', 'LocalPath', and 'CaptureSettings' to Packet capture V2 command along with update the old parameter as 'FilePath' as well as support for it for the following cmdlets:
-	  - `New-AzPacketCaptureSettingsConfig`
+* Added a new command which creates an object for CaptureSettings, and added properties 'FileCount', 'FileSizeInBytes', and 'SessionTimeLimitInSeconds', which helps to configure the capture settings for packet capture as well as support for it for the following cmdlets:
+	- `New-AzPacketCaptureSettingsConfig`
+
+* Added properties 'ContinuousCapture', 'LocalPath', and 'CaptureSettings' reference in Packet capture V2 command, as well as support for it for the following cmdlets:
     - `New-AzNetworkWatcherPacketCaptureV2`
+
+* Onboarded Application Gateway WAF Exceptions cmdlet.
+    - `New-AzApplicationGatewayFirewallPolicyException` 
 
 ## Version 7.17.0
 * Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:
