@@ -387,7 +387,7 @@ Accept wildcard characters: False
 
 ### -ScheduleEndDateTime
 End Date Time. Format 2022-09-21 06:00:00
-Should be mentioned in case of Recurrent  Schedule - Daily, Weekly or Monthly.
+Should be mentioned in case of Recurrent Schedule - Daily, Weekly or Monthly.
 
 ```yaml
 Type: System.String
@@ -563,7 +563,7 @@ Accept wildcard characters: False
 
 ### -ScheduleStartDateTime
 Start Date Time. Format 2022-09-21 06:00:00
-Should be mentioned in case of recurrent  Schedule - Daily, Weekly or Monthly.
+Should be mentioned in case of Recurrent Schedule - Daily, Weekly or Monthly.
 
 ```yaml
 Type: System.String
