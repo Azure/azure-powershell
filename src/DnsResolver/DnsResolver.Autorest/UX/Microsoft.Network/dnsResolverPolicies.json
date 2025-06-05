@@ -1,6 +1,6 @@
 {
   "resourceType": "dnsResolverPolicies",
-  "apiVersion": "2023-07-01-preview",
+  "apiVersion": "2025-05-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.dnsresolver"
   },
