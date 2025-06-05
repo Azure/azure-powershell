@@ -15,8 +15,9 @@ Perform switchover action on Autonomous Database
 ### SwitchoverExpanded (Default)
 ```
 Invoke-AzOracleSwitchoverAutonomousDatabase -Autonomousdatabasename <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-PeerDbId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-PeerDbId <String>] [-PeerDbLocation <String>] [-PeerDbOcid <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SwitchoverViaJsonString
@@ -36,8 +37,8 @@ Invoke-AzOracleSwitchoverAutonomousDatabase -Autonomousdatabasename <String> -Re
 ### SwitchoverViaIdentityExpanded
 ```
 Invoke-AzOracleSwitchoverAutonomousDatabase -InputObject <IOracleIdentity> [-PeerDbId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PeerDbLocation <String>] [-PeerDbOcid <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -162,7 +163,37 @@ Accept wildcard characters: False
 ```
 
 ### -PeerDbId
-The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer database.
+The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current peer database.
+
+```yaml
+Type: System.String
+Parameter Sets: SwitchoverExpanded, SwitchoverViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeerDbLocation
+The location of the Disaster Recovery peer database.
+
+```yaml
+Type: System.String
+Parameter Sets: SwitchoverExpanded, SwitchoverViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeerDbOcid
+Ocid of the Disaster Recovery peer database, which is located in a different region from the current peer database.
 
 ```yaml
 Type: System.String
