@@ -21,6 +21,10 @@ using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
@@ -66,7 +70,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(
             Position = 1,
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Gets or sets the login for the cluster's user.")]
         public PSCredential HttpCredential
@@ -92,6 +96,14 @@ namespace Microsoft.Azure.Commands.HDInsight
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(
+            HelpMessage = "Gets or sets the Entra user data. Accepts one or more ObjectId/UPN separated by ','.")]
+        public string EntraUserIdentity { get; set; }
+
+        [Parameter(
+            HelpMessage = "Gets or sets a list of Entra users as an array of hashtables. Each hashtable should contain keys such as ObjectId, UPN, and DisplayName.")]
+        public Hashtable[] EntraUserFullInfo { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background.")]
         public SwitchParameter AsJob { get; set; }
 
@@ -99,12 +111,38 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            var updateGatewaySettingsParameters = new UpdateGatewaySettingsParameters
+            bool isHttpCredentialBound = this.HttpCredential != null;
+            bool isRestAuthEntraUsersBound = !string.IsNullOrWhiteSpace(EntraUserIdentity) || (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0) ;
+            if (isHttpCredentialBound && isRestAuthEntraUsersBound)
             {
-                IsCredentialEnabled = true,
-                UserName = HttpCredential.UserName,
-                Password = HttpCredential.Password.ConvertToString()
-            };
+                throw new ArgumentException("Only one of HttpCredential, EntraUserIdentity, or EntraUserFullInfo can be provided.");
+            }
+            else if (!isHttpCredentialBound && !isRestAuthEntraUsersBound)
+            {
+                throw new ArgumentException("One of HttpCredential, EntraUserIdentity, or EntraUserFullInfo must be provided.");
+            }
+            List<EntraUserInfo> RestAuthEntraUsers = null;
+            if (isRestAuthEntraUsersBound)
+            {
+                if (!string.IsNullOrWhiteSpace(EntraUserIdentity) && (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
+                {
+                    throw new ArgumentException("Cannot provide both EntraUserIdentity and EntraUserFullInfo parameters.");
+                }
+                RestAuthEntraUsers = ClusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserIdentity, EntraUserFullInfo);
+            }
+
+            var updateGatewaySettingsParameters = new UpdateGatewaySettingsParameters();
+            if (isHttpCredentialBound)
+            {
+                updateGatewaySettingsParameters.IsCredentialEnabled = true;
+                updateGatewaySettingsParameters.UserName = HttpCredential.UserName;
+                updateGatewaySettingsParameters.Password = HttpCredential.Password.ConvertToString();
+            }else if (isRestAuthEntraUsersBound)
+            {
+                updateGatewaySettingsParameters.IsCredentialEnabled = false;
+                updateGatewaySettingsParameters.RestAuthEntraUsers = RestAuthEntraUsers;
+            }
+
 
             if (this.IsParameterBound(c => c.ResourceId))
             {
@@ -124,11 +162,34 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ResourceGroupName = GetResourceGroupByAccountName(Name);
             }
 
-            if (ShouldProcess(Name, "set gateway http credential"))
+            string action = isHttpCredentialBound ? "set gateway HTTP credential" : "set gateway Entra users";
+
+            if (ShouldProcess(Name, action))
             {
                 HDInsightManagementClient.UpdateGatewayCredential(ResourceGroupName, Name, updateGatewaySettingsParameters);
-                WriteObject(new AzureHDInsightGatewaySettings(HDInsightManagementClient.GetGatewaySettings(ResourceGroupName, Name)));
+                AzureHDInsightGatewaySettings getGatewaySettings = new AzureHDInsightGatewaySettings(HDInsightManagementClient.GetGatewaySettings(ResourceGroupName, Name));
+                List<EntraUserInfo> restAuthEntraUsers = getGatewaySettings.RestAuthEntraUsers?.ToList() ?? new List<EntraUserInfo>();
+                var output = new HDIGatewayCredentialOutput
+                {
+                    IsCredentialEnabled = getGatewaySettings.IsCredentialEnabled,
+                    UserName = getGatewaySettings.UserName,
+                    Password = getGatewaySettings.Password,
+                    RestAuthEntraUsers = getGatewaySettings.RestAuthEntraUsers,
+                    ObjectIDs = restAuthEntraUsers.Select(u => u.ObjectId).ToList(),
+                    Upns = restAuthEntraUsers.Select(u => u.Upn).ToList()
+                };
+                WriteObject(output);
             }
+        }
+
+        private class HDIGatewayCredentialOutput
+        {
+            public string IsCredentialEnabled { get; set; }
+            public string UserName { get; set; }
+            public string Password { get; set; }
+            public IList<EntraUserInfo> RestAuthEntraUsers { get; set; }
+            public IList<string> ObjectIDs { get; set; }
+            public IList<string> Upns { get; set; }
         }
     }
 }

@@ -11,9 +11,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Identity;
+using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.Graph;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -122,5 +127,69 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     !key.EndsWith(defaultAccount, StringComparison.OrdinalIgnoreCase)
                     select key.Remove(0, Constants.ClusterConfiguration.StorageAccountKeyPrefix.Length)).ToList();
         }
+
+        public static List<EntraUserInfo> GetHDInsightGatewayEntraUser(string EntraUserIdentity, Hashtable[] EntraUserFullInfo)
+        {
+            List<EntraUserInfo> restAuthEntraUsers = new List<EntraUserInfo>();
+            if (!string.IsNullOrWhiteSpace(EntraUserIdentity))
+            {
+                try
+                {
+                    var userdata = EntraUserIdentity
+                     .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                     .Select(s => s.Trim())
+                     .Where(s => !string.IsNullOrEmpty(s))
+                     .ToList();
+                    var graphClient = new GraphServiceClient(new DefaultAzureCredential());
+                    foreach (var data in userdata)
+                    {
+                        try
+                        {
+                            var user = graphClient.Users[data].GetAsync().GetAwaiter().GetResult();
+                            restAuthEntraUsers.Add(new EntraUserInfo
+                            {
+                                ObjectId = user.Id,
+                                DisplayName = user.DisplayName,
+                                Upn = user.UserPrincipalName
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception($"Failed to resolve Entra user from input: {data}", ex);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new FormatException($"Invalid format in EntraUserIdentity. Expected comma-separated ObjectIds or UPNs, but got: \"{EntraUserIdentity}\"", ex);
+                }
+            }
+            else if (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0)
+            {
+                var userDicts = EntraUserFullInfo.Select(user =>
+                {
+                    var dict = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                    foreach (DictionaryEntry entry in user)
+                    {
+                        dict[entry.Key.ToString()] = entry.Value.ToString();
+                    }
+                    return (IDictionary<string, string>)dict;
+                });
+                foreach (var userDict in userDicts)
+                {
+                    string objectId = userDict.TryGetValue("ObjectId", out var oid) ? oid : null;
+                    string upn = userDict.TryGetValue("Upn", out var u) ? u : null;
+                    string displayName = userDict.TryGetValue("DisplayName", out var dn) ? dn : null;
+                    restAuthEntraUsers.Add(new EntraUserInfo
+                    {
+                        ObjectId = objectId,
+                        DisplayName = displayName,
+                        Upn = upn
+                    });
+                }
+            }
+            return restAuthEntraUsers;
+        }
+
     }
 }

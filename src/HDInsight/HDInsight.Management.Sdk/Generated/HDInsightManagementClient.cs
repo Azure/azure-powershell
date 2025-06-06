@@ -310,6 +310,9 @@ namespace Microsoft.Azure.Management.HDInsight
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -353,7 +356,7 @@ namespace Microsoft.Azure.Management.HDInsight
             this.ScriptExecutionHistory = new ScriptExecutionHistoryOperations(this);
             this.VirtualMachines = new VirtualMachinesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-08-01-preview";
+            this.ApiVersion = "2025-01-15-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

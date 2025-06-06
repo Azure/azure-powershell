@@ -106,15 +106,18 @@ class ClusterCommonCreateParameter{
 <#
 .SYNOPSIS
  Create Common Parameter with WASB for creating cluster.
+ 
+       
+
 #>
 function Prepare-ClusterCreateParameter{
     param(
       [string] $clusterName="ps",
-      [string] $location="eastus",
+      [string] $location="East Asia",
       [string] $resourceGroupName="group-ps-test",
 	  [string] $storageAccountName="storagepstest",
-      [string] $clusterType="Spark",
-      [string] $virtualNetworkId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0",
+      [string] $clusterType="Hadoop",
+      [string] $virtualNetworkId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0",
       [string] $subnet="default"
     )
 
