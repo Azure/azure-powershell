@@ -17,27 +17,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzDigitalTwinsEndpoint'))
 Describe 'AzDigitalTwinsEndpoint' {
     It 'List' {
         {
-            $config = Get-AzDigitalTwinsEndpoint -ResourceGroupName $env.resourceGroup -ResourceName $env.testEvnDT
+            $config = Get-AzDigitalTwinsEndpoint -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName1
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            $config = Get-AzDigitalTwinsEndpoint -ResourceGroupName $env.resourceGroup -ResourceName $env.testEvnDT -EndpointName $env.testEvnEH
+            $config = Get-AzDigitalTwinsEndpoint -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName1 -EndpointName $env.testEvnEH
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'Delete' {
         {
-            Remove-AzDigitalTwinsEndpoint -ResourceGroupName $env.resourceGroup -ResourceName $env.testEvnDT -EndpointName $env.testEvnEG
+            Remove-AzDigitalTwinsEndpoint -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName1 -EndpointName $env.testEvnEG
         } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
         {
-            $config = Get-AzDigitalTwinsEndpoint -ResourceGroupName $env.resourceGroup -ResourceName $env.testEvnDT -EndpointName $env.testEvnSB
+            $config = Get-AzDigitalTwinsEndpoint -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName1 -EndpointName $env.testEvnSB
             Remove-AzDigitalTwinsEndpoint -InputObject $config
         } | Should -Not -Throw
     }
