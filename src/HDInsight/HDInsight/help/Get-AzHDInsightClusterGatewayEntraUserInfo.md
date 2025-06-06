@@ -1,49 +1,46 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-ms.assetid: 8CD55A33-5964-409A-BDA5-EDAE9A21E0C1
-online version: https://learn.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightclusterautoscaleconfiguration
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzHDInsightClusterAutoscaleConfiguration
+# Get-AzHDInsightClusterGatewayEntraUserInfo
 
 ## SYNOPSIS
-Gets the autoscale configuration of HDInsight cluster.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
-### GetByNameParameterSet (Default)
+### GetByNameParameterSet
 ```
-Get-AzHDInsightClusterAutoscaleConfiguration [[-ResourceGroupName] <String>] [-ClusterName] <String>
+Get-AzHDInsightClusterGatewayEntraUserInfo [[-ResourceGroupName] <String>] [-ClusterName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzHDInsightClusterAutoscaleConfiguration [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzHDInsightClusterGatewayEntraUserInfo [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### GetByInputObjectParameterSet
+### SetByInputObjectParameterSet
 ```
-Get-AzHDInsightClusterAutoscaleConfiguration [-InputObject] <AzureHDInsightCluster>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzHDInsightClusterGatewayEntraUserInfo [-DefaultProfile <IAzureContextContainer>]
+ -InputObject <AzureHDInsightCluster> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzHDInsightClusterAutoscaleConfiguration** cmdlet gets the autoscale configuration of HDInsight cluster.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Get the autoscale configuration of HDInsight cluster.
+### Example 1
 ```powershell
-$clusterResourceGroup="group"
-$clusterName="MyCluster"
-Get-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $clusterName
+PS C:\> {{ Add example code here }}
 ```
 
-This command gets the autoscale configuration of HDInsight cluster.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -51,7 +48,7 @@ This command gets the autoscale configuration of HDInsight cluster.
 Gets or sets the name of the cluster.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -66,7 +63,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -81,12 +78,12 @@ Accept wildcard characters: False
 Gets or sets the input object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster
-Parameter Sets: GetByInputObjectParameterSet
+Type: AzureHDInsightCluster
+Parameter Sets: SetByInputObjectParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -96,7 +93,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -111,7 +108,7 @@ Accept wildcard characters: False
 Gets or sets the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -126,7 +123,7 @@ Accept wildcard characters: False
 Gets or sets the resource id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
@@ -148,12 +145,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightAutoscale
+### Microsoft.Azure.Management.HDInsight.Models.EntraUserInfo
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzHDInsightClusterAutoscaleConfiguration](./New-AzHDInsightClusterAutoscaleConfiguration.md)
-[Set-AzHDInsightClusterAutoscaleConfiguration](./Set-AzHDInsightClusterAutoscaleConfiguration.md)
-[Remove-AzHDInsightClusterAutoscaleConfiguration](./Remove-AzHDInsightClusterAutoscaleConfiguration.md)
