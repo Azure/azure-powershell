@@ -1115,7 +1115,7 @@ Accept wildcard characters: False
 ```
 
 ### -EntraUserFullInfo
-Gets or sets a list of Entra users as an array of hashtables. Each hashtable should contain keys such as ObjectId, UPN, and DisplayName.
+Gets or sets a list of Entra users as an array of hashtables. Each hashtable should contain keys such as ObjectId, Upn, and DisplayName.
 
 ```yaml
 Type: System.Collections.Hashtable[]

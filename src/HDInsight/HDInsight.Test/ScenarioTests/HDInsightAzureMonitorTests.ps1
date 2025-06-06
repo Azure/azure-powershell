@@ -83,7 +83,7 @@ function Test-AzureMonitorAgentRelatedCommands{
 		# $params= Prepare-ClusterCreateParameter -location $location
 
 		# create cluster that will be used throughout test
-		$cluster = Get-AzHDInsightCluster -ResourceGroupName "wut-tip2-esp" -ClusterName "test5-wut-tip2"
+		$cluster = Get-AzHDInsightCluster -ResourceGroupName "group-ps-test" -ClusterName "ps-test-cluster"
 		Assert-NotNull $cluster
 
 		$workspaceName = "ps-la"

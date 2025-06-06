@@ -15,7 +15,7 @@ Update tags or managed identities for a HDInsight cluster.
 ```
 Update-AzHDInsightCluster [-ClusterName] <String> [-IdentityType <String>] [-IdentityId <String[]>]
  [-Tag <System.Collections.Generic.Dictionary`2[System.String,System.String]>] [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -128,21 +128,6 @@ Possible values include: SystemAssigned, UserAssigned.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

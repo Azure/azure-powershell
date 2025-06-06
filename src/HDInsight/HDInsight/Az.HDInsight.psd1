@@ -87,7 +87,6 @@ CmdletsToExport = 'Add-AzHDInsightClusterIdentity', 'Add-AzHDInsightComponentVer
                'Get-AzHDInsightAzureMonitorAgent', 'Get-AzHDInsightCluster', 
                'Update-AzHDInsightCluster', 
                'Get-AzHDInsightClusterAutoscaleConfiguration', 
-               'Get-AzHDInsightClusterGatewayEntraUserInfo',
                'Get-AzHDInsightHost', 'Get-AzHDInsightJob', 
                'Get-AzHDInsightJobOutput', 'Get-AzHDInsightMonitoring', 
                'Get-AzHDInsightPersistedScriptAction', 'Get-AzHDInsightProperty', 

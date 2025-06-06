@@ -131,14 +131,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public static List<EntraUserInfo> GetHDInsightGatewayEntraUser(string EntraUserIdentity, Hashtable[] EntraUserFullInfo)
         {
             List<EntraUserInfo> restAuthEntraUsers = new List<EntraUserInfo>();
-            if (String.IsNullOrEmpty(EntraUserIdentity) && (EntraUserFullInfo == null || EntraUserFullInfo.Length == 0))
-            {
-                return restAuthEntraUsers;
-            }
-            if(!string.IsNullOrWhiteSpace(EntraUserIdentity) && (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
-            {
-                throw new ArgumentException("Cannot provide both EntraUserIdentity and EntraUserFullInfo parameters.");
-            }
             if (!string.IsNullOrWhiteSpace(EntraUserIdentity))
             {
                 try
@@ -179,7 +171,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     var dict = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
                     foreach (DictionaryEntry entry in user)
                     {
-                        dict[entry.Key.ToString() ?? ""] = entry.Value.ToString() ?? "";
+                        dict[entry.Key.ToString()] = entry.Value.ToString();
                     }
                     return (IDictionary<string, string>)dict;
                 });

@@ -50,9 +50,6 @@ function Test-CreateClusterWithWasbAndMSI{
 	}
 }
 
-
-
-
 <#
 .SYNOPSIS
 Test Create Entra HDInsight Cluster 
@@ -77,14 +74,10 @@ function Test-CreateEntraCluster{
 			StorageContainer                = $params.clusterName
 			StorageAccountKey               = $params.storageAccountKey
 			StorageAccountResourceId        = $params.storageAccountResourceId
-		    # EntraUserFullInfo               = $entraUserFullInfo
 			EntraUserIdentity               = $entraUserIdentity
-			# HttpCredential                  = $params.httpCredential
         }
 		$resultCluster = New-AzHDInsightCluster @clusterParams
-		$resultEntraUsers = Get-AzHDInsightClusterGatewayEntraUserInfo -ResourceGroupName $params.resourceGroupName -ClusterName $params.clusterName
 		Set-AzHDInsightGatewayCredential -ResourceGroupName $params.resourceGroupName -ClusterName $params.clusterName -EntraUserFullInfo $entraUserFullInfo
-
 		Assert-NotNull $resultCluster
 	}
 
@@ -94,7 +87,6 @@ function Test-CreateEntraCluster{
 		# Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
-
 
 <#
 .SYNOPSIS
@@ -379,7 +371,7 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 
 		# create cluster
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
-		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType "Spark" `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
@@ -492,7 +484,7 @@ function Test-ClusterEnableSecureChannelCommands{
 
 		# test create cluster
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
-		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType "Spark" `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential -Version "5.1" `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EnableSecureChannel $enableSecureChannel -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
@@ -628,9 +620,8 @@ function Test-UpdateClusterTags{
 		# prepare parameter for creating parameter
 		#$params= Prepare-ClusterCreateParameter
 
-		$rg="group-ps-test1721"
-		$clusterName="az16040"
-
+		$rg="group-ps-test"
+		$clusterName="ps-test-cluster"
 		# Update cluster tags
 		$tags = New-Object 'System.Collections.Generic.Dictionary[System.String,System.String]'
 		$tags.Add('Tag3', 'Value3')
@@ -651,8 +642,8 @@ Test Update cluster System Assigned Identity
 function Test-UpdateClusterSystemAssigned{
 	try
 	{
-		$rg="yukundemo1"
-		$clusterName="ykc20wasb"
+		$rg="group-ps-test"
+		$clusterName="ps-test-cluster"
 
 		$cluster = Update-AzHDInsightCluster -ResourceGroupName $rg -ClusterName $clusterName -IdentityType SystemAssigned
 
@@ -673,8 +664,8 @@ Test Update cluster User Assigned Identity
 function Test-UpdateClusterUserAssigned{
 	try
 	{
-		$rg="yukundemo1"
-		$clusterName="ykc20wasb"
+		$rg="group-ps-test"
+		$clusterName="ps-test-cluster"
 
 		# Define the list of Identity IDs
 		$identityIds = @(

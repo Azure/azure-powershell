@@ -107,6 +107,7 @@ class ClusterCommonCreateParameter{
 .SYNOPSIS
  Create Common Parameter with WASB for creating cluster.
  
+       
 
 #>
 function Prepare-ClusterCreateParameter{

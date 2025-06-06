@@ -39,7 +39,6 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CreateEntraCluster");
         }
 
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestClusterRelatedCommands()

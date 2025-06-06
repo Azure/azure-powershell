@@ -23,11 +23,10 @@
 ## Version 6.4.0
 * Added two parameters `-EntraUserIdentity` and `-EntraUserFullInfo` to cmdlet `New-AzHDInsightCluster` 
   - Added parameter `-EntraUserIdentity` to cmdlet `New-AzHDInsightCluster` to support creating Entra user clusters using one or more ObjectId or UPNs. Automatically resolves Entra user information.
-  - Added parameter `-EntraUserFullInfo` to cmdlet `New-AzHDInsightCluster` to support creating Entra user clusters using an array of hashtables that include ObjectId, UPN, and DisplayName.
+  - Added parameter `-EntraUserFullInfo` to cmdlet `New-AzHDInsightCluster` to support creating Entra user clusters using an array of hashtables that include ObjectId, Upn, and DisplayName.
 * Added two parameters `-EntraUserIdentity` and `-EntraUserFullInfo` to cmdlet `Set-AzHDInsightGatewayCredential` 
-  - Added parameter `-EntraUserIdentity` to cmdlet `New-AzHDInsightCluster` to support update Entra user clusters using one or more ObjectId or UPNs. Automatically resolves Entra user information.
-  - Added parameter `-EntraUserFullInfo` to cmdlet `New-AzHDInsightCluster` to support update Entra user clusters using an array of hashtables that include ObjectId, UPN, and DisplayName.
-* Added new command `Get-AzHDInsightClusterGatewayEntraUserInfo` to get the list of Entra users configured for gateway access in a  HDInsight cluster.
+  - Added parameter `-EntraUserIdentity` to cmdlet `Set-AzHDInsightGatewayCredential` to support update Entra user clusters using one or more ObjectId or UPNs. Automatically resolves Entra user information.
+  - Added parameter `-EntraUserFullInfo` to cmdlet `Set-AzHDInsightGatewayCredential` to support update Entra user clusters using an array of hashtables that include ObjectId, Upn, and DisplayName.
 
 ## Version 6.3.1
 * Upgraded nuget package to signed package.

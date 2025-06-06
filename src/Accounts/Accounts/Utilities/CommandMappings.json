@@ -3233,7 +3233,6 @@
       "Get-AzHDInsightCluster": {},
       "Update-AzHDInsightCluster": {},
       "Get-AzHDInsightClusterAutoscaleConfiguration": {},
-      "Get-AzHDInsightClusterGatewayEntraUserInfo": {},
       "Get-AzHDInsightHost": {},
       "Get-AzHDInsightJob": {},
       "Get-AzHDInsightJobOutput": {},
