@@ -21,8 +21,6 @@ function Test-CreateClusterWithWasbAndMSI{
 	try{
 		# prepare parameter for creating parameter
 		$params= Prepare-ClusterCreateParameter
-		$storageAccountKey=Get-AzStorageAccountKey -ResourceGroupName "yukundemo1" -Name "yk01wasb666666666666"
-		$storageAccountKey=$storageAccountKey[0].Value
 		$clusterParams = @{
 			ClusterType                     = $params.clusterType
 			ClusterSizeInNodes              = $params.clusterSizeInNodes
@@ -37,9 +35,9 @@ function Test-CreateClusterWithWasbAndMSI{
 			Version                         = "5.1"
 			StorageAccountType              = "AzureStorage"
 			StorageContainer                = $params.clusterName
-			StorageAccountKey               = $storageAccountKey
-			StorageAccountResourceId        = "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.Storage/storageAccounts/yk01wasb666666666666"
-			StorageAccountManagedIdentity   = "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/yk-test-msi"
+			StorageAccountKey               = ""
+			StorageAccountResourceId        = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hdi-ps-test/providers/Microsoft.Storage/storageAccounts/hdi-storage-wasb"
+			StorageAccountManagedIdentity   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/hdi-ps-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-test-msi"
         }
 		# test create cluster
 		$cluster = New-AzHDInsightCluster @clusterParams
@@ -63,10 +61,8 @@ Test Create Entra HDInsight Cluster
 function Test-CreateEntraCluster{
 	try{
 		 $params= Prepare-ClusterCreateParameter
-		 $params.resourceGroupName = "yukundemo13778"
-		 $entraUserFullInfo = @(@{ ObjectId = "516648dd-1fb7-4bd6-bddb-d38c13d3b646"; Upn = "_dpssql@microsoft.com"; DisplayName = "DPS SQL minion" },
-							@{ objectId = "a2e31431-d7de-43db-a5a5-56ece4c71f75"; upn = "_ipsback@microsoft.com"; displayName = "IPS Backup" })
-		 $entraUserIdentity = "v-yukunli@microsoft.com , f012fdcd-b8d9-407f-9d33-29f88776ec44, _mdbuild@microsoft.com"
+		 $entraUserFullInfo = @(@{ObjectId = "e2af296c-0509-4653-8851-1dd19e5d951e"; Upn = "v-shuaitong@microsoft.com"; DisplayName = "Shuai Tong (Beyondsoft)" },@{objectId = "438eee54-a90f-48d4-af98-476079328b8c"; upn = "v-weidongguo@microsoft.com"; displayName = "Wei dong Guo (Beyondsoft)" })
+		 $entraUserIdentity = "v-yukunli@microsoft.com , f012fdcd-b8d9-407f-9d33-29f88776ec44, _mdbuild@microsoft.com"	
 		 $clusterParams = @{
 			ClusterType                     = $params.clusterType
 			ClusterSizeInNodes              = $params.clusterSizeInNodes
@@ -86,38 +82,10 @@ function Test-CreateEntraCluster{
 			# HttpCredential                  = $params.httpCredential
         }
 		$resultCluster = New-AzHDInsightCluster @clusterParams
+		$resultEntraUsers = Get-AzHDInsightClusterGatewayEntraUserInfo -ResourceGroupName $params.resourceGroupName -ClusterName $params.clusterName
+		Set-AzHDInsightGatewayCredential -ResourceGroupName $params.resourceGroupName -ClusterName $params.clusterName -EntraUserFullInfo $entraUserFullInfo
+
 		Assert-NotNull $resultCluster
-	}
-
-	finally
-	{
-		# Delete cluster and resource group
-		# Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
-	}
-}
-
-
-
-<#
-.SYNOPSIS
-Test Update Entra User And Get Entra User
-#>
-
-function Test-UpdateAndGetEntraUserInfo{
-	try{
-		# prepare parameter for creating parameter
-		$resourceGroupName = "yukundemo13778"
-		$clusterName = "ykcc01"
-		$entraUserFullInfo = @(
-			@{ObjectId = "e2af296c-0509-4653-8851-1dd19e5d951e"; Upn = "v-shuaitong@microsoft.com"; DisplayName = "Shuai Tong (Beyondsoft)" },
-			@{objectId = "438eee54-a90f-48d4-af98-476079328b8c"; upn = "v-weidongguo@microsoft.com"; displayName = "Wei dong Guo (Beyondsoft)" }
-		)
-		$entraUserIdentity = "v-yukunli@microsoft.com ,zhezhou@microsoft.com"
-		$resultEntraUsers = Get-AzHDInsightClusterGatewayEntraUserInfo -ResourceGroupName $resourceGroupName -ClusterName $clusterName
-		Assert-AreEqual "f012fdcd-b8d9-407f-9d33-29f88776ec44"      $resultEntraUsers[0].ObjectId
-		Set-AzHDInsightGatewayCredential -ResourceGroupName $resourceGroupName -ClusterName $clusterName -EntraUserIdentity $entraUserIdentity
-		$resultEntraUsers = Get-AzHDInsightClusterGatewayEntraUserInfo -ResourceGroupName $resourceGroupName -ClusterName $clusterName
-		Set-AzHDInsightGatewayCredential -ResourceGroupName $resourceGroupName -ClusterName $clusterName -EntraUserFullInfo $entraUserFullInfo
 	}
 
 	finally

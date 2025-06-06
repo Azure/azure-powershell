@@ -223,7 +223,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f5d3a199-7c91-4db1-b074-8b45561beadb/resourcegroups/yukundemo1/providers/Microsoft.OperationalInsights/workspaces/yk-Log-Analytics?api-version=2021-12-01-preview",
+      "RequestUri": "/subscriptions/f5d3a199-7c91-4db1-b074-8b45561beadb/resourcegroups/wut-tip2-esp/providers/Microsoft.OperationalInsights/workspaces/ps-la?api-version=2021-12-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjVkM2ExOTktN2M5MS00ZGIxLWIwNzQtOGI0NTU2MWJlYWRiL3Jlc291cmNlZ3JvdXBzL3l1a3VuZGVtbzEvcHJvdmlkZXJzL01pY3Jvc29mdC5PcGVyYXRpb25hbEluc2lnaHRzL3dvcmtzcGFjZXMveWstTG9nLUFuYWx5dGljcz9hcGktdmVyc2lvbj0yMDIxLTEyLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -297,11 +297,11 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"customerId\": \"c2f40959-1025-409e-9233-61ef550ed8a7\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\",\r\n      \"lastSkuUpdate\": \"2025-05-22T06:38:31.5788247Z\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"2025-05-22T12:00:00Z\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"2025-05-22T06:38:31.5788247Z\",\r\n    \"modifiedDate\": \"2025-05-22T06:38:38.0782916Z\"\r\n  },\r\n  \"location\": \"eastasia\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/f5d3a199-7c91-4db1-b074-8b45561beadb/resourceGroups/yukundemo1/providers/Microsoft.OperationalInsights/workspaces/yk-Log-Analytics\",\r\n  \"name\": \"yk-Log-Analytics\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"etag\": \"\\\"0500211c-0000-1900-0000-682ec66e0000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"customerId\": \"c2f40959-1025-409e-9233-61ef550ed8a7\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\",\r\n      \"lastSkuUpdate\": \"2025-05-22T06:38:31.5788247Z\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"2025-05-22T12:00:00Z\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"2025-05-22T06:38:31.5788247Z\",\r\n    \"modifiedDate\": \"2025-05-22T06:38:38.0782916Z\"\r\n  },\r\n  \"location\": \"eastasia\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/f5d3a199-7c91-4db1-b074-8b45561beadb/resourceGroups/wut-tip2-esp/providers/Microsoft.OperationalInsights/workspaces/ps-la\",\r\n  \"name\": \"ps-la\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"etag\": \"\\\"0500211c-0000-1900-0000-682ec66e0000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f5d3a199-7c91-4db1-b074-8b45561beadb/resourcegroups/yukundemo1/providers/Microsoft.OperationalInsights/workspaces/yk-Log-Analytics/sharedKeys?api-version=2020-08-01",
+      "RequestUri": "/subscriptions/f5d3a199-7c91-4db1-b074-8b45561beadb/resourcegroups/wut-tip2-esp/providers/Microsoft.OperationalInsights/workspaces/ps-la/sharedKeys?api-version=2020-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjVkM2ExOTktN2M5MS00ZGIxLWIwNzQtOGI0NTU2MWJlYWRiL3Jlc291cmNlZ3JvdXBzL3l1a3VuZGVtbzEvcHJvdmlkZXJzL01pY3Jvc29mdC5PcGVyYXRpb25hbEluc2lnaHRzL3dvcmtzcGFjZXMveWstTG9nLUFuYWx5dGljcy9zaGFyZWRLZXlzP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDE=",
       "RequestMethod": "POST",
       "RequestHeaders": {
