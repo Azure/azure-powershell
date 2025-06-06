@@ -61,8 +61,8 @@ Test Create Entra HDInsight Cluster
 function Test-CreateEntraCluster{
 	try{
 		 $params= Prepare-ClusterCreateParameter
-		 $entraUserFullInfo = @(@{ObjectId = "e2af296c-0509-4653-8851-1dd19e5d951e"; Upn = "v-shuaitong@microsoft.com"; DisplayName = "Shuai Tong (Beyondsoft)" },@{objectId = "438eee54-a90f-48d4-af98-476079328b8c"; upn = "v-weidongguo@microsoft.com"; displayName = "Wei dong Guo (Beyondsoft)" })
-		 $entraUserIdentity = "v-yukunli@microsoft.com , f012fdcd-b8d9-407f-9d33-29f88776ec44, _mdbuild@microsoft.com"	
+		 $entraUserFullInfo = @(@{ObjectId = "00000000-0000-0000-0000-000000000000"; Upn = "user@microsoft.com"; DisplayName = "DisplayName" },@{ObjectId = "00000000-0000-0000-0000-000000000000"; Upn = "user@microsoft.com"; DisplayName = "DisplayName" })
+		 $entraUserIdentity = "test_test.com#EXT#@microsoft.onmicrosoft.com"	
 		 $clusterParams = @{
 			ClusterType                     = $params.clusterType
 			ClusterSizeInNodes              = $params.clusterSizeInNodes
@@ -374,7 +374,7 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
 		#"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
-		$vnetId= "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.Network/virtualNetworks/yk01networkeastasia"
+		$vnetId= "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0"
 		$subnetName="default"
 
 		# create cluster
@@ -581,7 +581,7 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 		$params= Prepare-ClusterCreateParameter
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
-		$vnetId= "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/zzy-test-rg/providers/Microsoft.Network/virtualNetworks/zzytestvnet"#"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
+		$vnetId= "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
 		$subnetName="default"
 
 		$ipConfigName="ipconfig"
@@ -678,8 +678,8 @@ function Test-UpdateClusterUserAssigned{
 
 		# Define the list of Identity IDs
 		$identityIds = @(
-			"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/yk-test-msi",
-			"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/yk-test-msi-east-asia"
+			"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/hdi-ps-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-test-msi",
+			"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/hdi-ps-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-test-msi2"		
 		)
 
 		$cluster = Update-AzHDInsightCluster -ResourceGroupName $rg -ClusterName $clusterName -IdentityType UserAssigned -IdentityId $identityIds
