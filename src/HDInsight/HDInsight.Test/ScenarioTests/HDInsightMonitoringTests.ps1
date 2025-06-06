@@ -68,6 +68,6 @@ function Test-MonitoringRelatedCommands{
 	finally
 	{
 		# Delete cluster and resource group
-		# Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }

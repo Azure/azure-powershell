@@ -46,7 +46,7 @@ function Test-CreateClusterWithWasbAndMSI{
 	finally
 	{
 		# Delete cluster and resource group
-		# Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
@@ -59,7 +59,7 @@ function Test-CreateEntraCluster{
 	try{
 		 $params= Prepare-ClusterCreateParameter
 		 $entraUserFullInfo = @(@{ObjectId = "00000000-0000-0000-0000-000000000000"; Upn = "user@microsoft.com"; DisplayName = "DisplayName" },@{ObjectId = "00000000-0000-0000-0000-000000000000"; Upn = "user@microsoft.com"; DisplayName = "DisplayName" })
-		 $entraUserIdentity = "test_test.com#EXT#@microsoft.onmicrosoft.com"	
+		 $entraUserIdentity = "TestUserAccount@microsoft.onmicrosoft.com"	
 		 $clusterParams = @{
 			ClusterType                     = $params.clusterType
 			ClusterSizeInNodes              = $params.clusterSizeInNodes
@@ -84,7 +84,7 @@ function Test-CreateEntraCluster{
 	finally
 	{
 		# Delete cluster and resource group
-		# Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
