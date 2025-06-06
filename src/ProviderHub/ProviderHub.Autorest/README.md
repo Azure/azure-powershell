@@ -54,19 +54,11 @@ input-file:
 module-version: 0.1.0
 title: ProviderHub
 subject-prefix: $(service-name)
-identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document
     where: $.definitions.Error.properties
     transform: delete $.innerError
-  - from: swagger-document
-    where: $
-    transform: $ = $.replace(/"authorizations"/, '"fakefields"');
   - from: swagger-document
     where: $.definitions.FeaturesRule.properties
     transform: >-
@@ -78,17 +70,14 @@ directive:
   - no-inline:
     - Error
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Manifest$|^ManifestViaIdentity$|^ManifestViaIdentityExpanded$
+      variant: ^(Create|Update|Manifest)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^ManifestViaIdentityExpanded$|^CreateViaIdentityExpanded$
     remove: true
   - where:
       verb: Set
     remove: true
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/fakefield/g, 'authorization');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/Fakefield/g, 'Authorization');
 
 # Hide commands to use Custom
   - where:
@@ -108,7 +97,7 @@ directive:
       subject: SkuNestedResourceTypeSecond
     hide: true
   - where:
-      verb: Get|New|Remove
+      verb: Get|New|Remove|Update
       subject: SkuNestedResourceTypeThird
     hide: true
   - where:
