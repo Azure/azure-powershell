@@ -1,65 +1,52 @@
 ---
-external help file: Az.DigitalTwins-help.xml
+external help file:
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsendpoint
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/update-azdigitaltwinsendpoint
 schema: 2.0.0
 ---
 
-# New-AzDigitalTwinsEndpoint
+# Update-AzDigitalTwinsEndpoint
 
 ## SYNOPSIS
-Create DigitalTwinsInstance endpoint.
+Update DigitalTwinsInstance endpoint.
 
 ## SYNTAX
 
 ### EventHub (Default)
 ```
-New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] -EndpointType <String> -ConnectionStringPrimaryKey <String>
- [-EndpointDescription <IDigitalTwinsEndpointResource>] [-AuthenticationType <String>]
- [-ConnectionStringSecondaryKey <String>] [-DeadLetterSecret <String>] [-DeadLetterUri <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
+ -ConnectionStringPrimaryKey <String> -EndpointType <String> [-SubscriptionId <String>]
+ [-AuthenticationType <String>] [-ConnectionStringSecondaryKey <String>] [-DeadLetterSecret <String>]
+ [-DeadLetterUri <String>] [-EndpointDescription <IDigitalTwinsEndpointResource>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EventGrid
 ```
-New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] -EndpointType <String> [-EndpointDescription <IDigitalTwinsEndpointResource>]
- [-AuthenticationType <String>] [-DeadLetterUri <String>] -TopicEndpoint <String> -AccessKey1 <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
+ -AccessKey1 <String> -EndpointType <String> -TopicEndpoint <String> [-SubscriptionId <String>]
+ [-AuthenticationType <String>] [-DeadLetterUri <String>]
+ [-EndpointDescription <IDigitalTwinsEndpointResource>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ServiceBus
 ```
-New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] -EndpointType <String> [-EndpointDescription <IDigitalTwinsEndpointResource>]
- [-AuthenticationType <String>] [-DeadLetterUri <String>] -PrimaryConnectionString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzDigitalTwinsEndpoint -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzDigitalTwinsEndpoint -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
+ -EndpointType <String> -PrimaryConnectionString <String> [-SubscriptionId <String>]
+ [-AuthenticationType <String>] [-DeadLetterUri <String>]
+ [-EndpointDescription <IDigitalTwinsEndpointResource>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create DigitalTwinsInstance endpoint.
+Update DigitalTwinsInstance endpoint.
 
 ## EXAMPLES
 
-### Example 1: Create an AzDigitalTwinsEndpoint for Eventhub
+### Example 1: Update an AzDigitalTwinsEndpoint for Eventhub
 ```powershell
-New-AzDigitalTwinsEndpoint -EndpointName azps-dt-eh -EndpointType EventHub -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -ConnectionStringPrimaryKey 'Endpoint=sb://azps-eventhubs.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-eh' -AuthenticationType 'KeyBased'
+Update-AzDigitalTwinsEndpoint -EndpointName azps-dt-eh -EndpointType EventHub -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -ConnectionStringPrimaryKey 'Endpoint=sb://azps-eventhubs.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-eh' -AuthenticationType 'KeyBased'
 ```
 
 ```output
@@ -83,17 +70,17 @@ ResourceGroupName            : azps_test_group
 SystemDataCreatedAt          : 2025-06-06 11:16:50 AM
 SystemDataCreatedBy          : v-jinpel@microsoft.com
 SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 2025-06-06 11:16:50 AM
+SystemDataLastModifiedAt     : 2025-06-06 11:18:27 AM
 SystemDataLastModifiedBy     : v-jinpel@microsoft.com
 SystemDataLastModifiedByType : User
 Type                         : Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
 ```
 
-Create an AzDigitalTwinsEndpoint for Eventhub by connectionStringPrimaryKey
+Update an AzDigitalTwinsEndpoint for Eventhub by connectionStringPrimaryKey
 
-### Example 2: Create an AzDigitalTwinsEndpoint for EventGrid
+### Example 2: Update an AzDigitalTwinsEndpoint for EventGrid
 ```powershell
-New-AzDigitalTwinsEndpoint -EndpointName azps-dt-eg -EndpointType EventGrid -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -TopicEndpoint 'https://azps-eventgrid.eastus-1.eventgrid.azure.net/api/events' -AccessKey1 '******=' -AuthenticationType 'KeyBased'
+Update-AzDigitalTwinsEndpoint -EndpointName azps-dt-eg -EndpointType EventGrid -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -TopicEndpoint 'https://azps-eventgrid.eastus-1.eventgrid.azure.net/api/events' -AccessKey1 '******=' -AuthenticationType 'KeyBased'
 ```
 
 ```output
@@ -118,17 +105,17 @@ ResourceGroupName            : azps_test_group
 SystemDataCreatedAt          : 2025-06-06 11:22:11 AM
 SystemDataCreatedBy          : v-jinpel@microsoft.com
 SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 2025-06-06 11:22:11 AM
+SystemDataLastModifiedAt     : 2025-06-06 11:22:48 AM
 SystemDataLastModifiedBy     : v-jinpel@microsoft.com
 SystemDataLastModifiedByType : User
 Type                         : Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
 ```
 
-Create an AzDigitalTwinsEndpoint for Eventhub by TopicEndpoint and accessKey1
+Update an AzDigitalTwinsEndpoint for Eventhub by TopicEndpoint and accessKey1
 
-### Example 3: Create an AzDigitalTwinsEndpoint for ServiceBus
+### Example 3: Update an AzDigitalTwinsEndpoint for ServiceBus
 ```powershell
-New-AzDigitalTwinsEndpoint -EndpointName azps-dt-sb -EndpointType ServiceBus -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -PrimaryConnectionString "Endpoint=sb://azps-servicebus.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-sb" -AuthenticationType 'KeyBased'
+Update-AzDigitalTwinsEndpoint -EndpointName azps-dt-sb -EndpointType ServiceBus -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -PrimaryConnectionString "Endpoint=sb://azps-servicebus.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-sb" -AuthenticationType 'KeyBased'
 ```
 
 ```output
@@ -158,7 +145,7 @@ SystemDataLastModifiedByType : User
 Type                         : Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
 ```
 
-Create an AzDigitalTwinsEndpoint for ServicBus by PrimaryConnectionString
+Update an AzDigitalTwinsEndpoint for ServicBus by PrimaryConnectionString
 
 ## PARAMETERS
 
@@ -200,7 +187,7 @@ If 'IdentityBased' is select, the endpointUri and entityPath properties must be 
 
 ```yaml
 Type: System.String
-Parameter Sets: EventHub, EventGrid, ServiceBus
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -261,7 +248,7 @@ Dead letter storage URL for identity-based authentication.
 
 ```yaml
 Type: System.String
-Parameter Sets: EventHub, EventGrid, ServiceBus
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -293,7 +280,7 @@ To construct, see NOTES section for ENDPOINTDESCRIPTION properties and create a 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource
-Parameter Sets: EventHub, EventGrid, ServiceBus
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -308,7 +295,7 @@ Name of Endpoint Resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: EventHub, EventGrid, ServiceBus
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -323,37 +310,7 @@ The type of Digital Twins endpoint
 
 ```yaml
 Type: System.String
-Parameter Sets: EventHub, EventGrid, ServiceBus
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -398,7 +355,7 @@ The name of the resource group that contains the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: EventHub, EventGrid, ServiceBus
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -413,7 +370,7 @@ The name of the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: EventHub, EventGrid, ServiceBus
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -428,7 +385,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: EventHub, EventGrid, ServiceBus
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -498,3 +455,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

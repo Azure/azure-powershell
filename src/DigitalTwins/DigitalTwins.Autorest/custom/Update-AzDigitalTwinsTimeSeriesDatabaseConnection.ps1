@@ -16,24 +16,31 @@
 
 <#
 .Synopsis
-Create a time series database connection.
+update a time series database connection.
 .Description
-Create a time series database connection.
+update a time series database connection.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzDigitalTwinsTimeSeriesDatabaseConnection -Name azps-tsdc -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -AdxDatabaseName "azpsadec1database" -AdxEndpointUri "https://azpsdataexplorer.eastus.kusto.windows.net" -AdxResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group/providers/Microsoft.Kusto/clusters/azpsdataexplorer" -AdxTableName "azpsadec1database-table" -EventHubEndpointUri "sb://azps-eventhubs.servicebus.windows.net/" -EventHubEntityPath "azps-eventhubs" -EventHubNamespaceResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group/providers/Microsoft.EventHub/namespaces/azps-eventhubs"
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DIGITALTWINSINSTANCEINPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+  [EndpointName <String>]: Name of Endpoint Resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: Location of DigitalTwinsInstance.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group that contains the DigitalTwinsInstance.
+  [ResourceId <String>]: The name of the private link resource.
+  [ResourceName <String>]: The name of the DigitalTwinsInstance.
+  [SubscriptionId <String>]: The subscription identifier.
+  [TimeSeriesDatabaseConnectionName <String>]: Name of time series database connection.
 
 INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
   [EndpointName <String>]: Name of Endpoint Resource.
@@ -45,106 +52,80 @@ INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the DigitalTwinsInstance.
   [SubscriptionId <String>]: The subscription identifier.
   [TimeSeriesDatabaseConnectionName <String>]: Name of time series database connection.
-
-TIMESERIESDATABASECONNECTIONDESCRIPTION <ITimeSeriesDatabaseConnection>: Describes a time series database connection resource.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinstimeseriesdatabaseconnection
+https://learn.microsoft.com/powershell/module/az.digitaltwins/update-azdigitaltwinstimeseriesdatabaseconnection
 #>
-function New-AzDigitalTwinsTimeSeriesDatabaseConnection {
+function Update-AzDigitalTwinsTimeSeriesDatabaseConnection {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection])]
-    [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Alias('TimeSeriesDatabaseConnectionName')]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
         [System.String]
         # Name of time series database connection.
         ${Name},
 
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
         [System.String]
         # The name of the resource group that contains the DigitalTwinsInstance.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
         [System.String]
         # The name of the DigitalTwinsInstance.
         ${ResourceName},
 
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
         [System.String]
         # The name of the Azure Data Explorer database.
         ${AdxDatabaseName},
 
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
         [System.String]
         # The URI of the Azure Data Explorer endpoint.
         ${AdxEndpointUri},
 
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
         [System.String]
         # The resource ID of the Azure Data Explorer cluster.
         ${AdxResourceId},
 
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
         [System.String]
         # The name of the Azure Data Explorer table. Defaults to AdtPropertyEvents.
         ${AdxTableName},
 
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
         [System.String]
         # The URL of the EventHub namespace for identity-based authentication. It must include the protocol sb://
         ${EventHubEndpointUri},
 
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
         [System.String]
         # The EventHub name in the EventHub namespace for identity-based authentication.
         ${EventHubEntityPath},
 
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
         [System.String]
         # The resource ID of the EventHub namespace.
         ${EventHubNamespaceResourceId},
 
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Parameter(ParameterSetName='CreateViaJsonFilePath')]
-        [Parameter(ParameterSetName='CreateViaJsonString')]
+        [Parameter(ParameterSetName='UpdateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The subscription identifier.
         ${SubscriptionId},
-
-        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-        [System.String]
-        # Path of Json file supplied to the Create operation
-        ${JsonFilePath},
-
-        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-        [System.String]
-        # Json string supplied to the Create operation
-        ${JsonString},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -205,7 +186,7 @@ function New-AzDigitalTwinsTimeSeriesDatabaseConnection {
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
-    )
+)
 
     process {
         try {
@@ -230,7 +211,7 @@ function New-AzDigitalTwinsTimeSeriesDatabaseConnection {
 
             $null = $PSBoundParameters.Add("TimeSeriesDatabaseConnectionDescription",$Parameter)
 
-            Az.DigitalTwins.internal\New-AzDigitalTwinsTimeSeriesDatabaseConnection @PSBoundParameters
+            Az.DigitalTwins.internal\Update-AzDigitalTwinsTimeSeriesDatabaseConnection @PSBoundParameters
         } catch {
             throw
         }

@@ -17,21 +17,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzDigitalTwinsTimeSeriesDatab
 Describe 'AzDigitalTwinsTimeSeriesDatabaseConnection' {
     It 'List' {
         {
-            $config = Get-AzDigitalTwinsTimeSeriesDatabaseConnection -ResourceGroupName $env.resourceGroup -ResourceName $env.testEvnDT
+            $config = Get-AzDigitalTwinsTimeSeriesDatabaseConnection -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName1
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            $config = Get-AzDigitalTwinsTimeSeriesDatabaseConnection -ResourceGroupName $env.resourceGroup -ResourceName $env.testEvnDT -Name AdtAdxConnection
+            $config = Get-AzDigitalTwinsTimeSeriesDatabaseConnection -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName1 -Name azps-tsdc
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'Delete' {
         {
-            Remove-AzDigitalTwinsTimeSeriesDatabaseConnection -ResourceGroupName $env.resourceGroup -ResourceName $env.testEvnDT -Name AdtAdxConnection
+            Remove-AzDigitalTwinsTimeSeriesDatabaseConnection -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName1 -Name azps-tsdc
         } | Should -Not -Throw
     }
 }

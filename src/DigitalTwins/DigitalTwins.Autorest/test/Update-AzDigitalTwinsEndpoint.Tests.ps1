@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzDigitalTwinsPrivateEndpointConnection'))
+if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDigitalTwinsEndpoint'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzDigitalTwinsPrivateEndpointConnection.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzDigitalTwinsEndpoint.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDigitalTwinsPrivateEndp
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzDigitalTwinsPrivateEndpointConnection' {
-    It 'CreateExpanded' -skip {
+Describe 'Update-AzDigitalTwinsEndpoint' {
+    It 'EventHub' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateViaIdentityExpanded' -skip {
+    It 'ServiceBus' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'EventGrid' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

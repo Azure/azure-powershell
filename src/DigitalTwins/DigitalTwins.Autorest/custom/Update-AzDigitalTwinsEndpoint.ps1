@@ -16,13 +16,11 @@
 
 <#
 .Synopsis
-Create DigitalTwinsInstance endpoint.
+update DigitalTwinsInstance endpoint.
 .Description
-Create DigitalTwinsInstance endpoint.
+update DigitalTwinsInstance endpoint.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzDigitalTwinsEndpoint -EndpointName azps-dt-eh -EndpointType EventHub -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -AuthenticationType 'KeyBased'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
@@ -32,6 +30,17 @@ Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointReso
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DIGITALTWINSINSTANCEINPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+  [EndpointName <String>]: Name of Endpoint Resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: Location of DigitalTwinsInstance.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group that contains the DigitalTwinsInstance.
+  [ResourceId <String>]: The name of the private link resource.
+  [ResourceName <String>]: The name of the DigitalTwinsInstance.
+  [SubscriptionId <String>]: The subscription identifier.
+  [TimeSeriesDatabaseConnectionName <String>]: Name of time series database connection.
 
 INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
   [EndpointName <String>]: Name of Endpoint Resource.
@@ -44,9 +53,9 @@ INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription identifier.
   [TimeSeriesDatabaseConnectionName <String>]: Name of time series database connection.
 .Link
-https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsendpoint
+https://learn.microsoft.com/powershell/module/az.digitaltwins/update-azdigitaltwinsendpoint
 #>
-function New-AzDigitalTwinsEndpoint {
+function Update-AzDigitalTwinsEndpoint {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource])]
     [CmdletBinding(DefaultParameterSetName='EventHub', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
@@ -91,15 +100,6 @@ function New-AzDigitalTwinsEndpoint {
         # DigitalTwinsInstance endpoint resource.
         # To construct, see NOTES section for ENDPOINTDESCRIPTION properties and create a hash table.
         ${EndpointDescription},
-
-        [Parameter(ParameterSetName='EventHub', Mandatory)]
-        [Parameter(ParameterSetName='EventGrid', Mandatory)]
-        [Parameter(ParameterSetName='ServiceBus', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.PSArgumentCompleterAttribute("EventHub", "EventGrid", "ServiceBus")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-        [System.String]
-        # The type of Digital Twins endpoint
-        ${EndpointType},
 
         [Parameter(ParameterSetName='EventHub')]
         [Parameter(ParameterSetName='EventGrid')]
@@ -158,17 +158,14 @@ function New-AzDigitalTwinsEndpoint {
         # Dead letter storage URL for identity-based authentication.
         ${DeadLetterUri},
 
-        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='EventHub', Mandatory)]
+        [Parameter(ParameterSetName='EventGrid', Mandatory)]
+        [Parameter(ParameterSetName='ServiceBus', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.PSArgumentCompleterAttribute("EventHub", "EventGrid", "ServiceBus")]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
         [System.String]
-        # Path of Json file supplied to the Create operation
-        ${JsonFilePath},
-
-        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-        [System.String]
-        # Json string supplied to the Create operation
-        ${JsonString},
+        # The type of Digital Twins endpoint
+        ${EndpointType},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -229,7 +226,8 @@ function New-AzDigitalTwinsEndpoint {
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
-    )
+)
+
     process {
         try {
             if($PSBoundParameters['EndpointType'] -eq 'EventHub')
@@ -263,7 +261,7 @@ function New-AzDigitalTwinsEndpoint {
             $null = $PSBoundParameters.Remove('AuthenticationType')
             $null = $PSBoundParameters.Add("EndpointDescription",$Parameter)
 
-            Az.DigitalTwins.internal\New-AzDigitalTwinsEndpoint @PSBoundParameters
+            Az.DigitalTwins.internal\Update-AzDigitalTwinsEndpoint @PSBoundParameters
         } catch {
             throw
         }

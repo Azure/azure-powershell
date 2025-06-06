@@ -19,6 +19,14 @@ Describe 'Test-AzDigitalTwinsInstanceNameAvailability' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'CheckViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CheckViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'CheckViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
