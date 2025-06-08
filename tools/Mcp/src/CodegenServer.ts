@@ -3,11 +3,13 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 import { toolParameterSchema, toolSchema } from "./types.js";
 import specs from "./specs/Specs.json" assert { type: "json" };
+import responses from "./specs/responses.json" assert { type: "json" };
 import { toolServices } from "./services/toolServices.js";
 
 export class CodegenServer {
     private static _instance: CodegenServer;
     private _mcp: McpServer;
+    private _responses = new Map<string, string>();
 
     private constructor() {
         this._mcp = new McpServer({
@@ -22,6 +24,7 @@ export class CodegenServer {
     }
 
     init(): void {
+        this.initResponses();
         this.initTools();
         this.initPrompts();
     }
@@ -42,7 +45,7 @@ export class CodegenServer {
         const toolSchemas = specs.tools as toolSchema[];
         for (const schema of toolSchemas) {
             const parameter = this.createToolParameterfromSchema(schema.parameters);
-            const callBack = toolServices<{ [k: string]: z.ZodTypeAny }>(schema.callbackName);
+            const callBack = toolServices<{ [k: string]: z.ZodTypeAny }>(schema.callbackName, this._responses.get(schema.name));
             this._mcp.tool(
                 schema.name,
                 schema.description,
@@ -69,6 +72,12 @@ export class CodegenServer {
                     },
                 ],
             };
+        });
+    }
+
+    initResponses() {
+        responses?.forEach(response => {
+            this._responses.set(response.name, response.text);
         });
     }
 

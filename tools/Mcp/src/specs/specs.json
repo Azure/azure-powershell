@@ -20,11 +20,6 @@
                     "name": "modelNames",
                     "description": "model names need to be no-inline",
                     "type": "array"
-                },
-                {
-                    "name": "response",
-                    "description": "Add no-inline directives for models: ${0}. Please update README.md with the no-inline directive for each model.",
-                    "type": "string"
                 }
             ],
             "callbackName": "handleNoInline"
@@ -42,7 +37,7 @@
             "callbackName": "handleModelCmdlet"
         },
         {
-            "name": "polymophism",
+            "name": "polymorphism",
             "description": "this tool can handle polymorphism: when a parent type has multiple children types, and the children types can be inferred by an enum value discriminator, this tool can make parameter of parent type polymorphic which take one of the children types",
             "parameters": [
                 {
