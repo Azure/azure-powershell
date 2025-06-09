@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added support for throughput buckets.
 
 ## Version 1.18.0
 * Added support for creating containers with Vector Embedding Policy.
