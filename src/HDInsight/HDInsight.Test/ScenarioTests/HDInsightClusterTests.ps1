@@ -45,7 +45,7 @@ function Test-CreateClusterWithWasbAndMSI{
 	finally
 	{
 		# Delete cluster and resource group
-		# Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
