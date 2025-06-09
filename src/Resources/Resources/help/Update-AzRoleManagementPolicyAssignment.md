@@ -1,45 +1,47 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azrolemanagementpolicy
+online version: https://learn.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicyassignment
 schema: 2.0.0
 ---
 
-# Remove-AzRoleManagementPolicy
+# Update-AzRoleManagementPolicyAssignment
 
 ## SYNOPSIS
-Delete a role management policy
+Update a role management policy assignment
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzRoleManagementPolicy -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzRoleManagementPolicyAssignment -Name <String> -Scope <String> [-PolicyId <String>]
+ [-RoleDefinitionId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Remove-AzRoleManagementPolicy -InputObject <IAuthorizationIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzRoleManagementPolicyAssignment -InputObject <IAuthorizationIdentity> [-PolicyId <String>]
+ [-RoleDefinitionId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a role management policy
+Update a role management policy assignment
 
 ## EXAMPLES
 
-### Example 1: Delete a role management policy
+### Example 1: update role management policy assignment
 ```powershell
-$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-Remove-AzRoleManagementPolicy -Scope $scope -Name "0a4d3ef7-147b-4777-a958-ae9dfab3c331"
+$scope = "/subscriptions/11111111-2222-3333-4444-123456789101/"
+Update-AzRoleManagementPolicyAssignment -Scope $scope -Name "11111111-2222-3333-4444-123456789102"
 ```
 
 ```output
-The requested resource does not support http method 'DELETE'.
+"Not implemented exception"
 ```
 
-This operation is currently not supported
+This operation is currently not supported.
 
 ## PARAMETERS
 
@@ -64,7 +66,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -75,12 +77,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name (guid) of the role management policy to upsert.
+The name of format {guid_guid} the role management policy assignment to upsert.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: RoleManagementPolicyName
+Parameter Sets: UpdateExpanded
+Aliases: RoleManagementPolicyAssignmentName
 
 Required: True
 Position: Named
@@ -89,11 +91,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -PolicyId
+The policy id role management policy assignment.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RoleDefinitionId
+The role definition of management policy assignment.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,11 +122,11 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The scope of the role management policy to upsert.
+The scope of the role management policy assignment to upsert.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -159,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicyAssignment
 
 ## NOTES
 

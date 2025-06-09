@@ -1,76 +1,59 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://learn.microsoft.com/powershell/module/az.resources/new-azroleeligibilityschedulerequest
+online version: https://learn.microsoft.com/powershell/module/az.resources/update-azroleeligibilityschedulerequest
 schema: 2.0.0
 ---
 
-# New-AzRoleEligibilityScheduleRequest
+# Update-AzRoleEligibilityScheduleRequest
 
 ## SYNOPSIS
-Create a role eligibility schedule request.
+Update a role eligibility schedule request.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzRoleEligibilityScheduleRequest -Name <String> -Scope <String> [-Condition <String>]
+Update-AzRoleEligibilityScheduleRequest -Name <String> -Scope <String> [-Condition <String>]
  [-ConditionVersion <String>] [-ExpirationDuration <String>] [-ExpirationEndDateTime <DateTime>]
  [-ExpirationType <String>] [-Justification <String>] [-PrincipalId <String>] [-RequestType <String>]
  [-RoleDefinitionId <String>] [-ScheduleInfoStartDateTime <DateTime>]
  [-TargetRoleEligibilityScheduleId <String>] [-TargetRoleEligibilityScheduleInstanceId <String>]
- [-TicketNumber <String>] [-TicketSystem <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-TicketNumber <String>] [-TicketSystem <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### UpdateViaIdentityExpanded
 ```
-New-AzRoleEligibilityScheduleRequest -Name <String> -Scope <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzRoleEligibilityScheduleRequest -Name <String> -Scope <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzRoleEligibilityScheduleRequest -InputObject <IAuthorizationIdentity> [-Condition <String>]
+ [-ConditionVersion <String>] [-ExpirationDuration <String>] [-ExpirationEndDateTime <DateTime>]
+ [-ExpirationType <String>] [-Justification <String>] [-PrincipalId <String>] [-RequestType <String>]
+ [-RoleDefinitionId <String>] [-ScheduleInfoStartDateTime <DateTime>]
+ [-TargetRoleEligibilityScheduleId <String>] [-TargetRoleEligibilityScheduleInstanceId <String>]
+ [-TicketNumber <String>] [-TicketSystem <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a role eligibility schedule request.
+Update a role eligibility schedule request.
 
 ## EXAMPLES
 
-### Example 1: Create a new role eligibile schedule request as Admin
+### Example 1: Update a new role eligibile schedule request as Admin
 ```powershell
 $guid = "12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca"
 $startTime = Get-Date -Format o 
-$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-New-AzRoleEligibilityScheduleRequest -Name $guid -Scope $scope -ExpirationDuration PT1H -ExpirationType AfterDuration -PrincipalId 5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2 -RequestType AdminAssign -RoleDefinitionId subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7 -ScheduleInfoStartDateTime $startTime
+$scope = "/subscriptions/11111111-2222-3333-4444-123456789101/"
+Update-AzRoleEligibilityScheduleRequest -Name $guid -Scope $scope -ExpirationDuration PT1H -ExpirationType AfterDuration -PrincipalId 5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2 -RequestType AdminAssign -RoleDefinitionId subscriptions/11111111-2222-3333-4444-123456789101/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7 -ScheduleInfoStartDateTime $startTime
 ```
 
 ```output
 Name                                 Type                                                    Scope                                               RoleDefinitionId
 ----                                 ----                                                    -----                                               ----------------                                                                 
-12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca Microsoft.Authorization/roleEligibilityScheduleRequests /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authori… 
+12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca Microsoft.Authorization/roleEligibilityScheduleRequests /subscriptions/11111111-2222-3333-4444-123456789101 /subscriptions/11111111-2222-3333-4444-123456789101/providers/Microsoft.Authori…
 ```
 
-Creates a request to provision an eligible assignment of `roleDefinition` on the `scope` for the specified `principal`
-
-### Example 2: Remove a role eligibile schedule request as Admin
-```powershell
-$guid = "13f8978c-5d8d-4fbf-b4b6-2f43eeb43eca"
-$startTime = Get-Date -Format o 
-$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-New-AzRoleEligibilityScheduleRequest -Name $guid -Scope $scope -ExpirationDuration PT1H -ExpirationType AfterDuration -PrincipalId 5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2 -RequestType AdminRemove -RoleDefinitionId subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7 -ScheduleInfoStartDateTime $startTime
-```
-
-```output
-Name                                 Type                                                    Scope                                               RoleDefinitionId
-----                                 ----                                                    -----                                               ----------------                                                                 
-13f8978c-5d8d-4fbf-b4b6-2f43eeb43eca Microsoft.Authorization/roleEligibilityScheduleRequests /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authori… 
-```
-
-Creates a request to remove an eligible assignment of `roleDefinition` on the `scope` for the specified `principal`
+Updates a request to provision an eligible assignment of `roleDefinition` on the `scope` for the specified `principal`
 
 ## PARAMETERS
 
@@ -81,7 +64,7 @@ e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:Contai
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -97,7 +80,7 @@ Currently accepted value is '2.0'
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -128,7 +111,7 @@ Duration of the role eligibility schedule in TimeSpan.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -143,7 +126,7 @@ End DateTime of the role eligibility schedule.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -158,7 +141,7 @@ Type of the role eligibility schedule expiration
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -168,33 +151,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -203,7 +171,7 @@ Justification for the role eligibility
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -219,7 +187,7 @@ It can be any valid GUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: RoleEligibilityScheduleRequestName
 
 Required: True
@@ -234,7 +202,7 @@ The principal ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -250,7 +218,7 @@ Eg: SelfActivate, AdminAssign etc
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -265,7 +233,7 @@ The role definition ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -280,7 +248,7 @@ Start DateTime of the role eligibility schedule.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -297,7 +265,7 @@ For example, use '/providers/Microsoft.Subscription/subscriptions/{subscription-
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -312,7 +280,7 @@ The resultant role eligibility schedule id or the role eligibility schedule id b
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -327,7 +295,7 @@ The role eligibility schedule instance id being updated
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -342,7 +310,7 @@ Ticket number for the role eligibility
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -357,7 +325,7 @@ Ticket system name for the role eligibility
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -403,6 +371,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleEligibilityScheduleRequest
@@ -410,4 +380,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
