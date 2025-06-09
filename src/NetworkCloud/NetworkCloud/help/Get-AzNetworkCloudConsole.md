@@ -21,8 +21,7 @@ Get-AzNetworkCloudConsole -ResourceGroupName <String> [-SubscriptionId <String[]
 ### Get
 ```
 Get-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VirtualMachineName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -VirtualMachineName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -167,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IConsole
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IConsole
 
 ## NOTES
 

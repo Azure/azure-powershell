@@ -14,8 +14,7 @@ Create an in-memory object for L3NetworkAttachmentConfiguration.
 
 ```
 New-AzNetworkCloudL3NetworkAttachmentConfigurationObject -NetworkId <String>
- [-IpamEnabled <L3NetworkConfigurationIpamEnabled>] [-PluginType <KubernetesPluginType>]
- [<CommonParameters>]
+ [-IpamEnabled <L3NetworkConfigurationIpamEnabled>] [-PluginType <KubernetesPluginType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.L3NetworkAttachmentConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.L3NetworkAttachmentConfiguration
 
 ## NOTES
 

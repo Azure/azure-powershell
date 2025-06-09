@@ -14,7 +14,7 @@ Create a new cluster or update the properties of the cluster if it exists.
 
 ```
 New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -AggregatorOrSingleRackDefinitionNetworkRackId <String>
+ [-IfMatch <String>] [-IfNoneMatch <String>] -AggregatorOrSingleRackDefinitionNetworkRackId <String>
  -AggregatorOrSingleRackDefinitionRackSerialNumber <String> -AggregatorOrSingleRackDefinitionRackSkuId <String>
  -ClusterType <ClusterType> -ClusterVersion <String> -ExtendedLocationName <String>
  -ExtendedLocationType <String> -Location <String> -NetworkFabricId <String>
@@ -22,23 +22,29 @@ New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> [-Subscript
  [-AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration <IBareMetalMachineConfigurationData[]>]
  [-AggregatorOrSingleRackDefinitionRackLocation <String>]
  [-AggregatorOrSingleRackDefinitionStorageApplianceConfiguration <IStorageApplianceConfigurationData[]>]
- [-AnalyticsWorkspaceId <String>] [-AssociatedIdentityType <ManagedServiceIdentitySelectorType>]
- [-AssociatedIdentityUserAssignedIdentityResourceId <String>] [-ClusterLocation <String>]
- [-ClusterServicePrincipalApplicationId <String>] [-ClusterServicePrincipalId <String>]
- [-ClusterServicePrincipalPassword <SecureString>] [-ClusterServicePrincipalTenantId <String>]
- [-CommandOutputSettingContainerUrl <String>]
+ [-AnalyticOutputSettingAnalyticsWorkspaceId <String>]
+ [-AnalyticsOutputSettingsAssociatedIdentityType <ManagedServiceIdentitySelectorType>]
+ [-AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
+ [-AnalyticsWorkspaceId <String>] [-ClusterLocation <String>] [-ClusterServicePrincipalApplicationId <String>]
+ [-ClusterServicePrincipalId <String>] [-ClusterServicePrincipalPassword <SecureString>]
+ [-ClusterServicePrincipalTenantId <String>] [-CommandOutputSettingContainerUrl <String>]
+ [-CommandOutputSettingsAssociatedIdentityType <ManagedServiceIdentitySelectorType>]
+ [-CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
  [-ComputeDeploymentThresholdGrouping <ValidationThresholdGrouping>]
  [-ComputeDeploymentThresholdType <ValidationThresholdType>] [-ComputeDeploymentThresholdValue <Int64>]
  [-ComputeRackDefinition <IRackDefinition[]>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-ManagedResourceGroupConfigurationLocation <String>]
  [-ManagedResourceGroupConfigurationName <String>]
  [-RuntimeProtectionConfigurationEnforcementLevel <RuntimeProtectionEnforcementLevel>]
- [-SecretArchiveKeyVaultId <String>] [-SecretArchiveUseKeyVault <ClusterSecretArchiveEnabled>]
- [-Tag <Hashtable>] [-UpdateStrategyMaxUnavailable <Int64>]
- [-UpdateStrategyThresholdType <ValidationThresholdType>] [-UpdateStrategyThresholdValue <Int64>]
- [-UpdateStrategyType <ClusterUpdateStrategyType>] [-UpdateStrategyWaitTimeMinute <Int64>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SecretArchiveKeyVaultId <String>] [-SecretArchiveSettingVaultUri <String>]
+ [-SecretArchiveSettingsAssociatedIdentityType <ManagedServiceIdentitySelectorType>]
+ [-SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
+ [-SecretArchiveUseKeyVault <ClusterSecretArchiveEnabled>] [-Tag <Hashtable>]
+ [-UpdateStrategyMaxUnavailable <Int64>] [-UpdateStrategyThresholdType <ValidationThresholdType>]
+ [-UpdateStrategyThresholdValue <Int64>] [-UpdateStrategyType <ClusterUpdateStrategyType>]
+ [-UpdateStrategyWaitTimeMinute <Int64>]
+ [-VulnerabilityScanningSettingContainerScan <VulnerabilityScanningSettingsContainerScan>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,6 +73,31 @@ eastus    clusterName      08/09/2023 18:33:54   user                    User   
 
 This command creates a new cluster.
 
+### Example 2: Create cluster with Identity
+```powershell
+$storageapplianceconfigurationdata = @()
+$baremetalmachineconfigurationdata = @()
+$computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster."})
+$tagHash = @{
+    tag = "tag"
+}
+$securePassword = ConvertTo-SecureString "password" -asplaintext -force
+$identityUserAssignedIdentity = @{}
+$userAssignedIdentityResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myManagedIdentity"
+$identityUserAssignedIdentity.Add($userAssignedIdentityResourceId, @{})
+
+
+New-AzNetworkCloudCluster -ResourceGroupName resourceGroup -Name clusterName -AggregatorOrSingleRackDefinitionNetworkRackId rackId -AggregatorOrSingleRackDefinitionRackSerialNumber sr1234 -AggregatorOrSingleRackDefinitionRackSkuId rackSku -ClusterType clustertype -IdentityType identityType -IdentityUserAssignedIdentity $identityUserAssignedIdentity -ClusterVersion clusterversion -ExtendedLocationName CmExtendedLocation -ExtendedLocationType CustomLocation -Location location -NetworkFabricId networkFabricId -SubscriptionId subscriptionId -AggregatorOrSingleRackDefinitionAvailabilityZone availabilityZone -AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration $baremetalmachineconfigurationdata -AggregatorOrSingleRackDefinitionRackLocation rackLocation -AggregatorOrSingleRackDefinitionStorageApplianceConfiguration $storageapplianceconfigurationdata -AnalyticOutputSettingAnalyticsWorkspaceId analyticsWorkspaceId -AnalyticsOutputSettingsAssociatedIdentityType identityType -AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -AnalyticsWorkspaceId analyticsWorkspaceId -CommandOutputSettingContainerUrl containerUrl -CommandOutputSettingsAssociatedIdentityType identityType -CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -ClusterServicePrincipalApplicationId clusterServicePrincipalAppId -ClusterServicePrincipalId ClusterServicePrincipalId -ClusterServicePrincipalPassword $securePassword -ClusterServicePrincipalTenantId tenantId -ComputeRackDefinition $computerackdefinition -SecretArchiveKeyVaultId keyVaultId -SecretArchiveSettingVaultUri keyVaultUri -SecretArchiveSettingsAssociatedIdentityType identityType -SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -SecretArchiveUseKeyVault useKeyVault -UpdateStrategyThresholdType updateStrategyThresholdType -UpdateStrategyThresholdValue updateStrategyThresholdValue -UpdateStrategyType updateStrategyType -UpdateStrategyWaitTimeMinutes updateStrategyWaitTimeMinutes -VulnerabilityScanningSettingContainerScan vulnerabilityScanningSettingContainerScan -ComputeDeploymentThresholdGrouping computeDeploymentThresholdGrouping -ComputeDeploymentThresholdType computeDeploymentThresholdType -ComputeDeploymentThresholdValue computeDeploymentThresholdValue -Tag $tagHash
+```
+
+```output
+Location  Name             SystemDataCreatedAt   SystemDataCreatedBy       SystemDataCreatedByType  SystemDataLastModifiedAt SystemDataLastModifiedBy         SystemDataLastModifiedByType ResourceGroupName
+--------  ---------        -------------------   -------------------       -----------------------  ------------------------ ------------------------         ---------------------------- -----------
+uksouth    clusterName      04/10/2025 18:14:18   user                    User                       04/10/2025 18:16:10      user                             User                         RGName
+```
+
+This command creates a new cluster with Identity.
+
 ## PARAMETERS
 
 ### -AggregatorOrSingleRackDefinitionAvailabilityZone
@@ -90,7 +121,7 @@ The unordered list of bare metal machine configuration.
 To construct, see NOTES section for AGGREGATORORSINGLERACKDEFINITIONBAREMETALMACHINECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineConfigurationData[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineConfigurationData[]
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +198,53 @@ The list of storage appliance configuration data for this rack.
 To construct, see NOTES section for AGGREGATORORSINGLERACKDEFINITIONSTORAGEAPPLIANCECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IStorageApplianceConfigurationData[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IStorageApplianceConfigurationData[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AnalyticOutputSettingAnalyticsWorkspaceId
+The resource ID of the analytics workspace that is to be used by the specified identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AnalyticsOutputSettingsAssociatedIdentityType
+The type of managed identity that is being selected.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId
+The user assigned managed identity resource ID to use.
+Mutually exclusive with a system assigned identity type.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -179,6 +256,7 @@ Accept wildcard characters: False
 ```
 
 ### -AnalyticsWorkspaceId
+Field Deprecated.
 The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
 
 ```yaml
@@ -198,37 +276,6 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AssociatedIdentityType
-The type of managed identity that is being selected.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AssociatedIdentityUserAssignedIdentityResourceId
-The user assigned managed identity resource ID to use.
-Mutually exclusive with a system assigned identity type.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -359,6 +406,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CommandOutputSettingsAssociatedIdentityType
+The type of managed identity that is being selected.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId
+The user assigned managed identity resource ID to use.
+Mutually exclusive with a system assigned identity type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ComputeDeploymentThresholdGrouping
 Selection of how the type evaluation is applied to the cluster calculation.
 
@@ -409,7 +487,7 @@ The list of rack definitions for the compute racks in a multi-rackcluster, or an
 To construct, see NOTES section for COMPUTERACKDEFINITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IRackDefinition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IRackDefinition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -488,6 +566,39 @@ The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+The ETag of the transformation.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+Other values will result in error from server as they are not supported.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -636,6 +747,52 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SecretArchiveSettingsAssociatedIdentityType
+The type of managed identity that is being selected.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId
+The user assigned managed identity resource ID to use.
+Mutually exclusive with a system assigned identity type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecretArchiveSettingVaultUri
+The URI for the key vault used as the secret archive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SecretArchiveUseKeyVault
 The indicator if the specified key vault should be used to archive the secrets of the cluster.
 
@@ -758,6 +915,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VulnerabilityScanningSettingContainerScan
+The mode selection for container vulnerability scanning.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VulnerabilityScanningSettingsContainerScan
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -796,7 +968,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ICluster
 
 ## NOTES
 

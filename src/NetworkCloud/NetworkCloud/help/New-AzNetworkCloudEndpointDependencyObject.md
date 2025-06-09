@@ -13,8 +13,7 @@ Create an in-memory object for EndpointDependency.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudEndpointDependencyObject -DomainName <String> [-Port <Int64>]
- [<CommonParameters>]
+New-AzNetworkCloudEndpointDependencyObject -DomainName <String> [-Port <Int64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.EndpointDependency
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.EndpointDependency
 
 ## NOTES
 

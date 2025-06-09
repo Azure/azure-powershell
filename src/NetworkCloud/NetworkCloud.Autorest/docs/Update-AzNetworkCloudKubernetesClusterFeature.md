@@ -34,6 +34,10 @@ Patch properties of the provided Kubernetes cluster feature.
 
 ### Example 1: Update Kubernetes cluster's feature
 ```powershell
+$tagUpdatedHash = @{
+    tag = "tag"
+}
+
 Update-AzNetworkCloudKubernetesClusterFeature -FeatureName featureName -KubernetesClusterName kubernetesClusterName -ResourceGroupName resourceGroup -SubscriptionId subscriptionId -Tag $tagUpdatedHash
 ```
 

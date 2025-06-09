@@ -15,8 +15,7 @@ Create an in-memory object for NetworkAttachment.
 ```
 New-AzNetworkCloudNetworkAttachmentObject -AttachedNetworkId <String>
  -IPAllocationMethod <VirtualMachineIPAllocationMethod> [-DefaultGateway <DefaultGateway>]
- [-Ipv4Address <String>] [-Ipv6Address <String>] [-Name <String>]
- [<CommonParameters>]
+ [-Ipv4Address <String>] [-Ipv6Address <String>] [-Name <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -157,7 +156,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.NetworkAttachment
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.NetworkAttachment
 
 ## NOTES
 
