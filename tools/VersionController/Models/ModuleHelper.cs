@@ -45,8 +45,9 @@ namespace VersionController.Netcore.Models
                 if (!string.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("DEFAULT_PS_REPOSITORY_URL")))
                 {
                     string repository = System.Environment.GetEnvironmentVariable("DEFAULT_PS_REPOSITORY_NAME");
+                    string systemAccessToken = System.Environment.GetEnvironmentVariable("SYSTEM_ACCESS_TOKEN");
                     findModuleScript = @"
-$AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force;
+$AccessTokenSecureString = ConvertTo-SecureString -String '" + systemAccessToken + @"' -AsPlainText -Force;
 $credentialsObject = [pscredential]::new('ONEBRANCH_TOKEN', $AccessTokenSecureString);
 Find-PSResource -Name " + moduleName + " -Repository " + repository + " -Credential $credentialsObject -Prerelease";
                 }
@@ -56,7 +57,7 @@ Find-PSResource -Name " + moduleName + " -Repository " + repository + " -Credent
                     findModuleScript = $"Find-PSResource -Name {moduleName} -Repository {repository} -Prerelease";
                 }
 
-                System.Console.WriteLine($"Find module script: {findModuleScript}");
+                // System.Console.WriteLine($"Find module script: {findModuleScript}");
                 
                 powershell.AddScript(findModuleScript);
                 var cmdletResult = powershell.Invoke();
