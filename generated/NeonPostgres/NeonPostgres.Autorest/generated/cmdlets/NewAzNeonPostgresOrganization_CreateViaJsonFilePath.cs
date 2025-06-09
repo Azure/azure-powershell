@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Description(@"create a OrganizationResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Neon.Postgres/organizations/{organizationName}", ApiVersion = "2024-08-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Neon.Postgres/organizations/{organizationName}", ApiVersion = "2025-03-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.NotSuggestDefaultParameterSet]
     public partial class NewAzNeonPostgresOrganization_CreateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.IEventListener,

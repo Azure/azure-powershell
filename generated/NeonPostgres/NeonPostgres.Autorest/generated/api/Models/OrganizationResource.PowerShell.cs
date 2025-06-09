@@ -161,6 +161,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
+            if (content.Contains("ProjectProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceInternal)this).ProjectProperty = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectProperties) content.GetValueForProperty("ProjectProperty",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceInternal)this).ProjectProperty, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ProjectPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("MarketplaceDetail"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceInternal)this).MarketplaceDetail = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetails) content.GetValueForProperty("MarketplaceDetail",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceInternal)this).MarketplaceDetail, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.LiftrBaseMarketplaceDetailsTypeConverter.ConvertFrom);
@@ -357,6 +361,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProjectProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceInternal)this).ProjectProperty = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectProperties) content.GetValueForProperty("ProjectProperty",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceInternal)this).ProjectProperty, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ProjectPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("MarketplaceDetail"))
             {

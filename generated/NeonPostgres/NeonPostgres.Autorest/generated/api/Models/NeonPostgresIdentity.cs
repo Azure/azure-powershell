@@ -12,6 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="BranchName" /> property.</summary>
+        private string _branchName;
+
+        /// <summary>The name of the Branch</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Owned)]
+        public string BranchName { get => this._branchName; set => this._branchName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -25,6 +32,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         /// <summary>Name of the Neon Organizations resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Owned)]
         public string OrganizationName { get => this._organizationName; set => this._organizationName = value; }
+
+        /// <summary>Backing field for <see cref="ProjectName" /> property.</summary>
+        private string _projectName;
+
+        /// <summary>The name of the Project</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Owned)]
+        public string ProjectName { get => this._projectName; set => this._projectName = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -49,6 +63,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
     public partial interface INeonPostgresIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.IJsonSerializable
     {
+        /// <summary>The name of the Branch</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the Branch",
+        SerializedName = @"branchName",
+        PossibleTypes = new [] { typeof(string) })]
+        string BranchName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
         Required = false,
@@ -71,6 +96,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         SerializedName = @"organizationName",
         PossibleTypes = new [] { typeof(string) })]
         string OrganizationName { get; set; }
+        /// <summary>The name of the Project</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the Project",
+        SerializedName = @"projectName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProjectName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
         Required = false,
@@ -98,10 +134,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
     internal partial interface INeonPostgresIdentityInternal
 
     {
+        /// <summary>The name of the Branch</summary>
+        string BranchName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>Name of the Neon Organizations resource</summary>
         string OrganizationName { get; set; }
+        /// <summary>The name of the Project</summary>
+        string ProjectName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The ID of the target subscription. The value must be an UUID.</summary>

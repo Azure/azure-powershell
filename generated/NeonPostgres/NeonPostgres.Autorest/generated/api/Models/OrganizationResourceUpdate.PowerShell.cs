@@ -157,6 +157,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTagsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("MarketplaceDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetail = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsUpdate) content.GetValueForProperty("MarketplaceDetail",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetail, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.LiftrBaseMarketplaceDetailsUpdateTypeConverter.ConvertFrom);
+            }
             if (content.Contains("UserDetail"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).UserDetail = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseUserDetails) content.GetValueForProperty("UserDetail",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).UserDetail, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.LiftrBaseUserDetailsTypeConverter.ConvertFrom);
@@ -168,6 +172,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             if (content.Contains("PartnerOrganizationProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).PartnerOrganizationProperty = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataPartnerOrganizationPropertiesUpdate) content.GetValueForProperty("PartnerOrganizationProperty",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).PartnerOrganizationProperty, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.LiftrBaseDataPartnerOrganizationPropertiesUpdateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProjectProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).ProjectProperty = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectPropertiesUpdate) content.GetValueForProperty("ProjectProperty",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).ProjectProperty, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ProjectPropertiesUpdateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MarketplaceDetailOfferDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetailOfferDetail = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseOfferDetailsUpdate) content.GetValueForProperty("MarketplaceDetailOfferDetail",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetailOfferDetail, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.LiftrBaseOfferDetailsUpdateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MarketplaceDetailSubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetailSubscriptionId = (string) content.GetValueForProperty("MarketplaceDetailSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetailSubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceDetailSubscriptionStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetailSubscriptionStatus = (string) content.GetValueForProperty("MarketplaceDetailSubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetailSubscriptionStatus, global::System.Convert.ToString);
             }
             if (content.Contains("UserDetailFirstName"))
             {
@@ -224,6 +244,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             if (content.Contains("PartnerOrganizationPropertyOrganizationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).PartnerOrganizationPropertyOrganizationName = (string) content.GetValueForProperty("PartnerOrganizationPropertyOrganizationName",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).PartnerOrganizationPropertyOrganizationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferDetailPublisherId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailPublisherId = (string) content.GetValueForProperty("OfferDetailPublisherId",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailPublisherId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferDetailOfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailOfferId = (string) content.GetValueForProperty("OfferDetailOfferId",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailOfferId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferDetailPlanId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailPlanId = (string) content.GetValueForProperty("OfferDetailPlanId",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailPlanId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferDetailPlanName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailPlanName = (string) content.GetValueForProperty("OfferDetailPlanName",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailPlanName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferDetailTermUnit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailTermUnit = (string) content.GetValueForProperty("OfferDetailTermUnit",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailTermUnit, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferDetailTermId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailTermId = (string) content.GetValueForProperty("OfferDetailTermId",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailTermId, global::System.Convert.ToString);
             }
             if (content.Contains("SingleSignOnPropertySingleSignOnState"))
             {
@@ -306,6 +350,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTagsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("MarketplaceDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetail = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsUpdate) content.GetValueForProperty("MarketplaceDetail",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetail, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.LiftrBaseMarketplaceDetailsUpdateTypeConverter.ConvertFrom);
+            }
             if (content.Contains("UserDetail"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).UserDetail = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseUserDetails) content.GetValueForProperty("UserDetail",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).UserDetail, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.LiftrBaseUserDetailsTypeConverter.ConvertFrom);
@@ -317,6 +365,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             if (content.Contains("PartnerOrganizationProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).PartnerOrganizationProperty = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataPartnerOrganizationPropertiesUpdate) content.GetValueForProperty("PartnerOrganizationProperty",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).PartnerOrganizationProperty, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.LiftrBaseDataPartnerOrganizationPropertiesUpdateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProjectProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).ProjectProperty = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectPropertiesUpdate) content.GetValueForProperty("ProjectProperty",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).ProjectProperty, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ProjectPropertiesUpdateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MarketplaceDetailOfferDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetailOfferDetail = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseOfferDetailsUpdate) content.GetValueForProperty("MarketplaceDetailOfferDetail",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetailOfferDetail, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.LiftrBaseOfferDetailsUpdateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MarketplaceDetailSubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetailSubscriptionId = (string) content.GetValueForProperty("MarketplaceDetailSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetailSubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceDetailSubscriptionStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetailSubscriptionStatus = (string) content.GetValueForProperty("MarketplaceDetailSubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).MarketplaceDetailSubscriptionStatus, global::System.Convert.ToString);
             }
             if (content.Contains("UserDetailFirstName"))
             {
@@ -373,6 +437,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             if (content.Contains("PartnerOrganizationPropertyOrganizationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).PartnerOrganizationPropertyOrganizationName = (string) content.GetValueForProperty("PartnerOrganizationPropertyOrganizationName",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).PartnerOrganizationPropertyOrganizationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferDetailPublisherId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailPublisherId = (string) content.GetValueForProperty("OfferDetailPublisherId",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailPublisherId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferDetailOfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailOfferId = (string) content.GetValueForProperty("OfferDetailOfferId",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailOfferId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferDetailPlanId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailPlanId = (string) content.GetValueForProperty("OfferDetailPlanId",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailPlanId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferDetailPlanName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailPlanName = (string) content.GetValueForProperty("OfferDetailPlanName",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailPlanName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferDetailTermUnit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailTermUnit = (string) content.GetValueForProperty("OfferDetailTermUnit",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailTermUnit, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferDetailTermId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailTermId = (string) content.GetValueForProperty("OfferDetailTermId",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal)this).OfferDetailTermId, global::System.Convert.ToString);
             }
             if (content.Contains("SingleSignOnPropertySingleSignOnState"))
             {
