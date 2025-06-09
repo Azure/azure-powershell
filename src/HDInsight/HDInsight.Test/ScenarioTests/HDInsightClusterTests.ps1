@@ -31,11 +31,10 @@ function Test-CreateClusterWithWasbAndMSI{
 			Location                        = $params.location
 			MinSupportedTlsVersion          = $params.minSupportedTlsVersion
 			VirtualNetworkId                = $params.virtualNetworkId
-			SubnetName                      = "default"
-			Version                         = "5.1"
+			SubnetName                      = $params.subnet
+			Version                         = $params.version
 			StorageAccountType              = "AzureStorage"
 			StorageContainer                = $params.clusterName
-			StorageAccountKey               = ""
 			StorageAccountResourceId        = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hdi-ps-test/providers/Microsoft.Storage/storageAccounts/hdi-storage-wasb"
 			StorageAccountManagedIdentity   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/hdi-ps-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-test-msi"
         }
@@ -46,7 +45,7 @@ function Test-CreateClusterWithWasbAndMSI{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
+		# Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
@@ -68,8 +67,8 @@ function Test-CreateEntraCluster{
 			Location                        = $params.location
 			MinSupportedTlsVersion          = $params.minSupportedTlsVersion
 			VirtualNetworkId                = $params.virtualNetworkId
-			SubnetName                      = "default"
-			Version                         = "5.1"
+			SubnetName                      = $params.subnet
+			Version                         = $params.version
 			StorageContainer                = $params.clusterName
 			StorageAccountKey               = $params.storageAccountKey
 			StorageAccountResourceId        = $params.storageAccountResourceId
@@ -105,7 +104,7 @@ function Test-ClusterRelatedCommands{
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential  -VirtualNetworkId $params.virtualNetworkId -SubnetName "default" `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion -Version "5.1"
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -Version $params.version
 
 		Assert-NotNull $cluster
 		
@@ -374,7 +373,7 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
-		-VirtualNetworkId $vnetId -SubnetName $subnetName -Version "5.1" `
+		-VirtualNetworkId $vnetId -SubnetName $subnetName -Version $params.version `
 		-ResourceProviderConnection Outbound -PrivateLink Enabled -PublicIpTagType FirstPartyUsage -PublicIpTag HDInsight
 
 		Assert-AreEqual $cluster.NetworkProperties.ResourceProviderConnection Outbound
@@ -485,7 +484,7 @@ function Test-ClusterEnableSecureChannelCommands{
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
-		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential -Version "5.1" `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential -Version $params.version `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EnableSecureChannel $enableSecureChannel -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 
 		Assert-NotNull $cluster

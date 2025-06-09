@@ -78,7 +78,7 @@ This command sets gateway credential of the cluster named your-hadoop-001 by Inp
 ```powershell
 # Cluster info
 $clusterName = "your-hadoop-001"
-$entraUserFullInfo = @(@{ObjectId = "your-ObjectId"; Upn = "your-Upn"; DisplayName = "your-DisplayName" })
+$entraUserFullInfo = @(@{ObjectId = "ObjectId1"; Upn = "Upn1"; DisplayName = "DisplayName1"},@{ObjectId = "ObjectId2"; Upn = "Upn2"; DisplayName = "DisplayName2"})
 
 Set-AzHDInsightGatewayCredential `
             -ClusterName $clusterName `
@@ -91,7 +91,9 @@ This command sets gateway EntraUser of the cluster named your-hadoop-001 by Entr
 ```powershell
 # Cluster info
 $clusterName = "your-hadoop-001"
-$entraUserIdentity = "your-ObjectId or your-Upn"
+# If you want to specify multiple Entra users, provide their ObjectId or UPN as a single comma-separated string.
+# Example: "objectid1,objectid2,user1@contoso.com,user2@contoso.com"
+$entraUserIdentity = "user@contoso.com"
 
 Set-AzHDInsightGatewayCredential `
             -ClusterName $clusterName `
@@ -133,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -EntraUserFullInfo
-Gets or sets a list of Entra users as an array of hashtables. Each hashtable should contain keys such as ObjectId, UPN, and DisplayName.
+Gets or sets a list of Entra users as an array of hashtables. Each hashtable should contain keys such as ObjectId, Upn, and DisplayName.
 
 ```yaml
 Type: System.Collections.Hashtable[]
@@ -148,7 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -EntraUserIdentity
-Gets or sets the Entra user data. Accepts one or more ObjectId/UPN separated by ','.
+Gets or sets the Entra user data. Accepts one or more ObjectId/Upn separated by ','.
 
 ```yaml
 Type: System.String

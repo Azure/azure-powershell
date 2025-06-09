@@ -133,35 +133,28 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             List<EntraUserInfo> restAuthEntraUsers = new List<EntraUserInfo>();
             if (!string.IsNullOrWhiteSpace(EntraUserIdentity))
             {
-                try
-                {
-                    var userdata = EntraUserIdentity
+                List<string> userdata = EntraUserIdentity
                      .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                      .Select(s => s.Trim())
                      .Where(s => !string.IsNullOrEmpty(s))
                      .ToList();
-                    var graphClient = new GraphServiceClient(new DefaultAzureCredential());
-                    foreach (var data in userdata)
-                    {
-                        try
-                        {
-                            var user = graphClient.Users[data].GetAsync().GetAwaiter().GetResult();
-                            restAuthEntraUsers.Add(new EntraUserInfo
-                            {
-                                ObjectId = user.Id,
-                                DisplayName = user.DisplayName,
-                                Upn = user.UserPrincipalName
-                            });
-                        }
-                        catch (Exception ex)
-                        {
-                            throw new Exception($"Failed to resolve Entra user from input: {data}", ex);
-                        }
-                    }
-                }
-                catch (Exception ex)
+                var graphClient = new GraphServiceClient(new DefaultAzureCredential());
+                foreach (var data in userdata)
                 {
-                    throw new FormatException($"Invalid format in EntraUserIdentity. Expected comma-separated ObjectIds or UPNs, but got: \"{EntraUserIdentity}\"", ex);
+                    try
+                    {
+                        var user = graphClient.Users[data].GetAsync().GetAwaiter().GetResult();
+                        restAuthEntraUsers.Add(new EntraUserInfo
+                        {
+                            ObjectId = user.Id,
+                            DisplayName = user.DisplayName,
+                            Upn = user.UserPrincipalName
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"Failed to retrieve Entra user info from input: \"{data}\". Please check the EntraUserIdentity parameter, or consider using the EntraUserFullInfo approach to specify user details.", ex);
+                    }
                 }
             }
             else if (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0)

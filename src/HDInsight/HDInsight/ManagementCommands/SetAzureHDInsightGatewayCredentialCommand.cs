@@ -97,11 +97,11 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            HelpMessage = "Gets or sets the Entra user data. Accepts one or more ObjectId/UPN separated by ','.")]
+            HelpMessage = "Gets or sets the Entra user data. Accepts one or more ObjectId/Upn separated by ','.")]
         public string EntraUserIdentity { get; set; }
 
         [Parameter(
-            HelpMessage = "Gets or sets a list of Entra users as an array of hashtables. Each hashtable should contain keys such as ObjectId, UPN, and DisplayName.")]
+            HelpMessage = "Gets or sets a list of Entra users as an array of hashtables. Each hashtable should contain keys such as ObjectId, Upn, and DisplayName.")]
         public Hashtable[] EntraUserFullInfo { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background.")]

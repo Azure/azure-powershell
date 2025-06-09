@@ -682,9 +682,6 @@ $storageAccountResourceId = "yourstorageaccountresourceid"
 $storageManagedIdentity = "yourstorageusermanagedidentity"
 $storageContainer = "container01"
 $storageAccountType = "AzureStorage"
-$storageAccountKey = Get-AzStorageAccountKey `
-    -ResourceGroupName $storageAccountResourceGroupName `
-    -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
 
 # Cluster configuration info
 $location = "East Asia"
@@ -705,7 +702,6 @@ New-AzHDInsightCluster `
     -Location $location `
     -StorageAccountResourceId $storageAccountResourceId `
     -StorageAccountManagedIdentity $storageManagedIdentity `
-    -StorageAccountKey $storageAccountKey `
     -StorageContainer $storageContainer `
     -StorageAccountType $storageAccountType `
     -SshCredential $clusterCreds
@@ -727,7 +723,10 @@ $location = "East Asia"
 $clusterResourceGroupName = "Group"
 $clusterName = "your-hadoop-002"
 $clusterCreds = Get-Credential
-$entraUserIdentity = "your-ObjectId or your-Upn"
+
+# If you want to specify multiple Entra users, provide their ObjectId or UPN as a single comma-separated string.
+# Example: "objectid1,objectid2,user1@contoso.com,user2@contoso.com"
+$entraUserIdentity = "user@contoso.com"
 
 # If the cluster's resource group doesn't exist yet, run:
 # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
@@ -762,7 +761,7 @@ $location = "East Asia"
 $clusterResourceGroupName = "Group"
 $clusterName = "your-hadoop-002"
 $clusterCreds = Get-Credential
-$entraUserFullInfo = @(@{ObjectId = "your-ObjectId"; Upn = "your-Upn"; DisplayName = "your-DisplayName" })
+$entraUserFullInfo = @(@{ObjectId = "ObjectId1"; Upn = "Upn1"; DisplayName = "DisplayName1"},@{ObjectId = "ObjectId2"; Upn = "Upn2"; DisplayName = "DisplayName2"})
 # If the cluster's resource group doesn't exist yet, run:
 # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
@@ -1239,7 +1238,7 @@ Accept wildcard characters: False
 ```
 
 ### -EntraUserIdentity
-Gets or sets the Entra user data. Accepts one or more ObjectId/UPN separated by ','.
+Gets or sets the Entra user data. Accepts one or more ObjectId/Upn separated by ','.
 
 ```yaml
 Type: System.String

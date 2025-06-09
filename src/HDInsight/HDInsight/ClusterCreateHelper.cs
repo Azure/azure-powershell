@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             configurations[Constants.ConfigurationKey.ClusterIdentity] = datalakeConfig;
         }
 
-        public static StorageAccount CreateAzureStorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageContainer, bool? enableSecureChannel, string defaultStorageSuffix)
+        public static StorageAccount CreateAzureStorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageContainer, bool? enableSecureChannel, string msiResourceId, string defaultStorageSuffix)
         {
             storageContainer = storageContainer ?? clusterName.ToLower();
             string storageAccountName = Utils.GetResourceNameFromResourceId(storageResourceId);
@@ -119,6 +119,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 IsDefault = true,
                 Container = storageContainer,
                 Key = storageAccountkey,
+                MsiResourceId = msiResourceId,
                 ResourceId = storageResourceId,
                 EnableSecureChannel = enableSecureChannel
             };

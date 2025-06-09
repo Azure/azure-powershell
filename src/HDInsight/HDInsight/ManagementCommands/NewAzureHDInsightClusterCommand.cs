@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public bool? EnableSecureChannel { get; set; }
 
         [Parameter(
-            HelpMessage = "Gets or sets the Entra user data. Accepts one or more ObjectId/UPN separated by ','.")]
+            HelpMessage = "Gets or sets the Entra user data. Accepts one or more ObjectId/Upn separated by ','.")]
         public string EntraUserIdentity { get; set; }
 
         [Parameter(
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             if (StorageAccountType == null || StorageAccountType == StorageType.AzureStorage)
             {
-                var azureStorageAccount = ClusterCreateHelper.CreateAzureStorageAccount(ClusterName, StorageAccountResourceId, StorageAccountKey, StorageContainer, EnableSecureChannel, this.DefaultContext.Environment.StorageEndpointSuffix);
+                var azureStorageAccount = ClusterCreateHelper.CreateAzureStorageAccount(ClusterName, StorageAccountResourceId, StorageAccountKey, StorageContainer, EnableSecureChannel, StorageAccountManagedIdentity, this.DefaultContext.Environment.StorageEndpointSuffix);
                 storageProfile.Storageaccounts.Add(azureStorageAccount);
             }
             else if (StorageAccountType == StorageType.AzureDataLakeStore)

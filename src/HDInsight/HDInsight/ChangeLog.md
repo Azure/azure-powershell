@@ -21,12 +21,14 @@
 ## Upcoming Release
 
 ## Version 6.4.0
-* Added two parameters `-EntraUserIdentity` and `-EntraUserFullInfo` to cmdlet `New-AzHDInsightCluster` 
+* Added two parameters `-EntraUserIdentity` and `-EntraUserFullInfo` to cmdlet `New-AzHDInsightCluster` to support create cluster with entra user as gateway credential to replace use username and password.
   - Added parameter `-EntraUserIdentity` to cmdlet `New-AzHDInsightCluster` to support creating Entra user clusters using one or more ObjectId or Upn.
   - Added parameter `-EntraUserFullInfo` to cmdlet `New-AzHDInsightCluster` to support creating Entra user clusters using an array of hashtables that include ObjectId, Upn, and DisplayName.
-* Added two parameters `-EntraUserIdentity` and `-EntraUserFullInfo` to cmdlet `Set-AzHDInsightGatewayCredential` 
+* Added two parameters `-EntraUserIdentity` and `-EntraUserFullInfo` to cmdlet `Set-AzHDInsightGatewayCredential` to setting Entra user information for an existing Entra user cluster.
   - Added parameter `-EntraUserIdentity` to cmdlet `Set-AzHDInsightGatewayCredential` to support set Entra user clusters using one or more ObjectId or Upn.
   - Added parameter `-EntraUserFullInfo` to cmdlet `Set-AzHDInsightGatewayCredential` to support set Entra user clusters using an array of hashtables that include ObjectId, Upn, and DisplayName.
+* Added support for using WASB storage with Managed Identity (MSI) in the `New-AzHDInsightCluster` cmdlet.
+  -Users can now specify the `StorageAccountManagedIdentity` parameter when creating a cluster to configure MSI authentication, removing the need to provide a `StorageAccountKey`.
 
 ## Version 6.3.1
 * Upgraded nuget package to signed package.
