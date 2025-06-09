@@ -21,27 +21,23 @@ Create an in-memory object for ConfluentSchemaRegistry.
 Create an in-memory object for ConfluentSchemaRegistry.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ConfluentSchemaRegistry
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ConfluentSchemaRegistry
 .Link
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerconfluentschemaregistryobject
 #>
 function New-AzServiceLinkerConfluentSchemaRegistryObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ConfluentSchemaRegistry')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ConfluentSchemaRegistry')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(Mandatory, HelpMessage="The endpoint of service.")]
         [string]
-        $Endpoint,
-        [Parameter(DontShow, HelpMessage="The target service type.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script='"ConfluentSchemaRegistry"')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.TargetServiceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.TargetServiceType]
-        $Type
+        $Endpoint
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ConfluentSchemaRegistry]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ConfluentSchemaRegistry]::New()
 
         if ($PSBoundParameters.ContainsKey('Endpoint')) {
             if($Endpoint -notmatch "https://.*\.confluent\.cloud"){
@@ -49,9 +45,6 @@ function New-AzServiceLinkerConfluentSchemaRegistryObject {
             }
     
             $Object.Endpoint = $Endpoint
-        }
-        if ($PSBoundParameters.ContainsKey('Type')) {
-            $Object.Type = $Type
         }
         return $Object
     }

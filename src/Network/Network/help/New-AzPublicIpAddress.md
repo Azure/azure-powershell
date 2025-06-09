@@ -388,7 +388,7 @@ The public IP Sku name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Basic, Standard
+Accepted values: Basic, Standard, StandardV2
 
 Required: False
 Position: Named

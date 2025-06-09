@@ -33,25 +33,25 @@ Gets the sku details for the given resource type and sku name.
 Checkin the manifest.
 
 ### [New-AzProviderHubCustomRollout](New-AzProviderHubCustomRollout.md)
-Creates or updates the rollout details.
+Create the rollout details.
 
 ### [New-AzProviderHubDefaultRollout](New-AzProviderHubDefaultRollout.md)
-Creates or updates the rollout details.
+Create the rollout details.
 
 ### [New-AzProviderHubManifest](New-AzProviderHubManifest.md)
 Generates the manifest for the given provider.
 
 ### [New-AzProviderHubNotificationRegistration](New-AzProviderHubNotificationRegistration.md)
-Creates or updates a notification registration.
+Create a notification registration.
 
 ### [New-AzProviderHubProviderRegistration](New-AzProviderHubProviderRegistration.md)
-Creates or updates the provider registration.
+Create the provider registration.
 
 ### [New-AzProviderHubResourceTypeRegistration](New-AzProviderHubResourceTypeRegistration.md)
 Creates or updates a resource type.
 
 ### [New-AzProviderHubSku](New-AzProviderHubSku.md)
-Creates or updates the resource type skus in the given resource type.
+Create the resource type skus in the given resource type.
 
 ### [Remove-AzProviderHubDefaultRollout](Remove-AzProviderHubDefaultRollout.md)
 Deletes the rollout resource.
@@ -71,4 +71,19 @@ Deletes a resource type sku.
 
 ### [Stop-AzProviderHubDefaultRollout](Stop-AzProviderHubDefaultRollout.md)
 Stops or cancels the rollout, if in progress.
+
+### [Update-AzProviderHubCustomRollout](Update-AzProviderHubCustomRollout.md)
+Update the rollout details.
+
+### [Update-AzProviderHubDefaultRollout](Update-AzProviderHubDefaultRollout.md)
+Update the rollout details.
+
+### [Update-AzProviderHubNotificationRegistration](Update-AzProviderHubNotificationRegistration.md)
+Update a notification registration.
+
+### [Update-AzProviderHubProviderRegistration](Update-AzProviderHubProviderRegistration.md)
+Update the provider registration.
+
+### [Update-AzProviderHubResourceTypeRegistration](Update-AzProviderHubResourceTypeRegistration.md)
+Update a resource type.
 

@@ -15,11 +15,10 @@ create a network access rule.
 ### CreateExpanded (Default)
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AccessRuleId <String>]
- [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
- [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-PhoneNumber <String[]>]
- [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <String[]>] [-Direction <String>]
+ [-EmailAddress <String[]>] [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>]
+ [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -32,10 +31,9 @@ New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -R
 ### CreateViaIdentityExpanded
 ```
 New-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
- [-AccessRuleId <String>] [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
- [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-PhoneNumber <String[]>]
- [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
+ [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>]
+ [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNetworkSecurityPerimeter
@@ -49,10 +47,9 @@ New-AzNetworkSecurityPerimeterAccessRule -Name <String>
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String>
  -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> -ProfileName <String>
- [-AccessRuleId <String>] [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
- [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-PhoneNumber <String[]>]
- [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
+ [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>]
+ [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityProfile
@@ -65,10 +62,10 @@ New-AzNetworkSecurityPerimeterAccessRule -Name <String>
 ### CreateViaIdentityProfileExpanded
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String>
- -ProfileInputObject <INetworkSecurityPerimeterIdentity> [-AccessRuleId <String>] [-AddressPrefix <String[]>]
- [-Direction <String>] [-EmailAddress <String[]>] [-FullyQualifiedDomainName <String[]>] [-Location <String>]
- [-PhoneNumber <String[]>] [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ProfileInputObject <INetworkSecurityPerimeterIdentity> [-AddressPrefix <String[]>] [-Direction <String>]
+ [-EmailAddress <String[]>] [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>]
+ [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -90,58 +87,67 @@ create a network access rule.
 
 ## EXAMPLES
 
-### Example 1: Creates a NetworkSecurityPerimeterAccessRule
+### Example 1: Create NetworkSecurityPerimeter AccessRule - Inbound
 ```powershell
-
- New-AzNetworkSecurityPerimeterAccessRule -Name accessRule1 -ProfileName profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound' -Location eastus2euap
-
+New-AzNetworkSecurityPerimeterAccessRule -Name access-rule-test-1 -ProfileName profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound'
 ```
 
 ```output
-
-Location Name
--------- ----
-         accessRule1
-
-
+AddressPrefix                : {10.10.0.0/16}
+Direction                    : Inbound
+EmailAddress                 : {}
+FullyQualifiedDomainName     : {}
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers
+                                /Microsoft.Network/networkSecurityPerimeters/nsp-test-1/profiles/profile-test-1/accessRules/access-rule-test-1
+Name                         : access-rule-test-1
+NetworkSecurityPerimeter     : {}
+PhoneNumber                  : {}
+ProvisioningState            : Succeeded
+ResourceGroupName            : rg-test-1
+ServiceTag                   :
+Subscription                 : {}
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Network/networkSecurityPerimeters/profiles/accessRules
 ```
 
-Creates a NetworkSecurityPerimeterAccessRule
+Create NetworkSecurityPerimeter AccessRule - Inbound
 
-### Example 2: Creates a NetworkSecurityPerimeterAccessRule
+### Example 2: Create NetworkSecurityPerimeter AccessRule - Outbound
 ```powershell
-
-$emails = @("test123@microsoft.com", "test321@microsoft.com")
-New-AzNetworkSecurityPerimeterAccessRule -Name accessRule2 -ProfileName profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -EmailAddress $emails -Direction 'Outbound' -Location eastus2euap
-
+New-AzNetworkSecurityPerimeterAccessRule -Name access-rule-test-2 -ProfileName profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -EmailAddress @("test123@microsoft.com", "test321@microsoft.com") -Direction 'Outbound'
 ```
 
 ```output
-
-Location Name
--------- ----
-         accessRule2
-
+AddressPrefix                : {}
+Direction                    : Outbound
+EmailAddress                 : {test123@microsoft.com, test321@microsoft.com}
+FullyQualifiedDomainName     : {}
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers
+                                /Microsoft.Network/networkSecurityPerimeters/nsp-test-1/profiles/profile-test-1/accessRules/access-rule-test-2
+Name                         : access-rule-test-2
+NetworkSecurityPerimeter     : {}
+PhoneNumber                  : {}
+ProvisioningState            : Succeeded
+ResourceGroupName            : rg-test-1
+ServiceTag                   :
+Subscription                 : {}
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Network/networkSecurityPerimeters/profiles/accessRules
 ```
 
-Creates a NetworkSecurityPerimeterAccessRule
+Create NetworkSecurityPerimeter AccessRule - Outbound
 
 ## PARAMETERS
-
-### -AccessRuleId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityProfileExpanded
-Aliases: Id
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AddressPrefix
 Inbound address prefixes (IPv4/IPv6)
@@ -190,7 +196,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmailAddress
-Outbound rules email address format.
+Outbound rules in email address format.
+This access rule type is currently unavailable for use.
 
 ```yaml
 Type: System.String[]
@@ -205,7 +212,7 @@ Accept wildcard characters: False
 ```
 
 ### -FullyQualifiedDomainName
-Outbound rules fully qualified domain name format.
+Outbound rules in fully qualified domain name format.
 
 ```yaml
 Type: System.String[]
@@ -264,21 +271,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityProfileExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the NSP access rule.
 
@@ -325,7 +317,8 @@ Accept wildcard characters: False
 ```
 
 ### -PhoneNumber
-Outbound rules phone number format.
+Outbound rules in phone number format.
+This access rule type is currently unavailable for use.
 
 ```yaml
 Type: System.String[]
@@ -400,7 +393,8 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceTag
-Inbound rules service tag names.
+Inbound rules of type service tag.
+This access rule type is currently unavailable for use.
 
 ```yaml
 Type: System.String[]
@@ -441,21 +435,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityProfileExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

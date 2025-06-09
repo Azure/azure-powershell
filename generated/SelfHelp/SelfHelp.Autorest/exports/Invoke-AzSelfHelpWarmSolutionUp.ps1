@@ -27,9 +27,9 @@ $parameters = [ordered]@{
 Invoke-AzSelfHelpWarmSolutionUp -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/aits-data-inestion/providers/Microsoft.KeyVault/vaults/kv-akshayko519290291381" -SolutionResourceName $resourceName -Parameter $parameters
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionWarmUpRequestBody
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISolutionWarmUpRequestBody
 .Outputs
 System.Boolean
 .Notes
@@ -59,6 +59,8 @@ function Invoke-AzSelfHelpWarmSolutionUp {
 param(
     [Parameter(ParameterSetName='Warm', Mandatory)]
     [Parameter(ParameterSetName='WarmExpanded', Mandatory)]
+    [Parameter(ParameterSetName='WarmViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='WarmViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
     # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
@@ -66,6 +68,8 @@ param(
 
     [Parameter(ParameterSetName='Warm', Mandatory)]
     [Parameter(ParameterSetName='WarmExpanded', Mandatory)]
+    [Parameter(ParameterSetName='WarmViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='WarmViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
     # Solution resource Name.
@@ -76,24 +80,34 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Warm', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='WarmViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionWarmUpRequestBody]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISolutionWarmUpRequestBody]
     # Solution WarmUpRequest body
-    # To construct, see NOTES section for SOLUTIONWARMUPREQUESTBODY properties and create a hash table.
     ${SolutionWarmUpRequestBody},
 
     [Parameter(ParameterSetName='WarmExpanded')]
     [Parameter(ParameterSetName='WarmViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionWarmUpRequestBodyParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISolutionWarmUpRequestBodyParameters]))]
     [System.Collections.Hashtable]
     # Dictionary of <string>
     ${Parameter},
+
+    [Parameter(ParameterSetName='WarmViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Warm operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='WarmViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Json string supplied to the Warm operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -157,6 +171,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -180,6 +203,8 @@ begin {
             WarmExpanded = 'Az.SelfHelp.private\Invoke-AzSelfHelpWarmSolutionUp_WarmExpanded';
             WarmViaIdentity = 'Az.SelfHelp.private\Invoke-AzSelfHelpWarmSolutionUp_WarmViaIdentity';
             WarmViaIdentityExpanded = 'Az.SelfHelp.private\Invoke-AzSelfHelpWarmSolutionUp_WarmViaIdentityExpanded';
+            WarmViaJsonFilePath = 'Az.SelfHelp.private\Invoke-AzSelfHelpWarmSolutionUp_WarmViaJsonFilePath';
+            WarmViaJsonString = 'Az.SelfHelp.private\Invoke-AzSelfHelpWarmSolutionUp_WarmViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -188,6 +213,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

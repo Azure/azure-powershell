@@ -15,14 +15,16 @@ Update Nat Gateway Resource with Public Ip Address, Public Ip Prefix and IdleTim
 ### SetByNameParameterSet (Default)
 ```
 Set-AzNatGateway -ResourceGroupName <String> -Name <String> [-PublicIpAddress <PSResourceId[]>]
- [-PublicIpPrefix <PSResourceId[]>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
+ [-PublicIpAddressV6 <PSResourceId[]>] [-PublicIpPrefix <PSResourceId[]>] [-PublicIpPrefixV6 <PSResourceId[]>]
+ [-SourceVirtualNetwork <PSResourceId>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Set-AzNatGateway -ResourceId <String> [-PublicIpAddress <PSResourceId[]>] [-PublicIpPrefix <PSResourceId[]>]
+Set-AzNatGateway -ResourceId <String> [-PublicIpAddress <PSResourceId[]>] [-PublicIpAddressV6 <PSResourceId[]>]
+ [-PublicIpPrefix <PSResourceId[]>] [-PublicIpPrefixV6 <PSResourceId[]>] [-SourceVirtualNetwork <PSResourceId>]
  [-AsJob] [-IdleTimeoutInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -30,7 +32,8 @@ Set-AzNatGateway -ResourceId <String> [-PublicIpAddress <PSResourceId[]>] [-Publ
 ### SetByInputObjectParameterSet
 ```
 Set-AzNatGateway -InputObject <PSNatGateway> [-PublicIpAddress <PSResourceId[]>]
- [-PublicIpPrefix <PSResourceId[]>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
+ [-PublicIpAddressV6 <PSResourceId[]>] [-PublicIpPrefix <PSResourceId[]>] [-PublicIpPrefixV6 <PSResourceId[]>]
+ [-SourceVirtualNetwork <PSResourceId>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -141,8 +144,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicIpAddressV6
+An array of public IPv6 addresses associated with the nat gateway resource.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicIpPrefix
 An array of public ip prefixes associated with the nat gateway resource.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicIpPrefixV6
+An array of public IPv6 prefixes associated with the nat gateway resource.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
@@ -183,6 +216,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SourceVirtualNetwork
+The id of the source virtual network using this nat gateway resource.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSResourceId
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

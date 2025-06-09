@@ -15,7 +15,7 @@ create a Network Security Perimeter.
 ### CreateExpanded (Default)
 ```
 New-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Location <String>] [-SecurityPerimeterId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ -Location <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -42,9 +42,9 @@ New-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> [-Subs
 
 ### CreateViaIdentityExpanded
 ```
-New-AzNetworkSecurityPerimeter -InputObject <INetworkSecurityPerimeterIdentity> [-Location <String>]
- [-SecurityPerimeterId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetworkSecurityPerimeter -InputObject <INetworkSecurityPerimeterIdentity> -Location <String>
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,31 +52,30 @@ create a Network Security Perimeter.
 
 ## EXAMPLES
 
-### Example 1: Creates a NetworkSecurityPerimeter
+### Example 1: Create NetworkSecurityPerimeter
 ```powershell
-New-AzNetworkSecurityPerimeter -ResourceGroupName ResourceGroup-1 -Name nsp1 -Location eastus2euap
+New-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1 -Location eastus2euap
 ```
 
 ```output
-Location    Name
---------    ----
-eastus2euap nsp1
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers
+                                /Microsoft.Network/networkSecurityPerimeters/nsp-test-1
+Location                     : eastus2euap
+Name                         : nsp-test-1
+PerimeterGuid                : 00000000-0000-0000-0000-000000000000
+ProvisioningState            : Succeeded
+ResourceGroupName            : rg-test-1
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : { }
+Type                         : Microsoft.Network/networkSecurityPerimeters
 ```
 
-Creates a NetworkSecurityPerimeter
-
-### Example 2: Creates a NetworkSecurityPerimeter
-```powershell
-New-AzNetworkSecurityPerimeter -ResourceGroupName ResourceGroup-1 -Name nsp2 -Location eastus2euap
-```
-
-```output
-Location    Name
---------    ----
-eastus2euap nsp2
-```
-
-Creates a NetworkSecurityPerimeter
+Create NetworkSecurityPerimeter
 
 ## PARAMETERS
 
@@ -142,14 +141,14 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Resource location.
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -195,21 +194,6 @@ Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Crea
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityPerimeterId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases: Id
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

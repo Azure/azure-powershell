@@ -20,9 +20,9 @@ Deletes an NSP Link resource.
 .Description
 Deletes an NSP Link resource.
 .Example
-Remove-AzNetworkSecurityPerimeterLink -Name t-linkD3 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp8
+Remove-AzNetworkSecurityPerimeterLink -Name link-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-$linkObj = Get-AzNetworkSecurityPerimeterLink -Name t-linkD4 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp10
+$linkObj = Get-AzNetworkSecurityPerimeterLink -Name link-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 Remove-AzNetworkSecurityPerimeterLink -InputObject $linkObj
 
 .Inputs

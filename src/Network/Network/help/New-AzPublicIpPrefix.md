@@ -225,7 +225,7 @@ The public IP Prefix Sku name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard
+Accepted values: Standard, StandardV2
 
 Required: False
 Position: Named

@@ -94,9 +94,9 @@ $natGateway = New-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_g
 
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" 
 
-$virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
+$virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup -Location eastus2 -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
 
-Set-AzVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork -InputObject $natGateway 
+Set-AzVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork -InputObject $natGateway -AddressPrefix "10.0.0.0/16"
 
 $virtualNetwork | Set-AzVirtualNetwork
 ```

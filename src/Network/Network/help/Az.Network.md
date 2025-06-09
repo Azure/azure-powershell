@@ -464,6 +464,9 @@ Gets a probe configuration for a load balancer.
 ### [Get-AzLoadBalancerRuleConfig](Get-AzLoadBalancerRuleConfig.md)
 Gets the rule configuration for a load balancer.
 
+### [Get-AzLoadBalancerRuleHealth](Get-AzLoadBalancerRuleHealth.md)
+Gets the load balancer rule health information.
+
 ### [Get-AzLocalNetworkGateway](Get-AzLocalNetworkGateway.md)
 Gets a Local Network Gateway
 
@@ -856,8 +859,8 @@ Gets a NAT rule associated with VpnGateway.
 ### [Get-AzVpnServerConfiguration](Get-AzVpnServerConfiguration.md)
 Gets an existing VpnServerConfiguration for point to site connectivity.
 
-### [New-AzP2sVpnGateway](New-AzP2sVpnGateway.md)
-Create a new P2SVpnGateway under VirtualHub for point to site connectivity.
+### [Get-AzVpnServerConfigurationPolicyGroup](Get-AzVpnServerConfigurationPolicyGroup.md)
+Gets VpnServerConfigurationPolicyGroup that can be attached to P2SVpnGateway.
 
 ### [Get-AzVpnSite](Get-AzVpnSite.md)
 Gets an Azure VpnSite resource by name OR lists all VpnSites in a ResourceGroup or SubscriptionId. 
@@ -872,6 +875,18 @@ Invoke Packet Capture on Azure Firewall
 
 ### [Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic](Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic.md)
 Invoke network configuration diagnostic session for specified network profiles on target resource.
+
+### [Invoke-AzVirtualNetworkGatewayAbortMigration](Invoke-AzVirtualNetworkGatewayAbortMigration.md)
+Trigger abort migration for virtual network gateway.
+
+### [Invoke-AzVirtualNetworkGatewayCommitMigration](Invoke-AzVirtualNetworkGatewayCommitMigration.md)
+Trigger commit migration for virtual network gateway.
+
+### [Invoke-AzVirtualNetworkGatewayExecuteMigration](Invoke-AzVirtualNetworkGatewayExecuteMigration.md)
+Trigger execute migration for virtual network gateway.
+
+### [Invoke-AzVirtualNetworkGatewayPrepareMigration](Invoke-AzVirtualNetworkGatewayPrepareMigration.md)
+Trigger prepare migration for virtual network gateway.
 
 ### [Move-AzExpressRouteCircuit](Move-AzExpressRouteCircuit.md)
 Moves an ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model.
@@ -926,6 +941,9 @@ Creates a match variable for firewall condition.
 
 ### [New-AzApplicationGatewayFirewallPolicy](New-AzApplicationGatewayFirewallPolicy.md)
 Creates a application gateway firewall policy.
+
+### [New-AzApplicationGatewayFirewallPolicyException](New-AzApplicationGatewayFirewallPolicyException.md)
+Creates an exception on the Firewall Policy
 
 ### [New-AzApplicationGatewayFirewallPolicyExclusion](New-AzApplicationGatewayFirewallPolicyExclusion.md)
 Creates an exclusion on the Firewall Policy
@@ -1576,6 +1594,9 @@ Creates the Site-to-Site VPN connection between the virtual network gateway and 
 ### [New-AzVirtualNetworkGatewayIpConfig](New-AzVirtualNetworkGatewayIpConfig.md)
 Creates an IP Configuration for a Virtual Network Gateway
 
+### [New-AzVirtualNetworkGatewayMigrationParameter](New-AzVirtualNetworkGatewayMigrationParameter.md)
+Create migration parameters to trigger prepare migration for a virtual network gateway.
+
 ### [New-AzVirtualNetworkGatewayNatRule](New-AzVirtualNetworkGatewayNatRule.md)
 Creates the virtual network gateway natRule object.
 
@@ -1630,8 +1651,8 @@ Creates a NAT rule on a VpnGateway which can be associated with VpnSiteLinkConne
 ### [New-AzVpnServerConfiguration](New-AzVpnServerConfiguration.md)
 Create a new VpnServerConfiguration for point to site connectivity.
 
-### [New-AzP2sVpnGateway](New-AzP2sVpnGateway.md)
-Create a new P2SVpnGateway under VirtualHub for point to site connectivity.
+### [New-AzVpnServerConfigurationPolicyGroup](New-AzVpnServerConfigurationPolicyGroup.md)
+Creates a new VpnServerConfigurationPolicyGroup that can be attached to P2SVpnGateway.
 
 ### [New-AzVpnSite](New-AzVpnSite.md)
 Creates a new Azure VpnSite resource. This is an RM representation of customer branches that are uploaded to Azure
@@ -2090,8 +2111,8 @@ Removes a NAT rule associated with VpnGateway.
 ### [Remove-AzVpnServerConfiguration](Remove-AzVpnServerConfiguration.md)
 Removes an existing VpnServerConfiguration.
 
-### [New-AzP2sVpnGateway](New-AzP2sVpnGateway.md)
-Create a new P2SVpnGateway under VirtualHub for point to site connectivity.
+### [Remove-AzVpnServerConfigurationPolicyGroup](Remove-AzVpnServerConfigurationPolicyGroup.md)
+Removes an existing VpnServerConfigurationPolicyGroup.
 
 ### [Remove-AzVpnSite](Remove-AzVpnSite.md)
 Removes an Azure VpnSite resource.
@@ -2588,8 +2609,8 @@ Updates a NAT rule associated with VpnGateway.
 ### [Update-AzVpnServerConfiguration](Update-AzVpnServerConfiguration.md)
 Updates an existing VpnServerConfiguration.
 
-### [New-AzP2sVpnGateway](New-AzP2sVpnGateway.md)
-Create a new P2SVpnGateway under VirtualHub for point to site connectivity.
+### [Update-AzVpnServerConfigurationPolicyGroup](Update-AzVpnServerConfigurationPolicyGroup.md)
+Update an existing VpnServerConfigurationPolicyGroup under VpnServerConfiguration for point to site connectivity.
 
 ### [Update-AzVpnSite](Update-AzVpnSite.md)
 Updates a VPN site.

@@ -20,18 +20,12 @@ Gets the specified NSP profile.
 .Description
 Gets the specified NSP profile.
 .Example
-
- Get-AzNetworkSecurityPerimeterProfile -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+Get-AzNetworkSecurityPerimeterProfile -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-
- Get-AzNetworkSecurityPerimeterProfile -Name profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+Get-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-
- $GETObj = Get-AzNetworkSecurityPerimeterProfile -Name profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
- Get-AzNetworkSecurityPerimeterProfile -InputObject $GETObj
-
+$GETObj = Get-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Get-AzNetworkSecurityPerimeterProfile -InputObject $GETObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
