@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNeonPostgresProjectConnectionUri
 
 ## SYNOPSIS
-Action to retrieve the connection URI for the Neon Database.
+Retrieve the connection URI for a specific Neon Postgres database.
 
 ## SYNTAX
 
@@ -71,35 +71,26 @@ Get-AzNeonPostgresProjectConnectionUri -InputObject <INeonPostgresIdentity>
 ```
 
 ## DESCRIPTION
-Action to retrieve the connection URI for the Neon Database.
+
+Retrieve the connection URI for a specific Neon Postgres database.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Retrieve the connection URI for a specific Neon Postgres database
+
 ```powershell
-{{ Add code here }}
+Get-AzNeonPostgresProjectConnectionUri -DatabaseName "neondb" EndpointId "ep-bird-a82olmcu" -RoleName "owner" -BranchId "br-damp-bird-a82olmcu" -ProjectName "dawn-breeze-86932056" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Retrieve the connection URI for a specific Neon Postgres database.
 
 ## PARAMETERS
 
 ### -BranchId
+
 Branch Id associated with this connection
 
 ```yaml
@@ -115,6 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionUriParameter
+
 Connection uri parameters for the associated database
 
 ```yaml
@@ -130,6 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
+
 Database name associated with this connection
 
 ```yaml
@@ -145,6 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
@@ -161,6 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -EndpointId
+
 the endpoint Id with this connection
 
 ```yaml
@@ -176,6 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+
 Identity Parameter
 
 ```yaml
@@ -191,6 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -IsPooled
+
 Indicates if the connection is pooled
 
 ```yaml
@@ -206,6 +203,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
+
 Path of Json file supplied to the Get operation
 
 ```yaml
@@ -221,6 +219,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
+
 Json string supplied to the Get operation
 
 ```yaml
@@ -236,6 +235,7 @@ Accept wildcard characters: False
 ```
 
 ### -OrganizationInputObject
+
 Identity Parameter
 
 ```yaml
@@ -251,6 +251,7 @@ Accept wildcard characters: False
 ```
 
 ### -OrganizationName
+
 Name of the Neon Organizations resource
 
 ```yaml
@@ -266,6 +267,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectId
+
 Project Id associated with this connection
 
 ```yaml
@@ -281,6 +283,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
+
 The name of the Project
 
 ```yaml
@@ -296,6 +299,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+
 The name of the resource group.
 The name is case insensitive.
 
@@ -312,6 +316,7 @@ Accept wildcard characters: False
 ```
 
 ### -RoleName
+
 The role name used for authentication
 
 ```yaml
@@ -327,6 +332,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
+
 The ID of the target subscription.
 The value must be an UUID.
 
@@ -343,6 +349,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
+
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -358,6 +365,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
@@ -374,6 +382,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
