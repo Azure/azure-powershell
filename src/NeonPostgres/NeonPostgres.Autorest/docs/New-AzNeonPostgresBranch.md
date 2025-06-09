@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Create a new branch within a Neon Postgres database.
+Create a new branch within a Neon Postgres project.
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ New-AzNeonPostgresBranch -Name <String> -OrganizationName <String> -ProjectName 
 
 ## DESCRIPTION
 
-Create a new branch within a Neon Postgres database.
+Create a new branch within a Neon Postgres project.
 
 ## EXAMPLES
 
@@ -55,7 +55,7 @@ New-AzNeonPostgresBranch -Name "test-branch" -OrganizationName "NeonDemoOrgPS1" 
 ```output
 ```
 
-Create a new branch within a Neon Postgres database.
+Create a new branch within a Neon Postgres project.
 
 ## PARAMETERS
 
