@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.0.2'; }, 
                @{ModuleName = 'Az.Advisor'; RequiredVersion = '2.1.0'; }, 
-               @{ModuleName = 'Az.Aks'; RequiredVersion = '7.0.0'; }, 
+               @{ModuleName = 'Az.Aks'; RequiredVersion = '7.0.1'; }, 
                @{ModuleName = 'Az.AnalysisServices'; RequiredVersion = '1.2.0'; }, 
                @{ModuleName = 'Az.ApiManagement'; RequiredVersion = '4.1.0'; }, 
                @{ModuleName = 'Az.App'; RequiredVersion = '2.0.1'; }, 
