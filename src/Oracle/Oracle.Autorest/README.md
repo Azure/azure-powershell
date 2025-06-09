@@ -35,7 +35,7 @@ require:
 try-require: 
   - $(repo)/specification/oracle/resource-manager/readme.md
 
-module-version: 0.2.0
+module-version: 0.1.0
 title: Oracle
 subject-prefix: $(service-name)
  
