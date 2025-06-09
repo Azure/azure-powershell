@@ -111,7 +111,7 @@ export const toolServices = <Args extends ZodRawShape>(name: string, responseTem
             func = handlePolymorphism<Args>;
             break;
         case "handleNoInline":
-            func = handleModelCmdlet<Args>;
+            func = handleNoInline<Args>;
             break;
         case "handleModelCmdlet":
             func = handleModelCmdlet<Args>;
