@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNeonPostgresOrganization
 
 ## SYNOPSIS
-Delete a OrganizationResource
+Delete an existing Neon organization within Azure.
 
 ## SYNTAX
 

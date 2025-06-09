@@ -5,77 +5,137 @@ online version: https://learn.microsoft.com/powershell/module/az.neonpostgres/up
 schema: 2.0.0
 ---
 
-# Update-AzNeonPostgresBranch
+# Update-AzNeonPostgresOrganization
 
 ## SYNOPSIS
-update a Branch
+Update the properties of an existing Neon organization within Azure.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzNeonPostgresBranch -Name <String> -OrganizationName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-Attribute <IAttributes[]>]
- [-Database <INeonDatabaseProperties[]>] [-DatabaseName <String>] [-Endpoint <IEndpointProperties[]>]
- [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>] [-Role <INeonRoleProperties[]>]
- [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentityProjectExpanded
-```
-Update-AzNeonPostgresBranch -Name <String> -ProjectInputObject <INeonPostgresIdentity>
- [-Attribute <IAttributes[]>] [-Database <INeonDatabaseProperties[]>] [-DatabaseName <String>]
- [-Endpoint <IEndpointProperties[]>] [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>]
- [-Role <INeonRoleProperties[]>] [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentityOrganizationExpanded
-```
-Update-AzNeonPostgresBranch -Name <String> -ProjectName <String>
- -OrganizationInputObject <INeonPostgresIdentity> [-Attribute <IAttributes[]>]
- [-Database <INeonDatabaseProperties[]>] [-DatabaseName <String>] [-Endpoint <IEndpointProperties[]>]
- [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>] [-Role <INeonRoleProperties[]>]
- [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-CompanyDetailBusinessPhone <String>] [-CompanyDetailCompanyName <String>] [-CompanyDetailCountry <String>]
+ [-CompanyDetailDomain <String>] [-CompanyDetailNumberOfEmployee <Int64>]
+ [-CompanyDetailOfficeAddress <String>] [-MarketplaceDetailSubscriptionId <String>]
+ [-MarketplaceDetailSubscriptionStatus <String>] [-OfferDetailOfferId <String>] [-OfferDetailPlanId <String>]
+ [-OfferDetailPlanName <String>] [-OfferDetailPublisherId <String>] [-OfferDetailTermId <String>]
+ [-OfferDetailTermUnit <String>] [-PartnerOrganizationPropertyOrganizationId <String>]
+ [-PartnerOrganizationPropertyOrganizationName <String>] [-ProjectProperty <IProjectPropertiesUpdate>]
+ [-SingleSignOnPropertyAadDomain <String[]>] [-SingleSignOnPropertyEnterpriseAppId <String>]
+ [-SingleSignOnPropertySingleSignOnState <String>] [-SingleSignOnPropertySingleSignOnUrl <String>]
+ [-Tag <Hashtable>] [-UserDetailEmailAddress <String>] [-UserDetailFirstName <String>]
+ [-UserDetailLastName <String>] [-UserDetailPhoneNumber <String>] [-UserDetailUpn <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzNeonPostgresBranch -InputObject <INeonPostgresIdentity> [-Attribute <IAttributes[]>]
- [-Database <INeonDatabaseProperties[]>] [-DatabaseName <String>] [-Endpoint <IEndpointProperties[]>]
- [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>] [-Role <INeonRoleProperties[]>]
- [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzNeonPostgresOrganization -InputObject <INeonPostgresIdentity> [-CompanyDetailBusinessPhone <String>]
+ [-CompanyDetailCompanyName <String>] [-CompanyDetailCountry <String>] [-CompanyDetailDomain <String>]
+ [-CompanyDetailNumberOfEmployee <Int64>] [-CompanyDetailOfficeAddress <String>]
+ [-MarketplaceDetailSubscriptionId <String>] [-MarketplaceDetailSubscriptionStatus <String>]
+ [-OfferDetailOfferId <String>] [-OfferDetailPlanId <String>] [-OfferDetailPlanName <String>]
+ [-OfferDetailPublisherId <String>] [-OfferDetailTermId <String>] [-OfferDetailTermUnit <String>]
+ [-PartnerOrganizationPropertyOrganizationId <String>] [-PartnerOrganizationPropertyOrganizationName <String>]
+ [-ProjectProperty <IProjectPropertiesUpdate>] [-SingleSignOnPropertyAadDomain <String[]>]
+ [-SingleSignOnPropertyEnterpriseAppId <String>] [-SingleSignOnPropertySingleSignOnState <String>]
+ [-SingleSignOnPropertySingleSignOnUrl <String>] [-Tag <Hashtable>] [-UserDetailEmailAddress <String>]
+ [-UserDetailFirstName <String>] [-UserDetailLastName <String>] [-UserDetailPhoneNumber <String>]
+ [-UserDetailUpn <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a Branch
+Update the properties of an existing Neon organization within Azure.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a Neon Resource
 ```powershell
-{{ Add code here }}
+Update-AzNeonPostgresOrganization -Name "almasTestNeonPS8" -ResourceGroupName "NeonDemoRG" -SubscriptionId "5d9a6cc3-4e60-4b41-be79-d28f0a01074e" `
+-CompanyDetailBusinessPhone "+1234567890" `
+-CompanyDetailCompanyName "DemoCompany" `
+-CompanyDetailCountry "USA" `
+-CompanyDetailDomain "demo.com" `
+-CompanyDetailNumberOfEmployee 500 `
+-CompanyDetailOfficeAddress "1234 Azure Ave" `
+-PartnerOrganizationPropertyOrganizationId "org12345" `
+-PartnerOrganizationPropertyOrganizationName "PartnerOrg8" `
+-SingleSignOnPropertyAadDomain @("partnerorg.com") `
+-SingleSignOnPropertyEnterpriseAppId "app12345" `
+-SingleSignOnPropertySingleSignOnState "Enable" `
+-SingleSignOnPropertySingleSignOnUrl "https://sso.partnerorg.com" `
+-Tag @{environment="production"} `
+-UserDetailEmailAddress "khanalmas@microsoft.com" `
+-UserDetailFirstName "Almas" `
+-UserDetailLastName "Khan" `
+-UserDetailPhoneNumber "+1234567890" `
+-UserDetailUpn "khanalmas_microsoft.com#EXT#@qumulotesttenant2.onmicrosoft.com"
+
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+
+CompanyDetailBusinessPhone                  : +1234567890
+CompanyDetailCompanyName                    : DemoCompany
+CompanyDetailCountry                        : USA
+CompanyDetailDomain                         : demo.com
+CompanyDetailNumberOfEmployee               : 500
+CompanyDetailOfficeAddress                  : 1234 Azure Ave
+Id                                          : /subscriptions/5d9a6cc3-4e60-4b41-be79-d28f0a01074e/resourceGroups/NeonDe
+                                              moRG/providers/Neon.Postgres/organizations/almasTestNeonPS8
+Location                                    : centraluseuap
+MarketplaceDetailSubscriptionId             : 44e2e61d-8456-4c6a-dd0a-acc4edaa729b
+MarketplaceDetailSubscriptionStatus         : Subscribed
+Name                                        : almasTestNeonPS8
+OfferDetailOfferId                          : neon_test
+OfferDetailPlanId                           : neon_test_1
+OfferDetailPlanName                         : Neon Serverless Postgres - Free (Test_Liftr)
+OfferDetailPublisherId                      : neon1722366567200
+OfferDetailTermId                           : gmz7xq9ge3py
+OfferDetailTermUnit                         : P1M
+PartnerOrganizationPropertyOrganizationId   : org-tiny-silence-85146383
+PartnerOrganizationPropertyOrganizationName : PartnerOrg8
+ProvisioningState                           : Succeeded
+ResourceGroupName                           : NeonDemoRG
+SingleSignOnPropertyAadDomain               : {partnerorg.com}
+SingleSignOnPropertyEnterpriseAppId         : app12345
+SingleSignOnPropertySingleSignOnState       : Enable
+SingleSignOnPropertySingleSignOnUrl         : https://console.neon.tech/azure/sso/org-tiny-silence-85146383
+SystemDataCreatedAt                         : 06-Nov-24 4:49:42 AM
+SystemDataCreatedBy                         : khanalmas@microsoft.com
+SystemDataCreatedByType                     : User
+SystemDataLastModifiedAt                    : 06-Nov-24 4:53:15 AM
+SystemDataLastModifiedBy                    : khanalmas@microsoft.com
+SystemDataLastModifiedByType                : User
+Tag                                         : {
+                                                "environment": "production"
+                                              }
+Type                                        : neon.postgres/organizations
+UserDetailEmailAddress                      : khanalmas@microsoft.com
+UserDetailFirstName                         : Almas
+UserDetailLastName                          : Khan
+UserDetailPhoneNumber                       : +1234567890
+UserDetailUpn                               : khanalmas_microsoft.com#EXT#@qumulotesttenant2.onmicrosoft.com
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command will update a Neon Organization Resource
 
 ## PARAMETERS
 
@@ -94,42 +154,87 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Attribute
-Additional attributes for the entity
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IAttributes[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Database
-Neon Databases associated with the branch
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonDatabaseProperties[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatabaseName
-Database name associated with the branch
+### -CompanyDetailBusinessPhone
+Business phone number of the company
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CompanyDetailCompanyName
+Company name
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CompanyDetailCountry
+Country name of the company
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CompanyDetailDomain
+Domain of the user
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CompanyDetailNumberOfEmployee
+Number of employees in the company
+
+```yaml
+Type: System.Int64
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CompanyDetailOfficeAddress
+Office address of the company
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -155,36 +260,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Endpoint
-Endpoints associated with the branch
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IEndpointProperties[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EntityName
-Name of the resource
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
@@ -200,13 +275,73 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the Branch
+### -JsonFilePath
+Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityOrganizationExpanded
-Aliases: BranchName
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MarketplaceDetailSubscriptionId
+SaaS subscription id for the the marketplace offer
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MarketplaceDetailSubscriptionStatus
+Marketplace subscription status
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Neon Organizations resource
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Aliases: OrganizationName
 
 Required: True
 Position: Named
@@ -230,42 +365,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OrganizationInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentity
-Parameter Sets: UpdateViaIdentityOrganizationExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -OrganizationName
-Name of the Neon Organizations resource
+### -OfferDetailOfferId
+Offer Id for the marketplace offer
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentId
-The ID of the parent branch
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -275,12 +380,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProjectId
-The ID of the project this branch belongs to
+### -OfferDetailPlanId
+Plan Id for the marketplace offer
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -290,30 +395,105 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProjectInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentity
-Parameter Sets: UpdateViaIdentityProjectExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProjectName
-The name of the Project
+### -OfferDetailPlanName
+Plan Name for the marketplace offer
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityOrganizationExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OfferDetailPublisherId
+Publisher Id for the marketplace offer
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OfferDetailTermId
+Term Id for the marketplace offer
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OfferDetailTermUnit
+Term Name for the marketplace offer
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerOrganizationPropertyOrganizationId
+Organization Id in partner's system
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerOrganizationPropertyOrganizationName
+Organization name in partner's system
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectProperty
+Neon Project Properties
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectPropertiesUpdate
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -326,7 +506,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -336,12 +516,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Role
-Roles associated with the branch
+### -SingleSignOnPropertyAadDomain
+List of AAD domains fetched from Microsoft Graph for user.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonRoleProperties[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -351,12 +531,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RoleName
-Role name associated with the branch
+### -SingleSignOnPropertyEnterpriseAppId
+AAD enterprise application Id used to setup SSO
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SingleSignOnPropertySingleSignOnState
+State of the Single Sign On for the organization
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SingleSignOnPropertySingleSignOnUrl
+URL for SSO to be used by the partner to redirect the user to their system
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -372,12 +582,102 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserDetailEmailAddress
+Email address of the user
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserDetailFirstName
+First name of the user
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserDetailLastName
+Last name of the user
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserDetailPhoneNumber
+User's phone number
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserDetailUpn
+User's principal name
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -422,8 +722,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IBranch
+### Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResource
 
 ## NOTES
 
 ## RELATED LINKS
+

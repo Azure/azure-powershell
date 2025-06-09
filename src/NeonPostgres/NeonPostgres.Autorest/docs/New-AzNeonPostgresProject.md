@@ -22,54 +22,45 @@ New-AzNeonPostgresProject -Name <String> -OrganizationName <String> -ResourceGro
  [-Database <INeonDatabaseProperties[]>] [-DefaultEndpointSettingAutoscalingLimitMaxCu <Single>]
  [-DefaultEndpointSettingAutoscalingLimitMinCu <Single>] [-Endpoint <IEndpointProperties[]>]
  [-EntityName <String>] [-HistoryRetention <Int32>] [-PgVersion <Int32>] [-RegionId <String>]
- [-Role <INeonRoleProperties[]>] [-Storage <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Role <INeonRoleProperties[]>] [-Storage <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzNeonPostgresProject -Name <String> -OrganizationName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzNeonPostgresProject -Name <String> -OrganizationName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a Project
+
+Create a new Neon project resource within Azure.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new Neon project resource within Azure
+
 ```powershell
-{{ Add code here }}
+New-AzNeonPostgresProject -Name "test-project" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000" -BranchDatabaseName "sampledb" -BranchEntityName "sample-entity" -BranchParentId "dawn-breeze-86932057" -BranchRoleName "readonly"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a new Neon project resource within Azure.
 
 ## PARAMETERS
 
 ### -AsJob
+
 Run the command as a job
 
 ```yaml
@@ -85,6 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Attribute
+
 Additional attributes for the entity
 
 ```yaml
@@ -100,6 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -BranchAttribute
+
 Additional attributes for the entity
 
 ```yaml
@@ -115,6 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -BranchDatabase
+
 Neon Databases associated with the branch
 
 ```yaml
@@ -130,6 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -BranchDatabaseName
+
 Database name associated with the branch
 
 ```yaml
@@ -145,6 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -BranchEndpoint
+
 Endpoints associated with the branch
 
 ```yaml
@@ -160,6 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -BranchEntityName
+
 Name of the resource
 
 ```yaml
@@ -175,6 +172,7 @@ Accept wildcard characters: False
 ```
 
 ### -BranchParentId
+
 The ID of the parent branch
 
 ```yaml
@@ -190,6 +188,7 @@ Accept wildcard characters: False
 ```
 
 ### -BranchProjectId
+
 The ID of the project this branch belongs to
 
 ```yaml
@@ -205,6 +204,7 @@ Accept wildcard characters: False
 ```
 
 ### -BranchRole
+
 Roles associated with the branch
 
 ```yaml
@@ -220,6 +220,7 @@ Accept wildcard characters: False
 ```
 
 ### -BranchRoleName
+
 Role name associated with the branch
 
 ```yaml
@@ -235,6 +236,7 @@ Accept wildcard characters: False
 ```
 
 ### -Database
+
 Neon Databases associated with the project
 
 ```yaml
@@ -250,6 +252,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultEndpointSettingAutoscalingLimitMaxCu
+
 Maximum compute units for autoscaling.
 
 ```yaml
@@ -265,6 +268,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultEndpointSettingAutoscalingLimitMinCu
+
 Minimum compute units for autoscaling.
 
 ```yaml
@@ -280,6 +284,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
@@ -296,6 +301,7 @@ Accept wildcard characters: False
 ```
 
 ### -Endpoint
+
 Endpoints associated with the project
 
 ```yaml
@@ -311,6 +317,7 @@ Accept wildcard characters: False
 ```
 
 ### -EntityName
+
 Name of the resource
 
 ```yaml
@@ -326,6 +333,7 @@ Accept wildcard characters: False
 ```
 
 ### -HistoryRetention
+
 The retention period for project history in seconds.
 
 ```yaml
@@ -341,6 +349,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
+
 Path of Json file supplied to the Create operation
 
 ```yaml
@@ -356,6 +365,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
+
 Json string supplied to the Create operation
 
 ```yaml
@@ -371,6 +381,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 The name of the Project
 
 ```yaml
@@ -386,6 +397,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
+
 Run the command asynchronously
 
 ```yaml
@@ -401,6 +413,7 @@ Accept wildcard characters: False
 ```
 
 ### -OrganizationName
+
 Name of the Neon Organizations resource
 
 ```yaml
@@ -416,6 +429,7 @@ Accept wildcard characters: False
 ```
 
 ### -PgVersion
+
 Postgres version for the project
 
 ```yaml
@@ -431,6 +445,7 @@ Accept wildcard characters: False
 ```
 
 ### -RegionId
+
 Region where the project is created
 
 ```yaml
@@ -446,6 +461,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+
 The name of the resource group.
 The name is case insensitive.
 
@@ -462,6 +478,7 @@ Accept wildcard characters: False
 ```
 
 ### -Role
+
 Roles associated with the project
 
 ```yaml
@@ -477,6 +494,7 @@ Accept wildcard characters: False
 ```
 
 ### -Storage
+
 Data Storage bytes per hour for the project
 
 ```yaml
@@ -492,6 +510,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
+
 The ID of the target subscription.
 The value must be an UUID.
 
@@ -508,6 +527,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
+
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -523,6 +543,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
@@ -539,6 +560,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -550,4 +572,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

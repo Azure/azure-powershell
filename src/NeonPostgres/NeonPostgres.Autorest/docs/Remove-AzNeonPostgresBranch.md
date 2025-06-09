@@ -8,61 +8,54 @@ schema: 2.0.0
 # Remove-AzNeonPostgresBranch
 
 ## SYNOPSIS
-Delete a Branch
+
+Delete an existing branch within a Neon Postgres database.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
 Remove-AzNeonPostgresBranch -Name <String> -OrganizationName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzNeonPostgresBranch -InputObject <INeonPostgresIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentityOrganization
-```
-Remove-AzNeonPostgresBranch -Name <String> -OrganizationInputObject <INeonPostgresIdentity>
- -ProjectName <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityProject
 ```
 Remove-AzNeonPostgresBranch -Name <String> -ProjectInputObject <INeonPostgresIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DeleteViaIdentityOrganization
+```
+Remove-AzNeonPostgresBranch -Name <String> -ProjectName <String>
+ -OrganizationInputObject <INeonPostgresIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzNeonPostgresBranch -InputObject <INeonPostgresIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a Branch
+
+Delete an existing branch within a Neon Postgres project
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete an existing branch within a Neon Postgres project
+
 ```powershell
-{{ Add code here }}
+Remove-AzNeonPostgresBranch -Name "br-damp-bird-a82olmcu" -OrganizationName "NeonDemoOrgPS1" -ProjectName "dawn-breeze-86932057" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Delete an existing branch within a Neon Postgres database.
 
 ## PARAMETERS
 
@@ -102,7 +95,7 @@ The name of the Branch
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityOrganization, DeleteViaIdentityProject
+Parameter Sets: Delete, DeleteViaIdentityProject, DeleteViaIdentityOrganization
 Aliases: BranchName
 
 Required: True
@@ -264,4 +257,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

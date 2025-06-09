@@ -8,64 +8,73 @@ schema: 2.0.0
 # Get-AzNeonPostgresProject
 
 ## SYNOPSIS
-Get a Project
+
+List all or Get Neon projects associated with a specific Neon organization.
 
 ## SYNTAX
 
 ### List (Default)
+
 ```
 Get-AzNeonPostgresProject -OrganizationName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get
-```
-Get-AzNeonPostgresProject -Name <String> -OrganizationName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzNeonPostgresProject -InputObject <INeonPostgresIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### GetViaIdentityOrganization
+
 ```
 Get-AzNeonPostgresProject -Name <String> -OrganizationInputObject <INeonPostgresIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### Get
+
+```
+Get-AzNeonPostgresProject -Name <String> -OrganizationName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+
+```
+Get-AzNeonPostgresProject -InputObject <INeonPostgresIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Get a Project
+
+List all or Get Neon projects associated with a specific Neon organization.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all Neon projects associated with a specific Neon organization
+
 ```powershell
-{{ Add code here }}
+Get-AzNeonPostgresProject -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
 ```
 
 ```output
 {{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+List all Neon projects associated with a specific Neon organization
 
-### Example 2: {{ Add title here }}
+### Example 2: Get Neon projects associated with a specific Neon organization
+
 ```powershell
-{{ Add code here }}
+Get-AzNeonPostgresProject -ProjectName "dawn-breeze-86932056" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+Get Neon projects associated with a specific Neon organization
 
 ## PARAMETERS
 
 ### -DefaultProfile
+
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
@@ -82,6 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+
 Identity Parameter
 
 ```yaml
@@ -97,11 +107,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 The name of the Project
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityOrganization
+Parameter Sets: GetViaIdentityOrganization, Get
 Aliases: ProjectName
 
 Required: True
@@ -112,6 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -OrganizationInputObject
+
 Identity Parameter
 
 ```yaml
@@ -127,11 +139,12 @@ Accept wildcard characters: False
 ```
 
 ### -OrganizationName
+
 Name of the Neon Organizations resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -142,12 +155,13 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -158,12 +172,13 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
+
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -174,6 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -187,4 +203,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

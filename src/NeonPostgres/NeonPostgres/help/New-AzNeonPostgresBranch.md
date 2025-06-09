@@ -8,6 +8,7 @@ schema: 2.0.0
 # New-AzNeonPostgresBranch
 
 ## SYNOPSIS
+
 Create a new branch within a Neon Postgres database.
 
 ## SYNTAX
