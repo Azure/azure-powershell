@@ -34,7 +34,7 @@ Get-AzNeonPostgresNeonRole -BranchName "br-damp-bird-a82olmcu" -ProjectName "daw
 ```output
 ```
 
-{{ Add description here }}
+List all roles and permissions associated with a specific branch
 
 ## PARAMETERS
 

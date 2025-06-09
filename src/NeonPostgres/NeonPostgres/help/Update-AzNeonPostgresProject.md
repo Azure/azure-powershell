@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNeonPostgresProject
 
 ## SYNOPSIS
-update a Project
+Update the properties of an existing Neon project resource within Azure.
 
 ## SYNTAX
 
@@ -55,31 +55,19 @@ Update-AzNeonPostgresProject -InputObject <INeonPostgresIdentity> [-Attribute <I
 ```
 
 ## DESCRIPTION
-update a Project
+Update the properties of an existing Neon project resource within Azure.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the properties of an existing Neon project resource within Azure
 ```powershell
-{{ Add code here }}
+Update-AzNeonPostgresProject -Name "dawn-breeze-86932057" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000" -BranchDatabaseName "updated-db" -BranchEntityName "updated-entity" -BranchParentId "parent-branch-id" -BranchRoleName "admin" -PgVersion 17 -RegionId "centraluseuap" -Storage 10240 -HistoryRetention 7
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Update the properties of an existing Neon project resource within Azure
 
 ## PARAMETERS
 

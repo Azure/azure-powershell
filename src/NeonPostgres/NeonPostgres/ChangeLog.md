@@ -23,7 +23,7 @@
 
 * Support to Manage Neon Projects
 * Support to Manage Neon Branches
-* Added Get Neon Database Connection Uri command
+* Support to Get Neon Database Connection Uri
 * Updated to stable release version
 
 ## Version 0.1.1

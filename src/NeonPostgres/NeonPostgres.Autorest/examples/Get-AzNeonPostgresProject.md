@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all Neon projects associated with a specific Neon organization
+
 ```powershell
-{{ Add code here }}
+Get-AzNeonPostgresProject -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
 ```
 
 ```output
 {{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+List all Neon projects associated with a specific Neon organization
 
-### Example 2: {{ Add title here }}
+### Example 2: Get Neon projects associated with a specific Neon organization
+
 ```powershell
-{{ Add code here }}
+Get-AzNeonPostgresProject -ProjectName "dawn-breeze-86932056" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
+Get Neon projects associated with a specific Neon organization

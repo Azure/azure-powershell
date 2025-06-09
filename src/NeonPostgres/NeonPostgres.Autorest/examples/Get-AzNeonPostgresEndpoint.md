@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1:  List endpoint resources associated with a specific branch in Neon Postgres
+
 ```powershell
-{{ Add code here }}
+Get-AzNeonPostgresEndpoint -BranchName "br-damp-bird-a82olmcu" -ProjectName "dawn-breeze-86932056" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+ List endpoint resources associated with a specific branch in Neon Postgres
