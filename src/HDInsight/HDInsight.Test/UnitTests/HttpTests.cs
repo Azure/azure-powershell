@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             };
         }
 
-        [Fact(Skip = "Sikp this")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanSetGatewayCredentialSupportsShouldProcess()
         {

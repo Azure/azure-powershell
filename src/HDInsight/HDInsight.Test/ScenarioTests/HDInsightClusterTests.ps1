@@ -59,7 +59,6 @@ function Test-CreateEntraCluster{
 	try{
 		 $params= Prepare-ClusterCreateParameter
 		 $entraUserFullInfo = @(@{ObjectId = "00000000-0000-0000-0000-000000000000"; Upn = "user@microsoft.com"; DisplayName = "DisplayName" },@{ObjectId = "00000000-0000-0000-0000-000000000000"; Upn = "user@microsoft.com"; DisplayName = "DisplayName" })
-		 $entraUserIdentity = "TestUserAccount@microsoft.onmicrosoft.com"	
 		 $clusterParams = @{
 			ClusterType                     = $params.clusterType
 			ClusterSizeInNodes              = $params.clusterSizeInNodes
@@ -74,7 +73,7 @@ function Test-CreateEntraCluster{
 			StorageContainer                = $params.clusterName
 			StorageAccountKey               = $params.storageAccountKey
 			StorageAccountResourceId        = $params.storageAccountResourceId
-			EntraUserIdentity               = $entraUserIdentity
+			EntraUserFullInfo               = $entraUserFullInfo
         }
 		$resultCluster = New-AzHDInsightCluster @clusterParams
 		Set-AzHDInsightGatewayCredential -ResourceGroupName $params.resourceGroupName -ClusterName $params.clusterName -EntraUserFullInfo $entraUserFullInfo
