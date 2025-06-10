@@ -32,7 +32,7 @@ jobs:
             if ($name -match "^Daily/Release_(\d{14})$") {
                 $timestamp = $matches[1]
                 try {
-                    $branchDate = [datetime]::ParseExact($timestamp, "yyyyMMddHHmmss", $null)
+                    $branchDate = [datetime]::ParseExact($timestamp, "yyyyMMddHHmmss", [System.Globalization.CultureInfo]::InvariantCulture)
                 } catch {
                   Write-Warning "Failed to parse timestamp for $name"
                   continue
