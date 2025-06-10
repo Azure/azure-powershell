@@ -28,7 +28,7 @@ Create an in-memory object for PipelineJob.
 
 ### Example 1: Create an in-memory object for PipelineJob
 ```powershell
-# You can use following commands to create job input or job oupt as vaule pass to JobInput or JobOutput parameter of the  New-AzMLWorkspacePipelineJobObject
+# You can use following commands to create job input or job output as value pass to JobInput or JobOutput parameter of the  New-AzMLWorkspacePipelineJobObject
 
 # New-AzMLWorkspaceCustomModelJobInputObject
 # New-AzMLWorkspaceCustomModelJobOutputObject
