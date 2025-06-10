@@ -1,13 +1,13 @@
 {
-  "Get-AzDataTransferListPendingFlow+[NoContext]+List+$POST+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/listPendingFlows?api-version=2024-09-27+1": {
+  "Get-AzDataTransferListPendingFlow+[NoContext]+List+$POST+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/listPendingFlows?api-version=2025-05-21+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/listPendingFlows?api-version=2024-09-27",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/listPendingFlows?api-version=2025-05-21",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "54" ],
-        "x-ms-client-request-id": [ "24c00472-854a-453f-9f51-bbd23fe0a35b" ],
+        "x-ms-client-request-id": [ "b5cc2bed-ad7d-4fc7-bac0-1e512f61baa4" ],
         "CommandName": [ "Get-AzDataTransferListPendingFlow" ],
         "FullCommandName": [ "Get-AzDataTransferListPendingFlow_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,20 +23,20 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/westindia/6be8672f-164c-4fba-b81c-255a14dfca21" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/westindia/1deda26d-b368-4eff-acd2-15419360ec11" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "mise-correlation-id": [ "9a7302a8-0b7b-4f5a-ba0d-1e940609bf30" ],
-        "x-ms-request-id": [ "a194c456-c0cd-4ddc-b1cf-afb001efde6e" ],
-        "x-ms-correlation-request-id": [ "934b328a-f088-4219-85eb-189de1674368" ],
+        "mise-correlation-id": [ "2f83caf6-0e31-48f5-a58d-3b6be21f0802" ],
+        "x-ms-request-id": [ "f9d57f12-c7af-4024-a8b5-aec26bfabafc" ],
+        "x-ms-correlation-request-id": [ "4ebf42c4-6954-4456-b02d-f66f4c591c53" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250530T161730Z:934b328a-f088-4219-85eb-189de1674368" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250610T145520Z:4ebf42c4-6954-4456-b02d-f66f4c591c53" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CE8C808304814D5F9F58E8965A2D50E2 Ref B: MAA201060515031 Ref C: 2025-05-30T16:17:28Z" ],
-        "Date": [ "Fri, 30 May 2025 16:17:30 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AAF38B838C8948908D86E3CC7F5F1283 Ref B: MAA201060516029 Ref C: 2025-06-10T14:55:18Z" ],
+        "Date": [ "Tue, 10 Jun 2025 14:55:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "449" ],

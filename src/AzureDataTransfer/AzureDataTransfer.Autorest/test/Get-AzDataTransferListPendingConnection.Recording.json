@@ -1,13 +1,13 @@
 {
-  "Get-AzDataTransferListPendingConnection+[NoContext]+List+$POST+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-approved-connection-1/listPendingConnections?api-version=2024-09-27+1": {
+  "Get-AzDataTransferListPendingConnection+[NoContext]+List+$POST+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-approved-connection-1/listPendingConnections?api-version=2025-05-21+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-approved-connection-1/listPendingConnections?api-version=2024-09-27",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-approved-connection-1/listPendingConnections?api-version=2025-05-21",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "53" ],
-        "x-ms-client-request-id": [ "12068429-27e6-45c0-a34d-4fe3166bf669" ],
+        "x-ms-client-request-id": [ "a91a250f-5f4d-4176-8ed9-6b741a733f38" ],
         "CommandName": [ "Get-AzDataTransferListPendingConnection" ],
         "FullCommandName": [ "Get-AzDataTransferListPendingConnection_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,27 +23,27 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/westindia/52946124-7872-4d82-8694-8f7b0cb0190c" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/westindia/8da1e861-26bc-45cc-90eb-e507a9556d41" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "mise-correlation-id": [ "702a87d3-ddac-47e9-83f0-6cb1bf0d6350" ],
-        "x-ms-request-id": [ "26e8d601-6465-4105-9c47-63fa151194ed" ],
-        "x-ms-correlation-request-id": [ "75cb9dfa-4586-4a5d-aec7-86a6b9b4d175" ],
+        "mise-correlation-id": [ "a96a4790-8300-4ad9-a15b-589f5dfbddc2" ],
+        "x-ms-request-id": [ "bd1c07e8-41c4-4de9-b6da-15a7cc60748e" ],
+        "x-ms-correlation-request-id": [ "effe0702-2332-4206-b9fc-395b16499ceb" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250530T161717Z:75cb9dfa-4586-4a5d-aec7-86a6b9b4d175" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250610T145506Z:effe0702-2332-4206-b9fc-395b16499ceb" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 130BC2DB3B7B4190957566C373741D65 Ref B: MAA201060515031 Ref C: 2025-05-30T16:17:15Z" ],
-        "Date": [ "Fri, 30 May 2025 16:17:16 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 9F80FD473D0141B69F7B1A869EDCE4D0 Ref B: MAA201060516029 Ref C: 2025-06-10T14:55:05Z" ],
+        "Date": [ "Tue, 10 Jun 2025 14:55:06 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "863" ],
+        "Content-Length": [ "3180" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/faikh-test-send-pending-connection-1\",\"name\":\"faikh-test-send-pending-connection-1\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"justification\":\"Send side for PS testing\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-pending-connection-1\",\"name\":\"test-send-pending-connection-1\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"justification\":\"Send side for PS testing\",\"flowTypes\":[\"Mission\"]}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/Connection02\",\"name\":\"Connection02\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"justification\":\"Required for data processing\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/faikh-test-send-pending-connection-1\",\"name\":\"faikh-test-send-pending-connection-1\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"justification\":\"Send side for PS testing\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/lasuredd-send-connection\",\"name\":\"lasuredd-send-connection\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"justification\":\"required\",\"flowTypes\":[\"Mission\",\"API\"],\"requirementId\":\"1234\"},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-connection-f5d45ha2s\",\"name\":\"test-send-connection-f5d45ha2s\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-connection-jmwhfgxgt\",\"name\":\"test-send-connection-jmwhfgxgt\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-connection-rbjxy5bqz\",\"name\":\"test-send-connection-rbjxy5bqz\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-connection-tqudmutmi\",\"name\":\"test-send-connection-tqudmutmi\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-pending-connection-1\",\"name\":\"test-send-pending-connection-1\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"justification\":\"Send side for PS testing\",\"flowTypes\":[\"Mission\"]}]}",
       "isContentBase64": false
     }
   }
