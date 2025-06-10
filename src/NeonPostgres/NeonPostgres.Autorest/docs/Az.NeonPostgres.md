@@ -61,4 +61,3 @@ update a OrganizationResource
 
 ### [Update-AzNeonPostgresProject](Update-AzNeonPostgresProject.md)
 update a Project
-

@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all Neon Postgres databases associated with a specific branch
 ```powershell
-{{ Add code here }}
+Get-AzNeonPostgresNeonDatabase -BranchName "br-damp-bird-a82olmcu" -OrganizationName "NeonDemoOrgPS1" -ProjectName "dawn-breeze-86932057" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+List all Neon Postgres databases associated with a specific branch.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get Neon Postgres databases associated with a specific branch
 ```powershell
-{{ Add code here }}
+Get-AzNeonPostgresNeonDatabase -DatabaseName "neodb" -BranchName "br-damp-bird-a82olmcu" -OrganizationName "NeonDemoOrgPS1" -ProjectName "dawn-breeze-86932057" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
+Get Neon Postgres databases associated with a specific branch.
