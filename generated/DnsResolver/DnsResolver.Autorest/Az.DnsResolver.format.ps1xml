@@ -348,9 +348,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.CloudErrorBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.CloudErrorBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.CloudErrorBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.CloudErrorBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -382,9 +382,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsForwardingRuleset</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsForwardingRuleset</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsForwardingRuleset</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsForwardingRuleset</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -452,9 +452,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsForwardingRulesetListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsForwardingRulesetListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsForwardingRulesetListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsForwardingRulesetListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -474,9 +474,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsForwardingRulesetPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsForwardingRulesetPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsForwardingRulesetPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsForwardingRulesetPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -496,9 +496,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsForwardingRulesetProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsForwardingRulesetProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsForwardingRulesetProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsForwardingRulesetProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -524,9 +524,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolver</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolver</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolver</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolver</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -594,9 +594,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverDomainList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverDomainList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverDomainList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverDomainList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -664,9 +664,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverDomainListPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverDomainListBulkProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverDomainListPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverDomainListBulkProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Action</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageUrl</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Action</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StorageUrl</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverDomainListPatchProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverDomainListPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -686,9 +714,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverDomainListPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverDomainListPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverDomainListPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverDomainListPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -708,14 +736,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverDomainListProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverDomainListProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverDomainListProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverDomainListProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Domain</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DomainsUrl</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
@@ -731,6 +762,9 @@
                 <PropertyName>Domain</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DomainsUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -742,9 +776,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverDomainListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverDomainListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverDomainListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverDomainListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -764,9 +798,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -786,9 +820,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -808,9 +842,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicy</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicy</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -878,9 +912,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicyListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicyListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicyListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicyListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -900,9 +934,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicyPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicyPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicyPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicyPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -922,9 +956,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicyProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicyProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicyProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicyProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -950,9 +984,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicyVirtualNetworkLink</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicyVirtualNetworkLink</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicyVirtualNetworkLink</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicyVirtualNetworkLink</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1020,9 +1054,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicyVirtualNetworkLinkListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicyVirtualNetworkLinkListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicyVirtualNetworkLinkListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicyVirtualNetworkLinkListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1042,9 +1076,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicyVirtualNetworkLinkPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicyVirtualNetworkLinkPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicyVirtualNetworkLinkPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicyVirtualNetworkLinkPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1064,9 +1098,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicyVirtualNetworkLinkProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicyVirtualNetworkLinkProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverPolicyVirtualNetworkLinkProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverPolicyVirtualNetworkLinkProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1086,9 +1120,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsResolverProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsResolverProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1120,9 +1154,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsSecurityRule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsSecurityRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsSecurityRule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsSecurityRule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1190,17 +1224,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsSecurityRuleAction</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsSecurityRuleAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsSecurityRuleAction</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsSecurityRuleAction</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>ActionType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>BlockResponseCode</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1209,18 +1240,15 @@
               <TableColumnItem>
                 <PropertyName>ActionType</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>BlockResponseCode</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsSecurityRuleListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsSecurityRuleListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsSecurityRuleListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsSecurityRuleListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1240,9 +1268,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsSecurityRulePatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsSecurityRulePatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsSecurityRulePatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsSecurityRulePatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1268,9 +1296,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsSecurityRulePatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsSecurityRulePatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsSecurityRulePatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsSecurityRulePatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1290,9 +1318,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsSecurityRuleProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsSecurityRuleProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsSecurityRuleProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsSecurityRuleProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1324,9 +1352,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ForwardingRule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ForwardingRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ForwardingRule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ForwardingRule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1388,9 +1416,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ForwardingRuleListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ForwardingRuleListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ForwardingRuleListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ForwardingRuleListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1410,9 +1438,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ForwardingRulePatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ForwardingRulePatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ForwardingRulePatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ForwardingRulePatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1432,9 +1460,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ForwardingRulePatchPropertiesMetadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ForwardingRulePatchPropertiesMetadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ForwardingRulePatchPropertiesMetadata</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ForwardingRulePatchPropertiesMetadata</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1454,9 +1482,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ForwardingRuleProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ForwardingRuleProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ForwardingRuleProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ForwardingRuleProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1488,9 +1516,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ForwardingRulePropertiesMetadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ForwardingRulePropertiesMetadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ForwardingRulePropertiesMetadata</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ForwardingRulePropertiesMetadata</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1510,9 +1538,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.InboundEndpoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.InboundEndpoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.InboundEndpoint</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.InboundEndpoint</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1580,9 +1608,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.InboundEndpointListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.InboundEndpointListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.InboundEndpointListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.InboundEndpointListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1602,9 +1630,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.InboundEndpointPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.InboundEndpointPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.InboundEndpointPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.InboundEndpointPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1624,9 +1652,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.InboundEndpointProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.InboundEndpointProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.InboundEndpointProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.InboundEndpointProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1652,9 +1680,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IPConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IPConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IPConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IPConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1680,9 +1708,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.OutboundEndpoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.OutboundEndpoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.OutboundEndpoint</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.OutboundEndpoint</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1750,9 +1778,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.OutboundEndpointListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.OutboundEndpointListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.OutboundEndpointListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.OutboundEndpointListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1772,9 +1800,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.OutboundEndpointPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.OutboundEndpointPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.OutboundEndpointPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.OutboundEndpointPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1794,9 +1822,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.OutboundEndpointProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.OutboundEndpointProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.OutboundEndpointProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.OutboundEndpointProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1822,9 +1850,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.SubResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.SubResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.SubResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.SubResourceListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1844,9 +1872,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.TargetDnsServer</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.TargetDnsServer</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.TargetDnsServer</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.TargetDnsServer</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1872,9 +1900,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.VirtualNetworkDnsForwardingRulesetListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.VirtualNetworkDnsForwardingRulesetListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.VirtualNetworkDnsForwardingRulesetListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.VirtualNetworkDnsForwardingRulesetListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1894,9 +1922,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.VirtualNetworkLink</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.VirtualNetworkLink</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.VirtualNetworkLink</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.VirtualNetworkLink</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1958,9 +1986,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.VirtualNetworkLinkListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.VirtualNetworkLinkListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.VirtualNetworkLinkListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.VirtualNetworkLinkListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1980,9 +2008,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.VirtualNetworkLinkPatchPropertiesMetadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.VirtualNetworkLinkPatchPropertiesMetadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.VirtualNetworkLinkPatchPropertiesMetadata</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.VirtualNetworkLinkPatchPropertiesMetadata</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2002,9 +2030,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.VirtualNetworkLinkProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.VirtualNetworkLinkProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.VirtualNetworkLinkProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.VirtualNetworkLinkProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2024,9 +2052,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.VirtualNetworkLinkPropertiesMetadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.VirtualNetworkLinkPropertiesMetadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.VirtualNetworkLinkPropertiesMetadata</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.VirtualNetworkLinkPropertiesMetadata</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

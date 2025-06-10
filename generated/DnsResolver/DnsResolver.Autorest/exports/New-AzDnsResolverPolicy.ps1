@@ -25,12 +25,12 @@ New-AzDnsResolverPolicy -Name sampleResolverPolicy -ResourceGroupName powershell
 New-AzDnsResolverPolicy -Name sampleResolverPolicy -ResourceGroupName powershell-test-rg -Location westus2 -Tag @{"key0" = "value0"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverPolicy
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicy
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverpolicy
 #>
 function New-AzDnsResolverPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicy])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
