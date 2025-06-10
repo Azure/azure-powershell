@@ -24,24 +24,45 @@ Lists all pending remote connections that are linkable to this connection.
 
 ### Example 1: List all pending connections for a specific connection
 ```powershell
-$pendingConnections = Get-AzDataTransferListPendingConnection -ResourceGroupName ResourceGroup01 -ConnectionName Connection01
+Get-AzDataTransferListPendingConnection -ResourceGroupName ResourceGroup01 -ConnectionName Connection01
 ```
 
 ```output
-Id                : pending-connection-id-123
-ConnectionName    : Connection01
-ResourceGroupName : ResourceGroup01
-Status            : Pending
-Requestor         : user@example.com
-
-Id                : pending-connection-id-456
-ConnectionName    : Connection01
-ResourceGroupName : ResourceGroup01
-Status            : Pending
-Requestor         : admin@example.com
+Approver                     : 
+DateSubmitted                : 
+Direction                    : 
+FlowType                     : {Mission}
+ForceDisabledStatus          : 
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup02/providers/Microsoft.AzureDataTransfer/connections/Connection02
+Justification                : Required for data processing
+LinkStatus                   : 
+LinkedConnectionId           : 
+Location                     : eastus
+Name                         : Connection02
+Pin                          : 
+Pipeline                     : Pipeline01
+Policy                       : 
+PrimaryContact               : 
+ProvisioningState            : 
+RemoteSubscriptionId         : 
+RequirementId                : 
+Schema                       : 
+SchemaUri                    : 
+SecondaryContact             : 
+Status                       : 
+StatusReason                 : 
+SubscriptionId               : 00000000-0000-0000-0000-000000000000
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Tag                          : {}
+Type                         : microsoft.azuredatatransfer/connections
 ```
 
-This example lists all pending connections for the connection `Connection01` within the resource group `ResourceGroup01`.
+This example lists all the pending send side connections for the connection `Connection01` which can be linked to this receive side connection.
 
 ---
 
