@@ -221,7 +221,7 @@ The restore request object is then used to trigger the restore operation.
 ## PARAMETERS
 
 ### -BackupInstance
-Backup Instance object to trigger original localtion restore.
+Backup Instance object to trigger original location restore.
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml

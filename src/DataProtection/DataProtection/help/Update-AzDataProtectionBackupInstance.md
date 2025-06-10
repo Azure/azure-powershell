@@ -47,7 +47,7 @@ First command fetch the backup instance which needs to be updated.
 Second command gets the backup policy with name vaulted-policy which need to be updated in Backup Instance.
 Third command fetches the list of vaulted containers which are currently backed up in the backup vault.
 Fourth command update the backup instance with new policy and new list of container (which is currently a subset of the existing backed up containers).
-Fifth and sixth command shows the updated policy and containers list in the backu instance.
+Fifth and sixth command shows the updated policy and containers list in the backup instance.
 
 ### Example 2: Update UAMI in Backup Instance
 ```powershell
