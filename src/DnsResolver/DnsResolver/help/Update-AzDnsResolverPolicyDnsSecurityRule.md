@@ -15,8 +15,7 @@ Updates a DNS security rule.
 ### UpdateExpanded (Default)
 ```
 Update-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-ActionBlockResponseCode <BlockResponseCode>] [-ActionType <ActionType>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-ActionType <ActionType>]
  [-DnsResolverDomainList <ISubResource[]>] [-DnsSecurityRuleState <DnsSecurityRuleState>] [-Priority <Int32>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -25,10 +24,10 @@ Update-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDnsResolverPolicyDnsSecurityRule -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
- [-ActionBlockResponseCode <BlockResponseCode>] [-ActionType <ActionType>]
- [-DnsResolverDomainList <ISubResource[]>] [-DnsSecurityRuleState <DnsSecurityRuleState>] [-Priority <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ActionType <ActionType>] [-DnsResolverDomainList <ISubResource[]>]
+ [-DnsSecurityRuleState <DnsSecurityRuleState>] [-Priority <Int32>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,21 +63,6 @@ westus2  psdnssecurityrulename33nmy1fz       Microsoft.Network/dnsSecurityRules 
 This command updates an existing DNS Security Rules by identity ( removing tag ).
 
 ## PARAMETERS
-
-### -ActionBlockResponseCode
-The response code for block actions.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.BlockResponseCode
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ActionType
 The type of action to take.
@@ -131,7 +115,7 @@ DNS resolver policy domains lists that the DNS security rule applies to.
 To construct, see NOTES section for DNSRESOLVERDOMAINLIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ISubResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -337,7 +321,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsSecurityRule
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule
 
 ## NOTES
 

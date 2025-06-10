@@ -264,9 +264,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolver
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolver
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ISubResource
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource
 
 ## NOTES
 
