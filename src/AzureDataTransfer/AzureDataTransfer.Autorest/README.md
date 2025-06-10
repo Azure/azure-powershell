@@ -51,6 +51,7 @@ subject-prefix: DataTransfer
 # identity-correction-for-post: true
 # resourcegroup-append: true
 # nested-object-to-string: true
+disable-getput: true
 
 directive:
   # Following are common directives which are normally required in all the RPs
@@ -125,7 +126,6 @@ directive:
   - from: swagger-document
     where: $.definitions.flowProperties.properties.connection
     transform: $['x-ms-client-name'] = 'FlowPropertiesConnection'
-  
   # Rename approve/reject ConnectionId param
   - where:
       verb: Invoke
@@ -140,7 +140,6 @@ directive:
       parameter-name: Id
     set:
       parameter-name: ConnectionId
-  
 
   # Rename approve/reject Connection cmdlets
   - where:
