@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.PowerShell;
 
-    /// <summary>Properties specific to Neon Organization resource</summary>
+    /// <summary>Properties specific to Data Organization resource</summary>
     [System.ComponentModel.TypeConverter(typeof(LiftrBaseDataOrganizationPropertiesTypeConverter))]
     public partial class LiftrBaseDataOrganizationProperties
     {
@@ -132,10 +132,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
-            }
-            if (content.Contains("ProjectProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal)this).ProjectProperty = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectProperties) content.GetValueForProperty("ProjectProperty",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal)this).ProjectProperty, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ProjectPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("MarketplaceDetailOfferDetail"))
             {
@@ -282,10 +278,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
-            if (content.Contains("ProjectProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal)this).ProjectProperty = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectProperties) content.GetValueForProperty("ProjectProperty",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal)this).ProjectProperty, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ProjectPropertiesTypeConverter.ConvertFrom);
-            }
             if (content.Contains("MarketplaceDetailOfferDetail"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal)this).MarketplaceDetailOfferDetail = (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseOfferDetails) content.GetValueForProperty("MarketplaceDetailOfferDetail",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal)this).MarketplaceDetailOfferDetail, Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.LiftrBaseOfferDetailsTypeConverter.ConvertFrom);
@@ -414,7 +406,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             return ToJsonString();
         }
     }
-    /// Properties specific to Neon Organization resource
+    /// Properties specific to Data Organization resource
     [System.ComponentModel.TypeConverter(typeof(LiftrBaseDataOrganizationPropertiesTypeConverter))]
     public partial interface ILiftrBaseDataOrganizationProperties
 

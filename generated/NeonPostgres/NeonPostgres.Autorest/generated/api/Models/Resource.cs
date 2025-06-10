@@ -33,24 +33,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.SystemData()); set { {_systemData = value;} } }
 
-        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
-
-        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
-
-        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
-
-        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
-
-        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
-
-        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
-
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.Type { get => this._type; set { {_type = value;} } }
 
@@ -72,27 +54,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).CreatedAt; }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).CreatedBy; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).CreatedByType; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;

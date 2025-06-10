@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
 
         /// <summary>SaaS subscription id for the the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
@@ -94,24 +94,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemData = value; }
 
-        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value; }
-
-        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value; }
-
-        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value; }
-
-        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value; }
-
-        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value; }
-
-        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value; }
-
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).Type = value; }
 
@@ -151,10 +133,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
         public string PartnerOrganizationPropertyOrganizationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal)Property).PartnerOrganizationPropertyOrganizationName; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal)Property).PartnerOrganizationPropertyOrganizationName = value ?? null; }
 
-        /// <summary>Neon Project Properties</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectProperties ProjectProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal)Property).ProjectProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal)Property).ProjectProperty = value ?? null /* model class */; }
-
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationProperties _property;
 
@@ -190,31 +168,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemData; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
@@ -341,7 +319,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = true,
+        Update = false,
         Description = @"SaaS subscription id for the the marketplace offer",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -352,7 +330,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = true,
+        Update = false,
         Description = @"Marketplace subscription status",
         SerializedName = @"subscriptionStatus",
         PossibleTypes = new [] { typeof(string) })]
@@ -364,7 +342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = true,
+        Update = false,
         Description = @"Offer Id for the marketplace offer",
         SerializedName = @"offerId",
         PossibleTypes = new [] { typeof(string) })]
@@ -375,7 +353,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = true,
+        Update = false,
         Description = @"Plan Id for the marketplace offer",
         SerializedName = @"planId",
         PossibleTypes = new [] { typeof(string) })]
@@ -386,7 +364,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = true,
+        Update = false,
         Description = @"Plan Name for the marketplace offer",
         SerializedName = @"planName",
         PossibleTypes = new [] { typeof(string) })]
@@ -397,7 +375,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = true,
+        Update = false,
         Description = @"Publisher Id for the marketplace offer",
         SerializedName = @"publisherId",
         PossibleTypes = new [] { typeof(string) })]
@@ -408,7 +386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = true,
+        Update = false,
         Description = @"Term Id for the marketplace offer",
         SerializedName = @"termId",
         PossibleTypes = new [] { typeof(string) })]
@@ -419,7 +397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = true,
+        Update = false,
         Description = @"Term Name for the marketplace offer",
         SerializedName = @"termUnit",
         PossibleTypes = new [] { typeof(string) })]
@@ -446,17 +424,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         SerializedName = @"organizationName",
         PossibleTypes = new [] { typeof(string) })]
         string PartnerOrganizationPropertyOrganizationName { get; set; }
-        /// <summary>Neon Project Properties</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Neon Project Properties",
-        SerializedName = @"projectProperties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectProperties) })]
-        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectProperties ProjectProperty { get; set; }
         /// <summary>Provisioning state of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
         Required = false,
@@ -610,7 +577,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         string OfferDetailTermId { get; set; }
         /// <summary>Term Name for the marketplace offer</summary>
         string OfferDetailTermUnit { get; set; }
-        /// <summary>Neon Organization properties</summary>
+        /// <summary>Organization properties</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataPartnerOrganizationProperties PartnerOrganizationProperty { get; set; }
         /// <summary>Organization Id in partner's system</summary>
         string PartnerOrganizationPropertyOrganizationId { get; set; }
@@ -618,8 +585,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         string PartnerOrganizationPropertyOrganizationName { get; set; }
         /// <summary>Single Sign On properties for the organization</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseSingleSignOnProperties PartnerOrganizationPropertySingleSignOnProperty { get; set; }
-        /// <summary>Neon Project Properties</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectProperties ProjectProperty { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationProperties Property { get; set; }
         /// <summary>Provisioning state of the resource.</summary>

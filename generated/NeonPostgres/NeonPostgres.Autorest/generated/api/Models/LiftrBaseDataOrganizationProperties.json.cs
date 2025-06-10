@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Extensions;
 
-    /// <summary>Properties specific to Neon Organization resource</summary>
+    /// <summary>Properties specific to Data Organization resource</summary>
     public partial class LiftrBaseDataOrganizationProperties
     {
 
@@ -82,7 +82,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             {_companyDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonObject>("companyDetails"), out var __jsonCompanyDetails) ? Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.LiftrBaseCompanyDetails.FromJson(__jsonCompanyDetails) : _companyDetail;}
             {_partnerOrganizationProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonObject>("partnerOrganizationProperties"), out var __jsonPartnerOrganizationProperties) ? Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.LiftrBaseDataPartnerOrganizationProperties.FromJson(__jsonPartnerOrganizationProperties) : _partnerOrganizationProperty;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
-            {_projectProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonObject>("projectProperties"), out var __jsonProjectProperties) ? Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ProjectProperties.FromJson(__jsonProjectProperties) : _projectProperty;}
             AfterFromJson(json);
         }
 
@@ -106,7 +105,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             {
                 return container;
             }
-            AddIf( null != this._marketplaceDetail ? (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonNode) this._marketplaceDetail.ToJson(null,serializationMode) : null, "marketplaceDetails" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != this._marketplaceDetail ? (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonNode) this._marketplaceDetail.ToJson(null,serializationMode) : null, "marketplaceDetails" ,container.Add );
+            }
             AddIf( null != this._userDetail ? (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonNode) this._userDetail.ToJson(null,serializationMode) : null, "userDetails" ,container.Add );
             AddIf( null != this._companyDetail ? (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonNode) this._companyDetail.ToJson(null,serializationMode) : null, "companyDetails" ,container.Add );
             AddIf( null != this._partnerOrganizationProperty ? (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonNode) this._partnerOrganizationProperty.ToJson(null,serializationMode) : null, "partnerOrganizationProperties" ,container.Add );
@@ -114,7 +116,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
             }
-            AddIf( null != this._projectProperty ? (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonNode) this._projectProperty.ToJson(null,serializationMode) : null, "projectProperties" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
