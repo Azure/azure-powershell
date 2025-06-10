@@ -50,10 +50,10 @@ Name                         : testMap
 ProvisioningState            : Succeeded
 ResourceGroupName            : dmTestGroup
 SystemDataCreatedAt          : 6/9/2025 5:25:07 AM
-SystemDataCreatedBy          : xidi@microsoft.com
+SystemDataCreatedBy          : test@abc.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 6/9/2025 5:25:07 AM
-SystemDataLastModifiedBy     : xidi@microsoft.com
+SystemDataLastModifiedBy     : test@abc.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                }
