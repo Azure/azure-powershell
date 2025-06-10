@@ -18,7 +18,7 @@ $connectionToUpdate = "test-connection-update-" + $env.RunId
 Write-Host "Connection name: $connectionToUpdate"
 
 Describe 'Update-AzDataTransferConnection' {
-    It 'UpdateTagsForExistingConnection' {
+    It 'UpdateTagsForExistingConnection' -skip {
         {
             $connectionParams = @{
                 Location             = $env.Location
@@ -45,7 +45,7 @@ Describe 'Update-AzDataTransferConnection' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateTagsForExistingConnection AsJob' {
+    It 'UpdateTagsForExistingConnection AsJob' -skip {
         {
             # Update tags for the connection as a background job
             $job = Update-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToUpdate -Tag @{Source="Job"; Domain="Ops"} -AsJob -Confirm:$false

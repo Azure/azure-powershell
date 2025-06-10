@@ -1,7 +1,7 @@
 ### Example 1: Create a new Receive side connection with basic parameters
 ```powershell
 New-AzDataTransferConnection -ResourceGroupName ResourceGroup01 -PipelineName Pipeline01 -Name Connection01 -Location "EastUS" -Direction "Receive" -FlowType "Mission" -RequirementId 123 -Justification "Required for 
-data processing" -Confirm:$false
+data processing" -RemoteSubscriptionId 11111111-1111-1111-1111-111111111111 -Confirm:$false
 ```
 
 ```output
@@ -25,7 +25,7 @@ Pipeline                     : Pipeline01
 Policy                       : 
 PrimaryContact               : 
 ProvisioningState            : Succeeded
-RemoteSubscriptionId         : 
+RemoteSubscriptionId         : 11111111-1111-1111-1111-111111111111
 RequirementId                : 123
 ResourceGroupName            : ResourceGroup01
 Schema                       : 
