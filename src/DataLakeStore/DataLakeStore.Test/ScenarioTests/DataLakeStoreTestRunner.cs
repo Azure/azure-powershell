@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.TestFx;
 using System.Collections.Generic;
@@ -66,17 +65,17 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
                 .WithManagementClients(context =>
                 {
                     AdlsClientFactory.IsTest = true;
-                    var azureContext = new AzureContext
-                    {
-                        Account = AzureRmProfileProvider.Instance.Profile.DefaultContext.Account,
-                        Environment = AzureRmProfileProvider.Instance.Profile.DefaultContext.Environment,
-                        Tenant = AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant
-                    };
-                    var creds = new DataLakeStoreTokenCredential(azureContext);
 
-                    var handlers = context.AddHandlers(new TokenCredentialAdapter(creds), new AdlMockDelegatingHandler());
+                    var serviceClientCredentials = context.GetClientCredentials("https://datalake.azure.net");
+                    var scope = "https://datalake.azure.net/.default";
+
+                    // Convert ServiceClientCredentials to TokenCredential
+                    var tokenCredential = new ServiceClientCredentialsAdapter(serviceClientCredentials, scope);
+
+                    var handlers = context.AddHandlers(new TokenCredentialAdapter(tokenCredential), new AdlMockDelegatingHandler());
                     AdlsClientFactory.CustomDelegatingHAndler = handlers;
-                    AdlsClientFactory.MockCredentials = creds;
+                    AdlsClientFactory.MockCredentials = tokenCredential;
+
                     return new object();
                 })
                 .WithCleanupAction(
@@ -97,7 +96,7 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
 
         public override async Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var tokenRequestContext = new TokenRequestContext(new[] { "https://management.azure.com/.default" });
+            var tokenRequestContext = new TokenRequestContext(new[] { "https://datalake.azure.net/.default"});
             var accessToken = await _tokenCredential.GetTokenAsync(tokenRequestContext, cancellationToken).ConfigureAwait(false);
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken.Token);
         }
