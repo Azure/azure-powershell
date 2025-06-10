@@ -259,6 +259,14 @@ directive:
       parameter-name: UpdateStrategyWaitTimeMinute
     set:
       parameter-name: UpdateStrategyWaitTimeMinutes
+  - where:
+      parameter-name: CommandOutputSettingsAssociatedIdentityType
+    set:
+      parameter-name: AssociatedIdentityType
+  - where:
+      parameter-name: CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId
+    set:
+      parameter-name: AssociatedIdentityUserAssignedIdentityResourceId
 
   # define password parameters as `password` type, which generates it as "SecureString"
   - from: swagger-document
