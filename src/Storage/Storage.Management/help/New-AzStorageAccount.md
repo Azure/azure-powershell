@@ -256,7 +256,7 @@ SasExpirationPeriod ExpirationAction
 1.12:05:06          Block          
 ```
 
-This command creates a Storage account with KeyExpirationPeriod and SasExpirationPeriod with SasExpirationAction , then show the created account related properties.
+This command creates a Storage account with KeyExpirationPeriod and SasExpirationPeriod with SasExpirationAction, then show the created account related properties.
 
 ### Example 12: Create a Storage account with Keyvault encryption (access Keyvault with user assigned identity)
 <!-- Skip: Output cannot be splitted from code -->

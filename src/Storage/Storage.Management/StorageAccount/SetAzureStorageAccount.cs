@@ -904,11 +904,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                         else
                         {
-                            if (SasExpirationAction.ToLower() == ExpirationAction.Log.ToLower())
+                            if (String.Equals(SasExpirationAction, ExpirationAction.Log, StringComparison.OrdinalIgnoreCase))
                             {
                                 SasExpirationAction = ExpirationAction.Log;
                             }
-                            else if (SasExpirationAction.ToLower() == ExpirationAction.Block.ToLower())
+                            else if (String.Equals(SasExpirationAction, ExpirationAction.Block, StringComparison.OrdinalIgnoreCase))
                             {
                                 SasExpirationAction = ExpirationAction.Block;
                             }
