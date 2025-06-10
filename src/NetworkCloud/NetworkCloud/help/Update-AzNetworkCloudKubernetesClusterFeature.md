@@ -16,8 +16,8 @@ Patch properties of the provided Kubernetes cluster feature.
 ```
 Update-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-Option <IStringKeyValuePair[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Option <IStringKeyValuePair[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded

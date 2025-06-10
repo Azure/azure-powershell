@@ -22,7 +22,8 @@ Restart-AzNetworkCloudKubernetesClusterNode -KubernetesClusterName <String> -Res
 ### RestartViaIdentityExpanded
 ```
 Restart-AzNetworkCloudKubernetesClusterNode -InputObject <INetworkCloudIdentity> -NodeName <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

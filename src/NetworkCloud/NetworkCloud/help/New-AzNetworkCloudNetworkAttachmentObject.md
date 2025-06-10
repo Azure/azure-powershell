@@ -15,7 +15,8 @@ Create an in-memory object for NetworkAttachment.
 ```
 New-AzNetworkCloudNetworkAttachmentObject -AttachedNetworkId <String>
  -IPAllocationMethod <VirtualMachineIPAllocationMethod> [-DefaultGateway <DefaultGateway>]
- [-Ipv4Address <String>] [-Ipv6Address <String>] [-Name <String>] [<CommonParameters>]
+ [-Ipv4Address <String>] [-Ipv6Address <String>] [-Name <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

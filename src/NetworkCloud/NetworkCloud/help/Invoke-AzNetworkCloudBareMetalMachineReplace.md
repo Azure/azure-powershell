@@ -17,7 +17,8 @@ Replace the provided bare metal machine.
 Invoke-AzNetworkCloudBareMetalMachineReplace -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-BmcCredentialsPassword <SecureString>] [-BmcCredentialsUsername <String>]
  [-BmcMacAddress <String>] [-BootMacAddress <String>] [-MachineName <String>] [-SerialNumber <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ReplaceViaIdentityExpanded

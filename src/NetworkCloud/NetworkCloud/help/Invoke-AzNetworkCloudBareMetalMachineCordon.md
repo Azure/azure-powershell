@@ -22,8 +22,8 @@ Invoke-AzNetworkCloudBareMetalMachineCordon -BareMetalMachineName <String> -Reso
 ### CordonViaIdentityExpanded
 ```
 Invoke-AzNetworkCloudBareMetalMachineCordon -InputObject <INetworkCloudIdentity>
- [-Evacuate <BareMetalMachineEvacuate>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Evacuate <BareMetalMachineEvacuate>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

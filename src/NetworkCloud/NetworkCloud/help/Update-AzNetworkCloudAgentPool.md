@@ -19,8 +19,8 @@ Update-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -R
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-Count <Int64>] [-Tag <Hashtable>]
  [-UpgradeSettingDrainTimeout <Int64>] [-UpgradeSettingMaxSurge <String>]
- [-UpgradeSettingMaxUnavailable <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UpgradeSettingMaxUnavailable <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -28,8 +28,8 @@ Update-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -R
 Update-AzNetworkCloudAgentPool -InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-Count <Int64>] [-Tag <Hashtable>]
  [-UpgradeSettingDrainTimeout <Int64>] [-UpgradeSettingMaxSurge <String>]
- [-UpgradeSettingMaxUnavailable <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UpgradeSettingMaxUnavailable <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

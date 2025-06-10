@@ -18,7 +18,8 @@ New-AzNetworkCloudClusterManager -Name <String> -ResourceGroupName <String> [-Su
  [-AnalyticsWorkspaceId <String>] [-AvailabilityZone <String[]>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-ManagedResourceGroupConfigurationLocation <String>]
  [-ManagedResourceGroupConfigurationName <String>] [-Tag <Hashtable>] [-VMSize <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

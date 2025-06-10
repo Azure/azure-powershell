@@ -16,14 +16,15 @@ Enable remote vendor management of the provided storage appliance.
 ```
 Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <String>
  -StorageApplianceName <String> [-SubscriptionId <String>] [-SupportEndpoint <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### EnableViaIdentityExpanded
 ```
 Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -InputObject <INetworkCloudIdentity>
- [-SupportEndpoint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SupportEndpoint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

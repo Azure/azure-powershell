@@ -13,7 +13,8 @@ Create an in-memory object for EndpointDependency.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudEndpointDependencyObject -DomainName <String> [-Port <Int64>] [<CommonParameters>]
+New-AzNetworkCloudEndpointDependencyObject -DomainName <String> [-Port <Int64>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

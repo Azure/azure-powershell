@@ -24,7 +24,8 @@ Invoke-AzNetworkCloudBareMetalMachineRunReadCommand -InputObject <INetworkCloudI
 ```
 Invoke-AzNetworkCloudBareMetalMachineRunReadCommand -BareMetalMachineName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

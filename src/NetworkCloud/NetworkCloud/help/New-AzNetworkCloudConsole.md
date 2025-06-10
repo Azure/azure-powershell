@@ -16,8 +16,8 @@ Create a new virtual machine console or update the properties of the existing vi
 New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -Enabled <ConsoleEnabled>
  -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> -SshPublicKeyData <String>
- [-Expiration <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Expiration <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

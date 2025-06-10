@@ -16,8 +16,8 @@ Create new or update the existing metrics configuration of the provided cluster.
 New-AzNetworkCloudMetricsConfiguration -ClusterName <String> -MetricsConfigurationName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
  -CollectionInterval <Int64> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
- [-EnabledMetric <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EnabledMetric <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

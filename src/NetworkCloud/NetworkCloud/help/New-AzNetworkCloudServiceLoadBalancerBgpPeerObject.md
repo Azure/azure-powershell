@@ -15,7 +15,8 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 ```
 New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name <String> -PeerAddress <String> -PeerAsn <Int64>
  [-BfdEnabled <BfdEnabled>] [-BgpMultiHop <BgpMultiHop>] [-HoldTime <String>] [-KeepAliveTime <String>]
- [-MyAsn <Int64>] [-Password <String>] [-PeerPort <Int64>] [<CommonParameters>]
+ [-MyAsn <Int64>] [-Password <String>] [-PeerPort <Int64>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

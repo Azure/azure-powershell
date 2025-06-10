@@ -14,7 +14,8 @@ Create an in-memory object for L3NetworkAttachmentConfiguration.
 
 ```
 New-AzNetworkCloudL3NetworkAttachmentConfigurationObject -NetworkId <String>
- [-IpamEnabled <L3NetworkConfigurationIpamEnabled>] [-PluginType <KubernetesPluginType>] [<CommonParameters>]
+ [-IpamEnabled <L3NetworkConfigurationIpamEnabled>] [-PluginType <KubernetesPluginType>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

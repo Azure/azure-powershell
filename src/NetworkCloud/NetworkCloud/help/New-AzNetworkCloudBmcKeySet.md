@@ -17,7 +17,8 @@ New-AzNetworkCloudBmcKeySet -ClusterName <String> -Name <String> -ResourceGroupN
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -AzureGroupId <String>
  -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
  -PrivilegeLevel <BmcKeySetPrivilegeLevel> -UserList <IKeySetUser[]> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

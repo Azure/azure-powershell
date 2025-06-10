@@ -17,21 +17,24 @@ Trigger the continuation of an update for a cluster with a matching update strat
 Invoke-AzNetworkCloudClusterContinueVersionUpdate -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>]
  [-MachineGroupTargetingMode <ClusterContinueUpdateVersionMachineGroupTargetingMode>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Continue
 ```
 Invoke-AzNetworkCloudClusterContinueVersionUpdate -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -ClusterContinueUpdateVersionParameter <IClusterContinueUpdateVersionParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ContinueViaIdentityExpanded
 ```
 Invoke-AzNetworkCloudClusterContinueVersionUpdate -InputObject <INetworkCloudIdentity>
  [-MachineGroupTargetingMode <ClusterContinueUpdateVersionMachineGroupTargetingMode>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ContinueViaIdentity

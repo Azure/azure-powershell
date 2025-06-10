@@ -14,7 +14,8 @@ Get properties of the provided trunked network.
 
 ### List (Default)
 ```
-Get-AzNetworkCloudTrunkedNetwork [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkCloudTrunkedNetwork [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get

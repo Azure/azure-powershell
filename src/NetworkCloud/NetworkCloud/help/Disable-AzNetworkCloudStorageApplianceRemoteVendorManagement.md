@@ -22,7 +22,8 @@ Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName 
 ### DisableViaIdentity
 ```
 Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement -InputObject <INetworkCloudIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

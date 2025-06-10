@@ -21,7 +21,8 @@ Get-AzNetworkCloudBmcKeySet -ClusterName <String> -ResourceGroupName <String> [-
 ### Get
 ```
 Get-AzNetworkCloudBmcKeySet -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity

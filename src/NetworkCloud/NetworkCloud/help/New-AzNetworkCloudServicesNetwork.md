@@ -17,7 +17,8 @@ New-AzNetworkCloudServicesNetwork -CloudServicesNetworkName <String> -ResourceGr
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -ExtendedLocationName <String>
  -ExtendedLocationType <String> -Location <String> [-AdditionalEgressEndpoint <IEgressEndpoint[]>]
  [-EnableDefaultEgressEndpoint <CloudServicesNetworkEnableDefaultEgressEndpoints>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

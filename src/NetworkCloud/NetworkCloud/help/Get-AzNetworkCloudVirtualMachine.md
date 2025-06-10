@@ -14,7 +14,8 @@ Get properties of the provided virtual machine.
 
 ### List (Default)
 ```
-Get-AzNetworkCloudVirtualMachine [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkCloudVirtualMachine [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get

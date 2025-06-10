@@ -43,7 +43,7 @@ New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String>
  [-SecretArchiveSettingVaultUri <String>] [-SecretArchiveUseKeyVault <ClusterSecretArchiveEnabled>]
  [-Tag <Hashtable>] [-UpdateStrategyMaxUnavailable <Int64>]
  [-UpdateStrategyThresholdType <ValidationThresholdType>] [-UpdateStrategyThresholdValue <Int64>]
- [-UpdateStrategyType <ClusterUpdateStrategyType>] [-UpdateStrategyWaitTimeMinute <Int64>]
+ [-UpdateStrategyType <ClusterUpdateStrategyType>] [-UpdateStrategyWaitTimeMinutes <Int64>]
  [-VulnerabilityScanningSettingContainerScan <VulnerabilityScanningSettingsContainerScan>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -901,7 +901,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UpdateStrategyWaitTimeMinute
+### -UpdateStrategyWaitTimeMinutes
 The time to wait between the increments of update defined by the strategy.
 
 ```yaml

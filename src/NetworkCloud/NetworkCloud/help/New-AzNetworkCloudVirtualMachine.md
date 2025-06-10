@@ -29,7 +29,8 @@ New-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> [-Su
  [-UserData <String>] [-VMDeviceModel <VirtualMachineDeviceModelType>]
  [-VMImageRepositoryCredentialsPassword <SecureString>] [-VMImageRepositoryCredentialsRegistryUrl <String>]
  [-VMImageRepositoryCredentialsUsername <String>] [-VirtioInterface <VirtualMachineVirtioInterfaceType>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

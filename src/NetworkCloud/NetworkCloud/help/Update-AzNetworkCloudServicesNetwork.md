@@ -18,7 +18,8 @@ Properties and tag updates can be done independently.
 Update-AzNetworkCloudServicesNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IfMatch <String>] [-IfNoneMatch <String>] [-AdditionalEgressEndpoint <IEgressEndpoint[]>]
  [-EnableDefaultEgressEndpoint <CloudServicesNetworkEnableDefaultEgressEndpoints>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -26,7 +27,8 @@ Update-AzNetworkCloudServicesNetwork -Name <String> -ResourceGroupName <String> 
 Update-AzNetworkCloudServicesNetwork -InputObject <INetworkCloudIdentity> [-IfMatch <String>]
  [-IfNoneMatch <String>] [-AdditionalEgressEndpoint <IEgressEndpoint[]>]
  [-EnableDefaultEgressEndpoint <CloudServicesNetworkEnableDefaultEgressEndpoints>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

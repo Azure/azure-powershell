@@ -16,14 +16,16 @@ Triggers the execution of a runtime protection scan to detect and remediate dete
 ```
 Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ScanActivity <ClusterScanRuntimeParametersScanActivity>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Scan
 ```
 Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -ClusterScanRuntimeParameter <IClusterScanRuntimeParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ScanViaIdentityExpanded

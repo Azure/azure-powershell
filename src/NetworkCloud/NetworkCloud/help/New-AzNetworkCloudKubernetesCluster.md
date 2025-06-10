@@ -33,7 +33,8 @@ New-AzNetworkCloudKubernetesCluster -KubernetesClusterName <String> -ResourceGro
  [-ManagedResourceGroupConfigurationLocation <String>] [-ManagedResourceGroupConfigurationName <String>]
  [-NetworkConfigurationDnsServiceIP <String>] [-NetworkConfigurationPodCidr <String[]>]
  [-NetworkConfigurationServiceCidr <String[]>] [-SshPublicKey <ISshPublicKey[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

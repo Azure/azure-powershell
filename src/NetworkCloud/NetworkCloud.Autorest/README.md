@@ -255,6 +255,10 @@ directive:
       parameter-name: BgpServiceLoadBalancerConfigurationIPAddressPool
     set:
       parameter-name: BgpIPAddressPool
+  - where:
+      parameter-name: UpdateStrategyWaitTimeMinute
+    set:
+      parameter-name: UpdateStrategyWaitTimeMinutes
 
   # define password parameters as `password` type, which generates it as "SecureString"
   - from: swagger-document

@@ -22,7 +22,8 @@ Remove-AzNetworkCloudL3Network -Name <String> -ResourceGroupName <String> [-Subs
 ### DeleteViaIdentity
 ```
 Remove-AzNetworkCloudL3Network -InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

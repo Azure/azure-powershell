@@ -14,7 +14,8 @@ Get properties of the provided volume.
 
 ### List (Default)
 ```
-Get-AzNetworkCloudVolume [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkCloudVolume [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -31,7 +32,8 @@ Get-AzNetworkCloudVolume -ResourceGroupName <String> [-SubscriptionId <String[]>
 
 ### GetViaIdentity
 ```
-Get-AzNetworkCloudVolume -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkCloudVolume -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

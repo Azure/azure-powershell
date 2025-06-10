@@ -25,8 +25,8 @@ Update-AzNetworkCloudBareMetalMachineKeySet -ClusterName <String> -Name <String>
 ```
 Update-AzNetworkCloudBareMetalMachineKeySet -InputObject <INetworkCloudIdentity> [-IfMatch <String>]
  [-IfNoneMatch <String>] [-Expiration <DateTime>] [-JumpHostsAllowed <String[]>] [-Tag <Hashtable>]
- [-UserList <IKeySetUser[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserList <IKeySetUser[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

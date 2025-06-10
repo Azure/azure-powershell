@@ -18,7 +18,8 @@ Properties and tag updates can be done independently.
 Update-AzNetworkCloudKubernetesCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IfMatch <String>] [-IfNoneMatch <String>] [-ControlPlaneNodeConfigurationAdminPublicKey <ISshPublicKey[]>]
  [-ControlPlaneNodeConfigurationCount <Int64>] [-KubernetesVersion <String>] [-SshPublicKey <ISshPublicKey[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -26,7 +27,8 @@ Update-AzNetworkCloudKubernetesCluster -Name <String> -ResourceGroupName <String
 Update-AzNetworkCloudKubernetesCluster -InputObject <INetworkCloudIdentity> [-IfMatch <String>]
  [-IfNoneMatch <String>] [-ControlPlaneNodeConfigurationAdminPublicKey <ISshPublicKey[]>]
  [-ControlPlaneNodeConfigurationCount <Int64>] [-KubernetesVersion <String>] [-SshPublicKey <ISshPublicKey[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

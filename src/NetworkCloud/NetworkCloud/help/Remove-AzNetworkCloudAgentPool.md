@@ -22,7 +22,8 @@ Remove-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -R
 ### DeleteViaIdentity
 ```
 Remove-AzNetworkCloudAgentPool -InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
