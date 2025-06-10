@@ -29,7 +29,7 @@ For information on how to develop for `Az.DataTransfer`, see [how-to.md](how-to.
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: c59a805bc8c22f5452a9049545bd2e7c22402ea4
+commit: c424d91129a85194f3a0800a6bb5dcd28f8eb6eb
 namespace: ADT
 require:
 # readme.azure.noprofile.md is the common configuration file

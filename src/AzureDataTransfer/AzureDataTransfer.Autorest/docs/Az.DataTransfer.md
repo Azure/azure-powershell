@@ -12,10 +12,10 @@ Microsoft Azure PowerShell: DataTransfer cmdlets
 
 ## Az.DataTransfer Cmdlets
 ### [Approve-AzDataTransferConnection](Approve-AzDataTransferConnection.md)
-Approves the specified connection in a pipeline.
+Approves the specified connection request in a pipeline.
 
 ### [Deny-AzDataTransferConnection](Deny-AzDataTransferConnection.md)
-Rejects the specified connection in a pipeline.
+Rejects the specified connection request in a pipeline.
 
 ### [Disable-AzDataTransferFlow](Disable-AzDataTransferFlow.md)
 Disables the specified flow
@@ -30,10 +30,10 @@ Gets connection resource.
 Gets flow resource.
 
 ### [Get-AzDataTransferListPendingConnection](Get-AzDataTransferListPendingConnection.md)
-Lists all pending connections for a connection.
+Lists all pending remote connections that are linkable to this connection.
 
 ### [Get-AzDataTransferListPendingFlow](Get-AzDataTransferListPendingFlow.md)
-Lists all pending flows for a connection.
+Lists all remote flows that have not yet been linked to local flows
 
 ### [Get-AzDataTransferPipeline](Get-AzDataTransferPipeline.md)
 Gets pipeline resource.
