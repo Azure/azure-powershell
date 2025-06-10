@@ -8,8 +8,7 @@ schema: 2.0.0
 # Get-AzNeonPostgresCompute
 
 ## SYNOPSIS
-
-List all compute resources associated with a specific branch in Neon Postgres.
+List Compute resources by Branch
 
 ## SYNTAX
 
@@ -20,19 +19,13 @@ Get-AzNeonPostgresCompute -BranchName <String> -OrganizationName <String> -Proje
 ```
 
 ## DESCRIPTION
-
-List all compute resources associated with a specific branch in Neon Postgres.
+List Compute resources by Branch
 
 ## EXAMPLES
 
 ### Example 1: List all compute resources within a specific branch
-
 ```powershell
 Get-AzNeonPostgresCompute -BranchName "br-damp-bird-a82olmcu" -ProjectName "dawn-breeze-86932056" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 List all compute resources within a specific branch
@@ -40,7 +33,6 @@ List all compute resources within a specific branch
 ## PARAMETERS
 
 ### -BranchName
-
 The name of the Branch
 
 ```yaml
@@ -56,7 +48,6 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
@@ -73,7 +64,6 @@ Accept wildcard characters: False
 ```
 
 ### -OrganizationName
-
 Name of the Neon Organizations resource
 
 ```yaml
@@ -89,7 +79,6 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-
 The name of the Project
 
 ```yaml
@@ -105,7 +94,6 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
 The name of the resource group.
 The name is case insensitive.
 
@@ -122,7 +110,6 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
 The ID of the target subscription.
 The value must be an UUID.
 
@@ -139,7 +126,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

@@ -8,57 +8,57 @@ Locale: en-US
 
 # Az.NeonPostgres Module
 ## Description
-Microsoft Azure PowerShell: NeonPostgres cmdlets
-Manage Neon Postgres databases and related resources within Azure.
+Microsoft Azure PowerShell: NeonPostgres cmdlets Manage Neon Postgres databases and related resources within Azure.
 
 ## Az.NeonPostgres Cmdlets
 ### [Get-AzNeonPostgresBranch](Get-AzNeonPostgresBranch.md)
-List or Get branch resources within a specific project in Neon Postgres.
+Get a Branch
 
 ### [Get-AzNeonPostgresCompute](Get-AzNeonPostgresCompute.md)
-List all compute resources associated with a specific branch in Neon Postgres.
+List Compute resources by Branch
 
 ### [Get-AzNeonPostgresEndpoint](Get-AzNeonPostgresEndpoint.md)
-List all endpoint resources associated with a specific branch in Neon Postgres.
+List Endpoint resources by Branch
 
 ### [Get-AzNeonPostgresNeonDatabase](Get-AzNeonPostgresNeonDatabase.md)
-List all Neon Postgres databases associated with a specific branch.
+List NeonDatabase resources by Branch
 
 ### [Get-AzNeonPostgresNeonRole](Get-AzNeonPostgresNeonRole.md)
-List all roles and permissions associated with a specific branch in Neon Postgres.
+List NeonRole resources by Branch
 
 ### [Get-AzNeonPostgresOrganization](Get-AzNeonPostgresOrganization.md)
-List all Neon organizations associated with a specific subscription ID.
+Get a OrganizationResource
 
 ### [Get-AzNeonPostgresProject](Get-AzNeonPostgresProject.md)
-List all Neon projects associated with a specific Neon organization.
+Get a Project
 
 ### [Get-AzNeonPostgresProjectConnectionUri](Get-AzNeonPostgresProjectConnectionUri.md)
-Retrieve the connection URI for a specific Neon Postgres database.
+Action to retrieve the connection URI for the Neon Database.
 
 ### [New-AzNeonPostgresBranch](New-AzNeonPostgresBranch.md)
-Create a new branch within a Neon Postgres database.
+create a Branch
 
 ### [New-AzNeonPostgresOrganization](New-AzNeonPostgresOrganization.md)
-Create a new Neon organization within Azure.
+create a OrganizationResource
 
 ### [New-AzNeonPostgresProject](New-AzNeonPostgresProject.md)
-Manage Neon projects, including listing, creating, updating, deleting, and retrieving project information.
+create a Project
 
 ### [Remove-AzNeonPostgresBranch](Remove-AzNeonPostgresBranch.md)
-Delete an existing branch within a Neon Postgres database.
+Delete a Branch
 
 ### [Remove-AzNeonPostgresOrganization](Remove-AzNeonPostgresOrganization.md)
-Delete an existing Neon organization within Azure.
+Delete a OrganizationResource
 
 ### [Remove-AzNeonPostgresProject](Remove-AzNeonPostgresProject.md)
-Delete an existing Neon project resource within Azure.
+Delete a Project
 
 ### [Update-AzNeonPostgresBranch](Update-AzNeonPostgresBranch.md)
-Update the properties of an existing branch within a Neon Postgres project.
+update a Branch
 
 ### [Update-AzNeonPostgresOrganization](Update-AzNeonPostgresOrganization.md)
-Update the properties of an existing Neon organization within Azure.
+update a OrganizationResource
 
 ### [Update-AzNeonPostgresProject](Update-AzNeonPostgresProject.md)
-Update the properties of an existing Neon project resource within Azure.
+update a Project
+

@@ -1,20 +1,20 @@
 ---
-external help file:
+external help file: Az.NeonPostgres-help.xml
 Module Name: Az.NeonPostgres
-online version: https://learn.microsoft.com/powershell/module/az.neonpostgres/new-azneonpostgresproject
+online version: https://learn.microsoft.com/powershell/module/az.neonpostgres/update-azneonpostgresproject
 schema: 2.0.0
 ---
 
-# New-AzNeonPostgresProject
+# Update-AzNeonPostgresProject
 
 ## SYNOPSIS
-create a Project
+update a Project
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzNeonPostgresProject -Name <String> -OrganizationName <String> -ResourceGroupName <String>
+Update-AzNeonPostgresProject -Name <String> -OrganizationName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Attribute <IAttributes[]>] [-BranchAttribute <IAttributes[]>]
  [-BranchDatabase <INeonDatabaseProperties[]>] [-BranchDatabaseName <String>]
  [-BranchEndpoint <IEndpointProperties[]>] [-BranchEntityName <String>] [-BranchParentId <String>]
@@ -22,35 +22,64 @@ New-AzNeonPostgresProject -Name <String> -OrganizationName <String> -ResourceGro
  [-Database <INeonDatabaseProperties[]>] [-DefaultEndpointSettingAutoscalingLimitMaxCu <Single>]
  [-DefaultEndpointSettingAutoscalingLimitMinCu <Single>] [-Endpoint <IEndpointProperties[]>]
  [-EntityName <String>] [-HistoryRetention <Int32>] [-PgVersion <Int32>] [-RegionId <String>]
- [-Role <INeonRoleProperties[]>] [-Storage <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Role <INeonRoleProperties[]>] [-Storage <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### UpdateViaIdentityOrganizationExpanded
 ```
-New-AzNeonPostgresProject -Name <String> -OrganizationName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzNeonPostgresProject -Name <String> -OrganizationInputObject <INeonPostgresIdentity>
+ [-Attribute <IAttributes[]>] [-BranchAttribute <IAttributes[]>] [-BranchDatabase <INeonDatabaseProperties[]>]
+ [-BranchDatabaseName <String>] [-BranchEndpoint <IEndpointProperties[]>] [-BranchEntityName <String>]
+ [-BranchParentId <String>] [-BranchProjectId <String>] [-BranchRole <INeonRoleProperties[]>]
+ [-BranchRoleName <String>] [-Database <INeonDatabaseProperties[]>]
+ [-DefaultEndpointSettingAutoscalingLimitMaxCu <Single>]
+ [-DefaultEndpointSettingAutoscalingLimitMinCu <Single>] [-Endpoint <IEndpointProperties[]>]
+ [-EntityName <String>] [-HistoryRetention <Int32>] [-PgVersion <Int32>] [-RegionId <String>]
+ [-Role <INeonRoleProperties[]>] [-Storage <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### UpdateViaIdentityExpanded
 ```
-New-AzNeonPostgresProject -Name <String> -OrganizationName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzNeonPostgresProject -InputObject <INeonPostgresIdentity> [-Attribute <IAttributes[]>]
+ [-BranchAttribute <IAttributes[]>] [-BranchDatabase <INeonDatabaseProperties[]>]
+ [-BranchDatabaseName <String>] [-BranchEndpoint <IEndpointProperties[]>] [-BranchEntityName <String>]
+ [-BranchParentId <String>] [-BranchProjectId <String>] [-BranchRole <INeonRoleProperties[]>]
+ [-BranchRoleName <String>] [-Database <INeonDatabaseProperties[]>]
+ [-DefaultEndpointSettingAutoscalingLimitMaxCu <Single>]
+ [-DefaultEndpointSettingAutoscalingLimitMinCu <Single>] [-Endpoint <IEndpointProperties[]>]
+ [-EntityName <String>] [-HistoryRetention <Int32>] [-PgVersion <Int32>] [-RegionId <String>]
+ [-Role <INeonRoleProperties[]>] [-Storage <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a Project
+update a Project
 
 ## EXAMPLES
 
-### Example 1: Create a new Neon project resource within Azure
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzNeonPostgresProject -Name "test-project" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000" -BranchDatabaseName "sampledb" -BranchEntityName "sample-entity" -BranchParentId "dawn-breeze-86932057" -BranchRoleName "readonly"
+{{ Add code here }}
 ```
 
-Create a new Neon project resource within Azure.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -74,7 +103,7 @@ Additional attributes for the entity
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IAttributes[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -89,7 +118,7 @@ Additional attributes for the entity
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IAttributes[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -104,7 +133,7 @@ Neon Databases associated with the branch
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonDatabaseProperties[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -119,7 +148,7 @@ Database name associated with the branch
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -134,7 +163,7 @@ Endpoints associated with the branch
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IEndpointProperties[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -149,7 +178,7 @@ Name of the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -164,7 +193,7 @@ The ID of the parent branch
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -179,7 +208,7 @@ The ID of the project this branch belongs to
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -194,7 +223,7 @@ Roles associated with the branch
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonRoleProperties[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -209,7 +238,7 @@ Role name associated with the branch
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -224,7 +253,7 @@ Neon Databases associated with the project
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonDatabaseProperties[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -239,7 +268,7 @@ Maximum compute units for autoscaling.
 
 ```yaml
 Type: System.Single
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -254,7 +283,7 @@ Minimum compute units for autoscaling.
 
 ```yaml
 Type: System.Single
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -285,7 +314,7 @@ Endpoints associated with the project
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IEndpointProperties[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -300,7 +329,7 @@ Name of the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -315,7 +344,7 @@ The retention period for project history in seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -325,33 +354,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -360,7 +374,7 @@ The name of the Project
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityOrganizationExpanded
 Aliases: ProjectName
 
 Required: True
@@ -385,12 +399,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OrganizationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentity
+Parameter Sets: UpdateViaIdentityOrganizationExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -OrganizationName
 Name of the Neon Organizations resource
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -405,7 +434,7 @@ Postgres version for the project
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -420,7 +449,7 @@ Region where the project is created
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -436,7 +465,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -451,7 +480,7 @@ Roles associated with the project
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonRoleProperties[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -466,7 +495,7 @@ Data Storage bytes per hour for the project
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -482,7 +511,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -528,6 +557,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProject
@@ -535,4 +566,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzNeonPostgresOrganizatio
 }
 
 # Define variables directly
-$resourceName = "NeonDemoOrgPS1"
+$resourceName = "NeonDemoOrgPS2"
 $resourceGroupName = "neonrg"
 $location = "eastus2"
 $subscriptionId = "a81c0054-6c92-41aa-a235-4f9f98f917c6"

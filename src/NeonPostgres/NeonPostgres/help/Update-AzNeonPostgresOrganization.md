@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNeonPostgresOrganization
 
 ## SYNOPSIS
-Update the properties of an existing Neon organization within Azure.
+update a OrganizationResource
 
 ## SYNTAX
 
@@ -26,7 +26,22 @@ Update-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> [-S
  [-SingleSignOnPropertySingleSignOnState <String>] [-SingleSignOnPropertySingleSignOnUrl <String>]
  [-Tag <Hashtable>] [-UserDetailEmailAddress <String>] [-UserDetailFirstName <String>]
  [-UserDetailLastName <String>] [-UserDetailPhoneNumber <String>] [-UserDetailUpn <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -42,26 +57,12 @@ Update-AzNeonPostgresOrganization -InputObject <INeonPostgresIdentity> [-Company
  [-SingleSignOnPropertyEnterpriseAppId <String>] [-SingleSignOnPropertySingleSignOnState <String>]
  [-SingleSignOnPropertySingleSignOnUrl <String>] [-Tag <Hashtable>] [-UserDetailEmailAddress <String>]
  [-UserDetailFirstName <String>] [-UserDetailLastName <String>] [-UserDetailPhoneNumber <String>]
- [-UserDetailUpn <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-UserDetailUpn <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update the properties of an existing Neon organization within Azure.
+update a OrganizationResource
 
 ## EXAMPLES
 
@@ -86,11 +87,9 @@ Update-AzNeonPostgresOrganization -Name "almasTestNeonPS8" -ResourceGroupName "N
 -UserDetailLastName "Khan" `
 -UserDetailPhoneNumber "+1234567890" `
 -UserDetailUpn "khanalmas_microsoft.com#EXT#@qumulotesttenant2.onmicrosoft.com"
-
 ```
 
 ```output
-
 CompanyDetailBusinessPhone                  : +1234567890
 CompanyDetailCompanyName                    : DemoCompany
 CompanyDetailCountry                        : USA
@@ -132,10 +131,9 @@ UserDetailFirstName                         : Almas
 UserDetailLastName                          : Khan
 UserDetailPhoneNumber                       : +1234567890
 UserDetailUpn                               : khanalmas_microsoft.com#EXT#@qumulotesttenant2.onmicrosoft.com
-
 ```
 
-This command will update a Neon Organization Resource
+This command will update a Neon Postgres organization resource
 
 ## PARAMETERS
 
@@ -340,7 +338,7 @@ Name of the Neon Organizations resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases: OrganizationName
 
 Required: True
@@ -506,7 +504,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -582,7 +580,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False

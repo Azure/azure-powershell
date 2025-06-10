@@ -8,21 +8,20 @@ schema: 2.0.0
 # Remove-AzNeonPostgresOrganization
 
 ## SYNOPSIS
-Delete an existing Neon organization within Azure.
+Delete a OrganizationResource
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
 Remove-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzNeonPostgresOrganization -InputObject <INeonPostgresIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +34,7 @@ Delete a OrganizationResource
 Remove-AzNeonPostgresOrganization -Name almasTestNeonPS6 -ResourceGroupName NeonDemoRG
 ```
 
-This command will delete a Neon Resource
+This command will delete a Neon Postgres organization resource
 
 ## PARAMETERS
 
@@ -207,3 +206,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

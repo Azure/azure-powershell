@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNeonPostgresProjectConnectionUri
 
 ## SYNOPSIS
-Retrieve the connection URI for a specific Neon Postgres database.
+Action to retrieve the connection URI for the Neon Database.
 
 ## SYNTAX
 
@@ -17,72 +17,66 @@ Retrieve the connection URI for a specific Neon Postgres database.
 Get-AzNeonPostgresProjectConnectionUri -OrganizationName <String> -ProjectName <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-BranchId <String>] [-DatabaseName <String>]
  [-EndpointId <String>] [-IsPooled] [-ProjectId <String>] [-RoleName <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetViaJsonString
-```
-Get-AzNeonPostgresProjectConnectionUri -OrganizationName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetViaJsonFilePath
-```
-Get-AzNeonPostgresProjectConnectionUri -OrganizationName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNeonPostgresProjectConnectionUri -OrganizationName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] -ConnectionUriParameter <IConnectionUriProperties>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> -ConnectionUriParameter <IConnectionUriProperties> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentityOrganizationExpanded
+### GetViaIdentity
 ```
-Get-AzNeonPostgresProjectConnectionUri -ProjectName <String> -OrganizationInputObject <INeonPostgresIdentity>
- [-BranchId <String>] [-DatabaseName <String>] [-EndpointId <String>] [-IsPooled] [-ProjectId <String>]
- [-RoleName <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+Get-AzNeonPostgresProjectConnectionUri -InputObject <INeonPostgresIdentity>
+ -ConnectionUriParameter <IConnectionUriProperties> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### GetViaIdentityOrganization
-```
-Get-AzNeonPostgresProjectConnectionUri -ProjectName <String> -OrganizationInputObject <INeonPostgresIdentity>
- -ConnectionUriParameter <IConnectionUriProperties> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
 ```
 Get-AzNeonPostgresProjectConnectionUri -InputObject <INeonPostgresIdentity> [-BranchId <String>]
  [-DatabaseName <String>] [-EndpointId <String>] [-IsPooled] [-ProjectId <String>] [-RoleName <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### GetViaIdentityOrganization
 ```
-Get-AzNeonPostgresProjectConnectionUri -InputObject <INeonPostgresIdentity>
- -ConnectionUriParameter <IConnectionUriProperties> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzNeonPostgresProjectConnectionUri -OrganizationInputObject <INeonPostgresIdentity> -ProjectName <String>
+ -ConnectionUriParameter <IConnectionUriProperties> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityOrganizationExpanded
+```
+Get-AzNeonPostgresProjectConnectionUri -OrganizationInputObject <INeonPostgresIdentity> -ProjectName <String>
+ [-BranchId <String>] [-DatabaseName <String>] [-EndpointId <String>] [-IsPooled] [-ProjectId <String>]
+ [-RoleName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaJsonFilePath
+```
+Get-AzNeonPostgresProjectConnectionUri -OrganizationName <String> -ProjectName <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaJsonString
+```
+Get-AzNeonPostgresProjectConnectionUri -OrganizationName <String> -ProjectName <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
-Retrieve the connection URI for a specific Neon Postgres database.
+Action to retrieve the connection URI for the Neon Database.
 
 ## EXAMPLES
 
 ### Example 1: Retrieve the connection URI for a specific Neon Postgres database
-
 ```powershell
 Get-AzNeonPostgresProjectConnectionUri -DatabaseName "neondb" EndpointId "ep-bird-a82olmcu" -RoleName "owner" -BranchId "br-damp-bird-a82olmcu" -ProjectName "dawn-breeze-86932056" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
-```
-
-```output
 ```
 
 Retrieve the connection URI for a specific Neon Postgres database.
@@ -90,12 +84,11 @@ Retrieve the connection URI for a specific Neon Postgres database.
 ## PARAMETERS
 
 ### -BranchId
-
 Branch Id associated with this connection
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaIdentityOrganizationExpanded, GetViaIdentityExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityOrganizationExpanded
 Aliases:
 
 Required: False
@@ -106,12 +99,11 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionUriParameter
-
 Connection uri parameters for the associated database
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IConnectionUriProperties
-Parameter Sets: Get, GetViaIdentityOrganization, GetViaIdentity
+Parameter Sets: Get, GetViaIdentity, GetViaIdentityOrganization
 Aliases:
 
 Required: True
@@ -122,12 +114,11 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-
 Database name associated with this connection
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaIdentityOrganizationExpanded, GetViaIdentityExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityOrganizationExpanded
 Aliases:
 
 Required: False
@@ -138,7 +129,6 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
@@ -155,12 +145,11 @@ Accept wildcard characters: False
 ```
 
 ### -EndpointId
-
 the endpoint Id with this connection
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaIdentityOrganizationExpanded, GetViaIdentityExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityOrganizationExpanded
 Aliases:
 
 Required: False
@@ -171,12 +160,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentity
-Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -187,12 +175,11 @@ Accept wildcard characters: False
 ```
 
 ### -IsPooled
-
 Indicates if the connection is pooled
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: GetExpanded, GetViaIdentityOrganizationExpanded, GetViaIdentityExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityOrganizationExpanded
 Aliases:
 
 Required: False
@@ -203,7 +190,6 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-
 Path of Json file supplied to the Get operation
 
 ```yaml
@@ -219,7 +205,6 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-
 Json string supplied to the Get operation
 
 ```yaml
@@ -235,12 +220,11 @@ Accept wildcard characters: False
 ```
 
 ### -OrganizationInputObject
-
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentity
-Parameter Sets: GetViaIdentityOrganizationExpanded, GetViaIdentityOrganization
+Parameter Sets: GetViaIdentityOrganization, GetViaIdentityOrganizationExpanded
 Aliases:
 
 Required: True
@@ -251,12 +235,11 @@ Accept wildcard characters: False
 ```
 
 ### -OrganizationName
-
 Name of the Neon Organizations resource
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get
+Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
 Aliases:
 
 Required: True
@@ -267,12 +250,11 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectId
-
 Project Id associated with this connection
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaIdentityOrganizationExpanded, GetViaIdentityExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityOrganizationExpanded
 Aliases:
 
 Required: False
@@ -283,12 +265,11 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-
 The name of the Project
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get, GetViaIdentityOrganizationExpanded, GetViaIdentityOrganization
+Parameter Sets: Get, GetExpanded, GetViaIdentityOrganization, GetViaIdentityOrganizationExpanded, GetViaJsonFilePath, GetViaJsonString
 Aliases:
 
 Required: True
@@ -299,13 +280,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get
+Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
 Aliases:
 
 Required: True
@@ -316,12 +296,11 @@ Accept wildcard characters: False
 ```
 
 ### -RoleName
-
 The role name used for authentication
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaIdentityOrganizationExpanded, GetViaIdentityExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityOrganizationExpanded
 Aliases:
 
 Required: False
@@ -332,13 +311,12 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get
+Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
 Aliases:
 
 Required: False
@@ -349,7 +327,6 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -365,7 +342,6 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
@@ -382,7 +358,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -398,3 +373,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

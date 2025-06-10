@@ -1,52 +1,80 @@
 ---
-external help file: Az.NeonPostgres-help.xml
+external help file:
 Module Name: Az.NeonPostgres
-online version: https://learn.microsoft.com/powershell/module/az.neonpostgres/new-azneonpostgresbranch
+online version: https://learn.microsoft.com/powershell/module/az.neonpostgres/update-azneonpostgresbranch
 schema: 2.0.0
 ---
 
-# New-AzNeonPostgresBranch
+# Update-AzNeonPostgresBranch
 
 ## SYNOPSIS
-create a Branch
+update a Branch
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzNeonPostgresBranch -Name <String> -OrganizationName <String> -ProjectName <String>
+Update-AzNeonPostgresBranch -Name <String> -OrganizationName <String> -ProjectName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-Attribute <IAttributes[]>]
  [-Database <INeonDatabaseProperties[]>] [-DatabaseName <String>] [-Endpoint <IEndpointProperties[]>]
  [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>] [-Role <INeonRoleProperties[]>]
- [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### UpdateViaIdentityExpanded
 ```
-New-AzNeonPostgresBranch -Name <String> -OrganizationName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzNeonPostgresBranch -InputObject <INeonPostgresIdentity> [-Attribute <IAttributes[]>]
+ [-Database <INeonDatabaseProperties[]>] [-DatabaseName <String>] [-Endpoint <IEndpointProperties[]>]
+ [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>] [-Role <INeonRoleProperties[]>]
+ [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### UpdateViaIdentityOrganizationExpanded
 ```
-New-AzNeonPostgresBranch -Name <String> -OrganizationName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzNeonPostgresBranch -Name <String> -OrganizationInputObject <INeonPostgresIdentity>
+ -ProjectName <String> [-Attribute <IAttributes[]>] [-Database <INeonDatabaseProperties[]>]
+ [-DatabaseName <String>] [-Endpoint <IEndpointProperties[]>] [-EntityName <String>] [-ParentId <String>]
+ [-ProjectId <String>] [-Role <INeonRoleProperties[]>] [-RoleName <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityProjectExpanded
+```
+Update-AzNeonPostgresBranch -Name <String> -ProjectInputObject <INeonPostgresIdentity>
+ [-Attribute <IAttributes[]>] [-Database <INeonDatabaseProperties[]>] [-DatabaseName <String>]
+ [-Endpoint <IEndpointProperties[]>] [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>]
+ [-Role <INeonRoleProperties[]>] [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a Branch
+update a Branch
 
 ## EXAMPLES
 
-### Example 1: Create a new branch within a Neon Postgres database
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzNeonPostgresBranch -Name "test-branch" -OrganizationName "NeonDemoOrgPS1" -ProjectName "dawn-breeze-86932057" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
+{{ Add code here }}
 ```
 
-Create a new branch within a Neon Postgres database.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -70,7 +98,7 @@ Additional attributes for the entity
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IAttributes[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -85,7 +113,7 @@ Neon Databases associated with the branch
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonDatabaseProperties[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -100,7 +128,7 @@ Database name associated with the branch
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -131,7 +159,7 @@ Endpoints associated with the branch
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IEndpointProperties[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -146,7 +174,7 @@ Name of the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -156,33 +184,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -191,7 +204,7 @@ The name of the Branch
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityOrganizationExpanded, UpdateViaIdentityProjectExpanded
 Aliases: BranchName
 
 Required: True
@@ -216,12 +229,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OrganizationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentity
+Parameter Sets: UpdateViaIdentityOrganizationExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -OrganizationName
 Name of the Neon Organizations resource
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -236,7 +264,7 @@ The ID of the parent branch
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -251,7 +279,7 @@ The ID of the project this branch belongs to
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -261,12 +289,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentity
+Parameter Sets: UpdateViaIdentityProjectExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The name of the Project
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityOrganizationExpanded
 Aliases:
 
 Required: True
@@ -282,7 +325,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -297,7 +340,7 @@ Roles associated with the branch
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonRoleProperties[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -312,7 +355,7 @@ Role name associated with the branch
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -328,7 +371,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -374,6 +417,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IBranch
@@ -381,3 +426,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

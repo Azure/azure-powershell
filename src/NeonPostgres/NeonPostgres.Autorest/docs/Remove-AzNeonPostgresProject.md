@@ -8,42 +8,36 @@ schema: 2.0.0
 # Remove-AzNeonPostgresProject
 
 ## SYNOPSIS
-Delete an existing Neon project resource within Azure.
+Delete a Project
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
 Remove-AzNeonPostgresProject -Name <String> -OrganizationName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentityOrganization
-```
-Remove-AzNeonPostgresProject -Name <String> -OrganizationInputObject <INeonPostgresIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzNeonPostgresProject -InputObject <INeonPostgresIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityOrganization
+```
+Remove-AzNeonPostgresProject -Name <String> -OrganizationInputObject <INeonPostgresIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete an existing Neon project resource within Azure.
+Delete a Project
 
 ## EXAMPLES
 
 ### Example 1: Delete an existing Neon project resource within Azure
 ```powershell
 Remove-AzNeonPostgresProject -Name "dawn-breeze-86932057" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
-```
-
-```output
-
 ```
 
 Delete an existing Neon project resource within Azure.
@@ -218,3 +212,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

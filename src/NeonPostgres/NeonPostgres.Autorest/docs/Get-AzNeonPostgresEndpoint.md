@@ -8,38 +8,30 @@ schema: 2.0.0
 # Get-AzNeonPostgresEndpoint
 
 ## SYNOPSIS
-
-List all endpoint resources associated with a specific branch in Neon Postgres.
+List Endpoint resources by Branch
 
 ## SYNTAX
 
 ```
 Get-AzNeonPostgresEndpoint -BranchName <String> -OrganizationName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
-List all or Get compute resources associated with a specific branch in Neon Postgres.
+List Endpoint resources by Branch
 
 ## EXAMPLES
 
 ### Example 1:  List endpoint resources associated with a specific branch in Neon Postgres
-
 ```powershell
 Get-AzNeonPostgresEndpoint -BranchName "br-damp-bird-a82olmcu" -ProjectName "dawn-breeze-86932056" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
 ```
 
-```output
-```
-
- List endpoint resources associated with a specific branch in Neon Postgres
+List endpoint resources associated with a specific branch in Neon Postgres
 
 ## PARAMETERS
 
 ### -BranchName
-
 The name of the Branch
 
 ```yaml
@@ -55,7 +47,6 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
@@ -72,7 +63,6 @@ Accept wildcard characters: False
 ```
 
 ### -OrganizationName
-
 Name of the Neon Organizations resource
 
 ```yaml
@@ -88,7 +78,6 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-
 The name of the Project
 
 ```yaml
@@ -104,7 +93,6 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
 The name of the resource group.
 The name is case insensitive.
 
@@ -121,7 +109,6 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
 The ID of the target subscription.
 The value must be an UUID.
 
@@ -138,7 +125,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -150,3 +136,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

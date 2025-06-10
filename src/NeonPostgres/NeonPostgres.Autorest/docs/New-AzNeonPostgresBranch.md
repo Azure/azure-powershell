@@ -8,59 +8,49 @@ schema: 2.0.0
 # New-AzNeonPostgresBranch
 
 ## SYNOPSIS
-
-Create a new branch within a Neon Postgres project.
+create a Branch
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
-
 ```
 New-AzNeonPostgresBranch -Name <String> -OrganizationName <String> -ProjectName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-Attribute <IAttributes[]>]
  [-Database <INeonDatabaseProperties[]>] [-DatabaseName <String>] [-Endpoint <IEndpointProperties[]>]
  [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>] [-Role <INeonRoleProperties[]>]
- [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
-
 ```
 New-AzNeonPostgresBranch -Name <String> -OrganizationName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
-
 ```
 New-AzNeonPostgresBranch -Name <String> -OrganizationName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
-Create a new branch within a Neon Postgres project.
+create a Branch
 
 ## EXAMPLES
 
 ### Example 1: Create a new branch within a Neon Postgres database
-
 ```powershell
 New-AzNeonPostgresBranch -Name "test-branch" -OrganizationName "NeonDemoOrgPS1" -ProjectName "dawn-breeze-86932057" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
 ```
 
-```output
-```
-
-Create a new branch within a Neon Postgres project.
+Create a new branch within a Neon Postgres database.
 
 ## PARAMETERS
 
 ### -AsJob
-
 Run the command as a job
 
 ```yaml
@@ -76,7 +66,6 @@ Accept wildcard characters: False
 ```
 
 ### -Attribute
-
 Additional attributes for the entity
 
 ```yaml
@@ -92,7 +81,6 @@ Accept wildcard characters: False
 ```
 
 ### -Database
-
 Neon Databases associated with the branch
 
 ```yaml
@@ -108,7 +96,6 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-
 Database name associated with the branch
 
 ```yaml
@@ -124,7 +111,6 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
@@ -141,7 +127,6 @@ Accept wildcard characters: False
 ```
 
 ### -Endpoint
-
 Endpoints associated with the branch
 
 ```yaml
@@ -157,7 +142,6 @@ Accept wildcard characters: False
 ```
 
 ### -EntityName
-
 Name of the resource
 
 ```yaml
@@ -173,7 +157,6 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-
 Path of Json file supplied to the Create operation
 
 ```yaml
@@ -189,7 +172,6 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-
 Json string supplied to the Create operation
 
 ```yaml
@@ -205,7 +187,6 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-
 The name of the Branch
 
 ```yaml
@@ -221,7 +202,6 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-
 Run the command asynchronously
 
 ```yaml
@@ -237,7 +217,6 @@ Accept wildcard characters: False
 ```
 
 ### -OrganizationName
-
 Name of the Neon Organizations resource
 
 ```yaml
@@ -253,7 +232,6 @@ Accept wildcard characters: False
 ```
 
 ### -ParentId
-
 The ID of the parent branch
 
 ```yaml
@@ -269,7 +247,6 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectId
-
 The ID of the project this branch belongs to
 
 ```yaml
@@ -285,7 +262,6 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-
 The name of the Project
 
 ```yaml
@@ -301,7 +277,6 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
 The name of the resource group.
 The name is case insensitive.
 
@@ -318,7 +293,6 @@ Accept wildcard characters: False
 ```
 
 ### -Role
-
 Roles associated with the branch
 
 ```yaml
@@ -334,7 +308,6 @@ Accept wildcard characters: False
 ```
 
 ### -RoleName
-
 Role name associated with the branch
 
 ```yaml
@@ -350,7 +323,6 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
 The ID of the target subscription.
 The value must be an UUID.
 
@@ -367,7 +339,6 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -383,7 +354,6 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
@@ -400,7 +370,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -412,3 +381,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

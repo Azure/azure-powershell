@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNeonPostgresOrganization
 
 ## SYNOPSIS
-Update the properties of an existing Neon organization within Azure.
+update a OrganizationResource
 
 ## SYNTAX
 
@@ -61,7 +61,7 @@ Update-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> -Js
 ```
 
 ## DESCRIPTION
-Update the properties of an existing Neon organization within Azure.
+update a OrganizationResource
 
 ## EXAMPLES
 
@@ -135,7 +135,7 @@ UserDetailUpn                               : khanalmas_microsoft.com#EXT#@qumul
 
 ```
 
-This command will update a Neon Organization Resource
+This command will update a Neon Postgres organization resource
 
 ## PARAMETERS
 

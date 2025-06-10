@@ -14,8 +14,8 @@ create a OrganizationResource
 
 ### CreateExpanded (Default)
 ```
-New-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-CompanyDetailBusinessPhone <String>] [-CompanyDetailCompanyName <String>]
+New-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-CompanyDetailBusinessPhone <String>] [-CompanyDetailCompanyName <String>]
  [-CompanyDetailCountry <String>] [-CompanyDetailDomain <String>] [-CompanyDetailNumberOfEmployee <Int64>]
  [-CompanyDetailOfficeAddress <String>] [-MarketplaceDetailSubscriptionId <String>]
  [-MarketplaceDetailSubscriptionStatus <String>] [-OfferDetailOfferId <String>] [-OfferDetailPlanId <String>]
@@ -26,22 +26,21 @@ New-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> [-Subs
  [-SingleSignOnPropertySingleSignOnState <String>] [-SingleSignOnPropertySingleSignOnUrl <String>]
  [-Tag <Hashtable>] [-UserDetailEmailAddress <String>] [-UserDetailFirstName <String>]
  [-UserDetailLastName <String>] [-UserDetailPhoneNumber <String>] [-UserDetailUpn <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -687,3 +686,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

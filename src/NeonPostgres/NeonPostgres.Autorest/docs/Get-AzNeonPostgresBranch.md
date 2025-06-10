@@ -8,72 +8,55 @@ schema: 2.0.0
 # Get-AzNeonPostgresBranch
 
 ## SYNOPSIS
-
-List all or Get branch resources within a specific project in Neon Postgres.
+Get a Branch
 
 ## SYNTAX
 
 ### List (Default)
-
 ```
 Get-AzNeonPostgresBranch -OrganizationName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentityProject
-
-```
-Get-AzNeonPostgresBranch -Name <String> -ProjectInputObject <INeonPostgresIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityOrganization
-
-```
-Get-AzNeonPostgresBranch -Name <String> -ProjectName <String> -OrganizationInputObject <INeonPostgresIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
-
 ```
 Get-AzNeonPostgresBranch -Name <String> -OrganizationName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
-
 ```
 Get-AzNeonPostgresBranch -InputObject <INeonPostgresIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-## DESCRIPTION
+### GetViaIdentityOrganization
+```
+Get-AzNeonPostgresBranch -Name <String> -OrganizationInputObject <INeonPostgresIdentity> -ProjectName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
 
-Get or List all branch resources within a specific project in Neon Postgres.
+### GetViaIdentityProject
+```
+Get-AzNeonPostgresBranch -Name <String> -ProjectInputObject <INeonPostgresIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Get a Branch
 
 ## EXAMPLES
 
 ### Example 1: List all branches resources within a specified project in Neon Postgres
-
 ```powershell
 Get-AzNeonPostgresBranch -ProjectName "dawn-breeze-86932056" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
-```
-
-```output
 ```
 
 List all branches resources within a specified project in Neon Postgres
 
 ### Example 2: Get Branch resoure details within a specified project in Neon Postgres
-
 ```powershell
 Get-AzNeonPostgresBranch -Name "br-damp-bird-a82olmcu" -ProjectName "dawn-breeze-86932056" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
-```
-
-```output
 ```
 
 Get Branch resoure details within a specified project in Neon Postgres
@@ -81,7 +64,6 @@ Get Branch resoure details within a specified project in Neon Postgres
 ## PARAMETERS
 
 ### -DefaultProfile
-
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
@@ -98,7 +80,6 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-
 Identity Parameter
 
 ```yaml
@@ -114,12 +95,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-
 The name of the Branch
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentityProject, GetViaIdentityOrganization, Get
+Parameter Sets: Get, GetViaIdentityOrganization, GetViaIdentityProject
 Aliases: BranchName
 
 Required: True
@@ -130,7 +110,6 @@ Accept wildcard characters: False
 ```
 
 ### -OrganizationInputObject
-
 Identity Parameter
 
 ```yaml
@@ -146,12 +125,11 @@ Accept wildcard characters: False
 ```
 
 ### -OrganizationName
-
 Name of the Neon Organizations resource
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -162,7 +140,6 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectInputObject
-
 Identity Parameter
 
 ```yaml
@@ -178,12 +155,11 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-
 The name of the Project
 
 ```yaml
 Type: System.String
-Parameter Sets: List, GetViaIdentityOrganization, Get
+Parameter Sets: Get, GetViaIdentityOrganization, List
 Aliases:
 
 Required: True
@@ -194,13 +170,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -211,13 +186,12 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -228,7 +202,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -242,3 +215,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
