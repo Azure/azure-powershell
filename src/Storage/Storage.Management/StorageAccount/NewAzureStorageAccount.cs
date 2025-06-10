@@ -869,10 +869,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     Name = this.EdgeZone
                 };
             }
-            //if (sasExpirationPeriod != null)
-            //{
-            //    createParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), "Log");
-            //}
             if (sasExpirationPeriod != null || SasExpirationAction != null)
             {
                 if (sasExpirationPeriod == null && SasExpirationAction != null)

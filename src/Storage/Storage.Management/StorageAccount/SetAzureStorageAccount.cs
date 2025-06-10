@@ -889,10 +889,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         updateParameters.AllowSharedKeyAccess = allowSharedKeyAccess;
                     }
-                    //if (sasExpirationPeriod != null)
-                    //{
-                    //    updateParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), "Log");
-                    //}
                     if (sasExpirationPeriod != null || SasExpirationAction != null)
                     {
                         if (sasExpirationPeriod == null && SasExpirationAction != null)

@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported set SasExpirationAction as Log or Block, together with SasExpirationPeriod
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
 
 ## Version 9.0.0
 * Removed MD5 from blob and file upload in some scenarios
