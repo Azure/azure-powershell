@@ -41,7 +41,7 @@ AzureBestPracticesProduction
 AzureBestPracticesDevTest
 ```
 
-This commmand lists all Automanage best practices under a subscription.
+This command lists all Automanage best practices under a subscription.
 
 ### Example 2: Get information about a Automanage best practice by name
 ```powershell

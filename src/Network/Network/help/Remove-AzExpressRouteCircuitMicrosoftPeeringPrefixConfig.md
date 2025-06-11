@@ -20,7 +20,7 @@ Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig -ExpressRouteCircuit <P
 
 ## DESCRIPTION
 The **Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig** cmdlet removes the properties used for validating
-the adverised public prefix in Microsoft peering. After running **Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig**, 
+the advertised public prefix in Microsoft peering. After running **Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig**, 
 you must call the Set-AzExpressRouteCircuit cmdlet to activate the configuration.
 
 ## EXAMPLES

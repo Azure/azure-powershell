@@ -127,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetObjectID
-Specifies the replcating server for which migration needs to be initiated.
+Specifies the replicating server for which migration needs to be initiated.
 The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
 
 ```yaml
