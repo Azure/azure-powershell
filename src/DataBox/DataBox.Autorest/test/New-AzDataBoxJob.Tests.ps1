@@ -102,7 +102,7 @@ Describe 'New-AzDataBoxJob' {
     
         $dataAccount = New-AzDataBoxStorageAccountDetailsObject -StorageAccountId $env.StorageAccountId
         
-        $details = New-AzDataBoxHeavyJobDetailsObject -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -DevicePassword "randm@423jarABC" -ExpectedDataSizeInTeraByte 10
+        $details = New-AzDataBoxHeavyJobDetailsObject -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -DevicePassword "*****" -ExpectedDataSizeInTeraByte 10
 
         $resource = New-AzDataBoxJob -Name $env.JobNameHeavy -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup -TransferType "ImportToAzure" -Detail $details -Location "WestUS" -SkuName "DataBoxHeavy" 
 
@@ -117,7 +117,7 @@ Describe 'New-AzDataBoxJob' {
     
         $dataAccount = New-AzDataBoxStorageAccountDetailsObject -StorageAccountId $env.StorageAccountId
         
-        $details = New-AzDataBoxDiskJobDetailsObject -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -Passkey "randm@423jarABC" -PreferredDisk @{"8" = 8; "4" = 2} -ExpectedDataSizeInTeraByte 18
+        $details = New-AzDataBoxDiskJobDetailsObject -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -Passkey "*****" -PreferredDisk @{"8" = 8; "4" = 2} -ExpectedDataSizeInTeraByte 18
         $resource = New-AzDataBoxJob -Name $env.JobNameDisk -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup -TransferType "ImportToAzure" -Detail $details -Location "WestUS" -SkuName "DataBoxDisk" 
         $resource.Status | Should -Be 'DeviceOrdered'
     } 
