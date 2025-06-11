@@ -4,6 +4,7 @@ Get-AzOracleExadbVMCluster
 ```
 
 ```output
+...
 name                       : OFake_PowerShellTestExadbVmCluster
 type                       : oracle.database/exadbvmclusters
 location                   : eastus
@@ -33,12 +34,9 @@ sshPublicKeys              : ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD2uOXC283JO8i
 systemVersion              : 19.2.12.0.0.200317
 timeZone                   : UTC
 totalEcpuCount             : 16
-vmFileSystemStorage        : totalSizeInGbs: 560
 scanDnsName                : fakeScanDnsName
 scanIpIds                  :
 scanDnsRecordId            : ocid1.vcndnsrecord.oc1.iad.anuwcljrhnge2iqaycryvslv72somguxmjxgd3fxbk5tzwoksiekg4dguljq
-snapshotFileSystemStorage  : totalSizeInGbs: 0
-totalFileSystemStorage     : totalSizeInGbs: 560
 vipIds                     :
 zoneOcid                   : ocid1.dns-zone.oc1.iad.aaaaaaaafla3b2uh67e4qxqcsl4mzoqh4nckbb243lvvy2ukgqpxubn5trra
 ```

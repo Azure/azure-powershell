@@ -43,27 +43,20 @@ Get a ExascaleDbNode
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a list of the Database Nodes for a ExaScale db VM Cluster resource
 ```powershell
-{{ Add code here }}
+Get-AzOracleExascaleDbNode -Exadbvmclustername "OFake_PowerShellTestVmCluster" -ResourceGroupName "PowerShellTestRg"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                                                              SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+----                                                                              ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+ocid1.dbnode.oc1.iad.anuwcljrnirvylqapfxspunpsxyaehha5wwz22lazevdaoiye7bh4iy2nwfa                                                                                                                                                PowerShellTestRg
+ocid1.dbnode.oc1.iad.anuwcljrnirvylqaqm24luvmhsaaz2wtiq3ggddpsemx6gn66vff5rulsgnq                                                                                                                                                PowerShellTestRg
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Get a list of the Database Nodes for a Cloud VM Cluster resource.
+For more information, execute `Get-Help Get-AzOracleExascaleDbNode`
 
 ## PARAMETERS
 

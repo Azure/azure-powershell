@@ -59,27 +59,19 @@ Remove VMs from the VM Cluster
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a VM from a Cloud VM Cluster resource
 ```powershell
-{{ Add code here }}
+$resourceGroup = "PowerShellTestRg"
+
+$dbNodeList = Get-AzOracleExascaleDbNode -Exadbvmclustername "OFake_PowerShellTestVmCluster" -ResourceGroupName $resourceGroup
+$dbNodeOcid1 = $dbNodeList[0].Ocid
+$dbNodeToRemove = @($dbNodeOcid1)
+
+Remove-AzOracleExadbVMClusterVM -Exadbvmclustername "OFake_PowerShellTestVmCluster" -ResourceGroupName $resourceGroup -DbNode $dbNodeToRemove
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Remove a VM from a Cloud VM Cluster resource.
+For more information, execute `Get-Help Remove-AzOracleCloudVMClusterVM`.
 
 ## PARAMETERS
 
