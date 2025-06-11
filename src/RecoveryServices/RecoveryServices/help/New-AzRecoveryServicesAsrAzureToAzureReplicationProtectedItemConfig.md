@@ -253,7 +253,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryVirtualMachineScaleSetId
-Specifies the reccovery virtual machine scale set id.
+Specifies the recovery virtual machine scale set id.
 
 ```yaml
 Type: System.String
