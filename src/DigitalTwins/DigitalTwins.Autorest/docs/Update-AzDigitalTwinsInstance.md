@@ -54,10 +54,10 @@ ProvisioningState            : Succeeded
 PublicNetworkAccess          : Enabled
 ResourceGroupName            : azps_test_group
 SystemDataCreatedAt          : 2025-06-06 09:44:15 AM
-SystemDataCreatedBy          : v-jinpel@microsoft.com
+SystemDataCreatedBy          : xxxxx.xxxxx@microsoft.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 2025-06-06 11:27:22 AM
-SystemDataLastModifiedBy     : v-jinpel@microsoft.com
+SystemDataLastModifiedBy     : xxxxx.xxxxx@microsoft.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                  "abc": "123"
@@ -87,10 +87,10 @@ ProvisioningState            : Succeeded
 PublicNetworkAccess          : Enabled
 ResourceGroupName            : azps_test_group
 SystemDataCreatedAt          : 2025-06-06 09:44:15 AM
-SystemDataCreatedBy          : v-jinpel@microsoft.com
+SystemDataCreatedBy          : xxxxx.xxxxx@microsoft.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 2025-06-06 11:29:01 AM
-SystemDataLastModifiedBy     : v-jinpel@microsoft.com
+SystemDataLastModifiedBy     : xxxxx.xxxxx@microsoft.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                  "1234": "abcd"

@@ -69,10 +69,10 @@ Property                     : {
 ProvisioningState            : Succeeded
 ResourceGroupName            : azps_test_group
 SystemDataCreatedAt          : 2025-06-06 11:16:50 AM
-SystemDataCreatedBy          : v-jinpel@microsoft.com
+SystemDataCreatedBy          : xxxxx.xxxxx@microsoft.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 2025-06-06 11:18:27 AM
-SystemDataLastModifiedBy     : v-jinpel@microsoft.com
+SystemDataLastModifiedBy     : xxxxx.xxxxx@microsoft.com
 SystemDataLastModifiedByType : User
 Type                         : Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
 ```
@@ -104,10 +104,10 @@ Property                     : {
 ProvisioningState            : Succeeded
 ResourceGroupName            : azps_test_group
 SystemDataCreatedAt          : 2025-06-06 11:22:11 AM
-SystemDataCreatedBy          : v-jinpel@microsoft.com
+SystemDataCreatedBy          : xxxxx.xxxxx@microsoft.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 2025-06-06 11:22:48 AM
-SystemDataLastModifiedBy     : v-jinpel@microsoft.com
+SystemDataLastModifiedBy     : xxxxx.xxxxx@microsoft.com
 SystemDataLastModifiedByType : User
 Type                         : Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
 ```
@@ -138,10 +138,10 @@ Property                     : {
 ProvisioningState            : Succeeded
 ResourceGroupName            : azps_test_group
 SystemDataCreatedAt          : 2025-06-06 09:52:53 AM
-SystemDataCreatedBy          : v-jinpel@microsoft.com
+SystemDataCreatedBy          : xxxxx.xxxxx@microsoft.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 2025-06-06 09:52:53 AM
-SystemDataLastModifiedBy     : v-jinpel@microsoft.com
+SystemDataLastModifiedBy     : xxxxx.xxxxx@microsoft.com
 SystemDataLastModifiedByType : User
 Type                         : Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
 ```
