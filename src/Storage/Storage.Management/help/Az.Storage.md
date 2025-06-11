@@ -191,6 +191,12 @@ Lists the storage tables.
 ### [Get-AzStorageTableStoredAccessPolicy](Get-AzStorageTableStoredAccessPolicy.md)
 Gets the stored access policy or policies for an Azure storage table.
 
+### [Get-AzStorageTaskAssignment](Get-AzStorageTaskAssignment.md)
+Get the storage task assignment properties
+
+### [Get-AzStorageTaskAssignmentInstancesReport](Get-AzStorageTaskAssignmentInstancesReport.md)
+Fetch the report summary of a single storage task assignment's instances
+
 ### [Get-AzStorageUsage](Get-AzStorageUsage.md)
 Gets the Storage resource usage of the current subscription.
 
@@ -314,6 +320,11 @@ Generates an SAS token for an Azure Storage table.
 ### [New-AzStorageTableStoredAccessPolicy](New-AzStorageTableStoredAccessPolicy.md)
 Creates a stored access policy for an Azure storage table.
 
+### [New-AzStorageTaskAssignment](New-AzStorageTaskAssignment.md)
+Asynchronously create a new storage task assignment sub-resource with the specified parameters.
+If a storage task assignment is already created and a subsequent create request is issued with different properties, the storage task assignment properties will be updated.
+If a storage task assignment is already created and a subsequent create request is issued with the exact same set of properties, the request will succeed.
+
 ### [Remove-AzDataLakeGen2AclRecursive](Remove-AzDataLakeGen2AclRecursive.md)
 Remove ACL recursively on the specified path. 
 
@@ -388,6 +399,9 @@ Removes a storage table.
 
 ### [Remove-AzStorageTableStoredAccessPolicy](Remove-AzStorageTableStoredAccessPolicy.md)
 Removes a stored access policy from an Azure storage table.
+
+### [Remove-AzStorageTaskAssignment](Remove-AzStorageTaskAssignment.md)
+Delete the storage task assignment sub-resource
 
 ### [Rename-AzStorageDirectory](Rename-AzStorageDirectory.md)
 Renames a directory.
@@ -528,4 +542,7 @@ Modifies the service properties for the Azure Storage File service.
 
 ### [Update-AzStorageServiceProperty](Update-AzStorageServiceProperty.md)
 Modifies the properties for the Azure Storage service.
+
+### [Update-AzStorageTaskAssignment](Update-AzStorageTaskAssignment.md)
+update storage task assignment properties
 
