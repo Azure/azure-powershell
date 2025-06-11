@@ -492,14 +492,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            if (this.IsParameterBound(c => c.UserData))
-            {
-                if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
-                {
-                    this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
-                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
-                }
-            }
 
             switch (ParameterSetName)
             {
@@ -629,14 +621,6 @@ namespace Microsoft.Azure.Commands.Compute
                         _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
                         _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
                     }
-                }
-
-                // Standard security type removing value since API does not support it.
-                if (_cmdlet.IsParameterBound(c => c.SecurityType)  
-                    && _cmdlet.SecurityType != null
-                    && _cmdlet.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
-                {
-                    _cmdlet.SecurityType = "Standard";
                 }
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
@@ -1717,6 +1701,15 @@ namespace Microsoft.Azure.Commands.Compute
 
         private void validate()
         {
+            // Validate UserData is base64 encoded or encode it
+            if (this.IsParameterBound(c => c.UserData))
+            {
+                if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
+                {
+                    this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
+                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
+                }
+            }
             if (this.IsParameterBound(c => c.SshKeyName))
             {
                 if (this.ParameterSetName == "DefaultParameterSet" && !IsLinuxOs())
