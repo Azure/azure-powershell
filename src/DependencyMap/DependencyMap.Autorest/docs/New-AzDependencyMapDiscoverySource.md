@@ -48,7 +48,7 @@ Create a DiscoverySourceResource
 ### Example 1: Create a discovery source.
 ```powershell
 $property = New-AzDependencyMapOffAzureDiscoverySourceResourcePropertiesObject -SourceId testSourceId
-New-AzDependencyMapDiscoverySource -SourceName dmSource -MapName testMap -ResourceGroupName dmTestGroup -Location eastus -SourceId $property
+New-AzDependencyMapDiscoverySource -SourceName dmSource -MapName testMap -ResourceGroupName dmTestGroup -Location eastus -Property $property
 ```
 
 ```output
