@@ -1,0 +1,46 @@
+{
+  "Remove-AzDependencyMapDiscoverySource+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSourcea5?api-version=2025-01-31-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSourcea5?api-version=2025-01-31-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "cff15b39-251e-4c14-ba11-5583c63ce226" ],
+        "CommandName": [ "Remove-AzDependencyMapDiscoverySource" ],
+        "FullCommandName": [ "Remove-AzDependencyMapDiscoverySource_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.DependencyMap/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ce74a389-b5e8-4f16-89c7-787031ddd903/southindia/b5c950d8-d441-4d44-abf5-b0fd842fa947" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "4d468630-a1a2-4a71-98bf-4410809cbf73" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250610T034302Z:4d468630-a1a2-4a71-98bf-4410809cbf73" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C2D5C3E1CD9140F3968479D77DAAEC1E Ref B: MAA201060515051 Ref C: 2025-06-10T03:42:58Z" ],
+        "Date": [ "Tue, 10 Jun 2025 03:43:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

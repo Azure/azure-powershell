@@ -93,9 +93,9 @@ A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
 
 Once the gateway has been created, it is connected to the VpnSite using the New-AzVpnConnection command.
 
-The configuration is then downloaded using this commandlet.
+The configuration is then downloaded using this cmdlet.
 
-If the commandlet is successful, then the download configuration will be written to the blob indicated by the SignedSasUrl. Below is an example for how the URL will look like :
+If the cmdlet is successful, then the download configuration will be written to the blob indicated by the SignedSasUrl. Below is an example for how the URL will look like :
 https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]
 
 ## PARAMETERS

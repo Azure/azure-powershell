@@ -198,7 +198,7 @@ Creates a new diagnostics at the Global scope or Api Scope.
 Creates new Gateway entity.
 
 ### [New-AzApiManagementGatewayHostnameConfiguration](New-AzApiManagementGatewayHostnameConfiguration.md)
-Creates a hostname configuratin for the existing Gateway.
+Creates a hostname configuration for the existing Gateway.
 
 ### [New-AzApiManagementGroup](New-AzApiManagementGroup.md)
 Creates an API management group.

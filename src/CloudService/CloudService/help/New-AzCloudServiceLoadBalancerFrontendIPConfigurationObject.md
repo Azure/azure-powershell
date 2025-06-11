@@ -52,7 +52,7 @@ This command creates load balancer frontend IP configuration object with a Priva
 ## PARAMETERS
 
 ### -Name
-Name of FrontendIpConfigration.
+Name of FrontendIpConfiguration.
 
 ```yaml
 Type: System.String

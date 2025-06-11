@@ -27,14 +27,14 @@ Get current subscription usages
 Get-AzNetAppFilesUsage -Location "westus" -UsageType "totalTibsPerSubscription"
 ```
 
-Gets `totalTibsPerSubscription` usage infomation on "westus" region
+Gets `totalTibsPerSubscription` usage information on "westus" region
 
 ### Example 2
 ```powershell
 Get-AzNetAppFilesUsage -Location "westus" 
 ```
 
-Lists of usage infomation for all usage types on "westus" region
+Lists of usage information for all usage types on "westus" region
 
 ## PARAMETERS
 
