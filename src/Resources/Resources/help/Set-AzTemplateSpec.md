@@ -72,7 +72,7 @@ Set-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> [-Version] <St
 ```
 
 ## DESCRIPTION
-Modifies a Templace Spec. If the Template Spec with the specified name and/or specific version does not already exist, it will be 
+Modifies a Template Spec. If the Template Spec with the specified name and/or specific version does not already exist, it will be 
 created.
 
 When modifying a Template Spec version's ARM Template content, the content can either come from a raw 
