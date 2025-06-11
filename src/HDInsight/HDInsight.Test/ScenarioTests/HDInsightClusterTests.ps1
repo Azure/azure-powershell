@@ -78,7 +78,6 @@ function Test-CreateEntraCluster{
 		Set-AzHDInsightGatewayCredential -ResourceGroupName $params.resourceGroupName -ClusterName $params.clusterName -EntraUserFullInfo $entraUserFullInfo
 		Assert-NotNull $resultCluster
 	}
-
 	finally
 	{
 		# Delete cluster and resource group
