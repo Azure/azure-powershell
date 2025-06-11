@@ -442,60 +442,40 @@ param(
 )
 
   process {
-    if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or $PSBoundParameters.ContainsKey('UserAssignedIdentity') ) {
-        # Get dataBox DataObj
-        $parameterSet = $PSCmdlet.ParameterSetName
-        if (('UpdateExpanded') -contains $parameterSet) {
-          $dataBox = Az.DataBox\Get-AzDataBoxJob -Name $Name -ResourceGroupName $ResourceGroupName
-        }
-        elseif (('UpdateViaIdentityExpanded') -contains $parameterSet) {
-          $dataBox = Az.DataBox\Get-AzDataBoxJob -InputObject $InputObject
-        }
-        if ($null -eq $dataBox) {
-          throw "$Name doesn't exist"
-        }
+    if($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or $PSBoundParameters.ContainsKey('UserAssignedIdentity') ){
+      $parameterSet = $PSCmdlet.ParameterSetName
+      # get existing dataBoxObj
+      if(('UpdateExpanded') -contains $parameterSet){
+        $dataBoxObj = Az.DataBox.exports\Get-AzDataBoxJob -Name $Name -ResourceGroupName $ResourceGroupName
+      }elseif(('UpdateViaIdentityExpanded') -contains $parameterSet)
+      {
+        $dataBoxObj = Az.DataBox.exports\Get-AzDataBoxJob -InputObject $InputObject
+      }
+      if($null -eq $dataBoxObj)
+      {
+        throw "$Name doesn't exist"
+      }
 
-        # If user input UserAssignedIdentity
-        if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
-          $userIdentityObject = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.UserAssignedIdentity]::New()
-          $PSBoundParameters.IdentityUserAssignedIdentity = @{}
-          foreach ($item in $PSBoundParameters.UserAssignedIdentity) {
-            $PSBoundParameters.IdentityUserAssignedIdentity.Add($item, $userIdentityObject )
-          }
-  
-          if ($dataBox.IdentityUserAssignedIdentity.Count -gt 0) {
-            $dataBox.IdentityUserAssignedIdentity.Keys | ForEach-Object {
-              if (-NOT($_ -in $UserAssignedIdentity)) {
-                $PSBoundParameters.IdentityUserAssignedIdentity.Add($_, $null)
-              }
-            }
-          }
-        }
+      # calculate IdentityType
+      $supportsSystemAssignedIdentity = $EnableSystemAssignedIdentity -or (($null -eq $EnableSystemAssignedIdentity) -and ($dataBoxObj.IdentityType -Contains "SystemAssigned"))
+      $supportsUserAssignedIdentity = ($PSBoundParameters.ContainsKey('UserAssignedIdentity') -and $UserAssignedIdentity.Length -gt 0) -or ((-not $PSBoundParameters.ContainsKey('UserAssignedIdentity')) -and ($dataBoxObj.IdentityType -Contains "UserAssigned"));
+      if (($supportsSystemAssignedIdentity -and $supportsUserAssignedIdentity)) {
+        $PSBoundParameters.Add("IdentityType", "SystemAssigned,UserAssigned")
+      }
+      elseif ($supportsUserAssignedIdentity -and (-not $supportsSystemAssignedIdentity)) {
+        $PSBoundParameters.Add("IdentityType", "UserAssigned")
+      }
+      elseif ((-not $supportsUserAssignedIdentity) -and $supportsSystemAssignedIdentity) {
+        $PSBoundParameters.Add("IdentityType", "SystemAssigned")
+      }
+      else {
+        $PSBoundParameters.Add("IdentityType", "None")
+      }
 
-        # calculate IdentityType
-        $supportsSystemAssignedIdentity = $EnableSystemAssignedIdentity -or (($null -eq $EnableSystemAssignedIdentity) -and ($dataBox.IdentityType.Contains('SystemAssigned')))
-        $supportsUserAssignedIdentity = ($PSBoundParameters.ContainsKey('UserAssignedIdentity') -and $UserAssignedIdentity.Length -gt 0) -or ((-not $PSBoundParameters.ContainsKey('UserAssignedIdentity')) -and ($dataBox.IdentityType.Contains('UserAssigned')));
-        if (($supportsSystemAssignedIdentity -and $supportsUserAssignedIdentity)) {
-          $PSBoundParameters.Add("IdentityType", "SystemAssigned,UserAssigned")
-        }
-        elseif ($supportsUserAssignedIdentity -and (-not $supportsSystemAssignedIdentity)) {
-          $PSBoundParameters.Add("IdentityType", "UserAssigned")
-        }
-        elseif ((-not $supportsUserAssignedIdentity) -and $supportsSystemAssignedIdentity) {
-          $PSBoundParameters.Add("IdentityType", "SystemAssigned")
-        }
-        else {
-          $PSBoundParameters.Add("IdentityType", "None")
-        }
-
-        # remove EnableSystemAssignedIdentity 
-        if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')) {
-          $null = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")
-        }
-        # remove UserAssignedIdentity 
-        if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
-          $null = $PSBoundParameters.Remove('UserAssignedIdentity')
-        }
+      # remove EnableSystemAssignedIdentity
+      if($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')) {
+        $null = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")
+      }
     }
     Az.DataBox.internal\Update-AzDataBoxJob @PSBoundParameters
   }
