@@ -127,7 +127,7 @@ Location Name              ResourceGroupName
 eastus   azps_test_cluster azps_test_group
 ```
 
-This command disable gateway feature of a connected Kubernetes cluster.
+This command disables the gateway feature of a connected Kubernetes cluster.
 
 ### Example 2: Enable gateway for a connected Kubernetes cluster
 ```powershell
