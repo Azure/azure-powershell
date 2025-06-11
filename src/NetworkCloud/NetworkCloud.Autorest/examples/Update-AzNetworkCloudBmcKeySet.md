@@ -4,11 +4,10 @@ $tagHash = @{
     tag = "tagUpdate"
 }
 $userList = @{
+    userPrincipalName = "userPrincipalName"
     description   = "userDescription"
     azureUserName = "userName"
-    sshPublicKey  = @{
-        keyData =  "ssh-rsa aaaKyfsdx= fakekey@vm"
-    }
+    sshPublicKey  = "ssh-rsa aaaKyfsdx= fakekey@vm"
 }
 
 $tagUpdatedHash = @{

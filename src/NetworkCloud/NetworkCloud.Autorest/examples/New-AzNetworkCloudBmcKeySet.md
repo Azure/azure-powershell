@@ -4,11 +4,10 @@ $tagHash = @{
     tag = "tag"
 }
 $userList = @{
+    userPrincipalName = "userPrincipalName"
     description   = "userDescription"
     azureUserName = "userName"
-    sshPublicKey  = @{
-        keyData = "ssh-rsa aaaKyfsdx= fakekey@vm"
-    }
+    sshPublicKey  = "ssh-rsa aaaKyfsdx= fakekey@vm"
 }
 
 New-AzNetworkCloudBmcKeySet -ResourceGroupName resourceGroupName -Name baseboardmgtcontrollerkeysetname -ClusterName clusterName -AzureGroupId azuregroupid -Expiration "2023-12-31T23:59:59.008Z" -ExtendedLocationName /subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/customLocationName -PrivilegeLevel ReadOnly -ExtendedLocationType CustomLocation -Location EastUs -Tag $tagHash -UserList $userList

@@ -16,19 +16,19 @@ Properties and tag updates can be done independently.
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkCloudKubernetesCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ControlPlaneNodeConfigurationAdminPublicKey <ISshPublicKey[]>] [-ControlPlaneNodeConfigurationCount <Int64>]
- [-KubernetesVersion <String>] [-SshPublicKey <ISshPublicKey[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-ControlPlaneNodeConfigurationAdminPublicKey <ISshPublicKey[]>]
+ [-ControlPlaneNodeConfigurationCount <Int64>] [-KubernetesVersion <String>] [-SshPublicKey <ISshPublicKey[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzNetworkCloudKubernetesCluster -InputObject <INetworkCloudIdentity>
- [-ControlPlaneNodeConfigurationAdminPublicKey <ISshPublicKey[]>] [-ControlPlaneNodeConfigurationCount <Int64>]
- [-KubernetesVersion <String>] [-SshPublicKey <ISshPublicKey[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzNetworkCloudKubernetesCluster -InputObject <INetworkCloudIdentity> [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-ControlPlaneNodeConfigurationAdminPublicKey <ISshPublicKey[]>]
+ [-ControlPlaneNodeConfigurationCount <Int64>] [-KubernetesVersion <String>] [-SshPublicKey <ISshPublicKey[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +77,7 @@ SshPublicKey represents the public key used to authenticate with a resource thro
 To construct, see NOTES section for CONTROLPLANENODECONFIGURATIONADMINPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -111,6 +111,39 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+The ETag of the transformation.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+Other values will result in error from server as they are not supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -201,7 +234,7 @@ SshPublicKey represents the public key used to authenticate with a resource thro
 To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -283,7 +316,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesCluster
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesCluster
 
 ## NOTES
 

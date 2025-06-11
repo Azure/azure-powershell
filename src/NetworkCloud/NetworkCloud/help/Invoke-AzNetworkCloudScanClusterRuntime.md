@@ -91,7 +91,7 @@ ClusterScanRuntimeParameters defines the parameters for the cluster scan runtime
 To construct, see NOTES section for CLUSTERSCANRUNTIMEPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterScanRuntimeParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterScanRuntimeParameters
 Parameter Sets: Scan, ScanViaIdentity
 Aliases:
 
@@ -247,7 +247,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterScanRuntimeParameters
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterScanRuntimeParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

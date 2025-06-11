@@ -16,16 +16,16 @@ Properties and tag updates can be done independently.
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkCloudBmcKeySet -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Expiration <DateTime>] [-Tag <Hashtable>] [-UserList <IKeySetUser[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-Expiration <DateTime>]
+ [-Tag <Hashtable>] [-UserList <IKeySetUser[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzNetworkCloudBmcKeySet -InputObject <INetworkCloudIdentity> [-Expiration <DateTime>] [-Tag <Hashtable>]
- [-UserList <IKeySetUser[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzNetworkCloudBmcKeySet -InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-Expiration <DateTime>] [-Tag <Hashtable>] [-UserList <IKeySetUser[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,11 +40,10 @@ $tagHash = @{
     tag = "tagUpdate"
 }
 $userList = @{
+    userPrincipalName = "userPrincipalName"
     description   = "userDescription"
     azureUserName = "userName"
-    sshPublicKey  = @{
-        keyData =  "ssh-rsa aaaKyfsdx= fakekey@vm"
-    }
+    sshPublicKey  = "ssh-rsa aaaKyfsdx= fakekey@vm"
 }
 
 $tagUpdatedHash = @{
@@ -110,6 +109,39 @@ The date and time after which the users in this key set will be removed from the
 
 ```yaml
 Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+The ETag of the transformation.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+Other values will result in error from server as they are not supported.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -218,7 +250,7 @@ The unique list of permitted users.
 To construct, see NOTES section for USERLIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKeySetUser[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKeySetUser[]
 Parameter Sets: (All)
 Aliases:
 
@@ -269,7 +301,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySet
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBmcKeySet
 
 ## NOTES
 

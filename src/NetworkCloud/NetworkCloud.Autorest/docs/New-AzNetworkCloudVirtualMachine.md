@@ -17,10 +17,12 @@ New-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> -Adm
  -CloudServiceNetworkAttachmentAttachedNetworkId <String>
  -CloudServiceNetworkAttachmentIPAllocationMethod <VirtualMachineIPAllocationMethod> -CpuCore <Int64>
  -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> -MemorySizeGb <Int64>
- -OSDiskSizeGb <Int64> -VMImage <String> [-SubscriptionId <String>] [-BootMethod <VirtualMachineBootMethod>]
+ -OSDiskSizeGb <Int64> -VMImage <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-BootMethod <VirtualMachineBootMethod>]
  [-CloudServiceNetworkAttachmentDefaultGateway <DefaultGateway>]
  [-CloudServiceNetworkAttachmentIpv4Address <String>] [-CloudServiceNetworkAttachmentIpv6Address <String>]
- [-CloudServiceNetworkAttachmentName <String>] [-IsolateEmulatorThread <VirtualMachineIsolateEmulatorThread>]
+ [-CloudServiceNetworkAttachmentName <String>] [-ConsoleExtendedLocationName <String>]
+ [-ConsoleExtendedLocationType <String>] [-IsolateEmulatorThread <VirtualMachineIsolateEmulatorThread>]
  [-NetworkAttachment <INetworkAttachment[]>] [-NetworkData <String>]
  [-OSDiskCreateOption <OSDiskCreateOption>] [-OSDiskDeleteOption <OSDiskDeleteOption>]
  [-PlacementHint <IVirtualMachinePlacementHint[]>] [-SshPublicKey <ISshPublicKey[]>]
@@ -204,6 +206,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ConsoleExtendedLocationName
+The resource ID of the extended location on which the resource will be created.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConsoleExtendedLocationType
+The extended location type, for example, CustomLocation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CpuCore
 The number of CPU cores in the virtual machine.
 
@@ -259,6 +291,39 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+The ETag of the transformation.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+Other values will result in error from server as they are not supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -332,7 +397,7 @@ The list of network attachments to the virtual machine.
 To construct, see NOTES section for NETWORKATTACHMENT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.INetworkAttachment[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.INetworkAttachment[]
 Parameter Sets: (All)
 Aliases:
 
@@ -425,7 +490,7 @@ The scheduling hints for the virtual machine.
 To construct, see NOTES section for PLACEMENTHINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVirtualMachinePlacementHint[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachinePlacementHint[]
 Parameter Sets: (All)
 Aliases:
 
@@ -458,7 +523,7 @@ Each key will be added to the virtual machine using the cloud-init ssh_authorize
 To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -659,7 +724,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachine
 
 ## NOTES
 
