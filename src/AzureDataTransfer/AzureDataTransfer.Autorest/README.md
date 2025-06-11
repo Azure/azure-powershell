@@ -51,6 +51,8 @@ subject-prefix: DataTransfer
 # identity-correction-for-post: true
 # resourcegroup-append: true
 # nested-object-to-string: true
+
+## Flags to use PATCH method for Update-*
 disable-getput: true
 disable-transform-identity-type: true
 flatten-userassignedidentity: false
@@ -126,13 +128,15 @@ directive:
       parameter-name: IdentityUserAssignedIdentity
     set:
       parameter-name: UserAssignedIdentity
-
+    
+  # Rename to avoid codegen errors
   - from: swagger-document
     where: $.definitions.streamSourceAddresses.properties.sourceAddresses
     transform: $['x-ms-client-name'] = 'AddressList'
   - from: swagger-document
     where: $.definitions.flowProperties.properties.connection
     transform: $['x-ms-client-name'] = 'FlowPropertiesConnection'
+
   # Rename approve/reject ConnectionId param
   - where:
       verb: Invoke
@@ -162,7 +166,7 @@ directive:
     set:
       subject: Connection
 
-  # Rename Link cmdltes
+  # Rename Link cmdlets
   - where:
       verb: Invoke
       subject: ^LinkConnection$
