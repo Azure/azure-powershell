@@ -45,7 +45,7 @@ New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $date -Inter
 R/2021-03-03T12:49:55+05:30/PT4H
 ```
 
-This command creates an hourly scheudle for Azure Backup Rule.
+This command creates an hourly schedule for Azure Backup Rule.
 
 ## PARAMETERS
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -IntervalType
-Freuquency of the backup.
+Frequency of the backup.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency
