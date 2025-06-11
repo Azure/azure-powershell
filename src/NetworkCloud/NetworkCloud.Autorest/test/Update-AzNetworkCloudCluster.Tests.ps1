@@ -49,7 +49,7 @@ Describe 'Update-AzNetworkCloudCluster' {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        { 
+        {
             $clusterconfig = $global:config.AzNetworkCloudCluster
             $common = $global:config.common
             $tagHash = @{
@@ -61,12 +61,12 @@ Describe 'Update-AzNetworkCloudCluster' {
             $bmmConfigurationData2 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress2 -BootMacAddress $clusterconfig.bootMacAddress2 -RackSlot 2 -SerialNumber $clusterconfig.serialNumber2 -MachineDetail "machineDetailmgr" -MachineName "lab00r750mgr1"
             $bmmConfigurationData3 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress3 -BootMacAddress $clusterconfig.bootMacAddress3 -RackSlot 3 -SerialNumber $clusterconfig.serialNumber3 -MachineDetail "machineDetailmgr" -MachineName "lab00r750mgr2"
             $bareMetalMachineConfigurationData = @($bmmConfigurationData1, $bmmConfigurationData2, $bmmConfigurationData3)
-    
+
             $identityUserAssignedIdentity = @{}
             $identityUserAssignedIdentity.Add($clusterconfig.miUserAssignedIdentityResourceId, @{})
-    
+
             $computerackdefinition = New-AzNetworkCloudRackDefinitionObject -NetworkRackId $clusterconfig.aggregatorRack.networkRackId -RackSerialNumber $clusterconfig.computeRack.serialNumber -RackSkuId $clusterconfig.computeRack.rackSkuId -AvailabilityZone $clusterconfig.computeRack.availabilityZone -RackLocation $clusterconfig.clusterLocation -BareMetalMachineConfigurationData $bareMetalMachineConfigurationData
-    
+
             Update-AzNetworkCloudCluster -ResourceGroupName $clusterconfig.miClusterRg -Name $clusterconfig.miClusterName `
                 -SubscriptionId $clusterconfig.subscriptionId `
                 -AggregatorOrSingleRackDefinitionNetworkRackId $clusterconfig.aggregatorRack.networkRackId `
@@ -78,8 +78,8 @@ Describe 'Update-AzNetworkCloudCluster' {
                 -AnalyticsOutputSettingsAssociatedIdentityType $clusterconfig.identityType `
                 -AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
                 -CommandOutputSettingContainerUrl $clusterconfig.containerUrlUpdate `
-                -CommandOutputSettingsAssociatedIdentityType $clusterconfig.identityType `
-                -CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
+                -AssociatedIdentityType $clusterconfig.identityType `
+                -AssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
                 -ComputeDeploymentThresholdGrouping $clusterconfig.computeDeploymentThresholdGrouping `
                 -ComputeDeploymentThresholdType $clusterconfig.computeDeploymentThresholdType `
                 -ComputeDeploymentThresholdValue $clusterconfig.computeDeploymentThresholdValue `
