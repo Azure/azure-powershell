@@ -135,7 +135,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -CloudTiering
+### -Identity
 Identity Parameter
 
 ```yaml
