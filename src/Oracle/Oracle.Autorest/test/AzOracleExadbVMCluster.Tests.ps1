@@ -19,36 +19,31 @@ Describe 'AzOracleExadbVMCluster' {
         {
             $sshPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKJkePl4prXTs6cZ77AS9kGs5TO1EdfDdQZAtD7cfBVJ8X4wN+aOvLhk+u74D3qXad2OdQ/ij5q+xVzoXLXNBIZFQjB8JqWpgvOrOCAakFGc0OatJhSVlmJKW7JboQcUu7AzABfu+Ciso1QQTqlc2+awoZzPhfP9sgDMN6zI15Q9wSuxERor8oMSc78NW652wMzl97zO+bYdO9vIjBu27/WYZN/OpFJ0Ss4AzW/V9r2h6FFCkG+GXzhZArk3NeEstCSO2bjv3vO40+M0vfRD2jQrOSKhaLolk+crLGamaclY0YYCVB23rk6gCimWbVuvpHn+x1QSvN2d19xAmrIsHdTv/1lCEJetMA96pBq/jbljPwVKPFfVkyC8Ivt5rkbYizmUlYAbDMksGMUR4ncjScY7o/S0JKs14HihOnCoSGVXhH1dDgc8AsI+Ujs+GGR4U8IXJGEpZmhdnLa6mDymvr1tLWdQaI2y5FuWxsy4diKjEsPxCrnqfxlZxFBbQ29AU= generated-by-azure"
 
-            $exaInfra = Get-AzOracleCloudExadataInfrastructure -Name $env.exaInfraName -ResourceGroupName $env.resourceGroup
-            $exaInfraId = $exaInfra.Id
-            
-            # Get Db Server Ocids
-            $dbServerList = Get-AzOracleDbServer -Cloudexadatainfrastructurename $env.exaInfraName -ResourceGroupName $env.resourceGroup
-            $dbServerOcid1 = $dbServerList[0].Ocid
-            $dbServerOcid2 = $dbServerList[1].Ocid
+            $dbStorageVault = Get-AzOracleExascaleDbStorageVault -Name $env.oracleExascaleDbStorageVaultName -ResourceGroupName $env.resourceGroup
+            $dbStorageVaultId = $dbStorageVault.Id
 
-            $oracleExadbVMCluster = New-AzOracleCloudOracleExadbVMCluster -Name $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup -Location $env.location -DisplayName $env.oracleExadbVMClusterName -HostName $env.oracleExadbVMClusterHostName -CpuCoreCount $env.oracleExadbVMClusterCpuCoreCount -CloudExadataInfrastructureId $exaInfraId -SshPublicKey $sshPublicKey -VnetId $env.vnetId -GiVersion $env.oracleExadbVMClusterGiVersion -SubnetId $env.subnetId -LicenseModel $env.oracleExadbVMClusterLicenseModel -ClusterName $env.oracleExadbVMClusterClusterName -MemorySizeInGb $env.oracleExadbVMClusterMemorySizeInGb -DbNodeStorageSizeInGb $env.oracleExadbVMClusterDbNodeStorageSizeInGb -DataStorageSizeInTb $env.oracleExadbVMClusterDataStorageSizeInTb -DataStoragePercentage $env.oracleExadbVMClusterDataStoragePercentage -TimeZone $env.oracleExadbVMClusterTimeZone -DbServer @($dbServerOcid1, $dbServerOcid2)
+            $oracleExadbVMCluster = New-AzOracleExadbVMCluster -Name $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup -Location $env.location -Zone $env.zone -ExascaleDbStorageVaultId $dbStorageVaultId -DisplayName $env.oracleExadbVMClusterName -EnabledEcpuCount $env.enabledEcpuCount -GridImageOcid $env.gridImageOcid -HostName $env.oracleExadbVMClusterHostName -NodeCount $env.nodeCount -Shape $env.shape -SshPublicKey $sshPublicKey -VnetId $env.vnetId -SubnetId $env.subnetId -TotalEcpuCount $env.totalEcpuCount -VMFileSystemStorage $env.VMFileSystemStorage
             $oracleExadbVMCluster.Name | Should -Be $env.oracleExadbVMClusterName
         } | Should -Not -Throw
     }
     It 'GetOracleExadbVMCluster' {
         {
-            $oracleExadbVMCluster = Get-AzOracleCloudOracleExadbVMCluster -Name $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup
+            $oracleExadbVMCluster = Get-AzOracleExadbVMCluster -Name $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup
             $oracleExadbVMCluster.Name | Should -Be $env.oracleExadbVMClusterName
         } | Should -Not -Throw
     }
     It 'ListOracleExadbVMClusters' {
         {
-            $oracleExadbVMClusterList = Get-AzOracleCloudOracleExadbVMCluster
+            $oracleExadbVMClusterList = Get-AzOracleExadbVMCluster
             $oracleExadbVMClusterList.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
     It 'UpdateOracleExadbVMCluster' {
         {
             $tagHashTable = @{'tagName'="tagValue"}
-            Update-AzOracleCloudOracleExadbVMCluster -Name $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup -Tag $tagHashTable
-            $exaInfra = Get-AzOracleCloudOracleExadbVMCluster -Name $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup
-            $exaInfra.Tag.Get_Item("tagName") | Should -Be "tagValue"
+            Update-AzOracleExadbVMCluster -Name $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup -Tag $tagHashTable
+            $dbStorageVault = Get-AzOracleExadbVMCluster -Name $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup
+            $dbStorageVault.Tag.Get_Item("tagName") | Should -Be "tagValue"
         } | Should -Not -Throw
     }
     It 'StopVm' {
@@ -56,10 +51,10 @@ Describe 'AzOracleExadbVMCluster' {
             $stopActionName = "Stop"
             
             # Get Db Node Ocids
-            $dbNodeList = Get-AzOracleDbNode -CloudoracleExadbVMClustername $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup
+            $dbNodeList = Get-AzOracleExascaleDbNode -OracleExadbVMClustername $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup
             $dbNodeOcid1 = $dbNodeList[0].Name
             
-            Invoke-AzOracleActionDbNode -CloudoracleExadbVMClustername $env.oracleExadbVMClusterName -Dbnodeocid $dbNodeOcid1 -ResourceGroupName $env.resourceGroup -Action $stopActionName
+            Invoke-AzOracleActionExascaleDbNode -OracleExadbVMClustername $env.oracleExadbVMClusterName -DbNodeOcid $dbNodeOcid1 -ResourceGroupName $env.resourceGroup -Action $stopActionName
         } | Should -Not -Throw
     }
     It 'StartVm' {
@@ -67,15 +62,15 @@ Describe 'AzOracleExadbVMCluster' {
             $startActionName = "Start"
             
             # Get Db Node Ocids
-            $dbNodeList = Get-AzOracleDbNode -CloudoracleExadbVMClustername $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup
+            $dbNodeList = Get-AzOracleExascaleDbNode -OracleExadbVMClustername $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup
             $dbNodeOcid1 = $dbNodeList[0].Name
             
-            Invoke-AzOracleActionDbNode -CloudoracleExadbVMClustername $env.oracleExadbVMClusterName -Dbnodeocid $dbNodeOcid1 -ResourceGroupName $env.resourceGroup -Action $startActionName
+            Invoke-AzOracleActionDbNode -OracleExadbVMClustername $env.oracleExadbVMClusterName -DbNodeOcid $dbNodeOcid1 -ResourceGroupName $env.resourceGroup -Action $startActionName
         } | Should -Not -Throw
     }
     It 'DeleteOracleExadbVMCluster' {
         {
-            Remove-AzOracleCloudOracleExadbVMCluster -NoWait -Name $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup
+            Remove-AzOracleExadbVMCluster -NoWait -Name $env.oracleExadbVMClusterName -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
 }
