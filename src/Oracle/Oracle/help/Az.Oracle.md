@@ -140,8 +140,8 @@ Update a CloudExadataInfrastructure
 ### [Update-AzOracleCloudVMCluster](Update-AzOracleCloudVMCluster.md)
 Update a CloudVmCluster
 
-### [Update-AzOracleCloudVMCluster](Update-AzOracleCloudVMCluster.md)
-Update a CloudVmCluster
+### [Update-AzOracleExadbVMCluster](Update-AzOracleExadbVMCluster.md)
+Update a ExadbVmCluster
 
 ### [Update-AzOracleExascaleDbStorageVault](Update-AzOracleExascaleDbStorageVault.md)
 Update a ExascaleDbStorageVault

@@ -29,27 +29,19 @@ Delete a ExascaleDbStorageVault
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Exascale Storage Vault resource
 ```powershell
-{{ Add code here }}
+Remove-AzOracleExascaleDbStorageVault -NoWait -Name "OFake_PowerShellTestExascaleDbStorageVault" -ResourceGroupName "PowerShellTestRg"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Target                                                                                                                  
+------                                                                                                                  
+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/EASTUS/operationStatuses/a6742d9f-d4fe-4d66-94b4-6df3a1322228*817681FB618A6DF40A3F1658F2C75D4747E1A72F75C4EC15E2D4F9297675979E?api-vers…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Delete ExaDb  VM Cluster resource.
+For more information, execute `Get-Help Remove-AzOracleExascaleDbStorageVault`.
 
 ## PARAMETERS
 

@@ -5,137 +5,97 @@ online version: https://learn.microsoft.com/powershell/module/az.oracle/update-a
 schema: 2.0.0
 ---
 
-# Update-AzOracleCloudVMCluster
+# Update-AzOracleExadbVMCluster
 
 ## SYNOPSIS
-Update a CloudVmCluster
+Update a ExadbVmCluster
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ComputeNode <String[]>] [-CpuCoreCount <Int32>] [-DataCollectionOptionIsDiagnosticsEventsEnabled]
- [-DataCollectionOptionIsHealthMonitoringEnabled] [-DataCollectionOptionIsIncidentLogsEnabled]
- [-DataStorageSizeInTb <Double>] [-DbNodeStorageSizeInGb <Int32>] [-DisplayName <String>]
- [-FileSystemConfigurationDetail <IFileSystemConfigurationDetails[]>] [-LicenseModel <String>]
- [-MemorySizeInGb <Int32>] [-OcpuCount <Single>] [-SshPublicKey <String[]>] [-StorageSizeInGb <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Update-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-NodeCount <Int32>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzOracleCloudVMCluster -InputObject <IOracleIdentity> [-ComputeNode <String[]>] [-CpuCoreCount <Int32>]
- [-DataCollectionOptionIsDiagnosticsEventsEnabled] [-DataCollectionOptionIsHealthMonitoringEnabled]
- [-DataCollectionOptionIsIncidentLogsEnabled] [-DataStorageSizeInTb <Double>] [-DbNodeStorageSizeInGb <Int32>]
- [-DisplayName <String>] [-FileSystemConfigurationDetail <IFileSystemConfigurationDetails[]>]
- [-LicenseModel <String>] [-MemorySizeInGb <Int32>] [-OcpuCount <Single>] [-SshPublicKey <String[]>]
- [-StorageSizeInGb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Update-AzOracleExadbVMCluster -InputObject <IOracleIdentity> [-NodeCount <Int32>] [-Tag <Hashtable>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a CloudVmCluster
+Update a ExadbVmCluster
 
 ## EXAMPLES
 
-### Example 1: Update a Cloud VM Cluster resource
+### Example 1: Update a Exadb VM Cluster resource
 ```powershell
 $tagHashTable = @{'tagName'="tagValue"}
-Update-AzOracleCloudVMCluster -Name "OFake_PowerShellTestVmCluster" -ResourceGroupName "PowerShellTestRg" -Tag $tagHashTable
+Update-AzOracleExadbVMCluster -Name "OFake_PowerShellTestVmCluster" -ResourceGroupName "PowerShellTestRg" -Tag $tagHashTable
 ```
 
 ```output
-BackupSubnetCidr                               : 
-CloudExadataInfrastructureId                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudExadataInfrastructures/OFake_PowerShellTestExaInfra
-ClusterName                                    : TestVMC
-CompartmentId                                  : ocid1.compartment.oc1..aaaaaaaazcet2jt2uowjtgxsae5uositfy2thngqgokwdifyzmyygdpckeua
-ComputeNode                                    : 
-CpuCoreCount                                   : 4
-DataCollectionOptionIsDiagnosticsEventsEnabled : False
-DataCollectionOptionIsHealthMonitoringEnabled  : False
-DataCollectionOptionIsIncidentLogsEnabled      : False
-DataStoragePercentage                          : 80
-DataStorageSizeInTb                            : 2
-DbNodeStorageSizeInGb                          : 180
-DbServer                                       : {ocid1.dbserver.oc1.iad.anuwcljrowjpydqaoklexltoygidco5rxfo5zusgnblo2ayvaczyqg7sqtjq, ocid1.dbserver.oc1.iad.anuwcljrowjpydqar5ljy52di4siacvp4h4hzwp6jcz7yrmkiaglyi7nfwdq}
-DiskRedundancy                                 : High
-DisplayName                                    : OFake_PowerShellTestVmCluster
-Domain                                         : ocidelegated.ocipstestvnet.oraclevcn.com
-GiVersion                                      : 19.9.0.0.0
-Hostname                                       : host-wq5t6
-Id                                             : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudVmClusters/OFake_PowerShellTestVmCluster
-IormConfigCacheDbPlan                          : 
-IormConfigCacheLifecycleDetail                 : 
-IormConfigCacheLifecycleState                  : 
-IormConfigCacheObjective                       : 
-IsLocalBackupEnabled                           : False
-IsSparseDiskgroupEnabled                       : False
-LastUpdateHistoryEntryId                       : 
-LicenseModel                                   : LicenseIncluded
-LifecycleDetail                                : 
-LifecycleState                                 : Available
-ListenerPort                                   : 1521
-Location                                       : eastus
-MemorySizeInGb                                 : 90
-Name                                           : OFake_PowerShellTestVmCluster
-NodeCount                                      : 2
-NsgCidr                                        : 
-NsgUrl                                         : https://cloud.oracle.com/networking/vcns/ocid1.vcn.oc1.iad.amaaaaaanirvylqaltsnipqfdbwlimfznzto7vjto23cqahcu3k3g673z7ma/network-security-groups/ocid1.networksecuritygroup.oc1.iad.aaaaaaaas45h3bfix5lxcyvi
-                                                 4x5wxlrrt62r4pa5we63r6drzcgdwktdobba?region=us-ashburn-1
-OciUrl                                         : https://cloud.oracle.com/dbaas/cloudVmClusters/ocid1.cloudvmcluster.oc1.iad.anuwcljrnirvylqanh37nglmlhotsnvzwivsfnomoa6lc7t6l5gwwocoovcq?region=us-ashburn-1&tenant=orpsandbox3&compartmentId=ocid1.compart
-                                                 ment.oc1..aaaaaaaazcet2jt2uowjtgxsae5uositfy2thngqgokwdifyzmyygdpckeua
-Ocid                                           : ocid1.cloudvmcluster.oc1.iad.anuwcljrnirvylqanh37nglmlhotsnvzwivsfnomoa6lc7t6l5gwwocoovcq
-OcpuCount                                      : 4
-ProvisioningState                              : Succeeded
-ResourceGroupName                              : PowerShellTestRg
-ScanDnsName                                    : host-wq5t6-scan.ocidelegated.ocipstestvnet.oraclevcn.com
-ScanDnsRecordId                                : 
-ScanIPId                                       : {}
-ScanListenerPortTcp                            : 1521
-ScanListenerPortTcpSsl                         : 2484
-Shape                                          : Exadata.X9M
-SshPublicKey                                   : {ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKJkePl4prXTs6cZ77AS9kGs5TO1EdfDdQZAtD7cfBVJ8X4wN+aOvLhk+u74D3qXad2OdQ/ij5q+xVzoXLXNBIZFQjB8JqWpgvOrOCAakFGc0OatJhSVlmJKW7JboQcUu7AzABfu+Ciso1QQTqlc2+awoZzPhfP9sgDM
-                                                 N6zI15Q9wSuxERor8oMSc78NW652wMzl97zO+bYdO9vIjBu27/WYZN/OpFJ0Ss4AzW/V9r2h6FFCkG+GXzhZArk3NeEstCSO2bjv3vO40+M0vfRD2jQrOSKhaLolk+crLGamaclY0YYCVB23rk6gCimWbVuvpHn+x1QSvN2d19xAmrIsHdTv/1lCEJetMA96pBq/jbljPwV
-                                                 KPFfVkyC8Ivt5rkbYizmUlYAbDMksGMUR4ncjScY7o/S0JKs14HihOnCoSGVXhH1dDgc8AsI+Ujs+GGR4U8IXJGEpZmhdnLa6mDymvr1tLWdQaI2y5FuWxsy4diKjEsPxCrnqfxlZxFBbQ29AU= generated-by-azure}
-StorageSizeInGb                                : 196608
-SubnetId                                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet/subnets/delegated
-SubnetOcid                                     : ocid1.subnet.oc1.iad.aaaaaaaatodiqebvhyea45s6nyip4d7u7zizkc6soxbmsymuo2vu4zxosxaq
-SystemDataCreatedAt                            : 04/07/2024 15:52:12
-SystemDataCreatedBy                            : example@oracle.com
-SystemDataCreatedByType                        : User
-SystemDataLastModifiedAt                       : 06/07/2024 15:39:06
-SystemDataLastModifiedBy                       : example@oracle.com
-SystemDataLastModifiedByType                   : User
-SystemVersion                                  : 
-Tag                                            : {
-                                                   "tagName": "tagValue"
-                                                 }
-TimeCreated                                    : 04/07/2024 16:09:39
-TimeZone                                       : UTC
-Type                                           : oracle.database/cloudvmclusters
-VipId                                          : 
-VnetId                                         : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet
-ZoneId                                         : ocid1.dns-zone.oc1.iad.aaaaaaaah4rwrfuscditbdg7yjutywp3xpwyuqmcj2bymvb4dn47xoxmvenq
+name                       : OFake_PowerShellTestExadbVmCluster
+type                       : oracle.database/exadbvmclusters
+location                   : eastus
+zones                      : 3
+Tag                        : {
+                                    "tagName": "tagValue"
+                             }
+clusterName                : OFake_PowerShellTestExadbVmCluster
+nsgUrl                     : https://cloud.oracle.com/networking/vcns/ocid1.vcn.oc1.iad.amaaaaaaboqpjsqa6goluo2oze7brbcturrhjp4dbiqynybygcaowysqh4vq/network-security-groups/ocid1.networksecuritygroup.oc1.iad.aaaaaaaapab43hogjh77qaduxsbbormuyoxrnpzydaueyeqhhnipykd3obxa?region=us-ashburn-1
+provisioningState          : Succeeded
+lifecycleState             : Available
+vnetId                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet
+subnetId                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet/sub
+displayName                : OFake_PowerShellTestExadbVmCluster
+domain                     : ocidelegated.ocivnettestexa.oraclevcn.com
+enabledEcpuCount           : 16
+exascaleDbStorageVaultId   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/providers/Oracle.Database/exascaleDbStorageVaults/OFake_PowerShellTestExaScaleStorage
+gridImageOcid              : ocid1.dbpatch.oc1.iad.anuwcljrt5t4sqqarmom7cvfg5oy47ccceplnqx6qugb7vyfdfjrrp7rz4nq
+gridImageType              : ReleaseUpdate
+giVersion                  : 23.8.0.25.04
+hostname                   : theo
+licenseModel               : LicenseIncluded
+memorySizeInGbs            : 44
+nodeCount                  : 2
+scanListenerPortTcp        : 1521
+scanListenerPortTcpSsl     : 2484
+listenerPort               : 1521
+shape                      : EXADBXS
+sshPublicKeys              : ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD2uOXC283JO8ig2dd2oxGie0KzgtDs/z1V2JHQXYRs3pRzr3WESSEvQgANhYBFC5BkxDQQvURTGRYkaLirs0OdxnuUNm2TZHB0T+u5UK4nKC0mUCWL++sbI+VYP+dzovJRa8e61xDMboheuqolxeJf6kyfIiJA3GJeYtQKSig0+DOfCrEFjp1hiqfr0eUxDItLn5BoG3d5IVG0DE4Z5gy9dtjG6AkJE6Gh+n3WxQbJu8/gkJYVmcjlFGyw9Wd3FTQ/4EocBwW9RXoTCfyqmidxwDeq34i9L1yYcnTDjFWwQ3xfaKuWeRugucl2ogjFVbU8Op/ODhs1h8eZLg/qezl3B4iI3De1FXWVhEuuNsbntuRgZZ2JFvsIgzBTUKLKTsibxbSWiMIIbIDmPuswkZvy70yukv7t/hTaX+cIxo4kgGVFET4HjOqqdWm7fiDX6rAcoRSYOp29CWYFcFkKZQ4rwD51JkOKUA4xNtQHFrWuaEjjxqfEdPuI0hjWyW6IJ40= generated-by-azure
+systemVersion              : 19.2.12.0.0.200317
+timeZone                   : UTC
+totalEcpuCount             : 16
+vmFileSystemStorage        : totalSizeInGbs: 560
+scanDnsName                : fakeScanDnsName
+scanIpIds                  :
+scanDnsRecordId            : ocid1.vcndnsrecord.oc1.iad.anuwcljrhnge2iqaycryvslv72somguxmjxgd3fxbk5tzwoksiekg4dguljq
+snapshotFileSystemStorage  : totalSizeInGbs: 0
+totalFileSystemStorage     : totalSizeInGbs: 560
+vipIds                     :
+zoneOcid                   : ocid1.dns-zone.oc1.iad.aaaaaaaafla3b2uh67e4qxqcsl4mzoqh4nckbb243lvvy2ukgqpxubn5trra
 ```
 
-Update a Cloud VM Cluster resource.
-For more information, execute `Get-Help Update-AzOracleCloudVMCluster`.
+Create a ExaDb VM Cluster resource.
+For more information, execute `Get-Help Update-AzOracleExaDbVMCluster`.
 
 ## PARAMETERS
 
@@ -154,111 +114,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ComputeNode
-The list of compute servers to be added to the cloud VM cluster.
-
-```yaml
-Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CpuCoreCount
-The number of CPU cores enabled on the cloud VM cluster.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataCollectionOptionIsDiagnosticsEventsEnabled
-Indicates whether diagnostic collection is enabled for the VM cluster/Cloud VM cluster/VMBM DBCS.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataCollectionOptionIsHealthMonitoringEnabled
-Indicates whether health monitoring is enabled for the VM cluster / Cloud VM cluster / VMBM DBCS.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataCollectionOptionIsIncidentLogsEnabled
-Indicates whether incident logs and trace collection are enabled for the VM cluster / Cloud VM cluster / VMBM DBCS.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataStorageSizeInTb
-The data disk group size to be allocated in TBs.
-
-```yaml
-Type: System.Double
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DbNodeStorageSizeInGb
-The local node storage to be allocated in GBs.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -267,36 +122,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-Display Name
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FileSystemConfigurationDetail
-Array of mount path and size.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
 
 Required: False
 Position: Named
@@ -350,24 +175,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LicenseModel
-The Oracle license model that applies to the cloud VM cluster.
-The default is LICENSE_INCLUDED.
+### -Name
+The name of the ExadbVmCluster
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Aliases: ExadbVMClusterName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MemorySizeInGb
-The memory to be allocated in GBs.
+### -NodeCount
+The number of nodes in the Exadata VM cluster on Exascale Infrastructure.
 
 ```yaml
 Type: System.Int32
@@ -375,21 +199,6 @@ Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-CloudVmCluster name
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
-Aliases: Cloudvmclustername
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -411,22 +220,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OcpuCount
-The number of OCPU cores to enable on the cloud VM cluster.
-Only 1 decimal place is allowed for the fractional part.
-
-```yaml
-Type: System.Single
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -437,36 +230,6 @@ Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SshPublicKey
-The public key portion of one or more key pairs used for SSH access to the cloud VM cluster.
-
-```yaml
-Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageSizeInGb
-The data disk group size to be allocated in GBs per VM.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -494,6 +257,21 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+The availability zones.
+
+```yaml
+Type: System.String[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -544,7 +322,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMCluster
+### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMCluster
 
 ## NOTES
 

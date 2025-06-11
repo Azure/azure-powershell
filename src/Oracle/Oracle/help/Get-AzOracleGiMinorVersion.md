@@ -49,27 +49,20 @@ Get a GiMinorVersion
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a list of the Grid Infrastructure Versions by location
 ```powershell
-{{ Add code here }}
+Get-AzOracleGiVersion -Location "eastus"  -Shape "EXADATA"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+----     ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+
+25.1.1.0.0.250121
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Get a list of the Grid Infrastructure Versions by location.
+For more information, execute `Get-Help Get-AzOracleGiVersion`.
 
 ## PARAMETERS
 

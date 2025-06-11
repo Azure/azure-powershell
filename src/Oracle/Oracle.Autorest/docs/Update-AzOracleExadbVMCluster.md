@@ -50,7 +50,7 @@ $tagHashTable = @{'tagName'="tagValue"}
 Update-AzOracleExadbVMCluster -Name "OFake_PowerShellTestVmCluster" -ResourceGroupName "PowerShellTestRg" -Tag $tagHashTable
 ```
 
-`
+```output
 name                       : OFake_PowerShellTestExadbVmCluster
 type                       : oracle.database/exadbvmclusters
 location                   : eastus
