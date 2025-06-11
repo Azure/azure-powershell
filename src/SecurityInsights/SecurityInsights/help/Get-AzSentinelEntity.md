@@ -67,8 +67,8 @@ This command gets an Entity.
 
 ### Example 3: Get a Entity by object Id
 ```powershell
-$Entitys = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
- $Entitys[0] | Get-AzSentinelEntity
+$Entities = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+ $Entities[0] | Get-AzSentinelEntity
 ```
 
 ```output
