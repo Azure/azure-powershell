@@ -52,6 +52,8 @@ subject-prefix: DataTransfer
 # resourcegroup-append: true
 # nested-object-to-string: true
 disable-getput: true
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 directive:
   # Following are common directives which are normally required in all the RPs
@@ -119,6 +121,11 @@ directive:
       parameter-name: Pipeline
     set:
       parameter-name: PipelineName
+
+  - where:
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
 
   - from: swagger-document
     where: $.definitions.streamSourceAddresses.properties.sourceAddresses

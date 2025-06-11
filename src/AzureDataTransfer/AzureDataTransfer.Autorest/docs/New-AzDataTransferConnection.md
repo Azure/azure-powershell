@@ -15,10 +15,10 @@ Create the connection resource.
 ### CreateExpanded (Default)
 ```
 New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Direction <String>] [-EnableSystemAssignedIdentity] [-FlowType <String[]>]
+ [-SubscriptionId <String>] [-Direction <String>] [-FlowType <String[]>] [-IdentityType <String>]
  [-Justification <String>] [-Pin <String>] [-PipelineName <String>] [-PrimaryContact <String>]
  [-RemoteSubscriptionId <String>] [-RequirementId <String>] [-Schema <ISchema[]>] [-SchemaUri <String[]>]
- [-SecondaryContact <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-SecondaryContact <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -245,11 +245,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-Determines whether to enable a system-assigned identity for the resource.
+### -FlowType
+The flow types being requested for this connection
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -260,11 +260,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FlowType
-The flow types being requested for this connection
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -533,11 +533,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-The array of user assigned identities associated with the resource.
-The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded
 Aliases:
 

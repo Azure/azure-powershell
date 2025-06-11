@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "40" ],
-        "x-ms-client-request-id": [ "963fe58f-d5a9-4468-9290-49c178fca56d" ],
+        "x-ms-client-request-id": [ "8b617dac-b576-4596-b002-3620cfc4d7e4" ],
         "CommandName": [ "Disable-AzDataTransferFlow" ],
         "FullCommandName": [ "Disable-AzDataTransferFlow_Disable" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,27 +23,27 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/westindia/792a8887-fda2-491e-a84c-cbc8353f5be7" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/southindia/b3dec256-86c6-4e94-98a3-791b89ad42a9" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "mise-correlation-id": [ "157d0fab-5b41-4903-88f2-a7f59375ed8d" ],
-        "x-ms-request-id": [ "f359c886-b292-466b-975a-f0654f89931d" ],
-        "x-ms-correlation-request-id": [ "3c35ae1f-0fea-49d1-871b-da7f7348af74" ],
+        "mise-correlation-id": [ "616a4d9c-6cc4-43fa-a2de-512317a1b54c" ],
+        "x-ms-request-id": [ "3a57d511-d729-4f8f-8c28-bdacb2f7ddbe" ],
+        "x-ms-correlation-request-id": [ "7e333038-e089-44bd-9110-a3c46f880f7a" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250610T145354Z:3c35ae1f-0fea-49d1-871b-da7f7348af74" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250611T060707Z:7e333038-e089-44bd-9110-a3c46f880f7a" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8D92888B88184276A115D97C17965F35 Ref B: MAA201060516029 Ref C: 2025-06-10T14:53:51Z" ],
-        "Date": [ "Tue, 10 Jun 2025 14:53:54 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3FBEB6C7E3D34E60B17699031AA120BA Ref B: MAA201060514045 Ref C: 2025-06-11T06:07:03Z" ],
+        "Date": [ "Wed, 11 Jun 2025 06:07:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1126" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"flowId\":\"5d7572b1-2623-4ea0-9728-2271fb2a235f\",\"status\":\"Disabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Succeeded\",\"internalMetadata\":{\"isOnboarded\":true,\"flowType\":\"Mission\",\"identityType\":\"None\",\"managedServiceIdentityUrl\":\"\"}},\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-send-connection-1/flows/test-send-flow-1\",\"name\":\"test-send-flow-1\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-05-30T10:07:26.6398136Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T10:07:29.4236075Z\",\"lastModifiedBy\":\"6e135f4a-4afc-4899-b453-26151edd13fb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-06-10T14:22:00.6643433Z\"},\"identity\":{\"type\":\"None\"}}",
+      "Content": "{\"properties\":{\"flowId\":\"5d7572b1-2623-4ea0-9728-2271fb2a235f\",\"status\":\"Disabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Succeeded\",\"internalMetadata\":{\"isOnboarded\":true,\"flowType\":\"Mission\",\"identityType\":\"None\",\"managedServiceIdentityUrl\":\"\"}},\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-send-connection-1/flows/test-send-flow-1\",\"name\":\"test-send-flow-1\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-05-30T10:07:26.6398136Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T10:07:29.4236075Z\",\"lastModifiedBy\":\"6e135f4a-4afc-4899-b453-26151edd13fb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-06-11T03:36:54.7776208Z\"},\"identity\":{\"type\":\"None\"}}",
       "isContentBase64": false
     }
   },
@@ -55,7 +55,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "41" ],
-        "x-ms-client-request-id": [ "4397653f-769a-48db-9f98-4ee964f97c5c" ],
+        "x-ms-client-request-id": [ "b8f16a87-e798-4a44-8ca9-116b098d6e52" ],
         "CommandName": [ "Disable-AzDataTransferFlow" ],
         "FullCommandName": [ "Disable-AzDataTransferFlow_Disable" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -71,27 +71,27 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/westindia/6cbceabc-5ea8-46cf-aada-a4aa75da20c4" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/southindia/7faa746e-484c-4e5c-8921-ecba98386110" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "mise-correlation-id": [ "88498b48-2ae7-4bb6-a77e-541507c59823" ],
-        "x-ms-request-id": [ "3e067508-bd41-4219-a09f-520cce06be87" ],
-        "x-ms-correlation-request-id": [ "5399d3cd-9378-41f7-940c-016c498ba10b" ],
+        "mise-correlation-id": [ "d9314c52-7d7a-48c5-9dc6-62e3e5a49a13" ],
+        "x-ms-request-id": [ "f7778ef4-4192-4110-9c82-8be61dfe7a9d" ],
+        "x-ms-correlation-request-id": [ "6c5de269-a096-48d8-85db-fb01d87bb0a9" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250610T145358Z:5399d3cd-9378-41f7-940c-016c498ba10b" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250611T060711Z:6c5de269-a096-48d8-85db-fb01d87bb0a9" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B8C354FB895D42B8A7856F0A17119A7B Ref B: MAA201060516029 Ref C: 2025-06-10T14:53:54Z" ],
-        "Date": [ "Tue, 10 Jun 2025 14:53:58 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 85EDACDA518E478FA8AEEC3AA03D68DD Ref B: MAA201060514045 Ref C: 2025-06-11T06:07:07Z" ],
+        "Date": [ "Wed, 11 Jun 2025 06:07:10 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1144" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"flowId\":\"9c432ee2-d687-4c01-b18a-4527f8a4cc8a\",\"status\":\"Disabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Succeeded\",\"internalMetadata\":{\"isOnboarded\":true,\"flowType\":\"Mission\",\"identityType\":\"None\",\"managedServiceIdentityUrl\":\"\"}},\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-send-connection-1/flows/test-send-disabled-flow-1\",\"name\":\"test-send-disabled-flow-1\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-05-30T10:10:17.8272189Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T10:10:20.8626034Z\",\"lastModifiedBy\":\"6e135f4a-4afc-4899-b453-26151edd13fb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-06-10T14:21:57.7226398Z\"},\"identity\":{\"type\":\"None\"}}",
+      "Content": "{\"properties\":{\"flowId\":\"9c432ee2-d687-4c01-b18a-4527f8a4cc8a\",\"status\":\"Disabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Succeeded\",\"internalMetadata\":{\"isOnboarded\":true,\"flowType\":\"Mission\",\"identityType\":\"None\",\"managedServiceIdentityUrl\":\"\"}},\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-send-connection-1/flows/test-send-disabled-flow-1\",\"name\":\"test-send-disabled-flow-1\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-05-30T10:10:17.8272189Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T10:10:20.8626034Z\",\"lastModifiedBy\":\"6e135f4a-4afc-4899-b453-26151edd13fb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-06-11T03:36:51.6032726Z\"},\"identity\":{\"type\":\"None\"}}",
       "isContentBase64": false
     }
   },
@@ -103,7 +103,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "42" ],
-        "x-ms-client-request-id": [ "c7fa2dde-72a8-4ab4-9097-6937acb5bba9" ],
+        "x-ms-client-request-id": [ "4bba46bb-ddd1-4299-b21c-1ac6253ae58a" ],
         "CommandName": [ "Disable-AzDataTransferFlow" ],
         "FullCommandName": [ "Disable-AzDataTransferFlow_Disable" ],
         "ParameterSetName": [ "" ],
@@ -119,27 +119,27 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/westindia/fbc10e35-eb38-4d6d-b702-d791540c0e04" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/southindia/d3fc277b-333c-490f-9623-f15f518c1740" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "mise-correlation-id": [ "353c6145-81d6-4ed2-aad3-6ea4e1f1ba81" ],
-        "x-ms-request-id": [ "7d814b09-b33d-466b-b9f7-99b898bf00d4" ],
-        "x-ms-correlation-request-id": [ "d48db970-cdda-4a2e-9b1e-218e7b0305c9" ],
+        "mise-correlation-id": [ "5225106c-3fe4-47de-ade2-ad4276f6730a" ],
+        "x-ms-request-id": [ "84a9ce4b-d39d-4359-aecf-45c1e4d637ff" ],
+        "x-ms-correlation-request-id": [ "d043c62e-7e3f-4130-9da5-0fa1ed7225c5" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250610T145401Z:d48db970-cdda-4a2e-9b1e-218e7b0305c9" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250611T060714Z:d043c62e-7e3f-4130-9da5-0fa1ed7225c5" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AC7C2D55D9D64ADCBCBB868950276A24 Ref B: MAA201060516029 Ref C: 2025-06-10T14:53:58Z" ],
-        "Date": [ "Tue, 10 Jun 2025 14:54:01 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CB5F061EA2AE4A7987E7CBD79AF7851B Ref B: MAA201060514045 Ref C: 2025-06-11T06:07:11Z" ],
+        "Date": [ "Wed, 11 Jun 2025 06:07:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1126" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"flowId\":\"5d7572b1-2623-4ea0-9728-2271fb2a235f\",\"status\":\"Disabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Succeeded\",\"internalMetadata\":{\"isOnboarded\":true,\"flowType\":\"Mission\",\"identityType\":\"None\",\"managedServiceIdentityUrl\":\"\"}},\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-send-connection-1/flows/test-send-flow-1\",\"name\":\"test-send-flow-1\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-05-30T10:07:26.6398136Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T10:07:29.4236075Z\",\"lastModifiedBy\":\"6e135f4a-4afc-4899-b453-26151edd13fb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-06-10T14:53:54.1490503Z\"},\"identity\":{\"type\":\"None\"}}",
+      "Content": "{\"properties\":{\"flowId\":\"5d7572b1-2623-4ea0-9728-2271fb2a235f\",\"status\":\"Disabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Succeeded\",\"internalMetadata\":{\"isOnboarded\":true,\"flowType\":\"Mission\",\"identityType\":\"None\",\"managedServiceIdentityUrl\":\"\"}},\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-send-connection-1/flows/test-send-flow-1\",\"name\":\"test-send-flow-1\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-05-30T10:07:26.6398136Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T10:07:29.4236075Z\",\"lastModifiedBy\":\"6e135f4a-4afc-4899-b453-26151edd13fb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-06-11T06:07:07.1415168Z\"},\"identity\":{\"type\":\"None\"}}",
       "isContentBase64": false
     }
   },
@@ -151,7 +151,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "43" ],
-        "x-ms-client-request-id": [ "e38502ed-8226-47ef-ae6b-bf4c72219505" ],
+        "x-ms-client-request-id": [ "bdc7b2f7-a759-4200-8d17-855d13708132" ],
         "CommandName": [ "Get-AzDataTransferFlow" ],
         "FullCommandName": [ "Get-AzDataTransferFlow_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -166,25 +166,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"be005689-0000-0100-0000-684847080000\"" ],
+        "ETag": [ "\"c1003656-0000-0100-0000-68491d120000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "44d03e8c-fa77-4ae5-a2aa-08ffbb33d274" ],
-        "x-ms-correlation-request-id": [ "ce117e15-c3a7-4252-bc45-d69978b1577f" ],
+        "x-ms-request-id": [ "72d7debb-92d8-40ae-a55f-686b75e6d159" ],
+        "x-ms-correlation-request-id": [ "52e09a85-775b-471a-9237-cea967b27cc8" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250610T145401Z:ce117e15-c3a7-4252-bc45-d69978b1577f" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250611T060715Z:52e09a85-775b-471a-9237-cea967b27cc8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6F69AD51E44F4BC4AF0E1FE423DC2355 Ref B: MAA201060516029 Ref C: 2025-06-10T14:54:01Z" ],
-        "Date": [ "Tue, 10 Jun 2025 14:54:01 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 25D05039C2F44281ABA6E24FE59954CB Ref B: MAA201060514045 Ref C: 2025-06-11T06:07:15Z" ],
+        "Date": [ "Wed, 11 Jun 2025 06:07:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1012" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-send-connection-1/flows/test-send-flow-1\",\"name\":\"test-send-flow-1\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-05-30T10:07:26.6398136Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T10:07:29.4236075Z\",\"lastModifiedBy\":\"6e135f4a-4afc-4899-b453-26151edd13fb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-06-10T14:54:00.8374473Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"status\":\"Disabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Succeeded\",\"flowId\":\"5d7572b1-2623-4ea0-9728-2271fb2a235f\"}}",
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-send-connection-1/flows/test-send-flow-1\",\"name\":\"test-send-flow-1\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-05-30T10:07:26.6398136Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T10:07:29.4236075Z\",\"lastModifiedBy\":\"6e135f4a-4afc-4899-b453-26151edd13fb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-06-11T06:07:14.2055136Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"status\":\"Disabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Succeeded\",\"flowId\":\"5d7572b1-2623-4ea0-9728-2271fb2a235f\"}}",
       "isContentBase64": false
     }
   }

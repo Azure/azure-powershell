@@ -21,16 +21,16 @@ New-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupNam
  [-ApiFlowOptionSenderClientId <String>] [-ConnectionId <String>] [-ConnectionLocation <String>]
  [-ConnectionSubscriptionName <String>] [-ConsumerGroup <String>] [-CustomerManagedKeyVaultUri <String>]
  [-DataType <String>] [-DestinationEndpoint <String[]>] [-DestinationEndpointPort <Int64[]>]
- [-EnableSystemAssignedIdentity] [-EventHubId <String>] [-FlowType <String>]
- [-MessagingOptionBillingTier <String>] [-Passphrase <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
- [-PropertiesConnectionName <String>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
- [-SchemaDirection <String>] [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>]
- [-SchemaType <String>] [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-SourceAddress <String[]>]
- [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
- [-StorageContainerName <String>] [-StorageTableName <String>] [-StreamId <String>] [-StreamLatency <Int64>]
- [-StreamProtocol <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EventHubId <String>] [-FlowType <String>] [-IdentityType <String>] [-MessagingOptionBillingTier <String>]
+ [-Passphrase <String>] [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
+ [-PlanPublisher <String>] [-PlanVersion <String>] [-PropertiesConnectionName <String>]
+ [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
+ [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
+ [-ServiceBusQueueId <String>] [-SourceAddress <String[]>] [-Status <String>] [-StorageAccountId <String>]
+ [-StorageAccountName <String>] [-StorageContainerName <String>] [-StorageTableName <String>]
+ [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -397,21 +397,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-Determines whether to enable a system-assigned identity for the resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EventHubId
 Event Hub ID
 
@@ -429,6 +414,21 @@ Accept wildcard characters: False
 
 ### -FlowType
 The flow type for this flow
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
 Type: System.String
@@ -960,11 +960,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-The array of user assigned identities associated with the resource.
-The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded
 Aliases:
 
