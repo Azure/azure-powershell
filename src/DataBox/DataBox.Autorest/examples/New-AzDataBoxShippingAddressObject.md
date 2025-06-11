@@ -4,10 +4,18 @@ New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrPro
 ```
 
 ```output
-AddressType City          CompanyName Country PostalCode StateOrProvince StreetAddress1  StreetAddress2 StreetAddress3 ZipExtendedCode
------------ ----          ----------- ------- ---------- --------------- --------------  -------------- -------------- ---------------
-Commercial  San Francisco             US      94107      CA              101 TOWNSEND ST
+AddressType             : Commercial
+City                    : San Francisco
+CompanyName             :
+Country                 : US
+PostalCode              : 94107
+SkipAddressValidation   :
+StateOrProvince         : CA
+StreetAddress1          : 101 TOWNSEND ST
+StreetAddress2          :
+StreetAddress3          :
+TaxIdentificationNumber :
+ZipExtendedCode         :
 ```
 
 Creates a in-memory shipping address object 
-

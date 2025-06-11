@@ -21,29 +21,30 @@ Create an in-memory object for TransferConfiguration.
 Create an in-memory object for TransferConfiguration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.TransferConfiguration
 .Link
-https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxTransferConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxtransferconfigurationobject
 #>
 function New-AzDataBoxTransferConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.TransferConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferAllDetails]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ITransferConfigurationTransferAllDetails]
         $TransferAllDetail,
         [Parameter(HelpMessage="Map of filter type and the details to filter. This field is required only if the TransferConfigurationType is given as TransferUsingFilter.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferFilterDetails]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ITransferConfigurationTransferFilterDetails]
         $TransferFilterDetail,
         [Parameter(Mandatory, HelpMessage="Type of the configuration for transfer.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.PSArgumentCompleterAttribute("TransferAll", "TransferUsingFilter")]
+        [string]
         $Type
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.TransferConfiguration]::New()
 
         if ($PSBoundParameters.ContainsKey('TransferAllDetail')) {
             $Object.TransferAllDetail = $TransferAllDetail

@@ -1,7 +1,7 @@
 ---
 external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxContactDetailsObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxcontactdetailsobject
 schema: 2.0.0
 ---
 
@@ -29,9 +29,12 @@ New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") 
 ```
 
 ```output
-ContactName EmailList            Mobile Phone      PhoneExtension
------------ ---------            ------ -----      --------------
-random      {emailId}        1234567891
+ContactName            : random
+EmailList              : {emailId}
+Mobile                 :
+NotificationPreference :
+Phone                  : 1234567891
+PhoneExtension         :
 ```
 
 Create a in-memory object for ContactDetails
@@ -85,10 +88,9 @@ Accept wildcard characters: False
 
 ### -NotificationPreference
 Notification preference for a job stage.
-To construct, see NOTES section for NOTIFICATIONPREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.INotificationPreference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.INotificationPreference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -136,7 +138,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ContactDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ContactDetails
 
 ## NOTES
 

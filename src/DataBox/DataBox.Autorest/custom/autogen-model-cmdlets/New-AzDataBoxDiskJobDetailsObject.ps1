@@ -21,12 +21,13 @@ Create an in-memory object for DataBoxDiskJobDetails.
 Create an in-memory object for DataBoxDiskJobDetails.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxDiskJobDetails
 .Link
-https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxDiskJobDetailsObject
+https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxdiskjobdetailsobject
 #>
 function New-AzDataBoxDiskJobDetailsObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetails')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxDiskJobDetails')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,40 +35,36 @@ function New-AzDataBoxDiskJobDetailsObject {
         [string]
         $Passkey,
         [Parameter(HelpMessage="User preference on what size disks are needed for the job. The map is from the disk size in TB to the count. Eg. {2,5} means 5 disks of 2 TB size. Key is string but will be checked against an int.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataBoxDiskJobDetailsPreferredDisks]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataBoxDiskJobDetailsPreferredDisks]
         $PreferredDisk,
         [Parameter(Mandatory, HelpMessage="Contact details for notification and shipping.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IContactDetails]
         $ContactDetail,
         [Parameter(HelpMessage="Details of the data to be exported from azure.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataExportDetails[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataExportDetails[]]
         $DataExportDetail,
         [Parameter(HelpMessage="Details of the data to be imported into azure.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataImportDetails[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataImportDetails[]]
         $DataImportDetail,
         [Parameter(HelpMessage="The expected size of the data, which needs to be transferred in this job, in terabytes.")]
         [int]
         $ExpectedDataSizeInTeraByte,
         [Parameter(HelpMessage="Details about which key encryption type is being used.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IKeyEncryptionKey]
         $KeyEncryptionKey,
         [Parameter(HelpMessage="Preferences for the order.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IPreferences]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IPreferences]
         $Preference,
         [Parameter(HelpMessage="Optional Reverse Shipping details for order.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IReverseShippingDetails]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IReverseShippingDetails]
         $ReverseShippingDetail,
         [Parameter(HelpMessage="Shipping address of the customer.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress]
-        $ShippingAddress,
-        [Parameter(Mandatory, HelpMessage="Indicates the type of job details.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator])]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator]
-        $Type
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IShippingAddress]
+        $ShippingAddress
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetails]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxDiskJobDetails]::New()
 
         if ($PSBoundParameters.ContainsKey('Passkey')) {
             $Object.Passkey = $Passkey
@@ -98,9 +95,6 @@ function New-AzDataBoxDiskJobDetailsObject {
         }
         if ($PSBoundParameters.ContainsKey('ShippingAddress')) {
             $Object.ShippingAddress = $ShippingAddress
-        }
-        if ($PSBoundParameters.ContainsKey('Type')) {
-            $Object.Type = $Type
         }
         return $Object
     }
