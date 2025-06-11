@@ -28,7 +28,7 @@ $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountNam
 Get-AzNetAppFilesNetworkSiblingSet -Location "westus" -NetworkSiblingSetId "$retrievedVolume.NetworkSiblingSetId" -SubnetId "mysubnet"
 ```
 
-This example gets a volume then uses that volumes NetworkSiblingSetId property to get deatils about that network sibling get.
+This example gets a volume then uses that volumes NetworkSiblingSetId property to get details about that network sibling get.
 
 ## PARAMETERS
 

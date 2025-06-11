@@ -31,7 +31,7 @@ Get-AzVirtualWanVpnServerConfiguration -ResourceId <String> [-DefaultProfile <IA
 ```
 
 ## DESCRIPTION
-The **Get-AzVirtualWanVpnServerConfiguration** cmdlet will return the list of all VpnServerConfigurations that are associated with this VirtualWan. i.e. All the VpnServerConfigurations which are attached to any P2SVpnGateways under VirutalHubs of this VirtualWan.
+The **Get-AzVirtualWanVpnServerConfiguration** cmdlet will return the list of all VpnServerConfigurations that are associated with this VirtualWan. i.e. All the VpnServerConfigurations which are attached to any P2SVpnGateways under VirtualHubs of this VirtualWan.
 
 ## EXAMPLES
 

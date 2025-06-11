@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetAppFilesVolumeQuotaRule
 
 ## SYNOPSIS
-Gets details of an Azure NetApp Files (ANF) Volume Quouta Rule.
+Gets details of an Azure NetApp Files (ANF) Volume Quota Rule.
 
 ## SYNTAX
 

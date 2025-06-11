@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableWAD
-If this parameter is provided, the commandlet will enable Windows Azure Diagnostics for this virtual machine.
+If this parameter is provided, the cmdlet will enable Windows Azure Diagnostics for this virtual machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ### -PathUserIdentity
 Assures user assigned identity on the VM and configures the extension to authenticate with the user assigned identity.
 For example:
--PathUserIdentity "/subscriptions/272eae8b-75b3-41e5-88b4-782d16d0d97e/resourcegroups/ContosoRresourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ContosoUserAssignedIdentity"
+-PathUserIdentity "/subscriptions/272eae8b-75b3-41e5-88b4-782d16d0d97e/resourcegroups/ContosoResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ContosoUserAssignedIdentity"
 You can use the -PathUserIdentity parameter along with -SkipIdentity, in this case the script will only configure the extension and the VM must already has a valid user identity assigned.
 
 ```yaml
@@ -208,7 +208,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkipIdentity
-Bypas the VM identity configuration. The VM must already have either system or user identity assigned.
+Bypass the VM identity configuration. The VM must already have either system or user identity assigned.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

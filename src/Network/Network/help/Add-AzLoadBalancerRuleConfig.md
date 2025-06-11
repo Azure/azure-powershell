@@ -60,7 +60,7 @@ $slb | Set-AzLoadBalancer
 
 This enables Gateway Load Balancer to have multiple backend pools
 The first command will get the load balancer named MyLoadBalancer, and then stores it in the variable $slb.
-The second and thrid command will get the backend address pools to be added the rule
+The second and third command will get the backend address pools to be added the rule
 The forth command will add a new rule with configured backend pools
 the fifth command will update the load balancer in azure with the new Load Balancer Rule Config.
 
