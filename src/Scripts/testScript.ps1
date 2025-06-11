@@ -107,7 +107,7 @@ New-AzDataTransferConnection @connectionParamsLinked
 
 Approve-AzDataTransferConnection -ConnectionId $connectionLinkedId -StatusReason "Approving for PS testing" -ResourceGroupName  $rgName -PipelineName  $pipelineName
 
-$connectionToLink = Get-AzDataTransferConnection -ResourceGroupName  $rgName  -ConnectionName $connectionLinked
+$connectionToLink = Get-AzDataTransferConnection -ResourceGroupName  $rgName -ConnectionName $connectionLinked
 
 $connectionParamsSendLinked = @{
     Location             = $location
@@ -123,7 +123,7 @@ $connectionParamsSendLinked = @{
 
 New-AzDataTransferConnection @connectionParamsSendLinked
 
-Invoke-AzDataTransferLinkPendingConnection -PendingConnectionId $connectionLinkedSendId -ResourceGroupName  $rgName -ConnectionName $connectionLinked -StatusReason "Linking for PS testing"
+Invoke-AzDataTransferLinkPendingConnection -PendingConnectionId $connectionLinkedSendId -ResourceGroupName $rgName -ConnectionName $connectionLinked -StatusReason "Linking for PS testing"
 
 
 ### pending connection ####

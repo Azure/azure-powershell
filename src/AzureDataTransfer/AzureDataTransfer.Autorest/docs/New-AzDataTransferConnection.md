@@ -159,8 +159,7 @@ Id                           : /subscriptions/00000000-0000-0000-0000-0000000000
 IdentityPrincipalId          : 
 IdentityTenantId             : 
 IdentityType                 : None
-IdentityUserAssignedIdentity : {
-                               }
+IdentityUserAssignedIdentity : {}
 Justification                : Required for data export
 LinkStatus                   : Unlinked
 LinkedConnectionId           : 
