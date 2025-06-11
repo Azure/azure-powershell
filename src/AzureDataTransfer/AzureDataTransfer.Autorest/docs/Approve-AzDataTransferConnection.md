@@ -107,7 +107,7 @@ Type                         : microsoft.azuredatatransfer/connections
 ```
 
 This example approves a connection request using the ID of `Connection01` in the pipeline `Pipeline01` within the resource group `ResourceGroup01` and provides a status reason.
-The approved connnection response returns the updated status and the PIN.
+The approved connection response returns the updated status and the PIN.
 
 ---
 
