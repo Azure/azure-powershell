@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -DynamicMemoryConfig
-Specifies the dynamic memory configration of RAM.
+Specifies the dynamic memory configuration of RAM.
 To construct, see NOTES section for DYNAMICMEMORYCONFIG properties and create a hash table.
 
 ```yaml

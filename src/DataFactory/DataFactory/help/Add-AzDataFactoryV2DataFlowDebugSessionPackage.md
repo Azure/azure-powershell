@@ -48,7 +48,7 @@ Add-AzDataFactoryV2DataFlowDebugSessionPackage -ResourceGroupName adf -DataFacto
 ```
 
 Add data flow package into debug session "550effe4-93a3-485c-8525-eaf25259efbd" of "WikiADF" data factory.
-Pakcage file contains data flow debug resource, list of dataset debug resource, list of linked service debug resource, debug setting and session ID. For instance:
+Package file contains data flow debug resource, list of dataset debug resource, list of linked service debug resource, debug setting and session ID. For instance:
 
 {
   "dataFlow": {
