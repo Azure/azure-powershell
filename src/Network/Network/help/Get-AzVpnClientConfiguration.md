@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzVpnClientConfiguration
 
 ## SYNOPSIS
-Allows users to easily download the Vpn Profile package that was generated using the New-AzVpnClientConfiguration commandlet.
+Allows users to easily download the Vpn Profile package that was generated using the New-AzVpnClientConfiguration cmdlet.
 
 ## SYNTAX
 

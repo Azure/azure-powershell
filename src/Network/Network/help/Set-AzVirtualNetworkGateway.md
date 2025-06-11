@@ -660,7 +660,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClientConnectionConfiguration
-P2S Client Connection Configuration that assiociate between address and policy group
+P2S Client Connection Configuration that associate between address and policy group
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSClientConnectionConfiguration[]
