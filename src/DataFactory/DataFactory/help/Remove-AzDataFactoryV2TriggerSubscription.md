@@ -32,7 +32,7 @@ Remove-AzDataFactoryV2TriggerSubscription [-PassThru] [-Force] [-ResourceId] <St
 ```
 
 ## DESCRIPTION
-This command unsubscribes the event trigger to the specified external service events from the trigger defintion.
+This command unsubscribes the event trigger to the specified external service events from the trigger definition.
 
 ## EXAMPLES
 
@@ -41,7 +41,7 @@ This command unsubscribes the event trigger to the specified external service ev
 Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName ADF -DataFactoryName WikiADF -Name Trigger1
 ```
 
-This command will unsubscribe BlobEnetTrigger1 trigger to the specified events from the trigger defintion.
+This command will unsubscribe BlobEnetTrigger1 trigger to the specified events from the trigger definition.
 
 ## PARAMETERS
 

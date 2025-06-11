@@ -19,18 +19,16 @@ Gets a resource type details in the given subscription and provider.
 .Description
 Gets a resource type details in the given subscription and provider.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso"
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType1"
+.Example
+Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType1/nestedResourceType"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeRegistration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,7 +49,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubresourcetyperegistration
 #>
 function Get-AzProviderHubResourceTypeRegistration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeRegistration])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -62,6 +60,7 @@ param(
     ${ProviderNamespace},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The resource type.
@@ -79,15 +78,21 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityProviderRegistration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    ${ProviderRegistrationInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -137,19 +142,31 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
         $mapping = @{
             Get = 'Az.ProviderHub.private\Get-AzProviderHubResourceTypeRegistration_Get';
             GetViaIdentity = 'Az.ProviderHub.private\Get-AzProviderHubResourceTypeRegistration_GetViaIdentity';
+            GetViaIdentityProviderRegistration = 'Az.ProviderHub.private\Get-AzProviderHubResourceTypeRegistration_GetViaIdentityProviderRegistration';
             List = 'Az.ProviderHub.private\Get-AzProviderHubResourceTypeRegistration_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         if ($PSBoundParameters.ContainsKey('ResourceType')) {
             $resourceTypePath = $PSBoundParameters['ResourceType'] -Split "/" -Join "/resourcetyperegistrations/"
             $PSBoundParameters['ResourceType'] = $resourceTypePath
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($null -eq $wrappedCmd) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

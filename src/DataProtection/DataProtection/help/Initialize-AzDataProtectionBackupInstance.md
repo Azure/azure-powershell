@@ -192,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyId
-Policy Id to be assiciated to Datasource
+Policy Id to be associated to Datasource
 
 ```yaml
 Type: System.String
@@ -240,7 +240,7 @@ Accept wildcard characters: False
 ```
 
 ### -SnapshotResourceGroupId
-Sanpshot Resource Group
+Snapshot Resource Group
 
 ```yaml
 Type: System.String

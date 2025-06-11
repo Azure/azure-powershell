@@ -422,4 +422,8 @@
   <data name="AuthenticationTelemetryRecordPushError" xml:space="preserve">
     <value>Fail to push authentication telemetry record, please check the CmdletcContext with Id {0}.</value>
   </data>
+  <data name="ErrorSshAuthScopeNotSet" xml:space="preserve">
+    <value>The scope of authenticating for SSH is not set. Please run "Set-AzEnvironment -Name {0} -SshAuthScope ..." to set it first.</value>
+    <comment>0 = environment name</comment>
+  </data>
 </root>

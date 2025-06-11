@@ -46,7 +46,7 @@ $privateEndpointId = "/subscriptions/00000000-0000-0000-0000-000000000000/resour
 Convert-AzNetAppFilesAccountToCmk -ResourceGroupName "MyResourceGroup" -AccountName "MyAccount" -VirtualNetworkId $virtualNetworkId -PrivateEndpointId $privateEndpointId
 ```
 
-Transitions all volumes in a VNet to a differnt key source 
+Transitions all volumes in a VNet to a different key source 
 
 ## PARAMETERS
 
