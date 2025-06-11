@@ -19,7 +19,7 @@ Describe 'New-AzDataBoxHeavyJobDetailsObject' {
     
         $dataAccount = New-AzDataBoxStorageAccountDetailsObject -StorageAccountId $env.StorageAccountId
 
-        $details = $details = New-AzDataBoxHeavyJobDetailsObject -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -DevicePassword "randm@423jarABC" -ExpectedDataSizeInTeraByte 10
+        $details = $details = New-AzDataBoxHeavyJobDetailsObject -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -DevicePassword "*****" -ExpectedDataSizeInTeraByte 10
 
         $details.ExpectedDataSizeInTeraByte  | Should -Be 10
     }
