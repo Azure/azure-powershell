@@ -162,9 +162,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ResourceGroupName = GetResourceGroupByAccountName(Name);
             }
 
-            string action = isHttpCredentialBound ? "set gateway HTTP credential" : "set gateway Entra users";
-
-            if (ShouldProcess(Name, action))
+            if (ShouldProcess(Name, "set gateway http credential"))
             {
                 HDInsightManagementClient.UpdateGatewayCredential(ResourceGroupName, Name, updateGatewaySettingsParameters);
                 WriteObject(new AzureHDInsightGatewaySettings(HDInsightManagementClient.GetGatewaySettings(ResourceGroupName, Name)));

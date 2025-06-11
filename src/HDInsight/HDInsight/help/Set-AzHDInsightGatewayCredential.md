@@ -40,7 +40,7 @@ The **Set-AzHDInsightGatewayCredential** cmdlet sets gateway credential of an Az
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Set Gateway Credential for an HDInsight Cluster by Name Parameter Set
 ```powershell
 # Cluster info
 $clusterName = "your-hadoop-001"
@@ -51,18 +51,14 @@ Set-AzHDInsightGatewayCredential `
             -HttpCredential $clusterCreds
 ```
 
-This command sets gateway credential of the cluster named your-hadoop-001 by name parameter set.
-
-### Example 2
+### Example 2: Set Gateway Credential for an HDInsight Cluster by ResourceId Parameter Set
 ```powershell
 Set-AzHDInsightGatewayCredential `
             -ResourceId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/your-hadoop-001" `
             -HttpCredential $clusterCreds
 ```
 
-This command sets gateway credential of the cluster named your-hadoop-001 by ResourceId parameter set.
-
-### Example 3
+### Example 3: Set Gateway Credential for an HDInsight Cluster by InputObject Parameter Set
 ```powershell
 # Cluster info
 $clusterName = "your-hadoop-001"
@@ -72,9 +68,7 @@ Get-AzHDInsightCluster -ClusterName $clusterName | Set-AzHDInsightGatewayCredent
             -HttpCredential $clusterCreds
 ```
 
-This command sets gateway credential of the cluster named your-hadoop-001 by InputObject parameter set.
-
-### Example 4 
+### Example 4: Set Gateway Entra Users for an HDInsight Cluster by EntraUser Full Info
 ```powershell
 # Cluster info
 $clusterName = "your-hadoop-001"
@@ -85,13 +79,11 @@ Set-AzHDInsightGatewayCredential `
             -EntraUserFullInfo $entraUserFullInfo
 ```
 
-This command sets gateway EntraUser of the cluster named your-hadoop-001 by EntraUser Full Info.
-
-### Example 5
+### Example 5: Set Gateway Entra Users for an HDInsight Cluster by ObjectId or Upn
 ```powershell
 # Cluster info
 $clusterName = "your-hadoop-001"
-# If you want to specify multiple Entra users, provide their ObjectId or UPN as a single comma-separated string.
+# If you want to specify multiple Entra users, provide their ObjectId or Upn as a single comma-separated string.
 # Example: "objectid1,objectid2,user1@contoso.com,user2@contoso.com"
 $entraUserIdentity = "user@contoso.com"
 
@@ -99,8 +91,6 @@ Set-AzHDInsightGatewayCredential `
             -ClusterName $clusterName `
             -EntraUserIdentity $entraUserIdentity
 ```
-
-This command sets gateway EntraUser of the cluster named your-hadoop-001 by ObjectId Or Upn.
 
 ## PARAMETERS
 

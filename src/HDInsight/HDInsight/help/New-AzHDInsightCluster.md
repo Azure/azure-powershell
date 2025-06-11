@@ -724,7 +724,7 @@ $clusterResourceGroupName = "Group"
 $clusterName = "your-hadoop-002"
 $clusterCreds = Get-Credential
 
-# If you want to specify multiple Entra users, provide their ObjectId or UPN as a single comma-separated string.
+# If you want to specify multiple Entra users, provide their ObjectId or Upn as a single comma-separated string.
 # Example: "objectid1,objectid2,user1@contoso.com,user2@contoso.com"
 $entraUserIdentity = "user@contoso.com"
 
