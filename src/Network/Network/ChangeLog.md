@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Onboarded Application Gateway WAF Exceptions cmdlet.
+    - `New-AzApplicationGatewayFirewallPolicyException`  
 
 ## Version 7.17.0
 * Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:

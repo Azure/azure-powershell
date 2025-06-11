@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultEncryption
-Specifiy whether set Automation Account KeySource to Microsoft.KeyVault (enable CMK) or not.
+Specify whether set Automation Account KeySource to Microsoft.KeyVault (enable CMK) or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

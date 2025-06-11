@@ -419,7 +419,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableOidcIssuer
-Whether to enalbe OIDC issuer feature.
+Whether to enable OIDC issuer feature.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -918,7 +918,7 @@ Accept wildcard characters: False
 ```
 
 ### -WindowsProfileAdminUserPassword
-The administrator password to use for Windows VMs. Password requirement:At least one lower case, one upper case, one special character !@#$%^&*(), the minimum lenth is 12.
+The administrator password to use for Windows VMs. Password requirement:At least one lower case, one upper case, one special character !@#$%^&*(), the minimum length is 12.
 
 ```yaml
 Type: System.Security.SecureString

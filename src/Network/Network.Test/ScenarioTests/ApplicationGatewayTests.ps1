@@ -4369,6 +4369,73 @@ function Test-ApplicationGatewayFirewallPolicyWithPerRuleExclusions
 	}
 }
 
+function Test-ApplicationGatewayFirewallPolicyWithException
+{
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+
+	$rgname = Get-ResourceGroupName
+	$wafPolicyName = Get-ResourceName
+
+	try
+	{
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings
+
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+
+		# Check firewall policy
+		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+
+		$ruleEntry1 = New-AzApplicationGatewayFirewallPolicyExclusionManagedRule -RuleId 942100
+		$ruleEntry2 = New-AzApplicationGatewayFirewallPolicyExclusionManagedRule -RuleId 942110
+		$sqlRuleGroupEntry = New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup -Name REQUEST-942-APPLICATION-ATTACK-SQLI -Rule $ruleEntry1,$ruleEntry2
+
+		$ruleEntry3 = New-AzApplicationGatewayFirewallPolicyExclusionManagedRule -RuleId 941100
+		$xssRuleGroupEntry = New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup -Name REQUEST-941-APPLICATION-ATTACK-XSS -Rule $ruleEntry3
+
+		$exceptionRuleSetEntry = New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet -Type "OWASP" -Version "3.2" -RuleGroup $sqlRuleGroupEntry,$xssRuleGroupEntry
+
+		$exceptionValue1 = "hey"
+		$exceptionValue2 = "hi"
+
+		$exceptionEntry = New-AzApplicationGatewayFirewallPolicyException -MatchVariable RequestURI -Value $exceptionValue1,$exceptionValue2 -ValueMatchOperator Contains -ExceptionManagedRuleSet $exceptionRuleSetEntry
+
+		$managedRules = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet -Exception $exceptionEntry
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 750 -MaxRequestBodySizeInKb 128
+		$policy.managedRules = $managedRules
+		$policy.PolicySettings = $policySettings
+		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets.Count 1
+		Assert-AreEqual $policy.ManagedRules.Exceptions.Count 1
+		Assert-AreEqual $policy.ManagedRules.Exceptions[0].ExceptionManagedRuleSets.Count 1
+		Assert-AreEqual $policy.ManagedRules.Exceptions[0].ExceptionManagedRuleSets[0].RuleGroups.Count 2
+		Assert-AreEqual $policy.ManagedRules.Exceptions[0].ExceptionManagedRuleSets[0].RuleGroups[0].Rules.Count 2
+		Assert-AreEqual $policy.ManagedRules.Exceptions[0].ExceptionManagedRuleSets[0].RuleGroups[1].Rules.Count 1
+		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
 <#
 .SYNOPSIS
 Application gateway v2 waf policy with log scrubbing

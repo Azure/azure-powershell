@@ -317,7 +317,7 @@ $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
 
 This example Creates a new VM with the TrustedLaunch Security Type and sets flags EnableSecureBoot and EnableVtpm as True by default. A Trusted Launch VM requires a Gen2 image. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
-### Example 9: Create a VM with Trusted Launch turned on by defualt using New-AzVMConfig.
+### Example 9: Create a VM with Trusted Launch turned on by default using New-AzVMConfig.
 ```powershell
 $rgname = "<Resource Group Name>";
 $loc = "<Azure Region>";

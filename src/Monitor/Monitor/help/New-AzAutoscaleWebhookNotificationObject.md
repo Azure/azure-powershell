@@ -22,12 +22,12 @@ Create an in-memory object for WebhookNotification.
 
 ## EXAMPLES
 
-### Example 1: Create webhook nofitication object
+### Example 1: Create webhook notification object
 ```powershell
 New-AzAutoscaleWebhookNotificationObject -Property @{} -ServiceUri "http://myservice.com"
 ```
 
-Create webhook nofitication object
+Create webhook notification object
 
 ## PARAMETERS
 
