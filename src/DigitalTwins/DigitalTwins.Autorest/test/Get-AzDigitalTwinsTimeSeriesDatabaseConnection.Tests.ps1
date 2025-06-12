@@ -19,6 +19,10 @@ Describe 'Get-AzDigitalTwinsTimeSeriesDatabaseConnection' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'GetViaIdentityDigitalTwinsInstance' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
