@@ -58,6 +58,26 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
+  - where:
+      verb: Get
+      subject: RoleManagementPolicy
+    set:
+      breaking-change:
+        change-description: "The types of property EffectiveRule and Rule have changed from Fixed Array to List."
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+        
+  - where:
+      verb: Update
+      subject: RoleManagementPolicy
+    set:
+      breaking-change:
+        change-description: "The types of property EffectiveRule and Rule have changed from Fixed Array to List. The types of property TargetEnforcedSetting,TargetInheritableSetting, TargetObject and TargetOperation have changed from Fixed Array to List."
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
   # Swaager bug: The scope should be readonly according to the server response.
   - from: swagger-document
     where: $.definitions.RoleManagementPolicyProperties.properties.scope

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added breaking change announcement from Fixed Array to List.
 
 ## Version 8.0.1
 * Fixed empty warning output issue for cmdlet `Test-AzResourceGroupDeployment` [#27888]
