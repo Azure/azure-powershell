@@ -88,6 +88,62 @@ export async function findAllPolyMorphism(workingDirectory: string): Promise<Map
     return polymorphism;
 }
 
+export async function getExamplesFromSpecs(workingDirectory: string): Promise<string> {
+    const moduleReadmePath = path.join(workingDirectory, "README.md");
+    const yamlContent: yamlContent = yaml.load(getYamlContentFromReadMe(moduleReadmePath)) as yamlContent;
+    const swaggerUrls = getSwaggerUrl(yamlContent.commit, yamlContent['input-file'] as string[]);
+    const exampleSet: Set<string> = new Set<string>();
+    
+    const exampleSpecsPath = path.join(workingDirectory, "exampleSpecs");
+    if (!fs.existsSync(exampleSpecsPath)) {
+        fs.mkdirSync(exampleSpecsPath);
+    }
+
+    for (const url of swaggerUrls) {
+        // Convert raw GitHub URL to directory path
+        // From: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/commit/path/to/file.json
+        // To: https://api.github.com/repos/Azure/azure-rest-api-specs/contents/path/to/examples?ref=commit
+        
+        const urlParts = url.split('/');
+        const owner = urlParts[3]; // The owner, e.g., Azure
+        const repo = urlParts[4]; // The repository name, e.g., azure-rest-api-specs
+        const commit = urlParts[5]; // The commit hash
+        const pathParts = urlParts.slice(6); // Everything after commit
+        pathParts.pop(); // Remove the filename
+        const directoryPath = pathParts.join('/');
+        const examplesPath = directoryPath + '/examples';
+        
+        const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${examplesPath}?ref=${commit}`;
+        
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                console.warn(`No examples directory found at ${apiUrl}`);
+                continue;
+            }
+            
+            const list = await response.json();
+            for (const ex of list) {
+                if (!exampleSet.has(ex.dowwnload_url)) {
+                    const exResponse = await fetch(ex.download_url);
+                    if (!exResponse.ok) {
+                        console.warn(`Invalid file at ${ex.download_url}`);
+                        continue;
+                    }
+                    const exJson = await exResponse.json();
+                    const exampleFileName = path.join(exampleSpecsPath, `${ex.name}.json`);
+                    fs.writeFileSync(exampleFileName, JSON.stringify(exJson, null, 2), 'utf8');
+                    console.log(`Example saved to ${exampleFileName}`);
+                    exampleSet.add(ex.download_url);
+                }
+            }
+        } catch (error) {
+            console.error(`Error fetching examples from ${apiUrl}:`, error);
+        }
+    }
+    return exampleSpecsPath;
+}
+
 
 
 
@@ -128,43 +184,5 @@ export async function findAllPolyMorphism(workingDirectory: string): Promise<Map
 
 
 export async function testCase() {
-    // const swaggerUrl = 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f1546dc981fa5d164d7ecd13588520457462c22c/specification/vmware/resource-manager/Microsoft.AVS/stable/2023-09-01/vmware.json'
-    // const polymorphism = new Map<string, Set<string>>();
-
-    // let swaggerContent: any;
-    // try {
-    //     const response = await fetch(swaggerUrl);
-        
-    //     if (!response.ok) {
-    //         throw new Error(`HTTP error! status: ${response.status}`);
-    //     }    
-    //     swaggerContent = await response.json();
-    //     //console.log('Swagger content:', swaggerContent);
-    // } catch (error) {
-    //     console.error('Error fetching swagger content:', error);
-    //     throw error;
-    // }
-    // const definitions = swaggerContent.definitions;
-    // for (const key of Object.keys(definitions)) {
-    //     if (definitions[key]['x-ms-discriminator-value']) {
-    //         const parent = definitions[key]['allOf']?.[0]['$ref']?.split('/').pop();
-    //         if (!polymorphism.has(parent)) {
-    //             polymorphism.set(parent, new Set<string>());
-    //         }
-    //         polymorphism.get(parent)?.add(key);
-    //     }
-    // }
-    // for (const [k, v] of polymorphism) {
-    //     console.log(`Parent: ${k}, Children: ${Array.from(v)}`);
-    // }
-
-    // const parents = Array.from(polymorphism.keys());
-    // const children = Array.from(polymorphism.values()).map(set => Array.from(set)).flat();
-    // console.log("Parents:", parents);
-    // console.log("Children:", children);
-    const polymorphism = await findAllPolyMorphism("c:\\workspace\\azure-powershell\\src\\VMware\\VMware.Autorest");
-    const parents = Array.from(polymorphism.keys());
-    const children = Array.from(polymorphism.values()).map(set => Array.from(set)).flat();
-    console.log("Parents:", parents);
-    console.log("Children:", children);
+    const polymorphism = await getExamplesFromSpecs("c:\\workspace\\azure-powershell\\src\\VMware\\VMware.Autorest");
 }
