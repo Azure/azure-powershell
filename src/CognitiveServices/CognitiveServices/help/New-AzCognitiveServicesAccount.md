@@ -187,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Set the new Cognitive Services Account Identity type, the idenetity is for use with key management services like Azure KeyVault.
+Set the new Cognitive Services Account Identity type, the identity is for use with key management services like Azure KeyVault.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType]

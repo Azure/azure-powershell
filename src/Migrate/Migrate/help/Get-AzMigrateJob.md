@@ -43,7 +43,7 @@ Get-AzMigrateJob [-SubscriptionId <String>] -ResourceGroupID <String> -ProjectID
 ```
 
 ## DESCRIPTION
-The Get-AzMigrateJob cmdlet retrives the status of an Azure Migrate job.
+The Get-AzMigrateJob cmdlet retrieves the status of an Azure Migrate job.
 
 ## EXAMPLES
 

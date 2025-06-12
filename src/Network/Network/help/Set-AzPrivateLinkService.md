@@ -36,7 +36,7 @@ $privateLinkService.IpConfigurations[0] = $newIPConfig
 $privateLinkService | Set-AzPrivateLinkService
 ```
 
-This example creates a private link service called mypls. Then it replace its ipConfigurations from the in-memory ipConfiguratiuon object. The Set-AzPrivateLinkService cmdlet is then used to write the modified private link service state on the service side. 
+This example creates a private link service called mypls. Then it replace its ipConfigurations from the in-memory ipConfiguration object. The Set-AzPrivateLinkService cmdlet is then used to write the modified private link service state on the service side. 
 
 ## PARAMETERS
 
