@@ -1,7 +1,7 @@
 ### Example 1: Deny a connection request by ID
 ```powershell
 $connectionToDeny = Get-AzDataTransferConnection -ResourceGroupName ResourceGroup01 -Name Connection01
-Deny-AzDataTransferConnection -PipelineName corptest -ResourceGroupName ResourceGroup01 -ConnectionId $connectionToDeny.Id -StatusReason "Not Authorized for processing" -Confirm:$false
+Deny-AzDataTransferConnection -PipelineName Pipeline01 -ResourceGroupName ResourceGroup01 -ConnectionId $connectionToDeny.Id -StatusReason "Not Authorized for processing" -Confirm:$false
 ```
 
 ```output
