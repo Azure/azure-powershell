@@ -285,6 +285,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("LowestPrice", "CapacityOptimized")]
         public string SkuProfileAllocationStrategy { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.")]
+        public SwitchParameter EnableProxyAgent { get; set; }
+
         private void ConfigureSecuritySettings()
         {
             if (SecurityType?.ToLower() == SecurityTypes.TrustedLaunch ||
@@ -544,7 +551,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ifMatch: _cmdlet.IfMatch,
                     ifNoneMatch: _cmdlet.IfNoneMatch,
                     securityPostureId: _cmdlet.SecurityPostureId,
-                    securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension
+                    securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension,
+                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null
                     );
             }
 
@@ -683,8 +691,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ifMatch: _cmdlet.IfMatch,
                     ifNoneMatch: _cmdlet.IfNoneMatch,
                     securityPostureId: _cmdlet.SecurityPostureId,
-                    securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension
-                    );
+                    securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension,
+                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null
+                );
             }
         }
 
