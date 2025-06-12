@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string InstanceId { get; set; }
 
         [Parameter(
-            ParameterSetName = DefaultParameterSetName,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Increase the value of this parameter allows users to reset the key used for securing communication channel between guest and host.")]
         [Alias("KeyIncarnationId")]
