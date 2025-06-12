@@ -21,18 +21,20 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssProxySetting"), OutputType(typeof(PSVirtualMachineScaleSet))]
-    public class SetAzureVmssProxySetting : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMProxyAgentSetting"), OutputType(typeof(PSVirtualMachine))]
+    public class SetAzureVMProxySetting : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
+        [Alias("VMProfile")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true)]
-        public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMProfile)]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualMachine VM { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -51,7 +53,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the InVMAccessControlProfileVersion resource id in the Wire Server endpoint. Format of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}")]
-        public string WireServerProfile { get; set; }
+        public string WireServerProfile{ get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -66,19 +68,18 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Specifies the InVMAccessControlProfileVersion resource id in the IMDS enpoint. Format of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}")]
         public string ImdsProfile { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Increase the value of this parameter allows users to reset the key used for securing communication channel between guest and host.")]
+        public int KeyIncarnationId { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+            if (this.VM.SecurityProfile == null)
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                this.VM.SecurityProfile = new SecurityProfile();
             }
-            if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile == null)
-            {
-                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
-            }
-
-
-            this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings = new ProxyAgentSettings
+            this.VM.SecurityProfile.ProxyAgentSettings = new ProxyAgentSettings
             {
                 Enabled = this.EnableProxyAgent.IsPresent,
                 WireServer = (this.WireServerMode == null && this.WireServerProfile == null ? null : new HostEndpointSettings()
@@ -90,10 +91,11 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     Mode = this.ImdsMode,
                     InVMAccessControlProfileReferenceId = this.ImdsProfile
-                })
+                }),
+                KeyIncarnationId = this.KeyIncarnationId
             };
 
-            WriteObject(this.VirtualMachineScaleSet);
+            WriteObject(this.VM);
         }
     }
 
