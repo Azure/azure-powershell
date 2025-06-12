@@ -105,6 +105,12 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string TrustedLaunchDefaultHyperVGen = "v2";
     }
 
+    public static class HyperVGenerations
+    {
+        public const string V1 = "V1";
+        public const string V2 = "V2";
+    }
+
     public static class ProfileNouns
     {
         public const string VirtualMachineProfile = "AzureRmVMProfile";
