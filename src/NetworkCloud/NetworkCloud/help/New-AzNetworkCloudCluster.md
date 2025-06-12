@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkCloudCluster
 
 ## SYNOPSIS
-Create a new cluster or update the properties of the cluster if it exists.
+create a new cluster or create the properties of the cluster if it exists.
 
 ## SYNTAX
 
@@ -16,33 +16,28 @@ Create a new cluster or update the properties of the cluster if it exists.
 New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -AggregatorOrSingleRackDefinitionNetworkRackId <String>
  -AggregatorOrSingleRackDefinitionRackSerialNumber <String> -AggregatorOrSingleRackDefinitionRackSkuId <String>
- -ClusterType <ClusterType> -ClusterVersion <String> -ExtendedLocationName <String>
- -ExtendedLocationType <String> -Location <String> -NetworkFabricId <String>
- [-AggregatorOrSingleRackDefinitionAvailabilityZone <String>]
+ -ClusterType <String> -ClusterVersion <String> -ExtendedLocationName <String> -ExtendedLocationType <String>
+ -Location <String> -NetworkFabricId <String> [-AggregatorOrSingleRackDefinitionAvailabilityZone <String>]
  [-AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration <IBareMetalMachineConfigurationData[]>]
  [-AggregatorOrSingleRackDefinitionRackLocation <String>]
  [-AggregatorOrSingleRackDefinitionStorageApplianceConfiguration <IStorageApplianceConfigurationData[]>]
- [-AnalyticsWorkspaceId <String>] [-AssociatedIdentityType <ManagedServiceIdentitySelectorType>]
+ [-AnalyticsWorkspaceId <String>] [-AssociatedIdentityType <String>]
  [-AssociatedIdentityUserAssignedIdentityResourceId <String>] [-ClusterLocation <String>]
  [-ClusterServicePrincipalApplicationId <String>] [-ClusterServicePrincipalId <String>]
  [-ClusterServicePrincipalPassword <SecureString>] [-ClusterServicePrincipalTenantId <String>]
- [-CommandOutputSettingContainerUrl <String>]
- [-ComputeDeploymentThresholdGrouping <ValidationThresholdGrouping>]
- [-ComputeDeploymentThresholdType <ValidationThresholdType>] [-ComputeDeploymentThresholdValue <Int64>]
- [-ComputeRackDefinition <IRackDefinition[]>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-ManagedResourceGroupConfigurationLocation <String>]
- [-ManagedResourceGroupConfigurationName <String>]
- [-RuntimeProtectionConfigurationEnforcementLevel <RuntimeProtectionEnforcementLevel>]
- [-SecretArchiveKeyVaultId <String>] [-SecretArchiveUseKeyVault <ClusterSecretArchiveEnabled>]
- [-Tag <Hashtable>] [-UpdateStrategyMaxUnavailable <Int64>]
- [-UpdateStrategyThresholdType <ValidationThresholdType>] [-UpdateStrategyThresholdValue <Int64>]
- [-UpdateStrategyType <ClusterUpdateStrategyType>] [-UpdateStrategyWaitTimeMinute <Int64>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-CommandOutputSettingContainerUrl <String>] [-ComputeDeploymentThresholdGrouping <String>]
+ [-ComputeDeploymentThresholdType <String>] [-ComputeDeploymentThresholdValue <Int64>]
+ [-ComputeRackDefinition <IRackDefinition[]>] [-EnableSystemAssignedIdentity]
+ [-ManagedResourceGroupConfigurationLocation <String>] [-ManagedResourceGroupConfigurationName <String>]
+ [-RuntimeProtectionConfigurationEnforcementLevel <String>] [-SecretArchiveKeyVaultId <String>]
+ [-SecretArchiveUseKeyVault <String>] [-Tag <Hashtable>] [-UpdateStrategyMaxUnavailable <Int64>]
+ [-UpdateStrategyThresholdType <String>] [-UpdateStrategyThresholdValue <Int64>] [-UpdateStrategyType <String>]
+ [-UpdateStrategyWaitTimeMinute <Int64>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new cluster or update the properties of the cluster if it exists.
+create a new cluster or create the properties of the cluster if it exists.
 
 ## EXAMPLES
 
@@ -87,10 +82,9 @@ Accept wildcard characters: False
 
 ### -AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration
 The unordered list of bare metal machine configuration.
-To construct, see NOTES section for AGGREGATORORSINGLERACKDEFINITIONBAREMETALMACHINECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineConfigurationData[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineConfigurationData[]
 Parameter Sets: (All)
 Aliases:
 
@@ -164,10 +158,9 @@ Accept wildcard characters: False
 
 ### -AggregatorOrSingleRackDefinitionStorageApplianceConfiguration
 The list of storage appliance configuration data for this rack.
-To construct, see NOTES section for AGGREGATORORSINGLERACKDEFINITIONSTORAGEAPPLIANCECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IStorageApplianceConfigurationData[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceConfigurationData[]
 Parameter Sets: (All)
 Aliases:
 
@@ -212,7 +205,7 @@ Accept wildcard characters: False
 The type of managed identity that is being selected.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -318,7 +311,7 @@ Accept wildcard characters: False
 The type of rack configuration for the cluster.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -363,7 +356,7 @@ Accept wildcard characters: False
 Selection of how the type evaluation is applied to the cluster calculation.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdGrouping
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -378,7 +371,7 @@ Accept wildcard characters: False
 Selection of how the threshold should be evaluated.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -406,10 +399,9 @@ Accept wildcard characters: False
 
 ### -ComputeRackDefinition
 The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.
-To construct, see NOTES section for COMPUTERACKDEFINITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IRackDefinition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRackDefinition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -428,6 +420,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -460,38 +467,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -610,7 +585,7 @@ Accept wildcard characters: False
 The mode of operation for runtime protection.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.RuntimeProtectionEnforcementLevel
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -640,7 +615,7 @@ Accept wildcard characters: False
 The indicator if the specified key vault should be used to archive the secrets of the cluster.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterSecretArchiveEnabled
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -702,7 +677,7 @@ Accept wildcard characters: False
 Selection of how the threshold should be evaluated.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -732,7 +707,7 @@ Accept wildcard characters: False
 The mode of operation for runtime protection.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterUpdateStrategyType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -748,6 +723,22 @@ The time to wait between the increments of update defined by the strategy.
 
 ```yaml
 Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -796,7 +787,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICluster
 
 ## NOTES
 

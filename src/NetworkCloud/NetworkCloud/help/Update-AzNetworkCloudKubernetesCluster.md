@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Patch the properties of the provided Kubernetes cluster, or update the tags associated with the Kubernetes cluster.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Update-AzNetworkCloudKubernetesCluster -InputObject <INetworkCloudIdentity>
 
 ## DESCRIPTION
 Patch the properties of the provided Kubernetes cluster, or update the tags associated with the Kubernetes cluster.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## EXAMPLES
 
@@ -74,10 +74,9 @@ Accept wildcard characters: False
 
 ### -ControlPlaneNodeConfigurationAdminPublicKey
 SshPublicKey represents the public key used to authenticate with a resource through SSH.
-To construct, see NOTES section for CONTROLPLANENODECONFIGURATIONADMINPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +120,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -198,10 +196,9 @@ Accept wildcard characters: False
 
 ### -SshPublicKey
 SshPublicKey represents the public key used to authenticate with a resource through SSH.
-To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -283,7 +280,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesCluster
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesCluster
 
 ## NOTES
 

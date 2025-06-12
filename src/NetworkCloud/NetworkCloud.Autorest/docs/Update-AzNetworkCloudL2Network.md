@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetworkCloudL2Network
 
 ## SYNOPSIS
-Update tags associated with the provided layer 2 (L2) network.
+update tags associated with the provided layer 2 (L2) network.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Update-AzNetworkCloudL2Network -InputObject <INetworkCloudIdentity> [-Tag <Hasht
 ```
 
 ## DESCRIPTION
-Update tags associated with the provided layer 2 (L2) network.
+update tags associated with the provided layer 2 (L2) network.
 
 ## EXAMPLES
 
@@ -62,7 +62,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -178,7 +177,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL2Network
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL2Network
 
 ## NOTES
 
