@@ -25,6 +25,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Purviewdata.Autorest", "Pur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Purviewdata", "..\..\generated\Purview\Purviewdata.Autorest\Az.Purviewdata.csproj", "{9935B9BD-7653-4808-8C88-B635C3CF4F9A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Purview.Autorest", "Purview.Autorest", "{37E164A6-74E0-C027-4B44-EF011BEF9500}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Purview", "..\..\generated\Purview\Purview.Autorest\Az.Purview.csproj", "{6053A6F1-43E7-4550-997D-B32EC331C5B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
