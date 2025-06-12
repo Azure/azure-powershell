@@ -1,108 +1,59 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://learn.microsoft.com/powershell/module/az.resources/new-azroleassignmentschedulerequest
+online version: https://learn.microsoft.com/powershell/module/az.resources/update-azroleassignmentschedulerequest
 schema: 2.0.0
 ---
 
-# New-AzRoleAssignmentScheduleRequest
+# Update-AzRoleAssignmentScheduleRequest
 
 ## SYNOPSIS
-Create a role assignment schedule request.
+Update a role assignment schedule request.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzRoleAssignmentScheduleRequest -Name <String> -Scope <String> [-Condition <String>]
+Update-AzRoleAssignmentScheduleRequest -Name <String> -Scope <String> [-Condition <String>]
  [-ConditionVersion <String>] [-ExpirationDuration <String>] [-ExpirationEndDateTime <DateTime>]
  [-ExpirationType <String>] [-Justification <String>] [-LinkedRoleEligibilityScheduleId <String>]
  [-PrincipalId <String>] [-RequestType <String>] [-RoleDefinitionId <String>]
  [-ScheduleInfoStartDateTime <DateTime>] [-TargetRoleAssignmentScheduleId <String>]
  [-TargetRoleAssignmentScheduleInstanceId <String>] [-TicketNumber <String>] [-TicketSystem <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### UpdateViaIdentityExpanded
 ```
-New-AzRoleAssignmentScheduleRequest -Name <String> -Scope <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzRoleAssignmentScheduleRequest -Name <String> -Scope <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzRoleAssignmentScheduleRequest -InputObject <IAuthorizationIdentity> [-Condition <String>]
+ [-ConditionVersion <String>] [-ExpirationDuration <String>] [-ExpirationEndDateTime <DateTime>]
+ [-ExpirationType <String>] [-Justification <String>] [-LinkedRoleEligibilityScheduleId <String>]
+ [-PrincipalId <String>] [-RequestType <String>] [-RoleDefinitionId <String>]
+ [-ScheduleInfoStartDateTime <DateTime>] [-TargetRoleAssignmentScheduleId <String>]
+ [-TargetRoleAssignmentScheduleInstanceId <String>] [-TicketNumber <String>] [-TicketSystem <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a role assignment schedule request.
+Update a role assignment schedule request.
 
 ## EXAMPLES
 
-### Example 1: Create a new role assignment schedule request as Admin
+### Example 1: Update a new role assignment schedule request as Admin
 ```powershell
 $guid = "12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca"
 $startTime = Get-Date -Format o 
-$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-New-AzRoleAssignmentScheduleRequest -Name $guid -Scope $scope -ExpirationDuration PT1H -ExpirationType AfterDuration -PrincipalId 5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2 -RequestType AdminAssign -RoleDefinitionId subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7 -ScheduleInfoStartDateTime $startTime
+$scope = "/subscriptions/11111111-2222-3333-4444-123456789101/"
+Update-AzRoleAssignmentScheduleRequest -Name $guid -Scope $scope -ExpirationDuration PT1H -ExpirationType AfterDuration -PrincipalId 5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2 -RequestType AdminAssign -RoleDefinitionId subscriptions/11111111-2222-3333-4444-123456789101/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7 -ScheduleInfoStartDateTime $startTime
 ```
 
 ```output
 Name                                 Type                                                    Scope                                               RoleDefinitionId
 ----                                 ----                                                    -----                                               ----------------                                                                 
-12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca Microsoft.Authorization/roleAssignmentScheduleRequests /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authori… 
+12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca Microsoft.Authorization/roleAssignmentScheduleRequests /subscriptions/11111111-2222-3333-4444-123456789101 /subscriptions/11111111-2222-3333-4444-123456789101/providers/Microsoft.Authori…
 ```
 
-Creates a request to provision an active assignment of `roleDefinition` on the `scope` for the specified `principal`
-
-### Example 2: Remove a role assignment schedule request as Admin
-```powershell
-$guid = "13f8978c-5d8d-4fbf-b4b6-2f43eeb43eca"
-$startTime = Get-Date -Format o 
-$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-New-AzRoleAssignmentScheduleRequest -Name $guid -Scope $scope -ExpirationDuration PT1H -ExpirationType AfterDuration -PrincipalId 5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2 -RequestType AdminRemove -RoleDefinitionId subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7 -ScheduleInfoStartDateTime $startTime
-```
-
-```output
-Name                                 Type                                                    Scope                                               RoleDefinitionId
-----                                 ----                                                    -----                                               ----------------                                                                 
-13f8978c-5d8d-4fbf-b4b6-2f43eeb43eca Microsoft.Authorization/roleAssignmentScheduleRequests /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authori… 
-```
-
-Creates a request to remove an active assignment of `roleDefinition` on the `scope` for the specified `principal`
-
-### Example 3: Activate a new role assignment schedule request as user
-```powershell
-$guid = "12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca"
-$startTime = Get-Date -Format o 
-$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-New-AzRoleAssignmentScheduleRequest -Name $guid -Scope $scope -ExpirationDuration PT1H -ExpirationType AfterDuration -PrincipalId 5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2 -RequestType SelfActivate -RoleDefinitionId subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7 -ScheduleInfoStartDateTime $startTime
-```
-
-```output
-Name                                 Type                                                    Scope                                               RoleDefinitionId
-----                                 ----                                                    -----                                               ----------------                                                                 
-12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca Microsoft.Authorization/roleAssignmentScheduleRequests /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authori… 
-```
-
-Creates a request to activate an eligible assignment of `roleDefinition` on the `scope` for the specified `principal`
-
-### Example 4: Deactivate a role assignment schedule request as user
-```powershell
-$guid = "12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca"
-$startTime = Get-Date -Format o 
-$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-New-AzRoleAssignmentScheduleRequest -Name $guid -Scope $scope -ExpirationDuration PT1H -ExpirationType AfterDuration -PrincipalId 5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2 -RequestType SelfDeactivate -RoleDefinitionId subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7 -ScheduleInfoStartDateTime $startTime
-```
-
-```output
-Name                                 Type                                                    Scope                                               RoleDefinitionId
-----                                 ----                                                    -----                                               ----------------                                                                 
-12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca Microsoft.Authorization/roleAssignmentScheduleRequests /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authori… 
-```
-
-Creates a request to deactivate an eligible assignment of `roleDefinition` on the `scope` for the specified `principal`
+Updates a request to provision an active assignment of `roleDefinition` on the `scope` for the specified `principal`
 
 ## PARAMETERS
 
@@ -113,7 +64,7 @@ e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:Contai
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -129,7 +80,7 @@ Currently accepted value is '2.0'
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -160,7 +111,7 @@ Duration of the role assignment schedule in TimeSpan.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -175,7 +126,7 @@ End DateTime of the role assignment schedule.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -190,7 +141,7 @@ Type of the role assignment schedule expiration
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -200,33 +151,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -235,7 +171,7 @@ Justification for the role assignment
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -250,7 +186,7 @@ The linked role eligibility schedule id - to activate an eligibility.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -266,7 +202,7 @@ It can be any valid GUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: RoleAssignmentScheduleRequestName
 
 Required: True
@@ -281,7 +217,7 @@ The principal ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -297,7 +233,7 @@ Eg: SelfActivate, AdminAssign etc
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -312,7 +248,7 @@ The role definition ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -327,7 +263,7 @@ Start DateTime of the role assignment schedule.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -344,7 +280,7 @@ For example, use '/providers/Microsoft.Subscription/subscriptions/{subscription-
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -359,7 +295,7 @@ The resultant role assignment schedule id or the role assignment schedule id bei
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -374,7 +310,7 @@ The role assignment schedule instance id being updated
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -389,7 +325,7 @@ Ticket number for the role assignment
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -404,7 +340,7 @@ Ticket system name for the role assignment
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -450,6 +386,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleAssignmentScheduleRequest
@@ -457,4 +395,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
