@@ -34,11 +34,11 @@ foreach ($moduleGroup in $groupedModules) {
     $index++
 }
 
-$generationTargetsOutputDir = Join-Path $RepoRoot "artifacts"
-if (-not (Test-Path -Path $generationTargetsOutputDir)) {
-    New-Item -ItemType Directory -Path $generationTargetsOutputDir
+$artifactsDir = Join-Path $RepoRoot "artifacts"
+if (-not (Test-Path -Path $artifactsDir)) {
+    New-Item -ItemType Directory -Path $artifactsDir
 }
-$generationTargetsOutputFile = Join-Path $generationTargetsOutputDir "generationTargets.json"
+$generationTargetsOutputFile = Join-Path $artifactsDir "generationTargets.json"
 $generationTargets | ConvertTo-Json -Depth 5 | Out-File -FilePath $generationTargetsOutputFile -Encoding utf8
 
 if ($MatrixStr -and $MatrixStr.Length -gt 1) {
