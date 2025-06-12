@@ -45,3 +45,6 @@ if ($MatrixStr -and $MatrixStr.Length -gt 1) {
     $MatrixStr = $MatrixStr.Substring(1)
 }
 Write-Host "##vso[task.setVariable variable=generationTargets;isOutput=true]{$MatrixStr}"
+
+$V4ModulesRecordFile = Join-Path $artifactsDir 'preparedV4Modules.txt'
+$modules | Set-Content -Path $V4ModulesRecordFile -Encoding UTF8
