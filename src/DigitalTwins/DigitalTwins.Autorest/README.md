@@ -37,51 +37,36 @@ module-version: 0.3.0
 title: DigitalTwins
 subject-prefix: $(service-name)
 
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - where:
       subject: DigitalTwin
     set:
       subject: Instance
   - where:
-      subject: DigitalTwinEndpoint
-    set:
-      subject: Endpoint
-  - where:
       subject: DigitalTwinNameAvailability
     set:
       subject: InstanceNameAvailability
   - where:
       verb: Set
-    hide: true
+    remove: true
 
   - where:
       subject: Instance
-      variant: ^Create$|^CreateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^(Check)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentityExpanded$
     remove: true
 
   - where:
-      subject: PrivateEndpointConnection
-      variant: ^Create$|^CreateViaIdentity$
-    remove: true
-
-  - where:
-      variant: ^Update$|^UpdateViaIdentity$|^Check$|^CheckViaIdentity$
-    remove: true
-
-  - where:
-      verb: New
-      subject: Endpoint
+      verb: New|Update
+      subject: DigitalTwinsEndpoint
     hide: true
   - where:
-      verb: New
+      verb: New|Update
       subject: TimeSeriesDatabaseConnection
     hide: true
 
@@ -94,6 +79,7 @@ directive:
           - EndpointType
           - AuthenticationType
           - ResourceGroupName
+
   - where:
       model-name: DigitalTwinsDescription
     set:
@@ -102,23 +88,7 @@ directive:
           - Name
           - Location
           - ResourceGroupName
-  - where:
-      model-name: PrivateEndpointConnection
-    set:
-      format-table:
-        properties:
-          - Name
-          - GroupId
-          - PrivateLinkServiceConnectionStateStatus
-          - ResourceGroupName
-  - where:
-      model-name: GroupIdInformation
-    set:
-      format-table:
-        properties:
-          - GroupId
-          - Name
-          - ResourceGroupName
+
   - where:
       model-name: TimeSeriesDatabaseConnection
     set:
@@ -128,12 +98,4 @@ directive:
           - ConnectionType
           - ProvisioningState
           - ResourceGroupName
-
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResourceProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResourceProperties Property');
-
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnectionProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnectionProperties Property');
 ```

@@ -12,11 +12,26 @@ Creates or updates an account
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzPurviewAccount -Name <String> -ResourceGroupName <String> -IdentityType <Type> -Location <String>
- -SkuCapacity <Int32> -SkuName <Name> [-SubscriptionId <String>] [-ManagedResourceGroupName <String>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPurviewAccount -Name <String> -ResourceGroupName <String> -EnableSystemAssignedIdentity
+ -Location <String> -SkuCapacity <Int32> -SkuName <String> [-SubscriptionId <String>]
+ [-ManagedResourceGroupName <String>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzPurviewAccount -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzPurviewAccount -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +41,7 @@ Creates or updates an account
 
 ### Example 1: Create a purview account
 ```powershell
-New-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Location eastus -IdentityType SystemAssigned -SkuCapacity 4 -SkuName Standard
+New-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Location eastus -EnableSystemAssignedIdentity:$true -SkuCapacity 4 -SkuName Standard
 ```
 
 ```output
@@ -55,7 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -69,12 +85,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Identity Type
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Type
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -89,7 +135,7 @@ Gets or sets the location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -104,7 +150,7 @@ Gets or sets the managed resource group name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -148,8 +194,8 @@ Accept wildcard characters: False
 Gets or sets the public network access.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.PublicNetworkAccess
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -180,7 +226,7 @@ Possible values include: 4, 16
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -194,8 +240,8 @@ Accept wildcard characters: False
 Gets or sets the sku name.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Name
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -225,7 +271,7 @@ Tags on the azure resource.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -273,7 +319,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount
+### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IAccount
 
 ## NOTES
 
