@@ -12,7 +12,7 @@ ARM (Azure Resource Manager) Web App and App Service Plan commands.
 
 ## Az.Websites Cmdlets
 ### [Add-AzWebAppAccessRestrictionRule](Add-AzWebAppAccessRestrictionRule.md)
-Adds an Access Restiction rule to an Azure Web App.
+Adds an Access Restriction rule to an Azure Web App.
 
 ### [Add-AzWebAppTrafficRouting](Add-AzWebAppTrafficRouting.md)
 Add a routing Rule to the Slot.
@@ -333,7 +333,7 @@ Description for Creates a new static site in an existing resource group, or upda
 Description for Updates a user entry with the listed roles
 
 ### [Update-AzWebAppAccessRestrictionConfig](Update-AzWebAppAccessRestrictionConfig.md)
-Updates the inheritance of Main site Access Restiction config to SCM Site for an Azure Web App.
+Updates the inheritance of Main site Access Restriction config to SCM Site for an Azure Web App.
 
 ### [Update-AzWebAppTrafficRouting](Update-AzWebAppTrafficRouting.md)
 Update a routing Rule to the Slot.
