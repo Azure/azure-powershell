@@ -971,5 +971,9 @@
   {
     "alias": "LambdaTest",
     "module": "LambdaTest"
+  },
+  {
+    "alias": "CloudHsm",
+    "module": "CloudHsm"
   }
 ]
