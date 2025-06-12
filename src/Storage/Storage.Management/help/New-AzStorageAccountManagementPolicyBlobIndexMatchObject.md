@@ -44,7 +44,7 @@ PrefixMatch        BlobTypes   BlobIndexMatch
 {prefix1, prefix2} {blockBlob} {tag1, tag2}
 ```
 
-This command creates 2 ManagementPolicy BlobIndexMatch objects, then add themto a management policy rule filter.
+This command creates 2 ManagementPolicy BlobIndexMatch objects, then add them to a management policy rule filter.
 
 ## PARAMETERS
 

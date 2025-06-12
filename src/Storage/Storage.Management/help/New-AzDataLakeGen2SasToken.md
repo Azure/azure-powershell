@@ -40,12 +40,12 @@ New-AzDataLakeGen2SasToken -FileSystem "filesystem1" -Path "dir1/dir2" -Permissi
 
 This example generates a DatalakeGen2 SAS token with full permission.
 
-### Example 2: Generate a SAS token with specific StartTime, ExpireTime, Protocal, IPAddressOrRange, Encryption Scope, by pipeline a datalakegen2 item
+### Example 2: Generate a SAS token with specific StartTime, ExpireTime, Protocol, IPAddressOrRange, Encryption Scope, by pipeline a datalakegen2 item
 ```powershell
 Get-AzDataLakeGen2Item -FileSystem test -Path "testdir/dir2" | New-AzDataLakeGen2SasToken -Permission rw -Protocol Https -IPAddressOrRange 10.0.0.0-12.10.0.0 -StartTime (Get-Date) -ExpiryTime (Get-Date).AddDays(6) -EncryptionScope scopename
 ```
 
-This example generates a DatalakeGen2 SAS token by pipeline a datalake gen2 item, and with specific StartTime, ExpireTime, Protocal, IPAddressOrRange, Encryption Scope.
+This example generates a DatalakeGen2 SAS token by pipeline a datalake gen2 item, and with specific StartTime, ExpireTime, Protocol, IPAddressOrRange, Encryption Scope.
 
 ## PARAMETERS
 

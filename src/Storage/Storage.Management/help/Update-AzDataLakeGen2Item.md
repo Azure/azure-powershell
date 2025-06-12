@@ -130,7 +130,7 @@ ArchiveStatus         :
 AccessTierChangedOn   : 1/1/0001 12:00:00 AM +00:00
 ```
 
-This command updates all properties on a file (ACL, permission,owner, group, metadata, property can be updated with any conbination), and show them in Powershell console.
+This command updates all properties on a file (ACL, permission,owner, group, metadata, property can be updated with any combination), and show them in Powershell console.
 
 ### Example 3: Add an ACL entry to a directory
 ```powershell

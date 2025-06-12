@@ -88,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -DestinationAccount
-Object Replication Policy DestinationAccount, if SourceAccount is account name it should be account name, else should be account resource id. Default value will be the input StorageAccountName, or the resouceID of the account.
+Object Replication Policy DestinationAccount, if SourceAccount is account name it should be account name, else should be account resource id. Default value will be the input StorageAccountName, or the resourceID of the account.
 
 ```yaml
 Type: System.String

@@ -67,12 +67,12 @@ Get-AzStorageFile -ShareName sample | Where-Object {$_.GetType().Name -eq "Azure
 
 This example downloads the files under sample file share
 
-### Example 3: Download an Azure file to a local file, and perserve the Azure File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the local file.
+### Example 3: Download an Azure file to a local file, and preserve the Azure File SMB properties (File Attributes, File Creation Time, File Last Write Time) in the local file.
 ```powershell
 Get-AzStorageFileContent -ShareName sample -Path "dir1/file1" -Destination $localFilePath -PreserveSMBAttribute
 ```
 
-This example downloads an Azure file to a local file, and perserves the Azure File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the local file.
+This example downloads an Azure file to a local file, and preserves the Azure File SMB properties (File Attributes, File Creation Time, File Last Write Time) in the local file.
 
 ## PARAMETERS
 
@@ -252,7 +252,7 @@ Accept wildcard characters: False
 ```
 
 ### -PreserveSMBAttribute
-Keep the source File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in destination File. This parameter is only available on Windows.
+Keep the source File SMB properties (File Attributes, File Creation Time, File Last Write Time) in destination File. This parameter is only available on Windows.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
