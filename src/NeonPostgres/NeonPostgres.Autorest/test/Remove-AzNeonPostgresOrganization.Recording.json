@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "15" ],
-        "x-ms-client-request-id": [ "a4d8737c-d4a4-4c85-b7de-74d8ca03a257" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "cdb7b53f-f145-4942-af06-fbc6cd968168" ],
         "CommandName": [ "Remove-AzNeonPostgresOrganization" ],
         "FullCommandName": [ "Remove-AzNeonPostgresOrganization_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,14 +24,14 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
-        "x-ms-request-id": [ "f44fa5ad-a035-4e07-92cb-d4f0db33212c" ],
-        "x-ms-correlation-request-id": [ "f44fa5ad-a035-4e07-92cb-d4f0db33212c" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250610T052343Z:f44fa5ad-a035-4e07-92cb-d4f0db33212c" ],
+        "x-ms-request-id": [ "d0978106-9d52-4a06-a99b-ceb170b4cc67" ],
+        "x-ms-correlation-request-id": [ "d0978106-9d52-4a06-a99b-ceb170b4cc67" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250612T091031Z:d0978106-9d52-4a06-a99b-ceb170b4cc67" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 185078F8197349BBABFDBEF66CF116B6 Ref B: MAA201060513051 Ref C: 2025-06-10T05:23:41Z" ],
-        "Date": [ "Tue, 10 Jun 2025 05:23:42 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 45AF39ECC1354B5DB7691A1E8EDAF863 Ref B: MAA201060514019 Ref C: 2025-06-12T09:10:30Z" ],
+        "Date": [ "Thu, 12 Jun 2025 09:10:31 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]

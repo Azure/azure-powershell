@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "5f08ce1f-4a8b-4694-9db3-3b8cb48e5383" ],
+        "x-ms-client-request-id": [ "4dd35d35-2405-41d2-bc5a-7ff9efdc9635" ],
         "CommandName": [ "Get-AzNeonPostgresBranch" ],
         "FullCommandName": [ "Get-AzNeonPostgresBranch_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,26 +22,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=9cf8ccaf-273c-4fe7-ae5a-2498a0f5d4c5/westindia/ac383ab9-190c-4df2-9b24-f843242afa08" ],
+        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=9cf8ccaf-273c-4fe7-ae5a-2498a0f5d4c5/southindia/50a5e643-f0c0-4757-a492-631a4bf64053" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "d1f048e3-6cb3-44e3-b043-5d33af385ebe" ],
-        "x-ms-correlation-request-id": [ "8e1f7235-3999-46a3-942f-0cf271d2455b" ],
+        "x-ms-request-id": [ "3b7cc0fa-649c-484d-b927-56e90fa6e819" ],
+        "x-ms-correlation-request-id": [ "3a51813d-6929-403f-b1f8-ac9a264a033b" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250610T052139Z:8e1f7235-3999-46a3-942f-0cf271d2455b" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250612T091008Z:3a51813d-6929-403f-b1f8-ac9a264a033b" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 51CF9A7049DE429186147870CBEE87B2 Ref B: MAA201060513051 Ref C: 2025-06-10T05:21:37Z" ],
-        "Date": [ "Tue, 10 Jun 2025 05:21:38 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7341A22503C14D11B2C92D876C1E0983 Ref B: MAA201060514019 Ref C: 2025-06-12T09:10:06Z" ],
+        "Date": [ "Thu, 12 Jun 2025 09:10:07 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "722" ],
+        "Content-Length": [ "711" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"projectId\":\"dawn-breeze-86932057\",\"attributes\":[{\"name\":\"createdAt\",\"value\":\"May 12, 2025 8:02 AM\"},{\"name\":\"logicalSize\",\"value\":\"30785536\"},{\"name\":\"cpuUsedSec\",\"value\":\"80\"},{\"name\":\"computeTimeSeconds\",\"value\":\"80\"},{\"name\":\"activeTimeSeconds\",\"value\":\"312\"},{\"name\":\"writtenDataBytes\",\"value\":\"34531256\"},{\"name\":\"dataTransferBytes\",\"value\":\"0\"},{\"name\":\"isProtected\",\"value\":\"false\"},{\"name\":\"isDefault\",\"value\":\"true\"},{\"name\":\"lastActive\",\"value\":\"May 12, 2025 8:02 AM\"},{\"name\":\"autoscalingLimitMinCu\",\"value\":\"0.25\"},{\"name\":\"autoscalingLimitMaxCu\",\"value\":\"0.25\"}],\"entityId\":\"br-damp-bird-a82olmcu\",\"entityName\":\"main\",\"createdAt\":\"May 12, 2025 8:02 AM\",\"provisioningState\":\"idle\"}}]}",
+      "Content": "{\"value\":[{\"properties\":{\"projectId\":\"dawn-breeze-86932057\",\"attributes\":[{\"name\":\"createdAt\",\"value\":\"May 12, 2025 8:02 AM\"},{\"name\":\"logicalSize\",\"value\":\"30785536\"},{\"name\":\"cpuUsedSec\",\"value\":\"0\"},{\"name\":\"computeTimeSeconds\",\"value\":\"0\"},{\"name\":\"activeTimeSeconds\",\"value\":\"0\"},{\"name\":\"writtenDataBytes\",\"value\":\"0\"},{\"name\":\"dataTransferBytes\",\"value\":\"0\"},{\"name\":\"isProtected\",\"value\":\"false\"},{\"name\":\"isDefault\",\"value\":\"true\"},{\"name\":\"lastActive\",\"value\":\"May 12, 2025 8:02 AM\"},{\"name\":\"autoscalingLimitMinCu\",\"value\":\"0.25\"},{\"name\":\"autoscalingLimitMaxCu\",\"value\":\"0.25\"}],\"entityId\":\"br-damp-bird-a82olmcu\",\"entityName\":\"main\",\"createdAt\":\"May 12, 2025 8:02 AM\",\"provisioningState\":\"idle\"}}]}",
       "isContentBase64": false
     }
   },
@@ -53,7 +53,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "6cde4ca3-351b-43e7-887e-5b7412e6e45e" ],
+        "x-ms-client-request-id": [ "9a9ada0f-bf94-4ef9-9c8f-04da5f077e6b" ],
         "CommandName": [ "Get-AzNeonPostgresBranch" ],
         "FullCommandName": [ "Get-AzNeonPostgresBranch_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -68,26 +68,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=9cf8ccaf-273c-4fe7-ae5a-2498a0f5d4c5/westindia/eaf4a990-f808-495c-bec9-f3729543fb28" ],
+        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=9cf8ccaf-273c-4fe7-ae5a-2498a0f5d4c5/southindia/cb285c33-89df-4408-ab80-d301aa8e5bfb" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "77b6eb59-5eff-4a01-8ea5-0a713f630aae" ],
-        "x-ms-correlation-request-id": [ "43be0cd4-405b-4f69-9ae8-ff75e1670dca" ],
+        "x-ms-request-id": [ "4a2b7927-4344-4a93-9e68-96c4472a7535" ],
+        "x-ms-correlation-request-id": [ "79badd87-da18-4a16-9572-dcb8bc191c5c" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250610T052142Z:43be0cd4-405b-4f69-9ae8-ff75e1670dca" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250612T091009Z:79badd87-da18-4a16-9572-dcb8bc191c5c" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D396149D967041C6A472C3751A325EF5 Ref B: MAA201060513051 Ref C: 2025-06-10T05:21:39Z" ],
-        "Date": [ "Tue, 10 Jun 2025 05:21:41 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1990746DBCBB4E47BBA11B166DD5665D Ref B: MAA201060514019 Ref C: 2025-06-12T09:10:08Z" ],
+        "Date": [ "Thu, 12 Jun 2025 09:10:09 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "613" ],
+        "Content-Length": [ "602" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"projectId\":\"dawn-breeze-86932057\",\"parentId\":null,\"roleName\":null,\"databaseName\":null,\"roles\":null,\"databases\":null,\"endpoints\":null,\"attributes\":[{\"name\":\"logicalSize\",\"value\":\"30785536\"},{\"name\":\"cpuUsedSec\",\"value\":\"80\"},{\"name\":\"computeTimeSeconds\",\"value\":\"80\"},{\"name\":\"activeTimeSeconds\",\"value\":\"312\"},{\"name\":\"writtenDataBytes\",\"value\":\"34531256\"},{\"name\":\"dataTransferBytes\",\"value\":\"0\"},{\"name\":\"isProtected\",\"value\":\"false\"},{\"name\":\"isDefault\",\"value\":\"true\"}],\"entityId\":\"br-damp-bird-a82olmcu\",\"entityName\":\"main\",\"createdAt\":\"May 12, 2025 8:02 AM\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"properties\":{\"projectId\":\"dawn-breeze-86932057\",\"parentId\":null,\"roleName\":null,\"databaseName\":null,\"roles\":null,\"databases\":null,\"endpoints\":null,\"attributes\":[{\"name\":\"logicalSize\",\"value\":\"30785536\"},{\"name\":\"cpuUsedSec\",\"value\":\"0\"},{\"name\":\"computeTimeSeconds\",\"value\":\"0\"},{\"name\":\"activeTimeSeconds\",\"value\":\"0\"},{\"name\":\"writtenDataBytes\",\"value\":\"0\"},{\"name\":\"dataTransferBytes\",\"value\":\"0\"},{\"name\":\"isProtected\",\"value\":\"false\"},{\"name\":\"isDefault\",\"value\":\"true\"}],\"entityId\":\"br-damp-bird-a82olmcu\",\"entityName\":\"main\",\"createdAt\":\"May 12, 2025 8:02 AM\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

@@ -15,35 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNeonPostgresProjectConn
 }
 
 Describe 'Get-AzNeonPostgresProjectConnectionUri' {
-    It 'GetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentityOrganizationExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentityOrganization' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { 
+            $result = Get-AzNeonPostgresProjectConnectionUri -OrganizationName "NeonDemoOrgPS1" -ProjectName "dawn-breeze-86932057" -ProjectId "dawn-breeze-86932057" -ResourceGroupName "neonrg" -SubscriptionId "a81c0054-6c92-41aa-a235-4f9f98f917c6" -BranchId "br-damp-bird-a82olmcu" -DatabaseName "neondb" -EndpointId "ep-spring-cake-a88oisqp" -RoleName "neondb_owner"
+            $result.Count | Should -BeGreaterThan 0 
+        } | Should -Not -Throw
     }
 }

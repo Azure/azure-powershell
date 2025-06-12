@@ -15,19 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzNeonPostgresBranch')
 }
 
 Describe 'Update-AzNeonPostgresBranch' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityProjectExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityOrganizationExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { throw [System.NotImplementedException] } | Should -Throw
     }
 }
