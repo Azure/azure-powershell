@@ -66,20 +66,6 @@ Update the properties of an existing job.
 ```powershell
 $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
 
-$DebugPreference = "Continue"
-
-# You can use `$DebugPreference = "Continue"`, with any example/usecase to get exact details of error in below format when update command fails.
-# {
-#   "Error": {
-#     "Code": "StaticValidationGenericCountryCodeHasInvalidLength",
-#     "Message": "The attribute country code does not meet length constraints.\r\nEnter a value with 2 characters for country code.",
-#     "Details": [
-#       null
-#     ],
-#     "Target": null
-#   }
-# } 
-
 Update-AzDataBoxJob -Name "powershell10" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -EnableSystemAssignedIdentity $true -UserAssignedIdentity "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"
 
 $keyEncryptionDetails

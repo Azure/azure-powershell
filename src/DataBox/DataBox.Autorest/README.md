@@ -97,18 +97,6 @@ directive:
     set:
       subject: JobCredential
 
-  # - where:
-  #     verb: New
-  #     parameter-name: IdentityUserAssignedIdentity
-  #   set:
-  #     parameter-name: UserAssignedIdentity
-  
-  # - where:
-  #     verb: Update
-  #     parameter-name: IdentityUserAssignedIdentity
-  #   set:
-  #     parameter-name: UserAssignedIdentity
-
   - where:
       parameter-name: PreferenceStorageAccountAccessTierPreference
     set:
@@ -143,11 +131,7 @@ directive:
           - IdentityType
           - DeliveryType  
           - Detail
-          
-  # - from: source-file-csharp
-  #   where: $
-  #   transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IJobSecrets', 'public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IJobSecrets');  
-    
+
   - model-cmdlet:
       - model-name: DataBoxDiskJobDetails
         cmdlet-name: New-AzDataBoxDiskJobDetailsObject

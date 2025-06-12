@@ -70,7 +70,7 @@ Describe 'New-AzDataBoxJob' {
         
         $details = New-AzDataBoxJobDetailsObject -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -KeyEncryptionKey $keyEncryptionDetails
 
-        $resource = New-AzDataBoxJob -Name $env.JobNameUAI -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup -TransferType "ImportToAzure" -Detail $details -Location "WestUS" -SkuName "DataBox" -EnableSystemAssignedIdentity:$true -UserAssignedIdentity $env.UserAssignedResourceId
+        $resource = New-AzDataBoxJob -Name $env.JobNameUAI -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup -TransferType "ImportToAzure" -Detail $details -Location "WestUS" -SkuName "DataBox" -EnableSystemAssignedIdentity -UserAssignedIdentity $env.UserAssignedResourceId
 
         $resource.Status | Should -Be 'DeviceOrdered'
     }
@@ -102,7 +102,7 @@ Describe 'New-AzDataBoxJob' {
     
         $dataAccount = New-AzDataBoxStorageAccountDetailsObject -StorageAccountId $env.StorageAccountId
         
-        $details = New-AzDataBoxHeavyJobDetailsObject -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -DevicePassword "*****" -ExpectedDataSizeInTeraByte 10
+        $details = New-AzDataBoxHeavyJobDetailsObject -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -DevicePassword "1234abcd" -ExpectedDataSizeInTeraByte 10
 
         $resource = New-AzDataBoxJob -Name $env.JobNameHeavy -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup -TransferType "ImportToAzure" -Detail $details -Location "WestUS" -SkuName "DataBoxHeavy" 
 
@@ -117,7 +117,7 @@ Describe 'New-AzDataBoxJob' {
     
         $dataAccount = New-AzDataBoxStorageAccountDetailsObject -StorageAccountId $env.StorageAccountId
         
-        $details = New-AzDataBoxDiskJobDetailsObject -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -Passkey "*****" -PreferredDisk @{"8" = 8; "4" = 2} -ExpectedDataSizeInTeraByte 18
+        $details = New-AzDataBoxDiskJobDetailsObject -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -Passkey "1234abcd" -PreferredDisk @{"8" = 8; "4" = 2} -ExpectedDataSizeInTeraByte 18
         $resource = New-AzDataBoxJob -Name $env.JobNameDisk -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup -TransferType "ImportToAzure" -Detail $details -Location "WestUS" -SkuName "DataBoxDisk" 
         $resource.Status | Should -Be 'DeviceOrdered'
     } 
