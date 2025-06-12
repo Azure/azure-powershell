@@ -12,8 +12,21 @@ Checks if account name is available.
 
 ## SYNTAX
 
+### CheckExpanded (Default)
 ```
 Test-AzPurviewAccountNameAvailability -Name <String> -Type <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonFilePath
+```
+Test-AzPurviewAccountNameAvailability -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzPurviewAccountNameAvailability -JsonString <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,7 +51,8 @@ Check if account name 'test-pa' is available.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -52,12 +66,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Resource name to verify for availability
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
@@ -87,7 +131,7 @@ Fully qualified resource type which includes provider namespace
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
@@ -135,7 +179,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ICheckNameAvailabilityResult
+### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.ICheckNameAvailabilityResult
 
 ## NOTES
 
