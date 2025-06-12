@@ -354,5 +354,5 @@ Cancels a scan
 Checks if account name is available.
 
 ### [Update-AzPurviewAccount](Update-AzPurviewAccount.md)
-Updates an account
+Update an account
 
