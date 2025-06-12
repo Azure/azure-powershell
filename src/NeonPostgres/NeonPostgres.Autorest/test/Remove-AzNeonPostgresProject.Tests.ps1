@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNeonPostgresProject'
 }
 
 Describe 'Remove-AzNeonPostgresProject' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { Remove-AzNeonPostgresProject -Name "fragrant-mountain-55459234" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "a81c0054-6c92-41aa-a235-4f9f98f917c6" } | Should -Not -Throw
     }
 }

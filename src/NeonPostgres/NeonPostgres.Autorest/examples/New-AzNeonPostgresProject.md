@@ -1,7 +1,7 @@
 ### Example 1: Create a new Neon project resource within Azure
 
 ```powershell
-New-AzNeonPostgresProject -Name "test-project" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000" -BranchDatabaseName "sampledb" -BranchEntityName "sample-entity" -BranchParentId "dawn-breeze-86932057" -BranchRoleName "readonly"
+New-AzNeonPostgresProject -Name "test-project" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "a81c0054-6c92-41aa-a235-4f9f98f917c6" -BranchDatabaseName "sampledb" -BranchEntityName "sample-entity" -BranchParentId "dawn-breeze-86932057" -BranchRoleName "neondb_owner" -RegionId eastus2 -PgVersion 17
 ```
 
 ```output
@@ -17,7 +17,7 @@ BranchParentId                              :
 BranchProjectId                             : 
 BranchProvisioningState                     : 
 BranchRole                                  : 
-BranchRoleName                              : 
+BranchRoleName                              : neondb_owner
 CreatedAt                                   : May 12, 2025 8:02 AM
 Database                                    : 
 DefaultEndpointSettingAutoscalingLimitMaxCu : 0
@@ -43,4 +43,4 @@ SystemDataLastModifiedByType                :
 Type                                        : 
 ```
 
-Create a new Neon project resource within Azure.
+Create a new Neon project resource within Neon Postgres Organization

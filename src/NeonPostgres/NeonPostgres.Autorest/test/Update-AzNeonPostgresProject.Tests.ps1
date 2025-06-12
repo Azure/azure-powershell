@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzNeonPostgresProject'
 }
 
 Describe 'Update-AzNeonPostgresProject' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Throw
+    It 'UpdateExpanded' {
+        { 
+            Update-AzNeonPostgresProject -Name "test-project" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "a81c0054-6c92-41aa-a235-4f9f98f917c6" -BranchDatabaseName "sampledb" -BranchEntityName "sample-entity" -BranchParentId "dawn-breeze-86932057" -BranchRoleName "neondb_owner" -RegionId "eastus2" -PgVersion "17"
+         } | Should -Throw
     }
 }
