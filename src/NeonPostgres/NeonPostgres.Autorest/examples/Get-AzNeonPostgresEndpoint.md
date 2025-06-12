@@ -5,6 +5,23 @@ Get-AzNeonPostgresEndpoint -BranchName "br-damp-bird-a82olmcu" -ProjectName "daw
 ```
 
 ```output
+Attribute                    : 
+BranchId                     : br-damp-bird-a82olmcu
+CreatedAt                    : May 12, 2025 8:02 AM
+EndpointType                 : read_write
+EntityId                     : ep-spring-cake-a88oisqp
+EntityName                   : Primary
+Id                           : 
+Name                         : 
+ProjectId                    : dawn-breeze-86932057
+ProvisioningState            : Succeeded
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : 
 ```
 
  List endpoint resources associated with a specific branch in Neon Postgres

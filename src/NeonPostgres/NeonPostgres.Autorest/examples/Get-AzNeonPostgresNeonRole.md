@@ -4,6 +4,23 @@ Get-AzNeonPostgresNeonRole -BranchName "br-damp-bird-a82olmcu" -ProjectName "daw
 ```
 
 ```output
+Attribute                    : 
+BranchId                     : br-damp-bird-a82olmcu
+CreatedAt                    : May 12, 2025 8:02 AM
+EntityId                     : 
+EntityName                   : neondb_owner
+Id                           : 
+IsSuperUser                  : False
+Name                         : 
+Permission                   : 
+ProvisioningState            : Succeeded
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : 
 ```
 
 List all roles and permissions associated with a specific branch

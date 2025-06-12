@@ -3,7 +3,4 @@
 Remove-AzNeonPostgresProject -Name "dawn-breeze-86932057" -OrganizationName "NeonDemoOrgPS1" -ResourceGroupName "neonrg" -SubscriptionId "00000000-0000-0000-0000-000000000000"
 ```
 
-```output
-```
-
 Delete an existing Neon project resource within Azure.
