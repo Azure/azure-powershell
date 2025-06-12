@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzDataBoxJob' {
-    It 'Microsoft managed to customer managed system assigned' -Skip {
+    It 'Microsoft managed to customer managed system assigned' {
         $contactDetail = New-AzDataBoxContactDetailsObject -ContactName $env.ContactName -EmailList $env.EmailList -Phone $env.Phone
         $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 $env.StreetAddress1 -StateOrProvince $env.StateOrProvince -Country $env.Country -City $env.City -PostalCode $env.PostalCode -AddressType $env.AddressType       
         Update-AzDataBoxJob -Name $env.JobName -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -EnableSystemAssignedIdentity $true
@@ -20,7 +20,7 @@ Describe 'Update-AzDataBoxJob' {
         Update-AzDataBoxJob -Name $env.JobName -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -EnableSystemAssignedIdentity $true
         
     }
-    It 'System assigned to user assigned' -Skip {
+    It 'System assigned to user assigned' {
         $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = $env.UserAssignedResourceId} -KekUrl $env.KekUrl -KekVaultResourceId $env.KekVaultResourceId
         Update-AzDataBoxJob -Name $env.JobName -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -EnableSystemAssignedIdentity $true -UserAssignedIdentity $env.UserAssignedResourceId
     }
