@@ -1,6 +1,6 @@
-### Example 1: Create an AzDigitalTwinsEndpoint for Eventhub
+### Example 1: Update an AzDigitalTwinsEndpoint for Eventhub
 ```powershell
-New-AzDigitalTwinsEndpoint -EndpointName azps-dt-eh -EndpointType EventHub -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -ConnectionStringPrimaryKey 'Endpoint=sb://azps-eventhubs.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-eh' -AuthenticationType 'KeyBased'
+Update-AzDigitalTwinsEndpoint -EndpointName azps-dt-eh -EndpointType EventHub -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -ConnectionStringPrimaryKey 'Endpoint=sb://azps-eventhubs.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-eh' -AuthenticationType 'KeyBased'
 ```
 
 ```output
@@ -24,17 +24,17 @@ ResourceGroupName            : azps_test_group
 SystemDataCreatedAt          : 2025-06-06 11:16:50 AM
 SystemDataCreatedBy          : xxxxx.xxxxx@microsoft.com
 SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 2025-06-06 11:16:50 AM
+SystemDataLastModifiedAt     : 2025-06-06 11:18:27 AM
 SystemDataLastModifiedBy     : xxxxx.xxxxx@microsoft.com
 SystemDataLastModifiedByType : User
 Type                         : Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
 ```
 
-Create an AzDigitalTwinsEndpoint for Eventhub by connectionStringPrimaryKey
+Update an AzDigitalTwinsEndpoint for Eventhub by connectionStringPrimaryKey
 
-### Example 2: Create an AzDigitalTwinsEndpoint for EventGrid
+### Example 2: Update an AzDigitalTwinsEndpoint for EventGrid
 ```powershell
-New-AzDigitalTwinsEndpoint -EndpointName azps-dt-eg -EndpointType EventGrid -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -TopicEndpoint 'https://azps-eventgrid.eastus-1.eventgrid.azure.net/api/events' -AccessKey1 '******=' -AuthenticationType 'KeyBased'
+Update-AzDigitalTwinsEndpoint -EndpointName azps-dt-eg -EndpointType EventGrid -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -TopicEndpoint 'https://azps-eventgrid.eastus-1.eventgrid.azure.net/api/events' -AccessKey1 '******=' -AuthenticationType 'KeyBased'
 ```
 
 ```output
@@ -59,18 +59,18 @@ ResourceGroupName            : azps_test_group
 SystemDataCreatedAt          : 2025-06-06 11:22:11 AM
 SystemDataCreatedBy          : xxxxx.xxxxx@microsoft.com
 SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 2025-06-06 11:22:11 AM
+SystemDataLastModifiedAt     : 2025-06-06 11:22:48 AM
 SystemDataLastModifiedBy     : xxxxx.xxxxx@microsoft.com
 SystemDataLastModifiedByType : User
 Type                         : Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
 ```
 
-Create an AzDigitalTwinsEndpoint for Eventhub by TopicEndpoint and accessKey1
+Update an AzDigitalTwinsEndpoint for Eventhub by TopicEndpoint and accessKey1
 
 
-### Example 3: Create an AzDigitalTwinsEndpoint for ServiceBus
+### Example 3: Update an AzDigitalTwinsEndpoint for ServiceBus
 ```powershell
-New-AzDigitalTwinsEndpoint -EndpointName azps-dt-sb -EndpointType ServiceBus -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -PrimaryConnectionString "Endpoint=sb://azps-servicebus.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-sb" -AuthenticationType 'KeyBased'
+Update-AzDigitalTwinsEndpoint -EndpointName azps-dt-sb -EndpointType ServiceBus -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -PrimaryConnectionString "Endpoint=sb://azps-servicebus.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-sb" -AuthenticationType 'KeyBased'
 ```
 
 ```output
@@ -100,4 +100,4 @@ SystemDataLastModifiedByType : User
 Type                         : Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
 ```
 
-Create an AzDigitalTwinsEndpoint for ServicBus by PrimaryConnectionString
+Update an AzDigitalTwinsEndpoint for ServicBus by PrimaryConnectionString
