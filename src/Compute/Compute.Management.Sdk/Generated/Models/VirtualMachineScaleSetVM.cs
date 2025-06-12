@@ -39,8 +39,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="instanceId">The virtual machine instance ID.</param>
-        /// <param name="sku">The virtual machine SKU.</param>
         /// <param name="latestModelApplied">Specifies whether the latest model
         /// has been applied to the virtual machine.</param>
         /// <param name="vmId">Azure VM unique ID.</param>
@@ -106,6 +104,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="timeCreated">Specifies the time at which the Virtual
         /// Machine resource was created. Minimum api-version:
         /// 2021-11-01.</param>
+        /// <param name="instanceId">The virtual machine instance ID.</param>
+        /// <param name="sku">The virtual machine SKU.</param>
         /// <param name="plan">Specifies information about the marketplace
         /// image used to create the virtual machine. This element is only used
         /// for marketplace images. Before you can use a marketplace image from
@@ -121,11 +121,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="etag">Etag is property returned in Update/Get response
         /// of the VMSS VM, so that customer can supply it in the header to
         /// ensure optimistic updates.</param>
-        public VirtualMachineScaleSetVM(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string instanceId = default(string), Sku sku = default(Sku), bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceView instanceView = default(VirtualMachineScaleSetVMInstanceView), HardwareProfile hardwareProfile = default(HardwareProfile), string resilientVMDeletionStatus = default(string), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), SecurityProfile securityProfile = default(SecurityProfile), NetworkProfile networkProfile = default(NetworkProfile), VirtualMachineScaleSetVMNetworkProfileConfiguration networkProfileConfiguration = default(VirtualMachineScaleSetVMNetworkProfileConfiguration), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), string provisioningState = default(string), string licenseType = default(string), string modelDefinitionApplied = default(string), VirtualMachineScaleSetVMProtectionPolicy protectionPolicy = default(VirtualMachineScaleSetVMProtectionPolicy), string userData = default(string), System.DateTime? timeCreated = default(System.DateTime?), Plan plan = default(Plan), IList<VirtualMachineExtension> resources = default(IList<VirtualMachineExtension>), IList<string> zones = default(IList<string>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), string etag = default(string))
+        public VirtualMachineScaleSetVM(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceView instanceView = default(VirtualMachineScaleSetVMInstanceView), HardwareProfile hardwareProfile = default(HardwareProfile), string resilientVMDeletionStatus = default(string), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), SecurityProfile securityProfile = default(SecurityProfile), NetworkProfile networkProfile = default(NetworkProfile), VirtualMachineScaleSetVMNetworkProfileConfiguration networkProfileConfiguration = default(VirtualMachineScaleSetVMNetworkProfileConfiguration), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), string provisioningState = default(string), string licenseType = default(string), string modelDefinitionApplied = default(string), VirtualMachineScaleSetVMProtectionPolicy protectionPolicy = default(VirtualMachineScaleSetVMProtectionPolicy), string userData = default(string), System.DateTime? timeCreated = default(System.DateTime?), string instanceId = default(string), Sku sku = default(Sku), Plan plan = default(Plan), IList<VirtualMachineExtension> resources = default(IList<VirtualMachineExtension>), IList<string> zones = default(IList<string>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), string etag = default(string))
             : base(location, id, name, type, tags)
         {
-            InstanceId = instanceId;
-            Sku = sku;
             LatestModelApplied = latestModelApplied;
             VmId = vmId;
             InstanceView = instanceView;
@@ -145,6 +143,8 @@ namespace Microsoft.Azure.Management.Compute.Models
             ProtectionPolicy = protectionPolicy;
             UserData = userData;
             TimeCreated = timeCreated;
+            InstanceId = instanceId;
+            Sku = sku;
             Plan = plan;
             Resources = resources;
             Zones = zones;
@@ -157,18 +157,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets the virtual machine instance ID.
-        /// </summary>
-        [JsonProperty(PropertyName = "instanceId")]
-        public string InstanceId { get; private set; }
-
-        /// <summary>
-        /// Gets the virtual machine SKU.
-        /// </summary>
-        [JsonProperty(PropertyName = "sku")]
-        public Sku Sku { get; private set; }
 
         /// <summary>
         /// Gets specifies whether the latest model has been applied to the
@@ -327,6 +315,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.timeCreated")]
         public System.DateTime? TimeCreated { get; private set; }
+
+        /// <summary>
+        /// Gets the virtual machine instance ID.
+        /// </summary>
+        [JsonProperty(PropertyName = "instanceId")]
+        public string InstanceId { get; private set; }
+
+        /// <summary>
+        /// Gets the virtual machine SKU.
+        /// </summary>
+        [JsonProperty(PropertyName = "sku")]
+        public Sku Sku { get; private set; }
 
         /// <summary>
         /// Gets or sets specifies information about the marketplace image used

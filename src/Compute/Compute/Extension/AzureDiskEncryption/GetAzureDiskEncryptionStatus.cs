@@ -24,6 +24,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
+using EncryptionStatus = Microsoft.Azure.Commands.Compute.Models.EncryptionStatus;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
