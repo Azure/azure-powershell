@@ -33,11 +33,11 @@ if ($env:RUN_TEST_ON_ALL_MODULES -eq "True") {
 }
 else {
     Write-Host "Run test on generated folder changed modules"
-    # Only generated filder change should trigger the test 
+    # Only generated folder change should trigger the test
     for ($i = 0; $i -lt $ChangedFiles.Count; $i++) {
-        if ($ChangedFiles[$i] -match '^generated/([^/]+)/([^/]+\.autorest)/') {
-            $moduleName = $Matches[2]
-            $subModuleName = $Matches[3]
+        if ($ChangedFiles[$i] -match '^generated/([^/]+)/([^/]+\.Autorest)/') {
+            $moduleName = $Matches[1]
+            $subModuleName = $Matches[2]
             $subModule = "$moduleName/$subModuleName"
             
             $changedModulesDict[$moduleName] = $true
@@ -62,6 +62,11 @@ foreach ($subModule in $changedSubModules) {
 }
 Write-Host "##[endgroup]"
 Write-Host
+
+$changedModulesRecordFile = Join-Path $artifactsDir 'filteredChangedModules.txt'
+$changedModules | Set-Content -Path $changedModulesRecordFile -Encoding UTF8
+$changedSubModulesRecordFile = Join-Path $artifactsDir 'filteredChangedSubModules.txt'
+$changedSubModules | Set-Content -Path $changedSubModulesRecordFile -Encoding UTF8
 
 $groupedBuildModules = Group-Modules -Modules $changedModules -MaxParallelJobs $MaxParallelBuildJobs
 Write-Matrix -GroupedModules $groupedBuildModules -VariableName 'buildTargets' -RepoRoot $RepoRoot
