@@ -31,7 +31,7 @@ Remove-AzSynapseLinkConnection -InputObject <PSLinkConnectionResource> [-PassThr
 ```
 
 ## DESCRIPTION
-The **Remove-AzSynapseLinkConnection** cmdlet removes a link connection from workspace. Only link connections in initial or stpped status can be removed.
+The **Remove-AzSynapseLinkConnection** cmdlet removes a link connection from workspace. Only link connections in initial or stopped status can be removed.
 
 ## EXAMPLES
 
