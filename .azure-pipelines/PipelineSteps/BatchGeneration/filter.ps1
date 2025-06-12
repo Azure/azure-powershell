@@ -35,9 +35,9 @@ else {
     Write-Host "Run test on generated folder changed modules"
     # Only generated folder change should trigger the test
     for ($i = 0; $i -lt $ChangedFiles.Count; $i++) {
-        if ($ChangedFiles[$i] -match '^generated/([^/]+)/([^/]+\.autorest)/') {
-            $moduleName = $Matches[2]
-            $subModuleName = $Matches[3]
+        if ($ChangedFiles[$i] -match '^generated/([^/]+)/([^/]+\.Autorest)/') {
+            $moduleName = $Matches[1]
+            $subModuleName = $Matches[2]
             $subModule = "$moduleName/$subModuleName"
             
             $changedModulesDict[$moduleName] = $true
