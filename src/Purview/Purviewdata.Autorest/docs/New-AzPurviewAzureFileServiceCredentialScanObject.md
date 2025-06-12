@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureFileServiceCredentialScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurefileservicecredentialscanobject
 schema: 2.0.0
 ---
 
@@ -13,10 +13,10 @@ Create an in-memory object for AzureFileServiceCredentialScan.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureFileServiceCredentialScanObject -Kind <ScanAuthorizationType>
- [-CollectionReferenceName <String>] [-CollectionType <String>] [-ConnectedViaReferenceName <String>]
- [-CredentialReferenceName <String>] [-CredentialType <CredentialType>] [-ScanRulesetName <String>]
- [-ScanRulesetType <ScanRulesetType>] [-ShareName <String>] [-Worker <Int32>] [<CommonParameters>]
+New-AzPurviewAzureFileServiceCredentialScanObject [-CollectionReferenceName <String>]
+ [-CollectionType <String>] [-ConnectedViaReferenceName <String>] [-CredentialReferenceName <String>]
+ [-CredentialType <String>] [-ScanRulesetName <String>] [-ScanRulesetType <String>] [-ShareName <String>]
+ [-Worker <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ Create an in-memory object for AzureFileServiceCredentialScan.
 
 ### Example 1: Create Azure File Service Credential scan object
 ```powershell
-New-AzPurviewAzureFileServiceCredentialScanObject -Kind 'AzureFileServiceCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureFileService'  -ScanRulesetType 'System' -ShareName 'share'
+New-AzPurviewAzureFileServiceCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureFileService'  -ScanRulesetType 'System' -ShareName 'share'
 ```
 
 ```output
@@ -116,26 +116,11 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -161,7 +146,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -209,7 +194,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceCredentialScan
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureFileServiceCredentialScan
 
 ## NOTES
 
