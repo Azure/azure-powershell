@@ -120,7 +120,7 @@ Accept wildcard characters: False
 
 ### -UseExactAccountVersion
 
-Use the exact **Az.Accounts** version that meet the minimum requirement from the Az modules to
+Use the exact **Az.Accounts** version that meet the mininum requirement from the Az modules to
 install.
 
 ```yaml
