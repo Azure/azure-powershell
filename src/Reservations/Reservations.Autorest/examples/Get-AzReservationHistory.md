@@ -17,7 +17,7 @@ westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce
 westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce2a/1 Standard_B1ls Creating                                                      6/24/2022 10:02:52 PM Reserved VM Instance, Standard_B1ls, US West,… 
 ```
 
-Get the revision of a reservation. Some data might be trucated due to the width of powershell view, appending this to the end of the command to show the truncated data: | ft -Wrap
+Get the revision of a reservation. Some data might be truncated due to the width of powershell view, appending this to the end of the command to show the truncated data: | ft -Wrap
 
 
 
