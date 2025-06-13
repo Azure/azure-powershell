@@ -18,7 +18,7 @@
 .Synopsis
 Deletes a Cloud HSM
 .Description
-The Remove-AzCloudHsm cmdlet deletes the specified Cloud HSM. Note that although specifying the resource group is optional for this cmdlet, you should so for better performance.
+The Remove-AzCloudHsm cmdlet deletes the specified Cloud HSM. Note that although specifying the resource group is optional for this cmdlet, you should do so for better performance.
 .Example
 {{ Add code here }}
 .Example

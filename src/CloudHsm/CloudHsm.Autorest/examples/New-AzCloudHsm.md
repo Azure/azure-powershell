@@ -37,7 +37,7 @@ Type                              : Microsoft.HardwareSecurityModules/cloudHsmCl
 
 ```
 
-This command creates a Cloud HSM names myCloudHsm, in the Azure region UK West. The command adds the cloud HSM to the resource group named group and adds 2 tags. Because the command does not specify a value for the SKU parameter, it creates a cloud HSM with the default SKU Standard_B1. 	
+This command creates a Cloud HSM named myCloudHsm, in the Azure region UK West. The command adds the cloud HSM to the resource group named group and adds 2 tags. Because the command does not specify a value for the SKU parameter, it creates a cloud HSM with the default SKU Standard_B1. 	
 
 ### Example 2: Create Cloud HSM with User Assigned Identity
 ```powershell
@@ -77,4 +77,4 @@ Tag                               : {}
 Type                              : Microsoft.HardwareSecurityModules/cloudHsmClusters
 ```
 
-This command creates a Cloud HSM names myCloudHsm, in the Azure region UK West. The command adds the cloud HSM to the resource group named group with Standard_B1 SKU. The command associates user assigned identity named "identity" with the cloud HSM resource. 
+This command creates a Cloud HSM named myCloudHsm, in the Azure region UK West. The command adds the cloud HSM to the resource group named group with Standard_B1 SKU. The command associates user assigned identity named "identity" with the cloud HSM resource. 
