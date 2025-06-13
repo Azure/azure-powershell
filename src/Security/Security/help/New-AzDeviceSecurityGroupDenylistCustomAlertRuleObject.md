@@ -37,7 +37,7 @@ ValueType: "String"
 DenylistValues: []
 ```
 
-Create new deny list custom alert rule with rull type "SomeRuleType" and status set to disable
+Create new deny list custom alert rule with rule type "SomeRuleType" and status set to disable
 
 ## PARAMETERS
 
