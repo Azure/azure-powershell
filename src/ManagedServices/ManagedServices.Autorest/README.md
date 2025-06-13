@@ -38,14 +38,6 @@ title: ManagedServices
 module-version: 2.0.0
 subject-prefix: $(service-name)
 
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
 
   # Remove unnecessary cmdlet.
@@ -61,8 +53,7 @@ directive:
 
   # Remove variant of the cmdlet
   - where:
-      verb: New
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
     remove: true
 
   # Hide cmdlet
@@ -84,18 +75,12 @@ directive:
       default:
         script: '"subscriptions/" + (Get-AzContext).Subscription.Id'
 
-  # The regex(^/(?<scope>[^/]+)/) mathch failed because the scope inlcude '/' character.
-  # Replace regex to fixed it. 
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/global::System.Text.RegularExpressions.Regex\(\"\^\/\(\?\<scope\>\[\^\/\]\+\)/g, 'global::System.Text.RegularExpressions.Regex("^/(?<scope>.+)');
-
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
-    - Authorization
-    - EligibleApprover
+    - model-name: Authorization
+    - model-name: EligibleApprover
     # Need custom that add ArgumentCompleterAttribute for JustInTimeAccessPolicyMultiFactorAuthProvider parameter.
-    # - EligibleAuthorization
+    # - model-name: EligibleAuthorization
   
   # The function invalid for memory cmdlet.
   # Custom cmdlet.
