@@ -749,6 +749,11 @@ function Test-PacketCaptureV2WithRingBuffer {
         #Verification
         Assert-AreEqual $pc3.Name $pcName3
         Assert-AreEqual "Succeeded" $pc3.ProvisioningState
+        Assert-AreEqual 2 $c1.FileCount
+        Assert-AreEqual 102400 $c1.FileSizeInBytes
+        Assert-AreEqual 60 $c1.SessionTimeLimitInSeconds
+        Assert-Null $pc3.TotalBytesPerSession
+        Assert-Null $pc3.TimeLimitInSeconds
         Assert-AreEqual $pc3.TargetType AzureVMSS
        
         #Stop packet capture
@@ -761,7 +766,7 @@ function Test-PacketCaptureV2WithRingBuffer {
     }
     finally {
        # Cleanup
-       Clean-ResourceGroup $resourceGroupName
+       # Clean-ResourceGroup $resourceGroupName
        #Clean-ResourceGroup $nwRgName
     }
 }
