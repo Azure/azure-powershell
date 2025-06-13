@@ -424,7 +424,7 @@
     <value>Unable to set profile because environment variable '${0}' is null.</value>
   </data>
   <data name="ServicePrincipalWarning" xml:space="preserve">
-    <value>The provided service principal secret or certifcate password will be included in the '{0}' file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections.</value>
+    <value>The provided service principal secret or certificate password will be included in the '{0}' file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections.</value>
   </data>
   <data name="ClientAssertionWarning" xml:space="preserve">
     <value>The provided client id and assertion will be included in the '{0}' file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections.</value>
@@ -572,7 +572,7 @@
     <comment>0: command being not found; 1: its module</comment>
   </data>
   <data name="KeyStoreLoadingError" xml:space="preserve">
-    <value>KeyStore cannot be loaded from storage. Please check the keystore file integrity or system compablity. The functions relate to context autosaving may be affected.</value>
+    <value>KeyStore cannot be loaded from storage. Please check the keystore file integrity or system compatibility. The functions relate to context autosaving may be affected.</value>
   </data>
   <data name="InvalidOpenIDConfigUri" xml:space="preserve">
     <value>The uri is invalid: {0}</value>

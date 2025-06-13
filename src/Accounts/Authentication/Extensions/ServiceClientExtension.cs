@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 
         /// <summary>
         /// Set max retry times of retry after handler that is used to handle the response with retry-after header
-        /// from environement variable AZURE_PS_HTTP_MAX_RETRIES_FOR_429
+        /// from environment variable AZURE_PS_HTTP_MAX_RETRIES_FOR_429
         /// </summary>
         /// <returns>Whether succeed to set max retry times or not</returns>
         public static bool TrySetMaxTimesForRetryAfterHandler<TClient>(this Microsoft.Rest.ServiceClient<TClient> serviceClient) where TClient : Microsoft.Rest.ServiceClient<TClient>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         }
 
         /// <summary>
-        /// Set retry count of retry policy using ExponentialBackoffRetryStrategy from environement variable AZURE_PS_HTTP_MAX_RETRIES
+        /// Set retry count of retry policy using ExponentialBackoffRetryStrategy from environment variable AZURE_PS_HTTP_MAX_RETRIES
         /// </summary>
         /// <returns>Whether succeed to set retry count or not</returns>
         public static bool TrySetRetryCountofRetryPolicy<TClient>(this Microsoft.Rest.ServiceClient<TClient> serviceClient) where TClient : Microsoft.Rest.ServiceClient<TClient>
