@@ -58,7 +58,7 @@ The **Update-AzSynapseWorkspace** cmdlet updates an Azure Synapse Analytics work
 Update-AzSynapseWorkspace -Name ContosoWorkspace -Tag @{'key'='value'}
 ```
 
-This commands updates tags for the specified Azure Synapse Analytics workspace.
+This command updates tags for the specified Azure Synapse Analytics workspace.
 
 ### Example 2
 ```powershell
