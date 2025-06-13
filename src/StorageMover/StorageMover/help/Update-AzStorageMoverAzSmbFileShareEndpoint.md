@@ -70,7 +70,7 @@ Property                     : {
                                  "endpointType": "AzureStorageSmbFileShare",
                                  "description": "updated endpoint again",
                                  "provisioningState": "Succeeded",
-                                 "storageAccountResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegorup/providers/Microsoft.Storage/storageAccounts/myaccount",
+                                 "storageAccountResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount",
                                  "fileShareName": "testfs"
                                }
 SystemDataCreatedAt          : 6/27/2023 4:30:13 AM
