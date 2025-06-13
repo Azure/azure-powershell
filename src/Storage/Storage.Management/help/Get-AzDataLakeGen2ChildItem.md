@@ -76,7 +76,7 @@ Echo "Total $Total items in Filesystem $FileSystemName"
 ```
 
 This example uses the *MaxCount* and *ContinuationToken* parameters to list items recursively from a Filesystem in multiple batches.
-A small *MaxCount* can limit the items a count returned from single request, may help on operation times out error, and limit the memory usage of Powershell.
+A small *MaxCount* can limit the number of items returned from a single request, may help prevent operation timeout errors, and reduce the memory usage of PowerShell.
 The first four commands assign values to variables to use in the example.
 The fifth command specifies a **Do-While** statement that uses the **Get-AzDataLakeGen2ChildItem** cmdlet to list items.
 The statement includes the continuation token stored in the $Token variable.
