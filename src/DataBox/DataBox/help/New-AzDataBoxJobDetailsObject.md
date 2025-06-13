@@ -1,7 +1,7 @@
 ---
 external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxJobDetailsObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxjobdetailsobject
 schema: 2.0.0
 ---
 
@@ -13,10 +13,9 @@ Create an in-memory object for DataBoxJobDetails.
 ## SYNTAX
 
 ```
-New-AzDataBoxJobDetailsObject -ContactDetail <IContactDetails> -Type <ClassDiscriminator>
- [-DevicePassword <String>] [-DataExportDetail <IDataExportDetails[]>]
- [-DataImportDetail <IDataImportDetails[]>] [-ExpectedDataSizeInTeraByte <Int32>]
- [-KeyEncryptionKey <IKeyEncryptionKey>] [-Preference <IPreferences>]
+New-AzDataBoxJobDetailsObject -ContactDetail <IContactDetails> [-DevicePassword <String>]
+ [-DataExportDetail <IDataExportDetails[]>] [-DataImportDetail <IDataImportDetails[]>]
+ [-ExpectedDataSizeInTeraByte <Int32>] [-KeyEncryptionKey <IKeyEncryptionKey>] [-Preference <IPreferences>]
  [-ReverseShippingDetail <IReverseShippingDetails>] [-ShippingAddress <IShippingAddress>]
  [<CommonParameters>]
 ```
@@ -31,27 +30,55 @@ Create an in-memory object for DataBoxJobDetails.
 $contactDetail = New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
 $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
 
-New-AzDataBoxJobDetailsObject -Type "DataBox"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails
+New-AzDataBoxJobDetailsObject -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails
 ```
 
 ```output
 Action                     :
 ChainOfCustodySasKey       :
-ContactDetail              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ContactDetails
+ContactDetail              : {
+                               "contactName": "random",
+                               "phone": "1234567891",
+                               "emailList": [ "emailId" ]
+                             }
 CopyLogDetail              :
 CopyProgress               :
+DataCenterCode             :
 DataExportDetail           :
-DataImportDetail           : {Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataImportDetails}
-DeliveryPackage            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PackageShippingDetails
+DataImportDetail           : {{
+                               "accountDetails": {
+                                 "dataAccountType": "StorageAccount",
+                                 "storageAccountId": "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroup/providers/Microsoft.Storage/storageAccounts/YourStorageAccount"
+                               }
+                             }}
+DatacenterAddress          : {
+                             }
+DeliveryPackage            : {
+                             }
+DeviceErasureDetail        : {
+                             }
 DevicePassword             :
-ExpectedDataSizeInTeraByte : 0
+ExpectedDataSizeInTeraByte :
 JobStage                   :
-KeyEncryptionKey           : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey
-LastMitigationActionOnJob  : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.LastMitigationActionOnJob
-Preference                 : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.Preferences
-ReturnPackage              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PackageShippingDetails
+KeyEncryptionKey           : {
+                             }
+LastMitigationActionOnJob  : {
+                             }
+Preference                 : {
+                             }
+ReturnPackage              : {
+                             }
 ReverseShipmentLabelSasKey :
-ShippingAddress            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShippingAddress
+ReverseShippingDetail      : {
+                             }
+ShippingAddress            : {
+                               "streetAddress1": "101 TOWNSEND ST",
+                               "city": "San Francisco",
+                               "stateOrProvince": "CA",
+                               "country": "US",
+                               "postalCode": "94107",
+                               "addressType": "Commercial"
+                             }
 Type                       : DataBox
 ```
 
@@ -61,10 +88,9 @@ Create a in-memory object for DataBoxJobDetails
 
 ### -ContactDetail
 Contact details for notification and shipping.
-To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IContactDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -77,10 +103,9 @@ Accept wildcard characters: False
 
 ### -DataExportDetail
 Details of the data to be exported from azure.
-To construct, see NOTES section for DATAEXPORTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataExportDetails[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataExportDetails[]
 Parameter Sets: (All)
 Aliases:
 
@@ -93,10 +118,9 @@ Accept wildcard characters: False
 
 ### -DataImportDetail
 Details of the data to be imported into azure.
-To construct, see NOTES section for DATAIMPORTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataImportDetails[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataImportDetails[]
 Parameter Sets: (All)
 Aliases:
 
@@ -145,10 +169,9 @@ Accept wildcard characters: False
 
 ### -KeyEncryptionKey
 Details about which key encryption type is being used.
-To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IKeyEncryptionKey
 Parameter Sets: (All)
 Aliases:
 
@@ -161,10 +184,9 @@ Accept wildcard characters: False
 
 ### -Preference
 Preferences for the order.
-To construct, see NOTES section for PREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IPreferences
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IPreferences
 Parameter Sets: (All)
 Aliases:
 
@@ -177,10 +199,9 @@ Accept wildcard characters: False
 
 ### -ReverseShippingDetail
 Optional Reverse Shipping details for order.
-To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IReverseShippingDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IReverseShippingDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -193,29 +214,13 @@ Accept wildcard characters: False
 
 ### -ShippingAddress
 Shipping address of the customer.
-To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IShippingAddress
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-Indicates the type of job details.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -229,7 +234,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxJobDetails
 
 ## NOTES
 
