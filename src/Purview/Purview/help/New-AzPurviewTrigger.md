@@ -65,7 +65,7 @@ ScheduleMonthlyOccurrence  :
 ScheduleWeekDay            :
 ```
 
-Create trigger for a full scan starting 02/17/22 1:31 PM UTC and ending 7/20/2022 12:00:00 AM, occuring every 1 month, on 10th of the month, at 09:00 AM UTC
+Create trigger for a full scan starting 02/17/22 1:31 PM UTC and ending 7/20/2022 12:00:00 AM, occurring every 1 month, on 10th of the month, at 09:00 AM UTC
 
 ## PARAMETERS
 
