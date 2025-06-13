@@ -18,5 +18,15 @@
         "name": "polymorphism",
         "type": "tool",
         "text": "1. Call MCP tool 'no-inline' for each parent: {0}. 2. Call MCP tool 'model-cmdlet' for each child: {1}, create cmdlet to create each child. 3. Call tool 'insert_edit_into_file' to add these directives to README.md under {2}, make sure directives are inside the yaml block. 4. regenerate code using autorest."
+    },
+    {
+        "name": "create-example",
+        "type": "tool",
+        "text": "Read examples from specs under {0}. Fulfill examples under {1}. You are expert in Azure-PowerShell and Autorest.PowerShell. Leave example as empty if you don't find any matches. You know how to map data from {0} to {1}"
+    },
+    {
+        "name": "create-test",
+        "type": "tool",
+        "text": "Read examples from specs are under {0}. Implement empty test stubs under {1}. Test stubs are named as '.Test.ps1'. Define variables in function 'setupEnv' in 'utils.ps1' under {1}, and use these variables for test cases. Value of these variables are from {0}. Leave test cases as empty if you don't find any matches. You are expert in Azure-PowerShell and Autorest.PowerShell, You know how to map data from {0} to {1}. "
     }
 ]

@@ -184,5 +184,5 @@ export async function getExamplesFromSpecs(workingDirectory: string): Promise<st
 
 
 export async function testCase() {
-    const polymorphism = await getExamplesFromSpecs("c:\\workspace\\azure-powershell\\src\\VMware\\VMware.Autorest");
+    const polymorphism = await getExamplesFromSpecs("d:\\workspace\\azure-powershell\\src\\VMware\\VMware.Autorest");
 }

@@ -101,6 +101,20 @@ export const handleModelCmdlet = async <Args extends ZodRawShape>(args: Args): P
     return [modelNames.join(', ')];
 }
 
+export const createExamplesFromSpecs = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
+    const workingDirectory = z.string().parse(Object.values(args)[0]);
+    const examplePath = path.join(workingDirectory, "examples");
+    const exampleSpecsPath = await utils.getExamplesFromSpecs(workingDirectory);
+    return [examplePath, exampleSpecsPath];
+}
+
+export const createTestsFromSpecs = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
+    const workingDirectory = z.string().parse(Object.values(args)[0]);
+    const testPath = path.join(workingDirectory, "test");
+    const exampleSpecsPath = await utils.getExamplesFromSpecs(workingDirectory);
+    return [testPath, exampleSpecsPath];
+}
+
 export const toolServices = <Args extends ZodRawShape>(name: string, responseTemplate: string|undefined) => {
     let func;
     switch (name) {
@@ -115,6 +129,12 @@ export const toolServices = <Args extends ZodRawShape>(name: string, responseTem
             break;
         case "handleModelCmdlet":
             func = handleModelCmdlet<Args>;
+            break;
+        case "createExamplesFromSpecs":
+            func = createExamplesFromSpecs<Args>;
+            break;
+        case "createTestsFromSpecs":
+            func = createTestsFromSpecs<Args>;
             break;
         default:
             throw new Error(`Tool ${name} not found`);
@@ -143,7 +163,7 @@ function getResponseString(args: string[], responseTemplate: string|undefined): 
     }
     let response = responseTemplate;;
     for (let i = 0; i < args.length; i++) {
-        response = response?.replace(`{${i}}`, args[i]);
+        response = response?.replaceAll(`{${i}}`, args[i]);
     }
     return response
 }
