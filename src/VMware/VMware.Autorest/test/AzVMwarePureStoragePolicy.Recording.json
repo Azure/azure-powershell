@@ -1,0 +1,316 @@
+{
+  "AzVMwarePureStoragePolicy+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
+        "Access-Control-Allow-Headers": [ "*" ],
+        "Access-Control-Allow-Credentials": [ "true" ],
+        "Date": [ "Fri, 13 Jun 2025 04:01:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "489" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/pureStoragePolicies/storagePolicy1\",\"name\":\"storagePolicy1\",\"type\":\"Microsoft.AVS/privateClouds/pureStoragePolicies\",\"properties\":{\"storagePolicyDefinition\":\"storagePolicyDefinition1\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/PureStorage.Block/storagePools/storagePool1\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePureStoragePolicy+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "103" ],
+        "x-ms-client-request-id": [ "db8d5b63-f61e-4cdd-a582-a69d55d3265d" ],
+        "CommandName": [ "New-AzVMwarePureStoragePolicy" ],
+        "FullCommandName": [ "New-AzVMwarePureStoragePolicy_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
+        "Access-Control-Allow-Headers": [ "*" ],
+        "Access-Control-Allow-Credentials": [ "true" ],
+        "Date": [ "Fri, 13 Jun 2025 04:01:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "489" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/pureStoragePolicies/storagePolicy1\",\"name\":\"storagePolicy1\",\"type\":\"Microsoft.AVS/privateClouds/pureStoragePolicies\",\"properties\":{\"storagePolicyDefinition\":\"storagePolicyDefinition1\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/PureStorage.Block/storagePools/storagePool1\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePureStoragePolicy+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "104" ],
+        "x-ms-client-request-id": [ "db8d5b63-f61e-4cdd-a582-a69d55d3265d" ],
+        "CommandName": [ "New-AzVMwarePureStoragePolicy" ],
+        "FullCommandName": [ "New-AzVMwarePureStoragePolicy_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
+        "Access-Control-Allow-Headers": [ "*" ],
+        "Access-Control-Allow-Credentials": [ "true" ],
+        "Date": [ "Fri, 13 Jun 2025 04:01:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "489" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/pureStoragePolicies/storagePolicy1\",\"name\":\"storagePolicy1\",\"type\":\"Microsoft.AVS/privateClouds/pureStoragePolicies\",\"properties\":{\"storagePolicyDefinition\":\"storagePolicyDefinition1\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/PureStorage.Block/storagePools/storagePool1\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePureStoragePolicy+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "105" ],
+        "x-ms-client-request-id": [ "75f45c4a-74f4-46cc-952b-52eacafa8f84" ],
+        "CommandName": [ "Get-AzVMwarePureStoragePolicy" ],
+        "FullCommandName": [ "Get-AzVMwarePureStoragePolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
+        "Access-Control-Allow-Headers": [ "*" ],
+        "Access-Control-Allow-Credentials": [ "true" ],
+        "Date": [ "Fri, 13 Jun 2025 04:01:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "489" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/pureStoragePolicies/storagePolicy1\",\"name\":\"storagePolicy1\",\"type\":\"Microsoft.AVS/privateClouds/pureStoragePolicies\",\"properties\":{\"storagePolicyDefinition\":\"storagePolicyDefinition1\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/PureStorage.Block/storagePools/storagePool1\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePureStoragePolicy+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "106" ],
+        "x-ms-client-request-id": [ "efd209b8-3932-4c77-98d8-3253824b319e" ],
+        "CommandName": [ "Update-AzVMwarePureStoragePolicy" ],
+        "FullCommandName": [ "Update-AzVMwarePureStoragePolicy_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
+        "Access-Control-Allow-Headers": [ "*" ],
+        "Access-Control-Allow-Credentials": [ "true" ],
+        "Date": [ "Fri, 13 Jun 2025 04:01:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "489" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/pureStoragePolicies/storagePolicy1\",\"name\":\"storagePolicy1\",\"type\":\"Microsoft.AVS/privateClouds/pureStoragePolicies\",\"properties\":{\"storagePolicyDefinition\":\"storagePolicyDefinition1\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/PureStorage.Block/storagePools/storagePool1\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePureStoragePolicy+[NoContext]+Update+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"storagePolicyDefinition\": \"storagePolicyDefinition1\",\r\n    \"storagePoolId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/PureStorage.Block/storagePools/storagePool1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "240" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
+        "Access-Control-Allow-Headers": [ "*" ],
+        "Access-Control-Allow-Credentials": [ "true" ],
+        "Date": [ "Fri, 13 Jun 2025 04:01:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "489" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/pureStoragePolicies/storagePolicy1\",\"name\":\"storagePolicy1\",\"type\":\"Microsoft.AVS/privateClouds/pureStoragePolicies\",\"properties\":{\"storagePolicyDefinition\":\"storagePolicyDefinition1\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/PureStorage.Block/storagePools/storagePool1\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePureStoragePolicy+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "108" ],
+        "x-ms-client-request-id": [ "efd209b8-3932-4c77-98d8-3253824b319e" ],
+        "CommandName": [ "Update-AzVMwarePureStoragePolicy" ],
+        "FullCommandName": [ "Update-AzVMwarePureStoragePolicy_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
+        "Access-Control-Allow-Headers": [ "*" ],
+        "Access-Control-Allow-Credentials": [ "true" ],
+        "Date": [ "Fri, 13 Jun 2025 04:02:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "489" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/pureStoragePolicies/storagePolicy1\",\"name\":\"storagePolicy1\",\"type\":\"Microsoft.AVS/privateClouds/pureStoragePolicies\",\"properties\":{\"storagePolicyDefinition\":\"storagePolicyDefinition1\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/PureStorage.Block/storagePools/storagePool1\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePureStoragePolicy+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "109" ],
+        "x-ms-client-request-id": [ "efd209b8-3932-4c77-98d8-3253824b319e" ],
+        "CommandName": [ "Update-AzVMwarePureStoragePolicy" ],
+        "FullCommandName": [ "Update-AzVMwarePureStoragePolicy_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
+        "Access-Control-Allow-Headers": [ "*" ],
+        "Access-Control-Allow-Credentials": [ "true" ],
+        "Date": [ "Fri, 13 Jun 2025 04:02:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "489" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/pureStoragePolicies/storagePolicy1\",\"name\":\"storagePolicy1\",\"type\":\"Microsoft.AVS/privateClouds/pureStoragePolicies\",\"properties\":{\"storagePolicyDefinition\":\"storagePolicyDefinition1\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/PureStorage.Block/storagePools/storagePool1\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePureStoragePolicy+[NoContext]+Remove+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "110" ],
+        "x-ms-client-request-id": [ "ded7115a-3f3b-4c66-bdd3-5abcd938cfe8" ],
+        "CommandName": [ "Remove-AzVMwarePureStoragePolicy" ],
+        "FullCommandName": [ "Remove-AzVMwarePureStoragePolicy_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
+        "Access-Control-Allow-Headers": [ "*" ],
+        "Access-Control-Allow-Credentials": [ "true" ],
+        "Date": [ "Fri, 13 Jun 2025 04:02:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

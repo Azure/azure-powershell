@@ -1,17 +1,17 @@
 {
-  "AzVMwareVirtualMachine+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/azps_test_cloud6koz/clusters/lq4hfg/virtualMachines?api-version=2023-09-01+1": {
+  "AzVMwareVirtualMachine+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/clusters/kb4ygv/virtualMachines?api-version=2024-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/azps_test_cloud6koz/clusters/lq4hfg/virtualMachines?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/clusters/kb4ygv/virtualMachines?api-version=2024-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "98" ],
-        "x-ms-client-request-id": [ "930378e9-277c-40ad-a08c-c4160786f364" ],
+        "x-ms-unique-id": [ "112" ],
+        "x-ms-client-request-id": [ "95e5cf8c-82f0-441f-a24d-762bde6c5c99" ],
         "CommandName": [ "Get-AzVMwareVirtualMachine" ],
         "FullCommandName": [ "Get-AzVMwareVirtualMachine_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -21,7 +21,11 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 27 Jun 2024 15:45:42 GMT" ]
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
+        "Access-Control-Allow-Headers": [ "*" ],
+        "Access-Control-Allow-Credentials": [ "true" ],
+        "Date": [ "Fri, 13 Jun 2025 04:02:07 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -31,19 +35,19 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareVirtualMachine+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/azps_test_cloud6koz/clusters/lq4hfg/virtualMachines/vm-209?api-version=2023-09-01+1": {
+  "AzVMwareVirtualMachine+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/clusters/kb4ygv/virtualMachines/vm-209?api-version=2024-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/azps_test_cloud6koz/clusters/lq4hfg/virtualMachines/vm-209?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/clusters/kb4ygv/virtualMachines/vm-209?api-version=2024-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "99" ],
-        "x-ms-client-request-id": [ "3f685d9c-4792-4ae1-baa4-f932a1b3fae0" ],
+        "x-ms-unique-id": [ "113" ],
+        "x-ms-client-request-id": [ "04b5a157-af03-44cb-856a-ef709fec63f9" ],
         "CommandName": [ "Get-AzVMwareVirtualMachine" ],
         "FullCommandName": [ "Get-AzVMwareVirtualMachine_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -53,7 +57,11 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 27 Jun 2024 15:45:42 GMT" ]
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
+        "Access-Control-Allow-Headers": [ "*" ],
+        "Access-Control-Allow-Credentials": [ "true" ],
+        "Date": [ "Fri, 13 Jun 2025 04:02:07 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],

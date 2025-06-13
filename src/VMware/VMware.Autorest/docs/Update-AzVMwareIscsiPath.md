@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareIscsiPath
 
 ## SYNOPSIS
-update a IscsiPath
+Update a IscsiPath
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Update-AzVMwareIscsiPath -InputObject <IVMwareIdentity> [-DefaultProfile <PSObje
 ```
 
 ## DESCRIPTION
-update a IscsiPath
+Update a IscsiPath
 
 ## EXAMPLES
 
