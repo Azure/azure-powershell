@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.HDInsight.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
             this.IsCredentialEnabled = gatewaySettings.IsCredentialEnabled;
             this.UserName = gatewaySettings.UserName;
             this.Password = gatewaySettings.Password;
-            this.RestAuthEntraUsers = gatewaySettings.RestAuthEntraUsers;
+            this.RestAuthEntraUsers = gatewaySettings.RestAuthEntraUsers?.Select(u => new AzureHDInsightEntraUserInfo(u)).ToList();
         }
 
         /// <summary>
@@ -45,6 +46,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
         /// <summary>
         /// List of Entra users for gateway access.
         /// </summary>
-        public IList<EntraUserInfo> RestAuthEntraUsers { get; set; }
+        public IList<AzureHDInsightEntraUserInfo> RestAuthEntraUsers { get; set; }
     }
 }

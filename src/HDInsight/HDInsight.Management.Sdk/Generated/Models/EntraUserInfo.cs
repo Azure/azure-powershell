@@ -5,7 +5,6 @@
 
 namespace Microsoft.Azure.Management.HDInsight.Models
 {
-    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
@@ -42,11 +41,6 @@ namespace Microsoft.Azure.Management.HDInsight.Models
             this.DisplayName = displayName;
             this.Upn = upn;
             CustomInit();
-        }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this, Formatting.None);
         }
 
         /// <summary>
