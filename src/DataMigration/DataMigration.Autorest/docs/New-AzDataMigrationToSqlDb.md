@@ -174,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Resource Id of the target resource (SQL VM or SQL Managed Instance)
+Resource Id of the target resource.
 
 ```yaml
 Type: System.String
@@ -496,7 +496,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlDb
 
 ## NOTES
 

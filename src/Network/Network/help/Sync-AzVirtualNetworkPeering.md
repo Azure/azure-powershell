@@ -15,17 +15,19 @@ Command to sync the address space on the peering link if the remote virtual netw
 ### Fields (Default)
 ```
 Sync-AzVirtualNetworkPeering -VirtualNetworkName <String> -ResourceGroupName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Object
 ```
 Sync-AzVirtualNetworkPeering -VirtualNetworkPeering <PSVirtualNetworkPeering>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updating the address space on peered virtual networks is now supported. However, to sync the latest address space on the peering link, this commandlet needs to be called on the (peered) remote virtual network. When invoked, it would sync the address space on the peering link with the latest address space of the (peered) remote virtual network.
+Updating the address space on peered virtual networks is now supported. However, to sync the latest address space on the peering link, this cmdlet needs to be called on the (peered) remote virtual network. When invoked, it would sync the address space on the peering link with the latest address space of the (peered) remote virtual network.
 
 ## EXAMPLES
 
@@ -42,7 +44,7 @@ $s1h1 = Get-AzVirtualNetworkPeering -Name 'spoke1-hub1' -VirtualNetworkName 'spo
 $s1h1 | Sync-AzVirtualNetworkPeering
 ```
 
-The first commandlet gets the virtual network peering. The second piped commandlet applies the sync operation on the peering.
+The first cmdlet gets the virtual network peering. The second piped cmdlet applies the sync operation on the peering.
 
 ## PARAMETERS
 

@@ -16,7 +16,8 @@ Creates a file share.
 ```
 New-AzStorageShare [-Name] <String> [-Protocol <String>] [-EnableSnapshotVirtualDirectoryAccess <Boolean>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

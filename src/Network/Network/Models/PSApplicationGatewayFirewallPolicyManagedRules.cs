@@ -27,5 +27,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.Table)]
         public List<PSApplicationGatewayFirewallPolicyExclusion> Exclusions { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public List<PSApplicationGatewayFirewallPolicyException> Exceptions { get; set; }
     }
 }

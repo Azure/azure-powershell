@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported set SasExpirationAction as Log or Block, together with SasExpirationPeriod
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+
+## Version 9.0.0
+* Removed MD5 from blob and file upload in some scenarios
+    - `Set-AzStorageFileContent`
+    - `Set-AzStorageBlobContent`
+* Added prompt for customer confirmation for long running account migration operation .
+    - `Start-AzStorageAccountMigration`
+
+## Version 8.4.0
 * When create Storage context, allowed user input StorageAccountName
     - `New-AzStorageContext`
 * Reported error when user create user delegation SAS with a storage context not contains StorageAccountName.

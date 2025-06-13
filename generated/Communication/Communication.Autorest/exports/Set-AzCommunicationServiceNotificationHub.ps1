@@ -23,9 +23,9 @@ Links an Azure Notification Hub to this communication service.
 Set-AzCommunicationServiceNotificationHub -CommunicationServiceName ContosoAcsResource2 -ResourceGroupName ContosoResourceProvider1 -ConnectionString "<notificationhub-connectionstring>" -NotificationHubResourceId "<notificationhub-resourceid>"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkNotificationHubParameters
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ILinkNotificationHubParameters
 .Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ILinkedNotificationHub
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,7 +38,7 @@ LINKNOTIFICATIONHUBPARAMETER <ILinkNotificationHubParameters>: Description of an
 https://learn.microsoft.com/powershell/module/az.communication/set-azcommunicationservicenotificationhub
 #>
 function Set-AzCommunicationServiceNotificationHub {
-[OutputType([System.String])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ILinkedNotificationHub])]
 [CmdletBinding(DefaultParameterSetName='LinkExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -64,22 +64,33 @@ param(
 
     [Parameter(ParameterSetName='Link', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkNotificationHubParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ILinkNotificationHubParameters]
     # Description of an Azure Notification Hub to link to the communication service
-    # To construct, see NOTES section for LINKNOTIFICATIONHUBPARAMETER properties and create a hash table.
     ${LinkNotificationHubParameter},
 
-    [Parameter(ParameterSetName='LinkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='LinkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
     [System.String]
     # Connection string for the notification hub
     ${ConnectionString},
 
-    [Parameter(ParameterSetName='LinkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='LinkExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
     [System.String]
     # The resource ID of the notification hub
     ${NotificationHubResourceId},
+
+    [Parameter(ParameterSetName='LinkViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Link operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='LinkViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # Json string supplied to the Link operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -137,6 +148,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -158,10 +178,10 @@ begin {
         $mapping = @{
             Link = 'Az.Communication.private\Set-AzCommunicationServiceNotificationHub_Link';
             LinkExpanded = 'Az.Communication.private\Set-AzCommunicationServiceNotificationHub_LinkExpanded';
+            LinkViaJsonFilePath = 'Az.Communication.private\Set-AzCommunicationServiceNotificationHub_LinkViaJsonFilePath';
+            LinkViaJsonString = 'Az.Communication.private\Set-AzCommunicationServiceNotificationHub_LinkViaJsonString';
         }
-        if (('Link', 'LinkExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Link', 'LinkExpanded', 'LinkViaJsonFilePath', 'LinkViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -175,6 +195,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

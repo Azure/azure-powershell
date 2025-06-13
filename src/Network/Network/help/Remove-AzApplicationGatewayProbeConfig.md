@@ -91,7 +91,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove a probe from an existing application gateway](https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#remove-a-probe-from-an-existing-application-gateway)
+[Remove a probe from an existing application gateway](/azure/application-gateway/application-gateway-create-probe-ps#remove-a-probe-from-an-existing-application-gateway)
 
 [Add-AzApplicationGatewayProbeConfig](./Add-AzApplicationGatewayProbeConfig.md)
 
@@ -100,4 +100,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzApplicationGatewayProbeConfig](./New-AzApplicationGatewayProbeConfig.md)
 
 [Set-AzApplicationGatewayProbeConfig](./Set-AzApplicationGatewayProbeConfig.md)
-

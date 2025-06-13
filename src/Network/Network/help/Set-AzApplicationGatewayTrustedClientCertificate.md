@@ -14,7 +14,8 @@ Modifies the trusted client CA certificate chain of an application gateway.
 
 ```
 Set-AzApplicationGatewayTrustedClientCertificate -ApplicationGateway <PSApplicationGateway> -Name <String>
- -CertificateFile <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -CertificateFile <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

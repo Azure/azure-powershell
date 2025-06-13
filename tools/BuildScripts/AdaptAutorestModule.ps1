@@ -74,41 +74,53 @@ if (-not (Test-Path $slnPath)) {
 if (-not (Test-Path $parentModulePath)) {
     Write-Host "New module detected, creating parent module $parentModulePath ..." -ForegroundColor DarkGreen
     New-Item -ItemType Directory -Force -Path $parentModulePath
-    <#
-        create csproj for parent module if not existed
-    #>
-    $parentModuleCsprojPath = Join-Path $parentModulePath "$parentModuleName.csproj"
+}
+
+<#
+    create csproj for parent module if not existed
+#>
+$parentModuleCsprojPath = Join-Path $parentModulePath "$parentModuleName.csproj"
+if (-not (Test-Path $parentModuleCsprojPath)) {
     Write-Host "Creating $parentModuleCsprojPath ..." -ForegroundColor DarkGreen
     New-GeneratedFileFromTemplate -TemplateName 'HandcraftedModule.csproj' -GeneratedFileName "$parentModuleName.csproj" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
     dotnet sln $slnPath add $parentModuleCsprojPath
-    <#
-        create AsemblyInfo.cs for parent module if not existed
-    #>
-    $propertiesPath = Join-Path $parentModulePath 'Properties'
+}
+
+<#
+    create AsemblyInfo.cs for parent module if not existed
+#>
+$propertiesPath = Join-Path $parentModulePath 'Properties'
+if (-not (Test-Path $propertiesPath)) {
     New-Item -ItemType Directory -Force -Path $propertiesPath
-    Write-Host "Creating $propertiesPath/AssemblyInfo.cs ..." -ForegroundColor DarkGreen
-    New-GeneratedFileFromTemplate -TemplateName 'AssemblyInfo.cs' -GeneratedFileName "AssemblyInfo.cs" -GeneratedDirectory $propertiesPath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
-    <#
-        create psd1 for parent module if not existed
-    #>
+    if (-not (Test-Path (Join-Path $propertiesPath 'AssemblyInfo.cs'))) {
+        Write-Host "Creating $propertiesPath/AssemblyInfo.cs ..." -ForegroundColor DarkGreen
+        New-GeneratedFileFromTemplate -TemplateName 'AssemblyInfo.cs' -GeneratedFileName "AssemblyInfo.cs" -GeneratedDirectory $propertiesPath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
+    }
+}
+
+<#
+    create psd1 for parent module if not existed
+#>
+if (-not (Test-Path (Join-Path $parentModulePath "Az.$ModuleRootName.psd1"))) {
     Write-Host "Creating $parentModulePath/Az.$ModuleRootName.psd1 ..." -ForegroundColor DarkGreen
     New-GeneratedFileFromTemplate -TemplateName 'Module.psd1' -GeneratedFileName "Az.$ModuleRootName.psd1" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
-    <#
-        create ChangeLog.md for parent module if not existed
-    #>
+}
+
+<#
+    create ChangeLog.md for parent module if not existed
+#>
+if (-not (Test-Path (Join-Path $parentModulePath "ChangeLog.md"))) {
     Write-Host "Creating $parentModulePath/ChangeLog.md ..." -ForegroundColor DarkGreen
     New-GeneratedFileFromTemplate -TemplateName 'ChangeLog.md' -GeneratedFileName "ChangeLog.md" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
 }
+
 <#
     merge sub module to parent module psd1
 #>
-$parentModulePsd1Path = Join-Path $ParentModulePath "Az.$ModuleRootName.psd1"
+$parentModulePsd1Path = Join-Path $parentModulePath "Az.$ModuleRootName.psd1"
 Write-Host "Merging metadata of $SubModulePath/Az.$subModuleNameTrimmed.psd1 to $parentModulePsd1Path ..." -ForegroundColor DarkGreen
-if (Test-Path $parentModulePsd1Path) {
-    $parentModuleMetadata = Import-LocalizedData -BaseDirectory $ParentModulePath -FileName "Az.$ModuleRootName.psd1"
-} else {
-    $parentModuleMetadata = Import-LocalizedData -BaseDirectory $TemplatePath -FileName 'Module.psd1'
-}
+$parentModuleMetadata = Import-LocalizedData -BaseDirectory $ParentModulePath -FileName "Az.$ModuleRootName.psd1"
+
 $parentModuleMetadata.RequiredAssemblies = (@($parentModuleMetadata.RequiredAssemblies) + "$SubModuleName/bin/Az.$subModuleNameTrimmed.private.dll") | Select-Object -Unique
 $parentModuleMetadata.FormatsToProcess = (@($parentModuleMetadata.FormatsToProcess) + "$SubModuleName/Az.$subModuleNameTrimmed.format.ps1xml") | Select-Object -Unique
 $parentModuleMetadata.NestedModules = (@($parentModuleMetadata.NestedModules) + "$SubModuleName/Az.$subModuleNameTrimmed.psm1") | Select-Object -Unique

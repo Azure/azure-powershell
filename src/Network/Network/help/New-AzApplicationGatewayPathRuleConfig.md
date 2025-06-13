@@ -17,7 +17,8 @@ Creates an application gateway path rule.
 ```
 New-AzApplicationGatewayPathRuleConfig -Name <String> -Paths <String[]> [-BackendAddressPoolId <String>]
  [-BackendHttpSettingsId <String>] [-RewriteRuleSetId <String>] [-RedirectConfigurationId <String>]
- [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -168,7 +169,7 @@ Accept wildcard characters: False
 Specifies the object reference to a top-level firewall policy. 
 The object reference can be created by using New-AzApplicationGatewayWebApplicationFirewallPolicy cmdlet.
 $firewallPolicy = New-AzApplicationGatewayFirewallPolicy -Name "wafPolicy1" -ResourceGroup "rgName"
-A firewall policy created using the above commandlet can be referred at a path-rule level. 
+A firewall policy created using the above cmdlet can be referred at a path-rule level. 
 he above command would create a default policy settings and managed rules.
 Instead of the default values, users can specify PolicySettings, ManagedRules by using New-AzApplicationGatewayFirewallPolicySettings and New-AzApplicationGatewayFirewallPolicyManagedRules respectively.
 
@@ -325,5 +326,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzApplicationGatewayUrlPathMapConfig](./Remove-AzApplicationGatewayUrlPathMapConfig.md)
 
 [Set-AzApplicationGatewayUrlPathMapConfig](./Set-AzApplicationGatewayUrlPathMapConfig.md)
-
-

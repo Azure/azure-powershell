@@ -14,7 +14,8 @@ Removes an application security group.
 
 ```
 Remove-AzApplicationSecurityGroup -ResourceGroupName <String> -Name <String> [-Force] [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +25,7 @@ The **Remove-AzApplicationSecurityGroup** cmdlet removes an application security
 
 ### Example 1
 ```powershell
-Remove-AzApplicationSecurityGroup -Name "MyApplicationSecurityGrouo" -ResourceGroupName "MyResourceGroup"
+Remove-AzApplicationSecurityGroup -Name "MyApplicationSecurityGroup" -ResourceGroupName "MyResourceGroup"
 ```
 
 This command deletes an application security group named MyApplicationSecurityGroup in the resource group named MyResourceGroup.

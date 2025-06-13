@@ -21,6 +21,20 @@ Update-AzMobileNetworkBulkSimUploadEncrypted -InputObject <IMobileNetworkIdentit
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### BulkViaJsonString
+```
+Update-AzMobileNetworkBulkSimUploadEncrypted -ResourceGroupName <String> -SimGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### BulkViaJsonFilePath
+```
+Update-AzMobileNetworkBulkSimUploadEncrypted -ResourceGroupName <String> -SimGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### BulkExpanded
 ```
 Update-AzMobileNetworkBulkSimUploadEncrypted -ResourceGroupName <String> -SimGroupName <String>
@@ -68,7 +82,7 @@ An identifier for the Azure SIM onboarding public key used for encrypted upload.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: BulkViaIdentityExpanded, BulkExpanded
 Aliases:
 
 Required: True
@@ -99,7 +113,7 @@ The transport key used for encrypting SIM credentials, encrypted using the SIM o
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: BulkViaIdentityExpanded, BulkExpanded
 Aliases:
 
 Required: True
@@ -111,7 +125,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
@@ -122,6 +135,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Bulk operation
+
+```yaml
+Type: System.String
+Parameter Sets: BulkViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Bulk operation
+
+```yaml
+Type: System.String
+Parameter Sets: BulkViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -146,7 +189,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: BulkExpanded
+Parameter Sets: BulkViaJsonString, BulkViaJsonFilePath, BulkExpanded
 Aliases:
 
 Required: True
@@ -161,7 +204,7 @@ The encrypted transport key, signed using the SIM vendor private key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: BulkViaIdentityExpanded, BulkExpanded
 Aliases:
 
 Required: True
@@ -173,11 +216,10 @@ Accept wildcard characters: False
 
 ### -Sim
 A list of SIMs to upload, with encrypted properties.
-To construct, see NOTES section for SIM properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimNameAndEncryptedProperties[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimNameAndEncryptedProperties[]
+Parameter Sets: BulkViaIdentityExpanded, BulkExpanded
 Aliases:
 
 Required: True
@@ -192,7 +234,7 @@ The name of the SIM Group.
 
 ```yaml
 Type: System.String
-Parameter Sets: BulkExpanded
+Parameter Sets: BulkViaJsonString, BulkViaJsonFilePath, BulkExpanded
 Aliases:
 
 Required: True
@@ -207,7 +249,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: BulkExpanded
+Parameter Sets: BulkViaJsonString, BulkViaJsonFilePath, BulkExpanded
 Aliases:
 
 Required: False
@@ -223,7 +265,7 @@ The private counterpart is used for signing the encrypted transport key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: BulkViaIdentityExpanded, BulkExpanded
 Aliases:
 
 Required: True
@@ -238,7 +280,7 @@ The upload file format version.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: BulkViaIdentityExpanded, BulkExpanded
 Aliases:
 
 Required: True
@@ -288,7 +330,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus
 
 ## NOTES
 

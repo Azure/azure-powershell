@@ -50,7 +50,8 @@ Get-AzVirtualWanVpnServerConfigurationVpnProfile -ResourceId <String>
 ### ByVirtualWanResourceIdByVpnServerConfigurationResourceId
 ```
 Get-AzVirtualWanVpnServerConfigurationVpnProfile -ResourceId <String> -VpnServerConfigurationId <String>
- [-AuthenticationMethod <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AuthenticationMethod <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -179,7 +180,7 @@ Accept wildcard characters: False
 ```
 
 ### -VpnServerConfigurationId
-The id of Vpn server configuraiton object this Virtual wan will be associated with.
+The id of Vpn server configuration object this Virtual wan will be associated with.
 
 ```yaml
 Type: System.String

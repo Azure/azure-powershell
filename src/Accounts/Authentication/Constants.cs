@@ -37,5 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             /// </summary>
             public const string None = "None";
         }
+
+        public const string AzPsOutputPlainTextAccessToken = "AZUREPS_OUTPUT_PLAINTEXT_AZACCESSTOKEN";
     }
 }

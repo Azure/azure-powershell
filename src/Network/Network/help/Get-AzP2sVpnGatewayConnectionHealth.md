@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzP2sVpnGatewayConnectionHealth
 
 ## SYNOPSIS
-Gets the current aggregared point to site connections health information from P2SVpnGateway.
+Gets the current aggregated point to site connections health information from P2SVpnGateway.
 
 ## SYNTAX
 

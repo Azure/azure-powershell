@@ -47,6 +47,9 @@ Gets the details of registered recovery services provider.
 ### [Get-AzMigrateRunAsAccount](Get-AzMigrateRunAsAccount.md)
 Method to get run as account.
 
+### [Get-AzMigrateServerMigrationStatus](Get-AzMigrateServerMigrationStatus.md)
+Retrieves the details of the replicating server status.
+
 ### [Get-AzMigrateServerReplication](Get-AzMigrateServerReplication.md)
 Retrieves the details of the replicating server.
 
@@ -60,7 +63,7 @@ Gets a solution in the migrate project.
 Initializes the infrastructure for the migrate project.
 
 ### [Initialize-AzMigrateReplicationInfrastructure](Initialize-AzMigrateReplicationInfrastructure.md)
-Initialises the infrastructure for the migrate project.
+Initializes the infrastructure for the migrate project.
 
 ### [New-AzMigrateDiskMapping](New-AzMigrateDiskMapping.md)
 Creates a new disk mapping

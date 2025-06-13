@@ -12,17 +12,18 @@ To get network manager verifier workspace
 
 ## SYNTAX
 
-### ByName (Default)
+### ByList (Default)
 ```
-Get-AzNetworkManagerVerifierWorkspace [-Name <String>] -NetworkManagerName <String> -ResourceGroupName <String>
+Get-AzNetworkManagerVerifierWorkspace -NetworkManagerName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByList
+### ByName
 ```
 Get-AzNetworkManagerVerifierWorkspace -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
+
 ### ByResourceId
 ```
 Get-AzNetworkManagerVerifierWorkspace -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
@@ -52,6 +53,7 @@ Name               : AmeWorkspace
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+Etag               : "\"00000000-0000-0000-0000-000000000000\""
 SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText     : {
                        "CreatedBy": "test@email.com",
@@ -76,6 +78,7 @@ Name               : ameWorkspace2
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+Etag               : "\"00000000-0000-0000-0000-000000000000\""
 SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText     : {
                        "CreatedBy": "test@email.com",
@@ -100,6 +103,7 @@ Name               : testworkspaceame1
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+Etag               : "\"00000000-0000-0000-0000-000000000000\""
 SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText     : {
                        "CreatedBy": "test@email.com",
@@ -124,6 +128,7 @@ Name               : testVNV
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+Etag               : "\"00000000-0000-0000-0000-000000000000\""
 SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText     : {
                        "CreatedBy": "test@email.com",
@@ -148,6 +153,7 @@ Name               : testVerifierWorkspace5
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+Etag               : "\"00000000-0000-0000-0000-000000000000\""
 SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText     : {
                        "CreatedBy": "test@email.com",
@@ -172,6 +178,7 @@ Name               : testVerifierWorkspace8
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+Etag               : "\"00000000-0000-0000-0000-000000000000\""
 SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText     : {
                        "LastModifiedBy": "test@email.com",
@@ -193,6 +200,7 @@ Name               : testVerifierWorkspace9
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+Etag               : "\"00000000-0000-0000-0000-000000000000\""
 SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText     : {
                        "CreatedBy": "test@email.com",
@@ -227,6 +235,7 @@ Name               : testVerifierWorkspace9
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+Etag               : "\"00000000-0000-0000-0000-000000000000\""
 SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText     : {
                        "CreatedBy": "test@email.com",
@@ -239,6 +248,7 @@ SystemDataText     : {
 Id                 : /subscriptions//00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsof
                      t.Network/networkManagers/testNM/verifierWorkspaces/testVerifierWorkspace9
 ```
+
 Gets the network manager verifier workspace of name'testVerifierWorkspace9'.
 
 ## PARAMETERS
@@ -264,12 +274,12 @@ The resource name.
 ```yaml
 Type: System.String
 Parameter Sets: ByName
-Aliases: ResourceName
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: True
 ```
 
@@ -302,8 +312,11 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
+
 ### -ResourceId
 The Verifier Workspace resource id.
+
+
 ```yaml
 Type: System.String
 Parameter Sets: ByResourceId
@@ -330,6 +343,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzNetworkManagerVerifierWorkspace](./New-AzNetworkManagerVerifierWorkspace.md)
 
 [Set-AzNetworkManagerVerifierWorkspace](./Set-AzNetworkManagerVerifierWorkspace.md)

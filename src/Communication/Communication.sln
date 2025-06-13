@@ -19,8 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communication", "Communication\Communication.csproj", "{BC377B3E-760F-4C72-8E2B-64F295F35AC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Communication", "..\..\generated\Communication\Communication.Autorest\Az.Communication.csproj", "{E18D84BA-5062-4501-BA00-C338AF217BEB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EmailService", "..\..\generated\Communication\EmailService.Autorest\Az.EmailService.csproj", "{5BCC6E35-8357-444D-B68A-6C166C5D4D0B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EmailServicedata", "..\..\generated\Communication\EmailServicedata.Autorest\Az.EmailServicedata.csproj", "{4668F25E-ECA4-477A-B6C5-B77538DD5A3B}"
@@ -28,6 +26,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommunicationServiceSmtpUsername.Autorest", "CommunicationServiceSmtpUsername.Autorest", "{363A57FD-EAEB-6866-1998-C16C508A4822}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.CommunicationServiceSmtpUsername", "..\..\generated\Communication\CommunicationServiceSmtpUsername.Autorest\Az.CommunicationServiceSmtpUsername.csproj", "{E7F84369-DAC3-4224-A420-8F35DCFFD850}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Communication.Autorest", "Communication.Autorest", "{BCE3E3DF-E07E-B821-4E48-5392005D2B98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Communication", "..\..\generated\Communication\Communication.Autorest\Az.Communication.csproj", "{8C1EADA6-03D1-454E-9EFC-AD8E22EBCA82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,18 +125,6 @@ Global
 		{BC377B3E-760F-4C72-8E2B-64F295F35AC6}.Release|x64.Build.0 = Release|Any CPU
 		{BC377B3E-760F-4C72-8E2B-64F295F35AC6}.Release|x86.ActiveCfg = Release|Any CPU
 		{BC377B3E-760F-4C72-8E2B-64F295F35AC6}.Release|x86.Build.0 = Release|Any CPU
-		{E18D84BA-5062-4501-BA00-C338AF217BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E18D84BA-5062-4501-BA00-C338AF217BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E18D84BA-5062-4501-BA00-C338AF217BEB}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E18D84BA-5062-4501-BA00-C338AF217BEB}.Debug|x64.Build.0 = Debug|Any CPU
-		{E18D84BA-5062-4501-BA00-C338AF217BEB}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E18D84BA-5062-4501-BA00-C338AF217BEB}.Debug|x86.Build.0 = Debug|Any CPU
-		{E18D84BA-5062-4501-BA00-C338AF217BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E18D84BA-5062-4501-BA00-C338AF217BEB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E18D84BA-5062-4501-BA00-C338AF217BEB}.Release|x64.ActiveCfg = Release|Any CPU
-		{E18D84BA-5062-4501-BA00-C338AF217BEB}.Release|x64.Build.0 = Release|Any CPU
-		{E18D84BA-5062-4501-BA00-C338AF217BEB}.Release|x86.ActiveCfg = Release|Any CPU
-		{E18D84BA-5062-4501-BA00-C338AF217BEB}.Release|x86.Build.0 = Release|Any CPU
 		{5BCC6E35-8357-444D-B68A-6C166C5D4D0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5BCC6E35-8357-444D-B68A-6C166C5D4D0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BCC6E35-8357-444D-B68A-6C166C5D4D0B}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -171,6 +161,18 @@ Global
 		{E7F84369-DAC3-4224-A420-8F35DCFFD850}.Release|x64.Build.0 = Release|Any CPU
 		{E7F84369-DAC3-4224-A420-8F35DCFFD850}.Release|x86.ActiveCfg = Release|Any CPU
 		{E7F84369-DAC3-4224-A420-8F35DCFFD850}.Release|x86.Build.0 = Release|Any CPU
+		{8C1EADA6-03D1-454E-9EFC-AD8E22EBCA82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C1EADA6-03D1-454E-9EFC-AD8E22EBCA82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C1EADA6-03D1-454E-9EFC-AD8E22EBCA82}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8C1EADA6-03D1-454E-9EFC-AD8E22EBCA82}.Debug|x64.Build.0 = Debug|Any CPU
+		{8C1EADA6-03D1-454E-9EFC-AD8E22EBCA82}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8C1EADA6-03D1-454E-9EFC-AD8E22EBCA82}.Debug|x86.Build.0 = Debug|Any CPU
+		{8C1EADA6-03D1-454E-9EFC-AD8E22EBCA82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C1EADA6-03D1-454E-9EFC-AD8E22EBCA82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C1EADA6-03D1-454E-9EFC-AD8E22EBCA82}.Release|x64.ActiveCfg = Release|Any CPU
+		{8C1EADA6-03D1-454E-9EFC-AD8E22EBCA82}.Release|x64.Build.0 = Release|Any CPU
+		{8C1EADA6-03D1-454E-9EFC-AD8E22EBCA82}.Release|x86.ActiveCfg = Release|Any CPU
+		{8C1EADA6-03D1-454E-9EFC-AD8E22EBCA82}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -183,5 +185,6 @@ Global
 		{63065A51-3037-4C14-B1B8-B626B5F3B2B5} = {8C6025CF-0F63-49CE-8FBE-8275AFC0AD14}
 		{273AA0BD-A4B9-45CF-86E6-898B6F7F4B80} = {8C6025CF-0F63-49CE-8FBE-8275AFC0AD14}
 		{E7F84369-DAC3-4224-A420-8F35DCFFD850} = {363A57FD-EAEB-6866-1998-C16C508A4822}
+		{8C1EADA6-03D1-454E-9EFC-AD8E22EBCA82} = {BCE3E3DF-E07E-B821-4E48-5392005D2B98}
 	EndGlobalSection
 EndGlobal

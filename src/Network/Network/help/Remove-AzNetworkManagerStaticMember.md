@@ -14,8 +14,8 @@ Removes a network manager static member.
 
 ```
 Remove-AzNetworkManagerStaticMember -Name <String> -NetworkGroupName <String> -NetworkManagerName <String>
- -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
