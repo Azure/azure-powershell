@@ -52,7 +52,7 @@ directive:
       subject: RegistrationAssignment
     set:
       breaking-change:
-        change-description: "The type of property 'Authorization' and 'EligibleAuthorization' has changed to 'List'."
+        change-description: "The types of property 'Authorization' and 'EligibleAuthorization' have changed to 'List'."
         deprecated-by-version: 9.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
@@ -61,7 +61,7 @@ directive:
       subject: RegistrationDefinition
     set:
       breaking-change:
-        change-description: "The type of property 'Authorization' and 'EligibleAuthorization' has changed to 'List'."
+        change-description: "The types of the properties 'Authorization' and 'EligibleAuthorization' will be changed to 'List'."
         deprecated-by-version: 9.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
@@ -70,7 +70,7 @@ directive:
       subject: RegistrationDefinition
     set:
       breaking-change:
-        change-description: "The type of property 'DelegatedRoleDefinitionId' have changed from Fixed Array to List. The types of property 'JustInTimeAccessPolicyManagedByTenantApprover' have changed to List."
+        change-description: "The types of the properties 'DelegatedRoleDefinitionId' and 'JustInTimeAccessPolicyManagedByTenantApprover' will be changed to List."
         deprecated-by-version: 9.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
@@ -79,7 +79,7 @@ directive:
       subject: MarketplaceRegistrationDefinition
     set:
       breaking-change:
-        change-description: "The type of property 'Authorization' and 'EligibleAuthorization' has changed to 'List'."
+        change-description: "The types of the properties 'Authorization' and 'EligibleAuthorization' will be changed to 'List'."
         deprecated-by-version: 9.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03

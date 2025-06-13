@@ -18,8 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added breaking change announcement from Fixed Array to List.
-* Added breaking change announcement for fixing one object to List.
+* Added breaking change announcement for below commands from Fixed Array to List and breaking change announcement for fixing one object to List.
+    - 'Get-AzManagedServicesAssignment'
+    - 'Get-AzManagedServicesDefinition'
+    - 'Get-AzManagedServicesMarketplaceDefinition'
+    - 'New-AzManagedServicesAssignment'
+    - 'New-AzManagedServicesAuthorizationObject'
+    - 'New-AzManagedServicesDefinition'
+    - 'New-AzManagedServicesEligibleApproverObject'
+    - 'New-AzManagedServicesEligibleAuthorizationObject' 
 
 ## Version 3.1.0
 * Upgraded nuget package to signed package.
