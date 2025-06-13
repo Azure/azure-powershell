@@ -31,7 +31,7 @@ The **Get-AzTrustedSigningCertificateRoot** cmdlet retrieves Azure TrustedSignin
 Use this cmdlet to retrieve Azure TrustedSigning Root Cert.
 There are two sets of parameters. One set uses AccountName, ProfileName, and EndpointUrl. 
 Another set uses MetadataFilePath.
-Destination is the downloaded root cert file path, which incldues the file name and extension .cer.
+Destination is the downloaded root cert file path, which includes the file name and extension .cer.
 
 ## EXAMPLES
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -Destination
-Specifies the downloaed root cert file path. 
+Specifies the downloaded root cert file path. 
 
 ```yaml
 Type: System.String
