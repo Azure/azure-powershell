@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added breaking change announcement from Fixed Array to List.
 
 ## Version 8.0.0
 * [Breaking Change] Updated API version of resource types from latest to DefaultApiVersion for cmdlets `*-AzResource` and `Invoke-AzResourceAction`.
