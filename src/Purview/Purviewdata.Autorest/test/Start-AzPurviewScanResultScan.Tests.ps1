@@ -18,8 +18,4 @@ Describe 'Start-AzPurviewScanResultScan' {
     It 'Run' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'RunViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }
