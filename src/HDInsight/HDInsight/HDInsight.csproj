@@ -15,7 +15,7 @@
     <PackageReference Include="Microsoft.Azure.Management.HDInsight.Job" Version="2.0.7" />
     <PackageReference Include="Microsoft.Graph" Version="5.79.0" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
-	<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HDInsight.Management.Sdk\HDInsight.Management.Sdk.csproj" />
