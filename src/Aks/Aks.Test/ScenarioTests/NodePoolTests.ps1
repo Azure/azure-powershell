@@ -71,7 +71,7 @@ function Test-NodePoolMode
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
         
-        # creat default pool, mode=system
+        # create default pool, mode=system
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1
         
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName        
