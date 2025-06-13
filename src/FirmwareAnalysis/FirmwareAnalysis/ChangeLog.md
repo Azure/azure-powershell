@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* New public preview release to support breaking changes in 2024-04-01-preview API
+
 ## Version 0.1.4
 * Upgraded nuget package to signed package.
 
