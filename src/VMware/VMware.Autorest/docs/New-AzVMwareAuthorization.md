@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareAuthorization
 
 ## SYNOPSIS
-Create a ExpressRouteAuthorization
+Create an ExpressRouteAuthorization
 
 ## SYNTAX
 
