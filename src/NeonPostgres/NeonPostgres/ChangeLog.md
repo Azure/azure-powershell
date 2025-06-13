@@ -18,10 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support to Manage Neon Projects
+* Support to Manage Neon Branches
+* Support to Get Neon Database Connection Uri
+* Updated to stable release version
 
 ## Version 0.1.1
 * Upgraded nuget package to signed package.
 
 ## Version 0.1.0
 * First preview release for module Az.NeonPostgres
-

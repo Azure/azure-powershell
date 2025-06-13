@@ -1,41 +1,43 @@
 {
-  "Update-AzNeonPostgresOrganization+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/5d9a6cc3-4e60-4b41-be79-d28f0a01074e/resourceGroups/NeonDemoRG/providers/Neon.Postgres/organizations/almasTestNeonPSRecord1A?api-version=2024-08-01-preview+1": {
+  "Update-AzNeonPostgresOrganization+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1?api-version=2025-03-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/5d9a6cc3-4e60-4b41-be79-d28f0a01074e/resourceGroups/NeonDemoRG/providers/Neon.Postgres/organizations/almasTestNeonPSRecord1A?api-version=2024-08-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"userDetails\": {\r\n      \"firstName\": \"Almas\",\r\n      \"lastName\": \"Khan\",\r\n      \"emailAddress\": \"khanalmas@microsoft.com\",\r\n      \"upn\": \"khanalmas_microsoft.com#EXT#@qumulotesttenant2.onmicrosoft.com\",\r\n      \"phoneNumber\": \"+1234567890\"\r\n    },\r\n    \"companyDetails\": {\r\n      \"companyName\": \"DemoCompany\",\r\n      \"country\": \"USA\",\r\n      \"officeAddress\": \"1234 Azure Ave\",\r\n      \"businessPhone\": \"+1234567890\",\r\n      \"domain\": \"demo.com\",\r\n      \"numberOfEmployees\": 500\r\n    },\r\n    \"partnerOrganizationProperties\": {\r\n      \"singleSignOnProperties\": {\r\n        \"singleSignOnState\": \"Enable\",\r\n        \"enterpriseAppId\": \"app12345\",\r\n        \"singleSignOnUrl\": \"https://sso.partnerorg.com\",\r\n        \"aadDomains\": [ \"partnerorg.com\" ]\r\n      },\r\n      \"organizationId\": \"org12345\",\r\n      \"organizationName\": \"PartnerOrgRecord1A\"\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1?api-version=2025-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"marketplaceDetails\": {\r\n      \"offerDetails\": {\r\n        \"publisherId\": \"neon1722366567200\",\r\n        \"offerId\": \"neon_serverless_postgres_azure_prod\",\r\n        \"planId\": \"neon_serverless_postgres_azure_prod_free\",\r\n        \"planName\": \"Free Plan\",\r\n        \"termUnit\": \"P1M\",\r\n        \"termId\": \"gmz7xq9ge3py\"\r\n      },\r\n      \"subscriptionId\": \"e276aac0-83e0-4381-dffe-0400d1af8065\",\r\n      \"subscriptionStatus\": \"Subscribed\"\r\n    },\r\n    \"userDetails\": {\r\n      \"firstName\": \"Demo\",\r\n      \"lastName\": \"User\",\r\n      \"emailAddress\": \"Demouser@testtestliftrtest2.onmicrosoft.com\",\r\n      \"upn\": \"Demouser@testtestliftrtest2.onmicrosoft.com\",\r\n      \"phoneNumber\": \"+1234567890\"\r\n    },\r\n    \"companyDetails\": {\r\n      \"companyName\": \"Contoso\",\r\n      \"country\": \"USA\",\r\n      \"officeAddress\": \"1234 Azure Ave\",\r\n      \"businessPhone\": \"+1234567890\",\r\n      \"domain\": \"contoso.com\",\r\n      \"numberOfEmployees\": 500\r\n    },\r\n    \"partnerOrganizationProperties\": {\r\n      \"singleSignOnProperties\": {\r\n        \"singleSignOnState\": \"Enable\",\r\n        \"enterpriseAppId\": \"\",\r\n        \"singleSignOnUrl\": \"https://console.neon.tech/azure/sso/org-bitter-scene-70654971\",\r\n        \"aadDomains\": [ \"\" ]\r\n      },\r\n      \"organizationId\": \"org-bitter-scene-70654971\",\r\n      \"organizationName\": \"NeonDemoOrgPS1\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "876" ]
+        "Content-Length": [ "1343" ]
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 400,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"02000384-0000-3300-0000-672e0e9b0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=9cf8ccaf-273c-4fe7-ae5a-2498a0f5d4c5/southindia/52ec146a-c209-4b4a-a9d2-72350914d228" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "fd6afe66-8265-4b88-8b09-dbc66ab516c1" ],
-        "x-ms-correlation-request-id": [ "7d3bffea-ef08-4ffd-8f0e-28863fbb4cd8" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20241108T131403Z:7d3bffea-ef08-4ffd-8f0e-28863fbb4cd8" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "909f4a48-3017-456f-b87b-3abc4a4c188f" ],
+        "x-ms-correlation-request-id": [ "3765d5c6-9aa5-49b0-abbe-fa576fc86139" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250612T095023Z:3765d5c6-9aa5-49b0-abbe-fa576fc86139" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 827C63AFF55E4E51828AEAEA8F727BB7 Ref B: MAA201060516011 Ref C: 2024-11-08T13:14:02Z" ],
-        "Date": [ "Fri, 08 Nov 2024 13:14:03 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C7330668A48944C4BCCD7FD5F99DD821 Ref B: MAA201060516019 Ref C: 2025-06-12T09:50:22Z" ],
+        "Date": [ "Thu, 12 Jun 2025 09:50:23 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1468" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "93" ],
+        "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/5d9a6cc3-4e60-4b41-be79-d28f0a01074e/resourceGroups/NeonDemoRG/providers/Neon.Postgres/organizations/almasTestNeonPSRecord1A\",\"name\":\"almasTestNeonPSRecord1A\",\"type\":\"neon.postgres/organizations\",\"location\":\"centraluseuap\",\"systemData\":{\"createdBy\":\"khanalmas@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-08T13:12:49.8725261Z\",\"lastModifiedBy\":\"khanalmas@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-08T13:14:02.7229596Z\"},\"properties\":{\"marketplaceDetails\":{\"subscriptionId\":\"05336f7b-90c8-4e9f-c2b1-1d7cc83c5fa7\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"neon1722366567200\",\"offerId\":\"neon_test\",\"planId\":\"neon_test_1\",\"planName\":\"Neon Serverless Postgres - Free (Test_Liftr)\",\"termUnit\":\"P1M\",\"termId\":\"gmz7xq9ge3py\"}},\"userDetails\":{\"firstName\":\"Almas\",\"lastName\":\"Khan\",\"emailAddress\":\"khanalmas@microsoft.com\",\"upn\":\"khanalmas_microsoft.com#EXT#@qumulotesttenant2.onmicrosoft.com\",\"phoneNumber\":\"+1234567890\"},\"companyDetails\":{\"companyName\":\"DemoCompany\",\"country\":\"USA\",\"officeAddress\":\"1234 Azure Ave\",\"businessPhone\":\"+1234567890\",\"domain\":\"demo.com\",\"numberOfEmployees\":500},\"provisioningState\":\"Succeeded\",\"partnerOrganizationProperties\":{\"organizationId\":\"org12345\",\"organizationName\":\"PartnerOrgRecord1A\",\"singleSignOnProperties\":{\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"app12345\",\"singleSignOnUrl\":\"https://sso.partnerorg.com\",\"aadDomains\":[\"partnerorg.com\"]}}}}",
+      "Content": "{\"error\":{\"code\":\"ResourcePatchValidateFailed\",\"message\":\"Plan is not changed for resource\"}}",
       "isContentBase64": false
     }
   }

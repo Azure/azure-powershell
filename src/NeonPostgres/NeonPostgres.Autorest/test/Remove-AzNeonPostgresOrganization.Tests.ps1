@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNeonPostgresOrganiza
 }
 
 # Define variables directly in the script
-$resourceName = "AlmasPSTest1"
-$resourceGroupName = "AlmasNeonTesting"
+$resourceName = "TestNeonOrgPS"
+$resourceGroupName = "neonrg"
 
 Describe 'Remove-AzNeonPostgresOrganization' {
     It 'Delete' {

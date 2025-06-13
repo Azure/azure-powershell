@@ -68,4 +68,4 @@ UserDetailUpn                               : khanalmas_microsoft.com#EXT#@qumul
 
 ```
 
-This command will update a Neon Resource
+This command will update a Neon Postgres organization resource

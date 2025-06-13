@@ -17,13 +17,16 @@ update a OrganizationResource
 Update-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-CompanyDetailBusinessPhone <String>] [-CompanyDetailCompanyName <String>] [-CompanyDetailCountry <String>]
  [-CompanyDetailDomain <String>] [-CompanyDetailNumberOfEmployee <Int64>]
- [-CompanyDetailOfficeAddress <String>] [-PartnerOrganizationPropertyOrganizationId <String>]
- [-PartnerOrganizationPropertyOrganizationName <String>] [-SingleSignOnPropertyAadDomain <String[]>]
- [-SingleSignOnPropertyEnterpriseAppId <String>] [-SingleSignOnPropertySingleSignOnState <String>]
- [-SingleSignOnPropertySingleSignOnUrl <String>] [-Tag <Hashtable>] [-UserDetailEmailAddress <String>]
- [-UserDetailFirstName <String>] [-UserDetailLastName <String>] [-UserDetailPhoneNumber <String>]
- [-UserDetailUpn <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-CompanyDetailOfficeAddress <String>] [-MarketplaceDetailSubscriptionId <String>]
+ [-MarketplaceDetailSubscriptionStatus <String>] [-OfferDetailOfferId <String>] [-OfferDetailPlanId <String>]
+ [-OfferDetailPlanName <String>] [-OfferDetailPublisherId <String>] [-OfferDetailTermId <String>]
+ [-OfferDetailTermUnit <String>] [-PartnerOrganizationPropertyOrganizationId <String>]
+ [-PartnerOrganizationPropertyOrganizationName <String>] [-ProjectProperty <IProjectPropertiesUpdate>]
+ [-SingleSignOnPropertyAadDomain <String[]>] [-SingleSignOnPropertyEnterpriseAppId <String>]
+ [-SingleSignOnPropertySingleSignOnState <String>] [-SingleSignOnPropertySingleSignOnUrl <String>]
+ [-Tag <Hashtable>] [-UserDetailEmailAddress <String>] [-UserDetailFirstName <String>]
+ [-UserDetailLastName <String>] [-UserDetailPhoneNumber <String>] [-UserDetailUpn <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -31,12 +34,16 @@ Update-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> [-S
 Update-AzNeonPostgresOrganization -InputObject <INeonPostgresIdentity> [-CompanyDetailBusinessPhone <String>]
  [-CompanyDetailCompanyName <String>] [-CompanyDetailCountry <String>] [-CompanyDetailDomain <String>]
  [-CompanyDetailNumberOfEmployee <Int64>] [-CompanyDetailOfficeAddress <String>]
+ [-MarketplaceDetailSubscriptionId <String>] [-MarketplaceDetailSubscriptionStatus <String>]
+ [-OfferDetailOfferId <String>] [-OfferDetailPlanId <String>] [-OfferDetailPlanName <String>]
+ [-OfferDetailPublisherId <String>] [-OfferDetailTermId <String>] [-OfferDetailTermUnit <String>]
  [-PartnerOrganizationPropertyOrganizationId <String>] [-PartnerOrganizationPropertyOrganizationName <String>]
- [-SingleSignOnPropertyAadDomain <String[]>] [-SingleSignOnPropertyEnterpriseAppId <String>]
- [-SingleSignOnPropertySingleSignOnState <String>] [-SingleSignOnPropertySingleSignOnUrl <String>]
- [-Tag <Hashtable>] [-UserDetailEmailAddress <String>] [-UserDetailFirstName <String>]
- [-UserDetailLastName <String>] [-UserDetailPhoneNumber <String>] [-UserDetailUpn <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProjectProperty <IProjectPropertiesUpdate>] [-SingleSignOnPropertyAadDomain <String[]>]
+ [-SingleSignOnPropertyEnterpriseAppId <String>] [-SingleSignOnPropertySingleSignOnState <String>]
+ [-SingleSignOnPropertySingleSignOnUrl <String>] [-Tag <Hashtable>] [-UserDetailEmailAddress <String>]
+ [-UserDetailFirstName <String>] [-UserDetailLastName <String>] [-UserDetailPhoneNumber <String>]
+ [-UserDetailUpn <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -128,7 +135,7 @@ UserDetailUpn                               : khanalmas_microsoft.com#EXT#@qumul
 
 ```
 
-This command will update a Neon Resource
+This command will update a Neon Postgres organization resource
 
 ## PARAMETERS
 
@@ -298,6 +305,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MarketplaceDetailSubscriptionId
+SaaS subscription id for the the marketplace offer
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MarketplaceDetailSubscriptionStatus
+Marketplace subscription status
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the Neon Organizations resource
 
@@ -328,6 +365,96 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OfferDetailOfferId
+Offer Id for the marketplace offer
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OfferDetailPlanId
+Plan Id for the marketplace offer
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OfferDetailPlanName
+Plan Name for the marketplace offer
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OfferDetailPublisherId
+Publisher Id for the marketplace offer
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OfferDetailTermId
+Term Id for the marketplace offer
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OfferDetailTermUnit
+Term Name for the marketplace offer
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PartnerOrganizationPropertyOrganizationId
 Organization Id in partner's system
 
@@ -348,6 +475,21 @@ Organization name in partner's system
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectProperty
+Neon Project Properties
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectPropertiesUpdate
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
