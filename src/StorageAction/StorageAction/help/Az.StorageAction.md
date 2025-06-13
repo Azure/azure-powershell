@@ -24,9 +24,9 @@ Fetch the storage tasks run report summary for each assignment.
 Runs the input conditions against input object metadata properties and designates matched objects in response.
 
 ### [New-AzStorageActionTask](New-AzStorageActionTask.md)
-Asynchronously creates a new storage task resource with the specified parameters.
+Asynchronously create a new storage task resource with the specified parameters.
 If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated.
-If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
+If a storage task is already created and a subsequent create request is issued with the exact same set of properties, the request will succeed.
 
 ### [New-AzStorageActionTaskOperationObject](New-AzStorageActionTaskOperationObject.md)
 Create an in-memory object for StorageTaskOperation.
@@ -41,7 +41,7 @@ Create an in-memory object for StorageTaskPreviewKeyValueProperties.
 Delete the storage task resource.
 
 ### [Update-AzStorageActionTask](Update-AzStorageActionTask.md)
-Asynchronously creates a new storage task resource with the specified parameters.
-If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated.
-If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
+Asynchronously update a new storage task resource with the specified parameters.
+If a storage task is already created and a subsequent update request is issued with different properties, the storage task properties will be updated.
+If a storage task is already created and a subsequent update request is issued with the exact same set of properties, the request will succeed.
 

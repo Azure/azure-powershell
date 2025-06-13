@@ -14,7 +14,7 @@ Lists Resource IDs of the Storage Task Assignments associated with this Storage 
 
 ```
 Get-AzStorageActionTaskAssignment -ResourceGroupName <String> -StorageTaskName <String>
- [-SubscriptionId <String[]>] [-Maxpagesize <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-Maxpagesize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 Optional, specifies the maximum number of Storage Task Assignment Resource IDs to be included in the list response.
 
 ```yaml
-Type: System.String
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

@@ -28,7 +28,7 @@ For information on how to develop for `Az.StorageAction`, see [how-to.md](how-to
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 8f196886782fc5b48b75322944dc60d1cafaf7fa
+commit: 2219e4e4e0409bcb88a2b82e8febe1a3baecaf18
 tag: package-2023-01-01
 require:
 # readme.azure.noprofile.md is the common configuration file
@@ -46,7 +46,7 @@ try-require:
 # nested-object-to-string: true
 
 # For new RP, the version is 0.1.0
-module-version: 0.1.0
+module-version: 1.0.0
 # Normally, title is the service name
 title: StorageAction
 subject-prefix: $(service-name)
