@@ -1,6 +1,6 @@
 ---
 Module Name: Az.VMware
-Module Guid: 03b1bace-0c6d-4ffc-9019-6af02c2b4b87
+Module Guid: 6bee2b60-5b08-4f28-b776-6dfda4fc70db
 Download Help Link: https://learn.microsoft.com/powershell/module/az.vmware
 Help Version: 1.0.0.0
 Locale: en-US
@@ -32,6 +32,9 @@ Get a Datastore
 ### [Get-AzVMwareGlobalReachConnection](Get-AzVMwareGlobalReachConnection.md)
 Get a GlobalReachConnection
 
+### [Get-AzVMwareHost](Get-AzVMwareHost.md)
+Get a Host
+
 ### [Get-AzVMwareIscsiPath](Get-AzVMwareIscsiPath.md)
 Get a IscsiPath
 
@@ -43,6 +46,15 @@ Get a PrivateCloud
 
 ### [Get-AzVMwarePrivateCloudAdminCredential](Get-AzVMwarePrivateCloudAdminCredential.md)
 List the admin credentials for the private cloud
+
+### [Get-AzVMwareProvisionedNetwork](Get-AzVMwareProvisionedNetwork.md)
+Get a ProvisionedNetwork
+
+### [Get-AzVMwarePureStoragePolicy](Get-AzVMwarePureStoragePolicy.md)
+Get a PureStoragePolicy
+
+### [Get-AzVMwareSku](Get-AzVMwareSku.md)
+A list of SKUs.
 
 ### [Get-AzVMwareVirtualMachine](Get-AzVMwareVirtualMachine.md)
 Get a VirtualMachine
@@ -57,25 +69,25 @@ Create an in-memory object for AddonSrmProperties.
 Create an in-memory object for AddonVrProperties.
 
 ### [New-AzVMwareAuthorization](New-AzVMwareAuthorization.md)
-create a ExpressRouteAuthorization
+Create a ExpressRouteAuthorization
 
 ### [New-AzVMwareCloudLink](New-AzVMwareCloudLink.md)
-create a CloudLink
+Create a CloudLink
 
 ### [New-AzVMwareCluster](New-AzVMwareCluster.md)
-create a Cluster
+Create a Cluster
 
 ### [New-AzVMwareDatastore](New-AzVMwareDatastore.md)
-create a Datastore
+Create a Datastore
 
 ### [New-AzVMwareGlobalReachConnection](New-AzVMwareGlobalReachConnection.md)
-create a GlobalReachConnection
+Create a GlobalReachConnection
 
 ### [New-AzVMwareIscsiPath](New-AzVMwareIscsiPath.md)
-create a IscsiPath
+Create a IscsiPath
 
 ### [New-AzVMwarePlacementPolicy](New-AzVMwarePlacementPolicy.md)
-create a PlacementPolicy
+Create a PlacementPolicy
 
 ### [New-AzVMwarePrivateCloud](New-AzVMwarePrivateCloud.md)
 Create a private cloud
@@ -88,6 +100,9 @@ Rotate the vCenter password
 
 ### [New-AzVMwarePSCredentialExecutionParameterObject](New-AzVMwarePSCredentialExecutionParameterObject.md)
 Create an in-memory object for PSCredentialExecutionParameter.
+
+### [New-AzVMwarePureStoragePolicy](New-AzVMwarePureStoragePolicy.md)
+Create a PureStoragePolicy
 
 ### [New-AzVMwareScriptSecureStringExecutionParameterObject](New-AzVMwareScriptSecureStringExecutionParameterObject.md)
 Create an in-memory object for ScriptSecureStringExecutionParameter.
@@ -128,6 +143,9 @@ Delete a PlacementPolicy
 ### [Remove-AzVMwarePrivateCloud](Remove-AzVMwarePrivateCloud.md)
 Delete a private cloud
 
+### [Remove-AzVMwarePureStoragePolicy](Remove-AzVMwarePureStoragePolicy.md)
+Delete a PureStoragePolicy
+
 ### [Test-AzVMwareLocationQuotaAvailability](Test-AzVMwareLocationQuotaAvailability.md)
 Return quota for subscription by region
 
@@ -135,26 +153,29 @@ Return quota for subscription by region
 Return trial status for subscription by region
 
 ### [Update-AzVMwareAuthorization](Update-AzVMwareAuthorization.md)
-update a ExpressRouteAuthorization
+Update a ExpressRouteAuthorization
 
 ### [Update-AzVMwareCloudLink](Update-AzVMwareCloudLink.md)
-update a CloudLink
+Update a CloudLink
 
 ### [Update-AzVMwareCluster](Update-AzVMwareCluster.md)
-update a Cluster
+Update a Cluster
 
 ### [Update-AzVMwareDatastore](Update-AzVMwareDatastore.md)
-update a Datastore
+Update a Datastore
 
 ### [Update-AzVMwareGlobalReachConnection](Update-AzVMwareGlobalReachConnection.md)
-update a GlobalReachConnection
+Update a GlobalReachConnection
 
 ### [Update-AzVMwareIscsiPath](Update-AzVMwareIscsiPath.md)
-update a IscsiPath
+Update a IscsiPath
 
 ### [Update-AzVMwarePlacementPolicy](Update-AzVMwarePlacementPolicy.md)
-update a PlacementPolicy
+Update a PlacementPolicy
 
 ### [Update-AzVMwarePrivateCloud](Update-AzVMwarePrivateCloud.md)
-update a PrivateCloud
+Update a PrivateCloud
+
+### [Update-AzVMwarePureStoragePolicy](Update-AzVMwarePureStoragePolicy.md)
+Update a PureStoragePolicy
 

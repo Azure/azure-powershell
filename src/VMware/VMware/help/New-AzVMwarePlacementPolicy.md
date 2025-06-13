@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwarePlacementPolicy
 
 ## SYNOPSIS
-create a PlacementPolicy
+Create a PlacementPolicy
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ New-AzVMwarePlacementPolicy -InputObject <IVMwareIdentity> [-Property <IPlacemen
 ```
 
 ## DESCRIPTION
-create a PlacementPolicy
+Create a PlacementPolicy
 
 ## EXAMPLES
 

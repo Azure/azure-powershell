@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareAuthorization
 
 ## SYNOPSIS
-update a ExpressRouteAuthorization
+Update a ExpressRouteAuthorization
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Update-AzVMwareAuthorization -Name <String> -PrivateCloudInputObject <IVMwareIde
 ```
 
 ## DESCRIPTION
-update a ExpressRouteAuthorization
+Update a ExpressRouteAuthorization
 
 ## EXAMPLES
 
