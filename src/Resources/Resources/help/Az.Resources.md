@@ -493,7 +493,7 @@ Removes a Resource Group scoped Deployment Stack.
 Removes a resource lock.
 
 ### [Remove-AzResourceManagementPrivateLink](Remove-AzResourceManagementPrivateLink.md)
-Deletes the Resource Manangement Private Link.
+Deletes the Resource Management Private Link.
 
 ### [Remove-AzRoleAssignment](Remove-AzRoleAssignment.md)
 Removes a role assignment to the specified principal who is assigned to a particular role at a particular scope.
