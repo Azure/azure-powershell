@@ -33,7 +33,7 @@ stages:
       pool: ${{ variables.WindowsAgentPoolName }}
       steps:
 
-      # TODO: (Bernard) Uncomment the no checkout step after automatically install repo into agnets 
+      # TODO: (Bernard) Uncomment the no checkout step after automatically install repo into agents 
       # - checkout: none
       - checkout: self
         fetchDepth: 1
