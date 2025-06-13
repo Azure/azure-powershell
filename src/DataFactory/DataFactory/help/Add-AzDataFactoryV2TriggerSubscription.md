@@ -32,7 +32,7 @@ Add-AzDataFactoryV2TriggerSubscription [-ResourceId] <String> [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-This command subscribes the event trigger to the specified external service events from the trigger defintion.
+This command subscribes the event trigger to the specified external service events from the trigger definition.
 
 ## EXAMPLES
 
@@ -47,7 +47,7 @@ TriggerName Status
 Trigger1    Provisioning
 ```
 
-This command will subscribe BlobEnetTrigger1 trigger to the specified events from the trigger defintion.
+This command will subscribe BlobEnetTrigger1 trigger to the specified events from the trigger definition.
 
 ## PARAMETERS
 
