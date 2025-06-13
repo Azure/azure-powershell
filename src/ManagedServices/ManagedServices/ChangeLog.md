@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change announcement from Fixed Array to List.
+* Added breaking change announcement for fixing one object to List.
 
 ## Version 3.1.0
 * Upgraded nuget package to signed package.
