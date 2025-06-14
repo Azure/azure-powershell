@@ -12,7 +12,7 @@ True       Standard_AzureFrontDoor {}
 Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
 
 
-### Example 2: Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile, when the subscription of the CDN profile is different from the local subscrition.
+### Example 2: Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile, when the subscription of the CDN profile is different from the local subscription.
 ```powershell
 Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceReferenceId /subscriptions/testSubId01/resourcegroups/testrg/providers/Microsoft.Network/Frontdoors/frontdoorName -SubscriptionId testSubId01 
 ```
@@ -23,5 +23,5 @@ CanMigrate DefaultSku              Error
 True       Standard_AzureFrontDoor {}
 ```
 
-Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile, when the subscription of the CDN profile is different from the local subscrition. 
+Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile, when the subscription of the CDN profile is different from the local subscription. 
 You need to set the value of the subscription parameter.
