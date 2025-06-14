@@ -25,9 +25,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 
     public class AdlsAliasTests : DataLakeStoreTestRunner
     {
+        private readonly string AccountName = "sss-datalakestore-test-c17";
         private readonly string ResourceGroupLocation = "westus";
-        private readonly string TestFileSystemPermissionResourceGroupLocation = "ukwest";
-        private readonly string TestFileSystemResourceGroupLocation = "ukwest";
 
         public AdlsAliasTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
@@ -75,14 +74,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         {
             var workingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).AbsolutePath);
             var testLocation = Path.Combine(workingPath, "ScenarioTests", (this.GetType().Name + ".ps1"));
-            TestRunner.RunTestScript($"Test-DataLakeStoreFileSystem -fileToCopy '{testLocation}' -location '{TestFileSystemResourceGroupLocation}'");
+            TestRunner.RunTestScript($"Test-DataLakeStoreFileSystem -fileToCopy '{testLocation}' -location '{ResourceGroupLocation}' -accountName '{AccountName}'");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsFileSystemPermissions()
         {
-            TestRunner.RunTestScript($"Test-DataLakeStoreFileSystemPermissions -location '{TestFileSystemPermissionResourceGroupLocation}'");
+            TestRunner.RunTestScript($"Test-DataLakeStoreFileSystemPermissions -location '{ResourceGroupLocation}' -accountName '{AccountName}'");
         }
 
         [Fact]
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsEnumerateAndRestoreDeletedItem()
         {
-            TestRunner.RunTestScript($"Test-AdlsEnumerateAndRestoreDeletedItem -location '{ResourceGroupLocation}'");
+            TestRunner.RunTestScript($"Test-AdlsEnumerateAndRestoreDeletedItem -location '{ResourceGroupLocation}' -accountName '{AccountName}'");
         }
     }
 }
