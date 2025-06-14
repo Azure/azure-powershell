@@ -17,6 +17,15 @@ API to register a new machine and thereby create a tracked resource in ARM
 ### [Get-AzConnectedExtensionMetadata](Get-AzConnectedExtensionMetadata.md)
 Gets an Extension Metadata based on location, publisher, extensionType and version
 
+### [Get-AzConnectedExtensionMetadataV2](Get-AzConnectedExtensionMetadataV2.md)
+Gets an Extension Metadata based on location, publisher, extensionType and version
+
+### [Get-AzConnectedExtensionPublisher](Get-AzConnectedExtensionPublisher.md)
+Gets all Extension publishers based on the location
+
+### [Get-AzConnectedExtensionType](Get-AzConnectedExtensionType.md)
+Gets all Extension types based on location and publisher
+
 ### [Get-AzConnectedLicense](Get-AzConnectedLicense.md)
 Retrieves information about the view of a license.
 
