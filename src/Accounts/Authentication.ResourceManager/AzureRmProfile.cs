@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 IAzureContext result = null;
                 if (DefaultContextKey == Constants.DefaultValue && Contexts.Any(c => c.Key != Constants.DefaultValue))
                 {
-                    // If the default context is "Default", but there are other contexts set, remove the "Default" context and select first avaiable context as default
+                    // If the default context is "Default", but there are other contexts set, remove the "Default" context and select first available context as default
                     EnqueueDebugMessage($"Incorrect default context key '{DefaultContextKey}' found. Trying to remove it and falling back to the first available context.");
                     TryRemoveContext(Constants.DefaultValue);
                 }
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         }
 
         /// <summary>
-        /// Set the contaienr to its default state
+        /// Set the container to its default state
         /// </summary>
         public void Clear()
         {
@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <summary>
         /// Add the input context with the specified name.
         /// If the context with the same tenant, subscription, accountId does not exist, add the input into context list.
-        /// If the context with the same tenant, subscription, accountId already exist, merge 2 contexes and add the merged context to the context list.
+        /// If the context with the same tenant, subscription, accountId already exist, merge 2 contexts and add the merged context to the context list.
         /// </summary>
         /// <param name="name">The specified new name of the context.</param>
         /// <param name="context">The new context to set as default.</param>

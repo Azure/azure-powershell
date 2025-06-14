@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string GraphEndpointResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the domain name suffix for traffig manager services.
+        /// Gets or sets the domain name suffix for traffic manager services.
         /// </summary>
         public string TrafficManagerDnsSuffix { get; set; }
 
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         }
 
         /// <summary>
-        /// The domain name suffix for Azure Synapse Analyticss
+        /// The domain name suffix for Azure Synapse Analytics
         /// </summary>
         public string AzureSynapseAnalyticsEndpointSuffix
         {
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         }
 
         /// <summary>
-        /// Gets or sets the resource Id to use for contacting the Synapse Analyticss endpoint
+        /// Gets or sets the resource Id to use for contacting the Synapse Analytics endpoint
         /// </summary>
         public string AzureSynapseAnalyticsEndpointResourceId
         {

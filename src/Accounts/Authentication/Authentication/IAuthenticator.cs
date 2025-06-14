@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         bool TryAuthenticate(AuthenticationParameters parameters, CancellationToken cancellationToken, out Task<IAccessToken> token);
 
         /// <summary>
-        /// Get authentication recrod for telemetry
+        /// Get authentication record for telemetry
         /// </summary>
         AuthTelemetryRecord GetDataForTelemetry();
     }

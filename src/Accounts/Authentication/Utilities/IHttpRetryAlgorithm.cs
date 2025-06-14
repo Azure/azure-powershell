@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
         /// <summary>
         /// Wait for the appropriate retry interval
         /// </summary>
-        /// <returns>A Task that dealys for the appropriate interval</returns>
+        /// <returns>A Task that delays for the appropriate interval</returns>
         Task WaitForRetry();
     }
 }

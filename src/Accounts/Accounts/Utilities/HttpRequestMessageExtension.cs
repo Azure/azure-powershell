@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Common.Utilities
         /// <summary>
         /// Clones an HttpRequestMessage (without the content)
         /// </summary>
-        /// <param name="original">Original HttpRequestMessage (Will be diposed before returning)</param>
+        /// <param name="original">Original HttpRequestMessage (Will be disposed before returning)</param>
         /// <param name="requestUri"></param>
         /// <param name="method"></param>
         /// <returns>A clone of the HttpRequestMessage</returns>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Common.Utilities
         /// <summary>
         /// Clones an HttpRequestMessage (including the content stream and content headers) 
         /// </summary>
-        /// <param name="original">Original HttpRequestMessage (Will be diposed before returning)</param>
+        /// <param name="original">Original HttpRequestMessage (Will be disposed before returning)</param>
         /// <param name="requestUri"></param>
         /// <param name="method"></param>
         /// <returns>A clone of the HttpRequestMessage</returns>
