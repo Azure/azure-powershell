@@ -15,7 +15,7 @@
         private const string LambdaFilterFormat = "properties/{0}/any(m: m eq '{1}')";
 
         /// <summary>
-        /// Return list of software update configurations targetting the given virtual machine
+        /// Return list of software update configurations targeting the given virtual machine
         /// <see href="http://aka.ms/azureautomationsdk/softwareupdateconfigurationoperations" />
         /// </summary>
         /// <param name='operations'>
@@ -33,7 +33,7 @@
         }
 
         /// <summary>
-        /// Return list of software update configurations targetting the given virtual machine
+        /// Return list of software update configurations targeting the given virtual machine
         /// <see href="http://aka.ms/azureautomationsdk/softwareupdateconfigurationoperations" />
         /// </summary>
         /// <param name='operations'>

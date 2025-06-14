@@ -264,7 +264,7 @@ function Test-CreateJobAndGetOutputPowerShellScript
 
     Write-Output "Get error output of the job - success."
 
-    # Get a single Error ouput record
+    # Get a single Error output record
     $errRecord = Get-AzAutomationJobOutputRecord -JobId $jobId -Id $streamId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName
     Assert-True { $errRecord -ne $null } "Get-AzAutomationJobOutputRecord failed to get automation Job Error record Output!"
 

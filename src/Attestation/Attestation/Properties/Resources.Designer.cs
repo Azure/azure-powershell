@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Commands.Attestation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid key vault managed storage acccount name..
+        ///   Looks up a localized string similar to Invalid key vault managed storage account name..
         /// </summary>
         internal static string InvalidManagedStorageAccountName {
             get {
@@ -1126,7 +1126,7 @@ namespace Microsoft.Azure.Commands.Attestation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vault &apos;{0}&apos; does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription in order to modifiy the Access Policies of this vault..
+        ///   Looks up a localized string similar to Vault &apos;{0}&apos; does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription in order to modify the Access Policies of this vault..
         /// </summary>
         internal static string VaultDoesNotExist {
             get {
