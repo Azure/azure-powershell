@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
         public PSAssignmentProvisioningState ProvisioningState {get; set; }
 
         /// <summary>
-        /// Create a PSBluprintAssignment object from an Assignment model.
+        /// Create a PSBlueprintAssignment object from an Assignment model.
         /// </summary>
         /// <param name="assignment">Assignment object from which to create the PSBlueprintAssignment.</param>
         /// <returns>A new PSBlueprintAssignment object.</returns>

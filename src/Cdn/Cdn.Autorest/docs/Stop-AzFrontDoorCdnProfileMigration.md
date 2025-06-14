@@ -35,13 +35,13 @@ Stop-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupNam
 Abort classic CDN migrate to AFDx.
 This will delete all the AFD Standard or Premium configurations
 
-### Example 2: Abort classic CDN migrate to AFDx, when the subscription of the classic CDN is different from the local subscrition
+### Example 2: Abort classic CDN migrate to AFDx, when the subscription of the classic CDN is different from the local subscription
 ```powershell
 Stop-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
 ```
 
 Abort classic CDN migrate to AFDx.
-When the subscription of the classic CDN is different from the local subscrition, You need to set the value of the subscription parameter.
+When the subscription of the classic CDN is different from the local subscription, You need to set the value of the subscription parameter.
 This will delete all the AFD Standard or Premium configurations.
 
 ## PARAMETERS
