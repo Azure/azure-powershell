@@ -16,10 +16,11 @@ Creates an Azure HDInsight cluster in the specified resource group for the curre
 ### Default (Default)
 ```
 New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
- [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-StorageAccountResourceId] <String>]
+ [-ClusterSizeInNodes] <Int32> [[-HttpCredential] <PSCredential>] [[-StorageAccountResourceId] <String>]
  [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-EnableSecureChannel <Boolean>]
- [-Config <AzureHDInsightConfig>] [-OozieMetastore <AzureHDInsightMetastore>]
- [-HiveMetastore <AzureHDInsightMetastore>] [-AmbariDatabase <AzureHDInsightMetastore>]
+ [-EntraUserIdentity <String>] [-EntraUserFullInfo <Hashtable[]>] [-Config <AzureHDInsightConfig>]
+ [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
+ [-AmbariDatabase <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-Configurations <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
  [-ScriptActions <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
@@ -45,10 +46,11 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
 ### CertificateFilePath
 ```
 New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
- [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-StorageAccountResourceId] <String>]
+ [-ClusterSizeInNodes] <Int32> [[-HttpCredential] <PSCredential>] [[-StorageAccountResourceId] <String>]
  [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-EnableSecureChannel <Boolean>]
- [-Config <AzureHDInsightConfig>] [-OozieMetastore <AzureHDInsightMetastore>]
- [-HiveMetastore <AzureHDInsightMetastore>] [-AmbariDatabase <AzureHDInsightMetastore>]
+ [-EntraUserIdentity <String>] [-EntraUserFullInfo <Hashtable[]>] [-Config <AzureHDInsightConfig>]
+ [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
+ [-AmbariDatabase <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-Configurations <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
  [-ScriptActions <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
@@ -75,10 +77,11 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
 ### CertificateFileContents
 ```
 New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
- [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-StorageAccountResourceId] <String>]
+ [-ClusterSizeInNodes] <Int32> [[-HttpCredential] <PSCredential>] [[-StorageAccountResourceId] <String>]
  [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-EnableSecureChannel <Boolean>]
- [-Config <AzureHDInsightConfig>] [-OozieMetastore <AzureHDInsightMetastore>]
- [-HiveMetastore <AzureHDInsightMetastore>] [-AmbariDatabase <AzureHDInsightMetastore>]
+ [-EntraUserIdentity <String>] [-EntraUserFullInfo <Hashtable[]>] [-Config <AzureHDInsightConfig>]
+ [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
+ [-AmbariDatabase <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-Configurations <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
  [-ScriptActions <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
@@ -671,6 +674,111 @@ New-AzHDInsightCluster `
     -SecurityProfile $config.SecurityProfile
 ```
 
+### Example 14: Create an Azure HDInsight cluster with WASB storage And MSI.
+```powershell
+# Primary storage account info
+$storageAccountResourceGroupName = "Group"
+$storageAccountResourceId = "yourstorageaccountresourceid"
+$storageManagedIdentity = "yourstorageusermanagedidentity"
+$storageContainer = "container01"
+$storageAccountType = "AzureStorage"
+
+# Cluster configuration info
+$location = "East Asia"
+$clusterResourceGroupName = "Group"
+$clusterName = "your-hadoop-002"
+$clusterCreds = Get-Credential
+
+# If the cluster's resource group doesn't exist yet, run:
+# New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+# Create the cluster
+New-AzHDInsightCluster `
+    -ClusterType Hadoop `
+    -ClusterSizeInNodes 3 `
+    -ResourceGroupName $clusterResourceGroupName `
+    -ClusterName $clusterName `
+    -HttpCredential $clusterCreds `
+    -Location $location `
+    -StorageAccountResourceId $storageAccountResourceId `
+    -StorageAccountManagedIdentity $storageManagedIdentity `
+    -StorageContainer $storageContainer `
+    -StorageAccountType $storageAccountType `
+    -SshCredential $clusterCreds
+```
+
+### Example 15: Create an Azure HDInsight cluster With Entra USer By ObjectId Or Upn
+```powershell
+# Primary storage account info
+$storageAccountResourceGroupName = "Group"
+$storageAccountResourceId = "yourstorageaccountresourceid"
+$storageAccountName = "yourstorageacct001"
+$storageAccountKey = Get-AzStorageAccountKey `
+    -ResourceGroupName $storageAccountResourceGroupName `
+    -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
+$storageContainer = "container002"
+
+# Cluster configuration info
+$location = "East Asia"
+$clusterResourceGroupName = "Group"
+$clusterName = "your-hadoop-002"
+$clusterCreds = Get-Credential
+
+# If you want to specify multiple Entra users, provide their ObjectId or Upn as a single comma-separated string.
+# Example: "objectid1,objectid2,user1@contoso.com,user2@contoso.com"
+$entraUserIdentity = "user@contoso.com"
+
+# If the cluster's resource group doesn't exist yet, run:
+# New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+# Create the cluster
+New-AzHDInsightCluster `
+    -ClusterType Hadoop `
+    -ClusterSizeInNodes 3 `
+    -ResourceGroupName $clusterResourceGroupName `
+    -ClusterName $clusterName `
+    -Location $location `
+    -StorageAccountResourceId $storageAccountResourceId `
+    -StorageAccountKey $storageAccountKey `
+    -StorageContainer $storageContainer `
+    -SshCredential $clusterCreds `
+    -EntraUserIdentity $entraUserIdentity
+```
+
+### Example 16: Create an Azure HDInsight cluster With Entra USer By FUll Info 
+```powershell
+# Primary storage account info
+$storageAccountResourceGroupName = "Group"
+$storageAccountResourceId = "yourstorageaccountresourceid"
+$storageAccountName = "yourstorageacct001"
+$storageAccountKey = Get-AzStorageAccountKey `
+    -ResourceGroupName $storageAccountResourceGroupName `
+    -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
+$storageContainer = "container002"
+
+# Cluster configuration info
+$location = "East Asia"
+$clusterResourceGroupName = "Group"
+$clusterName = "your-hadoop-002"
+$clusterCreds = Get-Credential
+$entraUserFullInfo = @(@{ObjectId = "ObjectId1"; Upn = "Upn1"; DisplayName = "DisplayName1"},@{ObjectId = "ObjectId2"; Upn = "Upn2"; DisplayName = "DisplayName2"})
+# If the cluster's resource group doesn't exist yet, run:
+# New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+# Create the cluster
+New-AzHDInsightCluster `
+    -ClusterType Hadoop `
+    -ClusterSizeInNodes 3 `
+    -ResourceGroupName $clusterResourceGroupName `
+    -ClusterName $clusterName `
+    -Location $location `
+    -StorageAccountResourceId $storageAccountResourceId `
+    -StorageAccountKey $storageAccountKey `
+    -StorageContainer $storageContainer `
+    -SshCredential $clusterCreds `
+    -EntraUserFullInfo $entraUserFullInfo
+```
+
 ## PARAMETERS
 
 ### -AadTenantId
@@ -1114,6 +1222,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EntraUserFullInfo
+Gets or sets a list of Entra users as an array of hashtables. Each hashtable should contain keys such as ObjectId, Upn, and DisplayName.
+
+```yaml
+Type: System.Collections.Hashtable[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EntraUserIdentity
+Gets or sets the Entra user data. Accepts one or more ObjectId/Upn separated by ','.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -HeadNodeSize
 Specifies the size of the virtual machine for the Head node.
 Use Get-AzVMSize for acceptable VM sizes, and see HDInsight's pricing page.
@@ -1154,7 +1292,7 @@ Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 4
 Default value: None
 Accept pipeline input: False
@@ -1577,7 +1715,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Gets or sets the cluster tags.
-
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
 Parameter Sets: (All)
