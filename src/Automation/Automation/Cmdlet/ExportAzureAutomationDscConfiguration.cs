@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         private bool overwriteExistingFile;
 
         /// <summary> 
-        /// Gets or sets the configfuration name. 
+        /// Gets or sets the configuration name. 
         /// </summary> 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The dsc configuration name.")]
         [Alias("ConfigurationName")]
