@@ -16,6 +16,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
     public class PsApiManagementApi : PsApiManagementArmResource
     {
+        /// <summary>
+        /// Gets or sets the API identifier
+        /// </summary>
         public string ApiId { get; set; }
 
         public string Name { get; set; }
@@ -36,6 +39,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         /// </summary>
         public string Path { get; set; }
 
+        /// <summary>
+        /// Gets or sets Type of API
+        /// </summary>
         public string ApiType { get; set; }
 
         /// <summary>
@@ -44,10 +50,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         /// </summary>
         public PsApiManagementSchema[] Protocols { get; set; }
 
+        /// <summary>
+        // Gets or sets the authorization server identifier
         // map from AuthenticationSettings.OAuth2.AuthorizationServerId
+        /// </summary>
         public string AuthorizationServerId { get; set; }
 
+        /// <summary>
+        // Gets or sets the authorization scope
         // map from AuthenticationSettings.OAuth2.Scope
+        /// </summary>
         public string AuthorizationScope { get; set; }
 
         /// <summary>
@@ -62,10 +74,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         /// </summary>
         public string[] BearerTokenSendingMethod { get; set; }
 
+        /// <summary>
+        // Gets or sets the subscription key header name
         // map from SubscriptionKeyParameterNames.Header
+        /// </summary>
         public string SubscriptionKeyHeaderName { get; set; }
 
+        /// <summary>
+        // Gets or sets the subscription key query parameter name
         // map from SubscriptionKeyParameterNames.Query
+        /// </summary>
         public string SubscriptionKeyQueryParamName { get; set; }
 
         /// <summary>
