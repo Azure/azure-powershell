@@ -19,12 +19,12 @@ API to get lab schedule.
 API to get lab schedule.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesschedule
 #>
 function Get-AzLabServicesSchedule_LabObject {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory)]

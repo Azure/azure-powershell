@@ -17,7 +17,7 @@ function Remove-AzLabServicesLabPlan_LabPlan {
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     ${LabPlan},
 

@@ -13,11 +13,11 @@
 # ----------------------------------------------------------------------------------
 
 function Send-AzLabServicesUserInvite_Users {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
         ${User},
 
         [Parameter()]

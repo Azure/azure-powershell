@@ -19,12 +19,12 @@ API to get lab plan images.
 API to get lab plan images.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesplanimage
 #>
 function Get-AzLabServicesPlanImage_ResourceId {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory)]

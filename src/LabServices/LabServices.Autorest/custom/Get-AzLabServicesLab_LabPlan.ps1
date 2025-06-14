@@ -19,16 +19,16 @@ API to get labs.
 API to get labs.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslab
 #>
 function Get-AzLabServicesLab_LabPlan {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
         ${LabPlan},
 
         [Parameter()]

@@ -43,6 +43,18 @@ Get-AzLabServicesPlanImage [-Name <String>] [-SubscriptionId <String[]>] -LabPla
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityLabPlan
+```
+Get-AzLabServicesPlanImage -Name <String> -LabPlanInputObject <ILabServicesIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzLabServicesPlanImage -InputObject <ILabServicesIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets an image resource.
 
@@ -136,12 +148,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LabPlan
-To construct, see NOTES section for LABPLAN properties and create a hash table.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LabPlan
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
 Parameter Sets: LabPlan
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LabPlanInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: GetViaIdentityLabPlan
 Aliases:
 
 Required: True
@@ -184,7 +225,7 @@ The image name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityLabPlan
 Aliases: ImageName
 
 Required: True
@@ -253,7 +294,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: ResourceId, ListByDisplayName, List, Get, LabPlan
 Aliases:
 
 Required: False
@@ -268,13 +309,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
 
 ### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage
 
 ## NOTES
 
