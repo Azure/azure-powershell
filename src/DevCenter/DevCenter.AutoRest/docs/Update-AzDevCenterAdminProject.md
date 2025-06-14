@@ -15,19 +15,35 @@ Partially updates a project.
 ### UpdateExpanded (Default)
 ```
 Update-AzDevCenterAdminProject -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-CatalogSettingCatalogItemSyncType <CatalogItemType[]>] [-Description <String>] [-DisplayName <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-MaxDevBoxesPerUser <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-AzureAiServiceSettingAzureAiServicesMode <AzureAiServicesMode>]
+ [-CatalogSettingCatalogItemSyncType <CatalogItemType[]>]
+ [-CustomizationSettingIdentity <IProjectCustomizationManagedIdentity[]>]
+ [-CustomizationSettingUserCustomizationsEnableStatus <UserCustomizationsEnableStatus>]
+ [-Description <String>] [-DevBoxAutoDeleteSettingDeleteMode <DevBoxDeleteMode>]
+ [-DevBoxAutoDeleteSettingGracePeriod <String>] [-DevBoxAutoDeleteSettingInactiveThreshold <String>]
+ [-DisplayName <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-MaxDevBoxesPerUser <Int32>]
+ [-ServerlessGpuSessionSettingMaxConcurrentSessionsPerProject <Int32>]
+ [-ServerlessGpuSessionSettingServerlessGpuSessionsMode <ServerlessGpuSessionsMode>] [-Tag <Hashtable>]
+ [-WorkspaceStorageSettingWorkspaceStorageMode <WorkspaceStorageMode>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDevCenterAdminProject -InputObject <IDevCenterIdentity>
- [-CatalogSettingCatalogItemSyncType <CatalogItemType[]>] [-Description <String>] [-DisplayName <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-MaxDevBoxesPerUser <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-AzureAiServiceSettingAzureAiServicesMode <AzureAiServicesMode>]
+ [-CatalogSettingCatalogItemSyncType <CatalogItemType[]>]
+ [-CustomizationSettingIdentity <IProjectCustomizationManagedIdentity[]>]
+ [-CustomizationSettingUserCustomizationsEnableStatus <UserCustomizationsEnableStatus>]
+ [-Description <String>] [-DevBoxAutoDeleteSettingDeleteMode <DevBoxDeleteMode>]
+ [-DevBoxAutoDeleteSettingGracePeriod <String>] [-DevBoxAutoDeleteSettingInactiveThreshold <String>]
+ [-DisplayName <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-MaxDevBoxesPerUser <Int32>]
+ [-ServerlessGpuSessionSettingMaxConcurrentSessionsPerProject <Int32>]
+ [-ServerlessGpuSessionSettingServerlessGpuSessionsMode <ServerlessGpuSessionsMode>] [-Tag <Hashtable>]
+ [-WorkspaceStorageSettingWorkspaceStorageMode <WorkspaceStorageMode>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,11 +84,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AzureAiServiceSettingAzureAiServicesMode
+The property indicates whether Azure AI services is enabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.AzureAiServicesMode
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CatalogSettingCatalogItemSyncType
 Indicates catalog item types that can be synced.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemType[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomizationSettingIdentity
+The identities that can to be used in customization scenarios; e.g., to clone a repository.
+To construct, see NOTES section for CUSTOMIZATIONSETTINGIDENTITY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProjectCustomizationManagedIdentity[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomizationSettingUserCustomizationsEnableStatus
+Indicates whether user customizations are enabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.UserCustomizationsEnableStatus
 Parameter Sets: (All)
 Aliases:
 
@@ -101,6 +163,53 @@ Accept wildcard characters: False
 
 ### -Description
 Description of the project.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DevBoxAutoDeleteSettingDeleteMode
+Indicates the delete mode for Dev Boxes within this project.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DevBoxDeleteMode
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DevBoxAutoDeleteSettingGracePeriod
+ISO8601 duration required for the dev box to be marked for deletion prior to it being deleted.
+ISO8601 format PT[n]H[n]M[n]S.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DevBoxAutoDeleteSettingInactiveThreshold
+ISO8601 duration required for the dev box to not be inactive prior to it being scheduled for deletion.
+ISO8601 format PT[n]H[n]M[n]S.
 
 ```yaml
 Type: System.String
@@ -239,6 +348,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServerlessGpuSessionSettingMaxConcurrentSessionsPerProject
+When specified, limits the maximum number of concurrent sessions across all pools in the project.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerlessGpuSessionSettingServerlessGpuSessionsMode
+The property indicates whether serverless GPU access is enabled on the project.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ServerlessGpuSessionsMode
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -259,6 +398,21 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceStorageSettingWorkspaceStorageMode
+Indicates whether workspace storage is enabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.WorkspaceStorageMode
 Parameter Sets: (All)
 Aliases:
 
@@ -309,7 +463,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProject
 
 ## NOTES
 

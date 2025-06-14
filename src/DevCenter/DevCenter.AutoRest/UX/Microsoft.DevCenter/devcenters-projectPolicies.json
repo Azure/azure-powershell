@@ -1,0 +1,95 @@
+{
+  "resourceType": "devcenters/projectPolicies",
+  "apiVersion": "2025-04-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.devcenter"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDevCenterAdminProjectPolicy",
+      "description": "Gets a specific project policy.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies/{projectPolicyName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminprojectpolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DevCenterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a specific project policy.",
+          "parameters": [
+            {
+              "name": "-DevCenterName",
+              "value": "[Path.devCenterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.projectPolicyName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDevCenterAdminProjectPolicy",
+      "description": "Deletes an project policy.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies/{projectPolicyName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteradminprojectpolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DevCenterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an project policy.",
+          "parameters": [
+            {
+              "name": "-DevCenterName",
+              "value": "[Path.devCenterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.projectPolicyName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
