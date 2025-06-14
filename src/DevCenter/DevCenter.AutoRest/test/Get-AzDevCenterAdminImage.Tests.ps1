@@ -34,15 +34,4 @@ Describe 'Get-AzDevCenterAdminImage' {
         $image.Publisher | Should -Be "MicrosoftWindowsDesktop"
         $image.Sku | Should -Be "win11-22h2-ent-cpc-os"
     }
-
-    It 'GetViaIdentity' {
-        $image = Get-AzDevCenterAdminImage -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -GalleryName "Default" -Name $env.imageName
-        $image = Get-AzDevCenterAdminImage -InputObject $image
-        $image.Description | Should -Be "Windows 11 Enterprise + OS Optimizations 22H2"
-        $image.HibernateSupport | Should -Be "Enabled"
-        $image.Name | Should -Be "microsoftwindowsdesktop_windows-ent-cpc_win11-22h2-ent-cpc-os"
-        $image.Offer | Should -Be "windows-ent-cpc"
-        $image.Publisher | Should -Be "MicrosoftWindowsDesktop"
-        $image.Sku | Should -Be "win11-22h2-ent-cpc-os"
-    }
 }

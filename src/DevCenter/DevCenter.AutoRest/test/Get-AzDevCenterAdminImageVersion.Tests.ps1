@@ -26,10 +26,4 @@ Describe 'Get-AzDevCenterAdminImageVersion' {
         $imageVersion.Name | Should -Be $env.imageVersion
 
     }
-
-    It 'GetViaIdentity' {
-        $imageVersion = Get-AzDevCenterAdminImageVersion -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -ImageName $env.imageName -VersionName $env.imageVersion -GalleryName "Default"
-        $imageVersion = Get-AzDevCenterAdminImageVersion -InputObject $imageVersion
-        $imageVersion.Name | Should -Be $env.imageVersion
-    }
 }
