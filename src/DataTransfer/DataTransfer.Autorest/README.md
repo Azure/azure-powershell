@@ -44,7 +44,7 @@ try-require:
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
 # Normally, title is the service name
-title: AzureDataTransfer
+title: DataTransfer
 subject-prefix: DataTransfer
 
 # The next three configurations are exclusive to v3, and in v4, they are activated by default. If you are still using v3, please uncomment them.
