@@ -34,26 +34,30 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="companyId">The company ID of the QuickBooks company to authorize.
         /// </param>
 
-        /// <param name="consumerKey">The consumer key for OAuth 1.0 authentication.
+        /// <param name="consumerKey">The consumer key for OAuth 2.0 authentication.
         /// </param>
 
-        /// <param name="consumerSecret">The consumer secret for OAuth 1.0 authentication.
+        /// <param name="consumerSecret">The consumer secret for OAuth 2.0 authentication.
         /// </param>
 
-        /// <param name="accessToken">The access token for OAuth 1.0 authentication.
+        /// <param name="accessToken">The access token for OAuth 2.0 authentication.
         /// </param>
 
-        /// <param name="accessTokenSecret">The access token secret for OAuth 1.0 authentication.
+        /// <param name="accessTokenSecret">The access token secret is deprecated for OAuth 1.0 authentication. Only
+        /// used for version 1.0.
+        /// </param>
+
+        /// <param name="refreshToken">The refresh token for OAuth 2.0 authentication.
         /// </param>
 
         /// <param name="useEncryptedEndpoints">Specifies whether the data source endpoints are encrypted using HTTPS. The
-        /// default value is true.
+        /// default value is true. Only used for version 1.0.
         /// </param>
 
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public QuickBooksLinkedServiceTypeProperties(object connectionProperties = default(object), object endpoint = default(object), object companyId = default(object), object consumerKey = default(object), SecretBase consumerSecret = default(SecretBase), SecretBase accessToken = default(SecretBase), SecretBase accessTokenSecret = default(SecretBase), object useEncryptedEndpoints = default(object), string encryptedCredential = default(string))
+        public QuickBooksLinkedServiceTypeProperties(object connectionProperties = default(object), object endpoint = default(object), object companyId = default(object), object consumerKey = default(object), SecretBase consumerSecret = default(SecretBase), SecretBase accessToken = default(SecretBase), SecretBase accessTokenSecret = default(SecretBase), SecretBase refreshToken = default(SecretBase), object useEncryptedEndpoints = default(object), string encryptedCredential = default(string))
 
         {
             this.ConnectionProperties = connectionProperties;
@@ -63,6 +67,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.ConsumerSecret = consumerSecret;
             this.AccessToken = accessToken;
             this.AccessTokenSecret = accessTokenSecret;
+            this.RefreshToken = refreshToken;
             this.UseEncryptedEndpoints = useEncryptedEndpoints;
             this.EncryptedCredential = encryptedCredential;
             CustomInit();
@@ -95,32 +100,39 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object CompanyId {get; set; }
 
         /// <summary>
-        /// Gets or sets the consumer key for OAuth 1.0 authentication.
+        /// Gets or sets the consumer key for OAuth 2.0 authentication.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "consumerKey")]
         public object ConsumerKey {get; set; }
 
         /// <summary>
-        /// Gets or sets the consumer secret for OAuth 1.0 authentication.
+        /// Gets or sets the consumer secret for OAuth 2.0 authentication.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "consumerSecret")]
         public SecretBase ConsumerSecret {get; set; }
 
         /// <summary>
-        /// Gets or sets the access token for OAuth 1.0 authentication.
+        /// Gets or sets the access token for OAuth 2.0 authentication.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "accessToken")]
         public SecretBase AccessToken {get; set; }
 
         /// <summary>
-        /// Gets or sets the access token secret for OAuth 1.0 authentication.
+        /// Gets or sets the access token secret is deprecated for OAuth 1.0
+        /// authentication. Only used for version 1.0.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "accessTokenSecret")]
         public SecretBase AccessTokenSecret {get; set; }
 
         /// <summary>
+        /// Gets or sets the refresh token for OAuth 2.0 authentication.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "refreshToken")]
+        public SecretBase RefreshToken {get; set; }
+
+        /// <summary>
         /// Gets or sets specifies whether the data source endpoints are encrypted
-        /// using HTTPS. The default value is true.
+        /// using HTTPS. The default value is true. Only used for version 1.0.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "useEncryptedEndpoints")]
         public object UseEncryptedEndpoints {get; set; }
