@@ -15,17 +15,17 @@ V2 Version of Packet Capture Cmdlet which creates a new packet capture resource 
 ### SetByResource (Default)
 ```
 New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher <PSNetworkWatcher> -Name <String> -TargetId <String>
- [-StorageAccountId <String>] [-StoragePath <String>] [-FilePath <String>] [-BytesToCapturePerPacket <Int32>]
- [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>] [-Scope <PSPacketCaptureMachineScope>]
- [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-ContinuousCapture <Boolean>]
- [-LocalPath <String>] [-CaptureSettings <PSPacketCaptureSettings>] [-AsJob]
+ [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
+ [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
+ [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>]
+ [-ContinuousCapture <Boolean>] [-LocalPath <String>] [-CaptureSettings <PSPacketCaptureSettings>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByName
 ```
 New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcherName <String> -ResourceGroupName <String> -Name <String>
- -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>] [-FilePath <String>]
+ -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
  [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
  [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>]
  [-ContinuousCapture <Boolean>] [-LocalPath <String>] [-CaptureSettings <PSPacketCaptureSettings>] [-AsJob]
@@ -35,10 +35,10 @@ New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcherName <String> -ResourceGroupN
 ### SetByLocation
 ```
 New-AzNetworkWatcherPacketCaptureV2 -Location <String> -Name <String> -TargetId <String>
- [-StorageAccountId <String>] [-StoragePath <String>] [-FilePath <String>] [-BytesToCapturePerPacket <Int32>]
- [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>] [-Scope <PSPacketCaptureMachineScope>]
- [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-ContinuousCapture <Boolean>]
- [-LocalPath <String>] [-CaptureSettings <PSPacketCaptureSettings>] [-AsJob]
+ [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
+ [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
+ [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>]
+ [-ContinuousCapture <Boolean>] [-LocalPath <String>] [-CaptureSettings <PSPacketCaptureSettings>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -278,7 +278,7 @@ Accept wildcard characters: False
 ```
 
 ### -CaptureSettings
-Filters for packet capture session.
+The capture setting holds the 'FileCount', 'FileSizeInBytes', 'SessionTimeLimitInSeconds' values. These settings are only applicable, if 'ContinuousCapture' is provided.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSPacketCaptureSettings
@@ -322,21 +322,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FilePath
-File path.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Filter
 Filters for packet capture session.
 
@@ -349,6 +334,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LocalFilePath
+Local File path.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
