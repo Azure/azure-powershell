@@ -240,15 +240,16 @@ try{
                 Write-Host "Redundant help markdown detected, removing $helpFile ..."
                 Remove-Item $helpFile.FullName -Force
             }
-             # Only try to remove the parameter if the file still exists
-            if (Test-Path $helpFile.FullName) {
-                Write-Host "Removing ProgressAction parameter from $helpFile ..."
-                Remove-CommonParameterFromMarkdown -Path $helpFile.FullName -ParameterName 'ProgressAction'
-            }
+            Write-Host "Removing ProgressAction parameter from $helpFile ..."
+            Remove-CommonParameterFromMarkdown -Path $helpFile.FullName -ParameterName 'ProgressAction'
         }
         & $resolveScriptPath -ModuleName $ModuleRootName -ArtifactFolder $artifacts -Psd1Folder $parentModulePath
     } -ArgumentList $RepoRoot, $ModuleRootName, $parentModuleName, $SubModuleName, $subModuleNameTrimmed
-    $job | Wait-Job | Receive-Job
+    try {
+        $job | Wait-Job | Receive-Job
+    } catch {
+        Write-Warning "Error: $($_.Exception.Message)"
+    }
     $job | Remove-Job
 } finally {
     if (Test-Path $tempCsprojPath) {
