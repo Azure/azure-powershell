@@ -29,6 +29,7 @@ function Get-AzLabServicesSchedule_LabObject {
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The Id of the schedule that uniquely identifies it within containing lab.
         ${ResourceId},
 
         [Parameter()]

@@ -29,7 +29,8 @@ function Get-AzLabServicesLabForVM {
     param(
         [Parameter(Mandatory)]
         [System.String]
-        ${ResourceId},        
+        # The resource Id of the VM that uniquely identifies it.
+        ${ResourceId},
       
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]

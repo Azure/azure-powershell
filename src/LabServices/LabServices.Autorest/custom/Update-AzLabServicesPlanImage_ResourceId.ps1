@@ -18,6 +18,7 @@ function Update-AzLabServicesPlanImage_ResourceId {
 param(
     [Parameter(Mandatory)]
     [System.String]
+    # The resource ID of the image to update.
     ${ResourceId},
 
     [Parameter(Mandatory)]

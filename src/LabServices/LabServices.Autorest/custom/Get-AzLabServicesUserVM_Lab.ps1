@@ -29,11 +29,13 @@ function Get-AzLabServicesUserVM_Lab {
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+        # The Lab object.
         ${Lab},
    
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
+        # Email address of the user.
         ${Email},
         
         [Parameter()]

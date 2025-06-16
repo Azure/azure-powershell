@@ -18,6 +18,7 @@ function Publish-AzLabServicesLab_Lab {
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+        # The lab object to publish.
         ${Lab},
 
         ${AdditionalUsageQuota},

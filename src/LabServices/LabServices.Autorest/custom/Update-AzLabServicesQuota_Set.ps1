@@ -44,10 +44,12 @@ function Update-AzLabServicesQuota_Set {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
+        # The name of the lab that uniquely identifies it.
         ${LabName},
 
         [Parameter(Mandatory)]
         [System.TimeSpan]
+        # The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
         ${LabQuota},
     
         [Parameter()]

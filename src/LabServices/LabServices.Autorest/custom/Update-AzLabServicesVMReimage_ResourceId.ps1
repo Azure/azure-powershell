@@ -18,6 +18,7 @@ function Update-AzLabServicesVMReimage_ResourceId {
 param(
     [Parameter(Mandatory)]
     [System.String]
+    # The resource ID of the virtual machine to reimage.
     ${ResourceId},
 
     [Parameter()]

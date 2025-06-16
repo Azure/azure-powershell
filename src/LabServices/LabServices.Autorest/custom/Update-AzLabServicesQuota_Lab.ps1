@@ -30,10 +30,12 @@ function Update-AzLabServicesQuota_Lab {
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        # The Lab object.
         ${Lab},
 
         [Parameter(Mandatory)]
         [System.TimeSpan]
+        # The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
         ${LabQuota},
    
         [Parameter()]

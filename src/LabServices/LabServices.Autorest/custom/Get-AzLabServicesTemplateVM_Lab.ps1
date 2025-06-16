@@ -29,6 +29,7 @@ function Get-AzLabServicesTemplateVM_Lab {
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+        # The Lab object.
         ${Lab},
 
         [Parameter()]

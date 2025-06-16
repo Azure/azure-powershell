@@ -37,6 +37,8 @@ param(
     [Parameter(Mandatory)]
     [SupportsWildcards()]
     [System.String]
+    # The name of the user that uniquely identifies it within containing lab.
+    # Used in resource URIs.
     ${Name},
           
     [Parameter()]

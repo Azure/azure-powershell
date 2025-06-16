@@ -19,12 +19,13 @@ param(
     [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    # Lab resource to create user in.
     ${Lab},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
-    # The name of the user that uniqely identifies it within containing lab.
+    # The name of the user that uniquely identifies it within containing lab.
     # Used in resource URIs.
     ${Name},
 
@@ -38,8 +39,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.TimeSpan]
     # The amount of usage quota time the user gets in addition to the lab usage quota.
-
     ${AdditionalUsageQuota},
+    
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]

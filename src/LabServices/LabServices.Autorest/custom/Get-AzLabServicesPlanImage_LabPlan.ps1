@@ -29,11 +29,14 @@ function Get-AzLabServicesPlanImage_LabPlan {
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
+        # The lab plan to get images for.
         ${LabPlan},
    
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
+        # The name of the user that uniquely identifies it within containing lab.
+        # Used in resource URIs.
         ${Name},
 
         [Parameter()]

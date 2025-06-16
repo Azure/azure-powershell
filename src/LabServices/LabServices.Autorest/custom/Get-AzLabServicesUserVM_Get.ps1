@@ -30,16 +30,20 @@ function Get-AzLabServicesUserVM_Get {
         [Parameter(Mandatory)]
         [System.String]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        # The name of the resource group.
+        # The name is case insensitive.
         ${ResourceGroupName},
 
         [Parameter(Mandatory)]
         [System.String]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        # The name of the lab that uniquely identifies it.
         ${LabName},
    
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
+        # Email address of the user.
         ${Email},
    
         [Parameter()]

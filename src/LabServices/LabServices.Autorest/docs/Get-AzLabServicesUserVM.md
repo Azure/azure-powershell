@@ -72,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -Email
-
+Email address of the user.
 
 ```yaml
 Type: System.String
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -Lab
-
+The Lab object.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -LabName
-
+The name of the lab that uniquely identifies it.
 
 ```yaml
 Type: System.String
@@ -117,7 +117,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -132,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource Id of the VM that uniquely identifies it.
 
 ```yaml
 Type: System.String
@@ -162,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -User
-
+The user object.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User

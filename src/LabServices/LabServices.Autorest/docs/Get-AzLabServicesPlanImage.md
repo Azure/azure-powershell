@@ -119,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-
+The image display name.
 
 ```yaml
 Type: System.String
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -LabPlan
-
+The lab plan to get images for.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
@@ -241,7 +241,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource Id of the image that uniquely identifies it.
 
 ```yaml
 Type: System.String

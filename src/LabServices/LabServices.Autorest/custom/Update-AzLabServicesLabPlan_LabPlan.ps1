@@ -20,96 +20,116 @@ param(
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    # The LabPlan resource to update.
     ${LabPlan},
 
     [Parameter()]
     [String[]]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    # The allowed regions for the lab creator to use when creating labs using this lab plan.
     ${AllowedRegion},
 
     [Parameter()]
     [timespan]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    # The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
     ${DefaultAutoShutdownProfileDisconnectDelay},
 
     [Parameter()]
     [timespan]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    # The amount of time a VM will idle before it is shutdown if this behavior is enabled.
     ${DefaultAutoShutdownProfileIdleDelay},
 
     [Parameter()]
     [timespan]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    # The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
     ${DefaultAutoShutdownProfileNoConnectDelay},
     
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [String]
+    # Whether shutdown on disconnect is enabled
     ${DefaultAutoShutdownProfileShutdownOnDisconnect},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("None", "UserAbsence", "LowUsage")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [String]
+    # Whether a VM will get shutdown when it has idled for a period of time.
     ${DefaultAutoShutdownProfileShutdownOnIdle},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [String]
+    # Whether a VM will get shutdown when it hasn't been connected to after a period of time.
     ${DefaultAutoShutdownProfileShutdownWhenNotConnected},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [String]
+    # The enabled access level for Client Access over RDP.
     ${DefaultConnectionProfileClientRdpAccessEnabled},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [String]
+    # The enabled access level for Client Access over SSH.
     ${DefaultConnectionProfileClientSshAccessEnabled},
 
     [Parameter()]
     [String]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    # The external subnet resource id
     ${DefaultNetworkProfileSubnetId},
 
     [Parameter()]
     [String]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    # Base Url of the lms instance this lab plan can link lab rosters against.
     ${LinkedLmsInstance},
 
     [Parameter()]
     [String]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    # Resource ID of the Shared Image Gallery attached to this lab plan.
+    # When saving a lab template virtual machine image it will be persisted in this gallery.
+    # Shared images from the gallery can be made available to use when creating new labs.
     ${SharedGalleryId},
 
     [Parameter()]
     [String]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    # Support contact email address.    
     ${SupportInfoEmail},
 
     [Parameter()]
     [String]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    # Support instructions.
     ${SupportInfoInstruction},
 
     [Parameter()]
     [String]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    # Support contact phone number.
     ${SupportInfoPhone},
 
     [Parameter()]
     [String]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    # Support web address.
     ${SupportInfoUrl},
 
     [Parameter()]
     [String[]]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    # Resource tags.
     ${Tag},
 
     [Parameter()]

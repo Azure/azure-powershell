@@ -29,14 +29,17 @@ function Reset-AzLabServicesVMPassword_ResourceId {
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of the virtual machine that uniquely identifies it.
         ${ResourceId},
   
         [Parameter()]
         [System.String]
+        # The user name of the virtual machine.
         ${Username},
 
         [Parameter(Mandatory)]
         [SecureString]
+        # The password of the virtual machine.
         ${Password},
         
         [Parameter()]

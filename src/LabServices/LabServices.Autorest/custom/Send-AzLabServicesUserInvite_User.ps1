@@ -18,10 +18,12 @@ function Send-AzLabServicesUserInvite_Users {
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
+        # The user to invite.
         ${User},
 
         [Parameter()]
         [System.String]
+        # Custom text for the invite email.
         ${Text},
 
         [Parameter()]

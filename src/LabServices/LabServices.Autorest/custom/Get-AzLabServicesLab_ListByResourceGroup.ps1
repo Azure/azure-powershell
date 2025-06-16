@@ -36,6 +36,8 @@ function Get-AzLabServicesLab_ListByResourceGroup {
     
         [Parameter(Mandatory)]
         [System.String]
+        # The name of the resource group.
+        # The name is case insensitive.
         ${ResourceGroupName},
         
         [Parameter()]

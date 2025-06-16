@@ -18,6 +18,7 @@ function Start-AzLabServicesVM_ResourceId {
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of the virtual machine that uniquely identifies it.
         ${ResourceId},
   
         [Parameter()]

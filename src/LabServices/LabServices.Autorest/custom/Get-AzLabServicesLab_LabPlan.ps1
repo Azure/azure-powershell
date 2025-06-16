@@ -29,11 +29,15 @@ function Get-AzLabServicesLab_LabPlan {
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
+        # The object of Lab Plans.
+        # Acted as a permission container for creating labs via labs.azure.com.
         ${LabPlan},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
+        # The name of the user that uniquely identifies it within containing lab.
+        # Used in resource URIs.
         ${Name},
         
         [Parameter()]

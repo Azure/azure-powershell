@@ -19,21 +19,25 @@ function New-AzLabServicesSchedule_Lab {
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        # The lab object.
         ${Lab},
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
+        # The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
         ${Name},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
         [System.String]
+        # Notes for this schedule.
         ${Note},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
         [System.DateTime]
+        # When the recurrence will expire. This date is inclusive.
         ${RecurrencePatternExpirationDate},
     
         [Parameter()]
@@ -46,6 +50,7 @@ function New-AzLabServicesSchedule_Lab {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
         [System.Int32]
+        # The interval to invoke the schedule on. For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days. When no interval is supplied, an interval of 1 is used.
         ${RecurrencePatternInterval},
     
         [Parameter()]
@@ -58,16 +63,19 @@ function New-AzLabServicesSchedule_Lab {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
         [System.DateTime]
+        # When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
         ${StartAt},
         
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
         [System.DateTime]
+        # When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.
         ${StopAt},
         
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
         [System.String]
+        # The IANA timezone id for the schedule.
         ${TimeZoneId},
     
         [Parameter()]

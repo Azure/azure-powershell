@@ -18,6 +18,7 @@ function Publish-AzLabServicesLab_ResourceId {
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of the lab that uniquely identifies it.
         ${ResourceId},
 
         ${AdditionalUsageQuota},

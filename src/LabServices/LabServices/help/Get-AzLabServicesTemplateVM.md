@@ -60,6 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -Lab
+The Lab object.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
@@ -74,6 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -LabName
+The name of the lab that uniquely identifies it.
 
 ```yaml
 Type: System.String
@@ -88,6 +90,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String

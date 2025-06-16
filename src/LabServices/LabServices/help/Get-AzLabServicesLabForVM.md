@@ -53,6 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+The resource Id of the VM that uniquely identifies it.
 
 ```yaml
 Type: System.String

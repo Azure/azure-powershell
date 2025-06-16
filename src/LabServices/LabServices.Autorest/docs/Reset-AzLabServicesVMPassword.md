@@ -241,7 +241,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource Id of the virtual machine that uniquely identifies it.
 
 ```yaml
 Type: System.String
@@ -302,7 +302,7 @@ Accept wildcard characters: False
 ```
 
 ### -VM
-
+The virtual machine object.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine

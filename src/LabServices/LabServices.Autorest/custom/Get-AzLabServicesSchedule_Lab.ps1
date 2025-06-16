@@ -29,11 +29,14 @@ function Get-AzLabServicesSchedule_Lab {
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+        # The Lab object.
         ${Lab},
    
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
+        # The name of the schedule that uniquely identifies it within containing lab.
+        # Used in resource URIs.
         ${Name},
 
         [Parameter()]

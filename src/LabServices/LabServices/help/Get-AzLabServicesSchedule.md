@@ -117,6 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -Lab
+The Lab object.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
@@ -206,6 +207,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+The Id of the schedule that uniquely identifies it within containing lab.
 
 ```yaml
 Type: System.String

@@ -30,11 +30,14 @@ param(
 
     [Parameter()]
     [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(Mandatory)]
     [SupportsWildcards()]
     [System.String]
+    # The name of the lab that uniquely identifies it.
     ${Name},
 
     [Parameter()]

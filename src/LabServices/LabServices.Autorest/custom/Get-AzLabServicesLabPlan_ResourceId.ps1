@@ -29,6 +29,7 @@ function Get-AzLabServicesLabPlan_ResourceId {
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
     [System.String]
+    # The resource Id of the lab plan that uniquely identifies it.
     ${ResourceId},
 
     [Parameter()]

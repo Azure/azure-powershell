@@ -71,8 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Email
-The name of the user that uniqely identifies it within containing lab.
-Used in resource URIs.
+Email address of the user.
 
 ```yaml
 Type: System.String
@@ -87,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -LabName
-
+The name of the lab that uniquely identifies it.
 
 ```yaml
 Type: System.String
@@ -117,7 +116,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -User
-
+User of a lab that can register for and use virtual machines within the lab.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User

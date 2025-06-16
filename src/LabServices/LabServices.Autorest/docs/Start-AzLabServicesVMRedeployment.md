@@ -177,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource Id of the virtual machine that uniquely identifies it.
 
 ```yaml
 Type: System.String

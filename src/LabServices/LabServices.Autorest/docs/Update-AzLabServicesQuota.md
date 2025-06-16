@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Lab
-
+The Lab object.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -LabName
-
+The name of the lab that uniquely identifies it.
 
 ```yaml
 Type: System.String
@@ -106,7 +106,8 @@ Accept wildcard characters: False
 ```
 
 ### -LabQuota
-
+The initial quota alloted to each lab user.
+Must be a time span between 0 and 9999 hours.
 
 ```yaml
 Type: System.TimeSpan

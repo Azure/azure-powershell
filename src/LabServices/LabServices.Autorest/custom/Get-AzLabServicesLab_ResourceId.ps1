@@ -29,7 +29,8 @@ function Get-AzLabServicesLab_ResourceId {
     param(  
         [Parameter(Mandatory)]
         [System.String]
-        ${ResourceId},       
+        # The resource Id of the lab that uniquely identifies it.
+        ${ResourceId},
       
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]

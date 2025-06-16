@@ -121,7 +121,8 @@ Accept wildcard characters: False
 ```
 
 ### -LabPlan
-
+The object of Lab Plans.
+Acted as a permission container for creating labs via labs.azure.com.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
@@ -136,7 +137,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-
+The name of the user that uniquely identifies it within containing lab.
+Used in resource URIs.
 
 ```yaml
 Type: System.String
@@ -151,7 +153,8 @@ Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -166,7 +169,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource Id of the lab that uniquely identifies it.
 
 ```yaml
 Type: System.String

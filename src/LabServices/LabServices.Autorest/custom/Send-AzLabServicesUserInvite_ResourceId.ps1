@@ -18,10 +18,12 @@ function Send-AzLabServicesUserInvite_ResourceId {
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of the user that uniquely identifies it.
         ${ResourceId},
 
         [Parameter()]
         [System.String]
+        # Custom text for the invite email.
         ${Text},
 
         [Parameter()]
