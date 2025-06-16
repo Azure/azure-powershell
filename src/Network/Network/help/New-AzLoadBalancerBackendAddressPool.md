@@ -29,7 +29,7 @@ New-AzLoadBalancerBackendAddressPool -LoadBalancer <PSLoadBalancer> -Name <Strin
 ```
 
 ## DESCRIPTION
-Creates a backend address pool on a loadbalancer. Allows for specifiying a array of PSLoadBalancerBackendAddress. 
+Creates a backend address pool on a loadbalancer. Allows for specifying a array of PSLoadBalancerBackendAddress. 
 
 ## EXAMPLES
 

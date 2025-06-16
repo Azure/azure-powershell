@@ -21,12 +21,13 @@ Create an in-memory object for RegexClassificationRulePattern.
 Create an in-memory object for RegexClassificationRulePattern.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.RegexClassificationRulePattern
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.RegexClassificationRulePattern
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewRegexClassificationRulePatternObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewregexclassificationrulepatternobject
 #>
 function New-AzPurviewRegexClassificationRulePatternObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.RegexClassificationRulePattern')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.RegexClassificationRulePattern')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,7 +37,7 @@ function New-AzPurviewRegexClassificationRulePatternObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.RegexClassificationRulePattern]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.RegexClassificationRulePattern]::New()
 
         if ($PSBoundParameters.ContainsKey('Pattern')) {
             $Object.Pattern = $Pattern

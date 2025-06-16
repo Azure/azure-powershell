@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureCosmosDbDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurecosmosdbdatasourceobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create an in-memory object for AzureCosmosDbDataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureCosmosDbDataSourceObject -Kind <DataSourceType> [-AccountUri <String>]
- [-CollectionReferenceName <String>] [-CollectionType <String>] [-Location <String>] [-ResourceGroup <String>]
- [-ResourceName <String>] [-SubscriptionId <String>] [<CommonParameters>]
+New-AzPurviewAzureCosmosDbDataSourceObject [-AccountUri <String>] [-CollectionReferenceName <String>]
+ [-CollectionType <String>] [-Location <String>] [-ResourceGroup <String>] [-ResourceName <String>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Create an in-memory object for AzureCosmosDbDataSource.
 
 ### Example 1: Create Azure CosmosDB data source object
 ```powershell
-New-AzPurviewAzureCosmosDbDataSourceObject -Kind 'AzureCosmosDb' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -AccountUri 'https://cosmosd.documents.azure.com'
+New-AzPurviewAzureCosmosDbDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -AccountUri 'https://cosmosd.documents.azure.com'
 ```
 
 ```output
@@ -88,21 +88,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,7 +161,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureCosmosDbDataSource
 
 ## NOTES
 

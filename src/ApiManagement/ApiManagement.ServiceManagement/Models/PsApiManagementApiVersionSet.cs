@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 
         /// <summary>
         /// Gets or sets an value that determines where the API Version
-        /// identifer will be located in a HTTP request. Possible values
+        /// identifier will be located in a HTTP request. Possible values
         /// include: 'Segment', 'Query', 'Header'
         /// </summary>
         public PsApiManagementVersioningScheme VersioningScheme { get; set; }

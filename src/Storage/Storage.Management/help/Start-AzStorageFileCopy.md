@@ -325,7 +325,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileModeCopyMode
-Only applicable to NFS Files. The value "Override" need to be specified together with parameter `-FileMode`. If not specified, the desination file will have the default File Mode.
+Only applicable to NFS Files. The value "Override" need to be specified together with parameter `-FileMode`. If not specified, the destination file will have the default File Mode.
 
 ```yaml
 Type: System.String
@@ -385,7 +385,7 @@ Accept wildcard characters: False
 ```
 
 ### -OwnerCopyMode
-Only applicable to NFS Files. The value "Override" need to be specified together with parameter `-Owner` and `-Group`. If not specified, the desination file will have the default Owner and Group.
+Only applicable to NFS Files. The value "Override" need to be specified together with parameter `-Owner` and `-Group`. If not specified, the destination file will have the default Owner and Group.
 
 ```yaml
 Type: System.String

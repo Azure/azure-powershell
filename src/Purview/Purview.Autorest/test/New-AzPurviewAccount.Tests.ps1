@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzPurviewAccount'))
 
 Describe 'New-AzPurviewAccount' {
     It 'CreateExpanded' {
-        $pa = New-AzPurviewAccount -Name $env.accountName3 -ResourceGroupName $env.resourceGroupName -Location eastus -IdentityType SystemAssigned -SkuCapacity $env.skuCapacity -SkuName $env.skuName
+        $pa = New-AzPurviewAccount -Name $env.accountName3 -ResourceGroupName $env.resourceGroupName -Location eastus -EnableSystemAssignedIdentity:$true -SkuCapacity $env.skuCapacity -SkuName $env.skuName
         $pa.Name | should -be $env.accountName3
     }
 }

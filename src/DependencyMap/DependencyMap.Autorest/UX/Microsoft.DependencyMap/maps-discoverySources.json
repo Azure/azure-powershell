@@ -1,0 +1,95 @@
+{
+  "resourceType": "maps/discoverySources",
+  "apiVersion": "2025-01-31-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.dependencymap"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDependencyMapDiscoverySource",
+      "description": "Get a DiscoverySourceResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DependencyMap/maps/{mapName}/discoverySources/{sourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.dependencymap/get-azdependencymapdiscoverysource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MapName <String>",
+              "-ResourceGroupName <String>",
+              "-SourceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a DiscoverySourceResource",
+          "parameters": [
+            {
+              "name": "-MapName",
+              "value": "[Path.mapName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SourceName",
+              "value": "[Path.sourceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDependencyMapDiscoverySource",
+      "description": "Delete a DiscoverySourceResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DependencyMap/maps/{mapName}/discoverySources/{sourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.dependencymap/remove-azdependencymapdiscoverysource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MapName <String>",
+              "-ResourceGroupName <String>",
+              "-SourceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a DiscoverySourceResource",
+          "parameters": [
+            {
+              "name": "-MapName",
+              "value": "[Path.mapName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SourceName",
+              "value": "[Path.sourceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

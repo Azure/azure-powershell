@@ -43,7 +43,7 @@ Location  Name     Type
 East US 2 MyAssoc  Microsoft.CustomProviders/associations
 ```
 
-Update a custom provider association, the associated target provioder must be properly configured with a route for "associations"
+Update a custom provider association, the associated target provider must be properly configured with a route for "associations"
 
 ## PARAMETERS
 

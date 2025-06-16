@@ -64,7 +64,7 @@ The example changes partition count and replica count of the Azure Cognitive Sea
 ## PARAMETERS
 
 ### -AadAuthFailureMode
-(Optional) What status code to return when failing AAD authentication, if both api key and AAD authenticaiton are allowed for the Azure Cognitive Search service
+(Optional) What status code to return when failing AAD authentication, if both api key and AAD authentication are allowed for the Azure Cognitive Search service
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode]

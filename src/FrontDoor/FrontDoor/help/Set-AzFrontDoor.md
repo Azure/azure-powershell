@@ -175,7 +175,7 @@ Type                        : Microsoft.Network/frontdoor1
 update an existing FrontDoor.
 
 ### Example 4: update BackendPoolSetting property EnforceCertificateNameCheck of an existing Front Door with -DisableCertificateNameCheck switch parameter
-Front Door to be updated can be identified using FrontoorName and ResourceGroupName, PSFrontDoor object, or ResourceId. (See above 3 examples for example)
+Front Door to be updated can be identified using FrontDoorName and ResourceGroupName, PSFrontDoor object, or ResourceId. (See above 3 examples for example)
 The below example uses PSFrontDoor object.
 
 ```powershell

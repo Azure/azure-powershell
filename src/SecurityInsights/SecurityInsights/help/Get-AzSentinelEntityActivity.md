@@ -50,7 +50,7 @@ $Entity = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspa
  $Entity | Get-AzSentinelEntityActivity
 ```
 
-This command gets insights and activies for an Entity by object
+This command gets insights and activities for an Entity by object
 
 ## PARAMETERS
 

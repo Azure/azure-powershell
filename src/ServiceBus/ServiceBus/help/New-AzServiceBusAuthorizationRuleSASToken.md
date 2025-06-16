@@ -19,7 +19,7 @@ New-AzServiceBusAuthorizationRuleSASToken [-AuthorizationRuleId] <String> [-KeyT
 ```
 
 ## DESCRIPTION
-The New-AzServiceBusAuthorizationRuleSASToken cmdlet generates a Shared Access Signature (SAS) token for an Azure Eventhub Namesapce or Azure Eventhub
+The New-AzServiceBusAuthorizationRuleSASToken cmdlet generates a Shared Access Signature (SAS) token for an Azure Eventhub Namespace or Azure Eventhub
 
 ## EXAMPLES
 

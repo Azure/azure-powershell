@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// provisioning state, which only appears in the response.</param>
         /// <param name="dnsPrefix">DNS prefix specified when creating the
         /// managed cluster.</param>
-        /// <param name="fqdn">FDQN for the master pool.</param>
+        /// <param name="fqdn">FQDN for the master pool.</param>
         /// <param name="kubernetesVersion">Version of Kubernetes specified
         /// when creating the managed cluster.</param>
         /// <param name="agentPoolProfiles">Properties of the agent

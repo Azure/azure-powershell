@@ -44,10 +44,10 @@ The **New-AzStorageFileHardLink** cmdlet creates a hard link to a file in same s
 
 ### Example 1: Create a hardlink to a file in same share
 ```powershell
-New-AzStorageFileHardLink -ShareName "fileshare1" -Path "folde1/link1" -TargetFile "folde2/folder3/file1"
+New-AzStorageFileHardLink -ShareName "fileshare1" -Path "folder1/link1" -TargetFile "folder2/folder3/file1"
 ```
 
-This command creates a hard link with path "folde1/link1" to a file with path "folde2/folder3/file1" in same share.
+This command creates a hard link with path "folder1/link1" to a file with path "folder2/folder3/file1" in same share.
 The new created hardlink will show Length as 0 in Powershell. If you get its properties with **Get-AzStorageFile**, will get the length of the target file.
 
 ## PARAMETERS

@@ -61,7 +61,7 @@ Test1 False   containername Container  Csv     Daily                            
 Test2 True    containername Blob       Parquet Weekly   True             True                {blockBlob, appendBlob} {ccc, ddd}  {Name, Creation-Time, Last-Modified, Content-Length...}
 ```
 
-This command gets blob inventory policy from a Storage account, and show its proeprties.
+This command gets blob inventory policy from a Storage account, and show its properties.
 
 ## PARAMETERS
 

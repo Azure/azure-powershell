@@ -75,7 +75,7 @@ Get specific Management Group
 
 
 ```powershell
-$reponse = Get-AzManagementGroup -GroupName TestGroupParent -Expand
+$response = Get-AzManagementGroup -GroupName TestGroupParent -Expand
 $response
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroupParent

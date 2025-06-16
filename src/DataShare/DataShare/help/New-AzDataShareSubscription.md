@@ -45,7 +45,7 @@ Name                    : AdsShareSubscription
 Type                    : Microsoft.DataShare/ShareSubscriptions
 ```
 
-This commands creates a new share subscription AdsShareSubscription for invitaionId under data share account WikiAds.
+This command creates a new share subscription AdsShareSubscription for InvitationId under data share account WikiAds.
 
 ## PARAMETERS
 

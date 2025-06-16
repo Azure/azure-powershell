@@ -93,7 +93,7 @@ FailoverMode                     : Manual
 SeedingMode                      : Automatic
 ```
 
-This command sets the replication mode of an instance link to "Aync".
+This command sets the replication mode of an instance link to "Async".
 
 ### Example 3: Set replication mode of an instance link by its resource identifier
 ```powershell

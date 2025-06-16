@@ -51,7 +51,7 @@ Properties        : {"customLogName":"Validation_CL","description":"test","extra
                     xDelimiter":{"matchIndex":0,"numberdGroup":null,"pattern":"\\n"}}}]}
 ```
 
-The response recieved after defining a custom log collection policy 
+The response received after defining a custom log collection policy 
 
 ## PARAMETERS
 
