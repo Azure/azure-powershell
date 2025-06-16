@@ -1,8 +1,8 @@
 {
-  "Get-AzNetworkFabricInterface+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabricName-CompRack1-MgmtSwitch/networkInterfaces?api-version=2023-06-15+1": {
+  "Get-AzNetworkFabricInterface+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabricName-CompRack1-MgmtSwitch/networkInterfaces?api-version=2024-06-15-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabricName-CompRack1-MgmtSwitch/networkInterfaces?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabricName-CompRack1-MgmtSwitch/networkInterfaces?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -40,10 +40,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkFabricInterface+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabricName-CompRack1-MgmtSwitch/networkInterfaces/Ethernet1?api-version=2023-06-15+1": {
+  "Get-AzNetworkFabricInterface+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabricName-CompRack1-MgmtSwitch/networkInterfaces/Ethernet1?api-version=2024-06-15-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabricName-CompRack1-MgmtSwitch/networkInterfaces/Ethernet1?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabricName-CompRack1-MgmtSwitch/networkInterfaces/Ethernet1?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

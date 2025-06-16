@@ -1,5 +1,5 @@
 ---
-external help file: Az.ManagedNetworkFabric-help.xml
+external help file:
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricacl
 schema: 2.0.0
@@ -14,25 +14,27 @@ Implements Access Control List PUT method.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricAcl -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-AclsUrl <String>] [-Annotation <String>] [-ConfigurationType <String>] [-DefaultAction <String>]
+New-AzNetworkFabricAcl -Name <String> -ResourceGroupName <String> -ConfigurationType <String>
+ -Location <String> [-SubscriptionId <String>] [-AclsUrl <String>] [-AclType <String>] [-Annotation <String>]
+ [-DefaultAction <String>] [-DeviceRole <String>]
  [-DynamicMatchConfiguration <ICommonDynamicMatchConfiguration[]>]
- [-MatchConfiguration <IAccessControlListMatchConfiguration[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-GlobalAccessControlListActionEnableCount <String>]
+ [-MatchConfiguration <IAccessControlListMatchConfiguration[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzNetworkFabricAcl -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetworkFabricAcl -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzNetworkFabricAcl -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetworkFabricAcl -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +95,7 @@ New-AzNetworkFabricAcl -Name $name -ResourceGroupName $resourceGroupName -Locati
 ```output
 AclsUrl AdministrativeState Annotation ConfigurationState ConfigurationType DefaultAction DynamicMatchConfiguration
 ------- ------------------- ---------- ------------------ ----------------- ------------- -------------------------
-        Disabled                       Succeeded          Inline            Permit
+        Disabled                       Succeeded          Inline            Permit        
 ```
 
 This command creates the Access Control List resource.
@@ -102,6 +104,21 @@ This command creates the Access Control List resource.
 
 ### -AclsUrl
 Access Control List file URL.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AclType
+Access Control List (ACL) Type
 
 ```yaml
 Type: System.String
@@ -153,7 +170,7 @@ Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -192,11 +209,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DeviceRole
+Device Role
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DynamicMatchConfiguration
 List of dynamic match configurations.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GlobalAccessControlListActionEnableCount
+Configuration to enable or disable ACL action count.
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -387,3 +434,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -14,10 +14,10 @@ Create a Network Tap.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricTap -Name <String> -ResourceGroupName <String>
- -Destination <INetworkTapPropertiesDestinationsItem[]> -Location <String> -NetworkPacketBrokerId <String>
- [-SubscriptionId <String>] [-Annotation <String>] [-PollingType <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNetworkFabricTap -Name <String> -ResourceGroupName <String> -Destination <IDestinationProperties[]>
+ -Location <String> -NetworkPacketBrokerId <String> [-SubscriptionId <String>] [-Annotation <String>]
+ [-PollingType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 List of destinations to send the filter traffic.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapPropertiesDestinationsItem[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IDestinationProperties[]
 Parameter Sets: CreateExpanded
 Aliases:
 

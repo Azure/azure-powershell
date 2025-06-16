@@ -1,5 +1,5 @@
 ---
-external help file: Az.ManagedNetworkFabric-help.xml
+external help file:
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricnni
 schema: 2.0.0
@@ -18,23 +18,22 @@ Get-AzNetworkFabricNni -NetworkFabricName <String> -ResourceGroupName <String> [
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityNetworkFabric
-```
-Get-AzNetworkFabricNni -Name <String> -NetworkFabricInputObject <IManagedNetworkFabricIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### Get
 ```
 Get-AzNetworkFabricNni -Name <String> -NetworkFabricName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzNetworkFabricNni -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityNetworkFabric
+```
+Get-AzNetworkFabricNni -Name <String> -NetworkFabricInputObject <IManagedNetworkFabricIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,7 +105,7 @@ Name of the Network to Network Interconnect.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentityNetworkFabric, Get
+Parameter Sets: Get, GetViaIdentityNetworkFabric
 Aliases: NetworkToNetworkInterconnectName
 
 Required: True
@@ -136,7 +135,7 @@ Name of the Network Fabric.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -152,7 +151,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -168,7 +167,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -192,3 +191,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

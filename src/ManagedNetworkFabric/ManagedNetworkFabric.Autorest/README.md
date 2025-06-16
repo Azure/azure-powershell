@@ -28,11 +28,15 @@ For information on how to develop for `Az.ManagedNetworkFabric`, see [how-to.md]
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 0d7b535d1273b18623ca0d63a6ebb0456dab95ba
+commit: 2655e1cb46e7cba81e7b0fa0cdd2fbeaa75fd715
+tag: package-2024-06-15-preview
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/managednetworkfabric/resource-manager/readme.md
+input-file:
+# You need to specify your swagger files here.
+  - $(repo)/specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/preview/2024-06-15-preview/managednetworkfabric.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
@@ -45,9 +49,9 @@ use-extension:
 
 # If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
+# identity-correction-for-post: true
+# resourcegroup-append: true
+# nested-object-to-string: true
 
 directive:
   # Following is two common directive which are normally required in all the RPs
@@ -73,6 +77,26 @@ directive:
       subject: DeprovisionNetworkFabric
     set:
       subject: Deprovision
+  - where:
+      verb: Invoke
+      subject: ArmNetworkFabricConfigurationDiff
+    set:
+      subject: ArmConfigurationDiff
+  - where:
+      verb: Invoke
+      subject: CommitNetworkFabricBatchStatus
+    set:
+      subject: CommitBatchStatus
+  - where:
+      verb: Invoke
+      subject: CommitNetworkFabricConfiguration
+    set:
+      subject: CommitConfiguration
+  - where:
+      verb: Invoke
+      subject: ViewNetworkFabricDeviceConfiguration
+    set:
+      subject: DeviceConfiguration
   # Normalize names for unknown or miscategorized cmdlets
   - where:
       subject: ^NetworkFabric$
@@ -85,8 +109,24 @@ directive:
       verb: Update
       variant: ^UpgradeViaJsonString$|^UpgradeViaJsonFilePath$|^UpgradeExpanded$|^Upgrade$|^UpgradeViaIdentityExpanded$|^UpgradeViaIdentity$
     set:
-      subject: NetworkDeviceUpgrade
+      subject: DeviceUpgrade
       verb: Invoke
+  - where:
+      verb: Update
+      subject: ExternalNetworkAdministrativeState
+    set:
+      verb: Invoke
+  - where:
+      verb: Update
+      subject: ExternalNetworkBfdAdministrativeState
+    set:
+      verb: Invoke
+  - where:
+      verb: Update
+      subject: NetworkToNetworkInterconnectBfdAdministrativeState
+    set:
+      verb: Invoke
+      subject: NniBfdAdministrativeState
   - where:
       verb: Update
       subject: NetworkInterfaceAdministrativeState
@@ -134,7 +174,7 @@ directive:
     set:
       subject: L3DomainUpdateAdminState
   - where:
-      verb: Get|Update
+      verb: Get|Update|Start|Invoke
       subject: NetworkDevice
     set:
       subject: Device
@@ -174,19 +214,11 @@ directive:
     set:
       subject: TapRule
   - where:
-      verb: Get|New|Remove
+      verb: Get|New|Remove|Invoke
       subject: NetworkToNetworkInterconnect
     set:
       subject: Nni
   # Remove cmdlets for the resources since the explicit operation is not allowed
-  - where:
-      verb: Update
-      subject: NetworkFabricController
-    remove: true
-  - where:
-      verb: Update
-      subject: NetworkFabric
-    remove: true
   - where:
       verb: Get
       subject: NetworkFabricTopology
@@ -198,10 +230,6 @@ directive:
   - where:
       verb: Update
       subject: NetworkFabricWorkloadManagementBfdConfiguration
-    remove: true
-  - where:
-      verb: Invoke
-      subject: CommitNetworkFabricConfiguration
     remove: true
   - where:
       verb: Update
@@ -216,14 +244,6 @@ directive:
       subject: NetworkDevice
     remove: true
   - where:
-      verb: Invoke
-      subject: NetworkDeviceUpgrade
-    remove: true
-  - where:
-      verb: Update
-      subject: NetworkDeviceAdministrativeState
-    remove: true
-  - where:
       verb: Update
       subject: NetworkDeviceConfiguration
     remove: true
@@ -236,24 +256,12 @@ directive:
       subject: NetworkToNetworkInterconnectAdministrativeState
     remove: true
   - where:
-      verb: Update
-      subject: NetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeState
-    remove: true
-  - where:
       verb: New|Update
       subject: NetworkInterface
     remove: true
   - where:
-      verb: Update
-      subject: L2IsolationDomain
-    remove: true
-  - where:
       verb: Invoke
       subject: CommitL2IsolationDomainConfiguration
-    remove: true
-  - where:
-      verb: Update
-      subject: L3IsolationDomain
     remove: true
   - where:
       verb: Invoke
@@ -261,7 +269,7 @@ directive:
     remove: true
   - where:
       verb: Update
-      subject: InternalNetwork
+      subject: ExternalNetworkAdministrativeState
     remove: true
   - where:
       verb: Update
@@ -269,27 +277,11 @@ directive:
     remove: true
   - where:
       verb: Update
+      subject: InternalNetworkBfdAdministrativeState
+    remove: true
+  - where:
+      verb: Update
       subject: InternalNetworkBgpAdministrativeState
-    remove: true
-  - where:
-      verb: Update
-      subject: InternalNetworkStaticRouteBfdAdministrativeState
-    remove: true
-  - where:
-      verb: Update
-      subject: ExternalNetwork
-    remove: true
-  - where:
-      verb: Update
-      subject: ExternalNetworkAdministrativeState
-    remove: true
-  - where:
-      verb: Update
-      subject: ExternalNetworkStaticRouteBfdAdministrativeState
-    remove: true
-  - where:
-      verb: Update
-      subject: AccessControlList
     remove: true
   - where:
       verb: Update
@@ -309,26 +301,6 @@ directive:
     remove: true
   - where:
       verb: Update
-      subject: InternetGatewayRule
-    remove: true
-  - where:
-      verb: Update
-      subject: IPCommunity
-    remove: true
-  - where:
-      verb: Update
-      subject: IPExtendedCommunity
-    remove: true
-  - where:
-      verb: Update
-      subject: IPPrefix
-    remove: true
-  - where:
-      verb: Update
-      subject: RoutePolicy
-    remove: true
-  - where:
-      verb: Update
       subject: RoutePolicyAdministrativeState
     remove: true
   - where:
@@ -340,16 +312,8 @@ directive:
       subject: NetworkPacketBroker
     remove: true
   - where:
-      verb: Update
-      subject: NetworkTap
-    remove: true
-  - where:
       verb: Invoke
       subject: ResyncNetworkTap
-    remove: true
-  - where:
-      verb: Update
-      subject: NetworkTapRule
     remove: true
   - where:
       verb: Invoke
@@ -363,7 +327,35 @@ directive:
       verb: Remove
       subject: Interface
     remove: true
-  # Handle 200 status code not exist in swagger spec for DELETE API's
+  - where:
+      verb: Get|New|Remove|Update
+      subject: NetworkMonitor
+    remove: true
+  - where:
+      verb: Update
+      subject: NetworkMonitorAdministrativeState
+    remove: true
+  - where:
+      verb: New
+      parameter-name: OptionAPropertiesBfdConfigurationIntervalInMilliSecond
+    set:
+      parameter-name: optionAPropertyBfdConfigurationInterval
+  - where:
+      verb: New
+      parameter-name: OptionAPropertiesBfdConfigurationMultiplier
+    set:
+      parameter-name: OptionAPropertyBfdConfigurationMultiplier
+  - where:
+      verb: New
+      parameter-name: StaticRouteConfigurationBfdConfigurationIntervalInMilliSecond
+    set:
+      parameter-name: StaticRouteConfigurationBfdConfigurationInterval
+  - where:
+      verb: New
+      parameter-name: BfdConfigurationIntervalInMilliSecond
+    set:
+      parameter-name: BfdConfigurationInterval   
+# Handle 200 status code not exist in swagger spec for DELETE API's
   - from: swagger-document
     where: $.paths..delete.responses
     transform: >-

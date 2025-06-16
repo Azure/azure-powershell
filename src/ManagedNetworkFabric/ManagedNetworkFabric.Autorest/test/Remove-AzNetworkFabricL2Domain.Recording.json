@@ -1,8 +1,8 @@
 {
-  "Remove-AzNetworkFabricL2Domain+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/l2DomainName?api-version=2023-06-15+1": {
+  "Remove-AzNetworkFabricL2Domain+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/l2DomainName?api-version=2024-06-15-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/l2DomainName?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/l2DomainName?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -23,13 +23,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"86001f9f-0000-0100-0000-650d72740000\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15" ],
+        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "466829dd-6f1c-428f-bd5f-7cad36677726" ],
         "x-ms-request-id": [ "89ac810f-02ea-4118-8d56-9fa6531e4440" ],
         "x-ms-correlation-request-id": [ "4d048468-dfc4-4a57-8c97-c869810a6b62" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview" ],
         "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T105444Z:4d048468-dfc4-4a57-8c97-c869810a6b62" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -44,10 +44,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkFabricL2Domain+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15+2": {
+  "Remove-AzNetworkFabricL2Domain+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -68,9 +68,9 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"aa016e17-0000-0100-0000-650d72740000\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15" ],
+        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview" ],
         "x-ms-request-id": [ "c7b4bb75-ba14-44a0-986a-7f525038652b" ],
         "x-ms-correlation-request-id": [ "a0079a1b-ff7c-416b-a875-4b5a67628b82" ],
         "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T105515Z:a0079a1b-ff7c-416b-a875-4b5a67628b82" ],
@@ -87,10 +87,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkFabricL2Domain+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15+3": {
+  "Remove-AzNetworkFabricL2Domain+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -111,9 +111,9 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"aa016e17-0000-0100-0000-650d72740000\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15" ],
+        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview" ],
         "x-ms-request-id": [ "4067f382-1b58-4cd4-8a5a-915c8da755b4" ],
         "x-ms-correlation-request-id": [ "83b370e1-4fe5-420b-8c07-75e96253beb5" ],
         "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T105546Z:83b370e1-4fe5-420b-8c07-75e96253beb5" ],
@@ -130,10 +130,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkFabricL2Domain+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15+4": {
+  "Remove-AzNetworkFabricL2Domain+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -154,9 +154,9 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"aa016e17-0000-0100-0000-650d72740000\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15" ],
+        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview" ],
         "x-ms-request-id": [ "b47b347a-e378-4989-9d5b-1727336f79d0" ],
         "x-ms-correlation-request-id": [ "f7703aec-c1a3-4d25-bdbe-8c38d2ed11ef" ],
         "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T105616Z:f7703aec-c1a3-4d25-bdbe-8c38d2ed11ef" ],
@@ -173,10 +173,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkFabricL2Domain+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15+5": {
+  "Remove-AzNetworkFabricL2Domain+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -214,10 +214,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkFabricL2Domain+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15+6": {
+  "Remove-AzNetworkFabricL2Domain+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/b0a59922-8cdb-4269-b2c4-69de23d68127*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

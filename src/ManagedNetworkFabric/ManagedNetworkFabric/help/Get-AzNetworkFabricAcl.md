@@ -1,5 +1,5 @@
 ---
-external help file: Az.ManagedNetworkFabric-help.xml
+external help file:
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricacl
 schema: 2.0.0
@@ -12,10 +12,9 @@ Implements Access Control List GET method.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
-Get-AzNetworkFabricAcl [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkFabricAcl [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -24,15 +23,15 @@ Get-AzNetworkFabricAcl -Name <String> -ResourceGroupName <String> [-Subscription
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
-```
-Get-AzNetworkFabricAcl -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
 Get-AzNetworkFabricAcl -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzNetworkFabricAcl -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -66,7 +65,7 @@ Get-AzNetworkFabricAcl -ResourceGroupName $resourceGroupName
 ```output
 AclsUrl AdministrativeState Annotation ConfigurationState ConfigurationType DefaultAction DynamicMatchConfiguration
 ------- ------------------- ---------- ------------------ ----------------- ------------- -------------------------
-        Disabled                       Succeeded          Inline            Permit
+        Disabled                       Succeeded          Inline            Permit        
 ```
 
 This command lists all the Access Control Lists under the given Resource Group.
@@ -79,7 +78,7 @@ Get-AzNetworkFabricAcl -Name $name -ResourceGroupName $resourceGroupName
 ```output
 AclsUrl AdministrativeState Annotation ConfigurationState ConfigurationType DefaultAction DynamicMatchConfiguration
 ------- ------------------- ---------- ------------------ ----------------- ------------- -------------------------
-        Disabled                       Succeeded          Inline            Permit
+        Disabled                       Succeeded          Inline            Permit        
 ```
 
 This command gets details of the given Access Control List.
@@ -138,7 +137,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -154,7 +153,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, Get, List
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -178,3 +177,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

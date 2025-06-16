@@ -1,5 +1,5 @@
 ---
-external help file: Az.ManagedNetworkFabric-help.xml
+external help file:
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabrictap
 schema: 2.0.0
@@ -12,10 +12,9 @@ Retrieves details of this Network Tap.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
-Get-AzNetworkFabricTap [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkFabricTap [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -24,15 +23,15 @@ Get-AzNetworkFabricTap -Name <String> -ResourceGroupName <String> [-Subscription
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
-```
-Get-AzNetworkFabricTap -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
 Get-AzNetworkFabricTap -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzNetworkFabricTap -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -49,7 +48,7 @@ Get-AzNetworkFabricTap -SubscriptionId $subscriptionId
 ```output
 AdministrativeState Annotation ConfigurationState Destination
 ------------------- ---------- ------------------ -----------
-Disabled                       Succeeded
+Disabled                       Succeeded          
 ```
 
 This command lists all the Network Tap under the given Subscription.
@@ -62,7 +61,7 @@ Get-AzNetworkFabricTap -ResourceGroupName $resourceGroupName
 ```output
 AdministrativeState Annotation ConfigurationState Destination
 ------------------- ---------- ------------------ -----------
-Disabled                       Succeeded
+Disabled                       Succeeded          
 ```
 
 This command lists all the Network Tap under the given Resource Group.
@@ -75,7 +74,7 @@ Get-AzNetworkFabricTap -Name $name -ResourceGroupName $resourceGroupName
 ```output
 AdministrativeState Annotation ConfigurationState Destination
 ------------------- ---------- ------------------ -----------
-Disabled                       Succeeded
+Disabled                       Succeeded          
 ```
 
 This command gets details of the given Network Tap.
@@ -134,7 +133,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -150,7 +149,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, Get, List
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -174,3 +173,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

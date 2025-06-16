@@ -1,5 +1,5 @@
 ---
-external help file: Az.ManagedNetworkFabric-help.xml
+external help file:
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabrictaprule
 schema: 2.0.0
@@ -14,26 +14,27 @@ Create Network Tap Rule resource.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricTapRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-Annotation <String>] [-ConfigurationType <String>]
+New-AzNetworkFabricTapRule -Name <String> -ResourceGroupName <String> -ConfigurationType <String>
+ -Location <String> [-SubscriptionId <String>] [-Annotation <String>]
  [-DynamicMatchConfiguration <ICommonDynamicMatchConfiguration[]>]
- [-MatchConfiguration <INetworkTapRuleMatchConfiguration[]>] [-PollingIntervalInSecond <Int32>]
- [-Tag <Hashtable>] [-TapRulesUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-GlobalNetworkTapRuleActionEnableCount <String>] [-GlobalNetworkTapRuleActionTruncate <String>]
+ [-MatchConfiguration <INetworkTapRuleMatchConfiguration[]>] [-PollingIntervalInSecond <Single>]
+ [-Tag <Hashtable>] [-TapRulesUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzNetworkFabricTapRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetworkFabricTapRule -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzNetworkFabricTapRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetworkFabricTapRule -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,7 +122,7 @@ Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -149,6 +150,37 @@ List of dynamic match configurations.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GlobalNetworkTapRuleActionEnableCount
+Configuration to enable network tap rule counter.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GlobalNetworkTapRuleActionTruncate
+Truncate.
+0 indicates do not truncate.
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -253,7 +285,7 @@ Accept wildcard characters: False
 Polling interval in seconds.
 
 ```yaml
-Type: System.Int32
+Type: System.Single
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -369,3 +401,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

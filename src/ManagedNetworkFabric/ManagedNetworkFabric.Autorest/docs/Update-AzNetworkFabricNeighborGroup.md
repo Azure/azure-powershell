@@ -15,15 +15,15 @@ Update the Neighbor Group.
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkFabricNeighborGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Annotation <String>] [-Destination <INeighborGroupDestination>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Annotation <String>] [-DestinationIpv4Address <String[]>] [-DestinationIpv6Address <String[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkFabricNeighborGroup -InputObject <IManagedNetworkFabricIdentity> [-Annotation <String>]
- [-Destination <INeighborGroupDestination>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DestinationIpv4Address <String[]>] [-DestinationIpv6Address <String[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -115,11 +115,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Destination
-An array of destination IPv4 Addresses or IPv6 Addresses.
+### -DestinationIpv4Address
+Array of IPv4 Addresses.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupDestination
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationIpv6Address
+Array of IPv6 Addresses.
+
+```yaml
+Type: System.String[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -238,7 +253,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable

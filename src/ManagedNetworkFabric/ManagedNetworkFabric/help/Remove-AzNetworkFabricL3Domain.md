@@ -1,5 +1,5 @@
 ---
-external help file: Az.ManagedNetworkFabric-help.xml
+external help file:
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/remove-aznetworkfabricl3domain
 schema: 2.0.0
@@ -15,14 +15,13 @@ Deletes layer 3 connectivity between compute nodes by managed by named L3 Isolat
 ### Delete (Default)
 ```
 Remove-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzNetworkFabricL3Domain -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,12 +29,12 @@ Deletes layer 3 connectivity between compute nodes by managed by named L3 Isolat
 
 ## EXAMPLES
 
-### Example 1: Delete the L3 Isolation Domain Resource
+### Example 1: Delete the L3 Isolatoion Domain Resource
 ```powershell
 Remove-AzNetworkFabricL3Domain -Name $name -ResourceGroupName $resourceGroupName
 ```
 
-This command deletes the L3 Isolation Domain resource.
+This command deletes the L3 Isolatoion Domain resource.
 
 ## PARAMETERS
 
@@ -207,3 +206,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -18,8 +18,14 @@ New-AzNetworkFabric -Name <String> -ResourceGroupName <String> -FabricAsn <Int64
  -Location <String> -ManagementNetworkConfiguration <IManagementNetworkConfigurationProperties>
  -NetworkFabricControllerId <String> -NetworkFabricSku <String> -ServerCountPerRack <Int32>
  -TerminalServerConfiguration <ITerminalServerConfiguration> [-SubscriptionId <String>] [-Annotation <String>]
- [-Ipv6Prefix <String>] [-RackCount <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ControlPlaneAcls <String[]>] [-EnableSystemAssignedIdentity] [-FabricVersion <String>]
+ [-HardwareAlertThreshold <Int32>] [-Ipv6Prefix <String>] [-RackCount <Int32>]
+ [-StorageAccountConfigurationStorageAccountId <String>] [-StorageAccountIdentityType <String>]
+ [-StorageAccountIdentityUserAssignedIdentityResourceId <String>] [-StorageArrayCount <Int32>]
+ [-Tag <Hashtable>] [-TrustedIPPrefix <String[]>]
+ [-UniqueRdConfigurationNniDerivedUniqueRdConfigurationState <String>]
+ [-UniqueRdConfigurationUniqueRdConfigurationState <String>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -146,6 +152,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ControlPlaneAcls
+Control Plane Access Control List ARM resource IDs.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -154,6 +175,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -171,6 +207,37 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FabricVersion
+The version of Network Fabric.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HardwareAlertThreshold
+Hardware alert threshold percentage.
+Possible values are from 20 to 100.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -377,6 +444,67 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StorageAccountConfigurationStorageAccountId
+Network Fabric storage account resource identifier.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountIdentityType
+The type of managed identity that is being selected.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountIdentityUserAssignedIdentityResourceId
+The user assigned managed identity resource ID to use.
+Mutually exclusive with a system assigned identity type.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageArrayCount
+Number of Storage arrays associated with the Network Fabric.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -417,6 +545,69 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TrustedIPPrefix
+Trusted IP Prefixes ARM resource IDs.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UniqueRdConfigurationNniDerivedUniqueRdConfigurationState
+NNI derived unique Route Distinguisher state.
+Default is Disabled.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UniqueRdConfigurationUniqueRdConfigurationState
+Unique Route Distinguisher configuration state.
+Default is Enabled.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

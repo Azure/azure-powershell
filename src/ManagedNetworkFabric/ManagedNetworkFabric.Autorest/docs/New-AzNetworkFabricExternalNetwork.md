@@ -15,35 +15,48 @@ Create ExternalNetwork PUT method.
 ### CreateExpanded (Default)
 ```
 New-AzNetworkFabricExternalNetwork -L3IsolationDomainName <String> -Name <String> -ResourceGroupName <String>
- -PeeringOption <String> [-SubscriptionId <String>] [-Annotation <String>]
- [-ExportRoutePolicy <IExportRoutePolicy>] [-ExportRoutePolicyId <String>]
- [-ImportRoutePolicy <IImportRoutePolicy>] [-ImportRoutePolicyId <String>]
- [-OptionAPropertyBfdConfiguration <IBfdConfiguration>] [-OptionAPropertyEgressAclId <String>]
+ -PeeringOption <String> [-SubscriptionId <String>] [-Annotation <String>] [-BmpConfigurationState <String>]
+ [-ExportRoutePolicy <IExportRoutePolicy>] [-ImportRoutePolicy <IImportRoutePolicy>]
+ [-NativeIpv4PrefixLimit <IPrefixLimitProperties[]>] [-NativeIpv6PrefixLimit <IPrefixLimitProperties[]>]
+ [-NetworkToNetworkInterconnectId <String>] [-optionAPropertyBfdConfigurationInterval <Int32>]
+ [-OptionAPropertyBfdConfigurationMultiplier <Int32>] [-OptionAPropertyEgressAclId <String>]
  [-OptionAPropertyIngressAclId <String>] [-OptionAPropertyMtu <Int32>] [-OptionAPropertyPeerAsn <Int64>]
  [-OptionAPropertyPrimaryIpv4Prefix <String>] [-OptionAPropertyPrimaryIpv6Prefix <String>]
  [-OptionAPropertySecondaryIpv4Prefix <String>] [-OptionAPropertySecondaryIpv6Prefix <String>]
- [-OptionAPropertyVlanId <Int32>] [-OptionBProperty <IL3OptionBProperties>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-OptionAPropertyV4OverV6BgpSession <String>] [-OptionAPropertyV6OverV4BgpSession <String>]
+ [-OptionAPropertyVlanId <Int32>] [-OptionBProperty <IL3OptionBProperties>]
+ [-StaticRouteConfigurationBfdConfigurationInterval <Int32>]
+ [-StaticRouteConfigurationBfdConfigurationMultiplier <Int32>]
+ [-StaticRouteConfigurationIpv4Route <IStaticRouteProperties[]>]
+ [-StaticRouteConfigurationIpv6Route <IStaticRouteProperties[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityL3IsolationDomain
 ```
 New-AzNetworkFabricExternalNetwork -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
- -Name <String> -Body <IExternalNetwork> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -Name <String> -Resource <IExternalNetwork> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityL3IsolationDomainExpanded
 ```
 New-AzNetworkFabricExternalNetwork -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
- -Name <String> -PeeringOption <String> [-Annotation <String>] [-ExportRoutePolicy <IExportRoutePolicy>]
- [-ExportRoutePolicyId <String>] [-ImportRoutePolicy <IImportRoutePolicy>] [-ImportRoutePolicyId <String>]
- [-OptionAPropertyBfdConfiguration <IBfdConfiguration>] [-OptionAPropertyEgressAclId <String>]
+ -Name <String> -PeeringOption <String> [-Annotation <String>] [-BmpConfigurationState <String>]
+ [-ExportRoutePolicy <IExportRoutePolicy>] [-ImportRoutePolicy <IImportRoutePolicy>]
+ [-NativeIpv4PrefixLimit <IPrefixLimitProperties[]>] [-NativeIpv6PrefixLimit <IPrefixLimitProperties[]>]
+ [-NetworkToNetworkInterconnectId <String>] [-optionAPropertyBfdConfigurationInterval <Int32>]
+ [-OptionAPropertyBfdConfigurationMultiplier <Int32>] [-OptionAPropertyEgressAclId <String>]
  [-OptionAPropertyIngressAclId <String>] [-OptionAPropertyMtu <Int32>] [-OptionAPropertyPeerAsn <Int64>]
  [-OptionAPropertyPrimaryIpv4Prefix <String>] [-OptionAPropertyPrimaryIpv6Prefix <String>]
  [-OptionAPropertySecondaryIpv4Prefix <String>] [-OptionAPropertySecondaryIpv6Prefix <String>]
- [-OptionAPropertyVlanId <Int32>] [-OptionBProperty <IL3OptionBProperties>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-OptionAPropertyV4OverV6BgpSession <String>] [-OptionAPropertyV6OverV4BgpSession <String>]
+ [-OptionAPropertyVlanId <Int32>] [-OptionBProperty <IL3OptionBProperties>]
+ [-StaticRouteConfigurationBfdConfigurationInterval <Int32>]
+ [-StaticRouteConfigurationBfdConfigurationMultiplier <Int32>]
+ [-StaticRouteConfigurationIpv4Route <IStaticRouteProperties[]>]
+ [-StaticRouteConfigurationIpv6Route <IStaticRouteProperties[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -146,18 +159,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Defines the External Network resource.
+### -BmpConfigurationState
+BMP Configuration State.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetwork
-Parameter Sets: CreateViaIdentityL3IsolationDomain
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -192,43 +205,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExportRoutePolicyId
-ARM Resource ID of the RoutePolicy.
-This is used for the backward compatibility.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ImportRoutePolicy
 Import Route Policy either IPv4 or IPv6.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IImportRoutePolicy
-Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ImportRoutePolicyId
-ARM Resource ID of the RoutePolicy.
-This is used for the backward compatibility.
-
-```yaml
-Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
 Aliases:
 
@@ -314,6 +295,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NativeIpv4PrefixLimit
+Prefix limits
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties[]
+Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NativeIpv6PrefixLimit
+Prefix limits
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties[]
+Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkToNetworkInterconnectId
+ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -329,11 +355,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OptionAPropertyBfdConfiguration
-BFD configuration properties
+### -optionAPropertyBfdConfigurationInterval
+Interval in milliseconds.
+Example: 300.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OptionAPropertyBfdConfigurationMultiplier
+Multiplier for the Bfd Configuration.
+Example: 5.
+
+```yaml
+Type: System.Int32
 Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
 Aliases:
 
@@ -466,6 +509,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OptionAPropertyV4OverV6BgpSession
+V4OverV6 BGP Session state
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OptionAPropertyV6OverV4BgpSession
+V6OverV4 BGP Session state
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OptionAPropertyVlanId
 Vlan identifier.
 Example : 501
@@ -512,6 +585,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Resource
+Defines the External Network resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetwork
+Parameter Sets: CreateViaIdentityL3IsolationDomain
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -522,6 +610,68 @@ Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StaticRouteConfigurationBfdConfigurationInterval
+Interval in milliseconds.
+Example: 300.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StaticRouteConfigurationBfdConfigurationMultiplier
+Multiplier for the Bfd Configuration.
+Example: 5.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StaticRouteConfigurationIpv4Route
+List of IPv4 Routes.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties[]
+Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StaticRouteConfigurationIpv6Route
+List of IPv6 Routes.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties[]
+Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -1,5 +1,5 @@
 ---
-external help file: Az.ManagedNetworkFabric-help.xml
+external help file:
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricl3domain
 schema: 2.0.0
@@ -12,10 +12,9 @@ Retrieves details of this L3 Isolation Domain.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
-Get-AzNetworkFabricL3Domain [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkFabricL3Domain [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -24,16 +23,16 @@ Get-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> [-Subscri
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
-```
-Get-AzNetworkFabricL3Domain -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
 Get-AzNetworkFabricL3Domain -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzNetworkFabricL3Domain -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +66,7 @@ Get-AzNetworkFabricL3Domain -ResourceGroupName $resourceGroupName
 ```output
 AdministrativeState AggregateRouteConfiguration   Annotation ConfigurationState ConnectedSubnetRoutePolicy
 ------------------- ---------------------------   ---------- ------------------ --------
-Disabled                                                     Succeeded
+Disabled                                                     Succeeded          
 ```
 
 This command lists all the L3 Isolation Domains under the given Resource Group.
@@ -80,7 +79,7 @@ Get-AzNetworkFabricL3Domain -Name $name -ResourceGroupName $resourceGroupName
 ```output
 AdministrativeState AggregateRouteConfiguration   Annotation ConfigurationState ConnectedSubnetRoutePolicy
 ------------------- ---------------------------   ---------- ------------------ --------
-Disabled                                                     Succeeded
+Disabled                                                     Succeeded          
 ```
 
 This command gets details of the given L3 Isolation Domain.
@@ -139,7 +138,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -155,7 +154,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, Get, List
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -179,3 +178,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

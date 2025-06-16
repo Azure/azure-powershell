@@ -1,5 +1,5 @@
 ---
-external help file: Az.ManagedNetworkFabric-help.xml
+external help file:
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabrictap
 schema: 2.0.0
@@ -14,24 +14,24 @@ Create a Network Tap.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricTap -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Destination <INetworkTapPropertiesDestinationsItem[]> -Location <String> -NetworkPacketBrokerId <String>
- [-Annotation <String>] [-PollingType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetworkFabricTap -Name <String> -ResourceGroupName <String> -Destination <IDestinationProperties[]>
+ -Location <String> -NetworkPacketBrokerId <String> [-SubscriptionId <String>] [-Annotation <String>]
+ [-PollingType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzNetworkFabricTap -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetworkFabricTap -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzNetworkFabricTap -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetworkFabricTap -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +56,7 @@ New-AzNetworkFabricTap -Name $name -ResourceGroupName $resourceGroupName -Destin
 ```output
 AdministrativeState Annotation ConfigurationState Destination
 ------------------- ---------- ------------------ -----------
-Disabled                       Succeeded
+Disabled                       Succeeded          
 ```
 
 This command creates the Network Tap resource.
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 List of destinations to send the filter traffic.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapPropertiesDestinationsItem[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IDestinationProperties[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -319,3 +319,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

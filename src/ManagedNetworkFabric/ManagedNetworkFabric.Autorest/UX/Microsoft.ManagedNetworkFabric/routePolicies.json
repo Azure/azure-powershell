@@ -1,6 +1,6 @@
 {
   "resourceType": "routePolicies",
-  "apiVersion": "2023-06-15",
+  "apiVersion": "2024-06-15-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric"
   },
