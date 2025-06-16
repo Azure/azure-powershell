@@ -126,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         Description = @"",
         SerializedName = @"schemaType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Unknown", "Avro")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Unknown", "Avro", "ProtoBuf", "Json")]
         string SchemaType { get; set; }
         /// <summary>Exact time the Schema Group was updated</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("None", "Backward", "Forward")]
         string SchemaCompatibility { get; set; }
 
-        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Unknown", "Avro")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Unknown", "Avro", "ProtoBuf", "Json")]
         string SchemaType { get; set; }
         /// <summary>Exact time the Schema Group was updated</summary>
         global::System.DateTime? UpdatedAtUtc { get; set; }

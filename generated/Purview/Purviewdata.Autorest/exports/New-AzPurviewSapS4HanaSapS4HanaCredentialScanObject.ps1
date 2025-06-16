@@ -20,23 +20,17 @@ Create an in-memory object for SapS4HanaSapS4HanaCredentialScan.
 .Description
 Create an in-memory object for SapS4HanaSapS4HanaCredentialScan.
 .Example
-New-AzPurviewSapS4HanaSapS4HanaCredentialScanObject -Kind 'SapS4HanaSapS4HanaCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ClientId '444' -CredentialReferenceName 'fdsafsdf' -CredentialType 'BasicAuth' -MaximumMemoryAllowedInGb 4 -JCoLibraryPath 'file://asdas' -ConnectedViaReferenceName 'IntegrationRuntime-NJh'
+New-AzPurviewSapS4HanaSapS4HanaCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ClientId '444' -CredentialReferenceName 'fdsafsdf' -CredentialType 'BasicAuth' -MaximumMemoryAllowedInGb 4 -JCoLibraryPath 'file://asdas' -ConnectedViaReferenceName 'IntegrationRuntime-NJh'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaSapS4HanaCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapS4HanaSapS4HanaCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewSapS4HanaSapS4HanaCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewsaps4hanasaps4hanacredentialscanobject
 #>
 function New-AzPurviewSapS4HanaSapS4HanaCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaSapS4HanaCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapS4HanaSapS4HanaCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -63,9 +57,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -89,9 +83,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -107,6 +101,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -135,6 +132,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

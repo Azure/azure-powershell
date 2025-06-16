@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSynapseManagedPrivateEndpoint
 
 ## SYNOPSIS
-Gets information about mananged private endpoints in a workspace
+Gets information about managed private endpoints in a workspace
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzSynapseManagedPrivateEndpoint -WorkspaceObject <PSSynapseWorkspace> [-Name
 ```
 
 ## DESCRIPTION
-The **Get-AzSynapseManagedPrivateEndpoint** cmdlet gets information about mananged private endpoints in a workspace. If you specify the name of a mananged private endpoint, the cmdlet gets information about that  mananged private endpoint. If you do not specify a name, the cmdlet gets information about all mananged private endpoints in the workspace.
+The **Get-AzSynapseManagedPrivateEndpoint** cmdlet gets information about managed private endpoints in a workspace. If you specify the name of a managed private endpoint, the cmdlet gets information about that managed private endpoint. If you do not specify a name, the cmdlet gets information about all managed private endpoints in the workspace.
 
 ## EXAMPLES
 
@@ -34,14 +34,14 @@ The **Get-AzSynapseManagedPrivateEndpoint** cmdlet gets information about manang
 Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint
 ```
 
-Gets a single mananged private endpoint called ContosoManagedPrivateEndpoint in the workspace ContosoWorkspace.
+Gets a single managed private endpoint called ContosoManagedPrivateEndpoint in the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
 Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace
 ```
 
-Gets a list of all mananged private endpoints in the workspace ContosoWorkspace.
+Gets a list of all managed private endpoints in the workspace ContosoWorkspace.
 
 ### Example 3
 ```powershell
@@ -49,7 +49,7 @@ $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 $ws | Get-AzSynapseManagedPrivateEndpoint -Name ContosoManagedPrivateEndpoint
 ```
 
-Gets a single mananged private endpoint called ContosoManagedPrivateEndpoint in the workspace ContosoWorkspace through pipeline.
+Gets a single managed private endpoint called ContosoManagedPrivateEndpoint in the workspace ContosoWorkspace through pipeline.
 
 ## PARAMETERS
 

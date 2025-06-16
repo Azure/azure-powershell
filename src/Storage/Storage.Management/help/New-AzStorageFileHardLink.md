@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:https://learn.microsoft.com/powershell/module/az.storage/new-azstoragefilehardlink
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstoragefilehardlink
 schema: 2.0.0
 ---
 
@@ -17,7 +17,7 @@ Creates a hard link to a file in same share. Only works in NFS file share.
 New-AzStorageFileHardLink [-ShareName] <String> [-Path] <String> [-TargetFile] <String>
  [-TargetFileLeaseId <String>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Share
@@ -25,7 +25,7 @@ New-AzStorageFileHardLink [-ShareName] <String> [-Path] <String> [-TargetFile] <
 New-AzStorageFileHardLink [-ShareClient] <ShareClient> [-Path] <String> [-TargetFile] <String>
  [-TargetFileLeaseId <String>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Directory
@@ -33,7 +33,8 @@ New-AzStorageFileHardLink [-ShareClient] <ShareClient> [-Path] <String> [-Target
 New-AzStorageFileHardLink [-ShareDirectoryClient] <ShareDirectoryClient> [-Path] <String>
  [-TargetFile] <String> [-TargetFileLeaseId <String>] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,10 +44,10 @@ The **New-AzStorageFileHardLink** cmdlet creates a hard link to a file in same s
 
 ### Example 1: Create a hardlink to a file in same share
 ```powershell
-New-AzStorageFileHardLink -ShareName "fileshare1" -Path "folde1/link1" -TargetFile "folde2/folder3/file1"
+New-AzStorageFileHardLink -ShareName "fileshare1" -Path "folder1/link1" -TargetFile "folder2/folder3/file1"
 ```
 
-This command creates a hard link with path "folde1/link1" to a file with path "folde2/folder3/file1" in same share.
+This command creates a hard link with path "folder1/link1" to a file with path "folder2/folder3/file1" in same share.
 The new created hardlink will show Length as 0 in Powershell. If you get its properties with **Get-AzStorageFile**, will get the length of the target file.
 
 ## PARAMETERS
@@ -211,6 +212,36 @@ If the target file has an active lease, specify the lease ID of the target file 
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

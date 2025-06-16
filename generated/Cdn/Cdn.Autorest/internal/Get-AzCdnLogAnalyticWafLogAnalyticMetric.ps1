@@ -27,7 +27,7 @@ Get Waf related log analytics report for AFD profile.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IWafMetricsResponse
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IWafMetricsResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,8 +51,8 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticwafloganalyticmetric
 #>
 function Get-AzCdnLogAnalyticWafLogAnalyticMetric {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IWafMetricsResponse])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IWafMetricsResponse])]
+[CmdletBinding(DefaultParameterSetName='GetViaIdentity', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
@@ -78,7 +78,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(Mandatory)]
@@ -94,41 +93,45 @@ param(
     ${DateTimeEnd},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafGranularity])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("PT5M", "PT1H", "P1D")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafGranularity]
+    [System.String]
     # .
     ${Granularity},
 
     [Parameter(Mandatory)]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafMetric])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("clientRequestCount")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafMetric[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(Required, PossibleTypes=([System.String]))]
+    [System.Collections.Generic.List[System.String]]
     # .
     ${Metric},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("allow", "block", "log", "redirect")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafAction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([System.String]))]
+    [System.Collections.Generic.List[System.String]]
     # .
     ${Action},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRankingGroupBy])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("httpStatusCode", "customDomain")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRankingGroupBy[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([System.String]))]
+    [System.Collections.Generic.List[System.String]]
     # .
     ${GroupBy},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRuleType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("managed", "custom", "bot")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRuleType[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([System.String]))]
+    [System.Collections.Generic.List[System.String]]
     # .
     ${RuleType},
 
@@ -188,14 +191,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Cdn.private\Get-AzCdnLogAnalyticWafLogAnalyticMetric_Get';
             GetViaIdentity = 'Az.Cdn.private\Get-AzCdnLogAnalyticWafLogAnalyticMetric_GetViaIdentity';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -204,6 +208,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

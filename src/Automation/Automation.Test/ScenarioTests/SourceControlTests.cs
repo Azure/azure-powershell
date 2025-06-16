@@ -52,7 +52,7 @@ namespace Commands.Automation.Test
             TestRunner.RunTestScript("Test-CreateVsoTfvcSourceControlAndSync");
         }
 
-        [Fact(Skip = "Temporarily skipping, running locally, PAT getting revoked after commiting")]
+        [Fact(Skip = "Temporarily skipping, running locally, PAT getting revoked after committing")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void CreateGitHubSourceControlAndSync()

@@ -1561,7 +1561,7 @@ function SubscriptionOldModel-CrudTest {
         $sub = $null
         try {
             # check it was removed
-            $sub = Get-AzApiManagementSubscripiton -Context $context -SubscriptionId $newSubscriptionId
+            $sub = Get-AzApiManagementSubscription -Context $context -SubscriptionId $newSubscriptionId
         }
         catch {
         }
@@ -1674,7 +1674,7 @@ function SubscriptionNewModel-CrudTest {
         $sub = $null
         try {
             # check it was removed
-            $sub = Get-AzApiManagementSubscripiton -Context $context -SubscriptionId $newSubscriptionId
+            $sub = Get-AzApiManagementSubscription -Context $context -SubscriptionId $newSubscriptionId
         }
         catch {
         }

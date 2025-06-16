@@ -28,9 +28,9 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>] [-MinScaleUnit <Int32>]
  [-MaxScaleUnit <Int32>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
  [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>]
- [-AllowRemoteVnetTraffic <Boolean>] [-AllowVirtualWanTraffic <Boolean>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>] 
- [-ResiliencyModel <String>]
+ [-AllowRemoteVnetTraffic <Boolean>] [-ResiliencyModel <String>] [-AllowVirtualWanTraffic <Boolean>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateResourceWithTags
@@ -48,9 +48,9 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>] [-MinScaleUnit <Int32>]
  [-MaxScaleUnit <Int32>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
  [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>]
- [-AllowRemoteVnetTraffic <Boolean>] [-AllowVirtualWanTraffic <Boolean>] -Tag <Hashtable> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
- [-ResiliencyModel <String>]
+ [-AllowRemoteVnetTraffic <Boolean>] [-ResiliencyModel <String>] [-AllowVirtualWanTraffic <Boolean>]
+ -Tag <Hashtable> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -576,7 +576,6 @@ Property to indicate if the Express Route Gateway serves traffic when there are 
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -661,7 +660,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClientConnectionConfiguration
-P2S Client Connection Configuration that assiociate between address and policy group
+P2S Client Connection Configuration that associate between address and policy group
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSClientConnectionConfiguration[]
@@ -924,7 +923,6 @@ Property to indicate Resiliency Model on the Express Route Gateway : SingleHomed
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: SingleHomed, MultiHomed
 
 Required: False
 Position: Named

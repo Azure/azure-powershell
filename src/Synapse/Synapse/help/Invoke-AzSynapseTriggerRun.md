@@ -18,7 +18,7 @@ Invoke-AzSynapseTriggerRun -WorkspaceName <String> -Name <String> -TriggerRunId 
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InvokByInputObject
+### InvokeByInputObject
 ```
 Invoke-AzSynapseTriggerRun -InputObject <PSTriggerRun> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -80,7 +80,7 @@ The information about the trigger run.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSTriggerRun
-Parameter Sets: InvokByInputObject
+Parameter Sets: InvokeByInputObject
 Aliases:
 
 Required: True

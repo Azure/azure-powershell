@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.0
 * Bugfix of default pageCount from 0 to 25.
 * Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
 
@@ -34,7 +36,7 @@
 * Added cmdlets for Prometheus rule group
 
 ## Version 0.5.0
-* Added parameter `comment` for `Update-AzAlerteState`
+* Added parameter `comment` for `Update-AzAlertState`
 
 ## Version 0.4.1
 * Added support for 24-hour clock in `Set-AzAlertProcessingRule` [#17762]

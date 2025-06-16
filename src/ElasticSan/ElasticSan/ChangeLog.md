@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
 * Changed parameters `BaseSizeTiB` and `ExtendedCapacitySizeTiB` in cmdlet `New-AzElasticSan` to be optional.
     - `New-AzElasticSan`
 

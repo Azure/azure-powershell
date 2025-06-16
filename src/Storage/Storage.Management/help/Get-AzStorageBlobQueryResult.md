@@ -68,7 +68,7 @@ BytesScanned FailureCount BlobQueryError
          449            0
 ```
 
-This command querys a blob succsssfully with input config as csv, and output config as json, and save the output to local file "c:\resultfile.json".
+This command queries a blob successfully with input config as csv, and output config as json, and save the output to local file "c:\resultfile.json".
 
 ### Example 2: Query a blob snapshot
 <!-- Skip: Output cannot be splitted from code -->

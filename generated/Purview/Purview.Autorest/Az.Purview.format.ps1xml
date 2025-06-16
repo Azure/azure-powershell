@@ -2,55 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PurviewIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccessKeys</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PurviewIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AccountName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>GroupId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrivateEndpointConnectionName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AccountName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>GroupId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrivateEndpointConnectionName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccessKeys</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccessKeys</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccessKeys#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -76,9 +30,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.Account</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Account</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.Account</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Account#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -164,9 +118,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccountEndpoints</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccountEndpoints</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccountEndpoints</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccountEndpoints#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -198,9 +152,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccountList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccountList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccountList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccountList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -226,9 +180,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccountProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccountProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccountProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccountProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -284,9 +238,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccountPropertiesEndpoints</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccountPropertiesEndpoints</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccountPropertiesEndpoints</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccountPropertiesEndpoints#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -318,9 +272,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccountPropertiesManagedResources</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccountPropertiesManagedResources</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccountPropertiesManagedResources</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccountPropertiesManagedResources#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -352,9 +306,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccountSku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccountSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccountSku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccountSku#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -380,9 +334,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccountUpdateParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccountUpdateParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.AccountUpdateParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.AccountUpdateParametersTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -402,9 +356,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.CheckNameAvailabilityRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.CheckNameAvailabilityRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.CheckNameAvailabilityRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.CheckNameAvailabilityRequest#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -424,9 +378,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.CheckNameAvailabilityResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.CheckNameAvailabilityResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.CheckNameAvailabilityResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.CheckNameAvailabilityResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -458,9 +412,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.CloudConnectors</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.CloudConnectors</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.CloudConnectors</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.CloudConnectors#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -480,9 +434,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.CollectionAdminUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.CollectionAdminUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.CollectionAdminUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.CollectionAdminUpdate#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -502,9 +456,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.DefaultAccountPayload</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.DefaultAccountPayload</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.DefaultAccountPayload</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.DefaultAccountPayload#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -554,9 +508,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.DimensionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.DimensionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.DimensionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.DimensionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -588,9 +542,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ErrorModel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.ErrorModel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ErrorModel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.ErrorModel#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -622,9 +576,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ErrorResponseModelError</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.ErrorResponseModelError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ErrorResponseModelError</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.ErrorResponseModelError#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -656,9 +610,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.Identity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Identity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.Identity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Identity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -684,9 +638,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ManagedResources</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.ManagedResources</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ManagedResources</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.ManagedResources#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -718,9 +672,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Operation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -752,9 +706,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.OperationDisplay#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -792,9 +746,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.OperationList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.OperationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.OperationList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.OperationList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -820,9 +774,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.OperationMetaLogSpecification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.OperationMetaLogSpecification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.OperationMetaLogSpecification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.OperationMetaLogSpecification#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -854,9 +808,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.OperationMetaMetricSpecification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.OperationMetaMetricSpecification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.OperationMetaMetricSpecification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.OperationMetaMetricSpecification#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -883,12 +837,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SourceMdmNamespace</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SupportedAggregationType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SupportedTimeGrainType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Unit</Label>
@@ -922,12 +870,6 @@
                 <PropertyName>SourceMdmNamespace</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SupportedAggregationType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SupportedTimeGrainType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Unit</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -936,9 +878,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.PrivateEndpointConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PrivateEndpointConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.PrivateEndpointConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PrivateEndpointConnection#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -964,9 +906,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.PrivateEndpointConnectionList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PrivateEndpointConnectionList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.PrivateEndpointConnectionList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PrivateEndpointConnectionList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -992,9 +934,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.PrivateEndpointConnectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PrivateEndpointConnectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.PrivateEndpointConnectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PrivateEndpointConnectionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1014,9 +956,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.PrivateLinkResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PrivateLinkResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.PrivateLinkResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PrivateLinkResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1042,9 +984,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.PrivateLinkResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PrivateLinkResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.PrivateLinkResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PrivateLinkResourceList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1070,20 +1012,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.PrivateLinkResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PrivateLinkResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.PrivateLinkResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PrivateLinkResourceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>GroupId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RequiredMember</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RequiredZoneName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1092,21 +1028,15 @@
               <TableColumnItem>
                 <PropertyName>GroupId</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RequiredMember</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RequiredZoneName</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.PrivateLinkServiceConnectionState</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PrivateLinkServiceConnectionState</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.PrivateLinkServiceConnectionState</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PrivateLinkServiceConnectionState#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1138,9 +1068,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.ProxyResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1160,9 +1090,55 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PurviewIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.PurviewIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AccountName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>GroupId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrivateEndpointConnectionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AccountName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>GroupId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrivateEndpointConnectionName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.SystemData</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.SystemData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1212,9 +1188,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.TrackedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.TrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.TrackedResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.TrackedResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1240,9 +1216,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.TrackedResourceSystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.TrackedResourceSystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.TrackedResourceSystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.TrackedResourceSystemData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1292,9 +1268,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.TrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.TrackedResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

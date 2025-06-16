@@ -18,8 +18,8 @@ Starts to copy a source file.
 Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -DestShareName <String>
  -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>]
  [-DisAllowDestTrailingDot] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContainerInstance
@@ -53,8 +53,8 @@ Start-AzStorageFileCopy -SrcFilePath <String> -SrcShareName <String> -DestShareN
  [-DisAllowSourceTrailingDot] [-DisAllowDestTrailingDot] [-FileMode <String>] [-Owner <String>]
  [-Group <String>] [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareInstance
@@ -63,8 +63,8 @@ Start-AzStorageFileCopy -SrcFilePath <String> -SrcShare <ShareClient> -DestShare
  -DestFilePath <String> [-DestContext <IStorageContext>] [-FileMode <String>] [-Owner <String>]
  [-Group <String>] [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileInstanceToFilePath
@@ -325,7 +325,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileModeCopyMode
-Only applicable to NFS Files. The value "Override" need to be specified together with parameter `-FileMode`. If not specified, the desination file will have the default File Mode.
+Only applicable to NFS Files. The value "Override" need to be specified together with parameter `-FileMode`. If not specified, the destination file will have the default File Mode.
 
 ```yaml
 Type: System.String
@@ -385,7 +385,7 @@ Accept wildcard characters: False
 ```
 
 ### -OwnerCopyMode
-Only applicable to NFS Files. The value "Override" need to be specified together with parameter `-Owner` and `-Group`. If not specified, the desination file will have the default Owner and Group.
+Only applicable to NFS Files. The value "Override" need to be specified together with parameter `-Owner` and `-Group`. If not specified, the destination file will have the default Owner and Group.
 
 ```yaml
 Type: System.String

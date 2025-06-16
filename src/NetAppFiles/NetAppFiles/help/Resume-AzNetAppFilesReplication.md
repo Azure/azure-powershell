@@ -15,20 +15,20 @@ Resume/Resync the connection on the destination volume. If the operation is ran 
 ### ByFieldsParameterSet (Default)
 ```
 Resume-AzNetAppFilesReplication -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Resume-AzNetAppFilesReplication -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Resume-AzNetAppFilesReplication -InputObject <PSNetAppFilesVolume> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -136,21 +136,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group of the ANF replication destination volume
 
@@ -230,7 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Approve-AzNetAppFilesReplication](./Approve-AzNetAppFilesReplication.md)
-[Inititialize-AzNetAppFilesReplication](./Approve-AzNetAppFilesReplication.md)
+[Initialize-AzNetAppFilesReplication](./Approve-AzNetAppFilesReplication.md)
 [Suspend-AzNetAppFilesReplication](./Suspend-AzNetAppFilesReplication.md)
 [Remove-AzNetAppFilesReplication](./Remove-AzNetAppFilesReplication.md)
 [Get-AzNetAppFilesReplicationStatus](./Get-AzNetAppFilesReplicationStatus.md)

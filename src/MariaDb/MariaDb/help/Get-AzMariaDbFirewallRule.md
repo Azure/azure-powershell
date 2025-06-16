@@ -49,7 +49,7 @@ fr-usc9na  Microsoft.DBforMariaDB/servers/firewallRules
 frname-001 Microsoft.DBforMariaDB/servers/firewallRules
 ```
 
-This command lists all girewall rule under a MariaDB.
+This command lists all firewall rule under a MariaDB.
 
 ### Example 2: Get a firewall rule under a MariaDB
 ```powershell

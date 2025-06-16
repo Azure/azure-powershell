@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
@@ -85,15 +86,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
 
             IsArchiveEnabled = protectedItem.IsArchiveEnabled;
-            SoftDeleteRetentionPeriodInDays = protectedItem.SoftDeleteRetentionPeriodInDays;
+            SoftDeleteRetentionPeriodInDays = protectedItem.SoftDeleteRetentionPeriodInDays;            
             IsScheduledForDeferredDelete = protectedItem.IsScheduledForDeferredDelete;
             DeferredDeleteTimeInUtc = protectedItem.DeferredDeleteTimeInUtc;
+            DeferredDeleteTimeRemaining = protectedItem.DeferredDeleteTimeRemaining;
 
             DateOfPurge = null;
             DeleteState = EnumUtils.GetEnum<ItemDeleteState>("NotDeleted");
             if (protectedItem.IsScheduledForDeferredDelete.HasValue && protectedItem.IsScheduledForDeferredDelete.Value)
-            {
-                DateOfPurge = protectedItem.DeferredDeleteTimeInUtc.Value.AddDays((int)protectedItem.SoftDeleteRetentionPeriodInDays);
+            {                
+                if (!string.IsNullOrEmpty(protectedItem.DeferredDeleteTimeRemaining))
+                {
+                    TimeSpan timeRemaining;
+                    if (TimeSpan.TryParse(protectedItem.DeferredDeleteTimeRemaining, out timeRemaining))
+                    {
+                        DateOfPurge = DateTime.UtcNow.Add(timeRemaining);
+                    }
+                }
                 DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
             }
         }

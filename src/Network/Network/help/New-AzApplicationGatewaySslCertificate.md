@@ -15,7 +15,8 @@ Creates an SSL certificate for an Azure application gateway.
 
 ```
 New-AzApplicationGatewaySslCertificate -Name <String> [-CertificateFile <String>] [-Password <SecureString>]
- [-KeyVaultSecretId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-KeyVaultSecretId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -150,5 +151,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzApplicationGatewaySslCertificate](./Remove-AzApplicationGatewaySslCertificate.md)
 
 [Set-AzApplicationGatewaySslCertificate](./Set-AzApplicationGatewaySslCertificate.md)
-
-

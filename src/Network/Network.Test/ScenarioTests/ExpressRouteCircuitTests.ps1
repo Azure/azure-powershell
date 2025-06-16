@@ -458,6 +458,153 @@ function Test-ExpressRouteCircuitMicrosoftPeeringCRUD
 
 <#
 .SYNOPSIS
+Tests express route microsoft peering prefix validation
+#>
+function Test-ExpressRouteCircuitMicrosoftPeeringPrefixValidationCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $circuitName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = "centraluseuap"
+
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation    
+        # Create the ExpressRouteCircuit with peering
+        $advertisedPublicPrefixesV4 = "11.2.3.4/30";
+        $peering = New-AzExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -PeeringType MicrosoftPeering -PeerASN 33 -PrimaryPeerAddressPrefix "192.171.1.0/30" -SecondaryPeerAddressPrefix "192.171.2.0/30" -VlanId 224 -MicrosoftConfigAdvertisedPublicPrefixes @($advertisedPublicPrefixesV4) -MicrosoftConfigCustomerAsn 1000 -MicrosoftConfigRoutingRegistryName AFRINIC -LegacyMode $true 
+        $circuit = New-AzExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Premium -SkuFamily MeteredData  -ServiceProviderName "bvtcustomerixp01" -PeeringLocation "boydton 1 dc" -BandwidthInMbps 200 -Peering $peering
+        
+        # Verify the peering
+        Assert-AreEqual "MicrosoftPeering" $circuit.Peerings[0].Name
+        Assert-AreEqual "MicrosoftPeering" $circuit.Peerings[0].PeeringType
+        Assert-AreEqual "192.171.1.0/30" $circuit.Peerings[0].PrimaryPeerAddressPrefix
+        Assert-AreEqual "192.171.2.0/30" $circuit.Peerings[0].SecondaryPeerAddressPrefix
+        Assert-AreEqual "224" $circuit.Peerings[0].VlanId
+        Assert-NotNull $circuit.Peerings[0].MicrosoftPeeringConfig
+        Assert-AreEqual "1000" $circuit.Peerings[0].MicrosoftPeeringConfig.CustomerASN
+        Assert-AreEqual "AFRINIC" $circuit.Peerings[0].MicrosoftPeeringConfig.RoutingRegistryName
+        Assert-AreEqual 1 @($circuit.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixes).Count
+        Assert-NotNull $circuit.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixesState
+        Assert-NotNull $circuit.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo
+        Assert-AreEqual $advertisedPublicPrefixesV4 $circuit.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo[0].Prefix
+        
+        # Get prefix info from circuit
+        $circuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+        $prefixInfo = Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig -ExpressRouteCircuit $circuit -PeerAddressType IPv4 -Prefix $advertisedPublicPrefixesV4
+        
+        # Verify prefix Info
+        Assert-NotNull $prefixInfo
+        Assert-AreEqual $advertisedPublicPrefixesV4 $prefixInfo.Prefix
+
+        # Update prefix validation Info
+        $circuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+        Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig -ExpressRouteCircuit $circuit -PeerAddressType IPv4 -Prefix $advertisedPublicPrefixesV4 -Signature "Signature1"
+        Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
+
+        # Verify prefix Info
+        Assert-NotNull $circuit.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo
+        Assert-AreEqual $advertisedPublicPrefixesV4 $circuit.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo[0].Prefix
+        Assert-AreEqual "Signature1" $circuit.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo[0].Signature
+
+        # Remove prefix validation Info
+        $circuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+        Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig -ExpressRouteCircuit $circuit -PeerAddressType IPv4 -Prefix $advertisedPublicPrefixesV4
+        Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
+
+        # Verify prefix Info
+        Assert-NotNull $circuit.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo
+
+        # Add new prefix validation Info
+        Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig -ExpressRouteCircuit $circuit -PeerAddressType IPv4 -Prefix $advertisedPublicPrefixesV4 -Signature "Signature2"
+        Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
+
+         # Verify prefix Info
+        Assert-NotNull $circuit.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo
+        Assert-AreEqual $advertisedPublicPrefixesV4 $circuit.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo[0].Prefix
+        Assert-AreEqual "Signature2" $circuit.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo[0].Signature
+
+        # Set a new IPv6 peering
+        $primaryPeerAddressPrefixV6 = "fc00::/126";
+        $secondaryPeerAddressPrefixV6 = "fc00::/126";
+        $customerAsnV6 = 2000;
+        $routingRegistryNameV6 = "RADB";
+        $advertisedPublicPrefixesV6 = "fc02::1/128";
+        $circuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname | Set-AzExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -PeeringType MicrosoftPeering -PeerASN 44 -PrimaryPeerAddressPrefix $primaryPeerAddressPrefixV6 -SecondaryPeerAddressPrefix $secondaryPeerAddressPrefixV6 -VlanId 555 -MicrosoftConfigAdvertisedPublicPrefixes @($advertisedPublicPrefixesV6) -MicrosoftConfigCustomerAsn $customerAsnV6 -MicrosoftConfigRoutingRegistryName $routingRegistryNameV6 -PeerAddressType IPv6 | Set-AzExpressRouteCircuit 
+        $p = $circuit | Get-AzExpressRouteCircuitPeeringConfig -Name MicrosoftPeering
+        
+        Assert-AreEqual "MicrosoftPeering" $p.Name
+        Assert-AreEqual "MicrosoftPeering" $p.PeeringType
+        Assert-AreEqual "44" $p.PeerASN
+        Assert-AreEqual $primaryPeerAddressPrefixV6 $p.Ipv6PeeringConfig.PrimaryPeerAddressPrefix
+        Assert-AreEqual $secondaryPeerAddressPrefixV6 $p.Ipv6PeeringConfig.SecondaryPeerAddressPrefix
+        Assert-AreEqual "555" $p.VlanId
+        Assert-NotNull $p.Ipv6PeeringConfig.MicrosoftPeeringConfig
+        Assert-AreEqual $customerAsnV6 $p.Ipv6PeeringConfig.MicrosoftPeeringConfig.CustomerASN
+        Assert-AreEqual $routingRegistryNameV6 $p.Ipv6PeeringConfig.MicrosoftPeeringConfig.RoutingRegistryName
+        Assert-AreEqual 1 @($p.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixes).Count
+        Assert-NotNull $p.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixesState
+        Assert-NotNull $p.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo
+        Assert-AreEqual $advertisedPublicPrefixesV6 $p.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo[0].Prefix
+
+        # Get prefix info from circuit
+        $circuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+        $prefixInfo = Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig -ExpressRouteCircuit $circuit -PeerAddressType IPv6 -Prefix $advertisedPublicPrefixesV6
+        
+        # Verify prefix Info
+        Assert-NotNull $prefixInfo
+        Assert-AreEqual $advertisedPublicPrefixesV6 $prefixInfo.Prefix
+
+        # Update prefix validation Info
+        $circuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+        Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig -ExpressRouteCircuit $circuit -PeerAddressType IPv6 -Prefix $advertisedPublicPrefixesV6 -Signature "Signature1"
+        Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
+        $p = $circuit | Get-AzExpressRouteCircuitPeeringConfig -Name MicrosoftPeering
+
+        # Verify prefix Info
+        Assert-NotNull $p.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo
+        Assert-AreEqual $advertisedPublicPrefixesV6 $p.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo[0].Prefix
+        Assert-AreEqual "Signature1" $p.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo[0].Signature
+
+        # Remove prefix validation Info
+        $circuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+        Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig -ExpressRouteCircuit $circuit -PeerAddressType IPv6 -Prefix $advertisedPublicPrefixesV6
+        Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
+        $p = $circuit | Get-AzExpressRouteCircuitPeeringConfig -Name MicrosoftPeering
+
+        # Verify prefix Info
+        Assert-NotNull $p.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo
+
+        # Add new prefix validation Info
+        Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig -ExpressRouteCircuit $circuit -PeerAddressType IPv6 -Prefix $advertisedPublicPrefixesV6 -Signature "Signature2"
+        Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
+        $p = $circuit | Get-AzExpressRouteCircuitPeeringConfig -Name MicrosoftPeering
+
+        # Verify prefix Info
+        Assert-NotNull $p.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo
+        Assert-AreEqual $advertisedPublicPrefixesV6 $p.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo[0].Prefix
+        Assert-AreEqual "Signature2" $p.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixInfo[0].Signature
+
+        # Delete Peering and Circuit
+        Remove-AzExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -ExpressRouteCircuit $circuit -PeerAddressType All | Set-AzExpressRouteCircuit 
+        $delete = Remove-AzExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
+        Assert-AreEqual true $delete
+            
+        $list = Get-AzExpressRouteCircuit -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests ExpressRouteCircuitAuthorizationCRUD.
 #>
 function Test-ExpressRouteCircuitAuthorizationCRUD

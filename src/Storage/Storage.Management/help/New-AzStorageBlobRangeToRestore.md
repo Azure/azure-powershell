@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ### -EndRange
 Specify the blob restore End range.
 End range will be excluded in restore blobs.
-Set it as empty strng to restore to the end.
+Set it as empty string to restore to the end.
 
 ```yaml
 Type: System.String
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 ### -StartRange
 Specify the blob restore start range.
 Start range will be included in restore blobs.
-Set it as empty string to restore from begining.
+Set it as empty string to restore from beginning.
 
 ```yaml
 Type: System.String

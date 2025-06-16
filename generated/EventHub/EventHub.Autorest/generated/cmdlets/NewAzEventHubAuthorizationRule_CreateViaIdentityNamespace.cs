@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRule))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"create an AuthorizationRule for the specified Event Hub. Creation/create of the AuthorizationRule will take a few seconds to take effect.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}", ApiVersion = "2023-01-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}", ApiVersion = "2024-05-01-preview")]
     public partial class NewAzEventHubAuthorizationRule_CreateViaIdentityNamespace : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IContext

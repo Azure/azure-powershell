@@ -13,7 +13,7 @@ To create a new Network Manager Verifier Workspace Reachability Analysis Intent
 ## SYNTAX
 
 ```
-New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name <String> -NetworkManagerName <String>
+New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent [-Name <String>] -NetworkManagerName <String>
  -ResourceGroupName <String> -VerifierWorkspaceName <String> [-Description <String>] -SourceResourceId <String>
  -DestinationResourceId <String> -IpTraffic <PSIPTraffic> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -22,6 +22,7 @@ New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name <String> -
 
 ## DESCRIPTION
 **New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent** cmdlet creates a new Network Manager Verifier Workspace Reachability Analysis Intent
+
 ## EXAMPLES
 
 ### Example 1
@@ -160,7 +161,7 @@ Accept wildcard characters: False
 IP traffic details.
 
 ```yaml
-Type: PSIPTraffic
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSIPTraffic
 Parameter Sets: (All)
 Aliases:
 
@@ -179,7 +180,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -293,6 +294,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent](./Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent.md)
 
 [Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent](./Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent.md)

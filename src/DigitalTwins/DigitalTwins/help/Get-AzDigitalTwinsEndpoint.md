@@ -18,6 +18,12 @@ Get-AzDigitalTwinsEndpoint -ResourceGroupName <String> -ResourceName <String> [-
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityDigitalTwinsInstance
+```
+Get-AzDigitalTwinsEndpoint -EndpointName <String> -DigitalTwinsInstanceInputObject <IDigitalTwinsIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
@@ -42,11 +48,11 @@ Get-AzDigitalTwinsEndpoint -ResourceGroupName azps_test_group -ResourceName azps
 ```
 
 ```output
-Name            EndpointType AuthenticationType ResourceGroupName
-----            ------------ ------------------ -----------------
-azps-dt-eh      EventHub     KeyBased           azps_test_group
-azps-dt-eg      EventGrid    KeyBased           azps_test_group
-azps-dt-sb      ServiceBus   KeyBased           azps_test_group
+Name       EndpointType AuthenticationType ResourceGroupName
+----       ------------ ------------------ -----------------
+azps-dt-sb ServiceBus   KeyBased           azps_test_group
+azps-dt-eh EventHub     KeyBased           azps_test_group
+azps-dt-eg EventGrid    KeyBased           azps_test_group
 ```
 
 List all AzDigitalTwinsEndpoints by ResourceGroupName
@@ -57,9 +63,30 @@ Get-AzDigitalTwinsEndpoint -ResourceGroupName azps_test_group -ResourceName azps
 ```
 
 ```output
-Name       EndpointType AuthenticationType ResourceGroupName
-----       ------------ ------------------ -----------------
-azps-dt-eh EventHub     KeyBased           azps_test_group
+AuthenticationType           : KeyBased
+CreatedTime                  : 2025-06-06 11:16:50 AM
+DeadLetterSecret             :
+DeadLetterUri                :
+EndpointType                 : EventHub
+Id                           : /subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.DigitalTwins/digitalTwinsInstances/azps-digitaltwins-instance/endpoints/az
+                               ps-dt-eh
+Name                         : azps-dt-eh
+Property                     : {
+                                 "endpointType": "EventHub",
+                                 "provisioningState": "Succeeded",
+                                 "createdTime": "2025-06-06T11:16:50.9480318Z",
+                                 "authenticationType": "KeyBased",
+                                 "connectionStringPrimaryKey": "Endpoint=sb://(PLACEHOLDER)/;SharedAccessKeyName=(PLACEHOLDER);SharedAccessKey=(PLACEHOLDER);EntityPath=(PLACEHOLDER)"
+                               }
+ProvisioningState            : Succeeded
+ResourceGroupName            : azps_test_group
+SystemDataCreatedAt          : 2025-06-06 11:16:50 AM
+SystemDataCreatedBy          : xxxxx.xxxxx@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 2025-06-06 11:18:27 AM
+SystemDataLastModifiedBy     : xxxxx.xxxxx@microsoft.com
+SystemDataLastModifiedByType : User
+Type                         : Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
 ```
 
 Get AzDigitalTwinsEndpoint by EndpointName in ResourceGroup
@@ -82,12 +109,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DigitalTwinsInstanceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
+Parameter Sets: GetViaIdentityDigitalTwinsInstance
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EndpointName
 Name of Endpoint Resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityDigitalTwinsInstance, Get
 Aliases:
 
 Required: True
@@ -99,7 +141,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
@@ -167,7 +208,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource
 
 ## NOTES
 

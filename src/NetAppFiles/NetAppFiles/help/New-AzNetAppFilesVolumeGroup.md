@@ -17,7 +17,7 @@ Creating volume group will create all the volumes specified in request body impl
 ```
 New-AzNetAppFilesVolumeGroup -ResourceGroupName <String> -Location <String> -AccountName <String>
  -PoolName <String> [-Name <String>] [-GroupDescription <String>] [-ApplicationType <String>]
- -ApplicationIdentifier <String> [-ProximityPlacementGroup <String>] -NodeMemory <Int32>
+ -ApplicationIdentifier <String> [-SystemId <String>] [-ProximityPlacementGroup <String>] -NodeMemory <Int32>
  [-CapacityOverhead <Int32>] [-StartingHostId <Int32>] [-HostCount <Int32>] [-SystemRole <String>]
  [-Prefix <String>] [-Vnet <String>] [-SubnetId <String>] [-DataSize <Int64>] [-DataPerformance <Int32>]
  [-LogSize <Int64>] [-LogPerformance <Int32>] [-SharedSize <Int64>] [-SharedPerformance <Int32>]
@@ -25,26 +25,63 @@ New-AzNetAppFilesVolumeGroup -ResourceGroupName <String> -Location <String> -Acc
  [-LogBackupPerformance <Int32>] [-HannaSystemReplication] [-DisasterRecoveryDestination]
  [-BackupProtocolType <String[]>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
- [-EncryptionKeySource <String>] [-KeyVaultPrivateEndpointResourceId <String>] [-Zone <String[]>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EncryptionKeySource <String>] [-KeyVaultPrivateEndpointResourceId <String>] [-NetworkFeature <String>]
+ [-Zone <String[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ORACLE
+```
+New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescription <String>]
+ [-ApplicationType <String>] -ApplicationIdentifier <String> [-SystemId <String>]
+ [-ProximityPlacementGroup <String>] -NodeMemory <Int32> [-CapacityOverhead <Int32>] [-StartingHostId <Int32>]
+ [-HostCount <Int32>] [-SystemRole <String>] [-Prefix <String>] [-Vnet <String>] [-SubnetId <String>]
+ [-DataSize <Int64>] [-DataReplicationSourceId <String>] [-DataReplicationSchedule <String>]
+ [-DataPerformance <Int32>] [-LogSize <Int64>] [-LogPerformance <Int32>] [-LogReplicationSourceId <String>]
+ [-LogReplicationSchedule <String>] [-SharedSize <Int64>] [-SharedPerformance <Int32>]
+ [-SharedReplicationSourceId <String>] [-SharedReplicationSchedule <String>] [-DataBackupSize <Int64>]
+ [-DataBackupPerformance <Int32>] [-DataBackupReplicationSourceId <String>]
+ [-DataBackupReplicationSchedule <String>] [-LogBackupSize <Int64>] [-LogBackupPerformance <Int32>]
+ [-LogBackupReplicationSourceId <String>] [-LogBackupReplicationSchedule <String>] [-HannaSystemReplication]
+ [-DisasterRecoveryDestination] [-BackupProtocolType <String[]>]
+ [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
+ [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
+ [-EncryptionKeySource <String>] [-KeyVaultPrivateEndpointResourceId <String>] [-NetworkFeature <String>]
+ [-Zone <String[]>] [-OracleDatabaseSize <Int32>] [-NumberOfDataVolume <Int32>]
+ [-AdditionalCapacityForSnapshots <Int32>] [-OracleDatabaseThroughput <Int32>] [-DataSize2 <Int64>]
+ [-Data2Performance <Int32>] [-Data2ReplicationSourceId <String>] [-Data2ReplicationSchedule <String>]
+ [-DataSize3 <Int64>] [-Data3Performance <Int32>] [-Data3ReplicationSourceId <String>]
+ [-Data3ReplicationSchedule <String>] [-Data4Size <Int64>] [-Data4Performance <Int32>]
+ [-Data4ReplicationSourceId <String>] [-Data4ReplicationSchedule <String>] [-Data5Size <Int64>]
+ [-Data5Performance <Int32>] [-Data5ReplicationSourceId <String>] [-Data5ReplicationSchedule <String>]
+ [-Data6Size <Int64>] [-Data6Performance <Int32>] [-Data6ReplicationSourceId <String>]
+ [-Data6ReplicationSchedule <String>] [-Data7Size <Int64>] [-Data7Performance <Int32>]
+ [-Data7ReplicationSourceId <String>] [-Data7ReplicationSchedule <String>] [-DataSize8 <Int64>]
+ [-DataPerformance8 <Int32>] [-Data8ReplicationSourceId <String>] [-Data8ReplicationSchedule <String>]
+ [-BinarySize <Int64>] [-BinaryPerformance <Int32>] [-BinaryReplicationSourceId <String>]
+ [-BinaryReplicationSchedule <String>] [-BackupSize <Int64>] [-BackupPerformance <Int32>]
+ [-BackupReplicationSourceId <String>] [-BackupReplicationSchedule <String>] [-LogMirrorSize <Int64>]
+ [-LogMirrorPerformance <Int32>] [-LogMirrorReplicationSourceId <String>]
+ [-LogMirrorReplicationSchedule <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescription <String>]
- [-ApplicationType <String>] -ApplicationIdentifier <String> [-ProximityPlacementGroup <String>]
- -NodeMemory <Int32> [-CapacityOverhead <Int32>] [-StartingHostId <Int32>] [-HostCount <Int32>]
- [-SystemRole <String>] [-Prefix <String>] [-Vnet <String>] [-SubnetId <String>] [-DataSize <Int64>]
- [-DataPerformance <Int32>] [-LogSize <Int64>] [-LogPerformance <Int32>] [-SharedSize <Int64>]
- [-SharedPerformance <Int32>] [-DataBackupSize <Int64>] [-DataBackupPerformance <Int32>]
+ [-ApplicationType <String>] -ApplicationIdentifier <String> [-SystemId <String>]
+ [-ProximityPlacementGroup <String>] -NodeMemory <Int32> [-CapacityOverhead <Int32>] [-StartingHostId <Int32>]
+ [-HostCount <Int32>] [-SystemRole <String>] [-Prefix <String>] [-Vnet <String>] [-SubnetId <String>]
+ [-DataSize <Int64>] [-DataPerformance <Int32>] [-LogSize <Int64>] [-LogPerformance <Int32>]
+ [-SharedSize <Int64>] [-SharedPerformance <Int32>] [-DataBackupSize <Int64>] [-DataBackupPerformance <Int32>]
  [-LogBackupSize <Int64>] [-LogBackupPerformance <Int32>] [-HannaSystemReplication]
  [-DisasterRecoveryDestination] [-BackupProtocolType <String[]>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
- [-EncryptionKeySource <String>] [-KeyVaultPrivateEndpointResourceId <String>] [-Zone <String[]>]
- [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionKeySource <String>] [-KeyVaultPrivateEndpointResourceId <String>] [-NetworkFeature <String>]
+ [-Zone <String[]>] [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +95,13 @@ New-AzNetAppFilesVolumeGroup -ResourceGroupName "MyRG" -AccountName "MyAnfAccoun
 ```
 
 This command creates the new "PRIMARY" ANF VolumeGroup "MyAnfVolumeGroup" within the Account "MyAnfAccount" using the proximityPlacementGroup "MyPPGResourceId", the vnet "MyAnfVnet", and NodeMemory of 100
+
+### Example 2
+```powershell
+New-AzNetAppFilesVolumeGroup -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolumeGroupName" -Location "westus2"  -GroupDescription "MyAnfVolumeGroup Description" -ApplicationIdentifier "OR1" -Zone 1 -Vnet "MyAnfVnet" -SystemRole "PRIMARY" -NodeMemory 100
+```
+
+This command creates the new "PRIMARY" ANF VolumeGroup "MyAnfVolumeGroup" within the Account "MyAnfAccount" using Zone 1, the vnet "MyAnfVnet", and NodeMemory of 100
 
 ## PARAMETERS
 
@@ -91,6 +135,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -AdditionalCapacityForSnapshots
+Additional capacity for snapshots (%). If you use snapshots for data protection, you need to plan for extra capacity. This field adds an additional size (%) for the data volume. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ApplicationIdentifier
 Application specific identifier, default SAP System ID SH1
 
@@ -121,12 +180,132 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BackupPerformance
+Specify throughput in MiB/s. If omitted BackupPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -BackupProtocolType
 A hashtable array which represents the protocol types for Data Backup/Log Backup volumes default NFSv4.1, for other volume types nfsv4.1 will be used.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupReplicationSchedule
+Replication schedule for Backup volume. Used to override DataReplicationSchedule. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupReplicationSourceId
+The resource id of the Backup source volume. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupSize
+Specify capacity (in GiB). If omitted Size for BackupSize will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int64]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BinaryPerformance
+Specify throughput in MiB/s. If omitted BinaryPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BinaryReplicationSchedule
+Replication schedule for data3 volume. Used to override DataReplicationSchedule. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BinaryReplicationSourceId
+The resource id of the source volume. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BinarySize
+Specify capacity (in GiB). If omitted Size for BinarySize will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int64]
+Parameter Sets: ORACLE
 Aliases:
 
 Required: False
@@ -151,9 +330,369 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Data2Performance
+Specify throughput in MiB/s. If omitted DataPerformance for disk 2 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data2ReplicationSchedule
+Replication schedule for data2 volume. Used to override DataReplicationSchedule. Used for Oracle DataProtection volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data2ReplicationSourceId
+The resource id of the source volume. Used to override DataSourceId. Used for Oracle DataProtection volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data3Performance
+Specify throughput in MiB/s. If omitted DataPerformance for disk 3 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data3ReplicationSchedule
+Replication schedule for data3 volume. Used to override DataReplicationSchedule. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data3ReplicationSourceId
+The resource id of the source volume. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data4Performance
+Specify throughput in MiB/s. If omitted DataPerformance for disk 4 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data4ReplicationSchedule
+Replication schedule for data4 volume. Used to override DataReplicationSchedule. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data4ReplicationSourceId
+The resource id of the source volume. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data4Size
+Specify capacity (in GiB). If omitted DataSize for disk 4 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 4 this will be ignored. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int64]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data5Performance
+Specify throughput in MiB/s. If omitted DataPerformance for disk 5 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data5ReplicationSchedule
+Replication schedule for data5 volume. Used to override DataReplicationSchedule. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data5ReplicationSourceId
+The resource id of the source volume. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data5Size
+Specify capacity (in GiB). If omitted DataSize for disk 5 will be autocalculated or specify an integer value representing size.If NumberOfDataVolume is less than 5 this will be ignored. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int64]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data6Performance
+Specify throughput in MiB/s. If omitted DataPerformance for disk 6 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data6ReplicationSchedule
+Replication schedule for data6 volume. Used to override DataReplicationSchedule. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data6ReplicationSourceId
+The resource id of the source volume. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data6Size
+Specify capacity (in GiB). If omitted DataSize for disk 6 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 6 this will be ignored. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int64]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data7Performance
+Specify throughput in MiB/s. If omitted DataPerformance for disk 7 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data7ReplicationSchedule
+Replication schedule for data7 volume. Used to override DataReplicationSchedule. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data7ReplicationSourceId
+The resource id of the source volume. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data7Size
+Specify capacity (in GiB). If omitted DataSize for disk 7 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 7 this will be ignored. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int64]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data8ReplicationSchedule
+Replication schedule for data8 volume. Used to override DataReplicationSchedule. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Data8ReplicationSourceId
+The resource id of the source volume. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DataBackupPerformance
 Specify throughput in MiB/s.
-If ommited DataBackupPerformance will be autocalculated or specify an integer value representing throughput.
+If omitted DataBackupPerformance will be autocalculated or specify an integer value representing throughput.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -167,9 +706,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DataBackupReplicationSchedule
+Replication schedule for DataBackup volume. Used for DataProtection volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataBackupReplicationSourceId
+The resource id of the DataBackup volume. Used for DataProtection volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DataBackupSize
 Specify capacity (in GiB).
-If ommited DataSize will be autocalculated or specify an integer value representing size.
+If omitted DataSize will be autocalculated or specify an integer value representing size.
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -185,7 +754,7 @@ Accept wildcard characters: False
 
 ### -DataPerformance
 Specify throughput in MiB/s.
-If ommited DataPerformance will be autocalculated or specify and integer value representing throughput.
+If omitted DataPerformance will be autocalculated or specify and integer value representing throughput.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -199,13 +768,103 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DataPerformance8
+Specify throughput in MiB/s. If omitted DataPerformance for disk 8 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataReplicationSchedule
+Replication schedule for data2 volume. Used for Oracle DataProtection volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataReplicationSourceId
+The resource id of the source volume. Used for Oracle DataProtection volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DataSize
 Specify capacity (in GiB).
-If ommited DataSize will be autocalculated or specify an integer value representing size.
+If omitted DataSize will be autocalculated or specify an integer value representing size.
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSize2
+Specify capacity (in GiB). If omitted a DataSize size for disk 2 will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int64]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSize3
+Specify capacity (in GiB). If omitted DataSize for disk 3 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 3 this will be ignored. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int64]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSize8
+Specify capacity (in GiB). If omitted DataSize for disk 8 will be autocalculated or specify an integer value representing size.If NumberOfDataVolume is less than 8 this will be ignored. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int64]
+Parameter Sets: ORACLE
 Aliases:
 
 Required: False
@@ -306,7 +965,7 @@ Accept wildcard characters: False
 ```
 
 ### -HannaSystemReplication
-HANA System Replication (HSR): Replication between the same SID instance on hosts in the same region, or differerent regions.
+HANA System Replication (HSR): Replication between the same SID instance on hosts in the same region, or different regions.
 This could be Scale-Up or Scale-Out configurations.
 
 ```yaml
@@ -371,7 +1030,7 @@ Accept wildcard characters: False
 
 ### -LogBackupPerformance
 Specify throughput in MiB/s.
-If ommited LogBackupPerformance will be autocalculated or specify an integer value representing throughput.
+If omitted LogBackupPerformance will be autocalculated or specify an integer value representing throughput.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -385,9 +1044,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LogBackupReplicationSchedule
+Replication schedule for LogBackup volume. Used for DataProtection volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogBackupReplicationSourceId
+The resource id of the LogBackup volume. Used for DataProtection volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LogBackupSize
 Specify capacity (in GiB).
-If ommited DataSize will be autocalculated or specify an integer value representing size.
+If omitted DataSize will be autocalculated or specify an integer value representing size.
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -401,9 +1090,69 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LogMirrorPerformance
+Specify throughput in MiB/s. If omitted LogMirrorPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogMirrorReplicationSchedule
+Replication schedule for data3 volume. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogMirrorReplicationSourceId
+The resource id of the source volume. Used for Oracle DataProtection volumes (SystemRole = DR).
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogMirrorSize
+Specify capacity (in GiB). If omitted Size for LogMirrorSize will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int64]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LogPerformance
 Specify throughput in MiB/s.
-If ommited LogPerformance will be autocalculated or specify and integer value representing throughput.
+If omitted LogPerformance will be autocalculated or specify and integer value representing throughput.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -417,9 +1166,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LogReplicationSchedule
+Replication schedule for log volume. Used for DataProtection volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogReplicationSourceId
+The resource id of the log source volume. Used for DataProtection volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LogSize
 Specify capacity (in GiB).
-If ommited LogSize will be autocalculated or specify an integer value representing size.
+If omitted LogSize will be autocalculated or specify an integer value representing size.
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -449,6 +1228,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkFeature
+Basic network, or Standard features available to the volume (Basic, Standard).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkFeature
+Basic network, or Standard features available to the volume (Basic, Standard).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodeMemory
 SAP node memory (GiB), Memory on SAP compute host
 
@@ -458,6 +1267,51 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NumberOfDataVolume
+How many data volumes to create. Can have a minimum of 2 up to 8 data volumes. Defaults to 2. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OracleDatabaseSize
+Total size of the Oracle Data Base (TiB). For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OracleDatabaseThroughput
+Specify the total throughput required for your database. If you select more than one database volume, the throughput is distributed evenly among all volumes. You can change each individual volume, using the DataSize(no) DataPerformance(no) properties provided. For Oracle Application Volume Groups only
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -488,21 +1342,6 @@ For PRIMARY it will be empty and HA it will be "HA - "
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -544,7 +1383,7 @@ Accept wildcard characters: False
 
 ### -SharedPerformance
 Specify throughput in MiB/s.
-If ommited SharedPerformance will be autocalculated or specify and integer value representing throughput.
+If omitted SharedPerformance will be autocalculated or specify and integer value representing throughput.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -558,9 +1397,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SharedReplicationSchedule
+Replication schedule for shared volume. Used for DataProtection volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedReplicationSourceId
+The resource id of the shared volume. Used for DataProtection volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: ORACLE
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SharedSize
 Specify capacity (in GiB).
-If ommited SharedSize will be autocalculated or specify an integer value representing size.
+If omitted SharedSize will be autocalculated or specify an integer value representing size.
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -594,6 +1463,21 @@ Accept wildcard characters: False
 
 ### -SubnetId
 Default delegated subnet, for all volume groups
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SystemId
+Unique Oracle system ID, default SAP System ID SH1 , default Oracle System Id (OID)ORA1
 
 ```yaml
 Type: System.String

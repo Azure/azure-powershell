@@ -29,6 +29,18 @@ Get-AzFrontDoorCdnRule -Name <String> -ProfileName <String> -ResourceGroupName <
 Get-AzFrontDoorCdnRule -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityProfile
+```
+Get-AzFrontDoorCdnRule -Name <String> -ProfileInputObject <ICdnIdentity> -SetName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityRuleSet
+```
+Get-AzFrontDoorCdnRule -Name <String> -RuleSetInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets an existing delivery rule within a rule set.
 
@@ -108,7 +120,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -127,7 +138,7 @@ Name of the delivery rule which is unique within the endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityProfile, GetViaIdentityRuleSet
 Aliases: RuleName
 
 Required: True
@@ -137,8 +148,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: GetViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String
@@ -167,12 +193,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RuleSetInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: GetViaIdentityRuleSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SetName
 Name of the rule set under the profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityProfile, List
 Aliases: RuleSetName
 
 Required: True
@@ -206,7 +247,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule
 
 ## NOTES
 

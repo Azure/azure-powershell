@@ -1,17 +1,17 @@
 {
-  "Get-AzStorageActionTasksReport+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/mytask1/reports?api-version=2023-01-01+1": {
+  "Get-AzStorageActionTasksReport+[NoContext]+List+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.StorageActions/storageTasks/mytask1/reports?api-version=2023-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/mytask1/reports?api-version=2023-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.StorageActions/storageTasks/mytask1/reports?api-version=2023-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "97aafd75-a0e0-495b-9c2a-79ea6650079c" ],
+        "x-ms-client-request-id": [ "bf358baa-a3c5-4860-bcfd-94ea58107b4e" ],
         "CommandName": [ "Get-AzStorageActionTasksReport" ],
         "FullCommandName": [ "Get-AzStorageActionTasksReport_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.StorageAction/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.StorageAction/0.1.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,23 +22,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "41eac612-7254-45f3-8007-b8ee11793330" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/southeastasia/ac1dd7b0-2aa7-402d-8d56-9a49d7b893d2" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "9ac17cce-4ab8-4f3f-a5d1-a33f67bf8d80" ],
+        "x-ms-correlation-request-id": [ "4330c4e4-fce0-416b-9daf-9cb794dab4d0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250611T080511Z:4330c4e4-fce0-416b-9daf-9cb794dab4d0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "edf9b87d-0574-48e3-90ae-41a65b6e9895" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240506T083711Z:edf9b87d-0574-48e3-90ae-41a65b6e9895" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 60763A0B02994D08BB4624088241657C Ref B: MAA201060513051 Ref C: 2024-05-06T08:37:09Z" ],
-        "Date": [ "Mon, 06 May 2024 08:37:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AEBF5D9C93794309942458EFD102386E Ref B: MAA201060515023 Ref C: 2025-06-11T08:05:10Z" ],
+        "Date": [ "Wed, 11 Jun 2025 08:05:11 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2399" ],
-        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/mytask1/reports/instance1\",\"name\":\"instance1\",\"type\":\"Microsoft.StorageActions/storageTasks/reports\",\"properties\":{\"taskAssignmentId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.Storage/storageAccounts/storagetasktest202402281/storageTaskAssignments/testassign1\",\"storageAccountId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.Storage/storageAccounts/storagetasktest202402281\",\"startTime\":\"2024-02-28T10:07:53.0000000Z\",\"finishTime\":\"2024-02-28T10:16:58.9261483Z\",\"objectsTargetedCount\":\"1\",\"objectsOperatedOnCount\":\"0\",\"objectFailedCount\":\"0\",\"objectsSucceededCount\":\"0\",\"runStatusError\":\"0x0\",\"runStatusEnum\":\"Finished\",\"summaryReportPath\":\"https://storagetasktest202402281.blob.core.windows.net/rrrr/mytask1/testassign1/2024-02-28T10:08:00/SummaryReport.json\",\"taskId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/mytask1\",\"taskVersion\":\"1\",\"runResult\":\"Succeeded\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/mytask1/reports/instance2\",\"name\":\"instance2\",\"type\":\"Microsoft.StorageActions/storageTasks/reports\",\"properties\":{\"taskAssignmentId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.Storage/storageAccounts/storagetasktest202402281/storageTaskAssignments/testassign2\",\"storageAccountId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.Storage/storageAccounts/storagetasktest202402281\",\"startTime\":\"2024-02-28T10:21:53.0000000Z\",\"finishTime\":\"2024-02-28T10:31:54.7848950Z\",\"objectsTargetedCount\":\"1\",\"objectsOperatedOnCount\":\"0\",\"objectFailedCount\":\"0\",\"objectsSucceededCount\":\"0\",\"runStatusError\":\"0x0\",\"runStatusEnum\":\"Finished\",\"summaryReportPath\":\"https://storagetasktest202402281.blob.core.windows.net/rrrr/mytask1/testassign2/2024-02-28T10:22:05/SummaryReport.json\",\"taskId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/mytask1\",\"taskVersion\":\"1\",\"runResult\":\"Succeeded\"}}]}",
+      "Content": "{\"value\":[]}",
       "isContentBase64": false
     }
   }

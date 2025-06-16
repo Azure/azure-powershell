@@ -14,8 +14,8 @@ Deploys a network manager commit.
 
 ```
 Deploy-AzNetworkManagerCommit -Name <String> -ResourceGroupName <String> -TargetLocation <String[]>
- [-ConfigurationId <String[]>] -CommitType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ConfigurationId <String[]>] -CommitType <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ $configIds = @("/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGrou
 Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity"
 ```
 
-This example is used to commit connecitivity confguration in East US and West US regions.
+This example is used to commit connectivity configuration in East US and West US regions.
 
 ### Example 2
 ```powershell
@@ -38,7 +38,7 @@ $regions = @( "westus")
 Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "Connectivity"
 ```
 
-This example is used to uncommit all connecitivity confgurations in West US region.
+This example is used to uncommit all connectivity configurations in West US region.
 
 ### Example 3
 ```powershell

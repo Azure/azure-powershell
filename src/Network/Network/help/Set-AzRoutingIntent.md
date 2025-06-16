@@ -15,26 +15,29 @@ Updates a routing intent resource associated with a VirtualHub.
 ### ByRoutingIntentName (Default)
 ```
 Set-AzRoutingIntent -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 Set-AzRoutingIntent -Name <String> -ParentObject <PSVirtualHub> [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByRoutingIntentObject
 ```
 Set-AzRoutingIntent -InputObject <PSRoutingIntent> [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByRoutingIntentResourceId
 ```
 Set-AzRoutingIntent -ResourceId <String> [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -207,7 +210,7 @@ Accept wildcard characters: False
 ```
 
 ### -RoutingPolicy
-The list of RoutingPolicies to update in this routing intent reesource.
+The list of RoutingPolicies to update in this routing intent resource.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRoutingPolicy[]

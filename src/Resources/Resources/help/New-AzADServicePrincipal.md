@@ -177,7 +177,7 @@ Create service principal with existing application
 New-AzADServicePrincipal -DisplayName $name
 ```
 
-Create application with display name and associated new service pincipal with it
+Create application with display name and associated new service principal with it
 
 ## PARAMETERS
 
