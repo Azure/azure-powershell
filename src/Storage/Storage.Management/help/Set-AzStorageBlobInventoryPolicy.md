@@ -94,7 +94,7 @@ Test2 True    containername Blob       Parquet Weekly   True             True   
 Test3 True    containername Blob       Parquet Weekly   True             True                True           {blockBlob, appendBlob} {aaa, bbb}  {ccc, ddd}     {Name, Content-Type, Content-CRC64, Last-Modified...}
 ```
 
-This first 2 commands create 3 BlobInventoryPolicy rule objects: rule "Test1" for contaienr inventory; rule "Test2" and "Test3" for blob inventory.
+This first 2 commands create 3 BlobInventoryPolicy rule objects: rule "Test1" for container inventory; rule "Test2" and "Test3" for blob inventory.
 The following command sets blob inventory policy to a Storage account with the 2 rule objects, then show the updated policy and rules properties.
 
 ### Example 2: Create or update the blob inventory policy of a Storage account with a Json format policy.
@@ -183,7 +183,7 @@ $policy = Get-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" 
 ```
 
 This command first gets the blob inventory policy from a Storage account, then set it to another Storage account.
-The proeprties： Destination, Enabled, and Rules of the policy will be set to the destination account.
+The properties： Destination, Enabled, and Rules of the policy will be set to the destination account.
 
 ### Example 4: Get the blob inventory policy rules from a Storage account, then set it to another Storage account.
 ```powershell

@@ -21,12 +21,13 @@ Create an in-memory object for AzureSqlDatabaseDataSource.
 Create an in-memory object for AzureSqlDatabaseDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDatabaseDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatabasedatasourceobject
 #>
 function New-AzPurviewAzureSqlDatabaseDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseDataSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -50,15 +51,11 @@ function New-AzPurviewAzureSqlDatabaseDataSourceObject {
         $ServerEndpoint,
         [Parameter()]
         [string]
-        $SubscriptionId,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind
+        $SubscriptionId
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('CollectionReferenceName')) {
             $Object.CollectionReferenceName = $CollectionReferenceName
@@ -80,9 +77,6 @@ function New-AzPurviewAzureSqlDatabaseDataSourceObject {
         }
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             $Object.SubscriptionId = $SubscriptionId
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

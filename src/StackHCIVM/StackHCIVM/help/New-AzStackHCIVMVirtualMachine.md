@@ -546,7 +546,7 @@ Accept wildcard characters: False
 
 ### -ProvisionVMAgent
 Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
-VM Agent is provsioned by default.
+VM Agent is provisioned by default.
 Please pass -ProvisionVMAgent:$false to disable.
 
 ```yaml

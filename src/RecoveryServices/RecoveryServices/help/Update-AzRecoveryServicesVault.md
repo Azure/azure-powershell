@@ -92,7 +92,7 @@ The first cmdlet fetches the recovery services vault.
 The second cmdlet removes the SystemAssigned identity from the vault.
 The third cmdlet fetches all the user MSIs as a list from the vault.
 The fourth cmdlet removes all the user MSIs from the vault. In case you want, you can provide selected user identities to be removed as comma separated, like in previous example.
-The fifth cmdlet shows the identities in the vault, as we removed all the identites, Type is displayed as None.
+The fifth cmdlet shows the identities in the vault, as we removed all the identities, Type is displayed as None.
 
 ### Example 4: Update PublicNetworkAccess, ImmutabilityState of recovery services vault
 ```powershell
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableAzureMonitorAlertsForJobFailure
-Boolean paramter to specify whether built-in Azure Monitor alerts should be received for every job failure.
+Boolean parameter to specify whether built-in Azure Monitor alerts should be received for every job failure.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -205,7 +205,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableClassicAlerts
-Boolean paramter to specify whether backup alerts from the classic solution should be disabled or enabled.
+Boolean parameter to specify whether backup alerts from the classic solution should be disabled or enabled.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -330,7 +330,7 @@ Accept wildcard characters: False
 ```
 
 ### -RemoveUserAssigned
-Provide this switch to remove UserAssigned Identity from the vault. Also, provide IdenityId parameter along with this switch.
+Provide this switch to remove UserAssigned Identity from the vault. Also, provide IdentityId parameter along with this switch.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -21,12 +21,13 @@ Create an in-memory object for AmazonSqlCredentialScan.
 Create an in-memory object for AmazonSqlCredentialScan.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonSqlCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonsqlcredentialscanobject
 #>
 function New-AzPurviewAmazonSqlCredentialScanObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlCredentialScan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlCredentialScan')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,8 +44,8 @@ function New-AzPurviewAmazonSqlCredentialScanObject {
         [string]
         $CredentialReferenceName,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
+        [string]
         $CredentialType,
         [Parameter()]
         [string]
@@ -56,8 +57,8 @@ function New-AzPurviewAmazonSqlCredentialScanObject {
         [string]
         $ScanRulesetName,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
+        [string]
         $ScanRulesetType,
         [Parameter()]
         [string]
@@ -67,15 +68,11 @@ function New-AzPurviewAmazonSqlCredentialScanObject {
         $VpcEndpointServiceName,
         [Parameter()]
         [int]
-        $Worker,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-        $Kind
+        $Worker
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlCredentialScan]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlCredentialScan]::New()
 
         if ($PSBoundParameters.ContainsKey('CollectionReferenceName')) {
             $Object.CollectionReferenceName = $CollectionReferenceName
@@ -112,9 +109,6 @@ function New-AzPurviewAmazonSqlCredentialScanObject {
         }
         if ($PSBoundParameters.ContainsKey('Worker')) {
             $Object.Worker = $Worker
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

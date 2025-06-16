@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
-        #region AgentRegistrationInforamtion
+        #region AgentRegistrationInformation
         AgentRegistration GetAgentRegistration(string resourceGroupName, string automationAccountName);
 
         AgentRegistration NewAgentRegistrationKey(string resourceGroupName, string automationAccountName, string keyType);

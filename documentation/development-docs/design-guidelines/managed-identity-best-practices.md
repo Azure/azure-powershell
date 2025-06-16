@@ -64,7 +64,7 @@ If the module is under pre-GA status, we can let the syntax break directly due t
 If the module is GAed, we need to disable the transform (See guideline at [here](https://github.com/Azure/autorest.powershell/blob/main/docs/migration-from-v3-to-v4.md#how-to-mitigate-the-breaking-changes-of-managed-identity-best-practice-alignment).) but preannounce breaking change)  and plan to break it (add upcoming breaking changes for them and take the effects on a major release).
 
 ### What should I do if Autorest reports _"Parameter IdentityType in operation '{operationId}' can not be transformed as the best practice design"_?
-This error indicates that autorest is trying to replace PATCH operation by GET+PUT operation to let IdentityType transformed as best practice desgin but failed due to certain reasons. One of common reasons is GET operation contains query parameter and autorest has not supported such a combined GET+PUT operation. To mitigate this issue, 
+This error indicates that autorest is trying to replace PATCH operation by GET+PUT operation to let IdentityType transformed as best practice design but failed due to certain reasons. One of common reasons is GET operation contains query parameter and autorest has not supported such a combined GET+PUT operation. To mitigate this issue, 
 
 - Include a customization script to transform the parameter IdentityType to EnableSystemAssignedIdentity by `get` + `patch` update for this type of operation. The following are the detailed steps on how to accomplish this.
   - disable transformation for the operation which reported error in README.md by

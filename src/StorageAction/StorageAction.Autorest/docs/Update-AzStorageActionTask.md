@@ -8,9 +8,9 @@ schema: 2.0.0
 # Update-AzStorageActionTask
 
 ## SYNOPSIS
-Asynchronously creates a new storage task resource with the specified parameters.
-If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated.
-If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
+Asynchronously update a new storage task resource with the specified parameters.
+If a storage task is already created and a subsequent update request is issued with different properties, the storage task properties will be updated.
+If a storage task is already created and a subsequent update request is issued with the exact same set of properties, the request will succeed.
 
 ## SYNTAX
 
@@ -33,9 +33,9 @@ Update-AzStorageActionTask -InputObject <IStorageActionIdentity> [-Description <
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new storage task resource with the specified parameters.
-If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated.
-If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
+Asynchronously update a new storage task resource with the specified parameters.
+If a storage task is already created and a subsequent update request is issued with different properties, the storage task properties will be updated.
+If a storage task is already created and a subsequent update request is issued with the exact same set of properties, the request will succeed.
 
 ## EXAMPLES
 
@@ -258,10 +258,10 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
