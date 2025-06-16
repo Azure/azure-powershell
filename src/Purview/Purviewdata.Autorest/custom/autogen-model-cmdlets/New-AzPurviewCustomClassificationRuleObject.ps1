@@ -21,12 +21,13 @@ Create an in-memory object for CustomClassificationRule.
 Create an in-memory object for CustomClassificationRule.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.CustomClassificationRule
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.CustomClassificationRule
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewCustomClassificationRuleObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewcustomclassificationruleobject
 #>
 function New-AzPurviewCustomClassificationRuleObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.CustomClassificationRule')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.CustomClassificationRule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,10 +35,10 @@ function New-AzPurviewCustomClassificationRuleObject {
         [string]
         $ClassificationName,
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRulePattern[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRulePattern[]]
         $ColumnPattern,
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRulePattern[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRulePattern[]]
         $DataPattern,
         [Parameter()]
         [string]
@@ -46,17 +47,13 @@ function New-AzPurviewCustomClassificationRuleObject {
         [double]
         $MinimumPercentageMatch,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationRuleStatus])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationRuleStatus]
-        $RuleStatus,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationRuleType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationRuleType]
-        $Kind
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [string]
+        $RuleStatus
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.CustomClassificationRule]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.CustomClassificationRule]::New()
 
         if ($PSBoundParameters.ContainsKey('ClassificationName')) {
             $Object.ClassificationName = $ClassificationName
@@ -75,9 +72,6 @@ function New-AzPurviewCustomClassificationRuleObject {
         }
         if ($PSBoundParameters.ContainsKey('RuleStatus')) {
             $Object.RuleStatus = $RuleStatus
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
         /// <typeparam name="T">The expected type of the property</typeparam>
         /// <param name="source">The PSObject to retrieve the property from</param>
         /// <param name="name">The name of the property to retrieve</param>
-        /// <returns>he property if found, otherwise the deefault value for T</returns>
+        /// <returns>he property if found, otherwise the default value for T</returns>
         public static T GetProperty<T>(this PSObject source, string name)
         {
             T propertyValue = default(T);
@@ -208,10 +208,10 @@ namespace Microsoft.Azure.Commands.Profile.Common
         }
 
         /// <summary>
-        /// Populate a list from a proprty of the given PSObject
+        /// Populate a list from a property of the given PSObject
         /// </summary>
         /// <param name="list">The list to populate</param>
-        /// <param name="name">The name of the property contiaing the list</param>
+        /// <param name="name">The name of the property containing the list</param>
         /// <param name="other">The PSObject to populate the list from</param>
         public static void Populate(this IList<string> list, string name, PSObject other)
         {

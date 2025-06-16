@@ -86,7 +86,7 @@ ResourceGroupName                         : damorg
 Status                                    : Active
 ```
 
-Get details of subcription `sub$$D` from ServiceBus topic `myTopic`.
+Get details of subscription `sub$$D` from ServiceBus topic `myTopic`.
 
 ### Example 2: List all subscriptions in a topic
 ```powershell

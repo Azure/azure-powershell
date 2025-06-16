@@ -19,7 +19,7 @@ New-AzPrivateLinkAssociation [-ManagementGroupId] <String> [-Name] <String> [-Pr
 ```
 
 ## DESCRIPTION
-The New-AzPrivateLinkAssociation cmdlet creates the private link assocaition at the scope.
+The New-AzPrivateLinkAssociation cmdlet creates the private link association at the scope.
 
 ## EXAMPLES
 
@@ -39,7 +39,7 @@ Properties : {"privateLink":"/subscriptions/aeb49941-36c3-4e7c-9ffd-16ba89d33ec4
              /managementGroups/fc096d27-0434-4460-a3ea-110df0422a2d"}
 ```
 
-Creates the specific private link associations at the managment group scope.
+Creates the specific private link associations at the management group scope.
 
 ## PARAMETERS
 

@@ -47,7 +47,7 @@ SystemDataLastModifiedByType : Application
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command creats an Azure Storage SMB file share endpoint.
+This command creates an Azure Storage SMB file share endpoint.
 
 ## PARAMETERS
 

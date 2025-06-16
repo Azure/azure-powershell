@@ -80,7 +80,7 @@ dir2/file1           False        1024            2021-03-23 09:57:33Z rwxrw-rw-
 ```
 
 This first command creates a Sas token with rdw permission, the second command creates a Storage context from the Sas token, the 3rd command moves an item with the Sas token.
-This example use same Sastoken with rdw permission on both source and destication, if use 2 SAS token for source and destication, source need permission rd, destication need permission w.
+This example use same Sastoken with rdw permission on both source and destination, if use 2 SAS token for source and destination, source need permission rd, destination need permission w.
 
 ## PARAMETERS
 

@@ -63,7 +63,7 @@ This command adds legal hold tags to all Storage blob containers in a Storage ac
 ## PARAMETERS
 
 ### -AllowProtectedAppendWriteAll
-When enabled, new blocks can be written to both 'Appened and Block Blobs' while maintaining immutability protection and compliance. 
+When enabled, new blocks can be written to both 'Append and Block Blobs' while maintaining immutability protection and compliance. 
 Only new blocks can be added and any existing blocks cannot be modified or deleted.
 
 ```yaml

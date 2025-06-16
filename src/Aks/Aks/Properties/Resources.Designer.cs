@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The following three paramters must appear together if one of them appears: NodeMinCount, NodeMaxCount and EnableNodeAutoScaling..
+        ///   Looks up a localized string similar to The following three parameters must appear together if one of them appears: NodeMinCount, NodeMaxCount and EnableNodeAutoScaling..
         /// </summary>
         internal static string AksNodePoolAutoScalingParametersMustAppearTogether {
             get {
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you want to craete a new Node pool?.
+        ///   Looks up a localized string similar to Do you want to create a new Node pool?.
         /// </summary>
         internal static string DoYouWantToCreateClusterAgentPool {
             get {
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot attach folder with anothe file or folder at the same time. Please put them in a same parent folder..
+        ///   Looks up a localized string similar to Cannot attach folder with another file or folder at the same time. Please put them in a same parent folder..
         /// </summary>
         internal static string NeedSameParentFolder {
             get {
@@ -601,7 +601,7 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The following three paramters must appear together if one of them appears: MinCount, MaxCount and EnableAutoScaling..
+        ///   Looks up a localized string similar to The following three parameters must appear together if one of them appears: MinCount, MaxCount and EnableAutoScaling..
         /// </summary>
         internal static string NodePoolAutoScalingParametersMustAppearTogether {
             get {
@@ -718,7 +718,7 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reseting the credential of the aks cluster..
+        ///   Looks up a localized string similar to Resetting the credential of the aks cluster..
         /// </summary>
         internal static string ResetingTheCredentialOfAksCluster {
             get {

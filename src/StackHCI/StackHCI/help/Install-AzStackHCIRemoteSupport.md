@@ -45,7 +45,7 @@ ValueCount    : 0
 Name          : HKEY_LOCAL_MACHINE\SYSTEM\Software\Microsoft\RemoteSupportAgent
 ```
 
-Installs Remort Support
+Installs Remote Support
 
 ## PARAMETERS
 

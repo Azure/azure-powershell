@@ -1,6 +1,6 @@
 ### Example 1: Create Azure Storage Msi scan object
 ```powershell
-New-AzPurviewAzureStorageMsiScanObject -Kind 'AzureStorageMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
+New-AzPurviewAzureStorageMsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
 ```
 
 ```output

@@ -297,7 +297,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         /// Converts unix asterisk based file pattern to regex
         /// </summary>
         /// <param name="wildcard">Asterisk based pattern</param>
-        /// <returns>Regeular expression of null is empty</returns>
+        /// <returns>Regular expression of null is empty</returns>
         private static string WildcardToRegex(string wildcard)
         {
             if (wildcard == null || wildcard == "") return wildcard;

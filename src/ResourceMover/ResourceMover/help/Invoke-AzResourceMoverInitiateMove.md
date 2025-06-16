@@ -28,7 +28,7 @@ Moves the set of resources included in the request body.The move operation is tr
 
 ## EXAMPLES
 
-### Example 1: Validate the dependecies before Initiate Move for the resources.
+### Example 1: Validate the dependencies before Initiate Move for the resources.
 ```powershell
 Invoke-AzResourceMoverInitiateMove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId" -ValidateOnly
 ```

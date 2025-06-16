@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         /// </summary>
         /// <param name="environment">The Azure environment</param>
         /// <param name="tenant">The tenant Id</param>
-        /// <returns>The authrotity string, from the AAD endpoint and tenant ID</returns>
+        /// <returns>The authority string, from the AAD endpoint and tenant ID</returns>
         internal static string GetAuthority(IAzureEnvironment environment, string tenant)
         {
             var tenantString = tenant ?? environment?.AdTenant ?? "organizations";

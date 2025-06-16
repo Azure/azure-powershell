@@ -86,7 +86,7 @@ SystemDataLastModifiedByType :
 Type                         : Microsoft.StandbyPool/standbyContainerGroupPools/runtimeViews
 ```
 
-Above command is getting a runtime veiw of standby container group pool.
+Above command is getting a runtime view of standby container group pool.
 
 ## PARAMETERS
 

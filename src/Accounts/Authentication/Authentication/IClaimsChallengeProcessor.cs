@@ -19,16 +19,16 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     /// <summary>
-    /// Processor to handle claims changllenge
+    /// Processor to handle claims challenge
     /// </summary>
     public interface IClaimsChallengeProcessor
     {
         /// <summary>
-        /// Handle the clamin challenge
+        /// Handle the claims challenge
         /// </summary>
         /// <param name="request">The origin request that responds with a claim challenge</param>
         /// <param name="claimsChallenge">Claims challenge string</param>
-        /// <param name="cancellationToken">Cancelation token</param>
+        /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Successful or not</returns>
         ValueTask<bool> OnClaimsChallenageAsync(HttpRequestMessage request, string claimsChallenge, CancellationToken cancellationToken);
     }

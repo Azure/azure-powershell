@@ -34,7 +34,7 @@ Location Name       Type
 eastasia dashbase03 Microsoft.Portal/dashboards
 ```
 
-Update a dashboard definition using a dashbaord template file.
+Update a dashboard definition using a dashboard template file.
 
 ## PARAMETERS
 

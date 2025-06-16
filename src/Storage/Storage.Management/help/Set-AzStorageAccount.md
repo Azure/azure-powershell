@@ -133,7 +133,7 @@ Set-AzKeyVaultAccessPolicy -VaultName "MyKeyVault" -ObjectId $account.Identity.P
 # In case to enable key auto rotation, don't set KeyVersion
 Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
 
-# In case to enable key auto rotation after set keyvault proeprites with KeyVersion, can update account by set KeyVersion to empty
+# In case to enable key auto rotation after set keyvault properties with KeyVersion, can update account by set KeyVersion to empty
 Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion "" -KeyVaultUri $keyVault.VaultUri
 ```
 
@@ -325,7 +325,7 @@ This command first creates a keyvault and a user assigned identity, then updates
 
 
 ```powershell
-# Assign System identity to the account, and give the system assigned identity acces to the keyvault
+# Assign System identity to the account, and give the system assigned identity access to the keyvault
 $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  -IdentityType SystemAssignedUserAssigned
 Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $account.Identity.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
 
@@ -423,7 +423,7 @@ True
 ```
 
 This command updates a Storage account by enable Sftp and localuser. 
-To run the command succssfully, the Storage account should already enable Hierarchical Namespace.
+To run the command successfully, the Storage account should already enable Hierarchical Namespace.
 
 ### Example 21: Update a Storage account with Keyvault from another tenant (access Keyvault with FederatedClientId)
 <!-- Skip: Output cannot be splitted from code -->
@@ -854,7 +854,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Set the new Storage Account Identity type, the idenetity is for use with key management services like Azure KeyVault.
+Set the new Storage Account Identity type, the identity is for use with key management services like Azure KeyVault.
 
 ```yaml
 Type: System.String
@@ -887,7 +887,7 @@ Accept wildcard characters: False
 
 ### -ImmutabilityPolicyState
 The mode of the policy. Possible values include: 'Unlocked', 'Locked', 'Disabled. 
-Disabled state disablesthe policy. 
+Disabled state disables the policy. 
 Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property. 
 Locked state only allows the increase of the immutability retention time. 
 A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states. Only a policy in an Unlocked state can transition to a Locked state which cannot be reverted. 
@@ -1242,7 +1242,7 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentityId
-Set resource ids for the the new Storage Account user assignedd Identity, the identity will be used with key management services like Azure KeyVault.
+Set resource ids for the the new Storage Account user assigned Identity, the identity will be used with key management services like Azure KeyVault.
 
 ```yaml
 Type: System.String

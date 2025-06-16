@@ -727,7 +727,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to KeyStore cannot be loaded from storage. Please check the keystore file integrity or system compablity. The functions relate to context autosaving may be affected..
+        ///   Looks up a localized string similar to KeyStore cannot be loaded from storage. Please check the keystore file integrity or system compatibility. The functions relate to context autosaving may be affected..
         /// </summary>
         internal static string KeyStoreLoadingError {
             get {
@@ -1267,7 +1267,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The provided service principal secret or certifcate password will be included in the &apos;{0}&apos; file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections..
+        ///   Looks up a localized string similar to The provided service principal secret or certificate password will be included in the &apos;{0}&apos; file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections..
         /// </summary>
         internal static string ServicePrincipalWarning {
             get {

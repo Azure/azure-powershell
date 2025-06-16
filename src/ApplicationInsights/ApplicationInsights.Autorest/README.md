@@ -405,7 +405,7 @@ directive:
   - model-cmdlet:
     - WebTestGeolocation
     - WorkbookTemplateGallery
-    # Hide for custom modle cmdlet.
+    # Hide for custom model cmdlet.
     # - HeaderField
 
   # format output table
