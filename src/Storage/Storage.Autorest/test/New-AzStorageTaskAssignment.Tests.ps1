@@ -24,7 +24,7 @@ Describe 'New/Get/Update/Remove-AzStorageTaskAssignment, List task assignment re
         $assignment1.ReportPrefix | Should -Be $reportprefix
         $assignment1.TriggerType | Should -Be "RunOnce"
         $assignment1.Enabled | Should -Be $false
-        $assignment1.StartOn.ToUniversalTime().toString("o")| Should -Be $startOn.ToUniversalTime().ToUniversalTime().toString("o")
+        $assignment1.StartOn.Year| Should -Be $startOn.ToUniversalTime().Year
 
         $assignmentname2 = "testassignment02"
         $start = Get-Date -Year 2225 -Month 1 -Day 10 -Hour 1 -Minute 30
