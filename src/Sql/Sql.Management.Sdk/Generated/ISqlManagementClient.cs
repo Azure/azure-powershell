@@ -529,5 +529,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         IStartStopManagedInstanceSchedulesOperations StartStopManagedInstanceSchedules { get; }
 
+        /// <summary>
+        /// Gets the IDatabaseSchemasOperations
+        /// </summary>
+        IDatabaseSchemasOperations DatabaseSchemas { get; }
+
     }
 }

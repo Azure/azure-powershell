@@ -24,27 +24,32 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the ExportDatabaseDefinition class.
         /// </summary>
 
-        /// <param name="storageKeyType">Storage key type.
-        /// Possible values include: &#39;SharedAccessKey&#39;, &#39;StorageAccessKey&#39;</param>
+        /// <param name="storageKeyType">Storage key type: StorageAccessKey, SharedAccessKey, or ManagedIdentity.
+        /// Possible values include: &#39;SharedAccessKey&#39;, &#39;StorageAccessKey&#39;,
+        /// &#39;ManagedIdentity&#39;</param>
 
-        /// <param name="storageKey">Storage key.
+        /// <param name="storageKey">Storage key for the storage account. If StorageKeyType is ManagedIdentity,
+        /// this field should specify the Managed Identity&#39;s resource ID.
         /// </param>
 
         /// <param name="storageUri">Storage Uri.
         /// </param>
 
-        /// <param name="administratorLogin">Administrator login name.
+        /// <param name="administratorLogin">Administrator login name. If AuthenticationType is ManagedIdentity, this
+        /// field should specify the Managed Identity&#39;s resource ID.
         /// </param>
 
-        /// <param name="administratorLoginPassword">Administrator login password.
+        /// <param name="administratorLoginPassword">Administrator login password. If AuthenticationType is ManagedIdentity,
+        /// this field should not be specified.
         /// </param>
 
-        /// <param name="authenticationType">Authentication type.
+        /// <param name="authenticationType">Type of credentials provided for access to the target SQL server: SQL,
+        /// ADPassword or ManagedIdentity.
         /// </param>
 
         /// <param name="networkIsolation">Optional resource information to enable network isolation for request.
         /// </param>
-        public ExportDatabaseDefinition(string storageKeyType, string storageKey, string storageUri, string administratorLogin, string administratorLoginPassword, string authenticationType = default(string), NetworkIsolationSettings networkIsolation = default(NetworkIsolationSettings))
+        public ExportDatabaseDefinition(string storageKeyType, string storageKey, string storageUri, string administratorLogin, string administratorLoginPassword = default(string), string authenticationType = default(string), NetworkIsolationSettings networkIsolation = default(NetworkIsolationSettings))
 
         {
             this.StorageKeyType = storageKeyType;
@@ -64,13 +69,16 @@ namespace Microsoft.Azure.Management.Sql.Models
 
 
         /// <summary>
-        /// Gets or sets storage key type. Possible values include: &#39;SharedAccessKey&#39;, &#39;StorageAccessKey&#39;
+        /// Gets or sets storage key type: StorageAccessKey, SharedAccessKey, or
+        /// ManagedIdentity. Possible values include: &#39;SharedAccessKey&#39;, &#39;StorageAccessKey&#39;, &#39;ManagedIdentity&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "storageKeyType")]
         public string StorageKeyType {get; set; }
 
         /// <summary>
-        /// Gets or sets storage key.
+        /// Gets or sets storage key for the storage account. If StorageKeyType is
+        /// ManagedIdentity, this field should specify the Managed Identity&#39;s resource
+        /// ID.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "storageKey")]
         public string StorageKey {get; set; }
@@ -82,19 +90,23 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string StorageUri {get; set; }
 
         /// <summary>
-        /// Gets or sets administrator login name.
+        /// Gets or sets administrator login name. If AuthenticationType is
+        /// ManagedIdentity, this field should specify the Managed Identity&#39;s resource
+        /// ID.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "administratorLogin")]
         public string AdministratorLogin {get; set; }
 
         /// <summary>
-        /// Gets or sets administrator login password.
+        /// Gets or sets administrator login password. If AuthenticationType is
+        /// ManagedIdentity, this field should not be specified.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "administratorLoginPassword")]
         public string AdministratorLoginPassword {get; set; }
 
         /// <summary>
-        /// Gets or sets authentication type.
+        /// Gets or sets type of credentials provided for access to the target SQL
+        /// server: SQL, ADPassword or ManagedIdentity.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "authenticationType")]
         public string AuthenticationType {get; set; }
@@ -128,10 +140,6 @@ namespace Microsoft.Azure.Management.Sql.Models
             if (this.AdministratorLogin == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "AdministratorLogin");
-            }
-            if (this.AdministratorLoginPassword == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "AdministratorLoginPassword");
             }
 
 

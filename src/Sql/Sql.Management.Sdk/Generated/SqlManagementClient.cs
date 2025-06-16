@@ -430,6 +430,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         public virtual IStartStopManagedInstanceSchedulesOperations StartStopManagedInstanceSchedules { get; private set; }
         /// <summary>
+        /// Gets the IDatabaseSchemasOperations
+        /// </summary>
+        public virtual IDatabaseSchemasOperations DatabaseSchemas { get; private set; }
+        /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -633,6 +637,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -757,6 +764,7 @@ namespace Microsoft.Azure.Management.Sql
             this.ManagedDatabaseMoveOperations = new ManagedDatabaseMoveOperations(this);
             this.ManagedInstances = new ManagedInstancesOperations(this);
             this.StartStopManagedInstanceSchedules = new StartStopManagedInstanceSchedulesOperations(this);
+            this.DatabaseSchemas = new DatabaseSchemasOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;

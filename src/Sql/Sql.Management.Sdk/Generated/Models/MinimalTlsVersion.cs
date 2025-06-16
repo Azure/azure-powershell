@@ -7,14 +7,16 @@ namespace Microsoft.Azure.Management.Sql.Models
 {
 
     /// <summary>
-    /// Defines values for StorageKeyType.
+    /// Defines values for MinimalTlsVersion.
     /// </summary>
 
 
-    public static class StorageKeyType
+    public static class MinimalTlsVersion
     {
-        public const string SharedAccessKey = "SharedAccessKey";
-        public const string StorageAccessKey = "StorageAccessKey";
-        public const string ManagedIdentity = "ManagedIdentity";
+        public const string None = "None";
+        public const string One0 = "1.0";
+        public const string One1 = "1.1";
+        public const string One2 = "1.2";
+        public const string One3 = "1.3";
     }
 }
