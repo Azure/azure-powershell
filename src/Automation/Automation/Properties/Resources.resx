@@ -183,7 +183,7 @@
   </data>
   <data name="RunbookNotFound" xml:space="preserve">
     <value>The Runbook was not found. Runbook name: {0}.</value>
-    <comment>Autmation</comment>
+    <comment>Automation</comment>
   </data>
   <data name="ScheduleNameExists" xml:space="preserve">
     <value>The Automation schedule name is in use. Schedule name: {0}.</value>
