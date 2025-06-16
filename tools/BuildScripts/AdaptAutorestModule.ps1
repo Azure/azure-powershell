@@ -50,21 +50,12 @@ if ($ModuleRootName -in $rootToParentMap.keys) {
     $parentModuleName = $rootToParentMap[$ModuleRootName]
 }
 
-Write-Host 
-
 $subModuleNameTrimmed = $SubModuleName
 $SubModuleName = "$SubModuleName.Autorest"
 $moduleRootPath = Join-Path $SourceDirectory $ModuleRootName
 $parentModulePath = Join-Path $moduleRootPath $parentModuleName
 $subModulePath = Join-Path $moduleRootPath $SubModuleName
 $slnPath = Join-Path $moduleRootPath "$ModuleRootName.sln"
-
-Write-Host  "SubModuleName: $SubModuleName"
-Write-Host  "ModuleRootName: $ModuleRootName"
-Write-Host  "parentModuleName: $parentModuleName"
-Write-Host  "moduleRootPath: $moduleRootPath"
-Write-Host  "parentModulePath: $parentModulePath"
-Write-Host  "subModulePath: $subModulePath"
 
 Write-Host "Adapting $SubModuleName to $ModuleRootName ..." -ForegroundColor DarkGreen
 
