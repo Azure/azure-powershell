@@ -249,11 +249,9 @@ try{
         & $resolveScriptPath -ModuleName $ModuleRootName -ArtifactFolder $artifacts -Psd1Folder $parentModulePath
     } -ArgumentList $RepoRoot, $ModuleRootName, $parentModuleName, $SubModuleName, $subModuleNameTrimmed
     try {
-    # Code that may fail due to missing type
         $job | Wait-Job | Receive-Job
     } catch {
-        Write-Warning "Type not found or other error: $($_.Exception.Message)"
-        # Optionally, handle the error or set a fallback value here
+        Write-Warning "Error: $($_.Exception.Message)"
     }
     $job | Remove-Job
 } finally {
