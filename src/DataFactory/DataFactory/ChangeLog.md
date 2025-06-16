@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support Databricks Job Activity.
+* Added support for Databricks Job Activity.
 * Added more support for QuickBooks connection properties.
 
 ## Version 1.19.3
