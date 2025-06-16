@@ -67,7 +67,7 @@ pac65,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac66,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DigitalTwins.0.2.2.zip;sourceType=sa]Az.DigitalTwins,0.2.2
 pac67,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DiskPool.0.4.0.zip;sourceType=sa]Az.DiskPool,0.4.0
 pac68,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Dns.1.3.1.zip;sourceType=sa]Az.Dns,1.3.1
-pac69,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DnsResolver.1.1.1.zip;sourceType=sa]Az.DnsResolver,1.1.1
+pac69,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DnsResolver.1.2.0.zip;sourceType=sa]Az.DnsResolver,1.2.0
 pac70,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DynatraceObservability.0.3.0.zip;sourceType=sa]Az.DynatraceObservability,0.3.0
 pac71,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeOrder.0.2.0.zip;sourceType=sa]Az.EdgeOrder,0.2.0
 pac72,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeZones.0.1.2.zip;sourceType=sa]Az.EdgeZones,0.1.2

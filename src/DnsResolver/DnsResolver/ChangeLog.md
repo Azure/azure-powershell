@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Added domain list post request for using storage based larger domain lists
 * Removed BlockResponseCode from DNS security rule action types
 * Removed requirement of domains in domain list for cases with storage based domain list usage
