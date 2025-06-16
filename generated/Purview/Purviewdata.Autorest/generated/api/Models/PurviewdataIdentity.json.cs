@@ -76,16 +76,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models
             {
                 return;
             }
-            {_keyVaultName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("keyVaultName"), out var __jsonKeyVaultName) ? (string)__jsonKeyVaultName : (string)KeyVaultName;}
-            {_classificationRuleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("classificationRuleName"), out var __jsonClassificationRuleName) ? (string)__jsonClassificationRuleName : (string)ClassificationRuleName;}
-            {_classificationRuleVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNumber>("classificationRuleVersion"), out var __jsonClassificationRuleVersion) ? (int?)__jsonClassificationRuleVersion : ClassificationRuleVersion;}
-            {_dataSourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("dataSourceName"), out var __jsonDataSourceName) ? (string)__jsonDataSourceName : (string)DataSourceName;}
-            {_scanName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("scanName"), out var __jsonScanName) ? (string)__jsonScanName : (string)ScanName;}
-            {_runId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("runId"), out var __jsonRunId) ? (string)__jsonRunId : (string)RunId;}
-            {_scanRulesetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("scanRulesetName"), out var __jsonScanRulesetName) ? (string)__jsonScanRulesetName : (string)ScanRulesetName;}
-            {_dataSourceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("dataSourceType"), out var __jsonDataSourceType) ? (string)__jsonDataSourceType : (string)DataSourceType;}
-            {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNumber>("version"), out var __jsonVersion) ? (int?)__jsonVersion : Version;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_keyVaultName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("keyVaultName"), out var __jsonKeyVaultName) ? (string)__jsonKeyVaultName : (string)_keyVaultName;}
+            {_classificationRuleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("classificationRuleName"), out var __jsonClassificationRuleName) ? (string)__jsonClassificationRuleName : (string)_classificationRuleName;}
+            {_classificationRuleVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNumber>("classificationRuleVersion"), out var __jsonClassificationRuleVersion) ? (int?)__jsonClassificationRuleVersion : _classificationRuleVersion;}
+            {_dataSourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("dataSourceName"), out var __jsonDataSourceName) ? (string)__jsonDataSourceName : (string)_dataSourceName;}
+            {_scanName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("scanName"), out var __jsonScanName) ? (string)__jsonScanName : (string)_scanName;}
+            {_runId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("runId"), out var __jsonRunId) ? (string)__jsonRunId : (string)_runId;}
+            {_scanRulesetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("scanRulesetName"), out var __jsonScanRulesetName) ? (string)__jsonScanRulesetName : (string)_scanRulesetName;}
+            {_dataSourceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("dataSourceType"), out var __jsonDataSourceType) ? (string)__jsonDataSourceType : (string)_dataSourceType;}
+            {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNumber>("version"), out var __jsonVersion) ? (int?)__jsonVersion : _version;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

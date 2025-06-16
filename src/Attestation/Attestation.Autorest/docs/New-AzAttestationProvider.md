@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ### -PolicySigningCertificateKeyPath
 Specifies the set of trusted signing keys for issuance policy in a single certificate file.
 The value of the "keys" parameter is an array of JWK values.
-Bydefault, the order of the JWK values within the array does not implyan order of preference among them, although applications of JWK Setscan choose to assign a meaning to the order for their purposes, ifdesired.
+By default, the order of the JWK values within the array does not imply an order of preference among them, although applications of JWK Setscan choose to assign a meaning to the order for their purposes, if desired.
 To construct, see NOTES section for POLICYSIGNINGCERTIFICATEKEY properties and create a hash table.
 
 ```yaml

@@ -108,11 +108,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                     {
                         MockSubscriptionClientFactory.SubGetQueueVerLatest.Enqueue(() =>
                         {
-                            throw new CloudException("Subscription is not in the tenenat.");
+                            throw new CloudException("Subscription is not in the tenant.");
                         });
                         subscriptionGetQueue.Enqueue(() =>
                         {
-                            throw new CloudException("Subscription is not in the tenenat.");
+                            throw new CloudException("Subscription is not in the tenant.");
                         });
                     }
                 }

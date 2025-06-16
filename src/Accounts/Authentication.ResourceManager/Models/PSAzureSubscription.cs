@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// Convert a subscription from a PSObject
         /// </summary>
-        /// <param name="other">ThePSObject to poulate this subscription from</param>
+        /// <param name="other">ThePSObject to populate this subscription from</param>
         public PSAzureSubscription(PSObject other)
         {
             this.Id = other.GetProperty<string>(nameof(Id));

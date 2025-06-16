@@ -175,14 +175,14 @@ Create a management group scoped deployment stack.
 
 ### Example 1: Creates a new stack MyMGStack at the MyManagementGroup management group and deploys it into the child subscription MySubId
 ```powershell
-New-AzManagementGroupDeploymentStack -Name MyMGStack -ManagementGroupId MyMangementGroup -DeploymentSubscriptionId MySubId -TemplateFile myTemplate.json -Location westus -DenySettingsMode DenyDelete
+New-AzManagementGroupDeploymentStack -Name MyMGStack -ManagementGroupId MyManagementGroup -DeploymentSubscriptionId MySubId -TemplateFile myTemplate.json -Location westus -DenySettingsMode DenyDelete
 ```
 
 Create a new management group scoped deployment stack named 'MyMGStack' in management group 'MyManagementGroup,' with the scope of the underlying deployment being MySubId and deny settings being DenyDelete. 
 
 ### Example 2: Use a .bicepparam file to create a stack
 ```powershell
-New-AzManagementGroupDeploymentStack -Name MyMGStack -ManagementGroupId MyMangementGroup -DeploymentSubscriptionId MySubId -Location westus -DenySettingsMode DenyDelete -TemplateParameterFile "./parameters.bicepparam"
+New-AzManagementGroupDeploymentStack -Name MyMGStack -ManagementGroupId MyManagementGroup -DeploymentSubscriptionId MySubId -Location westus -DenySettingsMode DenyDelete -TemplateParameterFile "./parameters.bicepparam"
 ```
 
 This command creates a new stack at the management group scope by using a .bicepparam file on disk.

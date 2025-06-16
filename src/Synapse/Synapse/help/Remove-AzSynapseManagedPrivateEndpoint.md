@@ -55,8 +55,8 @@ Remove a managed private endpoint called ContosoManagedPrivateEndpoint from the 
 
 ### Example 3
 ```powershell
-$privateendpint = Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint
-$privateendpint | Remove-AzSynapseManagedPrivateEndpoint
+$privateendpoint = Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint
+$privateendpoint | Remove-AzSynapseManagedPrivateEndpoint
 ```
 
 Remove a managed private endpoint called ContosoManagedPrivateEndpoint from the workspace ContosoWorkspace through pipeline.

@@ -23,12 +23,12 @@ Lists the rule versions of a classification rule
 Get-AzPurviewClassificationRuleVersion -Endpoint https://parv-brs-2.purview.azure.com -ClassificationRuleName 'ClassificationRule5'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewclassificationruleversion
 #>
 function Get-AzPurviewClassificationRuleVersion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -100,6 +100,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -128,6 +137,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -182,12 +194,12 @@ Get-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com/ 
 Get-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com/
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewclassificationrule
 #>
 function Get-AzPurviewClassificationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -260,6 +272,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -289,6 +310,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -343,12 +367,12 @@ Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/' -Name 'NewD
 Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewdatasource
 #>
 function Get-AzPurviewDataSource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -421,6 +445,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -450,6 +483,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -502,12 +538,12 @@ Get a filter
 Get-AzPurviewFilter -Endpoint 'https://brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData' -ScanName 'Scan1ForDemo'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewfilter
 #>
 function Get-AzPurviewFilter {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -585,6 +621,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -613,6 +658,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -667,12 +715,12 @@ Get-AzPurviewKeyVaultConnection -Endpoint 'https://parv-brs-2.purview.azure.com/
 Get-AzPurviewKeyVaultConnection -Endpoint 'https://parv-brs-2.purview.azure.com/'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewkeyvaultconnection
 #>
 function Get-AzPurviewKeyVaultConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -744,6 +792,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -773,6 +830,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -825,12 +885,12 @@ Lists the scan history of a scan
 Get-AzPurviewScanResultScanHistory -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan1ForDemo' | Format-List
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanResult
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanResult
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewscanresultscanhistory
 #>
 function Get-AzPurviewScanResultScanHistory {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanResult])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -908,6 +968,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -936,6 +1005,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -990,12 +1062,12 @@ Get-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/
 Get-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/ -Name TestRule
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewscanruleset
 #>
 function Get-AzPurviewScanRuleset {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1068,6 +1140,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1097,6 +1178,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1151,12 +1235,12 @@ Get-AzPurviewScan -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceN
 Get-AzPurviewScan -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewscan
 #>
 function Get-AzPurviewScan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1235,6 +1319,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1264,6 +1357,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1316,12 +1412,12 @@ Get the latest version of a system scan ruleset
 Get-AzPurviewSystemScanRulesetLatest -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceType 'AzureStorage'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanrulesetlatest
 #>
 function Get-AzPurviewSystemScanRulesetLatest {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1332,9 +1428,9 @@ param(
     ${Endpoint},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("None", "AzureSubscription", "AzureResourceGroup", "AzureSynapseWorkspace", "AzureSynapse", "AdlsGen1", "AdlsGen2", "AmazonAccount", "AmazonS3", "AmazonSql", "AzureCosmosDb", "AzureDataExplorer", "AzureFileService", "AzureSqlDatabase", "AmazonPostgreSql", "AzurePostgreSql", "SqlServerDatabase", "AzureSqlDatabaseManagedInstance", "AzureSqlDataWarehouse", "AzureMySql", "AzureStorage", "Teradata", "Oracle", "SapS4Hana", "SapEcc", "PowerBI")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
+    [System.String]
     # .
     ${DataSourceType},
 
@@ -1394,6 +1490,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1422,6 +1527,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1474,12 +1582,12 @@ List system scan ruleset versions in Data catalog
 Get-AzPurviewSystemScanRulesetVersion -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceType 'AzureStorage'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanrulesetversion
 #>
 function Get-AzPurviewSystemScanRulesetVersion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1490,9 +1598,9 @@ param(
     ${Endpoint},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("None", "AzureSubscription", "AzureResourceGroup", "AzureSynapseWorkspace", "AzureSynapse", "AdlsGen1", "AdlsGen2", "AmazonAccount", "AmazonS3", "AmazonSql", "AzureCosmosDb", "AzureDataExplorer", "AzureFileService", "AzureSqlDatabase", "AmazonPostgreSql", "AzurePostgreSql", "SqlServerDatabase", "AzureSqlDatabaseManagedInstance", "AzureSqlDataWarehouse", "AzureMySql", "AzureStorage", "Teradata", "Oracle", "SapS4Hana", "SapEcc", "PowerBI")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
+    [System.String]
     # .
     ${DataSourceType},
 
@@ -1552,6 +1660,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1580,6 +1697,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1636,12 +1756,12 @@ Get-AzPurviewSystemScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/  
 Get-AzPurviewSystemScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/  -DataSourceType 'AdlsGen2' -Version 2
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanruleset
 #>
 function Get-AzPurviewSystemScanRuleset {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1653,9 +1773,9 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='Get1')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("None", "AzureSubscription", "AzureResourceGroup", "AzureSynapseWorkspace", "AzureSynapse", "AdlsGen1", "AdlsGen2", "AmazonAccount", "AmazonS3", "AmazonSql", "AzureCosmosDb", "AzureDataExplorer", "AzureFileService", "AzureSqlDatabase", "AmazonPostgreSql", "AzurePostgreSql", "SqlServerDatabase", "AzureSqlDatabaseManagedInstance", "AzureSqlDataWarehouse", "AzureMySql", "AzureStorage", "Teradata", "Oracle", "SapS4Hana", "SapEcc", "PowerBI")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
+    [System.String]
     # .
     ${DataSourceType},
 
@@ -1721,6 +1841,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1751,6 +1880,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1803,12 +1935,12 @@ Gets trigger information
 Get-AzPurviewTrigger -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan-6HK'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewtrigger
 #>
 function Get-AzPurviewTrigger {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1886,6 +2018,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1914,6 +2055,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1966,12 +2110,12 @@ Sets Classification Action on a specific classification rule version.
 Invoke-AzPurviewTagClassificationRuleClassificationVersion -Endpoint 'https://parv-brs-2.purview.azure.com/' -ClassificationRuleName 'ClassificationRule2' -ClassificationRuleVersion 1 -Action 'Delete'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/invoke-azpurviewtagclassificationruleclassificationversion
 #>
 function Invoke-AzPurviewTagClassificationRuleClassificationVersion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse])]
 [CmdletBinding(DefaultParameterSetName='Tag', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1994,9 +2138,9 @@ param(
     ${ClassificationRuleVersion},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Keep", "Delete")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationAction]
+    [System.String]
     # .
     ${Action},
 
@@ -2056,6 +2200,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2084,6 +2237,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2129,32 +2285,32 @@ end {
 
 <#
 .Synopsis
-Creates or Updates a classification rule
+Create a classification rule
 .Description
-Creates or Updates a classification rule
+Create a classification rule
 .Example
 $reg1 = New-AzPurviewRegexClassificationRulePatternObject -Pattern '^col1$'
 $reg2 = New-AzPurviewRegexClassificationRulePatternObject -Pattern '^col2$'
 $regexarr = @($reg1, $reg2)
-$obj = New-AzPurviewCustomClassificationRuleObject -Kind 'Custom' -ClassificationName ClassificationRule4 -RuleStatus 'Enabled' -Description 'This is a rule2' -ColumnPattern $regexarr
+$obj = New-AzPurviewCustomClassificationRuleObject -ClassificationName ClassificationRule4 -RuleStatus 'Enabled' -Description 'This is a rule2' -ColumnPattern $regexarr
 New-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com -ClassificationRuleName ClassificationRule5 -Body $obj
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BODY <IClassificationRule>: .
-  Kind <ClassificationRuleType>: 
+  Kind <String>: 
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewclassificationrule
 #>
 function New-AzPurviewClassificationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2171,12 +2327,23 @@ param(
     # .
     ${Name},
 
-    [Parameter(Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2234,6 +2401,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2254,6 +2430,8 @@ begin {
 
         $mapping = @{
             Create = 'Az.Purviewdata.private\New-AzPurviewClassificationRule_Create';
+            CreateViaJsonFilePath = 'Az.Purviewdata.private\New-AzPurviewClassificationRule_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Purviewdata.private\New-AzPurviewClassificationRule_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2262,6 +2440,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2307,29 +2488,29 @@ end {
 
 <#
 .Synopsis
-Creates or Updates a data source
+Create a data source
 .Description
-Creates or Updates a data source
+Create a data source
 .Example
-$obj = New-AzPurviewAzureStorageDataSourceObject -Kind 'AzureStorage' -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint https://datascantest.blob.core.windows.net/
+$obj = New-AzPurviewAzureStorageDataSourceObject -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint https://datascantest.blob.core.windows.net/
 New-AzPurviewDataSource -Endpoint 'https://parv-brs-2.purview.azure.com/' -Name 'NewDataSource' -Body $obj
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BODY <IDataSource>: .
-  Kind <DataSourceType>: 
+  Kind <String>: 
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewdatasource
 #>
 function New-AzPurviewDataSource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2346,12 +2527,23 @@ param(
     # .
     ${Name},
 
-    [Parameter(Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2409,6 +2601,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2429,6 +2630,8 @@ begin {
 
         $mapping = @{
             Create = 'Az.Purviewdata.private\New-AzPurviewDataSource_Create';
+            CreateViaJsonFilePath = 'Az.Purviewdata.private\New-AzPurviewDataSource_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Purviewdata.private\New-AzPurviewDataSource_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2437,6 +2640,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2482,30 +2688,30 @@ end {
 
 <#
 .Synopsis
-Creates or updates a filter
+Create a filter
 .Description
-Creates or updates a filter
+Create a filter
 .Example
 $filterObj = New-AzPurviewFilterObject -ExcludeUriPrefix @('https://foo.file.core.windows.net/share1/user/temp') -IncludeUriPrefix @('https://foo.file.core.windows.net/share1/user','https://foo.file.core.windows.net/share1/aggregated')
 New-AzPurviewFilter -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan1ForDemo' -Body $filterObj
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BODY <IFilter>: .
-  [ExcludeUriPrefix <String[]>]: 
-  [IncludeUriPrefix <String[]>]: 
+  [ExcludeUriPrefix <List<String>>]: 
+  [IncludeUriPrefix <List<String>>]: 
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewfilter
 #>
 function New-AzPurviewFilter {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2527,12 +2733,23 @@ param(
     # .
     ${ScanName},
 
-    [Parameter(Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2590,6 +2807,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2610,6 +2836,8 @@ begin {
 
         $mapping = @{
             Create = 'Az.Purviewdata.private\New-AzPurviewFilter_Create';
+            CreateViaJsonFilePath = 'Az.Purviewdata.private\New-AzPurviewFilter_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Purviewdata.private\New-AzPurviewFilter_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2618,6 +2846,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2663,17 +2894,17 @@ end {
 
 <#
 .Synopsis
-Creates an instance of a key vault connection
+Create an instance of a key vault connection
 .Description
-Creates an instance of a key vault connection
+Create an instance of a key vault connection
 .Example
 $kvConn = New-AzPurviewAzureKeyVaultObject -BaseUrl 'https://datascankv.vault.azure.net/' -Description 'This is a key vault'
 New-AzPurviewKeyVaultConnection -Endpoint 'https://parv-brs-2.purview.azure.com/' -KeyVaultName KeyVaultConnection2 -Body $kvConn
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2686,7 +2917,7 @@ BODY <IAzureKeyVault>: .
 https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewkeyvaultconnection
 #>
 function New-AzPurviewKeyVaultConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2702,12 +2933,23 @@ param(
     # .
     ${KeyVaultName},
 
-    [Parameter(Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2765,6 +3007,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2785,6 +3036,8 @@ begin {
 
         $mapping = @{
             Create = 'Az.Purviewdata.private\New-AzPurviewKeyVaultConnection_Create';
+            CreateViaJsonFilePath = 'Az.Purviewdata.private\New-AzPurviewKeyVaultConnection_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Purviewdata.private\New-AzPurviewKeyVaultConnection_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2793,6 +3046,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2838,30 +3094,30 @@ end {
 
 <#
 .Synopsis
-Creates or Updates a scan ruleset
+Create a scan ruleset
 .Description
-Creates or Updates a scan ruleset
+Create a scan ruleset
 .Example
-$obj = New-AzPurviewAdlsGen1ScanRulesetObject -Kind 'AdlsGen1' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
+$obj = New-AzPurviewAdlsGen1ScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
 New-AzPurviewScanRuleset -Endpoint 'https://parv-brs-2.purview.azure.com/' -Name 'Rule1' -Body $obj
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BODY <IScanRuleset>: .
-  Kind <DataSourceType>: 
-  [Type <ScanRulesetType?>]: 
+  Kind <String>: 
+  [Type <String>]: 
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewscanruleset
 #>
 function New-AzPurviewScanRuleset {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2878,12 +3134,23 @@ param(
     # .
     ${Name},
 
-    [Parameter(Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2941,6 +3208,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2961,6 +3237,8 @@ begin {
 
         $mapping = @{
             Create = 'Az.Purviewdata.private\New-AzPurviewScanRuleset_Create';
+            CreateViaJsonFilePath = 'Az.Purviewdata.private\New-AzPurviewScanRuleset_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Purviewdata.private\New-AzPurviewScanRuleset_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2969,6 +3247,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3014,29 +3295,29 @@ end {
 
 <#
 .Synopsis
-Creates an instance of a scan
+Create an instance of a scan
 .Description
-Creates an instance of a scan
+Create an instance of a scan
 .Example
-$obj = New-AzPurviewAzureStorageCredentialScanObject -Kind 'AzureStorageCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
+$obj = New-AzPurviewAzureStorageCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
 New-AzPurviewScan -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -Name 'ScanTest' -Body $obj
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BODY <IScan>: .
-  Kind <ScanAuthorizationType>: 
+  Kind <String>: 
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewscan
 #>
 function New-AzPurviewScan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3059,12 +3340,23 @@ param(
     # .
     ${Name},
 
-    [Parameter(Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3122,6 +3414,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3142,6 +3443,8 @@ begin {
 
         $mapping = @{
             Create = 'Az.Purviewdata.private\New-AzPurviewScan_Create';
+            CreateViaJsonFilePath = 'Az.Purviewdata.private\New-AzPurviewScan_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Purviewdata.private\New-AzPurviewScan_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3150,6 +3453,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3195,17 +3501,17 @@ end {
 
 <#
 .Synopsis
-Creates an instance of a trigger
+Create an instance of a trigger
 .Description
-Creates an instance of a trigger
+Create an instance of a trigger
 .Example
-$obj = New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -ScheduleHour $(9) -ScheduleMinute $(0) -ScheduleMonthDay $(10)
+$obj = New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -RecurrenceScheduleHour $(9) -RecurrenceScheduleMinute $(0) -RecurrenceScheduleMonthDay $(10)
 New-AzPurviewTrigger -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan-6HK' -Body $obj
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3215,27 +3521,27 @@ BODY <ITrigger>: .
   [IncrementalScanStartTime <DateTime?>]: 
   [Interval <Int32?>]: 
   [RecurrenceEndTime <DateTime?>]: 
-  [RecurrenceFrequency <TriggerFrequency?>]: 
+  [RecurrenceFrequency <String>]: 
   [RecurrenceInterval <String>]: 
-  [RecurrenceStartTime <DateTime?>]: 
-  [RecurrenceTimeZone <String>]: 
-  [ScanLevel <ScanLevelType?>]: 
-  [ScheduleAdditionalProperty <IRecurrenceScheduleAdditionalProperties>]: Dictionary of <any>
+  [RecurrenceScheduleAdditionalProperty <IRecurrenceScheduleAdditionalProperties>]: Dictionary of <any>
     [(Any) <Object>]: This indicates any property can be added to this object.
-  [ScheduleHour <Int32[]>]: 
-  [ScheduleMinute <Int32[]>]: 
-  [ScheduleMonthDay <Int32[]>]: 
-  [ScheduleMonthlyOccurrence <IRecurrenceScheduleOccurrence[]>]: 
+  [RecurrenceScheduleHour <List<Int32>>]: 
+  [RecurrenceScheduleMinute <List<Int32>>]: 
+  [RecurrenceScheduleMonthDay <List<Int32>>]: 
+  [RecurrenceScheduleMonthlyOccurrence <List<IRecurrenceScheduleOccurrence>>]: 
     [AdditionalProperty <IRecurrenceScheduleOccurrenceAdditionalProperties>]: Dictionary of <any>
       [(Any) <Object>]: This indicates any property can be added to this object.
-    [Day <DayOfWeek?>]: 
+    [Day <String>]: 
     [Occurrence <Int32?>]: 
-  [ScheduleWeekDay <DaysOfWeek[]>]: 
+  [RecurrenceScheduleWeekDay <List<String>>]: 
+  [RecurrenceStartTime <DateTime?>]: 
+  [RecurrenceTimeZone <String>]: 
+  [ScanLevel <String>]: 
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewtrigger
 #>
 function New-AzPurviewTrigger {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3257,12 +3563,23 @@ param(
     # .
     ${ScanName},
 
-    [Parameter(Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3320,6 +3637,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3340,6 +3666,8 @@ begin {
 
         $mapping = @{
             Create = 'Az.Purviewdata.private\New-AzPurviewTrigger_Create';
+            CreateViaJsonFilePath = 'Az.Purviewdata.private\New-AzPurviewTrigger_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Purviewdata.private\New-AzPurviewTrigger_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3348,6 +3676,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3400,12 +3731,12 @@ Deletes a classification rule
 Remove-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com -ClassificationRuleName 'RuleDUmmy'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewclassificationrule
 #>
 function Remove-AzPurviewClassificationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3484,6 +3815,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3512,6 +3852,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3564,12 +3907,12 @@ Deletes a data source
 Remove-AzPurviewDataSource -Endpoint 'https://rs-2.purview.azure.com/' -Name 'NewDataSource'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewdatasource
 #>
 function Remove-AzPurviewDataSource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3648,6 +3991,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3676,6 +4028,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3728,12 +4083,12 @@ Deletes the key vault connection associated with the account
 Remove-AzPurviewKeyVaultConnection -Endpoint 'https://parv-brs-2.purview.azure.com/' -KeyVaultName 'KeyVaultConnection5'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewkeyvaultconnection
 #>
 function Remove-AzPurviewKeyVaultConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3811,6 +4166,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3839,6 +4203,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3891,12 +4258,12 @@ Deletes a scan ruleset
 Remove-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/ -Name TestRule
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewscanruleset
 #>
 function Remove-AzPurviewScanRuleset {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3975,6 +4342,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4003,6 +4379,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4055,12 +4434,12 @@ Deletes the scan associated with the data source
 Remove-AzPurviewScan -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -Name 'ScanTest'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewscan
 #>
 function Remove-AzPurviewScan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4145,6 +4524,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4173,6 +4561,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4225,12 +4616,12 @@ Deletes the trigger associated with the scan
 Remove-AzPurviewTrigger -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan-6HK'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewtrigger
 #>
 function Remove-AzPurviewTrigger {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4314,6 +4705,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4342,6 +4742,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4394,12 +4797,12 @@ Runs the scan
 Start-AzPurviewScanResultScan -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan1ForDemo' -RunId '758a0499-b45e-40e3-9c06-408e2f3ac050' -ScanLevel 'Full'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/start-azpurviewscanresultscan
 #>
 function Start-AzPurviewScanResultScan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse])]
 [CmdletBinding(DefaultParameterSetName='Run', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4428,9 +4831,9 @@ param(
     ${ScanName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Full", "Incremental")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType]
+    [System.String]
     # .
     ${ScanLevel},
 
@@ -4490,6 +4893,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4518,6 +4930,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4570,12 +4985,12 @@ Cancels a scan
 Stop-AzPurviewScanResultScan -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan1ForDemo' -RunId '663623f3-8728-4b10-b5c8-8ed8dbc2ae7e'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/stop-azpurviewscanresultscan
 #>
 function Stop-AzPurviewScanResultScan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse])]
 [CmdletBinding(DefaultParameterSetName='Cancel', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4659,6 +5074,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4687,6 +5111,1378 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a classification rule
+.Description
+Update a classification rule
+.Example
+Update-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com -ClassificationRuleName ClassificationRule5 -Kind System
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule
+.Link
+https://learn.microsoft.com/powershell/module/az.purview/update-azpurviewclassificationrule
+#>
+function Update-AzPurviewClassificationRule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Uri')]
+    [System.String]
+    # The scanning endpoint of your purview account.
+    # Example: https://{accountName}.purview.azure.com
+    ${Endpoint},
+
+    [Parameter(Mandatory)]
+    [Alias('ClassificationRuleName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
+    [System.String]
+    # .
+    ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("System", "Custom")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # .
+    ${Kind},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Purviewdata.private\Update-AzPurviewClassificationRule_UpdateExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a data source
+.Description
+Update a data source
+.Example
+Update-AzPurviewDataSource -Endpoint 'https://parv-brs-2.purview.azure.com/' -Name 'NewDataSource' -Kind SqlServerDatabase
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource
+.Link
+https://learn.microsoft.com/powershell/module/az.purview/update-azpurviewdatasource
+#>
+function Update-AzPurviewDataSource {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Uri')]
+    [System.String]
+    # The scanning endpoint of your purview account.
+    # Example: https://{accountName}.purview.azure.com
+    ${Endpoint},
+
+    [Parameter(Mandatory)]
+    [Alias('DataSourceName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
+    [System.String]
+    # .
+    ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("None", "AzureSubscription", "AzureResourceGroup", "AzureSynapseWorkspace", "AzureSynapse", "AdlsGen1", "AdlsGen2", "AmazonAccount", "AmazonS3", "AmazonSql", "AzureCosmosDb", "AzureDataExplorer", "AzureFileService", "AzureSqlDatabase", "AmazonPostgreSql", "AzurePostgreSql", "SqlServerDatabase", "AzureSqlDatabaseManagedInstance", "AzureSqlDataWarehouse", "AzureMySql", "AzureStorage", "Teradata", "Oracle", "SapS4Hana", "SapEcc", "PowerBI")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # .
+    ${Kind},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Purviewdata.private\Update-AzPurviewDataSource_UpdateExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a filter
+.Description
+Update a filter
+.Example
+Update-AzPurviewFilter -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan1ForDemo' -ExcludeUriPrefix @('https://foo.file.core.windows.net/share1/user/temp') -IncludeUriPrefix @('https://foo.file.core.windows.net/share1/user','https://foo.file.core.windows.net/share1/aggregated')
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter
+.Link
+https://learn.microsoft.com/powershell/module/az.purview/update-azpurviewfilter
+#>
+function Update-AzPurviewFilter {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Uri')]
+    [System.String]
+    # The scanning endpoint of your purview account.
+    # Example: https://{accountName}.purview.azure.com
+    ${Endpoint},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
+    [System.String]
+    # .
+    ${DataSourceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
+    [System.String]
+    # .
+    ${ScanName},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String[]]
+    # .
+    ${ExcludeUriPrefix},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String[]]
+    # .
+    ${IncludeUriPrefix},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Purviewdata.private\Update-AzPurviewFilter_UpdateExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update an instance of a key vault connection
+.Description
+Update an instance of a key vault connection
+.Example
+Update-AzPurviewKeyVaultConnection -Endpoint 'https://parv-brs-2.purview.azure.com/' -KeyVaultName KeyVaultConnection2 -BaseUrl 'https://datascankv.vault.azure.net/' -Description 'This is a key vault'
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault
+.Link
+https://learn.microsoft.com/powershell/module/az.purview/update-azpurviewkeyvaultconnection
+#>
+function Update-AzPurviewKeyVaultConnection {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Uri')]
+    [System.String]
+    # The scanning endpoint of your purview account.
+    # Example: https://{accountName}.purview.azure.com
+    ${Endpoint},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
+    [System.String]
+    # .
+    ${KeyVaultName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # .
+    ${BaseUrl},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # .
+    ${Description},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Purviewdata.private\Update-AzPurviewKeyVaultConnection_UpdateExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a scan ruleset
+.Description
+Update a scan ruleset
+.Example
+Update-AzPurviewScanRuleset -Endpoint 'https://parv-brs-2.purview.azure.com/' -Name 'Rule1' -Kind AmazonPostgreSql
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset
+.Link
+https://learn.microsoft.com/powershell/module/az.purview/update-azpurviewscanruleset
+#>
+function Update-AzPurviewScanRuleset {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Uri')]
+    [System.String]
+    # The scanning endpoint of your purview account.
+    # Example: https://{accountName}.purview.azure.com
+    ${Endpoint},
+
+    [Parameter(Mandatory)]
+    [Alias('ScanRulesetName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
+    [System.String]
+    # .
+    ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("None", "AzureSubscription", "AzureResourceGroup", "AzureSynapseWorkspace", "AzureSynapse", "AdlsGen1", "AdlsGen2", "AmazonAccount", "AmazonS3", "AmazonSql", "AzureCosmosDb", "AzureDataExplorer", "AzureFileService", "AzureSqlDatabase", "AmazonPostgreSql", "AzurePostgreSql", "SqlServerDatabase", "AzureSqlDatabaseManagedInstance", "AzureSqlDataWarehouse", "AzureMySql", "AzureStorage", "Teradata", "Oracle", "SapS4Hana", "SapEcc", "PowerBI")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # .
+    ${Kind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # .
+    ${ScanRulesetType},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Purviewdata.private\Update-AzPurviewScanRuleset_UpdateExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update an instance of a scan
+.Description
+Update an instance of a scan
+.Example
+Update-AzPurviewScan -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -Name 'ScanTest' -Kind AdlsGen2Msi
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan
+.Link
+https://learn.microsoft.com/powershell/module/az.purview/update-azpurviewscan
+#>
+function Update-AzPurviewScan {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Uri')]
+    [System.String]
+    # The scanning endpoint of your purview account.
+    # Example: https://{accountName}.purview.azure.com
+    ${Endpoint},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
+    [System.String]
+    # .
+    ${DataSourceName},
+
+    [Parameter(Mandatory)]
+    [Alias('ScanName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
+    [System.String]
+    # .
+    ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AzureSubscriptionCredential", "AzureSubscriptionMsi", "AzureResourceGroupCredential", "AzureResourceGroupMsi", "AzureSynapseWorkspaceCredential", "AzureSynapseWorkspaceMsi", "AzureSynapseCredential", "AzureSynapseMsi", "AdlsGen1Credential", "AdlsGen1Msi", "AdlsGen2Credential", "AdlsGen2Msi", "AmazonAccountCredential", "AmazonS3Credential", "AmazonS3RoleARN", "AmazonSqlCredential", "AzureCosmosDbCredential", "AzureDataExplorerCredential", "AzureDataExplorerMsi", "AzureFileServiceCredential", "AzureSqlDatabaseCredential", "AzureSqlDatabaseMsi", "AmazonPostgreSqlCredential", "AmazonPostgreSqlRoleARN", "AzurePostgreSqlCredential", "SqlServerDatabaseCredential", "AzureSqlDatabaseManagedInstanceCredential", "AzureSqlDatabaseManagedInstanceMsi", "AzureSqlDataWarehouseCredential", "AzureSqlDataWarehouseMsi", "AzureMySqlCredential", "AzureStorageCredential", "AzureStorageMsi", "TeradataTeradataCredential", "TeradataTeradataUserPass", "TeradataUserPass", "OracleOracleCredential", "OracleOracleUserPass", "SapS4HanaSapS4HanaCredential", "SapS4HanaSapS4HanaUserPass", "SapEccSapEccCredential", "SapEccSapEccUserPass", "PowerBIDelegated", "PowerBIMsi")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # .
+    ${Kind},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Purviewdata.private\Update-AzPurviewScan_UpdateExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update an instance of a trigger
+.Description
+Update an instance of a trigger
+.Example
+Update-AzPurviewTrigger -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan-6HK' -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -RecurrenceScheduleHour $(9) -RecurrenceScheduleMinute $(0) -RecurrenceScheduleMonthDay $(10)
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+RECURRENCESCHEDULEMONTHLYOCCURRENCE <IRecurrenceScheduleOccurrence[]>: .
+  [AdditionalProperty <IRecurrenceScheduleOccurrenceAdditionalProperties>]: Dictionary of <any>
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [Day <String>]: 
+  [Occurrence <Int32?>]: 
+.Link
+https://learn.microsoft.com/powershell/module/az.purview/update-azpurviewtrigger
+#>
+function Update-AzPurviewTrigger {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Uri')]
+    [System.String]
+    # The scanning endpoint of your purview account.
+    # Example: https://{accountName}.purview.azure.com
+    ${Endpoint},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
+    [System.String]
+    # .
+    ${DataSourceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
+    [System.String]
+    # .
+    ${ScanName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.DateTime]
+    # .
+    ${IncrementalScanStartTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.Int32]
+    # .
+    ${Interval},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.DateTime]
+    # .
+    ${RecurrenceEndTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Week", "Month")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # .
+    ${RecurrenceFrequency},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # .
+    ${RecurrenceInterval},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IRecurrenceScheduleAdditionalProperties]))]
+    [System.Collections.Hashtable]
+    # Dictionary of <any>
+    ${RecurrenceScheduleAdditionalProperty},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.Int32[]]
+    # .
+    ${RecurrenceScheduleHour},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.Int32[]]
+    # .
+    ${RecurrenceScheduleMinute},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.Int32[]]
+    # .
+    ${RecurrenceScheduleMonthDay},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IRecurrenceScheduleOccurrence[]]
+    # .
+    ${RecurrenceScheduleMonthlyOccurrence},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String[]]
+    # .
+    ${RecurrenceScheduleWeekDay},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.DateTime]
+    # .
+    ${RecurrenceStartTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # .
+    ${RecurrenceTimeZone},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Full", "Incremental")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # .
+    ${ScanLevel},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Purviewdata.private\Update-AzPurviewTrigger_UpdateExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4736,23 +6532,17 @@ Create an in-memory object for AdlsGen1CredentialScan.
 .Description
 Create an in-memory object for AdlsGen1CredentialScan.
 .Example
-New-AzPurviewAdlsGen1CredentialScanObject -Kind 'AdlsGen1Credential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'svcp' -CredentialType 'ServicePrincipal' -ScanRulesetName 'AdlsGen1' -ScanRulesetType 'System'
+New-AzPurviewAdlsGen1CredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'svcp' -CredentialType 'ServicePrincipal' -ScanRulesetName 'AdlsGen1' -ScanRulesetType 'System'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1CredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1CredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAdlsGen1CredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewadlsgen1credentialscanobject
 #>
 function New-AzPurviewAdlsGen1CredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1CredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1CredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -4774,9 +6564,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -4785,9 +6575,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -4803,6 +6593,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4831,6 +6624,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4880,23 +6676,17 @@ Create an in-memory object for AdlsGen1DataSource.
 .Description
 Create an in-memory object for AdlsGen1DataSource.
 .Example
-New-AzPurviewAdlsGen1DataSourceObject -Kind 'AdlsGen1' -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint 'adl://adlsgen1datascan02ause.azuredatalakestore.net'
+New-AzPurviewAdlsGen1DataSourceObject -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint 'adl://adlsgen1datascan02ause.azuredatalakestore.net'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1DataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1DataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAdlsGen1DataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewadlsgen1datasourceobject
 #>
 function New-AzPurviewAdlsGen1DataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1DataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1DataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -4940,6 +6730,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4968,6 +6761,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5017,23 +6813,17 @@ Create an in-memory object for AdlsGen1MsiScan.
 .Description
 Create an in-memory object for AdlsGen1MsiScan.
 .Example
-New-AzPurviewAdlsGen1MsiScanObject -Kind 'AdlsGen1Msi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AdlsGen1' -ScanRulesetType 'System'
+New-AzPurviewAdlsGen1MsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AdlsGen1' -ScanRulesetType 'System'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1MsiScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1MsiScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAdlsGen1MsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewadlsgen1msiscanobject
 #>
 function New-AzPurviewAdlsGen1MsiScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1MsiScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1MsiScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -5055,9 +6845,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -5073,6 +6863,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5101,6 +6894,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5150,34 +6946,28 @@ Create an in-memory object for AdlsGen1ScanRuleset.
 .Description
 Create an in-memory object for AdlsGen1ScanRuleset.
 .Example
-New-AzPurviewAdlsGen1ScanRulesetObject -Kind 'AdlsGen1' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
+New-AzPurviewAdlsGen1ScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1ScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1ScanRuleset
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 SCANNINGRULECUSTOMFILEEXTENSION <ICustomFileExtension[]>: 
-  [CustomFileTypeBuiltInType <FileExtensionsType?>]: 
+  [CustomFileTypeBuiltInType <String>]: 
   [CustomFileTypeCustomDelimiter <String>]: 
   [Description <String>]: 
   [Enabled <Boolean?>]: 
   [FileExtension <String>]: 
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen1ScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewadlsgen1scanrulesetobject
 #>
 function New-AzPurviewAdlsGen1ScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1ScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1ScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -5195,20 +6985,20 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ICustomFileExtension[]]
-    # To construct, see NOTES section for SCANNINGRULECUSTOMFILEEXTENSION properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ICustomFileExtension[]]
+    # 
     ${ScanningRuleCustomFileExtension},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AVRO", "ORC", "PARQUET", "JSON", "TXT", "XML", "Documents", "CSV", "PSV", "SSV", "TSV", "GZ", "DOC", "DOCM", "DOCX", "DOT", "ODP", "ODS", "ODT", "PDF", "POT", "PPS", "PPSX", "PPT", "PPTM", "PPTX", "XLC", "XLS", "XLSB", "XLSM", "XLSX", "XLT")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType[]]
+    [System.String[]]
     ${ScanningRuleFileExtension},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -5219,6 +7009,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5247,6 +7040,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5296,23 +7092,17 @@ Create an in-memory object for AdlsGen2CredentialScan.
 .Description
 Create an in-memory object for AdlsGen2CredentialScan.
 .Example
-New-AzPurviewAdlsGen2CredentialScanObject -Kind 'AdlsGen2Credential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AdlsGen2'  -ScanRulesetType 'System'
+New-AzPurviewAdlsGen2CredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AdlsGen2'  -ScanRulesetType 'System'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2CredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen2CredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAdlsGen2CredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewadlsgen2credentialscanobject
 #>
 function New-AzPurviewAdlsGen2CredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2CredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen2CredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -5334,9 +7124,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -5345,9 +7135,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -5363,6 +7153,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5391,6 +7184,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5440,23 +7236,17 @@ Create an in-memory object for AdlsGen2DataSource.
 .Description
 Create an in-memory object for AdlsGen2DataSource.
 .Example
-New-AzPurviewAdlsGen2DataSourceObject -Kind 'AdlsGen2' -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint 'https://adlsgen2datascan.dfs.core.windows.net'
+New-AzPurviewAdlsGen2DataSourceObject -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint 'https://adlsgen2datascan.dfs.core.windows.net'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2DataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen2DataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAdlsGen2DataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewadlsgen2datasourceobject
 #>
 function New-AzPurviewAdlsGen2DataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2DataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen2DataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -5500,6 +7290,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5528,6 +7321,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5577,23 +7373,17 @@ Create an in-memory object for AdlsGen2MsiScan.
 .Description
 Create an in-memory object for AdlsGen2MsiScan.
 .Example
-New-AzPurviewAdlsGen2MsiScanObject -Kind 'AdlsGen2Msi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AdlsGen2' -ScanRulesetType 'System'
+New-AzPurviewAdlsGen2MsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AdlsGen2' -ScanRulesetType 'System'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2MsiScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen2MsiScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAdlsGen2MsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewadlsgen2msiscanobject
 #>
 function New-AzPurviewAdlsGen2MsiScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2MsiScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen2MsiScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -5615,9 +7405,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -5633,6 +7423,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5661,6 +7454,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5710,34 +7506,28 @@ Create an in-memory object for AdlsGen2ScanRuleset.
 .Description
 Create an in-memory object for AdlsGen2ScanRuleset.
 .Example
-New-AzPurviewAdlsGen2ScanRulesetObject -Kind 'AdlsGen2' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
+New-AzPurviewAdlsGen2ScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2ScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen2ScanRuleset
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 SCANNINGRULECUSTOMFILEEXTENSION <ICustomFileExtension[]>: 
-  [CustomFileTypeBuiltInType <FileExtensionsType?>]: 
+  [CustomFileTypeBuiltInType <String>]: 
   [CustomFileTypeCustomDelimiter <String>]: 
   [Description <String>]: 
   [Enabled <Boolean?>]: 
   [FileExtension <String>]: 
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2ScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewadlsgen2scanrulesetobject
 #>
 function New-AzPurviewAdlsGen2ScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2ScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen2ScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -5755,20 +7545,20 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ICustomFileExtension[]]
-    # To construct, see NOTES section for SCANNINGRULECUSTOMFILEEXTENSION properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ICustomFileExtension[]]
+    # 
     ${ScanningRuleCustomFileExtension},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AVRO", "ORC", "PARQUET", "JSON", "TXT", "XML", "Documents", "CSV", "PSV", "SSV", "TSV", "GZ", "DOC", "DOCM", "DOCX", "DOT", "ODP", "ODS", "ODT", "PDF", "POT", "PPS", "PPSX", "PPT", "PPTM", "PPTX", "XLC", "XLS", "XLSB", "XLSM", "XLSX", "XLT")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType[]]
+    [System.String[]]
     ${ScanningRuleFileExtension},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -5779,6 +7569,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5807,6 +7600,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5856,10 +7652,10 @@ Create an in-memory object for AmazonAccountCredentialScan.
 .Description
 Create an in-memory object for AmazonAccountCredentialScan.
 .Example
-New-AzPurviewAmazonAccountCredentialScanObject -Kind 'AmazonAccountCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'rolearncred' -CredentialType 'AmazonARN'
+New-AzPurviewAmazonAccountCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'rolearncred' -CredentialType 'AmazonARN'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonAccountCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonAccountCredentialScan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5867,200 +7663,194 @@ To create the parameters described below, construct a hash table containing the 
 
 RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>: 
   [AdlGen1ScanRulesetName <String>]: 
-  [AdlGen1ScanRulesetType <ScanRulesetType?>]: 
+  [AdlGen1ScanRulesetType <String>]: 
   [AdlGen2ScanRulesetName <String>]: 
-  [AdlGen2ScanRulesetType <ScanRulesetType?>]: 
+  [AdlGen2ScanRulesetType <String>]: 
   [AdlsGen1CredentialReferenceName <String>]: 
-  [AdlsGen1CredentialType <CredentialType?>]: 
-  [AdlsGen1ResourceNameFilterExcludePrefix <String[]>]: 
-  [AdlsGen1ResourceNameFilterIncludePrefix <String[]>]: 
-  [AdlsGen1ResourceNameFilterResource <String[]>]: 
+  [AdlsGen1CredentialType <String>]: 
+  [AdlsGen1ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AdlsGen1ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AdlsGen1ResourceNameFilterResource <List<String>>]: 
   [AdlsGen2CredentialReferenceName <String>]: 
-  [AdlsGen2CredentialType <CredentialType?>]: 
-  [AdlsGen2ResourceNameFilterExcludePrefix <String[]>]: 
-  [AdlsGen2ResourceNameFilterIncludePrefix <String[]>]: 
-  [AdlsGen2ResourceNameFilterResource <String[]>]: 
+  [AdlsGen2CredentialType <String>]: 
+  [AdlsGen2ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AdlsGen2ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AdlsGen2ResourceNameFilterResource <List<String>>]: 
   [AmazonAccountCredentialReferenceName <String>]: 
-  [AmazonAccountCredentialType <CredentialType?>]: 
-  [AmazonAccountResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonAccountResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonAccountResourceNameFilterResource <String[]>]: 
+  [AmazonAccountCredentialType <String>]: 
+  [AmazonAccountResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonAccountResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonAccountResourceNameFilterResource <List<String>>]: 
   [AmazonAccountScanRulesetName <String>]: 
-  [AmazonAccountScanRulesetType <ScanRulesetType?>]: 
+  [AmazonAccountScanRulesetType <String>]: 
   [AmazonPostgreSqlCredentialReferenceName <String>]: 
-  [AmazonPostgreSqlCredentialType <CredentialType?>]: 
-  [AmazonPostgreSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonPostgreSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonPostgreSqlResourceNameFilterResource <String[]>]: 
+  [AmazonPostgreSqlCredentialType <String>]: 
+  [AmazonPostgreSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonPostgreSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonPostgreSqlResourceNameFilterResource <List<String>>]: 
   [AmazonPostgreSqlScanRulesetName <String>]: 
-  [AmazonPostgreSqlScanRulesetType <ScanRulesetType?>]: 
+  [AmazonPostgreSqlScanRulesetType <String>]: 
   [AmazonS3CredentialReferenceName <String>]: 
-  [AmazonS3CredentialType <CredentialType?>]: 
-  [AmazonS3ResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonS3ResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonS3ResourceNameFilterResource <String[]>]: 
+  [AmazonS3CredentialType <String>]: 
+  [AmazonS3ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonS3ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonS3ResourceNameFilterResource <List<String>>]: 
   [AmazonS3ScanRulesetName <String>]: 
-  [AmazonS3ScanRulesetType <ScanRulesetType?>]: 
+  [AmazonS3ScanRulesetType <String>]: 
   [AmazonSqlCredentialReferenceName <String>]: 
-  [AmazonSqlCredentialType <CredentialType?>]: 
-  [AmazonSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonSqlResourceNameFilterResource <String[]>]: 
+  [AmazonSqlCredentialType <String>]: 
+  [AmazonSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonSqlResourceNameFilterResource <List<String>>]: 
   [AmazonSqlScanRulesetName <String>]: 
-  [AmazonSqlScanRulesetType <ScanRulesetType?>]: 
+  [AmazonSqlScanRulesetType <String>]: 
   [AzureCosmoDbScanRulesetName <String>]: 
-  [AzureCosmoDbScanRulesetType <ScanRulesetType?>]: 
+  [AzureCosmoDbScanRulesetType <String>]: 
   [AzureCosmosDbCredentialReferenceName <String>]: 
-  [AzureCosmosDbCredentialType <CredentialType?>]: 
-  [AzureCosmosDbResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureCosmosDbResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureCosmosDbResourceNameFilterResource <String[]>]: 
+  [AzureCosmosDbCredentialType <String>]: 
+  [AzureCosmosDbResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureCosmosDbResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureCosmosDbResourceNameFilterResource <List<String>>]: 
   [AzureDataExplorerCredentialReferenceName <String>]: 
-  [AzureDataExplorerCredentialType <CredentialType?>]: 
-  [AzureDataExplorerResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureDataExplorerResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureDataExplorerResourceNameFilterResource <String[]>]: 
+  [AzureDataExplorerCredentialType <String>]: 
+  [AzureDataExplorerResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureDataExplorerResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureDataExplorerResourceNameFilterResource <List<String>>]: 
   [AzureDataExplorerScanRulesetName <String>]: 
-  [AzureDataExplorerScanRulesetType <ScanRulesetType?>]: 
+  [AzureDataExplorerScanRulesetType <String>]: 
   [AzureFileServiceCredentialReferenceName <String>]: 
-  [AzureFileServiceCredentialType <CredentialType?>]: 
-  [AzureFileServiceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureFileServiceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureFileServiceResourceNameFilterResource <String[]>]: 
+  [AzureFileServiceCredentialType <String>]: 
+  [AzureFileServiceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureFileServiceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureFileServiceResourceNameFilterResource <List<String>>]: 
   [AzureFileServiceScanRulesetName <String>]: 
-  [AzureFileServiceScanRulesetType <ScanRulesetType?>]: 
+  [AzureFileServiceScanRulesetType <String>]: 
   [AzureMySqlCredentialReferenceName <String>]: 
-  [AzureMySqlCredentialType <CredentialType?>]: 
-  [AzureMySqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureMySqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureMySqlResourceNameFilterResource <String[]>]: 
+  [AzureMySqlCredentialType <String>]: 
+  [AzureMySqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureMySqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureMySqlResourceNameFilterResource <List<String>>]: 
   [AzureMySqlScanRulesetName <String>]: 
-  [AzureMySqlScanRulesetType <ScanRulesetType?>]: 
+  [AzureMySqlScanRulesetType <String>]: 
   [AzurePostgreSqlCredentialReferenceName <String>]: 
-  [AzurePostgreSqlCredentialType <CredentialType?>]: 
-  [AzurePostgreSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AzurePostgreSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AzurePostgreSqlResourceNameFilterResource <String[]>]: 
+  [AzurePostgreSqlCredentialType <String>]: 
+  [AzurePostgreSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzurePostgreSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzurePostgreSqlResourceNameFilterResource <List<String>>]: 
   [AzurePostgreSqlScanRulesetName <String>]: 
-  [AzurePostgreSqlScanRulesetType <ScanRulesetType?>]: 
+  [AzurePostgreSqlScanRulesetType <String>]: 
   [AzureResourceGroupCredentialReferenceName <String>]: 
-  [AzureResourceGroupCredentialType <CredentialType?>]: 
-  [AzureResourceGroupResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureResourceGroupResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureResourceGroupResourceNameFilterResource <String[]>]: 
+  [AzureResourceGroupCredentialType <String>]: 
+  [AzureResourceGroupResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureResourceGroupResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureResourceGroupResourceNameFilterResource <List<String>>]: 
   [AzureResourceGroupScanRulesetName <String>]: 
-  [AzureResourceGroupScanRulesetType <ScanRulesetType?>]: 
+  [AzureResourceGroupScanRulesetType <String>]: 
   [AzureSqlDataWarehouseCredentialReferenceName <String>]: 
-  [AzureSqlDataWarehouseCredentialType <CredentialType?>]: 
-  [AzureSqlDataWarehouseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDataWarehouseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDataWarehouseResourceNameFilterResource <String[]>]: 
+  [AzureSqlDataWarehouseCredentialType <String>]: 
+  [AzureSqlDataWarehouseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDataWarehouseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDataWarehouseResourceNameFilterResource <List<String>>]: 
   [AzureSqlDataWarehouseScanRulesetName <String>]: 
-  [AzureSqlDataWarehouseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSqlDataWarehouseScanRulesetType <String>]: 
   [AzureSqlDatabaseCredentialReferenceName <String>]: 
-  [AzureSqlDatabaseCredentialType <CredentialType?>]: 
+  [AzureSqlDatabaseCredentialType <String>]: 
   [AzureSqlDatabaseManagedInstanceCredentialReferenceName <String>]: 
-  [AzureSqlDatabaseManagedInstanceCredentialType <CredentialType?>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterResource <String[]>]: 
+  [AzureSqlDatabaseManagedInstanceCredentialType <String>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterResource <List<String>>]: 
   [AzureSqlDatabaseManagedInstanceScanRulesetName <String>]: 
-  [AzureSqlDatabaseManagedInstanceScanRulesetType <ScanRulesetType?>]: 
-  [AzureSqlDatabaseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDatabaseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDatabaseResourceNameFilterResource <String[]>]: 
+  [AzureSqlDatabaseManagedInstanceScanRulesetType <String>]: 
+  [AzureSqlDatabaseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDatabaseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDatabaseResourceNameFilterResource <List<String>>]: 
   [AzureSqlDatabaseScanRulesetName <String>]: 
-  [AzureSqlDatabaseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSqlDatabaseScanRulesetType <String>]: 
   [AzureStorageCredentialReferenceName <String>]: 
-  [AzureStorageCredentialType <CredentialType?>]: 
-  [AzureStorageResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureStorageResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureStorageResourceNameFilterResource <String[]>]: 
+  [AzureStorageCredentialType <String>]: 
+  [AzureStorageResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureStorageResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureStorageResourceNameFilterResource <List<String>>]: 
   [AzureStorageScanRulesetName <String>]: 
-  [AzureStorageScanRulesetType <ScanRulesetType?>]: 
+  [AzureStorageScanRulesetType <String>]: 
   [AzureSubscriptionCredentialReferenceName <String>]: 
-  [AzureSubscriptionCredentialType <CredentialType?>]: 
-  [AzureSubscriptionResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSubscriptionResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSubscriptionResourceNameFilterResource <String[]>]: 
+  [AzureSubscriptionCredentialType <String>]: 
+  [AzureSubscriptionResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSubscriptionResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSubscriptionResourceNameFilterResource <List<String>>]: 
   [AzureSubscriptionScanRulesetName <String>]: 
-  [AzureSubscriptionScanRulesetType <ScanRulesetType?>]: 
+  [AzureSubscriptionScanRulesetType <String>]: 
   [AzureSynapseCredentialReferenceName <String>]: 
-  [AzureSynapseCredentialType <CredentialType?>]: 
-  [AzureSynapseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSynapseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSynapseResourceNameFilterResource <String[]>]: 
+  [AzureSynapseCredentialType <String>]: 
+  [AzureSynapseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSynapseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSynapseResourceNameFilterResource <List<String>>]: 
   [AzureSynapseScanRulesetName <String>]: 
-  [AzureSynapseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSynapseScanRulesetType <String>]: 
   [AzureSynapseWorkspaceCredentialReferenceName <String>]: 
-  [AzureSynapseWorkspaceCredentialType <CredentialType?>]: 
-  [AzureSynapseWorkspaceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSynapseWorkspaceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSynapseWorkspaceResourceNameFilterResource <String[]>]: 
+  [AzureSynapseWorkspaceCredentialType <String>]: 
+  [AzureSynapseWorkspaceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSynapseWorkspaceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSynapseWorkspaceResourceNameFilterResource <List<String>>]: 
   [AzureSynapseWorkspaceScanRulesetName <String>]: 
-  [AzureSynapseWorkspaceScanRulesetType <ScanRulesetType?>]: 
+  [AzureSynapseWorkspaceScanRulesetType <String>]: 
   [NoneCredentialReferenceName <String>]: 
-  [NoneCredentialType <CredentialType?>]: 
-  [NoneResourceNameFilterExcludePrefix <String[]>]: 
-  [NoneResourceNameFilterIncludePrefix <String[]>]: 
-  [NoneResourceNameFilterResource <String[]>]: 
+  [NoneCredentialType <String>]: 
+  [NoneResourceNameFilterExcludePrefix <List<String>>]: 
+  [NoneResourceNameFilterIncludePrefix <List<String>>]: 
+  [NoneResourceNameFilterResource <List<String>>]: 
   [NoneScanRulesetName <String>]: 
-  [NoneScanRulesetType <ScanRulesetType?>]: 
+  [NoneScanRulesetType <String>]: 
   [OracleCredentialReferenceName <String>]: 
-  [OracleCredentialType <CredentialType?>]: 
-  [OracleResourceNameFilterExcludePrefix <String[]>]: 
-  [OracleResourceNameFilterIncludePrefix <String[]>]: 
-  [OracleResourceNameFilterResource <String[]>]: 
+  [OracleCredentialType <String>]: 
+  [OracleResourceNameFilterExcludePrefix <List<String>>]: 
+  [OracleResourceNameFilterIncludePrefix <List<String>>]: 
+  [OracleResourceNameFilterResource <List<String>>]: 
   [OracleScanRulesetName <String>]: 
-  [OracleScanRulesetType <ScanRulesetType?>]: 
+  [OracleScanRulesetType <String>]: 
   [PowerBiCredentialReferenceName <String>]: 
-  [PowerBiCredentialType <CredentialType?>]: 
-  [PowerBiResourceNameFilterExcludePrefix <String[]>]: 
-  [PowerBiResourceNameFilterIncludePrefix <String[]>]: 
-  [PowerBiResourceNameFilterResource <String[]>]: 
+  [PowerBiCredentialType <String>]: 
+  [PowerBiResourceNameFilterExcludePrefix <List<String>>]: 
+  [PowerBiResourceNameFilterIncludePrefix <List<String>>]: 
+  [PowerBiResourceNameFilterResource <List<String>>]: 
   [PowerBiScanRulesetName <String>]: 
-  [PowerBiScanRulesetType <ScanRulesetType?>]: 
+  [PowerBiScanRulesetType <String>]: 
   [SapEccCredentialReferenceName <String>]: 
-  [SapEccCredentialType <CredentialType?>]: 
-  [SapEccResourceNameFilterExcludePrefix <String[]>]: 
-  [SapEccResourceNameFilterIncludePrefix <String[]>]: 
-  [SapEccResourceNameFilterResource <String[]>]: 
+  [SapEccCredentialType <String>]: 
+  [SapEccResourceNameFilterExcludePrefix <List<String>>]: 
+  [SapEccResourceNameFilterIncludePrefix <List<String>>]: 
+  [SapEccResourceNameFilterResource <List<String>>]: 
   [SapEccScanRulesetName <String>]: 
-  [SapEccScanRulesetType <ScanRulesetType?>]: 
+  [SapEccScanRulesetType <String>]: 
   [SapS4HanaCredentialReferenceName <String>]: 
-  [SapS4HanaCredentialType <CredentialType?>]: 
-  [SapS4HanaResourceNameFilterExcludePrefix <String[]>]: 
-  [SapS4HanaResourceNameFilterIncludePrefix <String[]>]: 
-  [SapS4HanaResourceNameFilterResource <String[]>]: 
+  [SapS4HanaCredentialType <String>]: 
+  [SapS4HanaResourceNameFilterExcludePrefix <List<String>>]: 
+  [SapS4HanaResourceNameFilterIncludePrefix <List<String>>]: 
+  [SapS4HanaResourceNameFilterResource <List<String>>]: 
   [SapS4HanaScanRulesetName <String>]: 
-  [SapS4HanaScanRulesetType <ScanRulesetType?>]: 
+  [SapS4HanaScanRulesetType <String>]: 
   [SqlServerDatabaseCredentialReferenceName <String>]: 
-  [SqlServerDatabaseCredentialType <CredentialType?>]: 
-  [SqlServerDatabaseResourceNameFilterExcludePrefix <String[]>]: 
-  [SqlServerDatabaseResourceNameFilterIncludePrefix <String[]>]: 
-  [SqlServerDatabaseResourceNameFilterResource <String[]>]: 
+  [SqlServerDatabaseCredentialType <String>]: 
+  [SqlServerDatabaseResourceNameFilterExcludePrefix <List<String>>]: 
+  [SqlServerDatabaseResourceNameFilterIncludePrefix <List<String>>]: 
+  [SqlServerDatabaseResourceNameFilterResource <List<String>>]: 
   [SqlServerDatabaseScanRulesetName <String>]: 
-  [SqlServerDatabaseScanRulesetType <ScanRulesetType?>]: 
+  [SqlServerDatabaseScanRulesetType <String>]: 
   [TeradataCredentialReferenceName <String>]: 
-  [TeradataCredentialType <CredentialType?>]: 
-  [TeradataResourceNameFilterExcludePrefix <String[]>]: 
-  [TeradataResourceNameFilterIncludePrefix <String[]>]: 
-  [TeradataResourceNameFilterResource <String[]>]: 
+  [TeradataCredentialType <String>]: 
+  [TeradataResourceNameFilterExcludePrefix <List<String>>]: 
+  [TeradataResourceNameFilterIncludePrefix <List<String>>]: 
+  [TeradataResourceNameFilterResource <List<String>>]: 
   [TeradataScanRulesetName <String>]: 
-  [TeradataScanRulesetType <ScanRulesetType?>]: 
+  [TeradataScanRulesetType <String>]: 
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonAccountCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonaccountcredentialscanobject
 #>
 function New-AzPurviewAmazonAccountCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonAccountCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonAccountCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -6082,15 +7872,15 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IExpandingResourceScanPropertiesResourceTypes]
-    # To construct, see NOTES section for RESOURCETYPE properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IExpandingResourceScanPropertiesResourceTypes]
+    # 
     ${ResourceType},
 
     [Parameter()]
@@ -6099,9 +7889,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -6117,6 +7907,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6145,6 +7938,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6194,23 +7990,17 @@ Create an in-memory object for AmazonAccountDataSource.
 .Description
 Create an in-memory object for AmazonAccountDataSource.
 .Example
-New-AzPurviewAmazonAccountDataSourceObject -Kind 'AmazonAccount' -AwsAccountId 123456789012 -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference'
+New-AzPurviewAmazonAccountDataSourceObject -AwsAccountId 123456789012 -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonAccountDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonAccountDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonAccountDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonaccountdatasourceobject
 #>
 function New-AzPurviewAmazonAccountDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonAccountDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonAccountDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -6239,6 +8029,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6267,6 +8060,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6316,23 +8112,17 @@ Create an in-memory object for AmazonPostgreSqlCredentialScan.
 .Description
 Create an in-memory object for AmazonPostgreSqlCredentialScan.
 .Example
-New-AzPurviewAmazonPostgreSqlCredentialScanObject -Kind 'AmazonPostgreSqlCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -Port 5432 -ScanRulesetName 'AmazonPostgreSql' -ScanRulesetType 'System' -ServerEndpoint 'DummyServer' -VpcEndpointServiceName 'com.amazonaws.ypce.wus.123456789'
+New-AzPurviewAmazonPostgreSqlCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -Port 5432 -ScanRulesetName 'AmazonPostgreSql' -ScanRulesetType 'System' -ServerEndpoint 'DummyServer' -VpcEndpointServiceName 'com.amazonaws.ypce.wus.123456789'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonPostgreSqlCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonPostgreSqlCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonpostgresqlcredentialscanobject
 #>
 function New-AzPurviewAmazonPostgreSqlCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonPostgreSqlCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -6354,9 +8144,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -6375,9 +8165,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -6403,6 +8193,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6431,6 +8224,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6480,23 +8276,17 @@ Create an in-memory object for AmazonPostgreSqlDataSource.
 .Description
 Create an in-memory object for AmazonPostgreSqlDataSource.
 .Example
-New-AzPurviewAmazonPostgreSqlDataSourceObject -Kind 'AmazonPostgreSql' -Port 5432 -VpcEndpointServiceName 'com.amazonaws.ypce.wus.123456789' -ServerEndpoint 'DummyServer' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference'
+New-AzPurviewAmazonPostgreSqlDataSourceObject -Port 5432 -VpcEndpointServiceName 'com.amazonaws.ypce.wus.123456789' -ServerEndpoint 'DummyServer' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonPostgreSqlDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonPostgreSqlDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonpostgresqldatasourceobject
 #>
 function New-AzPurviewAmazonPostgreSqlDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonPostgreSqlDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -6530,6 +8320,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6558,6 +8351,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6607,23 +8403,17 @@ Create an in-memory object for AmazonPostgreSqlScanRuleset.
 .Description
 Create an in-memory object for AmazonPostgreSqlScanRuleset.
 .Example
-New-AzPurviewAmazonPostgreSqlScanRulesetObject -Kind 'AmazonPostgreSql' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+New-AzPurviewAmazonPostgreSqlScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonPostgreSqlScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonPostgreSqlScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonpostgresqlscanrulesetobject
 #>
 function New-AzPurviewAmazonPostgreSqlScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonPostgreSqlScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -6640,9 +8430,9 @@ param(
     ${IncludedCustomClassificationRuleName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -6653,6 +8443,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6681,6 +8474,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6730,23 +8526,17 @@ Create an in-memory object for AmazonS3CredentialScan.
 .Description
 Create an in-memory object for AmazonS3CredentialScan.
 .Example
-New-AzPurviewAmazonS3CredentialScanObject -Kind 'AmazonS3Credential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'rolearncred' -CredentialType 'AmazonARN' -ScanRulesetName 'AmazonS3' -ScanRulesetType 'System' -IsMauiScan $false
+New-AzPurviewAmazonS3CredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'rolearncred' -CredentialType 'AmazonARN' -ScanRulesetName 'AmazonS3' -ScanRulesetType 'System' -IsMauiScan $false
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3CredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonS3CredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonS3CredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazons3credentialscanobject
 #>
 function New-AzPurviewAmazonS3CredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3CredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonS3CredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -6768,9 +8558,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -6789,9 +8579,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -6807,6 +8597,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6835,6 +8628,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6884,24 +8680,17 @@ Create an in-memory object for AmazonS3DataSource.
 .Description
 Create an in-memory object for AmazonS3DataSource.
 .Example
-New-AzPurviewAmazonS3DataSourceObject -Kind 'AmazonS3' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServiceUrl s3://multicloud-e2e-2
-New-AzPurviewDataSource -Endpoint 'https://parv-brs-2.purview.azure.com/' -Name 'DS4' -Body $obj
+New-AzPurviewAmazonS3DataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServiceUrl s3://multicloud-e2e-2
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3DataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonS3DataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonS3DataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazons3datasourceobject
 #>
 function New-AzPurviewAmazonS3DataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3DataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonS3DataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -6930,6 +8719,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6958,6 +8750,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7007,34 +8802,28 @@ Create an in-memory object for AmazonS3ScanRuleset.
 .Description
 Create an in-memory object for AmazonS3ScanRuleset.
 .Example
-New-AzPurviewAmazonS3ScanRulesetObject -Kind 'AmazonS3' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
+New-AzPurviewAmazonS3ScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3ScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonS3ScanRuleset
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 SCANNINGRULECUSTOMFILEEXTENSION <ICustomFileExtension[]>: 
-  [CustomFileTypeBuiltInType <FileExtensionsType?>]: 
+  [CustomFileTypeBuiltInType <String>]: 
   [CustomFileTypeCustomDelimiter <String>]: 
   [Description <String>]: 
   [Enabled <Boolean?>]: 
   [FileExtension <String>]: 
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3ScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazons3scanrulesetobject
 #>
 function New-AzPurviewAmazonS3ScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3ScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonS3ScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -7052,20 +8841,20 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ICustomFileExtension[]]
-    # To construct, see NOTES section for SCANNINGRULECUSTOMFILEEXTENSION properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ICustomFileExtension[]]
+    # 
     ${ScanningRuleCustomFileExtension},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AVRO", "ORC", "PARQUET", "JSON", "TXT", "XML", "Documents", "CSV", "PSV", "SSV", "TSV", "GZ", "DOC", "DOCM", "DOCX", "DOT", "ODP", "ODS", "ODT", "PDF", "POT", "PPS", "PPSX", "PPT", "PPTM", "PPTX", "XLC", "XLS", "XLSB", "XLSM", "XLSX", "XLT")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType[]]
+    [System.String[]]
     ${ScanningRuleFileExtension},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -7076,6 +8865,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7104,6 +8896,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7153,23 +8948,17 @@ Create an in-memory object for AmazonSqlCredentialScan.
 .Description
 Create an in-memory object for AmazonSqlCredentialScan.
 .Example
-New-AzPurviewAmazonSqlCredentialScanObject -Kind 'AmazonSqlCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -Port 5432 -ScanRulesetName 'AmazonSql' -ScanRulesetType 'System' -ServerEndpoint 'DummyServer' -VpcEndpointServiceName 'com.amazonaws.ypce.wus.123456789'
+New-AzPurviewAmazonSqlCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -Port 5432 -ScanRulesetName 'AmazonSql' -ScanRulesetType 'System' -ServerEndpoint 'DummyServer' -VpcEndpointServiceName 'com.amazonaws.ypce.wus.123456789'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonSqlCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonsqlcredentialscanobject
 #>
 function New-AzPurviewAmazonSqlCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -7191,9 +8980,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -7212,9 +9001,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -7240,6 +9029,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7268,6 +9060,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7317,23 +9112,17 @@ Create an in-memory object for AmazonSqlDataSource.
 .Description
 Create an in-memory object for AmazonSqlDataSource.
 .Example
-New-AzPurviewAmazonSqlDataSourceObject -Kind 'AmazonSql' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Port 1433 -ServerEndpoint DummyEdnpoint -VpcEndpointServiceName com.amazonaws.ypce.wus.123456789
+New-AzPurviewAmazonSqlDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Port 1433 -ServerEndpoint DummyEdnpoint -VpcEndpointServiceName com.amazonaws.ypce.wus.123456789
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonSqlDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonsqldatasourceobject
 #>
 function New-AzPurviewAmazonSqlDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -7367,6 +9156,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7395,6 +9187,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7444,23 +9239,17 @@ Create an in-memory object for AmazonSqlScanRuleset.
 .Description
 Create an in-memory object for AmazonSqlScanRuleset.
 .Example
-New-AzPurviewAmazonSqlScanRulesetObject -Kind 'AmazonSql' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+New-AzPurviewAmazonSqlScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonSqlScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonsqlscanrulesetobject
 #>
 function New-AzPurviewAmazonSqlScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonSqlScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -7477,9 +9266,9 @@ param(
     ${IncludedCustomClassificationRuleName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -7490,6 +9279,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7518,6 +9310,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7567,23 +9362,17 @@ Create an in-memory object for AzureCosmosDbCredentialScan.
 .Description
 Create an in-memory object for AzureCosmosDbCredentialScan.
 .Example
-New-AzPurviewAzureCosmosDbCredentialScanObject -Kind 'AzureCosmosDbCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureCosmosDb'  -ScanRulesetType 'System' -DatabaseName 'db'
+New-AzPurviewAzureCosmosDbCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureCosmosDb'  -ScanRulesetType 'System' -DatabaseName 'db'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureCosmosDbCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureCosmosDbCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurecosmosdbcredentialscanobject
 #>
 function New-AzPurviewAzureCosmosDbCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureCosmosDbCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -7605,9 +9394,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -7621,9 +9410,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -7639,6 +9428,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7667,6 +9459,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7716,23 +9511,17 @@ Create an in-memory object for AzureCosmosDbDataSource.
 .Description
 Create an in-memory object for AzureCosmosDbDataSource.
 .Example
-New-AzPurviewAzureCosmosDbDataSourceObject -Kind 'AzureCosmosDb' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -AccountUri 'https://cosmosd.documents.azure.com'
+New-AzPurviewAzureCosmosDbDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -AccountUri 'https://cosmosd.documents.azure.com'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureCosmosDbDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureCosmosDbDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurecosmosdbdatasourceobject
 #>
 function New-AzPurviewAzureCosmosDbDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureCosmosDbDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -7776,6 +9565,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7804,6 +9596,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7853,23 +9648,17 @@ Create an in-memory object for AzureCosmosDbScanRuleset.
 .Description
 Create an in-memory object for AzureCosmosDbScanRuleset.
 .Example
-New-AzPurviewAzureCosmosDbScanRulesetObject -Kind 'AzureCosmosDb' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+New-AzPurviewAzureCosmosDbScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureCosmosDbScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureCosmosDbScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurecosmosdbscanrulesetobject
 #>
 function New-AzPurviewAzureCosmosDbScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureCosmosDbScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -7886,9 +9675,9 @@ param(
     ${IncludedCustomClassificationRuleName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -7899,6 +9688,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7927,6 +9719,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7976,23 +9771,17 @@ Create an in-memory object for AzureDataExplorerCredentialScan.
 .Description
 Create an in-memory object for AzureDataExplorerCredentialScan.
 .Example
-New-AzPurviewAzureDataExplorerCredentialScanObject -Kind 'AzureDataExplorerCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'svcp' -CredentialType 'ServicePrincipal' -ScanRulesetName 'AzureDataExplorer' -ScanRulesetType 'System'
+New-AzPurviewAzureDataExplorerCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'svcp' -CredentialType 'ServicePrincipal' -ScanRulesetName 'AzureDataExplorer' -ScanRulesetType 'System'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureDataExplorerCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureDataExplorerCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuredataexplorercredentialscanobject
 #>
 function New-AzPurviewAzureDataExplorerCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureDataExplorerCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -8014,9 +9803,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -8030,9 +9819,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -8048,6 +9837,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8076,6 +9868,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8125,23 +9920,17 @@ Create an in-memory object for AzureDataExplorerDataSource.
 .Description
 Create an in-memory object for AzureDataExplorerDataSource.
 .Example
-New-AzPurviewAzureDataExplorerDataSourceObject -Kind 'AzureDataExplorer' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Endpoint 'https://adxd.australiaeast.kusto.windows.net'
+New-AzPurviewAzureDataExplorerDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Endpoint 'https://adxd.australiaeast.kusto.windows.net'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureDataExplorerDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureDataExplorerDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuredataexplorerdatasourceobject
 #>
 function New-AzPurviewAzureDataExplorerDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureDataExplorerDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -8185,6 +9974,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8213,6 +10005,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8262,23 +10057,17 @@ Create an in-memory object for AzureDataExplorerMsiScan.
 .Description
 Create an in-memory object for AzureDataExplorerMsiScan.
 .Example
-New-AzPurviewAzureDataExplorerMsiScanObject -Kind 'AzureDataExplorerMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AzureDataExplorer' -ScanRulesetType 'System'
+New-AzPurviewAzureDataExplorerMsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AzureDataExplorer' -ScanRulesetType 'System'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerMsiScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureDataExplorerMsiScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureDataExplorerMsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuredataexplorermsiscanobject
 #>
 function New-AzPurviewAzureDataExplorerMsiScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerMsiScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureDataExplorerMsiScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -8305,9 +10094,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -8323,6 +10112,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8351,6 +10143,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8400,23 +10195,17 @@ Create an in-memory object for AzureDataExplorerScanRuleset.
 .Description
 Create an in-memory object for AzureDataExplorerScanRuleset.
 .Example
-New-AzPurviewAzureDataExplorerScanRulesetObject -Kind 'AzureDataExplorer' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+New-AzPurviewAzureDataExplorerScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureDataExplorerScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuredataexplorerscanrulesetobject
 #>
 function New-AzPurviewAzureDataExplorerScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureDataExplorerScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -8433,9 +10222,9 @@ param(
     ${IncludedCustomClassificationRuleName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -8446,6 +10235,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8474,6 +10266,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8523,23 +10318,17 @@ Create an in-memory object for AzureFileServiceCredentialScan.
 .Description
 Create an in-memory object for AzureFileServiceCredentialScan.
 .Example
-New-AzPurviewAzureFileServiceCredentialScanObject -Kind 'AzureFileServiceCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureFileService'  -ScanRulesetType 'System' -ShareName 'share'
+New-AzPurviewAzureFileServiceCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureFileService'  -ScanRulesetType 'System' -ShareName 'share'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureFileServiceCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureFileServiceCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurefileservicecredentialscanobject
 #>
 function New-AzPurviewAzureFileServiceCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureFileServiceCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -8561,9 +10350,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -8572,9 +10361,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -8595,6 +10384,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8623,6 +10415,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8672,23 +10467,17 @@ Create an in-memory object for AzureFileServiceDataSource.
 .Description
 Create an in-memory object for AzureFileServiceDataSource.
 .Example
-New-AzPurviewAzureFileServiceDataSourceObject -Kind 'AzureFileService' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Endpoint 'https://0cb22.file.core.windows.net/'
+New-AzPurviewAzureFileServiceDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Endpoint 'https://0cb22.file.core.windows.net/'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureFileServiceDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureFileServiceDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurefileservicedatasourceobject
 #>
 function New-AzPurviewAzureFileServiceDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureFileServiceDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -8732,6 +10521,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8760,6 +10552,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8809,34 +10604,28 @@ Create an in-memory object for AzureFileServiceScanRuleset.
 .Description
 Create an in-memory object for AzureFileServiceScanRuleset.
 .Example
-New-AzPurviewAzureFileServiceScanRulesetObject -Kind 'AzureFileService' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
+New-AzPurviewAzureFileServiceScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureFileServiceScanRuleset
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 SCANNINGRULECUSTOMFILEEXTENSION <ICustomFileExtension[]>: 
-  [CustomFileTypeBuiltInType <FileExtensionsType?>]: 
+  [CustomFileTypeBuiltInType <String>]: 
   [CustomFileTypeCustomDelimiter <String>]: 
   [Description <String>]: 
   [Enabled <Boolean?>]: 
   [FileExtension <String>]: 
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurefileservicescanrulesetobject
 #>
 function New-AzPurviewAzureFileServiceScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureFileServiceScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -8854,20 +10643,20 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ICustomFileExtension[]]
-    # To construct, see NOTES section for SCANNINGRULECUSTOMFILEEXTENSION properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ICustomFileExtension[]]
+    # 
     ${ScanningRuleCustomFileExtension},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AVRO", "ORC", "PARQUET", "JSON", "TXT", "XML", "Documents", "CSV", "PSV", "SSV", "TSV", "GZ", "DOC", "DOCM", "DOCX", "DOT", "ODP", "ODS", "ODT", "PDF", "POT", "PPS", "PPSX", "PPT", "PPTM", "PPTX", "XLC", "XLS", "XLSB", "XLSM", "XLSX", "XLT")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType[]]
+    [System.String[]]
     ${ScanningRuleFileExtension},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -8878,6 +10667,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8906,6 +10698,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8958,12 +10753,12 @@ Create an in-memory object for AzureKeyVault.
 New-AzPurviewAzureKeyVaultObject -BaseUrl 'https://datascankv.vault.azure.net/' -Description 'This is a key vault'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureKeyVault
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureKeyVault
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureKeyVaultObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurekeyvaultobject
 #>
 function New-AzPurviewAzureKeyVaultObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureKeyVault])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureKeyVault])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -8984,6 +10779,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -9012,6 +10810,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -9061,23 +10862,17 @@ Create an in-memory object for AzureMySqlCredentialScan.
 .Description
 Create an in-memory object for AzureMySqlCredentialScan.
 .Example
-New-AzPurviewAzureMySqlCredentialScanObject -Kind 'AzureMySqlCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -Port 5432 -ScanRulesetName 'AzureMySql' -ScanRulesetType 'System' -ServerEndpoint 'tzn.mysql.database.azure.com'
+New-AzPurviewAzureMySqlCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -Port 5432 -ScanRulesetName 'AzureMySql' -ScanRulesetType 'System' -ServerEndpoint 'tzn.mysql.database.azure.com'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureMySqlCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureMySqlCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuremysqlcredentialscanobject
 #>
 function New-AzPurviewAzureMySqlCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureMySqlCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -9099,9 +10894,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -9120,9 +10915,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -9143,6 +10938,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -9171,6 +10969,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -9220,23 +11021,17 @@ Create an in-memory object for AzureMySqlDataSource.
 .Description
 Create an in-memory object for AzureMySqlDataSource.
 .Example
-New-AzPurviewAzureMySqlDataSourceObject -Kind 'AzureMySql' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Port 3306 -ServerEndpoint 'nause.mysql.database.azure.com'
+New-AzPurviewAzureMySqlDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Port 3306 -ServerEndpoint 'nause.mysql.database.azure.com'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureMySqlDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureMySqlDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuremysqldatasourceobject
 #>
 function New-AzPurviewAzureMySqlDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureMySqlDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -9285,6 +11080,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -9313,6 +11111,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -9362,23 +11163,17 @@ Create an in-memory object for AzureMySqlScanRuleset.
 .Description
 Create an in-memory object for AzureMySqlScanRuleset.
 .Example
-New-AzPurviewAzureMySqlScanRulesetObject -Kind 'AzureMySql' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+New-AzPurviewAzureMySqlScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureMySqlScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureMySqlScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuremysqlscanrulesetobject
 #>
 function New-AzPurviewAzureMySqlScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureMySqlScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -9395,9 +11190,9 @@ param(
     ${IncludedCustomClassificationRuleName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -9408,6 +11203,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -9436,6 +11234,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -9485,23 +11286,17 @@ Create an in-memory object for AzurePostgreSqlCredentialScan.
 .Description
 Create an in-memory object for AzurePostgreSqlCredentialScan.
 .Example
-New-AzPurviewAzurePostgreSqlCredentialScanObject -Kind 'AzurePostgreSqlCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -Port 5432 -SslMode 1 -ScanRulesetName 'AzurePostgreSql' -ScanRulesetType 'System' -ServerEndpoint 'anstzn.postgres.database.azure.com'
+New-AzPurviewAzurePostgreSqlCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -Port 5432 -SslMode 1 -ScanRulesetName 'AzurePostgreSql' -ScanRulesetType 'System' -ServerEndpoint 'anstzn.postgres.database.azure.com'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzurePostgreSqlCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzurePostgreSqlCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurepostgresqlcredentialscanobject
 #>
 function New-AzPurviewAzurePostgreSqlCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzurePostgreSqlCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -9523,9 +11318,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -9544,9 +11339,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -9572,6 +11367,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -9600,6 +11398,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -9649,23 +11450,17 @@ Create an in-memory object for AzurePostgreSqlDataSource.
 .Description
 Create an in-memory object for AzurePostgreSqlDataSource.
 .Example
-New-AzPurviewAzurePostgreSqlDataSourceObject -Kind 'AzurePostgreSql' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Port 5432 -ServerEndpoint 'nause.postgres.database.azure.com'
+New-AzPurviewAzurePostgreSqlDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Port 5432 -ServerEndpoint 'nause.postgres.database.azure.com'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzurePostgreSqlDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzurePostgreSqlDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurepostgresqldatasourceobject
 #>
 function New-AzPurviewAzurePostgreSqlDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzurePostgreSqlDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -9714,6 +11509,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -9742,6 +11540,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -9791,23 +11592,17 @@ Create an in-memory object for AzurePostgreSqlScanRuleset.
 .Description
 Create an in-memory object for AzurePostgreSqlScanRuleset.
 .Example
-New-AzPurviewAzurePostgreSqlScanRulesetObject -Kind 'AzurePostgreSql' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+New-AzPurviewAzurePostgreSqlScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzurePostgreSqlScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzurePostgreSqlScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurepostgresqlscanrulesetobject
 #>
 function New-AzPurviewAzurePostgreSqlScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzurePostgreSqlScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -9824,9 +11619,9 @@ param(
     ${IncludedCustomClassificationRuleName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -9837,6 +11632,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -9865,6 +11663,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -9914,10 +11715,10 @@ Create an in-memory object for AzureResourceGroupCredentialScan.
 .Description
 Create an in-memory object for AzureResourceGroupCredentialScan.
 .Example
-New-AzPurviewAzureResourceGroupCredentialScanObject -Kind 'AzureResourceGroupCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp'
+New-AzPurviewAzureResourceGroupCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureResourceGroupCredentialScan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -9925,200 +11726,194 @@ To create the parameters described below, construct a hash table containing the 
 
 RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>: 
   [AdlGen1ScanRulesetName <String>]: 
-  [AdlGen1ScanRulesetType <ScanRulesetType?>]: 
+  [AdlGen1ScanRulesetType <String>]: 
   [AdlGen2ScanRulesetName <String>]: 
-  [AdlGen2ScanRulesetType <ScanRulesetType?>]: 
+  [AdlGen2ScanRulesetType <String>]: 
   [AdlsGen1CredentialReferenceName <String>]: 
-  [AdlsGen1CredentialType <CredentialType?>]: 
-  [AdlsGen1ResourceNameFilterExcludePrefix <String[]>]: 
-  [AdlsGen1ResourceNameFilterIncludePrefix <String[]>]: 
-  [AdlsGen1ResourceNameFilterResource <String[]>]: 
+  [AdlsGen1CredentialType <String>]: 
+  [AdlsGen1ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AdlsGen1ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AdlsGen1ResourceNameFilterResource <List<String>>]: 
   [AdlsGen2CredentialReferenceName <String>]: 
-  [AdlsGen2CredentialType <CredentialType?>]: 
-  [AdlsGen2ResourceNameFilterExcludePrefix <String[]>]: 
-  [AdlsGen2ResourceNameFilterIncludePrefix <String[]>]: 
-  [AdlsGen2ResourceNameFilterResource <String[]>]: 
+  [AdlsGen2CredentialType <String>]: 
+  [AdlsGen2ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AdlsGen2ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AdlsGen2ResourceNameFilterResource <List<String>>]: 
   [AmazonAccountCredentialReferenceName <String>]: 
-  [AmazonAccountCredentialType <CredentialType?>]: 
-  [AmazonAccountResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonAccountResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonAccountResourceNameFilterResource <String[]>]: 
+  [AmazonAccountCredentialType <String>]: 
+  [AmazonAccountResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonAccountResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonAccountResourceNameFilterResource <List<String>>]: 
   [AmazonAccountScanRulesetName <String>]: 
-  [AmazonAccountScanRulesetType <ScanRulesetType?>]: 
+  [AmazonAccountScanRulesetType <String>]: 
   [AmazonPostgreSqlCredentialReferenceName <String>]: 
-  [AmazonPostgreSqlCredentialType <CredentialType?>]: 
-  [AmazonPostgreSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonPostgreSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonPostgreSqlResourceNameFilterResource <String[]>]: 
+  [AmazonPostgreSqlCredentialType <String>]: 
+  [AmazonPostgreSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonPostgreSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonPostgreSqlResourceNameFilterResource <List<String>>]: 
   [AmazonPostgreSqlScanRulesetName <String>]: 
-  [AmazonPostgreSqlScanRulesetType <ScanRulesetType?>]: 
+  [AmazonPostgreSqlScanRulesetType <String>]: 
   [AmazonS3CredentialReferenceName <String>]: 
-  [AmazonS3CredentialType <CredentialType?>]: 
-  [AmazonS3ResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonS3ResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonS3ResourceNameFilterResource <String[]>]: 
+  [AmazonS3CredentialType <String>]: 
+  [AmazonS3ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonS3ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonS3ResourceNameFilterResource <List<String>>]: 
   [AmazonS3ScanRulesetName <String>]: 
-  [AmazonS3ScanRulesetType <ScanRulesetType?>]: 
+  [AmazonS3ScanRulesetType <String>]: 
   [AmazonSqlCredentialReferenceName <String>]: 
-  [AmazonSqlCredentialType <CredentialType?>]: 
-  [AmazonSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonSqlResourceNameFilterResource <String[]>]: 
+  [AmazonSqlCredentialType <String>]: 
+  [AmazonSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonSqlResourceNameFilterResource <List<String>>]: 
   [AmazonSqlScanRulesetName <String>]: 
-  [AmazonSqlScanRulesetType <ScanRulesetType?>]: 
+  [AmazonSqlScanRulesetType <String>]: 
   [AzureCosmoDbScanRulesetName <String>]: 
-  [AzureCosmoDbScanRulesetType <ScanRulesetType?>]: 
+  [AzureCosmoDbScanRulesetType <String>]: 
   [AzureCosmosDbCredentialReferenceName <String>]: 
-  [AzureCosmosDbCredentialType <CredentialType?>]: 
-  [AzureCosmosDbResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureCosmosDbResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureCosmosDbResourceNameFilterResource <String[]>]: 
+  [AzureCosmosDbCredentialType <String>]: 
+  [AzureCosmosDbResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureCosmosDbResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureCosmosDbResourceNameFilterResource <List<String>>]: 
   [AzureDataExplorerCredentialReferenceName <String>]: 
-  [AzureDataExplorerCredentialType <CredentialType?>]: 
-  [AzureDataExplorerResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureDataExplorerResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureDataExplorerResourceNameFilterResource <String[]>]: 
+  [AzureDataExplorerCredentialType <String>]: 
+  [AzureDataExplorerResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureDataExplorerResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureDataExplorerResourceNameFilterResource <List<String>>]: 
   [AzureDataExplorerScanRulesetName <String>]: 
-  [AzureDataExplorerScanRulesetType <ScanRulesetType?>]: 
+  [AzureDataExplorerScanRulesetType <String>]: 
   [AzureFileServiceCredentialReferenceName <String>]: 
-  [AzureFileServiceCredentialType <CredentialType?>]: 
-  [AzureFileServiceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureFileServiceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureFileServiceResourceNameFilterResource <String[]>]: 
+  [AzureFileServiceCredentialType <String>]: 
+  [AzureFileServiceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureFileServiceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureFileServiceResourceNameFilterResource <List<String>>]: 
   [AzureFileServiceScanRulesetName <String>]: 
-  [AzureFileServiceScanRulesetType <ScanRulesetType?>]: 
+  [AzureFileServiceScanRulesetType <String>]: 
   [AzureMySqlCredentialReferenceName <String>]: 
-  [AzureMySqlCredentialType <CredentialType?>]: 
-  [AzureMySqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureMySqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureMySqlResourceNameFilterResource <String[]>]: 
+  [AzureMySqlCredentialType <String>]: 
+  [AzureMySqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureMySqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureMySqlResourceNameFilterResource <List<String>>]: 
   [AzureMySqlScanRulesetName <String>]: 
-  [AzureMySqlScanRulesetType <ScanRulesetType?>]: 
+  [AzureMySqlScanRulesetType <String>]: 
   [AzurePostgreSqlCredentialReferenceName <String>]: 
-  [AzurePostgreSqlCredentialType <CredentialType?>]: 
-  [AzurePostgreSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AzurePostgreSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AzurePostgreSqlResourceNameFilterResource <String[]>]: 
+  [AzurePostgreSqlCredentialType <String>]: 
+  [AzurePostgreSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzurePostgreSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzurePostgreSqlResourceNameFilterResource <List<String>>]: 
   [AzurePostgreSqlScanRulesetName <String>]: 
-  [AzurePostgreSqlScanRulesetType <ScanRulesetType?>]: 
+  [AzurePostgreSqlScanRulesetType <String>]: 
   [AzureResourceGroupCredentialReferenceName <String>]: 
-  [AzureResourceGroupCredentialType <CredentialType?>]: 
-  [AzureResourceGroupResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureResourceGroupResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureResourceGroupResourceNameFilterResource <String[]>]: 
+  [AzureResourceGroupCredentialType <String>]: 
+  [AzureResourceGroupResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureResourceGroupResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureResourceGroupResourceNameFilterResource <List<String>>]: 
   [AzureResourceGroupScanRulesetName <String>]: 
-  [AzureResourceGroupScanRulesetType <ScanRulesetType?>]: 
+  [AzureResourceGroupScanRulesetType <String>]: 
   [AzureSqlDataWarehouseCredentialReferenceName <String>]: 
-  [AzureSqlDataWarehouseCredentialType <CredentialType?>]: 
-  [AzureSqlDataWarehouseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDataWarehouseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDataWarehouseResourceNameFilterResource <String[]>]: 
+  [AzureSqlDataWarehouseCredentialType <String>]: 
+  [AzureSqlDataWarehouseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDataWarehouseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDataWarehouseResourceNameFilterResource <List<String>>]: 
   [AzureSqlDataWarehouseScanRulesetName <String>]: 
-  [AzureSqlDataWarehouseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSqlDataWarehouseScanRulesetType <String>]: 
   [AzureSqlDatabaseCredentialReferenceName <String>]: 
-  [AzureSqlDatabaseCredentialType <CredentialType?>]: 
+  [AzureSqlDatabaseCredentialType <String>]: 
   [AzureSqlDatabaseManagedInstanceCredentialReferenceName <String>]: 
-  [AzureSqlDatabaseManagedInstanceCredentialType <CredentialType?>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterResource <String[]>]: 
+  [AzureSqlDatabaseManagedInstanceCredentialType <String>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterResource <List<String>>]: 
   [AzureSqlDatabaseManagedInstanceScanRulesetName <String>]: 
-  [AzureSqlDatabaseManagedInstanceScanRulesetType <ScanRulesetType?>]: 
-  [AzureSqlDatabaseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDatabaseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDatabaseResourceNameFilterResource <String[]>]: 
+  [AzureSqlDatabaseManagedInstanceScanRulesetType <String>]: 
+  [AzureSqlDatabaseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDatabaseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDatabaseResourceNameFilterResource <List<String>>]: 
   [AzureSqlDatabaseScanRulesetName <String>]: 
-  [AzureSqlDatabaseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSqlDatabaseScanRulesetType <String>]: 
   [AzureStorageCredentialReferenceName <String>]: 
-  [AzureStorageCredentialType <CredentialType?>]: 
-  [AzureStorageResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureStorageResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureStorageResourceNameFilterResource <String[]>]: 
+  [AzureStorageCredentialType <String>]: 
+  [AzureStorageResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureStorageResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureStorageResourceNameFilterResource <List<String>>]: 
   [AzureStorageScanRulesetName <String>]: 
-  [AzureStorageScanRulesetType <ScanRulesetType?>]: 
+  [AzureStorageScanRulesetType <String>]: 
   [AzureSubscriptionCredentialReferenceName <String>]: 
-  [AzureSubscriptionCredentialType <CredentialType?>]: 
-  [AzureSubscriptionResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSubscriptionResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSubscriptionResourceNameFilterResource <String[]>]: 
+  [AzureSubscriptionCredentialType <String>]: 
+  [AzureSubscriptionResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSubscriptionResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSubscriptionResourceNameFilterResource <List<String>>]: 
   [AzureSubscriptionScanRulesetName <String>]: 
-  [AzureSubscriptionScanRulesetType <ScanRulesetType?>]: 
+  [AzureSubscriptionScanRulesetType <String>]: 
   [AzureSynapseCredentialReferenceName <String>]: 
-  [AzureSynapseCredentialType <CredentialType?>]: 
-  [AzureSynapseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSynapseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSynapseResourceNameFilterResource <String[]>]: 
+  [AzureSynapseCredentialType <String>]: 
+  [AzureSynapseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSynapseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSynapseResourceNameFilterResource <List<String>>]: 
   [AzureSynapseScanRulesetName <String>]: 
-  [AzureSynapseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSynapseScanRulesetType <String>]: 
   [AzureSynapseWorkspaceCredentialReferenceName <String>]: 
-  [AzureSynapseWorkspaceCredentialType <CredentialType?>]: 
-  [AzureSynapseWorkspaceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSynapseWorkspaceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSynapseWorkspaceResourceNameFilterResource <String[]>]: 
+  [AzureSynapseWorkspaceCredentialType <String>]: 
+  [AzureSynapseWorkspaceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSynapseWorkspaceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSynapseWorkspaceResourceNameFilterResource <List<String>>]: 
   [AzureSynapseWorkspaceScanRulesetName <String>]: 
-  [AzureSynapseWorkspaceScanRulesetType <ScanRulesetType?>]: 
+  [AzureSynapseWorkspaceScanRulesetType <String>]: 
   [NoneCredentialReferenceName <String>]: 
-  [NoneCredentialType <CredentialType?>]: 
-  [NoneResourceNameFilterExcludePrefix <String[]>]: 
-  [NoneResourceNameFilterIncludePrefix <String[]>]: 
-  [NoneResourceNameFilterResource <String[]>]: 
+  [NoneCredentialType <String>]: 
+  [NoneResourceNameFilterExcludePrefix <List<String>>]: 
+  [NoneResourceNameFilterIncludePrefix <List<String>>]: 
+  [NoneResourceNameFilterResource <List<String>>]: 
   [NoneScanRulesetName <String>]: 
-  [NoneScanRulesetType <ScanRulesetType?>]: 
+  [NoneScanRulesetType <String>]: 
   [OracleCredentialReferenceName <String>]: 
-  [OracleCredentialType <CredentialType?>]: 
-  [OracleResourceNameFilterExcludePrefix <String[]>]: 
-  [OracleResourceNameFilterIncludePrefix <String[]>]: 
-  [OracleResourceNameFilterResource <String[]>]: 
+  [OracleCredentialType <String>]: 
+  [OracleResourceNameFilterExcludePrefix <List<String>>]: 
+  [OracleResourceNameFilterIncludePrefix <List<String>>]: 
+  [OracleResourceNameFilterResource <List<String>>]: 
   [OracleScanRulesetName <String>]: 
-  [OracleScanRulesetType <ScanRulesetType?>]: 
+  [OracleScanRulesetType <String>]: 
   [PowerBiCredentialReferenceName <String>]: 
-  [PowerBiCredentialType <CredentialType?>]: 
-  [PowerBiResourceNameFilterExcludePrefix <String[]>]: 
-  [PowerBiResourceNameFilterIncludePrefix <String[]>]: 
-  [PowerBiResourceNameFilterResource <String[]>]: 
+  [PowerBiCredentialType <String>]: 
+  [PowerBiResourceNameFilterExcludePrefix <List<String>>]: 
+  [PowerBiResourceNameFilterIncludePrefix <List<String>>]: 
+  [PowerBiResourceNameFilterResource <List<String>>]: 
   [PowerBiScanRulesetName <String>]: 
-  [PowerBiScanRulesetType <ScanRulesetType?>]: 
+  [PowerBiScanRulesetType <String>]: 
   [SapEccCredentialReferenceName <String>]: 
-  [SapEccCredentialType <CredentialType?>]: 
-  [SapEccResourceNameFilterExcludePrefix <String[]>]: 
-  [SapEccResourceNameFilterIncludePrefix <String[]>]: 
-  [SapEccResourceNameFilterResource <String[]>]: 
+  [SapEccCredentialType <String>]: 
+  [SapEccResourceNameFilterExcludePrefix <List<String>>]: 
+  [SapEccResourceNameFilterIncludePrefix <List<String>>]: 
+  [SapEccResourceNameFilterResource <List<String>>]: 
   [SapEccScanRulesetName <String>]: 
-  [SapEccScanRulesetType <ScanRulesetType?>]: 
+  [SapEccScanRulesetType <String>]: 
   [SapS4HanaCredentialReferenceName <String>]: 
-  [SapS4HanaCredentialType <CredentialType?>]: 
-  [SapS4HanaResourceNameFilterExcludePrefix <String[]>]: 
-  [SapS4HanaResourceNameFilterIncludePrefix <String[]>]: 
-  [SapS4HanaResourceNameFilterResource <String[]>]: 
+  [SapS4HanaCredentialType <String>]: 
+  [SapS4HanaResourceNameFilterExcludePrefix <List<String>>]: 
+  [SapS4HanaResourceNameFilterIncludePrefix <List<String>>]: 
+  [SapS4HanaResourceNameFilterResource <List<String>>]: 
   [SapS4HanaScanRulesetName <String>]: 
-  [SapS4HanaScanRulesetType <ScanRulesetType?>]: 
+  [SapS4HanaScanRulesetType <String>]: 
   [SqlServerDatabaseCredentialReferenceName <String>]: 
-  [SqlServerDatabaseCredentialType <CredentialType?>]: 
-  [SqlServerDatabaseResourceNameFilterExcludePrefix <String[]>]: 
-  [SqlServerDatabaseResourceNameFilterIncludePrefix <String[]>]: 
-  [SqlServerDatabaseResourceNameFilterResource <String[]>]: 
+  [SqlServerDatabaseCredentialType <String>]: 
+  [SqlServerDatabaseResourceNameFilterExcludePrefix <List<String>>]: 
+  [SqlServerDatabaseResourceNameFilterIncludePrefix <List<String>>]: 
+  [SqlServerDatabaseResourceNameFilterResource <List<String>>]: 
   [SqlServerDatabaseScanRulesetName <String>]: 
-  [SqlServerDatabaseScanRulesetType <ScanRulesetType?>]: 
+  [SqlServerDatabaseScanRulesetType <String>]: 
   [TeradataCredentialReferenceName <String>]: 
-  [TeradataCredentialType <CredentialType?>]: 
-  [TeradataResourceNameFilterExcludePrefix <String[]>]: 
-  [TeradataResourceNameFilterIncludePrefix <String[]>]: 
-  [TeradataResourceNameFilterResource <String[]>]: 
+  [TeradataCredentialType <String>]: 
+  [TeradataResourceNameFilterExcludePrefix <List<String>>]: 
+  [TeradataResourceNameFilterIncludePrefix <List<String>>]: 
+  [TeradataResourceNameFilterResource <List<String>>]: 
   [TeradataScanRulesetName <String>]: 
-  [TeradataScanRulesetType <ScanRulesetType?>]: 
+  [TeradataScanRulesetType <String>]: 
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureResourceGroupCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazureresourcegroupcredentialscanobject
 #>
 function New-AzPurviewAzureResourceGroupCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureResourceGroupCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -10140,15 +11935,15 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IExpandingResourceScanPropertiesResourceTypes]
-    # To construct, see NOTES section for RESOURCETYPE properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IExpandingResourceScanPropertiesResourceTypes]
+    # 
     ${ResourceType},
 
     [Parameter()]
@@ -10157,9 +11952,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -10175,6 +11970,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -10203,6 +12001,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -10252,23 +12053,17 @@ Create an in-memory object for AzureResourceGroupDataSource.
 .Description
 Create an in-memory object for AzureResourceGroupDataSource.
 .Example
-New-AzPurviewAzureResourceGroupDataSourceObject -Kind 'AzureResourceGroup' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ResourceGroup 'rg' -SubscriptionId '6810b9ce-82d3-4562-9658-xxxxxxxxxx'
+New-AzPurviewAzureResourceGroupDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ResourceGroup 'rg' -SubscriptionId '6810b9ce-82d3-4562-9658-xxxxxxxxxx'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureResourceGroupDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureResourceGroupDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazureresourcegroupdatasourceobject
 #>
 function New-AzPurviewAzureResourceGroupDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureResourceGroupDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -10297,6 +12092,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -10325,6 +12123,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -10374,10 +12175,10 @@ Create an in-memory object for AzureResourceGroupMsiScan.
 .Description
 Create an in-memory object for AzureResourceGroupMsiScan.
 .Example
-New-AzPurviewAzureResourceGroupMsiScanObject -Kind 'AzureResourceGroupMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference'
+New-AzPurviewAzureResourceGroupMsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupMsiScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureResourceGroupMsiScan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -10385,200 +12186,194 @@ To create the parameters described below, construct a hash table containing the 
 
 RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>: 
   [AdlGen1ScanRulesetName <String>]: 
-  [AdlGen1ScanRulesetType <ScanRulesetType?>]: 
+  [AdlGen1ScanRulesetType <String>]: 
   [AdlGen2ScanRulesetName <String>]: 
-  [AdlGen2ScanRulesetType <ScanRulesetType?>]: 
+  [AdlGen2ScanRulesetType <String>]: 
   [AdlsGen1CredentialReferenceName <String>]: 
-  [AdlsGen1CredentialType <CredentialType?>]: 
-  [AdlsGen1ResourceNameFilterExcludePrefix <String[]>]: 
-  [AdlsGen1ResourceNameFilterIncludePrefix <String[]>]: 
-  [AdlsGen1ResourceNameFilterResource <String[]>]: 
+  [AdlsGen1CredentialType <String>]: 
+  [AdlsGen1ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AdlsGen1ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AdlsGen1ResourceNameFilterResource <List<String>>]: 
   [AdlsGen2CredentialReferenceName <String>]: 
-  [AdlsGen2CredentialType <CredentialType?>]: 
-  [AdlsGen2ResourceNameFilterExcludePrefix <String[]>]: 
-  [AdlsGen2ResourceNameFilterIncludePrefix <String[]>]: 
-  [AdlsGen2ResourceNameFilterResource <String[]>]: 
+  [AdlsGen2CredentialType <String>]: 
+  [AdlsGen2ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AdlsGen2ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AdlsGen2ResourceNameFilterResource <List<String>>]: 
   [AmazonAccountCredentialReferenceName <String>]: 
-  [AmazonAccountCredentialType <CredentialType?>]: 
-  [AmazonAccountResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonAccountResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonAccountResourceNameFilterResource <String[]>]: 
+  [AmazonAccountCredentialType <String>]: 
+  [AmazonAccountResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonAccountResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonAccountResourceNameFilterResource <List<String>>]: 
   [AmazonAccountScanRulesetName <String>]: 
-  [AmazonAccountScanRulesetType <ScanRulesetType?>]: 
+  [AmazonAccountScanRulesetType <String>]: 
   [AmazonPostgreSqlCredentialReferenceName <String>]: 
-  [AmazonPostgreSqlCredentialType <CredentialType?>]: 
-  [AmazonPostgreSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonPostgreSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonPostgreSqlResourceNameFilterResource <String[]>]: 
+  [AmazonPostgreSqlCredentialType <String>]: 
+  [AmazonPostgreSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonPostgreSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonPostgreSqlResourceNameFilterResource <List<String>>]: 
   [AmazonPostgreSqlScanRulesetName <String>]: 
-  [AmazonPostgreSqlScanRulesetType <ScanRulesetType?>]: 
+  [AmazonPostgreSqlScanRulesetType <String>]: 
   [AmazonS3CredentialReferenceName <String>]: 
-  [AmazonS3CredentialType <CredentialType?>]: 
-  [AmazonS3ResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonS3ResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonS3ResourceNameFilterResource <String[]>]: 
+  [AmazonS3CredentialType <String>]: 
+  [AmazonS3ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonS3ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonS3ResourceNameFilterResource <List<String>>]: 
   [AmazonS3ScanRulesetName <String>]: 
-  [AmazonS3ScanRulesetType <ScanRulesetType?>]: 
+  [AmazonS3ScanRulesetType <String>]: 
   [AmazonSqlCredentialReferenceName <String>]: 
-  [AmazonSqlCredentialType <CredentialType?>]: 
-  [AmazonSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonSqlResourceNameFilterResource <String[]>]: 
+  [AmazonSqlCredentialType <String>]: 
+  [AmazonSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonSqlResourceNameFilterResource <List<String>>]: 
   [AmazonSqlScanRulesetName <String>]: 
-  [AmazonSqlScanRulesetType <ScanRulesetType?>]: 
+  [AmazonSqlScanRulesetType <String>]: 
   [AzureCosmoDbScanRulesetName <String>]: 
-  [AzureCosmoDbScanRulesetType <ScanRulesetType?>]: 
+  [AzureCosmoDbScanRulesetType <String>]: 
   [AzureCosmosDbCredentialReferenceName <String>]: 
-  [AzureCosmosDbCredentialType <CredentialType?>]: 
-  [AzureCosmosDbResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureCosmosDbResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureCosmosDbResourceNameFilterResource <String[]>]: 
+  [AzureCosmosDbCredentialType <String>]: 
+  [AzureCosmosDbResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureCosmosDbResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureCosmosDbResourceNameFilterResource <List<String>>]: 
   [AzureDataExplorerCredentialReferenceName <String>]: 
-  [AzureDataExplorerCredentialType <CredentialType?>]: 
-  [AzureDataExplorerResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureDataExplorerResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureDataExplorerResourceNameFilterResource <String[]>]: 
+  [AzureDataExplorerCredentialType <String>]: 
+  [AzureDataExplorerResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureDataExplorerResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureDataExplorerResourceNameFilterResource <List<String>>]: 
   [AzureDataExplorerScanRulesetName <String>]: 
-  [AzureDataExplorerScanRulesetType <ScanRulesetType?>]: 
+  [AzureDataExplorerScanRulesetType <String>]: 
   [AzureFileServiceCredentialReferenceName <String>]: 
-  [AzureFileServiceCredentialType <CredentialType?>]: 
-  [AzureFileServiceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureFileServiceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureFileServiceResourceNameFilterResource <String[]>]: 
+  [AzureFileServiceCredentialType <String>]: 
+  [AzureFileServiceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureFileServiceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureFileServiceResourceNameFilterResource <List<String>>]: 
   [AzureFileServiceScanRulesetName <String>]: 
-  [AzureFileServiceScanRulesetType <ScanRulesetType?>]: 
+  [AzureFileServiceScanRulesetType <String>]: 
   [AzureMySqlCredentialReferenceName <String>]: 
-  [AzureMySqlCredentialType <CredentialType?>]: 
-  [AzureMySqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureMySqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureMySqlResourceNameFilterResource <String[]>]: 
+  [AzureMySqlCredentialType <String>]: 
+  [AzureMySqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureMySqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureMySqlResourceNameFilterResource <List<String>>]: 
   [AzureMySqlScanRulesetName <String>]: 
-  [AzureMySqlScanRulesetType <ScanRulesetType?>]: 
+  [AzureMySqlScanRulesetType <String>]: 
   [AzurePostgreSqlCredentialReferenceName <String>]: 
-  [AzurePostgreSqlCredentialType <CredentialType?>]: 
-  [AzurePostgreSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AzurePostgreSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AzurePostgreSqlResourceNameFilterResource <String[]>]: 
+  [AzurePostgreSqlCredentialType <String>]: 
+  [AzurePostgreSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzurePostgreSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzurePostgreSqlResourceNameFilterResource <List<String>>]: 
   [AzurePostgreSqlScanRulesetName <String>]: 
-  [AzurePostgreSqlScanRulesetType <ScanRulesetType?>]: 
+  [AzurePostgreSqlScanRulesetType <String>]: 
   [AzureResourceGroupCredentialReferenceName <String>]: 
-  [AzureResourceGroupCredentialType <CredentialType?>]: 
-  [AzureResourceGroupResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureResourceGroupResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureResourceGroupResourceNameFilterResource <String[]>]: 
+  [AzureResourceGroupCredentialType <String>]: 
+  [AzureResourceGroupResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureResourceGroupResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureResourceGroupResourceNameFilterResource <List<String>>]: 
   [AzureResourceGroupScanRulesetName <String>]: 
-  [AzureResourceGroupScanRulesetType <ScanRulesetType?>]: 
+  [AzureResourceGroupScanRulesetType <String>]: 
   [AzureSqlDataWarehouseCredentialReferenceName <String>]: 
-  [AzureSqlDataWarehouseCredentialType <CredentialType?>]: 
-  [AzureSqlDataWarehouseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDataWarehouseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDataWarehouseResourceNameFilterResource <String[]>]: 
+  [AzureSqlDataWarehouseCredentialType <String>]: 
+  [AzureSqlDataWarehouseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDataWarehouseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDataWarehouseResourceNameFilterResource <List<String>>]: 
   [AzureSqlDataWarehouseScanRulesetName <String>]: 
-  [AzureSqlDataWarehouseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSqlDataWarehouseScanRulesetType <String>]: 
   [AzureSqlDatabaseCredentialReferenceName <String>]: 
-  [AzureSqlDatabaseCredentialType <CredentialType?>]: 
+  [AzureSqlDatabaseCredentialType <String>]: 
   [AzureSqlDatabaseManagedInstanceCredentialReferenceName <String>]: 
-  [AzureSqlDatabaseManagedInstanceCredentialType <CredentialType?>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterResource <String[]>]: 
+  [AzureSqlDatabaseManagedInstanceCredentialType <String>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterResource <List<String>>]: 
   [AzureSqlDatabaseManagedInstanceScanRulesetName <String>]: 
-  [AzureSqlDatabaseManagedInstanceScanRulesetType <ScanRulesetType?>]: 
-  [AzureSqlDatabaseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDatabaseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDatabaseResourceNameFilterResource <String[]>]: 
+  [AzureSqlDatabaseManagedInstanceScanRulesetType <String>]: 
+  [AzureSqlDatabaseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDatabaseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDatabaseResourceNameFilterResource <List<String>>]: 
   [AzureSqlDatabaseScanRulesetName <String>]: 
-  [AzureSqlDatabaseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSqlDatabaseScanRulesetType <String>]: 
   [AzureStorageCredentialReferenceName <String>]: 
-  [AzureStorageCredentialType <CredentialType?>]: 
-  [AzureStorageResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureStorageResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureStorageResourceNameFilterResource <String[]>]: 
+  [AzureStorageCredentialType <String>]: 
+  [AzureStorageResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureStorageResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureStorageResourceNameFilterResource <List<String>>]: 
   [AzureStorageScanRulesetName <String>]: 
-  [AzureStorageScanRulesetType <ScanRulesetType?>]: 
+  [AzureStorageScanRulesetType <String>]: 
   [AzureSubscriptionCredentialReferenceName <String>]: 
-  [AzureSubscriptionCredentialType <CredentialType?>]: 
-  [AzureSubscriptionResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSubscriptionResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSubscriptionResourceNameFilterResource <String[]>]: 
+  [AzureSubscriptionCredentialType <String>]: 
+  [AzureSubscriptionResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSubscriptionResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSubscriptionResourceNameFilterResource <List<String>>]: 
   [AzureSubscriptionScanRulesetName <String>]: 
-  [AzureSubscriptionScanRulesetType <ScanRulesetType?>]: 
+  [AzureSubscriptionScanRulesetType <String>]: 
   [AzureSynapseCredentialReferenceName <String>]: 
-  [AzureSynapseCredentialType <CredentialType?>]: 
-  [AzureSynapseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSynapseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSynapseResourceNameFilterResource <String[]>]: 
+  [AzureSynapseCredentialType <String>]: 
+  [AzureSynapseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSynapseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSynapseResourceNameFilterResource <List<String>>]: 
   [AzureSynapseScanRulesetName <String>]: 
-  [AzureSynapseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSynapseScanRulesetType <String>]: 
   [AzureSynapseWorkspaceCredentialReferenceName <String>]: 
-  [AzureSynapseWorkspaceCredentialType <CredentialType?>]: 
-  [AzureSynapseWorkspaceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSynapseWorkspaceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSynapseWorkspaceResourceNameFilterResource <String[]>]: 
+  [AzureSynapseWorkspaceCredentialType <String>]: 
+  [AzureSynapseWorkspaceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSynapseWorkspaceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSynapseWorkspaceResourceNameFilterResource <List<String>>]: 
   [AzureSynapseWorkspaceScanRulesetName <String>]: 
-  [AzureSynapseWorkspaceScanRulesetType <ScanRulesetType?>]: 
+  [AzureSynapseWorkspaceScanRulesetType <String>]: 
   [NoneCredentialReferenceName <String>]: 
-  [NoneCredentialType <CredentialType?>]: 
-  [NoneResourceNameFilterExcludePrefix <String[]>]: 
-  [NoneResourceNameFilterIncludePrefix <String[]>]: 
-  [NoneResourceNameFilterResource <String[]>]: 
+  [NoneCredentialType <String>]: 
+  [NoneResourceNameFilterExcludePrefix <List<String>>]: 
+  [NoneResourceNameFilterIncludePrefix <List<String>>]: 
+  [NoneResourceNameFilterResource <List<String>>]: 
   [NoneScanRulesetName <String>]: 
-  [NoneScanRulesetType <ScanRulesetType?>]: 
+  [NoneScanRulesetType <String>]: 
   [OracleCredentialReferenceName <String>]: 
-  [OracleCredentialType <CredentialType?>]: 
-  [OracleResourceNameFilterExcludePrefix <String[]>]: 
-  [OracleResourceNameFilterIncludePrefix <String[]>]: 
-  [OracleResourceNameFilterResource <String[]>]: 
+  [OracleCredentialType <String>]: 
+  [OracleResourceNameFilterExcludePrefix <List<String>>]: 
+  [OracleResourceNameFilterIncludePrefix <List<String>>]: 
+  [OracleResourceNameFilterResource <List<String>>]: 
   [OracleScanRulesetName <String>]: 
-  [OracleScanRulesetType <ScanRulesetType?>]: 
+  [OracleScanRulesetType <String>]: 
   [PowerBiCredentialReferenceName <String>]: 
-  [PowerBiCredentialType <CredentialType?>]: 
-  [PowerBiResourceNameFilterExcludePrefix <String[]>]: 
-  [PowerBiResourceNameFilterIncludePrefix <String[]>]: 
-  [PowerBiResourceNameFilterResource <String[]>]: 
+  [PowerBiCredentialType <String>]: 
+  [PowerBiResourceNameFilterExcludePrefix <List<String>>]: 
+  [PowerBiResourceNameFilterIncludePrefix <List<String>>]: 
+  [PowerBiResourceNameFilterResource <List<String>>]: 
   [PowerBiScanRulesetName <String>]: 
-  [PowerBiScanRulesetType <ScanRulesetType?>]: 
+  [PowerBiScanRulesetType <String>]: 
   [SapEccCredentialReferenceName <String>]: 
-  [SapEccCredentialType <CredentialType?>]: 
-  [SapEccResourceNameFilterExcludePrefix <String[]>]: 
-  [SapEccResourceNameFilterIncludePrefix <String[]>]: 
-  [SapEccResourceNameFilterResource <String[]>]: 
+  [SapEccCredentialType <String>]: 
+  [SapEccResourceNameFilterExcludePrefix <List<String>>]: 
+  [SapEccResourceNameFilterIncludePrefix <List<String>>]: 
+  [SapEccResourceNameFilterResource <List<String>>]: 
   [SapEccScanRulesetName <String>]: 
-  [SapEccScanRulesetType <ScanRulesetType?>]: 
+  [SapEccScanRulesetType <String>]: 
   [SapS4HanaCredentialReferenceName <String>]: 
-  [SapS4HanaCredentialType <CredentialType?>]: 
-  [SapS4HanaResourceNameFilterExcludePrefix <String[]>]: 
-  [SapS4HanaResourceNameFilterIncludePrefix <String[]>]: 
-  [SapS4HanaResourceNameFilterResource <String[]>]: 
+  [SapS4HanaCredentialType <String>]: 
+  [SapS4HanaResourceNameFilterExcludePrefix <List<String>>]: 
+  [SapS4HanaResourceNameFilterIncludePrefix <List<String>>]: 
+  [SapS4HanaResourceNameFilterResource <List<String>>]: 
   [SapS4HanaScanRulesetName <String>]: 
-  [SapS4HanaScanRulesetType <ScanRulesetType?>]: 
+  [SapS4HanaScanRulesetType <String>]: 
   [SqlServerDatabaseCredentialReferenceName <String>]: 
-  [SqlServerDatabaseCredentialType <CredentialType?>]: 
-  [SqlServerDatabaseResourceNameFilterExcludePrefix <String[]>]: 
-  [SqlServerDatabaseResourceNameFilterIncludePrefix <String[]>]: 
-  [SqlServerDatabaseResourceNameFilterResource <String[]>]: 
+  [SqlServerDatabaseCredentialType <String>]: 
+  [SqlServerDatabaseResourceNameFilterExcludePrefix <List<String>>]: 
+  [SqlServerDatabaseResourceNameFilterIncludePrefix <List<String>>]: 
+  [SqlServerDatabaseResourceNameFilterResource <List<String>>]: 
   [SqlServerDatabaseScanRulesetName <String>]: 
-  [SqlServerDatabaseScanRulesetType <ScanRulesetType?>]: 
+  [SqlServerDatabaseScanRulesetType <String>]: 
   [TeradataCredentialReferenceName <String>]: 
-  [TeradataCredentialType <CredentialType?>]: 
-  [TeradataResourceNameFilterExcludePrefix <String[]>]: 
-  [TeradataResourceNameFilterIncludePrefix <String[]>]: 
-  [TeradataResourceNameFilterResource <String[]>]: 
+  [TeradataCredentialType <String>]: 
+  [TeradataResourceNameFilterExcludePrefix <List<String>>]: 
+  [TeradataResourceNameFilterIncludePrefix <List<String>>]: 
+  [TeradataResourceNameFilterResource <List<String>>]: 
   [TeradataScanRulesetName <String>]: 
-  [TeradataScanRulesetType <ScanRulesetType?>]: 
+  [TeradataScanRulesetType <String>]: 
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureResourceGroupMsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazureresourcegroupmsiscanobject
 #>
 function New-AzPurviewAzureResourceGroupMsiScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupMsiScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureResourceGroupMsiScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -10600,15 +12395,15 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IExpandingResourceScanPropertiesResourceTypes]
-    # To construct, see NOTES section for RESOURCETYPE properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IExpandingResourceScanPropertiesResourceTypes]
+    # 
     ${ResourceType},
 
     [Parameter()]
@@ -10617,9 +12412,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -10635,6 +12430,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -10663,6 +12461,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -10712,23 +12513,17 @@ Create an in-memory object for AzureSqlDatabaseCredentialScan.
 .Description
 Create an in-memory object for AzureSqlDatabaseCredentialScan.
 .Example
-New-AzPurviewAzureSqlDatabaseCredentialScanObject -Kind 'AzureSqlDatabaseCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDatabase' -ScanRulesetType 'System' -ServerEndpoint 'stzn.database.windows.net'
+New-AzPurviewAzureSqlDatabaseCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDatabase' -ScanRulesetType 'System' -ServerEndpoint 'stzn.database.windows.net'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDatabaseCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatabasecredentialscanobject
 #>
 function New-AzPurviewAzureSqlDatabaseCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -10750,9 +12545,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -10766,9 +12561,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -10789,6 +12584,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -10817,6 +12615,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -10866,23 +12667,17 @@ Create an in-memory object for AzureSqlDatabaseDataSource.
 .Description
 Create an in-memory object for AzureSqlDatabaseDataSource.
 .Example
-New-AzPurviewAzureSqlDatabaseDataSourceObject -Kind 'AzureSqlDatabase' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint 'ause.database.windows.net'
+New-AzPurviewAzureSqlDatabaseDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint 'ause.database.windows.net'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDatabaseDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatabasedatasourceobject
 #>
 function New-AzPurviewAzureSqlDatabaseDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -10926,6 +12721,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -10954,6 +12752,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11003,23 +12804,17 @@ Create an in-memory object for AzureSqlDatabaseManagedInstanceCredentialScan.
 .Description
 Create an in-memory object for AzureSqlDatabaseManagedInstanceCredentialScan.
 .Example
-New-AzPurviewAzureSqlDatabaseManagedInstanceCredentialScanObject -Kind 'AzureSqlDatabaseManagedInstanceCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDatabaseManagedInstance' -ScanRulesetType 'System' -ServerEndpoint 'tcp:sqstzn.public.5aaf14.database.windows.net,3342'
+New-AzPurviewAzureSqlDatabaseManagedInstanceCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDatabaseManagedInstance' -ScanRulesetType 'System' -ServerEndpoint 'tcp:sqstzn.public.5aaf14.database.windows.net,3342'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseManagedInstanceCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatabasemanagedinstancecredentialscanobject
 #>
 function New-AzPurviewAzureSqlDatabaseManagedInstanceCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseManagedInstanceCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -11041,9 +12836,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -11057,9 +12852,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -11080,6 +12875,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11108,6 +12906,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11157,23 +12958,17 @@ Create an in-memory object for AzureSqlDatabaseManagedInstanceDataSource.
 .Description
 Create an in-memory object for AzureSqlDatabaseManagedInstanceDataSource.
 .Example
-New-AzPurviewAzureSqlDatabaseManagedInstanceDataSourceObject -Kind 'AzureSqlDatabaseManagedInstance' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint 'tcp:sqlause.public.3b6a39.database.windows.net,3342'
+New-AzPurviewAzureSqlDatabaseManagedInstanceDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint 'tcp:sqlause.public.3b6a39.database.windows.net,3342'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseManagedInstanceDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatabasemanagedinstancedatasourceobject
 #>
 function New-AzPurviewAzureSqlDatabaseManagedInstanceDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseManagedInstanceDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -11217,6 +13012,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11245,6 +13043,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11294,23 +13095,17 @@ Create an in-memory object for AzureSqlDatabaseManagedInstanceMsiScan.
 .Description
 Create an in-memory object for AzureSqlDatabaseManagedInstanceMsiScan.
 .Example
-New-AzPurviewAzureSqlDatabaseManagedInstanceMsiScanObject -Kind 'AzureSqlDatabaseManagedInstanceMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDatabaseManagedInstance' -ScanRulesetType 'System' -ServerEndpoint 'tcp:sqstzn.public.5aaf14.database.windows.net,3342'
+New-AzPurviewAzureSqlDatabaseManagedInstanceMsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDatabaseManagedInstance' -ScanRulesetType 'System' -ServerEndpoint 'tcp:sqstzn.public.5aaf14.database.windows.net,3342'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceMsiScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseManagedInstanceMsiScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceMsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatabasemanagedinstancemsiscanobject
 #>
 function New-AzPurviewAzureSqlDatabaseManagedInstanceMsiScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceMsiScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseManagedInstanceMsiScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -11337,9 +13132,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -11360,6 +13155,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11388,6 +13186,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11437,23 +13238,17 @@ Create an in-memory object for AzureSqlDatabaseManagedInstanceScanRuleset.
 .Description
 Create an in-memory object for AzureSqlDatabaseManagedInstanceScanRuleset.
 .Example
-New-AzPurviewAzureSqlDatabaseManagedInstanceScanRulesetObject -Kind 'AzureSqlDatabaseManagedInstance' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+New-AzPurviewAzureSqlDatabaseManagedInstanceScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseManagedInstanceScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatabasemanagedinstancescanrulesetobject
 #>
 function New-AzPurviewAzureSqlDatabaseManagedInstanceScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseManagedInstanceScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -11470,9 +13265,9 @@ param(
     ${IncludedCustomClassificationRuleName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -11483,6 +13278,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11511,6 +13309,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11560,23 +13361,17 @@ Create an in-memory object for AzureSqlDatabaseMsiScan.
 .Description
 Create an in-memory object for AzureSqlDatabaseMsiScan.
 .Example
-New-AzPurviewAzureSqlDatabaseMsiScanObject -Kind 'AzureSqlDatabaseMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDatabase' -ScanRulesetType 'System' -ServerEndpoint 'stzn.database.windows.net'
+New-AzPurviewAzureSqlDatabaseMsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDatabase' -ScanRulesetType 'System' -ServerEndpoint 'stzn.database.windows.net'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseMsiScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseMsiScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDatabaseMsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatabasemsiscanobject
 #>
 function New-AzPurviewAzureSqlDatabaseMsiScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseMsiScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseMsiScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -11603,9 +13398,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -11626,6 +13421,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11654,6 +13452,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11703,23 +13504,17 @@ Create an in-memory object for AzureSqlDatabaseScanRuleset.
 .Description
 Create an in-memory object for AzureSqlDatabaseScanRuleset.
 .Example
-New-AzPurviewAzureSqlDatabaseScanRulesetObject -Kind 'AzureSqlDatabase' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+New-AzPurviewAzureSqlDatabaseScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatabasescanrulesetobject
 #>
 function New-AzPurviewAzureSqlDatabaseScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -11736,9 +13531,9 @@ param(
     ${IncludedCustomClassificationRuleName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -11749,6 +13544,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11777,6 +13575,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11826,23 +13627,17 @@ Create an in-memory object for AzureSqlDataWarehouseCredentialScan.
 .Description
 Create an in-memory object for AzureSqlDataWarehouseCredentialScan.
 .Example
-New-AzPurviewAzureSqlDataWarehouseCredentialScanObject -Kind 'AzureSqlDataWarehouseCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDataWarehouse' -ScanRulesetType 'System' -ServerEndpoint 'canstzn.database.windows.net' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth'
+New-AzPurviewAzureSqlDataWarehouseCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDataWarehouse' -ScanRulesetType 'System' -ServerEndpoint 'canstzn.database.windows.net' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDataWarehouseCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDataWarehouseCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatawarehousecredentialscanobject
 #>
 function New-AzPurviewAzureSqlDataWarehouseCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDataWarehouseCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -11864,9 +13659,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -11880,9 +13675,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -11903,6 +13698,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -11931,6 +13729,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11980,23 +13781,17 @@ Create an in-memory object for AzureSqlDataWarehouseDataSource.
 .Description
 Create an in-memory object for AzureSqlDataWarehouseDataSource.
 .Example
-New-AzPurviewAzureSqlDataWarehouseDataSourceObject -Kind 'AzureSqlDataWarehouse' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint 'ause.database.windows.net'
+New-AzPurviewAzureSqlDataWarehouseDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint 'ause.database.windows.net'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDataWarehouseDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDataWarehouseDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatawarehousedatasourceobject
 #>
 function New-AzPurviewAzureSqlDataWarehouseDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDataWarehouseDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -12040,6 +13835,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -12068,6 +13866,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -12117,23 +13918,17 @@ Create an in-memory object for AzureSqlDataWarehouseMsiScan.
 .Description
 Create an in-memory object for AzureSqlDataWarehouseMsiScan.
 .Example
-New-AzPurviewAzureSqlDataWarehouseMsiScanObject -Kind 'AzureSqlDataWarehouseMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDataWarehouse' -ScanRulesetType 'System' -ServerEndpoint 'canstzn.database.windows.net'
+New-AzPurviewAzureSqlDataWarehouseMsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDataWarehouse' -ScanRulesetType 'System' -ServerEndpoint 'canstzn.database.windows.net'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseMsiScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDataWarehouseMsiScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDataWarehouseMsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatawarehousemsiscanobject
 #>
 function New-AzPurviewAzureSqlDataWarehouseMsiScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseMsiScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDataWarehouseMsiScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -12160,9 +13955,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -12183,6 +13978,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -12211,6 +14009,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -12260,23 +14061,17 @@ Create an in-memory object for AzureSqlDataWarehouseScanRuleset.
 .Description
 Create an in-memory object for AzureSqlDataWarehouseScanRuleset.
 .Example
-New-AzPurviewAzureSqlDataWarehouseScanRulesetObject -Kind 'AzureSqlDataWarehouse' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+New-AzPurviewAzureSqlDataWarehouseScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDataWarehouseScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatawarehousescanrulesetobject
 #>
 function New-AzPurviewAzureSqlDataWarehouseScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDataWarehouseScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -12293,9 +14088,9 @@ param(
     ${IncludedCustomClassificationRuleName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -12306,6 +14101,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -12334,6 +14132,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -12383,23 +14184,17 @@ Create an in-memory object for AzureStorageCredentialScan.
 .Description
 Create an in-memory object for AzureStorageCredentialScan.
 .Example
-New-AzPurviewAzureStorageCredentialScanObject -Kind 'AzureStorageCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
+New-AzPurviewAzureStorageCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureStorageCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurestoragecredentialscanobject
 #>
 function New-AzPurviewAzureStorageCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -12421,9 +14216,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -12432,9 +14227,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -12450,6 +14245,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -12478,6 +14276,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -12527,23 +14328,17 @@ Create an in-memory object for AzureStorageDataSource.
 .Description
 Create an in-memory object for AzureStorageDataSource.
 .Example
-New-AzPurviewAzureStorageDataSourceObject -Kind 'AzureStorage' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Endpoint 'https://bnsrpause.blob.core.windows.net'
+New-AzPurviewAzureStorageDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Endpoint 'https://bnsrpause.blob.core.windows.net'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureStorageDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurestoragedatasourceobject
 #>
 function New-AzPurviewAzureStorageDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -12587,6 +14382,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -12615,6 +14413,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -12664,23 +14465,17 @@ Create an in-memory object for AzureStorageMsiScan.
 .Description
 Create an in-memory object for AzureStorageMsiScan.
 .Example
-New-AzPurviewAzureStorageMsiScanObject -Kind 'AzureStorageMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
+New-AzPurviewAzureStorageMsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageMsiScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageMsiScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureStorageMsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurestoragemsiscanobject
 #>
 function New-AzPurviewAzureStorageMsiScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageMsiScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageMsiScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -12702,9 +14497,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -12720,6 +14515,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -12748,6 +14546,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -12797,34 +14598,28 @@ Create an in-memory object for AzureStorageScanRuleset.
 .Description
 Create an in-memory object for AzureStorageScanRuleset.
 .Example
-New-AzPurviewAzureStorageScanRulesetObject -Kind 'AzureStorage' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
+New-AzPurviewAzureStorageScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageScanRuleset
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 SCANNINGRULECUSTOMFILEEXTENSION <ICustomFileExtension[]>: 
-  [CustomFileTypeBuiltInType <FileExtensionsType?>]: 
+  [CustomFileTypeBuiltInType <String>]: 
   [CustomFileTypeCustomDelimiter <String>]: 
   [Description <String>]: 
   [Enabled <Boolean?>]: 
   [FileExtension <String>]: 
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurestoragescanrulesetobject
 #>
 function New-AzPurviewAzureStorageScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -12842,20 +14637,20 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ICustomFileExtension[]]
-    # To construct, see NOTES section for SCANNINGRULECUSTOMFILEEXTENSION properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ICustomFileExtension[]]
+    # 
     ${ScanningRuleCustomFileExtension},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AVRO", "ORC", "PARQUET", "JSON", "TXT", "XML", "Documents", "CSV", "PSV", "SSV", "TSV", "GZ", "DOC", "DOCM", "DOCX", "DOT", "ODP", "ODS", "ODT", "PDF", "POT", "PPS", "PPSX", "PPT", "PPTM", "PPTX", "XLC", "XLS", "XLSB", "XLSM", "XLSX", "XLT")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType[]]
+    [System.String[]]
     ${ScanningRuleFileExtension},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -12866,6 +14661,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -12894,6 +14692,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -12943,10 +14744,10 @@ Create an in-memory object for AzureSubscriptionCredentialScan.
 .Description
 Create an in-memory object for AzureSubscriptionCredentialScan.
 .Example
-New-AzPurviewAzureSubscriptionCredentialScanObject -Kind 'AzureSubscriptionCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp'
+New-AzPurviewAzureSubscriptionCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSubscriptionCredentialScan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -12954,200 +14755,194 @@ To create the parameters described below, construct a hash table containing the 
 
 RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>: 
   [AdlGen1ScanRulesetName <String>]: 
-  [AdlGen1ScanRulesetType <ScanRulesetType?>]: 
+  [AdlGen1ScanRulesetType <String>]: 
   [AdlGen2ScanRulesetName <String>]: 
-  [AdlGen2ScanRulesetType <ScanRulesetType?>]: 
+  [AdlGen2ScanRulesetType <String>]: 
   [AdlsGen1CredentialReferenceName <String>]: 
-  [AdlsGen1CredentialType <CredentialType?>]: 
-  [AdlsGen1ResourceNameFilterExcludePrefix <String[]>]: 
-  [AdlsGen1ResourceNameFilterIncludePrefix <String[]>]: 
-  [AdlsGen1ResourceNameFilterResource <String[]>]: 
+  [AdlsGen1CredentialType <String>]: 
+  [AdlsGen1ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AdlsGen1ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AdlsGen1ResourceNameFilterResource <List<String>>]: 
   [AdlsGen2CredentialReferenceName <String>]: 
-  [AdlsGen2CredentialType <CredentialType?>]: 
-  [AdlsGen2ResourceNameFilterExcludePrefix <String[]>]: 
-  [AdlsGen2ResourceNameFilterIncludePrefix <String[]>]: 
-  [AdlsGen2ResourceNameFilterResource <String[]>]: 
+  [AdlsGen2CredentialType <String>]: 
+  [AdlsGen2ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AdlsGen2ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AdlsGen2ResourceNameFilterResource <List<String>>]: 
   [AmazonAccountCredentialReferenceName <String>]: 
-  [AmazonAccountCredentialType <CredentialType?>]: 
-  [AmazonAccountResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonAccountResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonAccountResourceNameFilterResource <String[]>]: 
+  [AmazonAccountCredentialType <String>]: 
+  [AmazonAccountResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonAccountResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonAccountResourceNameFilterResource <List<String>>]: 
   [AmazonAccountScanRulesetName <String>]: 
-  [AmazonAccountScanRulesetType <ScanRulesetType?>]: 
+  [AmazonAccountScanRulesetType <String>]: 
   [AmazonPostgreSqlCredentialReferenceName <String>]: 
-  [AmazonPostgreSqlCredentialType <CredentialType?>]: 
-  [AmazonPostgreSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonPostgreSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonPostgreSqlResourceNameFilterResource <String[]>]: 
+  [AmazonPostgreSqlCredentialType <String>]: 
+  [AmazonPostgreSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonPostgreSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonPostgreSqlResourceNameFilterResource <List<String>>]: 
   [AmazonPostgreSqlScanRulesetName <String>]: 
-  [AmazonPostgreSqlScanRulesetType <ScanRulesetType?>]: 
+  [AmazonPostgreSqlScanRulesetType <String>]: 
   [AmazonS3CredentialReferenceName <String>]: 
-  [AmazonS3CredentialType <CredentialType?>]: 
-  [AmazonS3ResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonS3ResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonS3ResourceNameFilterResource <String[]>]: 
+  [AmazonS3CredentialType <String>]: 
+  [AmazonS3ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonS3ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonS3ResourceNameFilterResource <List<String>>]: 
   [AmazonS3ScanRulesetName <String>]: 
-  [AmazonS3ScanRulesetType <ScanRulesetType?>]: 
+  [AmazonS3ScanRulesetType <String>]: 
   [AmazonSqlCredentialReferenceName <String>]: 
-  [AmazonSqlCredentialType <CredentialType?>]: 
-  [AmazonSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonSqlResourceNameFilterResource <String[]>]: 
+  [AmazonSqlCredentialType <String>]: 
+  [AmazonSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonSqlResourceNameFilterResource <List<String>>]: 
   [AmazonSqlScanRulesetName <String>]: 
-  [AmazonSqlScanRulesetType <ScanRulesetType?>]: 
+  [AmazonSqlScanRulesetType <String>]: 
   [AzureCosmoDbScanRulesetName <String>]: 
-  [AzureCosmoDbScanRulesetType <ScanRulesetType?>]: 
+  [AzureCosmoDbScanRulesetType <String>]: 
   [AzureCosmosDbCredentialReferenceName <String>]: 
-  [AzureCosmosDbCredentialType <CredentialType?>]: 
-  [AzureCosmosDbResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureCosmosDbResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureCosmosDbResourceNameFilterResource <String[]>]: 
+  [AzureCosmosDbCredentialType <String>]: 
+  [AzureCosmosDbResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureCosmosDbResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureCosmosDbResourceNameFilterResource <List<String>>]: 
   [AzureDataExplorerCredentialReferenceName <String>]: 
-  [AzureDataExplorerCredentialType <CredentialType?>]: 
-  [AzureDataExplorerResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureDataExplorerResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureDataExplorerResourceNameFilterResource <String[]>]: 
+  [AzureDataExplorerCredentialType <String>]: 
+  [AzureDataExplorerResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureDataExplorerResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureDataExplorerResourceNameFilterResource <List<String>>]: 
   [AzureDataExplorerScanRulesetName <String>]: 
-  [AzureDataExplorerScanRulesetType <ScanRulesetType?>]: 
+  [AzureDataExplorerScanRulesetType <String>]: 
   [AzureFileServiceCredentialReferenceName <String>]: 
-  [AzureFileServiceCredentialType <CredentialType?>]: 
-  [AzureFileServiceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureFileServiceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureFileServiceResourceNameFilterResource <String[]>]: 
+  [AzureFileServiceCredentialType <String>]: 
+  [AzureFileServiceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureFileServiceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureFileServiceResourceNameFilterResource <List<String>>]: 
   [AzureFileServiceScanRulesetName <String>]: 
-  [AzureFileServiceScanRulesetType <ScanRulesetType?>]: 
+  [AzureFileServiceScanRulesetType <String>]: 
   [AzureMySqlCredentialReferenceName <String>]: 
-  [AzureMySqlCredentialType <CredentialType?>]: 
-  [AzureMySqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureMySqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureMySqlResourceNameFilterResource <String[]>]: 
+  [AzureMySqlCredentialType <String>]: 
+  [AzureMySqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureMySqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureMySqlResourceNameFilterResource <List<String>>]: 
   [AzureMySqlScanRulesetName <String>]: 
-  [AzureMySqlScanRulesetType <ScanRulesetType?>]: 
+  [AzureMySqlScanRulesetType <String>]: 
   [AzurePostgreSqlCredentialReferenceName <String>]: 
-  [AzurePostgreSqlCredentialType <CredentialType?>]: 
-  [AzurePostgreSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AzurePostgreSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AzurePostgreSqlResourceNameFilterResource <String[]>]: 
+  [AzurePostgreSqlCredentialType <String>]: 
+  [AzurePostgreSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzurePostgreSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzurePostgreSqlResourceNameFilterResource <List<String>>]: 
   [AzurePostgreSqlScanRulesetName <String>]: 
-  [AzurePostgreSqlScanRulesetType <ScanRulesetType?>]: 
+  [AzurePostgreSqlScanRulesetType <String>]: 
   [AzureResourceGroupCredentialReferenceName <String>]: 
-  [AzureResourceGroupCredentialType <CredentialType?>]: 
-  [AzureResourceGroupResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureResourceGroupResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureResourceGroupResourceNameFilterResource <String[]>]: 
+  [AzureResourceGroupCredentialType <String>]: 
+  [AzureResourceGroupResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureResourceGroupResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureResourceGroupResourceNameFilterResource <List<String>>]: 
   [AzureResourceGroupScanRulesetName <String>]: 
-  [AzureResourceGroupScanRulesetType <ScanRulesetType?>]: 
+  [AzureResourceGroupScanRulesetType <String>]: 
   [AzureSqlDataWarehouseCredentialReferenceName <String>]: 
-  [AzureSqlDataWarehouseCredentialType <CredentialType?>]: 
-  [AzureSqlDataWarehouseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDataWarehouseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDataWarehouseResourceNameFilterResource <String[]>]: 
+  [AzureSqlDataWarehouseCredentialType <String>]: 
+  [AzureSqlDataWarehouseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDataWarehouseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDataWarehouseResourceNameFilterResource <List<String>>]: 
   [AzureSqlDataWarehouseScanRulesetName <String>]: 
-  [AzureSqlDataWarehouseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSqlDataWarehouseScanRulesetType <String>]: 
   [AzureSqlDatabaseCredentialReferenceName <String>]: 
-  [AzureSqlDatabaseCredentialType <CredentialType?>]: 
+  [AzureSqlDatabaseCredentialType <String>]: 
   [AzureSqlDatabaseManagedInstanceCredentialReferenceName <String>]: 
-  [AzureSqlDatabaseManagedInstanceCredentialType <CredentialType?>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterResource <String[]>]: 
+  [AzureSqlDatabaseManagedInstanceCredentialType <String>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterResource <List<String>>]: 
   [AzureSqlDatabaseManagedInstanceScanRulesetName <String>]: 
-  [AzureSqlDatabaseManagedInstanceScanRulesetType <ScanRulesetType?>]: 
-  [AzureSqlDatabaseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDatabaseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDatabaseResourceNameFilterResource <String[]>]: 
+  [AzureSqlDatabaseManagedInstanceScanRulesetType <String>]: 
+  [AzureSqlDatabaseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDatabaseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDatabaseResourceNameFilterResource <List<String>>]: 
   [AzureSqlDatabaseScanRulesetName <String>]: 
-  [AzureSqlDatabaseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSqlDatabaseScanRulesetType <String>]: 
   [AzureStorageCredentialReferenceName <String>]: 
-  [AzureStorageCredentialType <CredentialType?>]: 
-  [AzureStorageResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureStorageResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureStorageResourceNameFilterResource <String[]>]: 
+  [AzureStorageCredentialType <String>]: 
+  [AzureStorageResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureStorageResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureStorageResourceNameFilterResource <List<String>>]: 
   [AzureStorageScanRulesetName <String>]: 
-  [AzureStorageScanRulesetType <ScanRulesetType?>]: 
+  [AzureStorageScanRulesetType <String>]: 
   [AzureSubscriptionCredentialReferenceName <String>]: 
-  [AzureSubscriptionCredentialType <CredentialType?>]: 
-  [AzureSubscriptionResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSubscriptionResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSubscriptionResourceNameFilterResource <String[]>]: 
+  [AzureSubscriptionCredentialType <String>]: 
+  [AzureSubscriptionResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSubscriptionResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSubscriptionResourceNameFilterResource <List<String>>]: 
   [AzureSubscriptionScanRulesetName <String>]: 
-  [AzureSubscriptionScanRulesetType <ScanRulesetType?>]: 
+  [AzureSubscriptionScanRulesetType <String>]: 
   [AzureSynapseCredentialReferenceName <String>]: 
-  [AzureSynapseCredentialType <CredentialType?>]: 
-  [AzureSynapseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSynapseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSynapseResourceNameFilterResource <String[]>]: 
+  [AzureSynapseCredentialType <String>]: 
+  [AzureSynapseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSynapseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSynapseResourceNameFilterResource <List<String>>]: 
   [AzureSynapseScanRulesetName <String>]: 
-  [AzureSynapseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSynapseScanRulesetType <String>]: 
   [AzureSynapseWorkspaceCredentialReferenceName <String>]: 
-  [AzureSynapseWorkspaceCredentialType <CredentialType?>]: 
-  [AzureSynapseWorkspaceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSynapseWorkspaceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSynapseWorkspaceResourceNameFilterResource <String[]>]: 
+  [AzureSynapseWorkspaceCredentialType <String>]: 
+  [AzureSynapseWorkspaceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSynapseWorkspaceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSynapseWorkspaceResourceNameFilterResource <List<String>>]: 
   [AzureSynapseWorkspaceScanRulesetName <String>]: 
-  [AzureSynapseWorkspaceScanRulesetType <ScanRulesetType?>]: 
+  [AzureSynapseWorkspaceScanRulesetType <String>]: 
   [NoneCredentialReferenceName <String>]: 
-  [NoneCredentialType <CredentialType?>]: 
-  [NoneResourceNameFilterExcludePrefix <String[]>]: 
-  [NoneResourceNameFilterIncludePrefix <String[]>]: 
-  [NoneResourceNameFilterResource <String[]>]: 
+  [NoneCredentialType <String>]: 
+  [NoneResourceNameFilterExcludePrefix <List<String>>]: 
+  [NoneResourceNameFilterIncludePrefix <List<String>>]: 
+  [NoneResourceNameFilterResource <List<String>>]: 
   [NoneScanRulesetName <String>]: 
-  [NoneScanRulesetType <ScanRulesetType?>]: 
+  [NoneScanRulesetType <String>]: 
   [OracleCredentialReferenceName <String>]: 
-  [OracleCredentialType <CredentialType?>]: 
-  [OracleResourceNameFilterExcludePrefix <String[]>]: 
-  [OracleResourceNameFilterIncludePrefix <String[]>]: 
-  [OracleResourceNameFilterResource <String[]>]: 
+  [OracleCredentialType <String>]: 
+  [OracleResourceNameFilterExcludePrefix <List<String>>]: 
+  [OracleResourceNameFilterIncludePrefix <List<String>>]: 
+  [OracleResourceNameFilterResource <List<String>>]: 
   [OracleScanRulesetName <String>]: 
-  [OracleScanRulesetType <ScanRulesetType?>]: 
+  [OracleScanRulesetType <String>]: 
   [PowerBiCredentialReferenceName <String>]: 
-  [PowerBiCredentialType <CredentialType?>]: 
-  [PowerBiResourceNameFilterExcludePrefix <String[]>]: 
-  [PowerBiResourceNameFilterIncludePrefix <String[]>]: 
-  [PowerBiResourceNameFilterResource <String[]>]: 
+  [PowerBiCredentialType <String>]: 
+  [PowerBiResourceNameFilterExcludePrefix <List<String>>]: 
+  [PowerBiResourceNameFilterIncludePrefix <List<String>>]: 
+  [PowerBiResourceNameFilterResource <List<String>>]: 
   [PowerBiScanRulesetName <String>]: 
-  [PowerBiScanRulesetType <ScanRulesetType?>]: 
+  [PowerBiScanRulesetType <String>]: 
   [SapEccCredentialReferenceName <String>]: 
-  [SapEccCredentialType <CredentialType?>]: 
-  [SapEccResourceNameFilterExcludePrefix <String[]>]: 
-  [SapEccResourceNameFilterIncludePrefix <String[]>]: 
-  [SapEccResourceNameFilterResource <String[]>]: 
+  [SapEccCredentialType <String>]: 
+  [SapEccResourceNameFilterExcludePrefix <List<String>>]: 
+  [SapEccResourceNameFilterIncludePrefix <List<String>>]: 
+  [SapEccResourceNameFilterResource <List<String>>]: 
   [SapEccScanRulesetName <String>]: 
-  [SapEccScanRulesetType <ScanRulesetType?>]: 
+  [SapEccScanRulesetType <String>]: 
   [SapS4HanaCredentialReferenceName <String>]: 
-  [SapS4HanaCredentialType <CredentialType?>]: 
-  [SapS4HanaResourceNameFilterExcludePrefix <String[]>]: 
-  [SapS4HanaResourceNameFilterIncludePrefix <String[]>]: 
-  [SapS4HanaResourceNameFilterResource <String[]>]: 
+  [SapS4HanaCredentialType <String>]: 
+  [SapS4HanaResourceNameFilterExcludePrefix <List<String>>]: 
+  [SapS4HanaResourceNameFilterIncludePrefix <List<String>>]: 
+  [SapS4HanaResourceNameFilterResource <List<String>>]: 
   [SapS4HanaScanRulesetName <String>]: 
-  [SapS4HanaScanRulesetType <ScanRulesetType?>]: 
+  [SapS4HanaScanRulesetType <String>]: 
   [SqlServerDatabaseCredentialReferenceName <String>]: 
-  [SqlServerDatabaseCredentialType <CredentialType?>]: 
-  [SqlServerDatabaseResourceNameFilterExcludePrefix <String[]>]: 
-  [SqlServerDatabaseResourceNameFilterIncludePrefix <String[]>]: 
-  [SqlServerDatabaseResourceNameFilterResource <String[]>]: 
+  [SqlServerDatabaseCredentialType <String>]: 
+  [SqlServerDatabaseResourceNameFilterExcludePrefix <List<String>>]: 
+  [SqlServerDatabaseResourceNameFilterIncludePrefix <List<String>>]: 
+  [SqlServerDatabaseResourceNameFilterResource <List<String>>]: 
   [SqlServerDatabaseScanRulesetName <String>]: 
-  [SqlServerDatabaseScanRulesetType <ScanRulesetType?>]: 
+  [SqlServerDatabaseScanRulesetType <String>]: 
   [TeradataCredentialReferenceName <String>]: 
-  [TeradataCredentialType <CredentialType?>]: 
-  [TeradataResourceNameFilterExcludePrefix <String[]>]: 
-  [TeradataResourceNameFilterIncludePrefix <String[]>]: 
-  [TeradataResourceNameFilterResource <String[]>]: 
+  [TeradataCredentialType <String>]: 
+  [TeradataResourceNameFilterExcludePrefix <List<String>>]: 
+  [TeradataResourceNameFilterIncludePrefix <List<String>>]: 
+  [TeradataResourceNameFilterResource <List<String>>]: 
   [TeradataScanRulesetName <String>]: 
-  [TeradataScanRulesetType <ScanRulesetType?>]: 
+  [TeradataScanRulesetType <String>]: 
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSubscriptionCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresubscriptioncredentialscanobject
 #>
 function New-AzPurviewAzureSubscriptionCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSubscriptionCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -13169,15 +14964,15 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IExpandingResourceScanPropertiesResourceTypes]
-    # To construct, see NOTES section for RESOURCETYPE properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IExpandingResourceScanPropertiesResourceTypes]
+    # 
     ${ResourceType},
 
     [Parameter()]
@@ -13186,9 +14981,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -13204,6 +14999,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -13232,6 +15030,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -13281,23 +15082,17 @@ Create an in-memory object for AzureSubscriptionDataSource.
 .Description
 Create an in-memory object for AzureSubscriptionDataSource.
 .Example
-New-AzPurviewAzureSubscriptionDataSourceObject -Kind 'AzureSubscription' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -SubscriptionId '6810b9ce-82d3-4562-9658-xxxxxxxxxx'
+New-AzPurviewAzureSubscriptionDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -SubscriptionId '6810b9ce-82d3-4562-9658-xxxxxxxxxx'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSubscriptionDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSubscriptionDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresubscriptiondatasourceobject
 #>
 function New-AzPurviewAzureSubscriptionDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSubscriptionDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -13321,6 +15116,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -13349,6 +15147,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -13398,10 +15199,10 @@ Create an in-memory object for AzureSubscriptionMsiScan.
 .Description
 Create an in-memory object for AzureSubscriptionMsiScan.
 .Example
-New-AzPurviewAzureSubscriptionMsiScanObject -Kind 'AzureSubscriptionMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference'
+New-AzPurviewAzureSubscriptionMsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionMsiScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSubscriptionMsiScan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -13409,200 +15210,194 @@ To create the parameters described below, construct a hash table containing the 
 
 RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>: 
   [AdlGen1ScanRulesetName <String>]: 
-  [AdlGen1ScanRulesetType <ScanRulesetType?>]: 
+  [AdlGen1ScanRulesetType <String>]: 
   [AdlGen2ScanRulesetName <String>]: 
-  [AdlGen2ScanRulesetType <ScanRulesetType?>]: 
+  [AdlGen2ScanRulesetType <String>]: 
   [AdlsGen1CredentialReferenceName <String>]: 
-  [AdlsGen1CredentialType <CredentialType?>]: 
-  [AdlsGen1ResourceNameFilterExcludePrefix <String[]>]: 
-  [AdlsGen1ResourceNameFilterIncludePrefix <String[]>]: 
-  [AdlsGen1ResourceNameFilterResource <String[]>]: 
+  [AdlsGen1CredentialType <String>]: 
+  [AdlsGen1ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AdlsGen1ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AdlsGen1ResourceNameFilterResource <List<String>>]: 
   [AdlsGen2CredentialReferenceName <String>]: 
-  [AdlsGen2CredentialType <CredentialType?>]: 
-  [AdlsGen2ResourceNameFilterExcludePrefix <String[]>]: 
-  [AdlsGen2ResourceNameFilterIncludePrefix <String[]>]: 
-  [AdlsGen2ResourceNameFilterResource <String[]>]: 
+  [AdlsGen2CredentialType <String>]: 
+  [AdlsGen2ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AdlsGen2ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AdlsGen2ResourceNameFilterResource <List<String>>]: 
   [AmazonAccountCredentialReferenceName <String>]: 
-  [AmazonAccountCredentialType <CredentialType?>]: 
-  [AmazonAccountResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonAccountResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonAccountResourceNameFilterResource <String[]>]: 
+  [AmazonAccountCredentialType <String>]: 
+  [AmazonAccountResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonAccountResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonAccountResourceNameFilterResource <List<String>>]: 
   [AmazonAccountScanRulesetName <String>]: 
-  [AmazonAccountScanRulesetType <ScanRulesetType?>]: 
+  [AmazonAccountScanRulesetType <String>]: 
   [AmazonPostgreSqlCredentialReferenceName <String>]: 
-  [AmazonPostgreSqlCredentialType <CredentialType?>]: 
-  [AmazonPostgreSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonPostgreSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonPostgreSqlResourceNameFilterResource <String[]>]: 
+  [AmazonPostgreSqlCredentialType <String>]: 
+  [AmazonPostgreSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonPostgreSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonPostgreSqlResourceNameFilterResource <List<String>>]: 
   [AmazonPostgreSqlScanRulesetName <String>]: 
-  [AmazonPostgreSqlScanRulesetType <ScanRulesetType?>]: 
+  [AmazonPostgreSqlScanRulesetType <String>]: 
   [AmazonS3CredentialReferenceName <String>]: 
-  [AmazonS3CredentialType <CredentialType?>]: 
-  [AmazonS3ResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonS3ResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonS3ResourceNameFilterResource <String[]>]: 
+  [AmazonS3CredentialType <String>]: 
+  [AmazonS3ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonS3ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonS3ResourceNameFilterResource <List<String>>]: 
   [AmazonS3ScanRulesetName <String>]: 
-  [AmazonS3ScanRulesetType <ScanRulesetType?>]: 
+  [AmazonS3ScanRulesetType <String>]: 
   [AmazonSqlCredentialReferenceName <String>]: 
-  [AmazonSqlCredentialType <CredentialType?>]: 
-  [AmazonSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonSqlResourceNameFilterResource <String[]>]: 
+  [AmazonSqlCredentialType <String>]: 
+  [AmazonSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonSqlResourceNameFilterResource <List<String>>]: 
   [AmazonSqlScanRulesetName <String>]: 
-  [AmazonSqlScanRulesetType <ScanRulesetType?>]: 
+  [AmazonSqlScanRulesetType <String>]: 
   [AzureCosmoDbScanRulesetName <String>]: 
-  [AzureCosmoDbScanRulesetType <ScanRulesetType?>]: 
+  [AzureCosmoDbScanRulesetType <String>]: 
   [AzureCosmosDbCredentialReferenceName <String>]: 
-  [AzureCosmosDbCredentialType <CredentialType?>]: 
-  [AzureCosmosDbResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureCosmosDbResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureCosmosDbResourceNameFilterResource <String[]>]: 
+  [AzureCosmosDbCredentialType <String>]: 
+  [AzureCosmosDbResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureCosmosDbResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureCosmosDbResourceNameFilterResource <List<String>>]: 
   [AzureDataExplorerCredentialReferenceName <String>]: 
-  [AzureDataExplorerCredentialType <CredentialType?>]: 
-  [AzureDataExplorerResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureDataExplorerResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureDataExplorerResourceNameFilterResource <String[]>]: 
+  [AzureDataExplorerCredentialType <String>]: 
+  [AzureDataExplorerResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureDataExplorerResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureDataExplorerResourceNameFilterResource <List<String>>]: 
   [AzureDataExplorerScanRulesetName <String>]: 
-  [AzureDataExplorerScanRulesetType <ScanRulesetType?>]: 
+  [AzureDataExplorerScanRulesetType <String>]: 
   [AzureFileServiceCredentialReferenceName <String>]: 
-  [AzureFileServiceCredentialType <CredentialType?>]: 
-  [AzureFileServiceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureFileServiceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureFileServiceResourceNameFilterResource <String[]>]: 
+  [AzureFileServiceCredentialType <String>]: 
+  [AzureFileServiceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureFileServiceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureFileServiceResourceNameFilterResource <List<String>>]: 
   [AzureFileServiceScanRulesetName <String>]: 
-  [AzureFileServiceScanRulesetType <ScanRulesetType?>]: 
+  [AzureFileServiceScanRulesetType <String>]: 
   [AzureMySqlCredentialReferenceName <String>]: 
-  [AzureMySqlCredentialType <CredentialType?>]: 
-  [AzureMySqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureMySqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureMySqlResourceNameFilterResource <String[]>]: 
+  [AzureMySqlCredentialType <String>]: 
+  [AzureMySqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureMySqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureMySqlResourceNameFilterResource <List<String>>]: 
   [AzureMySqlScanRulesetName <String>]: 
-  [AzureMySqlScanRulesetType <ScanRulesetType?>]: 
+  [AzureMySqlScanRulesetType <String>]: 
   [AzurePostgreSqlCredentialReferenceName <String>]: 
-  [AzurePostgreSqlCredentialType <CredentialType?>]: 
-  [AzurePostgreSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AzurePostgreSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AzurePostgreSqlResourceNameFilterResource <String[]>]: 
+  [AzurePostgreSqlCredentialType <String>]: 
+  [AzurePostgreSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzurePostgreSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzurePostgreSqlResourceNameFilterResource <List<String>>]: 
   [AzurePostgreSqlScanRulesetName <String>]: 
-  [AzurePostgreSqlScanRulesetType <ScanRulesetType?>]: 
+  [AzurePostgreSqlScanRulesetType <String>]: 
   [AzureResourceGroupCredentialReferenceName <String>]: 
-  [AzureResourceGroupCredentialType <CredentialType?>]: 
-  [AzureResourceGroupResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureResourceGroupResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureResourceGroupResourceNameFilterResource <String[]>]: 
+  [AzureResourceGroupCredentialType <String>]: 
+  [AzureResourceGroupResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureResourceGroupResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureResourceGroupResourceNameFilterResource <List<String>>]: 
   [AzureResourceGroupScanRulesetName <String>]: 
-  [AzureResourceGroupScanRulesetType <ScanRulesetType?>]: 
+  [AzureResourceGroupScanRulesetType <String>]: 
   [AzureSqlDataWarehouseCredentialReferenceName <String>]: 
-  [AzureSqlDataWarehouseCredentialType <CredentialType?>]: 
-  [AzureSqlDataWarehouseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDataWarehouseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDataWarehouseResourceNameFilterResource <String[]>]: 
+  [AzureSqlDataWarehouseCredentialType <String>]: 
+  [AzureSqlDataWarehouseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDataWarehouseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDataWarehouseResourceNameFilterResource <List<String>>]: 
   [AzureSqlDataWarehouseScanRulesetName <String>]: 
-  [AzureSqlDataWarehouseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSqlDataWarehouseScanRulesetType <String>]: 
   [AzureSqlDatabaseCredentialReferenceName <String>]: 
-  [AzureSqlDatabaseCredentialType <CredentialType?>]: 
+  [AzureSqlDatabaseCredentialType <String>]: 
   [AzureSqlDatabaseManagedInstanceCredentialReferenceName <String>]: 
-  [AzureSqlDatabaseManagedInstanceCredentialType <CredentialType?>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterResource <String[]>]: 
+  [AzureSqlDatabaseManagedInstanceCredentialType <String>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterResource <List<String>>]: 
   [AzureSqlDatabaseManagedInstanceScanRulesetName <String>]: 
-  [AzureSqlDatabaseManagedInstanceScanRulesetType <ScanRulesetType?>]: 
-  [AzureSqlDatabaseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDatabaseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDatabaseResourceNameFilterResource <String[]>]: 
+  [AzureSqlDatabaseManagedInstanceScanRulesetType <String>]: 
+  [AzureSqlDatabaseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDatabaseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDatabaseResourceNameFilterResource <List<String>>]: 
   [AzureSqlDatabaseScanRulesetName <String>]: 
-  [AzureSqlDatabaseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSqlDatabaseScanRulesetType <String>]: 
   [AzureStorageCredentialReferenceName <String>]: 
-  [AzureStorageCredentialType <CredentialType?>]: 
-  [AzureStorageResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureStorageResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureStorageResourceNameFilterResource <String[]>]: 
+  [AzureStorageCredentialType <String>]: 
+  [AzureStorageResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureStorageResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureStorageResourceNameFilterResource <List<String>>]: 
   [AzureStorageScanRulesetName <String>]: 
-  [AzureStorageScanRulesetType <ScanRulesetType?>]: 
+  [AzureStorageScanRulesetType <String>]: 
   [AzureSubscriptionCredentialReferenceName <String>]: 
-  [AzureSubscriptionCredentialType <CredentialType?>]: 
-  [AzureSubscriptionResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSubscriptionResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSubscriptionResourceNameFilterResource <String[]>]: 
+  [AzureSubscriptionCredentialType <String>]: 
+  [AzureSubscriptionResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSubscriptionResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSubscriptionResourceNameFilterResource <List<String>>]: 
   [AzureSubscriptionScanRulesetName <String>]: 
-  [AzureSubscriptionScanRulesetType <ScanRulesetType?>]: 
+  [AzureSubscriptionScanRulesetType <String>]: 
   [AzureSynapseCredentialReferenceName <String>]: 
-  [AzureSynapseCredentialType <CredentialType?>]: 
-  [AzureSynapseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSynapseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSynapseResourceNameFilterResource <String[]>]: 
+  [AzureSynapseCredentialType <String>]: 
+  [AzureSynapseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSynapseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSynapseResourceNameFilterResource <List<String>>]: 
   [AzureSynapseScanRulesetName <String>]: 
-  [AzureSynapseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSynapseScanRulesetType <String>]: 
   [AzureSynapseWorkspaceCredentialReferenceName <String>]: 
-  [AzureSynapseWorkspaceCredentialType <CredentialType?>]: 
-  [AzureSynapseWorkspaceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSynapseWorkspaceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSynapseWorkspaceResourceNameFilterResource <String[]>]: 
+  [AzureSynapseWorkspaceCredentialType <String>]: 
+  [AzureSynapseWorkspaceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSynapseWorkspaceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSynapseWorkspaceResourceNameFilterResource <List<String>>]: 
   [AzureSynapseWorkspaceScanRulesetName <String>]: 
-  [AzureSynapseWorkspaceScanRulesetType <ScanRulesetType?>]: 
+  [AzureSynapseWorkspaceScanRulesetType <String>]: 
   [NoneCredentialReferenceName <String>]: 
-  [NoneCredentialType <CredentialType?>]: 
-  [NoneResourceNameFilterExcludePrefix <String[]>]: 
-  [NoneResourceNameFilterIncludePrefix <String[]>]: 
-  [NoneResourceNameFilterResource <String[]>]: 
+  [NoneCredentialType <String>]: 
+  [NoneResourceNameFilterExcludePrefix <List<String>>]: 
+  [NoneResourceNameFilterIncludePrefix <List<String>>]: 
+  [NoneResourceNameFilterResource <List<String>>]: 
   [NoneScanRulesetName <String>]: 
-  [NoneScanRulesetType <ScanRulesetType?>]: 
+  [NoneScanRulesetType <String>]: 
   [OracleCredentialReferenceName <String>]: 
-  [OracleCredentialType <CredentialType?>]: 
-  [OracleResourceNameFilterExcludePrefix <String[]>]: 
-  [OracleResourceNameFilterIncludePrefix <String[]>]: 
-  [OracleResourceNameFilterResource <String[]>]: 
+  [OracleCredentialType <String>]: 
+  [OracleResourceNameFilterExcludePrefix <List<String>>]: 
+  [OracleResourceNameFilterIncludePrefix <List<String>>]: 
+  [OracleResourceNameFilterResource <List<String>>]: 
   [OracleScanRulesetName <String>]: 
-  [OracleScanRulesetType <ScanRulesetType?>]: 
+  [OracleScanRulesetType <String>]: 
   [PowerBiCredentialReferenceName <String>]: 
-  [PowerBiCredentialType <CredentialType?>]: 
-  [PowerBiResourceNameFilterExcludePrefix <String[]>]: 
-  [PowerBiResourceNameFilterIncludePrefix <String[]>]: 
-  [PowerBiResourceNameFilterResource <String[]>]: 
+  [PowerBiCredentialType <String>]: 
+  [PowerBiResourceNameFilterExcludePrefix <List<String>>]: 
+  [PowerBiResourceNameFilterIncludePrefix <List<String>>]: 
+  [PowerBiResourceNameFilterResource <List<String>>]: 
   [PowerBiScanRulesetName <String>]: 
-  [PowerBiScanRulesetType <ScanRulesetType?>]: 
+  [PowerBiScanRulesetType <String>]: 
   [SapEccCredentialReferenceName <String>]: 
-  [SapEccCredentialType <CredentialType?>]: 
-  [SapEccResourceNameFilterExcludePrefix <String[]>]: 
-  [SapEccResourceNameFilterIncludePrefix <String[]>]: 
-  [SapEccResourceNameFilterResource <String[]>]: 
+  [SapEccCredentialType <String>]: 
+  [SapEccResourceNameFilterExcludePrefix <List<String>>]: 
+  [SapEccResourceNameFilterIncludePrefix <List<String>>]: 
+  [SapEccResourceNameFilterResource <List<String>>]: 
   [SapEccScanRulesetName <String>]: 
-  [SapEccScanRulesetType <ScanRulesetType?>]: 
+  [SapEccScanRulesetType <String>]: 
   [SapS4HanaCredentialReferenceName <String>]: 
-  [SapS4HanaCredentialType <CredentialType?>]: 
-  [SapS4HanaResourceNameFilterExcludePrefix <String[]>]: 
-  [SapS4HanaResourceNameFilterIncludePrefix <String[]>]: 
-  [SapS4HanaResourceNameFilterResource <String[]>]: 
+  [SapS4HanaCredentialType <String>]: 
+  [SapS4HanaResourceNameFilterExcludePrefix <List<String>>]: 
+  [SapS4HanaResourceNameFilterIncludePrefix <List<String>>]: 
+  [SapS4HanaResourceNameFilterResource <List<String>>]: 
   [SapS4HanaScanRulesetName <String>]: 
-  [SapS4HanaScanRulesetType <ScanRulesetType?>]: 
+  [SapS4HanaScanRulesetType <String>]: 
   [SqlServerDatabaseCredentialReferenceName <String>]: 
-  [SqlServerDatabaseCredentialType <CredentialType?>]: 
-  [SqlServerDatabaseResourceNameFilterExcludePrefix <String[]>]: 
-  [SqlServerDatabaseResourceNameFilterIncludePrefix <String[]>]: 
-  [SqlServerDatabaseResourceNameFilterResource <String[]>]: 
+  [SqlServerDatabaseCredentialType <String>]: 
+  [SqlServerDatabaseResourceNameFilterExcludePrefix <List<String>>]: 
+  [SqlServerDatabaseResourceNameFilterIncludePrefix <List<String>>]: 
+  [SqlServerDatabaseResourceNameFilterResource <List<String>>]: 
   [SqlServerDatabaseScanRulesetName <String>]: 
-  [SqlServerDatabaseScanRulesetType <ScanRulesetType?>]: 
+  [SqlServerDatabaseScanRulesetType <String>]: 
   [TeradataCredentialReferenceName <String>]: 
-  [TeradataCredentialType <CredentialType?>]: 
-  [TeradataResourceNameFilterExcludePrefix <String[]>]: 
-  [TeradataResourceNameFilterIncludePrefix <String[]>]: 
-  [TeradataResourceNameFilterResource <String[]>]: 
+  [TeradataCredentialType <String>]: 
+  [TeradataResourceNameFilterExcludePrefix <List<String>>]: 
+  [TeradataResourceNameFilterIncludePrefix <List<String>>]: 
+  [TeradataResourceNameFilterResource <List<String>>]: 
   [TeradataScanRulesetName <String>]: 
-  [TeradataScanRulesetType <ScanRulesetType?>]: 
+  [TeradataScanRulesetType <String>]: 
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSubscriptionMsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresubscriptionmsiscanobject
 #>
 function New-AzPurviewAzureSubscriptionMsiScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionMsiScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSubscriptionMsiScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -13624,15 +15419,15 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IExpandingResourceScanPropertiesResourceTypes]
-    # To construct, see NOTES section for RESOURCETYPE properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IExpandingResourceScanPropertiesResourceTypes]
+    # 
     ${ResourceType},
 
     [Parameter()]
@@ -13641,9 +15436,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -13659,6 +15454,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -13687,6 +15485,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -13736,10 +15537,10 @@ Create an in-memory object for AzureSynapseWorkspaceCredentialScan.
 .Description
 Create an in-memory object for AzureSynapseWorkspaceCredentialScan.
 .Example
-New-AzPurviewAzureSynapseWorkspaceCredentialScanObject -Kind 'AzureSynapseWorkspaceCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp' -ScanRulesetName 'AzureSynapseSQL' -ScanRulesetType 'System'
+New-AzPurviewAzureSynapseWorkspaceCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp' -ScanRulesetName 'AzureSynapseSQL' -ScanRulesetType 'System'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSynapseWorkspaceCredentialScan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -13747,200 +15548,194 @@ To create the parameters described below, construct a hash table containing the 
 
 RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>: 
   [AdlGen1ScanRulesetName <String>]: 
-  [AdlGen1ScanRulesetType <ScanRulesetType?>]: 
+  [AdlGen1ScanRulesetType <String>]: 
   [AdlGen2ScanRulesetName <String>]: 
-  [AdlGen2ScanRulesetType <ScanRulesetType?>]: 
+  [AdlGen2ScanRulesetType <String>]: 
   [AdlsGen1CredentialReferenceName <String>]: 
-  [AdlsGen1CredentialType <CredentialType?>]: 
-  [AdlsGen1ResourceNameFilterExcludePrefix <String[]>]: 
-  [AdlsGen1ResourceNameFilterIncludePrefix <String[]>]: 
-  [AdlsGen1ResourceNameFilterResource <String[]>]: 
+  [AdlsGen1CredentialType <String>]: 
+  [AdlsGen1ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AdlsGen1ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AdlsGen1ResourceNameFilterResource <List<String>>]: 
   [AdlsGen2CredentialReferenceName <String>]: 
-  [AdlsGen2CredentialType <CredentialType?>]: 
-  [AdlsGen2ResourceNameFilterExcludePrefix <String[]>]: 
-  [AdlsGen2ResourceNameFilterIncludePrefix <String[]>]: 
-  [AdlsGen2ResourceNameFilterResource <String[]>]: 
+  [AdlsGen2CredentialType <String>]: 
+  [AdlsGen2ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AdlsGen2ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AdlsGen2ResourceNameFilterResource <List<String>>]: 
   [AmazonAccountCredentialReferenceName <String>]: 
-  [AmazonAccountCredentialType <CredentialType?>]: 
-  [AmazonAccountResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonAccountResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonAccountResourceNameFilterResource <String[]>]: 
+  [AmazonAccountCredentialType <String>]: 
+  [AmazonAccountResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonAccountResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonAccountResourceNameFilterResource <List<String>>]: 
   [AmazonAccountScanRulesetName <String>]: 
-  [AmazonAccountScanRulesetType <ScanRulesetType?>]: 
+  [AmazonAccountScanRulesetType <String>]: 
   [AmazonPostgreSqlCredentialReferenceName <String>]: 
-  [AmazonPostgreSqlCredentialType <CredentialType?>]: 
-  [AmazonPostgreSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonPostgreSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonPostgreSqlResourceNameFilterResource <String[]>]: 
+  [AmazonPostgreSqlCredentialType <String>]: 
+  [AmazonPostgreSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonPostgreSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonPostgreSqlResourceNameFilterResource <List<String>>]: 
   [AmazonPostgreSqlScanRulesetName <String>]: 
-  [AmazonPostgreSqlScanRulesetType <ScanRulesetType?>]: 
+  [AmazonPostgreSqlScanRulesetType <String>]: 
   [AmazonS3CredentialReferenceName <String>]: 
-  [AmazonS3CredentialType <CredentialType?>]: 
-  [AmazonS3ResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonS3ResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonS3ResourceNameFilterResource <String[]>]: 
+  [AmazonS3CredentialType <String>]: 
+  [AmazonS3ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonS3ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonS3ResourceNameFilterResource <List<String>>]: 
   [AmazonS3ScanRulesetName <String>]: 
-  [AmazonS3ScanRulesetType <ScanRulesetType?>]: 
+  [AmazonS3ScanRulesetType <String>]: 
   [AmazonSqlCredentialReferenceName <String>]: 
-  [AmazonSqlCredentialType <CredentialType?>]: 
-  [AmazonSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonSqlResourceNameFilterResource <String[]>]: 
+  [AmazonSqlCredentialType <String>]: 
+  [AmazonSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonSqlResourceNameFilterResource <List<String>>]: 
   [AmazonSqlScanRulesetName <String>]: 
-  [AmazonSqlScanRulesetType <ScanRulesetType?>]: 
+  [AmazonSqlScanRulesetType <String>]: 
   [AzureCosmoDbScanRulesetName <String>]: 
-  [AzureCosmoDbScanRulesetType <ScanRulesetType?>]: 
+  [AzureCosmoDbScanRulesetType <String>]: 
   [AzureCosmosDbCredentialReferenceName <String>]: 
-  [AzureCosmosDbCredentialType <CredentialType?>]: 
-  [AzureCosmosDbResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureCosmosDbResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureCosmosDbResourceNameFilterResource <String[]>]: 
+  [AzureCosmosDbCredentialType <String>]: 
+  [AzureCosmosDbResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureCosmosDbResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureCosmosDbResourceNameFilterResource <List<String>>]: 
   [AzureDataExplorerCredentialReferenceName <String>]: 
-  [AzureDataExplorerCredentialType <CredentialType?>]: 
-  [AzureDataExplorerResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureDataExplorerResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureDataExplorerResourceNameFilterResource <String[]>]: 
+  [AzureDataExplorerCredentialType <String>]: 
+  [AzureDataExplorerResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureDataExplorerResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureDataExplorerResourceNameFilterResource <List<String>>]: 
   [AzureDataExplorerScanRulesetName <String>]: 
-  [AzureDataExplorerScanRulesetType <ScanRulesetType?>]: 
+  [AzureDataExplorerScanRulesetType <String>]: 
   [AzureFileServiceCredentialReferenceName <String>]: 
-  [AzureFileServiceCredentialType <CredentialType?>]: 
-  [AzureFileServiceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureFileServiceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureFileServiceResourceNameFilterResource <String[]>]: 
+  [AzureFileServiceCredentialType <String>]: 
+  [AzureFileServiceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureFileServiceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureFileServiceResourceNameFilterResource <List<String>>]: 
   [AzureFileServiceScanRulesetName <String>]: 
-  [AzureFileServiceScanRulesetType <ScanRulesetType?>]: 
+  [AzureFileServiceScanRulesetType <String>]: 
   [AzureMySqlCredentialReferenceName <String>]: 
-  [AzureMySqlCredentialType <CredentialType?>]: 
-  [AzureMySqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureMySqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureMySqlResourceNameFilterResource <String[]>]: 
+  [AzureMySqlCredentialType <String>]: 
+  [AzureMySqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureMySqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureMySqlResourceNameFilterResource <List<String>>]: 
   [AzureMySqlScanRulesetName <String>]: 
-  [AzureMySqlScanRulesetType <ScanRulesetType?>]: 
+  [AzureMySqlScanRulesetType <String>]: 
   [AzurePostgreSqlCredentialReferenceName <String>]: 
-  [AzurePostgreSqlCredentialType <CredentialType?>]: 
-  [AzurePostgreSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AzurePostgreSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AzurePostgreSqlResourceNameFilterResource <String[]>]: 
+  [AzurePostgreSqlCredentialType <String>]: 
+  [AzurePostgreSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzurePostgreSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzurePostgreSqlResourceNameFilterResource <List<String>>]: 
   [AzurePostgreSqlScanRulesetName <String>]: 
-  [AzurePostgreSqlScanRulesetType <ScanRulesetType?>]: 
+  [AzurePostgreSqlScanRulesetType <String>]: 
   [AzureResourceGroupCredentialReferenceName <String>]: 
-  [AzureResourceGroupCredentialType <CredentialType?>]: 
-  [AzureResourceGroupResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureResourceGroupResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureResourceGroupResourceNameFilterResource <String[]>]: 
+  [AzureResourceGroupCredentialType <String>]: 
+  [AzureResourceGroupResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureResourceGroupResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureResourceGroupResourceNameFilterResource <List<String>>]: 
   [AzureResourceGroupScanRulesetName <String>]: 
-  [AzureResourceGroupScanRulesetType <ScanRulesetType?>]: 
+  [AzureResourceGroupScanRulesetType <String>]: 
   [AzureSqlDataWarehouseCredentialReferenceName <String>]: 
-  [AzureSqlDataWarehouseCredentialType <CredentialType?>]: 
-  [AzureSqlDataWarehouseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDataWarehouseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDataWarehouseResourceNameFilterResource <String[]>]: 
+  [AzureSqlDataWarehouseCredentialType <String>]: 
+  [AzureSqlDataWarehouseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDataWarehouseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDataWarehouseResourceNameFilterResource <List<String>>]: 
   [AzureSqlDataWarehouseScanRulesetName <String>]: 
-  [AzureSqlDataWarehouseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSqlDataWarehouseScanRulesetType <String>]: 
   [AzureSqlDatabaseCredentialReferenceName <String>]: 
-  [AzureSqlDatabaseCredentialType <CredentialType?>]: 
+  [AzureSqlDatabaseCredentialType <String>]: 
   [AzureSqlDatabaseManagedInstanceCredentialReferenceName <String>]: 
-  [AzureSqlDatabaseManagedInstanceCredentialType <CredentialType?>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterResource <String[]>]: 
+  [AzureSqlDatabaseManagedInstanceCredentialType <String>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterResource <List<String>>]: 
   [AzureSqlDatabaseManagedInstanceScanRulesetName <String>]: 
-  [AzureSqlDatabaseManagedInstanceScanRulesetType <ScanRulesetType?>]: 
-  [AzureSqlDatabaseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDatabaseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDatabaseResourceNameFilterResource <String[]>]: 
+  [AzureSqlDatabaseManagedInstanceScanRulesetType <String>]: 
+  [AzureSqlDatabaseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDatabaseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDatabaseResourceNameFilterResource <List<String>>]: 
   [AzureSqlDatabaseScanRulesetName <String>]: 
-  [AzureSqlDatabaseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSqlDatabaseScanRulesetType <String>]: 
   [AzureStorageCredentialReferenceName <String>]: 
-  [AzureStorageCredentialType <CredentialType?>]: 
-  [AzureStorageResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureStorageResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureStorageResourceNameFilterResource <String[]>]: 
+  [AzureStorageCredentialType <String>]: 
+  [AzureStorageResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureStorageResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureStorageResourceNameFilterResource <List<String>>]: 
   [AzureStorageScanRulesetName <String>]: 
-  [AzureStorageScanRulesetType <ScanRulesetType?>]: 
+  [AzureStorageScanRulesetType <String>]: 
   [AzureSubscriptionCredentialReferenceName <String>]: 
-  [AzureSubscriptionCredentialType <CredentialType?>]: 
-  [AzureSubscriptionResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSubscriptionResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSubscriptionResourceNameFilterResource <String[]>]: 
+  [AzureSubscriptionCredentialType <String>]: 
+  [AzureSubscriptionResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSubscriptionResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSubscriptionResourceNameFilterResource <List<String>>]: 
   [AzureSubscriptionScanRulesetName <String>]: 
-  [AzureSubscriptionScanRulesetType <ScanRulesetType?>]: 
+  [AzureSubscriptionScanRulesetType <String>]: 
   [AzureSynapseCredentialReferenceName <String>]: 
-  [AzureSynapseCredentialType <CredentialType?>]: 
-  [AzureSynapseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSynapseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSynapseResourceNameFilterResource <String[]>]: 
+  [AzureSynapseCredentialType <String>]: 
+  [AzureSynapseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSynapseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSynapseResourceNameFilterResource <List<String>>]: 
   [AzureSynapseScanRulesetName <String>]: 
-  [AzureSynapseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSynapseScanRulesetType <String>]: 
   [AzureSynapseWorkspaceCredentialReferenceName <String>]: 
-  [AzureSynapseWorkspaceCredentialType <CredentialType?>]: 
-  [AzureSynapseWorkspaceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSynapseWorkspaceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSynapseWorkspaceResourceNameFilterResource <String[]>]: 
+  [AzureSynapseWorkspaceCredentialType <String>]: 
+  [AzureSynapseWorkspaceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSynapseWorkspaceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSynapseWorkspaceResourceNameFilterResource <List<String>>]: 
   [AzureSynapseWorkspaceScanRulesetName <String>]: 
-  [AzureSynapseWorkspaceScanRulesetType <ScanRulesetType?>]: 
+  [AzureSynapseWorkspaceScanRulesetType <String>]: 
   [NoneCredentialReferenceName <String>]: 
-  [NoneCredentialType <CredentialType?>]: 
-  [NoneResourceNameFilterExcludePrefix <String[]>]: 
-  [NoneResourceNameFilterIncludePrefix <String[]>]: 
-  [NoneResourceNameFilterResource <String[]>]: 
+  [NoneCredentialType <String>]: 
+  [NoneResourceNameFilterExcludePrefix <List<String>>]: 
+  [NoneResourceNameFilterIncludePrefix <List<String>>]: 
+  [NoneResourceNameFilterResource <List<String>>]: 
   [NoneScanRulesetName <String>]: 
-  [NoneScanRulesetType <ScanRulesetType?>]: 
+  [NoneScanRulesetType <String>]: 
   [OracleCredentialReferenceName <String>]: 
-  [OracleCredentialType <CredentialType?>]: 
-  [OracleResourceNameFilterExcludePrefix <String[]>]: 
-  [OracleResourceNameFilterIncludePrefix <String[]>]: 
-  [OracleResourceNameFilterResource <String[]>]: 
+  [OracleCredentialType <String>]: 
+  [OracleResourceNameFilterExcludePrefix <List<String>>]: 
+  [OracleResourceNameFilterIncludePrefix <List<String>>]: 
+  [OracleResourceNameFilterResource <List<String>>]: 
   [OracleScanRulesetName <String>]: 
-  [OracleScanRulesetType <ScanRulesetType?>]: 
+  [OracleScanRulesetType <String>]: 
   [PowerBiCredentialReferenceName <String>]: 
-  [PowerBiCredentialType <CredentialType?>]: 
-  [PowerBiResourceNameFilterExcludePrefix <String[]>]: 
-  [PowerBiResourceNameFilterIncludePrefix <String[]>]: 
-  [PowerBiResourceNameFilterResource <String[]>]: 
+  [PowerBiCredentialType <String>]: 
+  [PowerBiResourceNameFilterExcludePrefix <List<String>>]: 
+  [PowerBiResourceNameFilterIncludePrefix <List<String>>]: 
+  [PowerBiResourceNameFilterResource <List<String>>]: 
   [PowerBiScanRulesetName <String>]: 
-  [PowerBiScanRulesetType <ScanRulesetType?>]: 
+  [PowerBiScanRulesetType <String>]: 
   [SapEccCredentialReferenceName <String>]: 
-  [SapEccCredentialType <CredentialType?>]: 
-  [SapEccResourceNameFilterExcludePrefix <String[]>]: 
-  [SapEccResourceNameFilterIncludePrefix <String[]>]: 
-  [SapEccResourceNameFilterResource <String[]>]: 
+  [SapEccCredentialType <String>]: 
+  [SapEccResourceNameFilterExcludePrefix <List<String>>]: 
+  [SapEccResourceNameFilterIncludePrefix <List<String>>]: 
+  [SapEccResourceNameFilterResource <List<String>>]: 
   [SapEccScanRulesetName <String>]: 
-  [SapEccScanRulesetType <ScanRulesetType?>]: 
+  [SapEccScanRulesetType <String>]: 
   [SapS4HanaCredentialReferenceName <String>]: 
-  [SapS4HanaCredentialType <CredentialType?>]: 
-  [SapS4HanaResourceNameFilterExcludePrefix <String[]>]: 
-  [SapS4HanaResourceNameFilterIncludePrefix <String[]>]: 
-  [SapS4HanaResourceNameFilterResource <String[]>]: 
+  [SapS4HanaCredentialType <String>]: 
+  [SapS4HanaResourceNameFilterExcludePrefix <List<String>>]: 
+  [SapS4HanaResourceNameFilterIncludePrefix <List<String>>]: 
+  [SapS4HanaResourceNameFilterResource <List<String>>]: 
   [SapS4HanaScanRulesetName <String>]: 
-  [SapS4HanaScanRulesetType <ScanRulesetType?>]: 
+  [SapS4HanaScanRulesetType <String>]: 
   [SqlServerDatabaseCredentialReferenceName <String>]: 
-  [SqlServerDatabaseCredentialType <CredentialType?>]: 
-  [SqlServerDatabaseResourceNameFilterExcludePrefix <String[]>]: 
-  [SqlServerDatabaseResourceNameFilterIncludePrefix <String[]>]: 
-  [SqlServerDatabaseResourceNameFilterResource <String[]>]: 
+  [SqlServerDatabaseCredentialType <String>]: 
+  [SqlServerDatabaseResourceNameFilterExcludePrefix <List<String>>]: 
+  [SqlServerDatabaseResourceNameFilterIncludePrefix <List<String>>]: 
+  [SqlServerDatabaseResourceNameFilterResource <List<String>>]: 
   [SqlServerDatabaseScanRulesetName <String>]: 
-  [SqlServerDatabaseScanRulesetType <ScanRulesetType?>]: 
+  [SqlServerDatabaseScanRulesetType <String>]: 
   [TeradataCredentialReferenceName <String>]: 
-  [TeradataCredentialType <CredentialType?>]: 
-  [TeradataResourceNameFilterExcludePrefix <String[]>]: 
-  [TeradataResourceNameFilterIncludePrefix <String[]>]: 
-  [TeradataResourceNameFilterResource <String[]>]: 
+  [TeradataCredentialType <String>]: 
+  [TeradataResourceNameFilterExcludePrefix <List<String>>]: 
+  [TeradataResourceNameFilterIncludePrefix <List<String>>]: 
+  [TeradataResourceNameFilterResource <List<String>>]: 
   [TeradataScanRulesetName <String>]: 
-  [TeradataScanRulesetType <ScanRulesetType?>]: 
+  [TeradataScanRulesetType <String>]: 
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSynapseWorkspaceCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresynapseworkspacecredentialscanobject
 #>
 function New-AzPurviewAzureSynapseWorkspaceCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSynapseWorkspaceCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -13962,15 +15757,15 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IExpandingResourceScanPropertiesResourceTypes]
-    # To construct, see NOTES section for RESOURCETYPE properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IExpandingResourceScanPropertiesResourceTypes]
+    # 
     ${ResourceType},
 
     [Parameter()]
@@ -13979,9 +15774,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -13997,6 +15792,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -14025,6 +15823,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -14074,23 +15875,17 @@ Create an in-memory object for AzureSynapseWorkspaceDataSource.
 .Description
 Create an in-memory object for AzureSynapseWorkspaceDataSource.
 .Example
-New-AzPurviewAzureSynapseWorkspaceDataSourceObject -Kind 'AzureSynapseWorkspace' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DedicatedSqlEndpoint 'g1euap.sql.azuresynapse.net' -ServerlessSqlEndpoint 'rg1euap-ondemand.sql.azuresynapse.net'
+New-AzPurviewAzureSynapseWorkspaceDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DedicatedSqlEndpoint 'g1euap.sql.azuresynapse.net' -ServerlessSqlEndpoint 'rg1euap-ondemand.sql.azuresynapse.net'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSynapseWorkspaceDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSynapseWorkspaceDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresynapseworkspacedatasourceobject
 #>
 function New-AzPurviewAzureSynapseWorkspaceDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSynapseWorkspaceDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -14139,6 +15934,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -14167,6 +15965,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -14216,10 +16017,10 @@ Create an in-memory object for AzureSynapseWorkspaceMsiScan.
 .Description
 Create an in-memory object for AzureSynapseWorkspaceMsiScan.
 .Example
-New-AzPurviewAzureSynapseWorkspaceMsiScanObject -Kind 'AzureSynapseWorkspaceMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AzureSynapseSQL' -ScanRulesetType 'System'
+New-AzPurviewAzureSynapseWorkspaceMsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AzureSynapseSQL' -ScanRulesetType 'System'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceMsiScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSynapseWorkspaceMsiScan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -14227,200 +16028,194 @@ To create the parameters described below, construct a hash table containing the 
 
 RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>: 
   [AdlGen1ScanRulesetName <String>]: 
-  [AdlGen1ScanRulesetType <ScanRulesetType?>]: 
+  [AdlGen1ScanRulesetType <String>]: 
   [AdlGen2ScanRulesetName <String>]: 
-  [AdlGen2ScanRulesetType <ScanRulesetType?>]: 
+  [AdlGen2ScanRulesetType <String>]: 
   [AdlsGen1CredentialReferenceName <String>]: 
-  [AdlsGen1CredentialType <CredentialType?>]: 
-  [AdlsGen1ResourceNameFilterExcludePrefix <String[]>]: 
-  [AdlsGen1ResourceNameFilterIncludePrefix <String[]>]: 
-  [AdlsGen1ResourceNameFilterResource <String[]>]: 
+  [AdlsGen1CredentialType <String>]: 
+  [AdlsGen1ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AdlsGen1ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AdlsGen1ResourceNameFilterResource <List<String>>]: 
   [AdlsGen2CredentialReferenceName <String>]: 
-  [AdlsGen2CredentialType <CredentialType?>]: 
-  [AdlsGen2ResourceNameFilterExcludePrefix <String[]>]: 
-  [AdlsGen2ResourceNameFilterIncludePrefix <String[]>]: 
-  [AdlsGen2ResourceNameFilterResource <String[]>]: 
+  [AdlsGen2CredentialType <String>]: 
+  [AdlsGen2ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AdlsGen2ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AdlsGen2ResourceNameFilterResource <List<String>>]: 
   [AmazonAccountCredentialReferenceName <String>]: 
-  [AmazonAccountCredentialType <CredentialType?>]: 
-  [AmazonAccountResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonAccountResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonAccountResourceNameFilterResource <String[]>]: 
+  [AmazonAccountCredentialType <String>]: 
+  [AmazonAccountResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonAccountResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonAccountResourceNameFilterResource <List<String>>]: 
   [AmazonAccountScanRulesetName <String>]: 
-  [AmazonAccountScanRulesetType <ScanRulesetType?>]: 
+  [AmazonAccountScanRulesetType <String>]: 
   [AmazonPostgreSqlCredentialReferenceName <String>]: 
-  [AmazonPostgreSqlCredentialType <CredentialType?>]: 
-  [AmazonPostgreSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonPostgreSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonPostgreSqlResourceNameFilterResource <String[]>]: 
+  [AmazonPostgreSqlCredentialType <String>]: 
+  [AmazonPostgreSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonPostgreSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonPostgreSqlResourceNameFilterResource <List<String>>]: 
   [AmazonPostgreSqlScanRulesetName <String>]: 
-  [AmazonPostgreSqlScanRulesetType <ScanRulesetType?>]: 
+  [AmazonPostgreSqlScanRulesetType <String>]: 
   [AmazonS3CredentialReferenceName <String>]: 
-  [AmazonS3CredentialType <CredentialType?>]: 
-  [AmazonS3ResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonS3ResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonS3ResourceNameFilterResource <String[]>]: 
+  [AmazonS3CredentialType <String>]: 
+  [AmazonS3ResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonS3ResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonS3ResourceNameFilterResource <List<String>>]: 
   [AmazonS3ScanRulesetName <String>]: 
-  [AmazonS3ScanRulesetType <ScanRulesetType?>]: 
+  [AmazonS3ScanRulesetType <String>]: 
   [AmazonSqlCredentialReferenceName <String>]: 
-  [AmazonSqlCredentialType <CredentialType?>]: 
-  [AmazonSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AmazonSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AmazonSqlResourceNameFilterResource <String[]>]: 
+  [AmazonSqlCredentialType <String>]: 
+  [AmazonSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AmazonSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AmazonSqlResourceNameFilterResource <List<String>>]: 
   [AmazonSqlScanRulesetName <String>]: 
-  [AmazonSqlScanRulesetType <ScanRulesetType?>]: 
+  [AmazonSqlScanRulesetType <String>]: 
   [AzureCosmoDbScanRulesetName <String>]: 
-  [AzureCosmoDbScanRulesetType <ScanRulesetType?>]: 
+  [AzureCosmoDbScanRulesetType <String>]: 
   [AzureCosmosDbCredentialReferenceName <String>]: 
-  [AzureCosmosDbCredentialType <CredentialType?>]: 
-  [AzureCosmosDbResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureCosmosDbResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureCosmosDbResourceNameFilterResource <String[]>]: 
+  [AzureCosmosDbCredentialType <String>]: 
+  [AzureCosmosDbResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureCosmosDbResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureCosmosDbResourceNameFilterResource <List<String>>]: 
   [AzureDataExplorerCredentialReferenceName <String>]: 
-  [AzureDataExplorerCredentialType <CredentialType?>]: 
-  [AzureDataExplorerResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureDataExplorerResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureDataExplorerResourceNameFilterResource <String[]>]: 
+  [AzureDataExplorerCredentialType <String>]: 
+  [AzureDataExplorerResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureDataExplorerResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureDataExplorerResourceNameFilterResource <List<String>>]: 
   [AzureDataExplorerScanRulesetName <String>]: 
-  [AzureDataExplorerScanRulesetType <ScanRulesetType?>]: 
+  [AzureDataExplorerScanRulesetType <String>]: 
   [AzureFileServiceCredentialReferenceName <String>]: 
-  [AzureFileServiceCredentialType <CredentialType?>]: 
-  [AzureFileServiceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureFileServiceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureFileServiceResourceNameFilterResource <String[]>]: 
+  [AzureFileServiceCredentialType <String>]: 
+  [AzureFileServiceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureFileServiceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureFileServiceResourceNameFilterResource <List<String>>]: 
   [AzureFileServiceScanRulesetName <String>]: 
-  [AzureFileServiceScanRulesetType <ScanRulesetType?>]: 
+  [AzureFileServiceScanRulesetType <String>]: 
   [AzureMySqlCredentialReferenceName <String>]: 
-  [AzureMySqlCredentialType <CredentialType?>]: 
-  [AzureMySqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureMySqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureMySqlResourceNameFilterResource <String[]>]: 
+  [AzureMySqlCredentialType <String>]: 
+  [AzureMySqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureMySqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureMySqlResourceNameFilterResource <List<String>>]: 
   [AzureMySqlScanRulesetName <String>]: 
-  [AzureMySqlScanRulesetType <ScanRulesetType?>]: 
+  [AzureMySqlScanRulesetType <String>]: 
   [AzurePostgreSqlCredentialReferenceName <String>]: 
-  [AzurePostgreSqlCredentialType <CredentialType?>]: 
-  [AzurePostgreSqlResourceNameFilterExcludePrefix <String[]>]: 
-  [AzurePostgreSqlResourceNameFilterIncludePrefix <String[]>]: 
-  [AzurePostgreSqlResourceNameFilterResource <String[]>]: 
+  [AzurePostgreSqlCredentialType <String>]: 
+  [AzurePostgreSqlResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzurePostgreSqlResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzurePostgreSqlResourceNameFilterResource <List<String>>]: 
   [AzurePostgreSqlScanRulesetName <String>]: 
-  [AzurePostgreSqlScanRulesetType <ScanRulesetType?>]: 
+  [AzurePostgreSqlScanRulesetType <String>]: 
   [AzureResourceGroupCredentialReferenceName <String>]: 
-  [AzureResourceGroupCredentialType <CredentialType?>]: 
-  [AzureResourceGroupResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureResourceGroupResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureResourceGroupResourceNameFilterResource <String[]>]: 
+  [AzureResourceGroupCredentialType <String>]: 
+  [AzureResourceGroupResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureResourceGroupResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureResourceGroupResourceNameFilterResource <List<String>>]: 
   [AzureResourceGroupScanRulesetName <String>]: 
-  [AzureResourceGroupScanRulesetType <ScanRulesetType?>]: 
+  [AzureResourceGroupScanRulesetType <String>]: 
   [AzureSqlDataWarehouseCredentialReferenceName <String>]: 
-  [AzureSqlDataWarehouseCredentialType <CredentialType?>]: 
-  [AzureSqlDataWarehouseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDataWarehouseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDataWarehouseResourceNameFilterResource <String[]>]: 
+  [AzureSqlDataWarehouseCredentialType <String>]: 
+  [AzureSqlDataWarehouseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDataWarehouseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDataWarehouseResourceNameFilterResource <List<String>>]: 
   [AzureSqlDataWarehouseScanRulesetName <String>]: 
-  [AzureSqlDataWarehouseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSqlDataWarehouseScanRulesetType <String>]: 
   [AzureSqlDatabaseCredentialReferenceName <String>]: 
-  [AzureSqlDatabaseCredentialType <CredentialType?>]: 
+  [AzureSqlDatabaseCredentialType <String>]: 
   [AzureSqlDatabaseManagedInstanceCredentialReferenceName <String>]: 
-  [AzureSqlDatabaseManagedInstanceCredentialType <CredentialType?>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDatabaseManagedInstanceResourceNameFilterResource <String[]>]: 
+  [AzureSqlDatabaseManagedInstanceCredentialType <String>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDatabaseManagedInstanceResourceNameFilterResource <List<String>>]: 
   [AzureSqlDatabaseManagedInstanceScanRulesetName <String>]: 
-  [AzureSqlDatabaseManagedInstanceScanRulesetType <ScanRulesetType?>]: 
-  [AzureSqlDatabaseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSqlDatabaseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSqlDatabaseResourceNameFilterResource <String[]>]: 
+  [AzureSqlDatabaseManagedInstanceScanRulesetType <String>]: 
+  [AzureSqlDatabaseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSqlDatabaseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSqlDatabaseResourceNameFilterResource <List<String>>]: 
   [AzureSqlDatabaseScanRulesetName <String>]: 
-  [AzureSqlDatabaseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSqlDatabaseScanRulesetType <String>]: 
   [AzureStorageCredentialReferenceName <String>]: 
-  [AzureStorageCredentialType <CredentialType?>]: 
-  [AzureStorageResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureStorageResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureStorageResourceNameFilterResource <String[]>]: 
+  [AzureStorageCredentialType <String>]: 
+  [AzureStorageResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureStorageResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureStorageResourceNameFilterResource <List<String>>]: 
   [AzureStorageScanRulesetName <String>]: 
-  [AzureStorageScanRulesetType <ScanRulesetType?>]: 
+  [AzureStorageScanRulesetType <String>]: 
   [AzureSubscriptionCredentialReferenceName <String>]: 
-  [AzureSubscriptionCredentialType <CredentialType?>]: 
-  [AzureSubscriptionResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSubscriptionResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSubscriptionResourceNameFilterResource <String[]>]: 
+  [AzureSubscriptionCredentialType <String>]: 
+  [AzureSubscriptionResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSubscriptionResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSubscriptionResourceNameFilterResource <List<String>>]: 
   [AzureSubscriptionScanRulesetName <String>]: 
-  [AzureSubscriptionScanRulesetType <ScanRulesetType?>]: 
+  [AzureSubscriptionScanRulesetType <String>]: 
   [AzureSynapseCredentialReferenceName <String>]: 
-  [AzureSynapseCredentialType <CredentialType?>]: 
-  [AzureSynapseResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSynapseResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSynapseResourceNameFilterResource <String[]>]: 
+  [AzureSynapseCredentialType <String>]: 
+  [AzureSynapseResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSynapseResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSynapseResourceNameFilterResource <List<String>>]: 
   [AzureSynapseScanRulesetName <String>]: 
-  [AzureSynapseScanRulesetType <ScanRulesetType?>]: 
+  [AzureSynapseScanRulesetType <String>]: 
   [AzureSynapseWorkspaceCredentialReferenceName <String>]: 
-  [AzureSynapseWorkspaceCredentialType <CredentialType?>]: 
-  [AzureSynapseWorkspaceResourceNameFilterExcludePrefix <String[]>]: 
-  [AzureSynapseWorkspaceResourceNameFilterIncludePrefix <String[]>]: 
-  [AzureSynapseWorkspaceResourceNameFilterResource <String[]>]: 
+  [AzureSynapseWorkspaceCredentialType <String>]: 
+  [AzureSynapseWorkspaceResourceNameFilterExcludePrefix <List<String>>]: 
+  [AzureSynapseWorkspaceResourceNameFilterIncludePrefix <List<String>>]: 
+  [AzureSynapseWorkspaceResourceNameFilterResource <List<String>>]: 
   [AzureSynapseWorkspaceScanRulesetName <String>]: 
-  [AzureSynapseWorkspaceScanRulesetType <ScanRulesetType?>]: 
+  [AzureSynapseWorkspaceScanRulesetType <String>]: 
   [NoneCredentialReferenceName <String>]: 
-  [NoneCredentialType <CredentialType?>]: 
-  [NoneResourceNameFilterExcludePrefix <String[]>]: 
-  [NoneResourceNameFilterIncludePrefix <String[]>]: 
-  [NoneResourceNameFilterResource <String[]>]: 
+  [NoneCredentialType <String>]: 
+  [NoneResourceNameFilterExcludePrefix <List<String>>]: 
+  [NoneResourceNameFilterIncludePrefix <List<String>>]: 
+  [NoneResourceNameFilterResource <List<String>>]: 
   [NoneScanRulesetName <String>]: 
-  [NoneScanRulesetType <ScanRulesetType?>]: 
+  [NoneScanRulesetType <String>]: 
   [OracleCredentialReferenceName <String>]: 
-  [OracleCredentialType <CredentialType?>]: 
-  [OracleResourceNameFilterExcludePrefix <String[]>]: 
-  [OracleResourceNameFilterIncludePrefix <String[]>]: 
-  [OracleResourceNameFilterResource <String[]>]: 
+  [OracleCredentialType <String>]: 
+  [OracleResourceNameFilterExcludePrefix <List<String>>]: 
+  [OracleResourceNameFilterIncludePrefix <List<String>>]: 
+  [OracleResourceNameFilterResource <List<String>>]: 
   [OracleScanRulesetName <String>]: 
-  [OracleScanRulesetType <ScanRulesetType?>]: 
+  [OracleScanRulesetType <String>]: 
   [PowerBiCredentialReferenceName <String>]: 
-  [PowerBiCredentialType <CredentialType?>]: 
-  [PowerBiResourceNameFilterExcludePrefix <String[]>]: 
-  [PowerBiResourceNameFilterIncludePrefix <String[]>]: 
-  [PowerBiResourceNameFilterResource <String[]>]: 
+  [PowerBiCredentialType <String>]: 
+  [PowerBiResourceNameFilterExcludePrefix <List<String>>]: 
+  [PowerBiResourceNameFilterIncludePrefix <List<String>>]: 
+  [PowerBiResourceNameFilterResource <List<String>>]: 
   [PowerBiScanRulesetName <String>]: 
-  [PowerBiScanRulesetType <ScanRulesetType?>]: 
+  [PowerBiScanRulesetType <String>]: 
   [SapEccCredentialReferenceName <String>]: 
-  [SapEccCredentialType <CredentialType?>]: 
-  [SapEccResourceNameFilterExcludePrefix <String[]>]: 
-  [SapEccResourceNameFilterIncludePrefix <String[]>]: 
-  [SapEccResourceNameFilterResource <String[]>]: 
+  [SapEccCredentialType <String>]: 
+  [SapEccResourceNameFilterExcludePrefix <List<String>>]: 
+  [SapEccResourceNameFilterIncludePrefix <List<String>>]: 
+  [SapEccResourceNameFilterResource <List<String>>]: 
   [SapEccScanRulesetName <String>]: 
-  [SapEccScanRulesetType <ScanRulesetType?>]: 
+  [SapEccScanRulesetType <String>]: 
   [SapS4HanaCredentialReferenceName <String>]: 
-  [SapS4HanaCredentialType <CredentialType?>]: 
-  [SapS4HanaResourceNameFilterExcludePrefix <String[]>]: 
-  [SapS4HanaResourceNameFilterIncludePrefix <String[]>]: 
-  [SapS4HanaResourceNameFilterResource <String[]>]: 
+  [SapS4HanaCredentialType <String>]: 
+  [SapS4HanaResourceNameFilterExcludePrefix <List<String>>]: 
+  [SapS4HanaResourceNameFilterIncludePrefix <List<String>>]: 
+  [SapS4HanaResourceNameFilterResource <List<String>>]: 
   [SapS4HanaScanRulesetName <String>]: 
-  [SapS4HanaScanRulesetType <ScanRulesetType?>]: 
+  [SapS4HanaScanRulesetType <String>]: 
   [SqlServerDatabaseCredentialReferenceName <String>]: 
-  [SqlServerDatabaseCredentialType <CredentialType?>]: 
-  [SqlServerDatabaseResourceNameFilterExcludePrefix <String[]>]: 
-  [SqlServerDatabaseResourceNameFilterIncludePrefix <String[]>]: 
-  [SqlServerDatabaseResourceNameFilterResource <String[]>]: 
+  [SqlServerDatabaseCredentialType <String>]: 
+  [SqlServerDatabaseResourceNameFilterExcludePrefix <List<String>>]: 
+  [SqlServerDatabaseResourceNameFilterIncludePrefix <List<String>>]: 
+  [SqlServerDatabaseResourceNameFilterResource <List<String>>]: 
   [SqlServerDatabaseScanRulesetName <String>]: 
-  [SqlServerDatabaseScanRulesetType <ScanRulesetType?>]: 
+  [SqlServerDatabaseScanRulesetType <String>]: 
   [TeradataCredentialReferenceName <String>]: 
-  [TeradataCredentialType <CredentialType?>]: 
-  [TeradataResourceNameFilterExcludePrefix <String[]>]: 
-  [TeradataResourceNameFilterIncludePrefix <String[]>]: 
-  [TeradataResourceNameFilterResource <String[]>]: 
+  [TeradataCredentialType <String>]: 
+  [TeradataResourceNameFilterExcludePrefix <List<String>>]: 
+  [TeradataResourceNameFilterIncludePrefix <List<String>>]: 
+  [TeradataResourceNameFilterResource <List<String>>]: 
   [TeradataScanRulesetName <String>]: 
-  [TeradataScanRulesetType <ScanRulesetType?>]: 
+  [TeradataScanRulesetType <String>]: 
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSynapseWorkspaceMsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresynapseworkspacemsiscanobject
 #>
 function New-AzPurviewAzureSynapseWorkspaceMsiScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceMsiScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSynapseWorkspaceMsiScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -14442,15 +16237,15 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IExpandingResourceScanPropertiesResourceTypes]
-    # To construct, see NOTES section for RESOURCETYPE properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IExpandingResourceScanPropertiesResourceTypes]
+    # 
     ${ResourceType},
 
     [Parameter()]
@@ -14459,9 +16254,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -14477,6 +16272,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -14505,6 +16303,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -14554,23 +16355,17 @@ Create an in-memory object for AzureSynapseWorkspaceScanRuleset.
 .Description
 Create an in-memory object for AzureSynapseWorkspaceScanRuleset.
 .Example
-New-AzPurviewAzureSynapseWorkspaceScanRulesetObject -Kind 'AzureSynapseWorkspace' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+New-AzPurviewAzureSynapseWorkspaceScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSynapseWorkspaceScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSynapseWorkspaceScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresynapseworkspacescanrulesetobject
 #>
 function New-AzPurviewAzureSynapseWorkspaceScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSynapseWorkspaceScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -14587,9 +16382,9 @@ param(
     ${IncludedCustomClassificationRuleName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -14600,6 +16395,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -14628,6 +16426,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -14680,23 +16481,17 @@ Create an in-memory object for CustomClassificationRule.
 $reg1 = New-AzPurviewRegexClassificationRulePatternObject -Pattern '^col1$'
 $reg2 = New-AzPurviewRegexClassificationRulePatternObject -Pattern '^col2$'
 $regexarr = @($reg1, $reg2)
-New-AzPurviewCustomClassificationRuleObject -Kind 'Custom' -ClassificationName ClassificationRule4 -MinimumPercentageMatch 60 -RuleStatus 'Enabled' -Description 'This is a rule2' -ColumnPattern $regexarr
+New-AzPurviewCustomClassificationRuleObject -ClassificationName ClassificationRule4 -MinimumPercentageMatch 60 -RuleStatus 'Enabled' -Description 'This is a rule2' -ColumnPattern $regexarr
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.CustomClassificationRule
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.CustomClassificationRule
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewCustomClassificationRuleObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewcustomclassificationruleobject
 #>
 function New-AzPurviewCustomClassificationRuleObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.CustomClassificationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.CustomClassificationRule])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationRuleType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationRuleType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -14704,12 +16499,12 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRulePattern[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRulePattern[]]
     ${ColumnPattern},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRulePattern[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRulePattern[]]
     ${DataPattern},
 
     [Parameter()]
@@ -14723,9 +16518,9 @@ param(
     ${MinimumPercentageMatch},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationRuleStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationRuleStatus]
+    [System.String]
     ${RuleStatus}
 )
 
@@ -14736,6 +16531,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -14764,6 +16562,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -14816,12 +16617,12 @@ Create an in-memory object for Filter.
 New-AzPurviewFilterObject -ExcludeUriPrefix @('https://foo.file.core.windows.net/share1/user/temp') -IncludeUriPrefix @('https://foo.file.core.windows.net/share1/user','https://foo.file.core.windows.net/share1/aggregated')
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Filter
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Filter
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewFilterObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewfilterobject
 #>
 function New-AzPurviewFilterObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Filter])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Filter])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -14842,6 +16643,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -14870,6 +16674,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -14919,23 +16726,17 @@ Create an in-memory object for OracleDataSource.
 .Description
 Create an in-memory object for OracleDataSource.
 .Example
-New-AzPurviewOracleDataSourceObject -Kind 'Oracle' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Host '13.1.0.46' -Port 1521 -Service 'xe'
+New-AzPurviewOracleDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Host '13.1.0.46' -Port 1521 -Service 'xe'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OracleDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.OracleDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewOracleDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurvieworacledatasourceobject
 #>
 function New-AzPurviewOracleDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OracleDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.OracleDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -14969,6 +16770,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -14997,6 +16801,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -15046,23 +16853,17 @@ Create an in-memory object for PowerBIDataSource.
 .Description
 Create an in-memory object for PowerBIDataSource.
 .Example
-New-AzPurviewPowerBIDataSourceObject -Kind 'PowerBI' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Tenant 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx'
+New-AzPurviewPowerBIDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Tenant 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBiDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.PowerBiDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewPowerBIDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewpowerbidatasourceobject
 #>
 function New-AzPurviewPowerBIDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBIDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.PowerBIDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -15086,6 +16887,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -15114,6 +16918,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -15163,23 +16970,17 @@ Create an in-memory object for PowerBIDelegatedScan.
 .Description
 Create an in-memory object for PowerBIDelegatedScan.
 .Example
-New-AzPurviewPowerBIDelegatedScanObject -Kind 'PowerBIDelegated' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -IncludePersonalWorkspace $true -ClientId 'xxxxxxx-cdfd-4016-9e80-xxxxxxxx' -UserName 'abcd@msft.com' -Password 'pwd'
+New-AzPurviewPowerBIDelegatedScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -IncludePersonalWorkspace $true -ClientId 'xxxxxxx-cdfd-4016-9e80-xxxxxxxx' -UserName 'abcd@msft.com' -Password 'pwd'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBiDelegatedScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.PowerBiDelegatedScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewPowerBIDelegatedScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewpowerbidelegatedscanobject
 #>
 function New-AzPurviewPowerBIDelegatedScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBIDelegatedScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.PowerBIDelegatedScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -15221,9 +17022,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -15249,6 +17050,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -15277,6 +17081,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -15326,23 +17133,17 @@ Create an in-memory object for PowerBIMsiScan.
 .Description
 Create an in-memory object for PowerBIMsiScan.
 .Example
-New-AzPurviewPowerBIMsiScanObject -Kind 'PowerBIMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -IncludePersonalWorkspace $true
+New-AzPurviewPowerBIMsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -IncludePersonalWorkspace $true
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBiMsiScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.PowerBiMsiScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewPowerBIMsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewpowerbimsiscanobject
 #>
 function New-AzPurviewPowerBIMsiScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBIMsiScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.PowerBIMsiScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -15369,9 +17170,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -15387,6 +17188,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -15415,6 +17219,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -15467,12 +17274,12 @@ Create an in-memory object for RegexClassificationRulePattern.
 New-AzPurviewRegexClassificationRulePatternObject -Pattern '^col1$'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.RegexClassificationRulePattern
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.RegexClassificationRulePattern
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewRegexClassificationRulePatternObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewregexclassificationrulepatternobject
 #>
 function New-AzPurviewRegexClassificationRulePatternObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.RegexClassificationRulePattern])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.RegexClassificationRulePattern])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -15488,6 +17295,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -15516,6 +17326,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -15565,23 +17378,17 @@ Create an in-memory object for SapEccDataSource.
 .Description
 Create an in-memory object for SapEccDataSource.
 .Example
-New-AzPurviewSapEccDataSourceObject -Kind 'SapEcc' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ApplicationServer '12.13.14.12' -SystemNumber 32
+New-AzPurviewSapEccDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ApplicationServer '12.13.14.12' -SystemNumber 32
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapEccDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapEccDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewSapEccDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewsapeccdatasourceobject
 #>
 function New-AzPurviewSapEccDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapEccDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapEccDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -15610,6 +17417,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -15638,6 +17448,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -15687,23 +17500,17 @@ Create an in-memory object for SapS4HanaDataSource.
 .Description
 Create an in-memory object for SapS4HanaDataSource.
 .Example
-New-AzPurviewSapS4HanaDataSourceObject -Kind 'SapS4Hana' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ApplicationServer '12.13.14.12' -SystemNumber 32
+New-AzPurviewSapS4HanaDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ApplicationServer '12.13.14.12' -SystemNumber 32
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapS4HanaDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewSapS4HanaDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewsaps4hanadatasourceobject
 #>
 function New-AzPurviewSapS4HanaDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapS4HanaDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -15732,6 +17539,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -15760,6 +17570,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -15809,23 +17622,17 @@ Create an in-memory object for SapS4HanaSapS4HanaCredentialScan.
 .Description
 Create an in-memory object for SapS4HanaSapS4HanaCredentialScan.
 .Example
-New-AzPurviewSapS4HanaSapS4HanaCredentialScanObject -Kind 'SapS4HanaSapS4HanaCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ClientId '444' -CredentialReferenceName 'fdsafsdf' -CredentialType 'BasicAuth' -MaximumMemoryAllowedInGb 4 -JCoLibraryPath 'file://asdas' -ConnectedViaReferenceName 'IntegrationRuntime-NJh'
+New-AzPurviewSapS4HanaSapS4HanaCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ClientId '444' -CredentialReferenceName 'fdsafsdf' -CredentialType 'BasicAuth' -MaximumMemoryAllowedInGb 4 -JCoLibraryPath 'file://asdas' -ConnectedViaReferenceName 'IntegrationRuntime-NJh'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaSapS4HanaCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapS4HanaSapS4HanaCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewSapS4HanaSapS4HanaCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewsaps4hanasaps4hanacredentialscanobject
 #>
 function New-AzPurviewSapS4HanaSapS4HanaCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaSapS4HanaCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapS4HanaSapS4HanaCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -15852,9 +17659,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -15878,9 +17685,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -15896,6 +17703,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -15924,6 +17734,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -15973,23 +17786,17 @@ Create an in-memory object for SqlServerDatabaseCredentialScan.
 .Description
 Create an in-memory object for SqlServerDatabaseCredentialScan.
 .Example
-New-AzPurviewSqlServerDatabaseCredentialScanObject -Kind 'SqlServerDatabaseCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -ScanRulesetName 'SqlServer' -ScanRulesetType 'Custom' -ServerEndpoint '10.1.2.1' -ConnectedViaReferenceName 'IntegrationRuntime-NJh'
+New-AzPurviewSqlServerDatabaseCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -ScanRulesetName 'SqlServer' -ScanRulesetType 'Custom' -ServerEndpoint '10.1.2.1' -ConnectedViaReferenceName 'IntegrationRuntime-NJh'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SqlServerDatabaseCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewSqlServerDatabaseCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewsqlserverdatabasecredentialscanobject
 #>
 function New-AzPurviewSqlServerDatabaseCredentialScanObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseCredentialScan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SqlServerDatabaseCredentialScan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -16011,9 +17818,9 @@ param(
     ${CredentialReferenceName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+    [System.String]
     ${CredentialType},
 
     [Parameter()]
@@ -16027,9 +17834,9 @@ param(
     ${ScanRulesetName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${ScanRulesetType},
 
     [Parameter()]
@@ -16050,6 +17857,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -16078,6 +17888,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -16127,23 +17940,17 @@ Create an in-memory object for SqlServerDatabaseDataSource.
 .Description
 Create an in-memory object for SqlServerDatabaseDataSource.
 .Example
-New-AzPurviewSqlServerDatabaseDataSourceObject -Kind 'SqlServerDatabase' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint '12.13.14.12'
+New-AzPurviewSqlServerDatabaseDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint '12.13.14.12'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SqlServerDatabaseDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewSqlServerDatabaseDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewsqlserverdatabasedatasourceobject
 #>
 function New-AzPurviewSqlServerDatabaseDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SqlServerDatabaseDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -16187,6 +17994,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -16215,6 +18025,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -16264,23 +18077,17 @@ Create an in-memory object for SqlServerDatabaseScanRuleset.
 .Description
 Create an in-memory object for SqlServerDatabaseScanRuleset.
 .Example
-New-AzPurviewSqlServerDatabaseScanRulesetObject -Kind 'SqlServerDatabase' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+New-AzPurviewSqlServerDatabaseScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SqlServerDatabaseScanRuleset
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSqlServerDatabaseScanRulesetObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewsqlserverdatabasescanrulesetobject
 #>
 function New-AzPurviewSqlServerDatabaseScanRulesetObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseScanRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SqlServerDatabaseScanRuleset])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -16297,9 +18104,9 @@ param(
     ${IncludedCustomClassificationRuleName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+    [System.String]
     ${Type}
 )
 
@@ -16310,6 +18117,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -16338,6 +18148,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -16387,23 +18200,17 @@ Create an in-memory object for TeradataDataSource.
 .Description
 Create an in-memory object for TeradataDataSource.
 .Example
-New-AzPurviewTeradataDataSourceObject -Kind 'Teradata' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Host '12.13.14.12'
+New-AzPurviewTeradataDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Host '12.13.14.12'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.TeradataDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.TeradataDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewTeradataDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewteradatadatasourceobject
 #>
 function New-AzPurviewTeradataDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.TeradataDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.TeradataDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -16427,6 +18234,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -16455,6 +18265,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -16504,28 +18317,28 @@ Create an in-memory object for Trigger.
 .Description
 Create an in-memory object for Trigger.
 .Example
-New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -ScheduleHour $(9) -ScheduleMinute $(0) -ScheduleMonthDay $(10)
+New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -RecurrenceScheduleHour $(9) -RecurrenceScheduleMinute $(0) -RecurrenceScheduleMonthDay $(10)
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Trigger
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Trigger
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-SCHEDULEADDITIONALPROPERTY <IRecurrenceScheduleAdditionalProperties>: Dictionary of <any>.
+RECURRENCESCHEDULEADDITIONALPROPERTY <IRecurrenceScheduleAdditionalProperties>: Dictionary of <any>.
   [(Any) <Object>]: This indicates any property can be added to this object.
 
-SCHEDULEMONTHLYOCCURRENCE <IRecurrenceScheduleOccurrence[]>: 
+RECURRENCESCHEDULEMONTHLYOCCURRENCE <IRecurrenceScheduleOccurrence[]>: 
   [AdditionalProperty <IRecurrenceScheduleOccurrenceAdditionalProperties>]: Dictionary of <any>
     [(Any) <Object>]: This indicates any property can be added to this object.
-  [Day <DayOfWeek?>]: 
+  [Day <String>]: 
   [Occurrence <Int32?>]: 
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewTriggerObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewtriggerobject
 #>
 function New-AzPurviewTriggerObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Trigger])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Trigger])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -16544,15 +18357,48 @@ param(
     ${RecurrenceEndTime},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.TriggerFrequency])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Week", "Month")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.TriggerFrequency]
+    [System.String]
     ${RecurrenceFrequency},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
     ${RecurrenceInterval},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IRecurrenceScheduleAdditionalProperties]
+    # Dictionary of <any>.
+    ${RecurrenceScheduleAdditionalProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.Int32[]]
+    ${RecurrenceScheduleHour},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.Int32[]]
+    ${RecurrenceScheduleMinute},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.Int32[]]
+    ${RecurrenceScheduleMonthDay},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IRecurrenceScheduleOccurrence[]]
+    # 
+    ${RecurrenceScheduleMonthlyOccurrence},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String[]]
+    ${RecurrenceScheduleWeekDay},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
@@ -16565,44 +18411,10 @@ param(
     ${RecurrenceTimeZone},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Full", "Incremental")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType]
-    ${ScanLevel},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IRecurrenceScheduleAdditionalProperties]
-    # Dictionary of <any>.
-    # To construct, see NOTES section for SCHEDULEADDITIONALPROPERTY properties and create a hash table.
-    ${ScheduleAdditionalProperty},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [System.Int32[]]
-    ${ScheduleHour},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [System.Int32[]]
-    ${ScheduleMinute},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [System.Int32[]]
-    ${ScheduleMonthDay},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IRecurrenceScheduleOccurrence[]]
-    # To construct, see NOTES section for SCHEDULEMONTHLYOCCURRENCE properties and create a hash table.
-    ${ScheduleMonthlyOccurrence},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DaysOfWeek])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DaysOfWeek[]]
-    ${ScheduleWeekDay}
+    [System.String]
+    ${ScanLevel}
 )
 
 begin {
@@ -16612,6 +18424,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -16640,6 +18455,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Profile
                         { AnalysisServices, AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId },
                         { Attestation, AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId },
                         { OperationalInsights, AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId },
-                        { Storage, "https://storage.azure.com/" }, //OAuth scope/resource id for Storage, does not add it to ExtenedEndpoint to avoid confusion with StorageEndpointSuffix
+                        { Storage, "https://storage.azure.com/" }, //OAuth scope/resource id for Storage, does not add it to ExtendedEndpoint to avoid confusion with StorageEndpointSuffix
                         { Synapse, AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId },
                         { ManagedHsm, AzureEnvironment.ExtendedEndpoint.ManagedHsmServiceEndpointResourceId },
                         { AppConfiguration, AzureEnvironment.ExtendedEndpoint.AzureAppConfigurationEndpointResourceId },

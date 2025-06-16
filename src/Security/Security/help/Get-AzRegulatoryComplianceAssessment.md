@@ -25,7 +25,7 @@ Get-AzRegulatoryComplianceAssessment -ResourceId <String> [-DefaultProfile <IAzu
 ```
 
 ## DESCRIPTION
-Get a spcific assessment details or list all the assessments under specific control and regulatory compliance standard.
+Get a specific assessment details or list all the assessments under specific control and regulatory compliance standard.
 
 ## EXAMPLES
 

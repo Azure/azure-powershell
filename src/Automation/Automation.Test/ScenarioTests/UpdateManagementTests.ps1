@@ -26,7 +26,7 @@ function WaitForProvisioningState() {
                                                                  -AutomationAccountName $aa `
                                                                  -Name $Name).ProvisioningState -eq $ExpectedState } $null $retries $waitTimeInSeconds
 
-    Assert-True {$jobCompleted -gt 0} "Timout waiting for provisioning state to reach '$ExpectedState'"
+    Assert-True {$jobCompleted -gt 0} "Timeout waiting for provisioning state to reach '$ExpectedState'"
 }
 
 <#
@@ -503,7 +503,7 @@ function Test-CreateLinuxIncludedPackageNameMasksSoftwareUpdateConfiguration() {
                                                              -Linux `
                                                              -AzureVMResourceId $azureVMIdsL `
                                                              -Duration $duration `
-                                                             -IncludedPackageNameMask  @("*kernel*", "pyhton*.x64")
+                                                             -IncludedPackageNameMask  @("*kernel*", "python*.x64")
 
     Assert-NotNull $suc "New-AzAutomationSoftwareUpdateConfiguration returned null"
     Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
@@ -517,7 +517,7 @@ function Test-CreateLinuxIncludedPackageNameMasksSoftwareUpdateConfiguration() {
     Assert-NotNull $suc.UpdateConfiguration.Linux "Windows property of UpdateConfiguration is null"
     Assert-AreEqual $suc.UpdateConfiguration.Linux.IncludedPackageNameMasks.Count 2
     Assert-AreEqual $suc.UpdateConfiguration.Linux.IncludedPackageNameMasks[0] "*kernel*"
-    Assert-AreEqual $suc.UpdateConfiguration.Linux.IncludedPackageNameMasks[1] "pyhton*.x64"
+    Assert-AreEqual $suc.UpdateConfiguration.Linux.IncludedPackageNameMasks[1] "python*.x64"
 
     WaitForProvisioningState $name "Succeeded"
 }

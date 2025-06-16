@@ -96,7 +96,7 @@ This command creates an Alert Rule of the MicrosoftSecurityIncidentCreation kind
 
 ### Example 5: Create a Scheduled Alert Rule
 ```powershell
-New-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind Scheduled -Enabled -DisplayName "Powershell Exection Alert (Several Times per Hour)" -Severity Low -Query "SecurityEvent | where EventID == 4688" -QueryFrequency (New-TimeSpan -Hours 1) -QueryPeriod (New-TimeSpan -Hours 1) -TriggerThreshold 10 -TriggerOperator "GreaterThan"
+New-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind Scheduled -Enabled -DisplayName "Powershell Execution Alert (Several Times per Hour)" -Severity Low -Query "SecurityEvent | where EventID == 4688" -QueryFrequency (New-TimeSpan -Hours 1) -QueryPeriod (New-TimeSpan -Hours 1) -TriggerThreshold 10 -TriggerOperator "GreaterThan"
 ```
 
 This command creates an Alert Rule of the Scheduled kind.

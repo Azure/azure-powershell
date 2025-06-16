@@ -51,7 +51,7 @@ $ResourceGroupName = "HelloRG"
 $VMScaleSetName = "HelloVmSS"
 $TypeHandlerVersion = 2.1
 
-#Best Practice for securd paramaters.
+#Best Practice for secured parameters.
 $protectedSettings = @{
 "managedIdentity" = @{ "clientId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"};
 }

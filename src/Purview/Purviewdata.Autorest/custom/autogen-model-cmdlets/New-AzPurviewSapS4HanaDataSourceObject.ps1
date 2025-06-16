@@ -21,12 +21,13 @@ Create an in-memory object for SapS4HanaDataSource.
 Create an in-memory object for SapS4HanaDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapS4HanaDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewSapS4HanaDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewsaps4hanadatasourceobject
 #>
 function New-AzPurviewSapS4HanaDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaDataSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapS4HanaDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -41,15 +42,11 @@ function New-AzPurviewSapS4HanaDataSourceObject {
         $CollectionType,
         [Parameter()]
         [string]
-        $SystemNumber,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind
+        $SystemNumber
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapS4HanaDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('ApplicationServer')) {
             $Object.ApplicationServer = $ApplicationServer
@@ -62,9 +59,6 @@ function New-AzPurviewSapS4HanaDataSourceObject {
         }
         if ($PSBoundParameters.ContainsKey('SystemNumber')) {
             $Object.SystemNumber = $SystemNumber
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

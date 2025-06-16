@@ -63,7 +63,7 @@ Gets a solution in the migrate project.
 Initializes the infrastructure for the migrate project.
 
 ### [Initialize-AzMigrateReplicationInfrastructure](Initialize-AzMigrateReplicationInfrastructure.md)
-Initialises the infrastructure for the migrate project.
+Initializes the infrastructure for the migrate project.
 
 ### [New-AzMigrateDiskMapping](New-AzMigrateDiskMapping.md)
 Creates a new disk mapping

@@ -115,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource Id of replication protected item / recovery plan for cleaningup test failover.
+Resource Id of replication protected item / recovery plan for cleaning up test failover.
 
 ```yaml
 Type: System.String

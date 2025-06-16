@@ -15,7 +15,7 @@ Azure Service Fabric Module that you can use to automate the end-2-end operation
 Add common name or thumbprint to the cluster for client authentication purposes.
 
 ### [Add-AzServiceFabricManagedClusterClientCertificate](Add-AzServiceFabricManagedClusterClientCertificate.md)
-Add certificate common name or thumbprint to the cluster. This will register the certificate agains the cluster for client authentication purposes.
+Add certificate common name or thumbprint to the cluster. This will register the certificate against the cluster for client authentication purposes.
 
 ### [Add-AzServiceFabricManagedClusterNetworkSecurityRule](Add-AzServiceFabricManagedClusterNetworkSecurityRule.md)
 Add network security rule to cluster resource.
@@ -123,7 +123,7 @@ Removes a managed application type from the cluster. This will remove all type v
 Removes a managed application type version from the cluster. Only supports ARM deployed application type versions.
 
 ### [Remove-AzServiceFabricManagedClusterClientCertificate](Remove-AzServiceFabricManagedClusterClientCertificate.md)
-Remvoe client certificate by thumbprint or common name.
+Remove client certificate by thumbprint or common name.
 
 ### [Remove-AzServiceFabricManagedClusterService](Remove-AzServiceFabricManagedClusterService.md)
 Remove a managed service from the cluster. Only supports ARM deployed services.
@@ -165,7 +165,7 @@ Update a service fabric managed application type version. This allows you to upd
 Update a managed service from the cluster. Only supports ARM deployed services.
 
 ### [Set-AzServiceFabricManagedNodeType](Set-AzServiceFabricManagedNodeType.md)
-Sets node type resource properties or run reimage actions on specific ndes of the node type with -Reimage parameter.
+Sets node type resource properties or run reimage actions on specific nodes of the node type with -Reimage parameter.
 
 ### [Set-AzServiceFabricSetting](Set-AzServiceFabricSetting.md)
 Add or update one or multiple Service Fabric settings to the cluster.

@@ -117,8 +117,8 @@ Name          Location      Type                                  IdentityType
 vaultName southeastasia Microsoft.DataProtection/backupVaults UserAssigned
 ```
 
-This command is used to change CmkIdentityType from SystemAssigned to UserAssgined.
-CmkIdenityId is a required parameter.
+This command is used to change CmkIdentityType from SystemAssigned to UserAssigned.
+CmkIdentityId is a required parameter.
 
 ### Example 6: Update vault to assign a User Assigned Managed Identity (UAMI)
 ```powershell

@@ -264,7 +264,7 @@ Accept wildcard characters: False
 ```
 
 ### -PartnerTopicRoutingMode
-This determines if events published to this partner namespace should use the source attribute in the event payloador use the channel name in the header when matching to the partner topic.
+This determines if events published to this partner namespace should use the source attribute in the event payload or use the channel name in the header when matching to the partner topic.
 If none is specified, source attribute routing will be used to match the partner topic.
 
 ```yaml

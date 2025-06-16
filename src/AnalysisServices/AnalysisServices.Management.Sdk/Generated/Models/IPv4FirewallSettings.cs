@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// <param name="firewallRules">An array of firewall rules.
         /// </param>
 
-        /// <param name="enablePowerBiService">The indicator of enableing PBI service.
+        /// <param name="enablePowerBiService">The indicator of enabling PBI service.
         /// </param>
         public IPv4FirewallSettings(System.Collections.Generic.IList<IPv4FirewallRule> firewallRules = default(System.Collections.Generic.IList<IPv4FirewallRule>), string enablePowerBiService = default(string))
 
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
         public System.Collections.Generic.IList<IPv4FirewallRule> FirewallRules {get; set; }
 
         /// <summary>
-        /// Gets or sets the indicator of enableing PBI service.
+        /// Gets or sets the indicator of enabling PBI service.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enablePowerBIService")]
         public string EnablePowerBIService {get; set; }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzServiceFabricManagedClusterClientCertificate
 
 ## SYNOPSIS
-Remvoe client certificate by thumbprint or common name.
+Remove client certificate by thumbprint or common name.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Remove-AzServiceFabricManagedClusterClientCertificate [-InputObject] <PSManagedC
 ```
 
 ## DESCRIPTION
-Remvoe client certificate by thumbprint or common name.
+Remove client certificate by thumbprint or common name.
 
 ## EXAMPLES
 

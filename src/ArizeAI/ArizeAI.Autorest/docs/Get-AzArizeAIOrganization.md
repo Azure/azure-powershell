@@ -87,7 +87,7 @@ UserPhoneNumber                     :
 UserUpn                             : aggarwalsw@microsoft.com
 ```
 
-This command will get all organization details in a given Resoure group.
+This command will get all organization details in a given Resource group.
 
 ### Example 2: Get a specific Organization in a Resource Group
 ```powershell

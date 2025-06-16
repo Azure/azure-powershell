@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Authentication.Test.Config
         [Trait(TestTraits.AcceptanceType, TestTraits.CheckIn)]
         public void CanUpdateConfigForCmdlet()
         {
-            const string warningKey = "DisalbeWarning";
+            const string warningKey = "DisableWarning";
             var warningConfig = new SimpleTypedConfig<bool>(warningKey, "", false);
             IConfigManager icm = GetConfigManager(warningConfig);
 

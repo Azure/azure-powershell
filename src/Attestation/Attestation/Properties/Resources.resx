@@ -211,7 +211,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Invalid vault name.</value>
   </data>
   <data name="InvalidManagedStorageAccountName" xml:space="preserve">
-    <value>Invalid key vault managed storage acccount name.</value>
+    <value>Invalid key vault managed storage account name.</value>
   </data>
   <data name="InvalidVaultUri" xml:space="preserve">
     <value>Invalid vault uri '{0}'. Vault uri must contain valid dns host name with domain suffix '{1}'.</value>
@@ -481,7 +481,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Purge managed storage account</value>
   </data>
   <data name="VaultDoesNotExist" xml:space="preserve">
-    <value>Vault '{0}' does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription in order to modifiy the Access Policies of this vault.</value>
+    <value>Vault '{0}' does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription in order to modify the Access Policies of this vault.</value>
   </data>
   <data name="ActiveDirectoryClientNull" xml:space="preserve">
     <value>The current credentials do not have access to Azure Active Directory. Please either use an ObjectId to refer to ActiveDirectory objects, or log in using credentials that have access to Azure Active Directory.</value>

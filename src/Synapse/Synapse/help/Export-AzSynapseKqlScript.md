@@ -38,10 +38,10 @@ The name of the KQL script becomes the name of the exported file. If you specify
 
 ### Example 1
 ```powershell
-Export-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -OutputFolder "C:\KqlScirpt"
+Export-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -OutputFolder "C:\KqlScript"
 ```
 
-Exports all KQL scripts in the workspace ContosoWorkspace to the folder "C:\KqlScirpt".
+Exports all KQL scripts in the workspace ContosoWorkspace to the folder "C:\KqlScript".
 
 ### Example 2
 ```powershell

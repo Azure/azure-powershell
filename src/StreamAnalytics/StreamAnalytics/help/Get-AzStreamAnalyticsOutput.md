@@ -64,7 +64,7 @@ This command returns information about the output defined on the job.
 
 ### Example 3: Get information about a specific job output by pipeline
 ```powershell
-New-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-portal -Name output-05 -File .\test\template-json\StroageAccount.json | Get-AzStreamAnalyticsOutput
+New-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-portal -Name output-05 -File .\test\template-json\StorageAccount.json | Get-AzStreamAnalyticsOutput
 ```
 
 ```output

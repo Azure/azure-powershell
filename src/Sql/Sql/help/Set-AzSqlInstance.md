@@ -578,7 +578,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Type of identity to be assigned to the server. Possible values are SystemAsssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.
+Type of identity to be assigned to the server. Possible values are SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.
 
 ```yaml
 Type: System.String

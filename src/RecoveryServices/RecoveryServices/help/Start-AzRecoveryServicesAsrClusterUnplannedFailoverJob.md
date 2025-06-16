@@ -32,7 +32,7 @@ You can check whether the job succeeded by using the Get-AzRecoveryServicesAsrJo
 $currentJob = Start-AzRecoveryServicesAsrClusterUnplannedFailoverJob -ReplicationProtectionCluster $protectionCluster -Direction PrimaryToRecovery -LatestProcessedRecoveryPoint
 ```
 
-Starts a unplanned failover operation for the specified cluster. If LatestProcessedRecoveryPoint is passed and no specific recovery point is provided, it will pick the lastest processed recovery points and the ASR job used to track the operation.
+Starts a unplanned failover operation for the specified cluster. If LatestProcessedRecoveryPoint is passed and no specific recovery point is provided, it will pick the latest processed recovery points and the ASR job used to track the operation.
 
 ### Example 2
 ```powershell

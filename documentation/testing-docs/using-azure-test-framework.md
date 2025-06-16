@@ -232,7 +232,7 @@ The `HttpRecorderMode` key in the `TEST_CSM_ORGID_AUTHENTICATION` environment va
         AADTokenAudienceUri = "https://management.core.windows.net"
         GraphTokenAudienceUri = "https://graph.ppe.windows.net/"
         DataLakeStoreServiceUri = "https://caboaccountdogfood.net"
-        DataLakeAnalyticsJoAbndCatalogServiceUri = "https://konaaccountdogfood.net"
+        DataLakeAnalyticsJobAndCatalogServiceUri = "https://konaaccountdogfood.net"
 
 ##### Environment = Custom
 

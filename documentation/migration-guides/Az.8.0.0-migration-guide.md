@@ -175,7 +175,7 @@ Update-AzCdnEndpoint -Name $endpointName -ProfileName $cdnProfileName -ResourceG
 
 //Update DeliveryPolicyDescription or DeliveryPolicyRule 
 Update-AzCdnEndpoint -Name $endpointName -ProfileName $cdnProfileName -ResourceGroupName $resourceGroupName `
-   -DeliveryPolicyDescription $descprption -DeliveryPolicyRule $rule
+   -DeliveryPolicyDescription $description -DeliveryPolicyRule $rule
 ```
 
 ### `Set-AzCdnOriginGroup`

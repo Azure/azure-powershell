@@ -82,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Indicates that this cmdlet returns a value of $Ture, if it succeeds, or a value of $False, otherwise.
+Indicates that this cmdlet returns a value of $True, if it succeeds, or a value of $False, otherwise.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -15,7 +15,7 @@ This topic displays help topics for the Azure Insights Cmdlets.
 Creates a new activity log profile. This profile is used to either archive the activity log to an Azure storage account or stream it to an Azure event hub in the same subscription.
 
 ### [Add-AzMetricAlertRule](Add-AzMetricAlertRule.md)
-Adds or updates a claasic metric-based alert rule (already retired on public cloud). To create a new metric alert rule, use the [Add-AzMetricAlertRuleV2](./Add-AzMetricAlertRuleV2.md) cmdlet.
+Adds or updates a classic metric-based alert rule (already retired on public cloud). To create a new metric alert rule, use the [Add-AzMetricAlertRuleV2](./Add-AzMetricAlertRuleV2.md) cmdlet.
 
 ### [Add-AzMetricAlertRuleV2](Add-AzMetricAlertRuleV2.md)
 Adds or updates a V2 (non-classic) metric-based alert rule.
