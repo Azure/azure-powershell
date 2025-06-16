@@ -676,6 +676,83 @@ function Test-PacketCaptureV2 {
 
 <#
 .SYNOPSIS
+Test PacketCapture API for VM.
+#>
+function Test-PacketCaptureV2ForVMWithRingBuffer {
+    # Setup
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
+    $location = Get-PilotLocation
+    $resourceTypeParent = "Microsoft.Network/networkWatchers"
+    $nwLocation = Get-ProviderLocation $resourceTypeParent
+    $nwRgName = Get-NrpResourceGroupName
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
+    $pcName1 = Get-NrpResourceName
+
+    try {
+        . ".\AzureRM.Resources.ps1"
+
+        # Create Resource group
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+
+        # Deploy resources
+        Get-TestResourcesDeployment -rgn "$resourceGroupName"
+
+        # Create Resource group for Network Watcher
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
+
+        # Get Network Watcher
+        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
+
+        #Get Vm
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName 
+
+        #Install networkWatcherAgent on Vm
+        Set-AzVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name  -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4"
+
+        # Create Capture settiings for packet capture, its only applicable if we are pass continuousCapture as true/false
+        $c1 = New-AzPacketCaptureSettingsConfig -FileCount 2 -FileSizeInBytes 102400 -SessionTimeLimitInSeconds 60
+
+        #Create packet capture
+        $job = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -Name $pcName1 -TargetId $vm.Id -ContinuousCapture $true -CaptureSettings $c1 -LocalPath C:\captures\Capture.cap -AsJob
+        $job | Wait-Job
+
+        #Get packet capture
+        $job = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
+        $job | Wait-Job
+        $pc1 = $job | Receive-Job
+
+        Write-Output "pc1 Name: $($pc1.Name)"
+
+        #Verification
+        Assert-AreEqual $pc1.Name $pcName1
+        Assert-AreEqual "Succeeded" $pc1.ProvisioningState
+        Assert-AreEqual 2 $c1.FileCount
+        Assert-AreEqual 102400 $c1.FileSizeInBytes
+        Assert-AreEqual 60 $c1.SessionTimeLimitInSeconds
+        Assert-Null $pc1.TotalBytesPerSession
+        Assert-Null $pc1.TimeLimitInSeconds
+
+        #Stop packet capture
+        $job = Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
+        $job | Wait-Job
+
+        #Get packet capture
+        $pc1 = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1
+
+        #Remove packet capture
+        $job = Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
+        $job | Wait-Job
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+        #Clean-ResourceGroup $nwRgName
+    }
+}
+
+<#
+.SYNOPSIS
 Test PacketCapture API with ring buffer.
 #>
 function Test-PacketCaptureV2WithRingBuffer {
@@ -726,11 +803,6 @@ function Test-PacketCaptureV2WithRingBuffer {
 
         # Create Capture settiings for packet capture, its only applicable if we are pass continuousCapture as true/false
         $c1 = New-AzPacketCaptureSettingsConfig -FileCount 2 -FileSizeInBytes 102400 -SessionTimeLimitInSeconds 60
-        
-        #$vmssid = $vmss.Id
-        #Write-Output ("VmssId: '$vmssid'")
-        #Write-Output ("pcname: '$pcName3' ")
-        #Write-Output ("C1: '$c1' ")
 
         #Create packet capture
         # with Continuous Capture, if you are using continuousCapture, change it to local Path instead FilePath
@@ -766,7 +838,7 @@ function Test-PacketCaptureV2WithRingBuffer {
     }
     finally {
        # Cleanup
-       # Clean-ResourceGroup $resourceGroupName
+       Clean-ResourceGroup $resourceGroupName
        #Clean-ResourceGroup $nwRgName
     }
 }
