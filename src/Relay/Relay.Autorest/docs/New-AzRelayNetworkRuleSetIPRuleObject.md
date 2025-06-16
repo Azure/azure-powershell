@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Relay
-online version: https://learn.microsoft.com/powershell/module/az.Relay/new-AzRelayNetworkRuleSetIPRuleObject
+online version: https://learn.microsoft.com/powershell/module/Az.Relay/new-azrelaynetworkrulesetipruleobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for NwRuleSetIPRules.
 ## SYNTAX
 
 ```
-New-AzRelayNetworkRuleSetIPRuleObject [-Action <NetworkRuleIPAction>] [-IPMask <String>] [<CommonParameters>]
+New-AzRelayNetworkRuleSetIPRuleObject [-Action <String>] [-IPMask <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ This cmdlet creates an in-memory object for NwRuleSetIPRules as the value of the
 The IP Filter Action.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.NetworkRuleIPAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +70,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.NwRuleSetIPRules
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.NwRuleSetIPRules
 
 ## NOTES
 

@@ -15,7 +15,7 @@ Creates or updates an authorization rule for a namespace.
 ### UpdateExpanded (Default)
 ```
 Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] [-Rights <String[]>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupNa
 ### UpdateExpanded1
 ```
 Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -HybridConnection <String> [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] -HybridConnection <String> [-Rights <String[]>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupNa
 ### UpdateExpanded2
 ```
 Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -WcfRelay <String> [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] -WcfRelay <String> [-Rights <String[]>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -241,7 +241,7 @@ Single item in a List or Get AuthorizationRule operation
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
 Parameter Sets: Update1, Update2, Update
 Aliases:
 
@@ -301,7 +301,7 @@ Accept wildcard characters: False
 The rights associated with the rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights[]
+Type: System.String[]
 Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateExpanded2
 Aliases:
 
@@ -379,11 +379,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
 
 ## NOTES
 

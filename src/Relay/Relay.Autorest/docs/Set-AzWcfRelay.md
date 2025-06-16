@@ -16,7 +16,7 @@ This operation is idempotent.
 ### UpdateExpanded (Default)
 ```
 Set-AzWcfRelay -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-UserMetadata <String>] [-WcfRelayType <Relaytype>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-UserMetadata <String>] [-WcfRelayType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -119,7 +119,7 @@ Description of the WCF relay resource.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay
 Parameter Sets: Update
 Aliases:
 
@@ -212,7 +212,7 @@ Accept wildcard characters: False
 WCF relay type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.Relaytype
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -259,11 +259,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay
 
 ## NOTES
 

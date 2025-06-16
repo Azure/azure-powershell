@@ -15,16 +15,15 @@ Update NetworkRuleSet for a Namespace.
 ### UpdateExpanded (Default)
 ```
 Set-AzRelayNamespaceNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultAction <DefaultAction>] [-IPRule <INwRuleSetIPRules[]>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultAction <String>] [-IPRule <INwRuleSetIPRules[]>]
+ [-PublicNetworkAccess <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Set-AzRelayNamespaceNetworkRuleSet -InputObject <IRelayIdentity> [-DefaultAction <DefaultAction>]
- [-IPRule <INwRuleSetIPRules[]>] [-PublicNetworkAccess <PublicNetworkAccess>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzRelayNamespaceNetworkRuleSet -InputObject <IRelayIdentity> [-DefaultAction <String>]
+ [-IPRule <INwRuleSetIPRules[]>] [-PublicNetworkAccess <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,7 +112,7 @@ This cmdlet update the specified NetworkRuleSet for a Relay Namespace.
 Default Action for Network Rule Set
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.DefaultAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +160,7 @@ List of IpRules
 To construct, see NOTES section for IPRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INwRuleSetIPRules[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INwRuleSetIPRules[]
 Parameter Sets: (All)
 Aliases:
 
@@ -192,7 +191,7 @@ This determines if traffic is allowed over public network.
 By default it is enabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -274,7 +273,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INetworkRuleSet
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet
 
 ## NOTES
 
