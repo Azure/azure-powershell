@@ -1,8 +1,8 @@
 {
-  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/environmentDefinitions?api-version=2024-05-01-preview+1": {
+  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/environmentDefinitions?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/environmentDefinitions?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/environmentDefinitions?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -37,10 +37,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/environmentDefinitions?api-version=2024-05-01-preview+2": {
+  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/environmentDefinitions?api-version=2025-04-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/environmentDefinitions?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/environmentDefinitions?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -75,10 +75,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+List1+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions?api-version=2024-05-01-preview+1": {
+  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+List1+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -113,10 +113,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+List1+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions?api-version=2024-05-01-preview+2": {
+  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+List1+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions?api-version=2025-04-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -151,10 +151,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+Get+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/Sandbox?api-version=2024-05-01-preview+1": {
+  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+Get+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/Sandbox?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/Sandbox?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/Sandbox?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -189,10 +189,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+Get+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/FunctionApp?api-version=2024-05-01-preview+2": {
+  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+Get+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/FunctionApp?api-version=2025-04-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/FunctionApp?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/FunctionApp?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -227,10 +227,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+GetViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/Sandbox?api-version=2024-05-01-preview+1": {
+  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+GetViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/Sandbox?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/Sandbox?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/Sandbox?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -265,10 +265,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+GetViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/Sandbox?api-version=2024-05-01-preview+2": {
+  "Get-AzDevCenterUserEnvironmentDefinition+[NoContext]+GetViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/Sandbox?api-version=2025-04-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/Sandbox?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/catalogs/x3vu7b/environmentDefinitions/Sandbox?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

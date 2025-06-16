@@ -119,13 +119,6 @@ function New-AzDevCenterUserDevBox {
     ${PoolName},
   
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.LocalAdminStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.LocalAdminStatus]
-    # Indicates whether the owner of the Dev Box is a local administrator.
-    ${LocalAdministrator},
-
-    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]

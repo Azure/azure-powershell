@@ -1,8 +1,8 @@
 {
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox2:repair?api-version=2024-05-01-preview+1": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox2:repair?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox2:repair?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox2:repair?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -22,10 +22,10 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:35:31 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true" ],
         "x-ms-correlation-request-id": [ "74debe8f-2870-4e02-abb7-01738d95939a" ],
         "x-ms-client-request-id": [ "7192ea47-d6e7-4f83-85b3-be254694c6a2" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:36:31.5336502Z" ],
@@ -39,10 +39,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true+2": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -62,11 +62,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:36:01 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "464287e9-b5f0-4789-8ac2-69c9c6693a7b" ],
         "x-ms-client-request-id": [ "7192ea47-d6e7-4f83-85b3-be254694c6a2" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:37:01.8864828Z" ],
@@ -80,10 +80,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true+3": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -103,11 +103,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:36:32 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "f6d5907c-6188-4477-9600-4500c26d7358" ],
         "x-ms-client-request-id": [ "7192ea47-d6e7-4f83-85b3-be254694c6a2" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:37:32.1242419Z" ],
@@ -121,10 +121,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true+4": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -144,11 +144,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:37:02 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "bd0d646c-4d05-4446-91cc-2a416848b422" ],
         "x-ms-client-request-id": [ "7192ea47-d6e7-4f83-85b3-be254694c6a2" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:38:02.2873542Z" ],
@@ -162,10 +162,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true+5": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -185,11 +185,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:37:32 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "a56ee516-6e5f-4330-a21b-e73c04a25601" ],
         "x-ms-client-request-id": [ "7192ea47-d6e7-4f83-85b3-be254694c6a2" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:38:32.4276852Z" ],
@@ -203,10 +203,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true+6": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -226,11 +226,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:38:02 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "d03a88d5-db54-4f23-9cfb-b5e992b89665" ],
         "x-ms-client-request-id": [ "7192ea47-d6e7-4f83-85b3-be254694c6a2" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:39:02.5654283Z" ],
@@ -244,10 +244,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true+7": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -267,11 +267,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:38:32 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "26c702eb-e30d-4fe6-be13-73f74a1221b0" ],
         "x-ms-client-request-id": [ "7192ea47-d6e7-4f83-85b3-be254694c6a2" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:39:32.8329794Z" ],
@@ -285,10 +285,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true+8": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -308,11 +308,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:39:03 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "d9ed73bc-9cd9-41e4-a564-bad7d3348c4e" ],
         "x-ms-client-request-id": [ "7192ea47-d6e7-4f83-85b3-be254694c6a2" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:40:02.9773067Z" ],
@@ -326,10 +326,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true+9": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -349,11 +349,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:39:33 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "ef5aa264-9e6c-46ea-9d00-a3b97270387c" ],
         "x-ms-client-request-id": [ "7192ea47-d6e7-4f83-85b3-be254694c6a2" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:40:33.1104839Z" ],
@@ -367,10 +367,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true+10": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -390,11 +390,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:40:03 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "b0cde278-dc96-4733-ad88-31c75594b306" ],
         "x-ms-client-request-id": [ "7192ea47-d6e7-4f83-85b3-be254694c6a2" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:41:03.2868586Z" ],
@@ -408,10 +408,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true+11": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -431,11 +431,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:40:33 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "ff84fbd4-3a1c-4a8a-bce2-cc51afea19c9" ],
         "x-ms-client-request-id": [ "7192ea47-d6e7-4f83-85b3-be254694c6a2" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:41:33.4272465Z" ],
@@ -449,10 +449,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true+12": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -472,11 +472,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:41:03 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "9a1eb235-252b-4adc-a150-033144ed2a65" ],
         "x-ms-client-request-id": [ "7192ea47-d6e7-4f83-85b3-be254694c6a2" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:42:03.5488907Z" ],
@@ -490,10 +490,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true+13": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -513,11 +513,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:41:33 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "43780ed1-33e5-4ff6-b683-8a90359a05b0" ],
         "x-ms-client-request-id": [ "7192ea47-d6e7-4f83-85b3-be254694c6a2" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:42:33.7717514Z" ],
@@ -531,10 +531,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true+14": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -554,11 +554,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:42:04 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "b927cb3a-f4dd-4073-b7de-73cdcdf3b964" ],
         "x-ms-client-request-id": [ "7192ea47-d6e7-4f83-85b3-be254694c6a2" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:43:03.9922154Z" ],
@@ -572,10 +572,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true+15": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -595,11 +595,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:42:04 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "0267d546-3eaf-4940-bc57-a73ace95b71d" ],
         "x-ms-client-request-id": [ "7192ea47-d6e7-4f83-85b3-be254694c6a2" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/cab60f1e-2656-45d4-9374-db1fb8d3057e?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:43:04.1898036Z" ],
@@ -613,10 +613,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox3:repair?api-version=2024-05-01-preview+16": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox3:repair?api-version=2025-04-01-preview+16": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox3:repair?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox3:repair?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -636,10 +636,10 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:42:17 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "x-ms-correlation-request-id": [ "0b81c6eb-d9b1-42d7-9b3c-8bfbd5dd14d3" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "298" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:42:33.7717514Z" ],
@@ -653,10 +653,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+17": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -676,11 +676,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:42:47 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "1bf94de3-147f-44a1-9108-1703d7d107f9" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "298" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:43:03.9922154Z" ],
@@ -694,10 +694,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+18": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+18": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -717,11 +717,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:43:17 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "289d16ac-0052-4284-84db-c85675f56cf9" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:44:17.4555187Z" ],
@@ -735,10 +735,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+19": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+19": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -758,11 +758,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:43:47 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "b7f26d52-b911-4cec-af86-7b52ac3141c6" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:44:47.5847543Z" ],
@@ -776,10 +776,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+20": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+20": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -799,11 +799,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:44:17 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "cbfbe37e-401e-4e98-8f1d-2034d26a38ab" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:45:17.7296503Z" ],
@@ -817,10 +817,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+21": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+21": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -840,11 +840,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:44:47 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "40ee4aaf-1083-49f0-b7d3-ac624abbcef7" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:45:47.8518759Z" ],
@@ -858,10 +858,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+22": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+22": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -881,11 +881,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:45:18 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "9135909e-3e2f-47d1-b6fa-b5ca191a3e6c" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:46:17.9906749Z" ],
@@ -899,10 +899,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+23": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+23": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -922,11 +922,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:45:48 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "25ae8f36-4639-42bf-83a8-825559e8b854" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:46:48.1384176Z" ],
@@ -940,10 +940,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+24": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+24": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -963,11 +963,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:46:18 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "71d29785-8ad2-47e8-a53d-d36f6753581e" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:47:18.2888261Z" ],
@@ -981,10 +981,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+25": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+25": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1004,11 +1004,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:46:48 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "25afed5e-031d-477b-8853-c79396dc9f56" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:47:48.5790877Z" ],
@@ -1022,10 +1022,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+26": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+26": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1045,11 +1045,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:47:18 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "8185f586-a266-4790-beb8-bb74b1640b5a" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:48:18.8388331Z" ],
@@ -1063,10 +1063,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+27": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+27": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1086,11 +1086,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:47:49 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "998e94bc-1dea-4770-bb82-a52ba7d2d200" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:48:49.0421093Z" ],
@@ -1104,10 +1104,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+28": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+28": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1127,11 +1127,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:48:19 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "42a74047-e627-405b-ba9f-101a349efe58" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:49:19.1752322Z" ],
@@ -1145,10 +1145,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+29": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+29": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1168,11 +1168,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:48:49 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "05cfddea-c99e-49c6-81fa-98b0a43a628b" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:49:49.3947142Z" ],
@@ -1186,10 +1186,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+30": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+30": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1209,11 +1209,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:49:19 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "5447f103-905d-4762-a432-4f04647f776c" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:50:19.5544117Z" ],
@@ -1227,10 +1227,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+31": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+31": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1250,11 +1250,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:49:49 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "90f81914-cacd-46ea-83d5-7dbc27ecdc05" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:50:49.7129775Z" ],
@@ -1268,10 +1268,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+32": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+32": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1291,11 +1291,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:50:19 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "26c872e3-8046-4512-96aa-31658114a9f2" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:51:19.8681824Z" ],
@@ -1309,10 +1309,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+33": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+33": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1332,11 +1332,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:50:50 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "dee90101-5196-4881-ba28-2fc6a5cf6e69" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:51:50.0072091Z" ],
@@ -1350,10 +1350,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+34": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+34": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1373,11 +1373,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:51:20 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "60cffd2f-9fc9-48b5-b6c1-f2ba61fec904" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:52:20.1615128Z" ],
@@ -1391,10 +1391,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+35": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+35": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1414,11 +1414,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:51:50 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "27512f4d-0606-4e22-bafc-5d89bf2df84f" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:52:50.3003457Z" ],
@@ -1432,10 +1432,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+36": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+36": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1455,11 +1455,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:52:20 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "871a210a-d027-4d4e-8739-13cb282ea630" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:53:20.5242120Z" ],
@@ -1473,10 +1473,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+37": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+37": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1496,11 +1496,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:52:50 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "e1f216d7-6fc8-4074-9399-441a019c18c6" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:53:50.6538551Z" ],
@@ -1514,10 +1514,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+38": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+38": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1537,11 +1537,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:53:21 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "028b4d9a-61b4-417c-a613-cc373cb74cb8" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:54:21.3596352Z" ],
@@ -1555,10 +1555,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+39": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+39": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1578,11 +1578,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:53:51 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "cadb20e9-5abf-4226-9d19-6b01a3125ff4" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:54:51.5207070Z" ],
@@ -1596,10 +1596,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+40": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+40": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1619,11 +1619,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:54:21 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "8d74469e-511d-48f0-8165-806414265520" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:55:21.8928980Z" ],
@@ -1637,10 +1637,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+41": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+41": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1660,11 +1660,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:54:52 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "46c82bee-1e19-4431-a7f0-cf728e5670f1" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:55:52.0177414Z" ],
@@ -1678,10 +1678,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true+42": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true+42": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1701,11 +1701,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:54:52 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "48a6476c-e427-46a1-9a24-4cd84907e988" ],
         "x-ms-client-request-id": [ "0e6c0ea6-6bab-4cff-b2a3-751cc9c18391" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/b1c27c76-2038-4d15-bf3c-8ed6c676aaf9?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:55:52.1627441Z" ],
@@ -1719,10 +1719,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox4:repair?api-version=2024-05-01-preview+1": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox4:repair?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox4:repair?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox4:repair?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1742,10 +1742,10 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:54:53 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true" ],
         "x-ms-correlation-request-id": [ "a988847a-de62-4230-907d-5ff6388d67aa" ],
         "x-ms-client-request-id": [ "372cdc40-a16c-4864-9da8-f5fad86ffc7e" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "298" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:55:21.8928980Z" ],
@@ -1759,10 +1759,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true+2": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1782,11 +1782,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:55:23 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "5906f658-655a-45e7-ad1f-cbaeaff4fff5" ],
         "x-ms-client-request-id": [ "372cdc40-a16c-4864-9da8-f5fad86ffc7e" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "298" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:55:52.0177414Z" ],
@@ -1800,10 +1800,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true+3": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1823,11 +1823,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:55:53 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "47f1dd88-fb2f-452c-ad94-b7e5cdc1d094" ],
         "x-ms-client-request-id": [ "372cdc40-a16c-4864-9da8-f5fad86ffc7e" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:56:53.3197745Z" ],
@@ -1841,10 +1841,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true+4": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1864,11 +1864,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:56:23 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "49fa1aee-dd3d-4d3e-994c-3ef0df5b4d03" ],
         "x-ms-client-request-id": [ "372cdc40-a16c-4864-9da8-f5fad86ffc7e" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:57:23.4565968Z" ],
@@ -1882,10 +1882,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true+5": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1905,11 +1905,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:56:53 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "82e68e8a-f4e9-4874-830e-c53b147e4fb0" ],
         "x-ms-client-request-id": [ "372cdc40-a16c-4864-9da8-f5fad86ffc7e" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:57:53.6056673Z" ],
@@ -1923,10 +1923,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true+6": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1946,11 +1946,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:57:23 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "12c14c97-cdc9-43e4-8544-9972368e2282" ],
         "x-ms-client-request-id": [ "372cdc40-a16c-4864-9da8-f5fad86ffc7e" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:58:23.8590815Z" ],
@@ -1964,10 +1964,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true+7": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1987,11 +1987,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:57:54 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "54b27786-104f-4641-8c6e-4b0d0dd9366b" ],
         "x-ms-client-request-id": [ "372cdc40-a16c-4864-9da8-f5fad86ffc7e" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:58:54.0078505Z" ],
@@ -2005,10 +2005,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true+8": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2028,11 +2028,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:58:24 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "bda1b6db-fd7d-4697-aadc-4c84bd0c757a" ],
         "x-ms-client-request-id": [ "372cdc40-a16c-4864-9da8-f5fad86ffc7e" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:59:24.2184612Z" ],
@@ -2046,10 +2046,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true+9": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2069,11 +2069,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:58:54 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "cf7ce661-fc4b-4169-83e3-c4001fcf7b88" ],
         "x-ms-client-request-id": [ "372cdc40-a16c-4864-9da8-f5fad86ffc7e" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T03:59:54.3758727Z" ],
@@ -2087,10 +2087,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true+10": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2110,11 +2110,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:59:24 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "078efb31-45f5-4c52-9834-32280e7ff292" ],
         "x-ms-client-request-id": [ "372cdc40-a16c-4864-9da8-f5fad86ffc7e" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:00:24.5394835Z" ],
@@ -2128,10 +2128,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true+11": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2151,11 +2151,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 03:59:54 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "9ffa2bf9-d3b2-4563-8c59-5dc9a36cb198" ],
         "x-ms-client-request-id": [ "372cdc40-a16c-4864-9da8-f5fad86ffc7e" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:00:54.6867953Z" ],
@@ -2169,10 +2169,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true+12": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2192,11 +2192,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:00:24 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "f27ae081-3a2a-4c8b-bf40-deed72f9028b" ],
         "x-ms-client-request-id": [ "372cdc40-a16c-4864-9da8-f5fad86ffc7e" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:01:24.8640733Z" ],
@@ -2210,10 +2210,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true+13": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2233,11 +2233,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:00:55 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "cc1d8e42-9c21-49d7-8578-58b7548e5f1c" ],
         "x-ms-client-request-id": [ "372cdc40-a16c-4864-9da8-f5fad86ffc7e" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:01:55.0890612Z" ],
@@ -2251,10 +2251,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true+14": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2274,11 +2274,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:00:55 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "7f99ff43-14f9-40ee-b2f8-d9f96b70074f" ],
         "x-ms-client-request-id": [ "372cdc40-a16c-4864-9da8-f5fad86ffc7e" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4ed062f6-3e1b-47ad-8163-8f4c8d3d8d70?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:01:55.3543958Z" ],
@@ -2292,10 +2292,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox4:repair?api-version=2024-05-01-preview+15": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox4:repair?api-version=2025-04-01-preview+15": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox4:repair?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox4:repair?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2315,10 +2315,10 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:01:03 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "x-ms-correlation-request-id": [ "714dc41c-2976-449d-bb61-e4683718d984" ],
         "x-ms-client-request-id": [ "d3bcd15b-0345-4c66-a3fb-551d25611bc1" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "298" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:01:24.8640733Z" ],
@@ -2332,10 +2332,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true+16": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2355,11 +2355,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:01:34 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "022efe10-2280-420b-9390-e57fc7bf3c22" ],
         "x-ms-client-request-id": [ "d3bcd15b-0345-4c66-a3fb-551d25611bc1" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "298" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:01:55.3543958Z" ],
@@ -2373,10 +2373,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true+17": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2396,11 +2396,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:02:04 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "1f6e0161-4823-462a-b5ba-4db1a955962b" ],
         "x-ms-client-request-id": [ "d3bcd15b-0345-4c66-a3fb-551d25611bc1" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:03:04.1522912Z" ],
@@ -2414,10 +2414,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true+18": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true+18": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2437,11 +2437,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:02:34 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "3491a121-00ae-4245-b115-2721848f0bd7" ],
         "x-ms-client-request-id": [ "d3bcd15b-0345-4c66-a3fb-551d25611bc1" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:03:34.2913048Z" ],
@@ -2455,10 +2455,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true+19": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true+19": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2478,11 +2478,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:03:04 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "ab9d544c-37d1-4c33-8b20-345e329f96e9" ],
         "x-ms-client-request-id": [ "d3bcd15b-0345-4c66-a3fb-551d25611bc1" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:04:04.4474790Z" ],
@@ -2496,10 +2496,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true+20": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true+20": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2519,11 +2519,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:03:34 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "656b53fa-624b-4846-a397-b717c6f14c45" ],
         "x-ms-client-request-id": [ "d3bcd15b-0345-4c66-a3fb-551d25611bc1" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:04:34.6105305Z" ],
@@ -2537,10 +2537,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true+21": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true+21": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2560,11 +2560,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:04:04 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "912b9c6e-394b-45b5-a2d6-63cc343a4072" ],
         "x-ms-client-request-id": [ "d3bcd15b-0345-4c66-a3fb-551d25611bc1" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:05:04.7773025Z" ],
@@ -2578,10 +2578,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true+22": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true+22": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2601,11 +2601,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:04:35 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "8a716ca8-ddd1-484a-a07a-b960a4d043cb" ],
         "x-ms-client-request-id": [ "d3bcd15b-0345-4c66-a3fb-551d25611bc1" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:05:35.0562642Z" ],
@@ -2619,10 +2619,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true+23": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true+23": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2642,11 +2642,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:05:05 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "02c1915a-9c1a-4a80-98ab-872aa5cab0b4" ],
         "x-ms-client-request-id": [ "d3bcd15b-0345-4c66-a3fb-551d25611bc1" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:06:05.2254536Z" ],
@@ -2660,10 +2660,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true+24": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true+24": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2683,11 +2683,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:05:35 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "0b33125f-2d54-4a7a-8aaa-de8131de07b0" ],
         "x-ms-client-request-id": [ "d3bcd15b-0345-4c66-a3fb-551d25611bc1" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:06:35.3611355Z" ],
@@ -2701,10 +2701,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true+25": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true+25": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2724,11 +2724,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:06:05 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "814e9dca-3c6c-41cd-a6b1-20107063571f" ],
         "x-ms-client-request-id": [ "d3bcd15b-0345-4c66-a3fb-551d25611bc1" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:07:05.5727987Z" ],
@@ -2742,10 +2742,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true+26": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true+26": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2765,11 +2765,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:06:35 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "31b52448-5bc5-42ab-8a37-30e883d94b99" ],
         "x-ms-client-request-id": [ "d3bcd15b-0345-4c66-a3fb-551d25611bc1" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:07:35.7801665Z" ],
@@ -2783,10 +2783,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true+27": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true+27": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2806,11 +2806,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:07:05 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "72c4a3d9-76a7-41d3-80d9-28f6a2271b8d" ],
         "x-ms-client-request-id": [ "d3bcd15b-0345-4c66-a3fb-551d25611bc1" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:08:05.9383879Z" ],
@@ -2824,10 +2824,10 @@
       "isContentBase64": false
     }
   },
-  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true+28": {
+  "Repair-AzDevCenterUserDevBox+[NoContext]+RepairViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true+28": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2847,11 +2847,11 @@
       "Headers": {
         "Date": [ "Wed, 13 Sep 2023 04:07:06 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "a417ed3a-806d-4f37-a105-69f90cc5c84d" ],
         "x-ms-client-request-id": [ "d3bcd15b-0345-4c66-a3fb-551d25611bc1" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/319a5541-6189-45ce-b203-9e83545c574a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-09-13T04:08:06.0929212Z" ],

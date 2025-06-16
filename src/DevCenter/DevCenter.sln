@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevCenter", "DevCenter\DevC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DevCenter", "..\..\generated\DevCenter\DevCenter.AutoRest\Az.DevCenter.csproj", "{55792641-BEB0-4995-9FF2-01A77DEF52B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DevCenterdata", "..\..\generated\DevCenter\DevCenterdata.Autorest\Az.DevCenterdata.csproj", "{AED145D1-458B-4A78-93B4-51D458D87BD6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DevCenterdata", "..\..\generated\DevCenter\DevCenterdata.Autorest\Az.DevCenterdata.csproj", "{3D997F33-5D4E-4037-8C0C-3CE5C30607DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,10 +64,10 @@ Global
 		{55792641-BEB0-4995-9FF2-01A77DEF52B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55792641-BEB0-4995-9FF2-01A77DEF52B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55792641-BEB0-4995-9FF2-01A77DEF52B0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AED145D1-458B-4A78-93B4-51D458D87BD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AED145D1-458B-4A78-93B4-51D458D87BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AED145D1-458B-4A78-93B4-51D458D87BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AED145D1-458B-4A78-93B4-51D458D87BD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D997F33-5D4E-4037-8C0C-3CE5C30607DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D997F33-5D4E-4037-8C0C-3CE5C30607DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D997F33-5D4E-4037-8C0C-3CE5C30607DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D997F33-5D4E-4037-8C0C-3CE5C30607DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{47E4694E-AFFE-4BE1-8F20-2C604F612C22} = {139FAA20-2493-460E-BB57-1C7D892C9614}

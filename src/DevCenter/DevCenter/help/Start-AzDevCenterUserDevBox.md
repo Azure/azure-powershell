@@ -1,7 +1,7 @@
 ---
 external help file: Az.DevCenter-help.xml
 Module Name: Az.DevCenter
-online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/start-azdevcenteruserdevbox
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/start-azdevcenteruserdevbox
 schema: 2.0.0
 ---
 

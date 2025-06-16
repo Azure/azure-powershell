@@ -1,7 +1,7 @@
 ---
 external help file: Az.DevCenter-help.xml
 Module Name: Az.DevCenter
-online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmentaction
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentaction
 schema: 2.0.0
 ---
 
