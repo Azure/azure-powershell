@@ -27,7 +27,7 @@ Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName Contoso -Environment
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentAction
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentAction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,6 +35,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -43,18 +44,20 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruserdelayenvironmentaction
 #>
 function Invoke-AzDevCenterUserDelayEnvironmentAction {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentAction])]
-    [CmdletBinding(DefaultParameterSetName='Delay', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentAction])]
+    [CmdletBinding(DefaultParameterSetName = 'Delay', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'Delay', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
@@ -70,14 +73,14 @@ function Invoke-AzDevCenterUserDelayEnvironmentAction {
         ${DevCenterName},
     
 
-        [Parameter(ParameterSetName='Delay', Mandatory)]
+        [Parameter(ParameterSetName = 'Delay', Mandatory)]
         [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
         # Environment name.
         ${EnvironmentName},
     
-        [Parameter(ParameterSetName='Delay', Mandatory)]
+        [Parameter(ParameterSetName = 'Delay', Mandatory)]
         [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
         [Alias('ActionName')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
@@ -85,17 +88,17 @@ function Invoke-AzDevCenterUserDelayEnvironmentAction {
         # Uniquely identifies the action.
         ${Name},
     
-        [Parameter(ParameterSetName='Delay', Mandatory)]
+        [Parameter(ParameterSetName = 'Delay', Mandatory)]
         [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
         # Name of the project.
         ${ProjectName},
     
-        [Parameter(ParameterSetName='Delay')]
+        [Parameter(ParameterSetName = 'Delay')]
         [Parameter(ParameterSetName = 'DelayByDevCenter')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script = '"me"')]
         [System.String]
         # The AAD object id of the user.
         # If value is 'me', the identity is taken from the authentication context.
@@ -106,7 +109,7 @@ function Invoke-AzDevCenterUserDelayEnvironmentAction {
         [System.TimeSpan]
         # The delayed timespan from the scheduled action time. Format HH:MM.
         ${DelayTime},
-    
+
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -115,47 +118,47 @@ function Invoke-AzDevCenterUserDelayEnvironmentAction {
         # The DefaultProfile parameter is not functional.
         # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
-
+    
 
     process {
         if (-not $PSBoundParameters.ContainsKey('Endpoint')) {

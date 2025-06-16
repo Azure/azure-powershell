@@ -1,7 +1,7 @@
 ---
 external help file: Az.DevCenter-help.xml
 Module Name: Az.DevCenter
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserdevboxcustomizationgroup
+online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/new-azdevcenteruserdevboxcustomizationgroup
 schema: 2.0.0
 ---
 
@@ -16,20 +16,20 @@ Applies customizations to the Dev Box.
 ```
 New-AzDevCenterUserDevBoxCustomizationGroup -Endpoint <String> -CustomizationGroupName <String>
  -DevBoxName <String> -ProjectName <String> [-UserId <String>] [-Task <ICustomizationTask[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterUserDevBoxCustomizationGroup -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- [-Task <ICustomizationTask[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Task <ICustomizationTask[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpandedByDevCenter
 ```
 New-AzDevCenterUserDevBoxCustomizationGroup -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- [-Task <ICustomizationTask[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Task <ICustomizationTask[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ New-AzDevCenterUserDevBoxCustomizationGroup -DevCenterName <String> -InputObject
 ```
 New-AzDevCenterUserDevBoxCustomizationGroup -DevCenterName <String> -CustomizationGroupName <String>
  -DevBoxName <String> -ProjectName <String> [-UserId <String>] [-Task <ICustomizationTask[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -180,6 +180,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
@@ -202,7 +217,7 @@ To include them, use the `include=tasks` queryparameter.
 To construct, see NOTES section for TASK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTask[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTask[]
 Parameter Sets: (All)
 Aliases:
 
@@ -215,8 +230,7 @@ Accept wildcard characters: False
 
 ### -UserId
 The AAD object id of the user.
-If value is 'me', the identity is taken from the 
- authentication context.
+If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
@@ -270,7 +284,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationGroup
 
 ## NOTES
 

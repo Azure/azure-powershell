@@ -1,7 +1,7 @@
 ---
 external help file: Az.DevCenter-help.xml
 Module Name: Az.DevCenter
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruserdelayenvironmentaction
+online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/invoke-azdevcenteruserdelayenvironmentaction
 schema: 2.0.0
 ---
 
@@ -16,14 +16,14 @@ Delays the occurrence of an action.
 ```
 Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint <String> -EnvironmentName <String> -Name <String>
  -ProjectName <String> [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DelayByDevCenter
 ```
 Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName <String> -EnvironmentName <String> -Name <String>
  -ProjectName <String> [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,6 +139,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 Name of the project.
 
@@ -210,7 +225,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentAction
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentAction
 
 ## NOTES
 

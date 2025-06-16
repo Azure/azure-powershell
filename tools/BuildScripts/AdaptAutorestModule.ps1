@@ -35,6 +35,8 @@ if (($null -eq $ModuleRootName) -or ('' -eq $ModuleRootName) -or ('$(root-module
     Exit 1
 }
 
+$ModuleRootName = $ModuleRootName -replace 'data$',''
+
 $RepoRoot = ($PSScriptRoot | Split-Path -Parent | Split-Path -Parent)
 $SourceDirectory = Join-Path $RepoRoot 'src'
 $GeneratedDirectory = Join-Path $RepoRoot 'generated'
@@ -48,12 +50,21 @@ if ($ModuleRootName -in $rootToParentMap.keys) {
     $parentModuleName = $rootToParentMap[$ModuleRootName]
 }
 
+Write-Host 
+
 $subModuleNameTrimmed = $SubModuleName
 $SubModuleName = "$SubModuleName.Autorest"
 $moduleRootPath = Join-Path $SourceDirectory $ModuleRootName
 $parentModulePath = Join-Path $moduleRootPath $parentModuleName
 $subModulePath = Join-Path $moduleRootPath $SubModuleName
 $slnPath = Join-Path $moduleRootPath "$ModuleRootName.sln"
+
+Write-Host  "SubModuleName: $SubModuleName"
+Write-Host  "ModuleRootName: $ModuleRootName"
+Write-Host  "parentModuleName: $parentModuleName"
+Write-Host  "moduleRootPath: $moduleRootPath"
+Write-Host  "parentModulePath: $parentModulePath"
+Write-Host  "subModulePath: $subModulePath"
 
 Write-Host "Adapting $SubModuleName to $ModuleRootName ..." -ForegroundColor DarkGreen
 
@@ -246,7 +257,13 @@ try{
         }
         & $resolveScriptPath -ModuleName $ModuleRootName -ArtifactFolder $artifacts -Psd1Folder $parentModulePath
     } -ArgumentList $RepoRoot, $ModuleRootName, $parentModuleName, $SubModuleName, $subModuleNameTrimmed
-    $job | Wait-Job | Receive-Job
+    try {
+    # Code that may fail due to missing type
+        $job | Wait-Job | Receive-Job
+    } catch {
+        Write-Warning "Type not found or other error: $($_.Exception.Message)"
+        # Optionally, handle the error or set a fallback value here
+    }
     $job | Remove-Job
 } finally {
     if (Test-Path $tempCsprojPath) {

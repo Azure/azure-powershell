@@ -199,8 +199,7 @@ Accept wildcard characters: False
 
 ### -UserId
 The AAD object id of the user.
-If value is 'me', the identity is taken from the 
- authentication context.
+If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String

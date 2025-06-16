@@ -1,7 +1,7 @@
 ---
 external help file: Az.DevCenter-help.xml
 Module Name: Az.DevCenter
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentlog
+online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmentlog
 schema: 2.0.0
 ---
 
@@ -15,14 +15,14 @@ Gets the logs for an operation on an environment.
 ### Get (Default)
 ```
 Get-AzDevCenterUserEnvironmentLog -Endpoint <String> -EnvironmentName <String> -OperationId <String>
- -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>]
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterUserEnvironmentLog -DevCenterName <String> -EnvironmentName <String> -OperationId <String>
- -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>]
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -117,6 +117,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -1,7 +1,7 @@
 ---
 external help file: Az.DevCenter-help.xml
 Module Name: Az.DevCenter
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/test-azdevcenteruserdevboxcustomizationtaskaction
+online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/test-azdevcenteruserdevboxcustomizationtaskaction
 schema: 2.0.0
 ---
 
@@ -16,28 +16,28 @@ Validates a list of customization tasks.
 ```
 Test-AzDevCenterUserDevBoxCustomizationTaskAction -Endpoint <String> -ProjectName <String>
  [-Task <ICustomizationTask[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded
 ```
 Test-AzDevCenterUserDevBoxCustomizationTaskAction -Endpoint <String> -InputObject <IDevCenterdataIdentity>
  [-Task <ICustomizationTask[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpandedByDevCenter
 ```
 Test-AzDevCenterUserDevBoxCustomizationTaskAction -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-Task <ICustomizationTask[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateExpandedByDevCenter
 ```
 Test-AzDevCenterUserDevBoxCustomizationTaskAction -DevCenterName <String> -ProjectName <String>
  [-Task <ICustomizationTask[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -213,6 +213,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
@@ -233,7 +248,7 @@ Tasks to apply.
 To construct, see NOTES section for TASK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTask[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTask[]
 Parameter Sets: (All)
 Aliases:
 
