@@ -8,9 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Extensions;
 
     /// <summary>Properties of the storage task.</summary>
-    public partial class StorageTaskProperties :
-        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal
+    public partial class StorageTaskUpdateProperties :
+        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdateProperties,
+        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdatePropertiesInternal
     {
 
         /// <summary>Backing field for <see cref="Action" /> property.</summary>
@@ -39,39 +39,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation> ElseOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).ElseOperation; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).ElseOperation = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="Enabled" /> property.</summary>
-        private bool _enabled;
+        private bool? _enabled;
 
         /// <summary>Storage Task is enabled when set to true and disabled when set to false</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PropertyOrigin.Owned)]
-        public bool Enabled { get => this._enabled; set => this._enabled = value; }
+        public bool? Enabled { get => this._enabled; set => this._enabled = value; }
 
         /// <summary>
         /// Condition predicate to evaluate each object. See https://aka.ms/storagetaskconditions for valid properties and operators.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PropertyOrigin.Inlined)]
-        public string IfCondition { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).IfCondition; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).IfCondition = value ; }
+        public string IfCondition { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).IfCondition; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).IfCondition = value ?? null; }
 
         /// <summary>List of operations to execute when the condition predicate satisfies.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation> IfOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).IfOperation; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).IfOperation = value ; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation> IfOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).IfOperation; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).IfOperation = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Action</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskAction Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.Action { get => (this._action = this._action ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskAction()); set { {_action = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskAction Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdatePropertiesInternal.Action { get => (this._action = this._action ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskAction()); set { {_action = value;} } }
 
         /// <summary>Internal Acessors for ActionElse</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IElseCondition Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.ActionElse { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).Else; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).Else = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IElseCondition Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdatePropertiesInternal.ActionElse { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).Else; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).Else = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ActionIf</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IIfCondition Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.ActionIf { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).If; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).If = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IIfCondition Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdatePropertiesInternal.ActionIf { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).If; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).If = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for CreationTimeInUtc</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.CreationTimeInUtc { get => this._creationTimeInUtc; set { {_creationTimeInUtc = value;} } }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdatePropertiesInternal.CreationTimeInUtc { get => this._creationTimeInUtc; set { {_creationTimeInUtc = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdatePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
         /// <summary>Internal Acessors for TaskVersion</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.TaskVersion { get => this._taskVersion; set { {_taskVersion = value;} } }
+        long? Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdatePropertiesInternal.TaskVersion { get => this._taskVersion; set { {_taskVersion = value;} } }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
@@ -87,14 +87,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PropertyOrigin.Owned)]
         public long? TaskVersion { get => this._taskVersion; }
 
-        /// <summary>Creates an new <see cref="StorageTaskProperties" /> instance.</summary>
-        public StorageTaskProperties()
+        /// <summary>Creates an new <see cref="StorageTaskUpdateProperties" /> instance.</summary>
+        public StorageTaskUpdateProperties()
         {
 
         }
     }
     /// Properties of the storage task.
-    public partial interface IStorageTaskProperties :
+    public partial interface IStorageTaskUpdateProperties :
         Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.IJsonSerializable
     {
         /// <summary>The creation date and time of the storage task in UTC.</summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
         global::System.DateTime? CreationTimeInUtc { get;  }
         /// <summary>Text that describes the purpose of the storage task</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation> ElseOperation { get; set; }
         /// <summary>Storage Task is enabled when set to true and disabled when set to false</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -140,12 +140,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
         Description = @"Storage Task is enabled when set to true and disabled when set to false",
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(bool) })]
-        bool Enabled { get; set; }
+        bool? Enabled { get; set; }
         /// <summary>
         /// Condition predicate to evaluate each object. See https://aka.ms/storagetaskconditions for valid properties and operators.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
         string IfCondition { get; set; }
         /// <summary>List of operations to execute when the condition predicate satisfies.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
 
     }
     /// Properties of the storage task.
-    internal partial interface IStorageTaskPropertiesInternal
+    internal partial interface IStorageTaskUpdatePropertiesInternal
 
     {
         /// <summary>The storage task action that is executed</summary>
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
         /// <summary>List of operations to execute in the else block</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation> ElseOperation { get; set; }
         /// <summary>Storage Task is enabled when set to true and disabled when set to false</summary>
-        bool Enabled { get; set; }
+        bool? Enabled { get; set; }
         /// <summary>
         /// Condition predicate to evaluate each object. See https://aka.ms/storagetaskconditions for valid properties and operators.
         /// </summary>
