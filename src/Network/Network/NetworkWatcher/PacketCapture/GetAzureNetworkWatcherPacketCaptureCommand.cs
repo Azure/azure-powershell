@@ -126,6 +126,11 @@ namespace Microsoft.Azure.Commands.Network
                     }
                     pcResult.PacketCaptureStatus = packetCaptureStatus.PacketCaptureStatus;
                     pcResult.StopReason = packetCaptureStatus.StopReason;
+                    if (psPacketCapture.ContinuousCapture != null)
+                    {
+                        pcResult.ContinuousCapture = psPacketCapture.ContinuousCapture;
+                        pcResult.CaptureSettings = psPacketCapture.CaptureSettings;
+                    }
                 }
                 catch
                 {
@@ -183,6 +188,11 @@ namespace Microsoft.Azure.Commands.Network
                         }
                         pcResult.PacketCaptureStatus = psPacketCaptureStatus.PacketCaptureStatus;
                         pcResult.StopReason = psPacketCaptureStatus.StopReason;
+                        if (psPacketCapture.ContinuousCapture != null)
+                        {
+                            pcResult.ContinuousCapture = psPacketCapture.ContinuousCapture;
+                            pcResult.CaptureSettings = psPacketCapture.CaptureSettings;
+                        }
                     }
                     catch
                     {

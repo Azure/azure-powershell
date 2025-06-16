@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
              Mandatory = false,
-             HelpMessage = "Filters for packet capture session.")]
+             HelpMessage = "The capture setting holds the 'FileCount', 'FileSizeInBytes', 'SessionTimeLimitInSeconds' values. These settings are only applicable, if 'ContinuousCapture' is provided.")]
         [ValidateNotNull]
         public PSPacketCaptureSettings CaptureSettings { get; set; }
 
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (string.IsNullOrEmpty(this.LocalFilePath) && string.IsNullOrEmpty(this.StorageAccountId))
                 {
-                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalFilePath: StorageLocation must have either storage id or local file path specified.");
+                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalFilePath: Command must have either storage id or local file path specified.");
                 }
             }
             else
@@ -210,41 +210,12 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.LocalFilePath != null)
                 {
-                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalPath: StorageLocation must have either storage id or local path specified.");
+                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalPath: Command must have either storage id or local path specified.");
                 }
 
                 if (string.IsNullOrEmpty(this.LocalPath) && string.IsNullOrEmpty(this.StorageAccountId))
                 {
-                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalFilePath: StorageLocation must have either storage id or local file path specified.");
-                }
-
-                if (this.CaptureSettings == null)
-                {
-                    this.CaptureSettings = new PSPacketCaptureSettings
-                    {
-                        FileCount = 10,
-                        FileSizeInBytes = 104857600,
-                        SessionTimeLimitInSeconds = 86400
-                    };
-                }
-                else
-                {
-                    this.CaptureSettings.FileCount = this.CaptureSettings.FileCount ?? 10;
-                    this.CaptureSettings.FileSizeInBytes = this.CaptureSettings.FileSizeInBytes ?? 104857600;
-                    this.CaptureSettings.SessionTimeLimitInSeconds = this.CaptureSettings.SessionTimeLimitInSeconds ?? 86400;
-
-                    if (this.CaptureSettings.FileCount < 1 || this.CaptureSettings.FileCount > 10000)
-                    {
-                        throw new ArgumentException("FileCount must be between 1 and 10,000. Default is 10.");
-                    }
-                    if (this.CaptureSettings.FileSizeInBytes < 102400 || this.CaptureSettings.FileSizeInBytes > 4294967295)
-                    {
-                        throw new ArgumentException("FileSizeInBytes must be between 102400 byte and 4,294,967,295 bytes (4 GB). Default is 104,857,600 bytes (100 MB).");
-                    }
-                    if (this.CaptureSettings.SessionTimeLimitInSeconds < 1 || this.CaptureSettings.SessionTimeLimitInSeconds > 604800)
-                    {
-                        throw new ArgumentException("SessionTimeLimitInSeconds must be between 1 second and 604,800 seconds (7 days). Default is 86,400 seconds.");
-                    }
+                    throw new ArgumentException("PacketCaptureIsMissingStorageIdAndLocalFilePath: Command must have either storage id or local file path specified.");
                 }
             }
 
@@ -289,19 +260,21 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             packetCaptureProperties.Target = this.TargetId;
-
             packetCaptureProperties.StorageLocation = new MNM.PacketCaptureStorageLocation();
-            packetCaptureProperties.ContinuousCapture = this.ContinuousCapture;
 
             if (this.ContinuousCapture != null)
             {
+                packetCaptureProperties.ContinuousCapture = this.ContinuousCapture;
                 packetCaptureProperties.StorageLocation.LocalPath = this.LocalPath;
-                packetCaptureProperties.CaptureSettings = new MNM.PacketCaptureSettings()
+                if (this.CaptureSettings != null)
                 {
-                    FileCount = this.CaptureSettings.FileCount,
-                    FileSizeInBytes = this.CaptureSettings.FileSizeInBytes,
-                    SessionTimeLimitInSeconds = this.CaptureSettings.SessionTimeLimitInSeconds
-                };
+                    packetCaptureProperties.CaptureSettings = new MNM.PacketCaptureSettings()
+                    {
+                        FileCount = this.CaptureSettings.FileCount,
+                        FileSizeInBytes = this.CaptureSettings.FileSizeInBytes,
+                        SessionTimeLimitInSeconds = this.CaptureSettings.SessionTimeLimitInSeconds
+                    };
+                }
             }
             else
             {

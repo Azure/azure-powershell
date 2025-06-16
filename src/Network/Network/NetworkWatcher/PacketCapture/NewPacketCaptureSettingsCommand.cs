@@ -26,22 +26,25 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
         [Parameter(
              Mandatory = false,
              ValueFromPipeline = true,
-             HelpMessage = "Number of file count.")]
+             HelpMessage = "Number of file count. Default value is 10.")]
         [ValidateNotNull]
+        [ValidateRange(1, 10000)]
         public int? FileCount { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Number of bytes captured per packet.")]
+            HelpMessage = "Number of bytes captured per packet. Default value is 104857600.")]
         [ValidateNotNull]
+        [ValidateRange(102400, uint.MaxValue)]
         public long? FileSizeInBytes { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Capture session in seconds.")]
+            HelpMessage = "Capture session in seconds. Default value is 86400.")]
         [ValidateNotNull]
+        [ValidateRange(1, 604800)]
         public int? SessionTimeLimitInSeconds { get; set; }
 
         public override void Execute()
@@ -57,24 +60,6 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
 
             if (this.SessionTimeLimitInSeconds == null)
                 this.SessionTimeLimitInSeconds = 86400;
-
-            // Validate FileCount
-            if (this.FileCount < 1 || this.FileCount > 10000)
-            {
-                throw new ArgumentException("FileCount must be between 1 and 10,000. Default is 10.");
-            }
-
-            // Validate FileSizeInBytes
-            if (this.FileSizeInBytes < 102400 || this.FileSizeInBytes > 4294967295)
-            {
-                throw new ArgumentException("FileSizeInBytes must be between 102400 byte and 4,294,967,295 bytes (4 GB). Default is 104,857,600 bytes (100 MB).");
-            }
-
-            // Validate SessionTimeLimitInSeconds
-            if (this.SessionTimeLimitInSeconds < 1 || this.SessionTimeLimitInSeconds > 604800)
-            {
-                throw new ArgumentException("SessionTimeLimitInSeconds must be between 1 second and 604,800 seconds (7 days). Default is 86,400 seconds.");
-            }
 
             var packetCaptureSettings = new PSPacketCaptureSettings
             {
