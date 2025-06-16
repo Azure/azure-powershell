@@ -19,7 +19,7 @@ Remove-AzCloudHsm -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
 
 ## DESCRIPTION
 The Remove-AzCloudHsm cmdlet deletes the specified Cloud HSM.
-Note that although specifying the resource group is optional for this cmdlet, you should so for better performance.
+Note that although specifying the resource group is optional for this cmdlet, you should do so for better performance.
 
 ## EXAMPLES
 

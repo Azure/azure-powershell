@@ -29,13 +29,13 @@ Describe 'Get-AzCloudHsm' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $cloudHsm = Get-AzCloudHsm -Subscription $env.subscriptionId -ResourceGroupName $env.rgName
         $cloudHsm.name.Contains($env.cloudHsmName) | Should -Be $true
         $cloudHsm.location.Contains("ukwest") | Should -Be $true
     }
 
-    It 'List' -skip {
+    It 'List' {
         $cloudHsm = Get-AzCloudHsm -Subscription $env.subscriptionId -ResourceGroupName $env.rgName -Name $env.cloudHsmName
         $cloudHsm.name.Contains($env.cloudHsmName) | Should -Be $true
         $cloudHsm.location.Contains("ukwest") | Should -Be $true
