@@ -11,10 +11,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Cmdlets
     using System;
 
     /// <summary>
-    /// Asynchronously creates a new storage task resource with the specified parameters. If a storage task is already created
-    /// and a subsequent create request is issued with different properties, the storage task properties will be updated. If a
-    /// storage task is already created and a subsequent create or update request is issued with the exact same set of properties,
-    /// the request will succeed.
+    /// Asynchronously update a new storage task resource with the specified parameters. If a storage task is already created
+    /// and a subsequent update request is issued with different properties, the storage task properties will be updated. If a
+    /// storage task is already created and a subsequent update request is issued with the exact same set of properties, the request
+    /// will succeed.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}"
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzStorageActionTask_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Description(@"Asynchronously creates a new storage task resource with the specified parameters. If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated. If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Description(@"Asynchronously update a new storage task resource with the specified parameters. If a storage task is already created and a subsequent update request is issued with different properties, the storage task properties will be updated. If a storage task is already created and a subsequent update request is issued with the exact same set of properties, the request will succeed.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Generated]
     public partial class UpdateAzStorageActionTask_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.IEventListener,
@@ -106,8 +106,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Cmdlets
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation) })]
         public Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[] ElseOperation { get => _parametersBody.ElseOperation?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ElseOperation = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation>(value) : null); }
 
-        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
         public System.Boolean? EnableSystemAssignedIdentity { get; set; }
 
         /// <summary>Storage Task is enabled when set to true and disabled when set to false</summary>
