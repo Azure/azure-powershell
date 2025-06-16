@@ -1,13 +1,13 @@
 {
-  "AzVMwareProvisionedNetwork+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/provisionedNetworks?api-version=2024-09-01+1": {
+  "AzVMwareProvisionedNetwork+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/provisionedNetworks?api-version=2024-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/provisionedNetworks?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/provisionedNetworks?api-version=2024-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "100" ],
-        "x-ms-client-request-id": [ "bc4a1f5b-d5ba-4400-8550-d1f7a2c2b186" ],
+        "x-ms-unique-id": [ "109" ],
+        "x-ms-client-request-id": [ "938d922a-b99b-4b0b-bbec-6bb39618760f" ],
         "CommandName": [ "Get-AzVMwareProvisionedNetwork" ],
         "FullCommandName": [ "Get-AzVMwareProvisionedNetwork_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -25,7 +25,7 @@
         "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
         "Access-Control-Allow-Headers": [ "*" ],
         "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Fri, 13 Jun 2025 04:01:04 GMT" ]
+        "Date": [ "Mon, 16 Jun 2025 20:30:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -35,15 +35,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareProvisionedNetwork+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/provisionedNetworks/vsan?api-version=2024-09-01+1": {
+  "AzVMwareProvisionedNetwork+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/provisionedNetworks/vsan?api-version=2024-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/provisionedNetworks/vsan?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/provisionedNetworks/vsan?api-version=2024-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "101" ],
-        "x-ms-client-request-id": [ "4c92dff7-9119-4d76-ad5a-f32366b47f2d" ],
+        "x-ms-unique-id": [ "110" ],
+        "x-ms-client-request-id": [ "83ea144a-65dd-45de-ad10-0eeeb73d4551" ],
         "CommandName": [ "Get-AzVMwareProvisionedNetwork" ],
         "FullCommandName": [ "Get-AzVMwareProvisionedNetwork_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -61,7 +61,7 @@
         "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
         "Access-Control-Allow-Headers": [ "*" ],
         "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Fri, 13 Jun 2025 04:01:04 GMT" ]
+        "Date": [ "Mon, 16 Jun 2025 20:30:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],

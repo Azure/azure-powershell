@@ -1,8 +1,8 @@
 {
-  "AzVMwarePureStoragePolicy+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+1": {
+  "AzVMwarePureStoragePolicy+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
       "Content": "{\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -20,7 +20,7 @@
         "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
         "Access-Control-Allow-Headers": [ "*" ],
         "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Fri, 13 Jun 2025 04:01:04 GMT" ]
+        "Date": [ "Mon, 16 Jun 2025 20:30:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -30,16 +30,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePureStoragePolicy+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+2": {
+  "AzVMwarePureStoragePolicy+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "103" ],
-        "x-ms-client-request-id": [ "db8d5b63-f61e-4cdd-a582-a69d55d3265d" ],
+        "x-ms-unique-id": [ "112" ],
+        "x-ms-client-request-id": [ "4e97a5b6-0abe-42dd-8e79-198eb0a4188a" ],
         "CommandName": [ "New-AzVMwarePureStoragePolicy" ],
         "FullCommandName": [ "New-AzVMwarePureStoragePolicy_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -56,7 +56,7 @@
         "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
         "Access-Control-Allow-Headers": [ "*" ],
         "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Fri, 13 Jun 2025 04:01:35 GMT" ]
+        "Date": [ "Mon, 16 Jun 2025 20:31:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -66,16 +66,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePureStoragePolicy+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+3": {
+  "AzVMwarePureStoragePolicy+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "104" ],
-        "x-ms-client-request-id": [ "db8d5b63-f61e-4cdd-a582-a69d55d3265d" ],
+        "x-ms-unique-id": [ "113" ],
+        "x-ms-client-request-id": [ "4e97a5b6-0abe-42dd-8e79-198eb0a4188a" ],
         "CommandName": [ "New-AzVMwarePureStoragePolicy" ],
         "FullCommandName": [ "New-AzVMwarePureStoragePolicy_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -92,7 +92,7 @@
         "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
         "Access-Control-Allow-Headers": [ "*" ],
         "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Fri, 13 Jun 2025 04:01:35 GMT" ]
+        "Date": [ "Mon, 16 Jun 2025 20:31:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -102,15 +102,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePureStoragePolicy+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+1": {
+  "AzVMwarePureStoragePolicy+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "105" ],
-        "x-ms-client-request-id": [ "75f45c4a-74f4-46cc-952b-52eacafa8f84" ],
+        "x-ms-unique-id": [ "114" ],
+        "x-ms-client-request-id": [ "f0d409f4-be2c-4a56-a3a4-b50f63b1bc70" ],
         "CommandName": [ "Get-AzVMwarePureStoragePolicy" ],
         "FullCommandName": [ "Get-AzVMwarePureStoragePolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -128,7 +128,7 @@
         "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
         "Access-Control-Allow-Headers": [ "*" ],
         "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Fri, 13 Jun 2025 04:01:35 GMT" ]
+        "Date": [ "Mon, 16 Jun 2025 20:31:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -138,15 +138,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePureStoragePolicy+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+1": {
+  "AzVMwarePureStoragePolicy+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "106" ],
-        "x-ms-client-request-id": [ "efd209b8-3932-4c77-98d8-3253824b319e" ],
+        "x-ms-unique-id": [ "115" ],
+        "x-ms-client-request-id": [ "1e4e167e-b1fc-4179-acc7-2397a3b5a65c" ],
         "CommandName": [ "Update-AzVMwarePureStoragePolicy" ],
         "FullCommandName": [ "Update-AzVMwarePureStoragePolicy_UpdateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -164,7 +164,7 @@
         "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
         "Access-Control-Allow-Headers": [ "*" ],
         "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Fri, 13 Jun 2025 04:01:35 GMT" ]
+        "Date": [ "Mon, 16 Jun 2025 20:31:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -174,10 +174,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePureStoragePolicy+[NoContext]+Update+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+2": {
+  "AzVMwarePureStoragePolicy+[NoContext]+Update+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"storagePolicyDefinition\": \"storagePolicyDefinition1\",\r\n    \"storagePoolId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/PureStorage.Block/storagePools/storagePool1\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -195,7 +195,7 @@
         "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
         "Access-Control-Allow-Headers": [ "*" ],
         "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Fri, 13 Jun 2025 04:01:35 GMT" ]
+        "Date": [ "Mon, 16 Jun 2025 20:31:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -205,16 +205,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePureStoragePolicy+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+3": {
+  "AzVMwarePureStoragePolicy+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "108" ],
-        "x-ms-client-request-id": [ "efd209b8-3932-4c77-98d8-3253824b319e" ],
+        "x-ms-unique-id": [ "117" ],
+        "x-ms-client-request-id": [ "1e4e167e-b1fc-4179-acc7-2397a3b5a65c" ],
         "CommandName": [ "Update-AzVMwarePureStoragePolicy" ],
         "FullCommandName": [ "Update-AzVMwarePureStoragePolicy_UpdateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -231,7 +231,7 @@
         "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
         "Access-Control-Allow-Headers": [ "*" ],
         "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Fri, 13 Jun 2025 04:02:05 GMT" ]
+        "Date": [ "Mon, 16 Jun 2025 20:31:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -241,16 +241,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePureStoragePolicy+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+4": {
+  "AzVMwarePureStoragePolicy+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "109" ],
-        "x-ms-client-request-id": [ "efd209b8-3932-4c77-98d8-3253824b319e" ],
+        "x-ms-unique-id": [ "118" ],
+        "x-ms-client-request-id": [ "1e4e167e-b1fc-4179-acc7-2397a3b5a65c" ],
         "CommandName": [ "Update-AzVMwarePureStoragePolicy" ],
         "FullCommandName": [ "Update-AzVMwarePureStoragePolicy_UpdateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -267,7 +267,7 @@
         "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
         "Access-Control-Allow-Headers": [ "*" ],
         "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Fri, 13 Jun 2025 04:02:05 GMT" ]
+        "Date": [ "Mon, 16 Jun 2025 20:31:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -277,15 +277,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePureStoragePolicy+[NoContext]+Remove+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+1": {
+  "AzVMwarePureStoragePolicy+[NoContext]+Remove+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/pureStoragePolicies/storagePolicy1?api-version=2024-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "110" ],
-        "x-ms-client-request-id": [ "ded7115a-3f3b-4c66-bdd3-5abcd938cfe8" ],
+        "x-ms-unique-id": [ "119" ],
+        "x-ms-client-request-id": [ "485a6afb-542b-4732-975e-35ec5b956349" ],
         "CommandName": [ "Remove-AzVMwarePureStoragePolicy" ],
         "FullCommandName": [ "Remove-AzVMwarePureStoragePolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -303,7 +303,7 @@
         "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
         "Access-Control-Allow-Headers": [ "*" ],
         "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Fri, 13 Jun 2025 04:02:05 GMT" ]
+        "Date": [ "Mon, 16 Jun 2025 20:31:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],

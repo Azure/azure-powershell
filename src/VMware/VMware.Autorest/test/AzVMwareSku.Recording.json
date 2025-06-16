@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "111" ],
-        "x-ms-client-request-id": [ "89055464-a7e3-402b-b874-675332bfbc21" ],
+        "x-ms-unique-id": [ "120" ],
+        "x-ms-client-request-id": [ "10e13d35-441d-46f3-99a3-8fa710765816" ],
         "CommandName": [ "Get-AzVMwareSku" ],
         "FullCommandName": [ "Get-AzVMwareSku_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -25,7 +25,7 @@
         "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
         "Access-Control-Allow-Headers": [ "*" ],
         "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Fri, 13 Jun 2025 04:02:07 GMT" ]
+        "Date": [ "Mon, 16 Jun 2025 20:31:47 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],

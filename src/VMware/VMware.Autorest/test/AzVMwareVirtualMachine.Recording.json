@@ -1,13 +1,13 @@
 {
-  "AzVMwareVirtualMachine+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/clusters/kb4ygv/virtualMachines?api-version=2024-09-01+1": {
+  "AzVMwareVirtualMachine+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug/virtualMachines?api-version=2024-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/clusters/kb4ygv/virtualMachines?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug/virtualMachines?api-version=2024-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "112" ],
-        "x-ms-client-request-id": [ "95e5cf8c-82f0-441f-a24d-762bde6c5c99" ],
+        "x-ms-unique-id": [ "121" ],
+        "x-ms-client-request-id": [ "226e08ea-d72b-448d-a3cb-a51995e2b68e" ],
         "CommandName": [ "Get-AzVMwareVirtualMachine" ],
         "FullCommandName": [ "Get-AzVMwareVirtualMachine_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -25,7 +25,7 @@
         "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
         "Access-Control-Allow-Headers": [ "*" ],
         "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Fri, 13 Jun 2025 04:02:07 GMT" ]
+        "Date": [ "Mon, 16 Jun 2025 20:31:47 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -35,15 +35,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareVirtualMachine+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/clusters/kb4ygv/virtualMachines/vm-209?api-version=2024-09-01+1": {
+  "AzVMwareVirtualMachine+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug/virtualMachines/vm-209?api-version=2024-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt27wzr/providers/Microsoft.AVS/privateClouds/azps_test_cloudptc1/clusters/kb4ygv/virtualMachines/vm-209?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug/virtualMachines/vm-209?api-version=2024-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "113" ],
-        "x-ms-client-request-id": [ "04b5a157-af03-44cb-856a-ef709fec63f9" ],
+        "x-ms-unique-id": [ "122" ],
+        "x-ms-client-request-id": [ "64684051-341a-46bb-8b2a-6487bbeb9b1e" ],
         "CommandName": [ "Get-AzVMwareVirtualMachine" ],
         "FullCommandName": [ "Get-AzVMwareVirtualMachine_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -61,7 +61,7 @@
         "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
         "Access-Control-Allow-Headers": [ "*" ],
         "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Fri, 13 Jun 2025 04:02:07 GMT" ]
+        "Date": [ "Mon, 16 Jun 2025 20:31:47 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
