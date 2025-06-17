@@ -134,12 +134,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     select key.Remove(0, Constants.ClusterConfiguration.StorageAccountKeyPrefix.Length)).ToList();
         }
 
-        public  List<EntraUserInfo> GetHDInsightGatewayEntraUser(string EntraUserIdentity, Hashtable[] EntraUserFullInfo)
+        public  List<EntraUserInfo> GetHDInsightGatewayEntraUser(string EntraUserIdentity, Hashtable[] EntraUserFullInfo, IAzureContext context)
         {
             List<EntraUserInfo> restAuthEntraUsers = new List<EntraUserInfo>();
             if (!string.IsNullOrWhiteSpace(EntraUserIdentity))
             {
-                IAzureContext context = new HDInsightCmdletBase().DefaultProfile.DefaultContext;
                 MicrosoftGraphClient graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(context, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
                 graphClient.TenantID = context.Tenant.Id.ToString();
                 List<string> userdata = EntraUserIdentity

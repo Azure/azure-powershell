@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             }else if(!string.IsNullOrWhiteSpace(EntraUserIdentity) || (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
             {
                 var clusterConfigurationUtils = new ClusterConfigurationUtils();
-                RestAuthEntraUsers = clusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserIdentity, EntraUserFullInfo);
+                RestAuthEntraUsers = clusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserIdentity, EntraUserFullInfo, DefaultProfile.DefaultContext);
             }
             ClusterCreateHelper.AddClusterCredentialToGatewayConfig(HttpCredential, clusterConfigurations, RestAuthEntraUsers);
 
