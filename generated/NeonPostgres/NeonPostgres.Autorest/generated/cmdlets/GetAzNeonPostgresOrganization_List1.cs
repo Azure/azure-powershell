@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Description(@"List OrganizationResource resources by resource group")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Neon.Postgres/organizations", ApiVersion = "2024-08-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Neon.Postgres/organizations", ApiVersion = "2025-03-01")]
     public partial class GetAzNeonPostgresOrganization_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.IContext

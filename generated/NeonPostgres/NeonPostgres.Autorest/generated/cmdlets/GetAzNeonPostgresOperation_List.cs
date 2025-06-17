@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.HttpPath(Path = "/providers/Neon.Postgres/operations", ApiVersion = "2024-08-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.HttpPath(Path = "/providers/Neon.Postgres/operations", ApiVersion = "2025-03-01")]
     public partial class GetAzNeonPostgresOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.IContext
