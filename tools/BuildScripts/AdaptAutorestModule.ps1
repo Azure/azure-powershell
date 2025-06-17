@@ -120,6 +120,7 @@ if (-not (Test-Path (Join-Path $parentModulePath "ChangeLog.md"))) {
 $parentModulePsd1Path = Join-Path $parentModulePath "Az.$ModuleRootName.psd1"
 Write-Host "Merging metadata of $SubModulePath/Az.$subModuleNameTrimmed.psd1 to $parentModulePsd1Path ..." -ForegroundColor DarkGreen
 $parentModuleMetadata = Import-LocalizedData -BaseDirectory $ParentModulePath -FileName "Az.$ModuleRootName.psd1"
+
 $parentModuleMetadata.RequiredAssemblies = (@($parentModuleMetadata.RequiredAssemblies) + "$SubModuleName/bin/Az.$subModuleNameTrimmed.private.dll") | Select-Object -Unique
 $parentModuleMetadata.FormatsToProcess = (@($parentModuleMetadata.FormatsToProcess) + "$SubModuleName/Az.$subModuleNameTrimmed.format.ps1xml") | Select-Object -Unique
 $parentModuleMetadata.NestedModules = (@($parentModuleMetadata.NestedModules) + "$SubModuleName/Az.$subModuleNameTrimmed.psm1") | Select-Object -Unique
@@ -245,11 +246,7 @@ try{
         }
         & $resolveScriptPath -ModuleName $ModuleRootName -ArtifactFolder $artifacts -Psd1Folder $parentModulePath
     } -ArgumentList $RepoRoot, $ModuleRootName, $parentModuleName, $SubModuleName, $subModuleNameTrimmed
-    try {
-        $job | Wait-Job | Receive-Job
-    } catch {
-        Write-Warning "Error: $($_.Exception.Message)"
-    }
+    $job | Wait-Job | Receive-Job
     $job | Remove-Job
 } finally {
     if (Test-Path $tempCsprojPath) {
