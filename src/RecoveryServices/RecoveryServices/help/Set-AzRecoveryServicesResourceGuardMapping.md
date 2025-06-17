@@ -30,7 +30,7 @@ $token = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").To
 Set-AzRecoveryServicesResourceGuardMapping -VaultId $vault.ID -ResourceGuardId "Resource-Guard-Id" -Token $token
 ```
 
-The first command fetches the access token for the resource guard tenant where the resource guard is present. The second command creates a mapping between the RSVault $vault and Resource guard. Please note that token parameter is optional and only needed to authenticate cross tenant protected opeartions.
+The first command fetches the access token for the resource guard tenant where the resource guard is present. The second command creates a mapping between the RSVault $vault and Resource guard. Please note that token parameter is optional and only needed to authenticate cross tenant protected operations.
 
 ## PARAMETERS
 

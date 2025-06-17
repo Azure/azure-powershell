@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseScanRulesetObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatabasescanrulesetobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create an in-memory object for AzureSqlDatabaseScanRuleset.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureSqlDatabaseScanRulesetObject -Kind <DataSourceType> [-Description <String>]
+New-AzPurviewAzureSqlDatabaseScanRulesetObject [-Description <String>]
  [-ExcludedSystemClassification <String[]>] [-IncludedCustomClassificationRuleName <String[]>]
- [-Type <ScanRulesetType>] [<CommonParameters>]
+ [-Type <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Create an in-memory object for AzureSqlDatabaseScanRuleset.
 
 ### Example 1: Create Azure SQL Database custom scanruleset object
 ```powershell
-New-AzPurviewAzureSqlDatabaseScanRulesetObject -Kind 'AzureSqlDatabase' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+New-AzPurviewAzureSqlDatabaseScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
 ```
 
 ```output
@@ -91,26 +91,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Type
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseScanRuleset
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseScanRuleset
 
 ## NOTES
 

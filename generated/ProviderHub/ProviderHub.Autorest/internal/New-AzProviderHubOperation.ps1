@@ -16,16 +16,16 @@
 
 <#
 .Synopsis
-Creates or updates the operation supported by the given provider.
+Create the operation supported by the given provider.
 .Description
-Creates or updates the operation supported by the given provider.
+Create the operation supported by the given provider.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsContent
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IOperationsContent
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,15 +37,15 @@ CONTENT <IOperationsDefinition[]>: .
   DisplayProvider <String>: 
   DisplayResource <String>: 
   Name <String>: Name of the operation.
-  [ActionType <OperationActionType?>]: 
+  [ActionType <String>]: 
   [IsDataAction <Boolean?>]: Indicates whether the operation applies to data-plane.
-  [Origin <OperationOrigins?>]: 
-  [Property <IAny>]: Any object
+  [Origin <String>]: 
+  [Property <IAny>]: Anything
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhuboperation
 #>
 function New-AzProviderHubOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsContent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IOperationsContent])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -61,13 +61,24 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsDefinition[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IOperationsDefinition[]]
     # .
-    # To construct, see NOTES section for CONTENT properties and create a hash table.
     ${Content},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -125,13 +136,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ProviderHub.private\New-AzProviderHubOperation_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.ProviderHub.private\New-AzProviderHubOperation_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ProviderHub.private\New-AzProviderHubOperation_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -140,6 +154,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
