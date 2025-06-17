@@ -487,8 +487,7 @@ function Test-DataLakeStoreFileSystem
 	param
     (
         $fileToCopy,
-		$location,
-		$accountName
+		$location
     )
 
     if ([string]::IsNullOrEmpty($location))
@@ -498,6 +497,35 @@ function Test-DataLakeStoreFileSystem
 
 	try
 	{
+		# Creating Account
+		$resourceGroupName = Get-ResourceGroupName
+		$accountName = Get-DataLakeStoreAccountName
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
+		$accountCreated = New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DisableEncryption
+
+		Assert-AreEqual $accountName $accountCreated.Name
+		Assert-AreEqual $location $accountCreated.Location
+		Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
+		Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
+
+		# In loop to check if account exists
+		for ($i = 0; $i -le 60; $i++)
+		{
+			[array]$accountGet = Get-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
+			{
+				Assert-AreEqual $accountName $accountGet[0].Name
+				Assert-AreEqual $location $accountGet[0].Location
+				Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountGet[0].Type
+				Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
+				break
+			}
+
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
+			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
+		}
+
 
 		# define all the files and folders to create
 		$encodingFolder="/encodingFolder"
@@ -695,12 +723,18 @@ function Test-DataLakeStoreFileSystem
 		Assert-True {Remove-AzDataLakeStoreItem -Account $accountName -paths $summaryFolder -force -recurse -passthru} "Remove folder failed"
 		Assert-Throws {Get-AzDataLakeStoreItem -Account $accountName -path $summaryFolder}
 		Assert-True {Remove-AzDataLakeStoreItem -Account $accountName -paths $encodingFolder -force -recurse -passthru} "Remove folder failed"
+		
+		# Delete Data Lake account
+		Assert-True {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
+		# Verify that it is gone by trying to get it again
+		Assert-Throws {Get-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 	}
 	finally
 	{
-		# Skip cleanup for existing account and resource group
-		Write-Host "Skipping cleanup for existing account and resource group."	
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures	
 	}
 }
 
@@ -712,8 +746,7 @@ function Test-DataLakeStoreFileSystemPermissions
 {
 	param
     (
-        $location,
-		$accountName
+        $location
     )
 
     if ([string]::IsNullOrEmpty($location))
@@ -723,6 +756,34 @@ function Test-DataLakeStoreFileSystemPermissions
 
 	try
 	{
+		# Creating Account
+		$resourceGroupName = Get-ResourceGroupName
+		$accountName = Get-DataLakeStoreAccountName
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
+		$accountCreated = New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DisableEncryption
+
+		Assert-AreEqual $accountName $accountCreated.Name
+		Assert-AreEqual $location $accountCreated.Location
+		Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
+		Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
+
+		# In loop to check if account exists
+		for ($i = 0; $i -le 60; $i++)
+		{
+			[array]$accountGet = Get-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
+			{
+				Assert-AreEqual $accountName $accountGet[0].Name
+				Assert-AreEqual $location $accountGet[0].Location
+				Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountGet[0].Type
+				Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
+				break
+			}
+
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
+			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
+		}
 
 		#define folder name to create for recursive Acl
 		$folderToCreate = "/aclRecurseFolder"
@@ -829,11 +890,17 @@ function Test-DataLakeStoreFileSystemPermissions
 		$permission = Get-AzDataLakeStoreItemPermission -Account $accountName -path "/"
 		Assert-AreEqual 777 $permission
 
+		# Delete Data Lake account
+		Assert-True {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+
+		# Verify that it is gone by trying to get it again
+		Assert-Throws {Get-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 	}
 	finally
 	{
-		# Skip cleanup for existing account and resource group
-		Write-Host "Skipping cleanup for existing account and resource group."	
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures	
 	}
 }
 

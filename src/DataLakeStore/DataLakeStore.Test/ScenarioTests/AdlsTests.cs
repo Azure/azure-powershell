@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
     {
         private readonly string AccountName = "sss-datalakestore-test-c17";
         private readonly string ResourceGroupLocation = "westus";
+        private readonly string TestFileSystemPermissionResourceGroupLocation = "ukwest";
+        private readonly string TestFileSystemResourceGroupLocation = "ukwest";
+
 
         public AdlsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
@@ -73,14 +76,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         {
             var workingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).AbsolutePath);
             var testLocation = Path.Combine(workingPath, "ScenarioTests", (this.GetType().Name + ".ps1"));
-            TestRunner.RunTestScript($"Test-DataLakeStoreFileSystem -fileToCopy '{testLocation}' -location '{ResourceGroupLocation}' -accountName '{AccountName}'");
+           TestRunner.RunTestScript($"Test-DataLakeStoreFileSystem -fileToCopy '{testLocation}' -location '{TestFileSystemResourceGroupLocation}'");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsFileSystemPermissions()
         {
-            TestRunner.RunTestScript($"Test-DataLakeStoreFileSystemPermissions -location '{ResourceGroupLocation}' -accountName '{AccountName}'");
+            TestRunner.RunTestScript($"Test-DataLakeStoreFileSystemPermissions -location '{TestFileSystemPermissionResourceGroupLocation}'");
         }
 
         [Fact]
