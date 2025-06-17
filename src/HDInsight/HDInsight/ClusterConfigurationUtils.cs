@@ -28,7 +28,7 @@ using System.Linq;
 using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
-    internal class ClusterConfigurationUtils: HDInsightCmdletBase
+    internal class ClusterConfigurationUtils
     {
         public static string GetResourceGroupFromClusterId(string clusterId)
         {
@@ -139,9 +139,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             List<EntraUserInfo> restAuthEntraUsers = new List<EntraUserInfo>();
             if (!string.IsNullOrWhiteSpace(EntraUserIdentity))
             {
-                MicrosoftGraphClient graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(
-                    DefaultProfile.DefaultContext, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
-                graphClient.TenantID = DefaultProfile.DefaultContext.Tenant.Id.ToString();
+                IAzureContext context = new HDInsightCmdletBase().DefaultProfile.DefaultContext;
+                MicrosoftGraphClient graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(context, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
+                graphClient.TenantID = context.Tenant.Id.ToString();
                 List<string> userdata = EntraUserIdentity
                      .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                      .Select(s => s.Trim())
