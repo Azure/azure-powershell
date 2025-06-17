@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagedNetworkFabric", "ManagedNetworkFabric\ManagedNetworkFabric.csproj", "{16375B81-DDBE-45F5-B21B-13C65DAE7071}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ManagedNetworkFabric", "ManagedNetworkFabric.Autorest\Az.ManagedNetworkFabric.csproj", "{0D33D2FD-06C7-4981-942E-9445D9845335}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ManagedNetworkFabric", "ManagedNetworkFabric.Autorest\Az.ManagedNetworkFabric.csproj", "{1A43D55A-AD10-46E8-ACA1-9B1BF7947A2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{16375B81-DDBE-45F5-B21B-13C65DAE7071}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16375B81-DDBE-45F5-B21B-13C65DAE7071}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16375B81-DDBE-45F5-B21B-13C65DAE7071}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0D33D2FD-06C7-4981-942E-9445D9845335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D33D2FD-06C7-4981-942E-9445D9845335}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D33D2FD-06C7-4981-942E-9445D9845335}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D33D2FD-06C7-4981-942E-9445D9845335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A43D55A-AD10-46E8-ACA1-9B1BF7947A2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A43D55A-AD10-46E8-ACA1-9B1BF7947A2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A43D55A-AD10-46E8-ACA1-9B1BF7947A2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A43D55A-AD10-46E8-ACA1-9B1BF7947A2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D0601318-9883-4E9F-9F10-D805FF0BB47D} = {5FEB38BC-F901-4180-942C-1CF6115AB3A9}
