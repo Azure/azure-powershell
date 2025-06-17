@@ -53,6 +53,9 @@ function setupEnv() {
     $env.ResourceGroupName = "testaccountmigrationrg"
     $env.AccountName = "testaccountmigration111"
     $env.FilePV2AccountName = "pshtestaccountpv2"
+    $env.TaskID = "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.StorageActions/storageTasks/mytask1"
+    $env.TaskAssignmentResourceGroup = "testtaskassignmentrg"
+    $env.TaskAssignmentAccount = "testassignmentaccount2"
 
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }

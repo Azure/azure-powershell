@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
                 return;
             }
             {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.ManagedServiceIdentity.FromJson(__jsonIdentity) : _identity;}
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskProperties.FromJson(__jsonProperties) : _property;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskUpdateProperties.FromJson(__jsonProperties) : _property;}
             {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskUpdateParametersTags.FromJson(__jsonTags) : _tag;}
             AfterFromJson(json);
         }

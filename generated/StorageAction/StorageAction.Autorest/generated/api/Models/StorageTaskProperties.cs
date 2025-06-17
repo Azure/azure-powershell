@@ -59,10 +59,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
         Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskAction Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.Action { get => (this._action = this._action ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskAction()); set { {_action = value;} } }
 
         /// <summary>Internal Acessors for ActionElse</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IElseCondition Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.ActionElse { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).Else; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).Else = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IElseCondition Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.ActionElse { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).Else; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).Else = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ActionIf</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IIfCondition Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.ActionIf { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).If; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).If = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IIfCondition Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.ActionIf { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).If; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskActionInternal)Action).If = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for CreationTimeInUtc</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPropertiesInternal.CreationTimeInUtc { get => this._creationTimeInUtc; set { {_creationTimeInUtc = value;} } }
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
         Description = @"Represents the provisioning state of the storage task.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PSArgumentCompleterAttribute("ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Creating", "Succeeded", "Deleting", "Canceled", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PSArgumentCompleterAttribute("ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Accepted", "Creating", "Succeeded", "Deleting", "Canceled", "Failed")]
         string ProvisioningState { get;  }
         /// <summary>Storage task version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Info(
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
         /// <summary>List of operations to execute when the condition predicate satisfies.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation> IfOperation { get; set; }
         /// <summary>Represents the provisioning state of the storage task.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PSArgumentCompleterAttribute("ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Creating", "Succeeded", "Deleting", "Canceled", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.PSArgumentCompleterAttribute("ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Accepted", "Creating", "Succeeded", "Deleting", "Canceled", "Failed")]
         string ProvisioningState { get; set; }
         /// <summary>Storage task version.</summary>
         long? TaskVersion { get; set; }

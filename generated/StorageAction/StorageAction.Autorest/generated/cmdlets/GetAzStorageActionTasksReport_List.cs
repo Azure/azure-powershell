@@ -109,7 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>Backing field for <see cref="Maxpagesize" /> property.</summary>
-        private string _maxpagesize;
+        private int _maxpagesize;
 
         /// <summary>
         /// Optional, specifies the maximum number of Storage Task Assignment Resource IDs to be included in the list response.
@@ -120,9 +120,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Cmdlets
         ReadOnly = false,
         Description = @"Optional, specifies the maximum number of Storage Task Assignment Resource IDs to be included in the list response.",
         SerializedName = @"$maxpagesize",
-        PossibleTypes = new [] { typeof(string) })]
+        PossibleTypes = new [] { typeof(int) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.ParameterCategory.Query)]
-        public string Maxpagesize { get => this._maxpagesize; set => this._maxpagesize = value; }
+        public int Maxpagesize { get => this._maxpagesize; set => this._maxpagesize = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -419,13 +419,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.StorageTasksReportList(SubscriptionId, ResourceGroupName, StorageTaskName, this.InvocationInformation.BoundParameters.ContainsKey("Maxpagesize") ? Maxpagesize : null, this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, onOk, onDefault, this, Pipeline);
+                        await this.Client.StorageTasksReportList(SubscriptionId, ResourceGroupName, StorageTaskName, this.InvocationInformation.BoundParameters.ContainsKey("Maxpagesize") ? Maxpagesize : default(int?), this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,StorageTaskName=StorageTaskName,Maxpagesize=this.InvocationInformation.BoundParameters.ContainsKey("Maxpagesize") ? Maxpagesize : null,Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,StorageTaskName=StorageTaskName,Maxpagesize=this.InvocationInformation.BoundParameters.ContainsKey("Maxpagesize") ? Maxpagesize : default(int?),Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });

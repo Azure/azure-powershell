@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "37111ece-efd8-499e-96c7-652f9a1b9988" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "a07b73d1-6e3c-40b8-b632-e99b20b5ace3" ],
         "CommandName": [ "Get-AzStorageFileServiceUsage" ],
         "FullCommandName": [ "Get-AzStorageFileServiceUsage_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.0", "Az.Storage/8.1.0" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.Storage/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,23 +22,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "5cccb2aa-f3c0-4eb2-8122-ec8a4169a0bf" ],
+        "x-ms-request-id": [ "fc433b5d-7a3d-46d8-a3cf-66843539d6b2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/southeastasia/d6214c88-97e5-47eb-964a-1a220273435a" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "cab13187-875c-44f1-a013-7b77b1ed5822" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250218T054956Z:cab13187-875c-44f1-a013-7b77b1ed5822" ],
+        "x-ms-correlation-request-id": [ "25e1c5c4-6ba2-4eaa-995a-ca779da188a3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250616T063745Z:25e1c5c4-6ba2-4eaa-995a-ca779da188a3" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D57841BA453A439A90847909CDCA91B0 Ref B: MAA201060513045 Ref C: 2025-02-18T05:49:55Z" ],
-        "Date": [ "Tue, 18 Feb 2025 05:49:55 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E041FE0C7A1B4FECA363B5BADD6034B6 Ref B: MAA201060516039 Ref C: 2025-06-16T06:37:44Z" ],
+        "Date": [ "Mon, 16 Jun 2025 06:37:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1120" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/pshtestaccountpv2/fileServices/default/usages/default\",\"name\":\"default\",\"type\":\"Microsoft.Storage/storageAccounts/fileServices/usages\",\"properties\":{\"storageAccountLimits\":{\"maxFileShares\":50,\"maxProvisionedStorageGiB\":262144,\"maxProvisionedIOPS\":102400,\"maxProvisionedBandwidthMiBPerSec\":10340},\"fileShareLimits\":{\"minProvisionedStorageGiB\":32,\"maxProvisionedStorageGiB\":262144,\"minProvisionedIOPS\":3000,\"maxProvisionedIOPS\":102400,\"minProvisionedBandwidthMiBPerSec\":125,\"maxProvisionedBandwidthMiBPerSec\":10340},\"fileShareRecommendations\":{\"baseIOPS\":3000,\"ioScalar\":1.0,\"baseBandwidthMiBPerSec\":125,\"bandwidthScalar\":0.1},\"burstingConstants\":{\"burstFloorIOPS\":10000,\"burstIOScalar\":3.0,\"burstTimeframeSeconds\":3600},\"storageAccountUsage\":{\"liveShares\":{\"fileShareCount\":0,\"provisionedStorageGiB\":0,\"provisionedIOPS\":0,\"provisionedBandwidthMiBPerSec\":0},\"softDeletedShares\":{\"fileShareCount\":0,\"provisionedStorageGiB\":0,\"provisionedIOPS\":0,\"provisionedBandwidthMiBPerSec\":0}}}}",
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/pshtestaccountpv2/fileServices/default/usages/default\",\"name\":\"default\",\"type\":\"Microsoft.Storage/storageAccounts/fileServices/usages\",\"properties\":{\"storageAccountLimits\":{\"maxFileShares\":50,\"maxProvisionedStorageGiB\":262144,\"maxProvisionedIOPS\":102400,\"maxProvisionedBandwidthMiBPerSec\":10340},\"fileShareLimits\":{\"minProvisionedStorageGiB\":32,\"maxProvisionedStorageGiB\":262144,\"minProvisionedIOPS\":3000,\"maxProvisionedIOPS\":102400,\"minProvisionedBandwidthMiBPerSec\":100,\"maxProvisionedBandwidthMiBPerSec\":10340},\"fileShareRecommendations\":{\"baseIOPS\":3000,\"ioScalar\":1.0,\"baseBandwidthMiBPerSec\":125,\"bandwidthScalar\":0.1},\"burstingConstants\":{\"burstFloorIOPS\":10000,\"burstIOScalar\":3.0,\"burstTimeframeSeconds\":3600},\"storageAccountUsage\":{\"liveShares\":{\"fileShareCount\":0,\"provisionedStorageGiB\":0,\"provisionedIOPS\":0,\"provisionedBandwidthMiBPerSec\":0},\"softDeletedShares\":{\"fileShareCount\":0,\"provisionedStorageGiB\":0,\"provisionedIOPS\":0,\"provisionedBandwidthMiBPerSec\":0}}}}",
       "isContentBase64": false
     }
   }
