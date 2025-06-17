@@ -35,8 +35,6 @@ if (($null -eq $ModuleRootName) -or ('' -eq $ModuleRootName) -or ('$(root-module
     Exit 1
 }
 
-$ModuleRootName = $ModuleRootName -replace 'data$',''
-
 $RepoRoot = ($PSScriptRoot | Split-Path -Parent | Split-Path -Parent)
 $SourceDirectory = Join-Path $RepoRoot 'src'
 $GeneratedDirectory = Join-Path $RepoRoot 'generated'
@@ -248,11 +246,7 @@ try{
         }
         & $resolveScriptPath -ModuleName $ModuleRootName -ArtifactFolder $artifacts -Psd1Folder $parentModulePath
     } -ArgumentList $RepoRoot, $ModuleRootName, $parentModuleName, $SubModuleName, $subModuleNameTrimmed
-    try {
-        $job | Wait-Job | Receive-Job
-    } catch {
-        Write-Warning "Error: $($_.Exception.Message)"
-    }
+    $job | Wait-Job | Receive-Job
     $job | Remove-Job
 } finally {
     if (Test-Path $tempCsprojPath) {
