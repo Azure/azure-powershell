@@ -23,8 +23,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         public string AddonType { get => "HCX"; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).AddonType = "HCX"; }
 
+        /// <summary>Backing field for <see cref="ManagementNetwork" /> property.</summary>
+        private string _managementNetwork;
+
+        /// <summary>HCX management network.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string ManagementNetwork { get => this._managementNetwork; set => this._managementNetwork = value; }
+
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).ProvisioningState = value ?? null; }
 
         /// <summary>Backing field for <see cref="Offer" /> property.</summary>
         private string _offer;
@@ -36,6 +43,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>The state of the addon provisioning</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).ProvisioningState; }
+
+        /// <summary>Backing field for <see cref="UplinkNetwork" /> property.</summary>
+        private string _uplinkNetwork;
+
+        /// <summary>HCX uplink network</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string UplinkNetwork { get => this._uplinkNetwork; set => this._uplinkNetwork = value; }
 
         /// <summary>Creates an new <see cref="AddonHcxProperties" /> instance.</summary>
         public AddonHcxProperties()
@@ -60,6 +74,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonProperties
     {
+        /// <summary>HCX management network.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"HCX management network.",
+        SerializedName = @"managementNetwork",
+        PossibleTypes = new [] { typeof(string) })]
+        string ManagementNetwork { get; set; }
         /// <summary>The HCX offer, example VMware MaaS Cloud Provider (Enterprise)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = true,
@@ -71,14 +96,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"offer",
         PossibleTypes = new [] { typeof(string) })]
         string Offer { get; set; }
+        /// <summary>HCX uplink network</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"HCX uplink network",
+        SerializedName = @"uplinkNetwork",
+        PossibleTypes = new [] { typeof(string) })]
+        string UplinkNetwork { get; set; }
 
     }
     /// The properties of an HCX addon
     internal partial interface IAddonHcxPropertiesInternal :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal
     {
+        /// <summary>HCX management network.</summary>
+        string ManagementNetwork { get; set; }
         /// <summary>The HCX offer, example VMware MaaS Cloud Provider (Enterprise)</summary>
         string Offer { get; set; }
+        /// <summary>HCX uplink network</summary>
+        string UplinkNetwork { get; set; }
 
     }
 }

@@ -54,37 +54,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>Internal Acessors for DiskPoolVolume</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.DiskPoolVolume { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolume; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolume = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.DiskPoolVolume { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolume; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolume = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DiskPoolVolumePath</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.DiskPoolVolumePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolumePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolumePath = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.DiskPoolVolumePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolumePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolumePath = value ?? null; }
 
         /// <summary>Internal Acessors for ElasticSanVolume</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.ElasticSanVolume { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).ElasticSanVolume; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).ElasticSanVolume = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.ElasticSanVolume { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).ElasticSanVolume; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).ElasticSanVolume = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NetAppVolume</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.INetAppVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.NetAppVolume { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).NetAppVolume; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).NetAppVolume = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.INetAppVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.NetAppVolume { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).NetAppVolume; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).NetAppVolume = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.DatastoreProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).ProvisioningState = value ?? null; }
+
+        /// <summary>Internal Acessors for PureStorageVolume</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStorageVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.PureStorageVolume { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).PureStorageVolume; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).PureStorageVolume = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).Status = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
@@ -109,6 +130,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.FormatTable(Index = 2)]
         public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).ProvisioningState; }
 
+        /// <summary>Volume size to be used to create a Virtual Volumes (vVols) datastore</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
+        public int? PureStorageVolumeSizeGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).PureStorageVolumeSizeGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).PureStorageVolumeSizeGb = value ?? default(int); }
+
+        /// <summary>Azure resource ID of the Pure Storage Pool</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
+        public string PureStorageVolumeStoragePoolId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).PureStorageVolumeStoragePoolId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).PureStorageVolumeStoragePoolId = value ?? null; }
+
         /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.FormatTable(Index = 3)]
@@ -124,37 +155,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
-        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -269,6 +300,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Pending", "Creating", "Updating", "Deleting")]
         string ProvisioningState { get;  }
+        /// <summary>Volume size to be used to create a Virtual Volumes (vVols) datastore</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Volume size to be used to create a Virtual Volumes (vVols) datastore",
+        SerializedName = @"sizeGb",
+        PossibleTypes = new [] { typeof(int) })]
+        int? PureStorageVolumeSizeGb { get; set; }
+        /// <summary>Azure resource ID of the Pure Storage Pool</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Azure resource ID of the Pure Storage Pool",
+        SerializedName = @"storagePoolId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PureStorageVolumeStoragePoolId { get; set; }
         /// <summary>The operational status of the datastore</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -314,6 +367,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>The state of the datastore provisioning</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Pending", "Creating", "Updating", "Deleting")]
         string ProvisioningState { get; set; }
+        /// <summary>A Pure Storage volume</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStorageVolume PureStorageVolume { get; set; }
+        /// <summary>Volume size to be used to create a Virtual Volumes (vVols) datastore</summary>
+        int? PureStorageVolumeSizeGb { get; set; }
+        /// <summary>Azure resource ID of the Pure Storage Pool</summary>
+        string PureStorageVolumeStoragePoolId { get; set; }
         /// <summary>The operational status of the datastore</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Unknown", "Accessible", "Inaccessible", "Attached", "Detached", "LostCommunication", "DeadOrError")]
         string Status { get; set; }

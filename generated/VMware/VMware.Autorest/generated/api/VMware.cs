@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AddonsCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateCloudName, string addonName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AddonsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon> AddonsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon> AddonsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string addonName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -579,7 +579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AddonsDelete(string subscriptionId, string resourceGroupName, string privateCloudName, string addonName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -623,7 +623,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AddonsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AddonsGet(string subscriptionId, string resourceGroupName, string privateCloudName, string addonName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -903,7 +903,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AddonsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -957,7 +957,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon> AddonsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1014,7 +1014,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon> AddonsGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string addonName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1197,7 +1197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AddonsList(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1239,7 +1239,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AddonsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1291,7 +1291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonList> AddonsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1345,7 +1345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonList> AddonsListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1527,7 +1527,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationsCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateCloudName, string authorizationName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1576,7 +1576,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1636,7 +1636,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization> AuthorizationsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1699,7 +1699,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization> AuthorizationsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string authorizationName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2077,7 +2077,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationsDelete(string subscriptionId, string resourceGroupName, string privateCloudName, string authorizationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2121,7 +2121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2358,7 +2358,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationsGet(string subscriptionId, string resourceGroupName, string privateCloudName, string authorizationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2401,7 +2401,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2455,7 +2455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization> AuthorizationsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2512,7 +2512,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization> AuthorizationsGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string authorizationName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2695,7 +2695,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationsList(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorizationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2737,7 +2737,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorizationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2789,7 +2789,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorizationList> AuthorizationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2843,7 +2843,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorizationList> AuthorizationsListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3025,7 +3025,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudLinksCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateCloudName, string cloudLinkName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLink body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3074,7 +3074,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudLinksCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLink body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3134,7 +3134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLink> CloudLinksCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLink body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3197,7 +3197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLink> CloudLinksCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string cloudLinkName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLink body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3573,7 +3573,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudLinksDelete(string subscriptionId, string resourceGroupName, string privateCloudName, string cloudLinkName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3617,7 +3617,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudLinksDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3854,7 +3854,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudLinksGet(string subscriptionId, string resourceGroupName, string privateCloudName, string cloudLinkName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3897,7 +3897,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudLinksGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3951,7 +3951,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLink> CloudLinksGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4008,7 +4008,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLink> CloudLinksGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string cloudLinkName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4191,7 +4191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudLinksList(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLinkList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4233,7 +4233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudLinksListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLinkList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4285,7 +4285,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLinkList> CloudLinksListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4339,7 +4339,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLinkList> CloudLinksListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4521,7 +4521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4570,7 +4570,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4630,7 +4630,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster> ClustersCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4693,7 +4693,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster> ClustersCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5069,7 +5069,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersDelete(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5113,7 +5113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5350,7 +5350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersGet(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5393,7 +5393,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5447,7 +5447,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster> ClustersGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5504,7 +5504,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster> ClustersGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5687,7 +5687,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersList(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5729,7 +5729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5781,7 +5781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterList> ClustersListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5835,7 +5835,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterList> ClustersListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5940,7 +5940,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersListZones(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterZoneList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5984,7 +5984,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersListZonesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterZoneList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6039,7 +6039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterZoneList> ClustersListZonesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6097,7 +6097,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterZoneList> ClustersListZonesWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6347,7 +6347,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
         /// <param name="clusterName">Name of the cluster</param>
-        /// <param name="body">The cluster properties to be updated.</param>
+        /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -6359,7 +6359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersUpdate(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6396,7 +6396,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
 
         /// <summary>update a Cluster</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">The cluster properties to be updated.</param>
+        /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -6408,7 +6408,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6458,7 +6458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
 
         /// <summary>update a Cluster</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">The cluster properties to be updated.</param>
+        /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode"/>.</param>
@@ -6468,7 +6468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster> ClustersUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdate body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6521,7 +6521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
         /// <param name="clusterName">Name of the cluster</param>
-        /// <param name="body">The cluster properties to be updated.</param>
+        /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode"/>.</param>
@@ -6531,7 +6531,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster> ClustersUpdateWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdate body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6870,7 +6870,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
         /// <param name="clusterName">Name of the cluster</param>
-        /// <param name="body">The cluster properties to be updated.</param>
+        /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -6911,7 +6911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task DatastoresCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string datastoreName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6962,7 +6962,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task DatastoresCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7025,7 +7025,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore> DatastoresCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7092,7 +7092,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore> DatastoresCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string datastoreName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7474,7 +7474,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task DatastoresDelete(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string datastoreName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7520,7 +7520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task DatastoresDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7764,7 +7764,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task DatastoresGet(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string datastoreName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7809,7 +7809,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task DatastoresGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7866,7 +7866,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore> DatastoresGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7927,7 +7927,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore> DatastoresGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string datastoreName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8116,7 +8116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task DatastoresList(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8160,7 +8160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task DatastoresListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8215,7 +8215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreList> DatastoresListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8273,7 +8273,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreList> DatastoresListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8460,7 +8460,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalReachConnectionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateCloudName, string globalReachConnectionName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8509,7 +8509,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalReachConnectionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8569,7 +8569,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnection> GlobalReachConnectionsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnection body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8632,7 +8632,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnection> GlobalReachConnectionsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string globalReachConnectionName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnection body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9012,7 +9012,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalReachConnectionsDelete(string subscriptionId, string resourceGroupName, string privateCloudName, string globalReachConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9056,7 +9056,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalReachConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9293,7 +9293,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalReachConnectionsGet(string subscriptionId, string resourceGroupName, string privateCloudName, string globalReachConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9336,7 +9336,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalReachConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9390,7 +9390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnection> GlobalReachConnectionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9447,7 +9447,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnection> GlobalReachConnectionsGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string globalReachConnectionName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9632,7 +9632,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalReachConnectionsList(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9674,7 +9674,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalReachConnectionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9726,7 +9726,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionList> GlobalReachConnectionsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9780,7 +9780,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionList> GlobalReachConnectionsListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9965,7 +9965,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task HcxEnterpriseSitesCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateCloudName, string hcxEnterpriseSiteName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSite body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSite>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSite>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10015,7 +10015,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task HcxEnterpriseSitesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSite body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSite>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSite>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10075,7 +10075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSite> HcxEnterpriseSitesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSite body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10138,7 +10138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSite> HcxEnterpriseSitesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string hcxEnterpriseSiteName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSite body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10345,7 +10345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task HcxEnterpriseSitesDelete(string subscriptionId, string resourceGroupName, string privateCloudName, string hcxEnterpriseSiteName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10389,7 +10389,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task HcxEnterpriseSitesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10533,7 +10533,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task HcxEnterpriseSitesGet(string subscriptionId, string resourceGroupName, string privateCloudName, string hcxEnterpriseSiteName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSite>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10576,7 +10576,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task HcxEnterpriseSitesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSite>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10630,7 +10630,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSite> HcxEnterpriseSitesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10687,7 +10687,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSite> HcxEnterpriseSitesGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string hcxEnterpriseSiteName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10870,7 +10870,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task HcxEnterpriseSitesList(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSiteList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10912,7 +10912,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task HcxEnterpriseSitesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSiteList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10964,7 +10964,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSiteList> HcxEnterpriseSitesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11018,7 +11018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSiteList> HcxEnterpriseSitesListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11183,6 +11183,701 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
+        /// <summary>Get a Host</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="clusterName">Name of the cluster</param>
+        /// <param name="hostId">The host identifier.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task HostsGet(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string hostId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHost>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + global::System.Uri.EscapeDataString(privateCloudName)
+                        + "/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/hosts/"
+                        + global::System.Uri.EscapeDataString(hostId)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.HostsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a Host</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task HostsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHost>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AVS/privateClouds/(?<privateCloudName>[^/]+)/clusters/(?<clusterName>[^/]+)/hosts/(?<hostId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/hosts/{hostId}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateCloudName = _match.Groups["privateCloudName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                var hostId = _match.Groups["hostId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + privateCloudName
+                        + "/clusters/"
+                        + clusterName
+                        + "/hosts/"
+                        + hostId
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.HostsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a Host</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHost>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHost> HostsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AVS/privateClouds/(?<privateCloudName>[^/]+)/clusters/(?<clusterName>[^/]+)/hosts/(?<hostId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/hosts/{hostId}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateCloudName = _match.Groups["privateCloudName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                var hostId = _match.Groups["hostId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + privateCloudName
+                        + "/clusters/"
+                        + clusterName
+                        + "/hosts/"
+                        + hostId
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.HostsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a Host</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="clusterName">Name of the cluster</param>
+        /// <param name="hostId">The host identifier.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHost>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHost> HostsGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string hostId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + global::System.Uri.EscapeDataString(privateCloudName)
+                        + "/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/hosts/"
+                        + global::System.Uri.EscapeDataString(hostId)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.HostsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "HostsGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHost>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHost> HostsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Host.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "HostsGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task HostsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHost>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Host.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="HostsGet" /> method. Call this like the actual call, but you will get validation events
+        /// back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="clusterName">Name of the cluster</param>
+        /// <param name="hostId">The host identifier.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task HostsGet_Validate(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string hostId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(privateCloudName),privateCloudName);
+                await eventListener.AssertRegEx(nameof(privateCloudName), privateCloudName, @"^[-\w\._]+$");
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName), clusterName, @"^[-\w\._]+$");
+                await eventListener.AssertNotNull(nameof(hostId),hostId);
+                await eventListener.AssertRegEx(nameof(hostId), hostId, @"^[-\w\._]+$");
+            }
+        }
+
+        /// <summary>List Host resources by Cluster</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="clusterName">Name of the cluster</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task HostsList(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHostListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + global::System.Uri.EscapeDataString(privateCloudName)
+                        + "/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/hosts"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.HostsList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List Host resources by Cluster</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task HostsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHostListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AVS/privateClouds/(?<privateCloudName>[^/]+)/clusters/(?<clusterName>[^/]+)/hosts$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/hosts'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateCloudName = _match.Groups["privateCloudName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + privateCloudName
+                        + "/clusters/"
+                        + clusterName
+                        + "/hosts"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.HostsList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List Host resources by Cluster</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHostListResult>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHostListResult> HostsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AVS/privateClouds/(?<privateCloudName>[^/]+)/clusters/(?<clusterName>[^/]+)/hosts$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/hosts'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateCloudName = _match.Groups["privateCloudName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + privateCloudName
+                        + "/clusters/"
+                        + clusterName
+                        + "/hosts"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.HostsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List Host resources by Cluster</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="clusterName">Name of the cluster</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHostListResult>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHostListResult> HostsListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + global::System.Uri.EscapeDataString(privateCloudName)
+                        + "/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/hosts"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.HostsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "HostsListWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHostListResult>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHostListResult> HostsListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.HostListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "HostsList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task HostsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHostListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.HostListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="HostsList" /> method. Call this like the actual call, but you will get validation events
+        /// back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="clusterName">Name of the cluster</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task HostsList_Validate(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(privateCloudName),privateCloudName);
+                await eventListener.AssertRegEx(nameof(privateCloudName), privateCloudName, @"^[-\w\._]+$");
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName), clusterName, @"^[-\w\._]+$");
+            }
+        }
+
         /// <summary>update a IscsiPath</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -11199,7 +11894,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task IscsiPathsCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPath body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPath>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11247,7 +11942,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task IscsiPathsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPath body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPath>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11305,7 +12000,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPath> IscsiPathsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPath body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11365,7 +12060,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPath> IscsiPathsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPath body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11736,7 +12431,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task IscsiPathsDelete(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11779,7 +12474,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task IscsiPathsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12010,7 +12705,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task IscsiPathsGet(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPath>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12052,7 +12747,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task IscsiPathsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPath>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12104,7 +12799,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPath> IscsiPathsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12158,7 +12853,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPath> IscsiPathsGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12337,7 +13032,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task IscsiPathsListByPrivateCloud(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPathListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12379,7 +13074,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task IscsiPathsListByPrivateCloudViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPathListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12431,7 +13126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPathListResult> IscsiPathsListByPrivateCloudViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12485,7 +13180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPathListResult> IscsiPathsListByPrivateCloudWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12665,7 +13360,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task LocationsCheckQuotaAvailability(string subscriptionId, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IQuota>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12705,7 +13400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task LocationsCheckQuotaAvailabilityViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IQuota>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12754,7 +13449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IQuota> LocationsCheckQuotaAvailabilityViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12804,7 +13499,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IQuota> LocationsCheckQuotaAvailabilityWithResult(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12980,7 +13675,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task LocationsCheckTrialAvailability(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrial>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13026,7 +13721,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task LocationsCheckTrialAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrial>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13081,7 +13776,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrial> LocationsCheckTrialAvailabilityViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13137,7 +13832,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrial> LocationsCheckTrialAvailabilityWithResult(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13316,7 +14011,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13352,7 +14047,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13395,7 +14090,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13437,7 +14132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13605,7 +14300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PlacementPoliciesCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string placementPolicyName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13656,7 +14351,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PlacementPoliciesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13719,7 +14414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy> PlacementPoliciesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13786,7 +14481,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy> PlacementPoliciesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string placementPolicyName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14170,7 +14865,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PlacementPoliciesDelete(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string placementPolicyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14216,7 +14911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PlacementPoliciesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14460,7 +15155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PlacementPoliciesGet(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string placementPolicyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14505,7 +15200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PlacementPoliciesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14562,7 +15257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy> PlacementPoliciesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14623,7 +15318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy> PlacementPoliciesGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string placementPolicyName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14812,7 +15507,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PlacementPoliciesList(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPoliciesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14856,7 +15551,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PlacementPoliciesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPoliciesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14911,7 +15606,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPoliciesList> PlacementPoliciesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14969,7 +15664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPoliciesList> PlacementPoliciesListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15145,7 +15840,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <param name="privateCloudName">Name of the private cloud</param>
         /// <param name="clusterName">Name of the cluster</param>
         /// <param name="placementPolicyName">Name of the placement policy.</param>
-        /// <param name="body">The placement policy properties to be updated.</param>
+        /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -15157,7 +15852,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PlacementPoliciesUpdate(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string placementPolicyName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15196,7 +15891,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
 
         /// <summary>update a PlacementPolicy</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">The placement policy properties to be updated.</param>
+        /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -15208,7 +15903,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PlacementPoliciesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15261,7 +15956,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
 
         /// <summary>update a PlacementPolicy</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">The placement policy properties to be updated.</param>
+        /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode"/>.</param>
@@ -15271,7 +15966,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy> PlacementPoliciesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyUpdate body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15328,7 +16023,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <param name="privateCloudName">Name of the private cloud</param>
         /// <param name="clusterName">Name of the cluster</param>
         /// <param name="placementPolicyName">Name of the placement policy.</param>
-        /// <param name="body">The placement policy properties to be updated.</param>
+        /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode"/>.</param>
@@ -15338,7 +16033,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy> PlacementPoliciesUpdateWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string placementPolicyName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyUpdate body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15680,7 +16375,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <param name="privateCloudName">Name of the private cloud</param>
         /// <param name="clusterName">Name of the cluster</param>
         /// <param name="placementPolicyName">Name of the placement policy.</param>
-        /// <param name="body">The placement policy properties to be updated.</param>
+        /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -15721,7 +16416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateCloudsCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15768,7 +16463,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateCloudsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15825,7 +16520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud> PrivateCloudsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15884,7 +16579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud> PrivateCloudsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16256,7 +16951,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateCloudsDelete(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16298,7 +16993,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateCloudsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16528,7 +17223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateCloudsGet(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16569,7 +17264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateCloudsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16620,7 +17315,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud> PrivateCloudsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16673,7 +17368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud> PrivateCloudsGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16850,7 +17545,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateCloudsList(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16892,7 +17587,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateCloudsListAdminCredentials(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAdminCredentials>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16934,7 +17629,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateCloudsListAdminCredentialsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAdminCredentials>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16986,7 +17681,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAdminCredentials> PrivateCloudsListAdminCredentialsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17040,7 +17735,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAdminCredentials> PrivateCloudsListAdminCredentialsWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17219,7 +17914,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateCloudsListInSubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17257,7 +17952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateCloudsListInSubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17303,7 +17998,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudList> PrivateCloudsListInSubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17349,7 +18044,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudList> PrivateCloudsListInSubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17517,7 +18212,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateCloudsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17566,7 +18261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudList> PrivateCloudsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17616,7 +18311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudList> PrivateCloudsListWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17781,6 +18476,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17788,9 +18484,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateCloudsRotateNsxtPassword(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateCloudsRotateNsxtPassword(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17816,13 +18512,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.PrivateCloudsRotateNsxtPassword_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.PrivateCloudsRotateNsxtPassword_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Rotate the NSX-T Manager password</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17830,9 +18527,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateCloudsRotateNsxtPasswordViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateCloudsRotateNsxtPasswordViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17870,13 +18567,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.PrivateCloudsRotateNsxtPassword_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.PrivateCloudsRotateNsxtPassword_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "PrivateCloudsRotateNsxtPassword" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17884,7 +18582,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PrivateCloudsRotateNsxtPassword_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PrivateCloudsRotateNsxtPassword_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -17993,6 +18691,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -18047,6 +18751,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -18054,9 +18759,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateCloudsRotateVcenterPassword(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateCloudsRotateVcenterPassword(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18082,13 +18787,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.PrivateCloudsRotateVcenterPassword_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.PrivateCloudsRotateVcenterPassword_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Rotate the vCenter password</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -18096,9 +18802,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateCloudsRotateVcenterPasswordViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateCloudsRotateVcenterPasswordViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18136,13 +18842,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.PrivateCloudsRotateVcenterPassword_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.PrivateCloudsRotateVcenterPassword_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "PrivateCloudsRotateVcenterPassword" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -18150,7 +18857,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PrivateCloudsRotateVcenterPassword_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PrivateCloudsRotateVcenterPassword_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -18259,6 +18966,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -18312,7 +19025,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
-        /// <param name="body">The private cloud properties to be updated.</param>
+        /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -18324,7 +19037,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateCloudsUpdate(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18359,7 +19072,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
 
         /// <summary>Update a PrivateCloud</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">The private cloud properties to be updated.</param>
+        /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -18371,7 +19084,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateCloudsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18418,7 +19131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
 
         /// <summary>Update a PrivateCloud</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">The private cloud properties to be updated.</param>
+        /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode"/>.</param>
@@ -18428,7 +19141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud> PrivateCloudsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdate body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18477,7 +19190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
-        /// <param name="body">The private cloud properties to be updated.</param>
+        /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode"/>.</param>
@@ -18487,7 +19200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud> PrivateCloudsUpdateWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdate body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18823,7 +19536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
-        /// <param name="body">The private cloud properties to be updated.</param>
+        /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -18844,6 +19557,2169 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
+        /// <summary>Get a ProvisionedNetwork</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="provisionedNetworkName">Name of the cloud link.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProvisionedNetworksGet(string subscriptionId, string resourceGroupName, string privateCloudName, string provisionedNetworkName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetwork>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + global::System.Uri.EscapeDataString(privateCloudName)
+                        + "/provisionedNetworks/"
+                        + global::System.Uri.EscapeDataString(provisionedNetworkName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProvisionedNetworksGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a ProvisionedNetwork</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProvisionedNetworksGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetwork>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AVS/privateClouds/(?<privateCloudName>[^/]+)/provisionedNetworks/(?<provisionedNetworkName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/provisionedNetworks/{provisionedNetworkName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateCloudName = _match.Groups["privateCloudName"].Value;
+                var provisionedNetworkName = _match.Groups["provisionedNetworkName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + privateCloudName
+                        + "/provisionedNetworks/"
+                        + provisionedNetworkName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProvisionedNetworksGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a ProvisionedNetwork</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetwork>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetwork> ProvisionedNetworksGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AVS/privateClouds/(?<privateCloudName>[^/]+)/provisionedNetworks/(?<provisionedNetworkName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/provisionedNetworks/{provisionedNetworkName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateCloudName = _match.Groups["privateCloudName"].Value;
+                var provisionedNetworkName = _match.Groups["provisionedNetworkName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + privateCloudName
+                        + "/provisionedNetworks/"
+                        + provisionedNetworkName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ProvisionedNetworksGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a ProvisionedNetwork</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="provisionedNetworkName">Name of the cloud link.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetwork>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetwork> ProvisionedNetworksGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string provisionedNetworkName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + global::System.Uri.EscapeDataString(privateCloudName)
+                        + "/provisionedNetworks/"
+                        + global::System.Uri.EscapeDataString(provisionedNetworkName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ProvisionedNetworksGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ProvisionedNetworksGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetwork>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetwork> ProvisionedNetworksGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ProvisionedNetwork.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ProvisionedNetworksGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProvisionedNetworksGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetwork>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ProvisionedNetwork.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ProvisionedNetworksGet" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="provisionedNetworkName">Name of the cloud link.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProvisionedNetworksGet_Validate(string subscriptionId, string resourceGroupName, string privateCloudName, string provisionedNetworkName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(privateCloudName),privateCloudName);
+                await eventListener.AssertRegEx(nameof(privateCloudName), privateCloudName, @"^[-\w\._]+$");
+                await eventListener.AssertNotNull(nameof(provisionedNetworkName),provisionedNetworkName);
+                await eventListener.AssertRegEx(nameof(provisionedNetworkName), provisionedNetworkName, @"^[-\w\._]+$");
+            }
+        }
+
+        /// <summary>List ProvisionedNetwork resources by PrivateCloud</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProvisionedNetworksList(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetworkListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + global::System.Uri.EscapeDataString(privateCloudName)
+                        + "/provisionedNetworks"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProvisionedNetworksList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List ProvisionedNetwork resources by PrivateCloud</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProvisionedNetworksListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetworkListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AVS/privateClouds/(?<privateCloudName>[^/]+)/provisionedNetworks$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/provisionedNetworks'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateCloudName = _match.Groups["privateCloudName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + privateCloudName
+                        + "/provisionedNetworks"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProvisionedNetworksList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List ProvisionedNetwork resources by PrivateCloud</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetworkListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetworkListResult> ProvisionedNetworksListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AVS/privateClouds/(?<privateCloudName>[^/]+)/provisionedNetworks$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/provisionedNetworks'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateCloudName = _match.Groups["privateCloudName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + privateCloudName
+                        + "/provisionedNetworks"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ProvisionedNetworksListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List ProvisionedNetwork resources by PrivateCloud</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetworkListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetworkListResult> ProvisionedNetworksListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + global::System.Uri.EscapeDataString(privateCloudName)
+                        + "/provisionedNetworks"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ProvisionedNetworksListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ProvisionedNetworksListWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetworkListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetworkListResult> ProvisionedNetworksListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ProvisionedNetworkListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ProvisionedNetworksList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProvisionedNetworksList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProvisionedNetworkListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ProvisionedNetworkListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ProvisionedNetworksList" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProvisionedNetworksList_Validate(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(privateCloudName),privateCloudName);
+                await eventListener.AssertRegEx(nameof(privateCloudName), privateCloudName, @"^[-\w\._]+$");
+            }
+        }
+
+        /// <summary>update a PureStoragePolicy</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="storagePolicyName">Name of the storage policy.</param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PureStoragePoliciesCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateCloudName, string storagePolicyName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + global::System.Uri.EscapeDataString(privateCloudName)
+                        + "/pureStoragePolicies/"
+                        + global::System.Uri.EscapeDataString(storagePolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PureStoragePoliciesCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a PureStoragePolicy</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PureStoragePoliciesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AVS/privateClouds/(?<privateCloudName>[^/]+)/pureStoragePolicies/(?<storagePolicyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies/{storagePolicyName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateCloudName = _match.Groups["privateCloudName"].Value;
+                var storagePolicyName = _match.Groups["storagePolicyName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + privateCloudName
+                        + "/pureStoragePolicies/"
+                        + storagePolicyName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PureStoragePoliciesCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a PureStoragePolicy</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy> PureStoragePoliciesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AVS/privateClouds/(?<privateCloudName>[^/]+)/pureStoragePolicies/(?<storagePolicyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies/{storagePolicyName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateCloudName = _match.Groups["privateCloudName"].Value;
+                var storagePolicyName = _match.Groups["storagePolicyName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + privateCloudName
+                        + "/pureStoragePolicies/"
+                        + storagePolicyName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PureStoragePoliciesCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a PureStoragePolicy</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="storagePolicyName">Name of the storage policy.</param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy> PureStoragePoliciesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string storagePolicyName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + global::System.Uri.EscapeDataString(privateCloudName)
+                        + "/pureStoragePolicies/"
+                        + global::System.Uri.EscapeDataString(storagePolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PureStoragePoliciesCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "PureStoragePoliciesCreateOrUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy> PureStoragePoliciesCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PureStoragePolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "PureStoragePoliciesCreateOrUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PureStoragePoliciesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PureStoragePolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PureStoragePoliciesCreateOrUpdate" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="storagePolicyName">Name of the storage policy.</param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PureStoragePoliciesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string privateCloudName, string storagePolicyName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(privateCloudName),privateCloudName);
+                await eventListener.AssertRegEx(nameof(privateCloudName), privateCloudName, @"^[-\w\._]+$");
+                await eventListener.AssertNotNull(nameof(storagePolicyName),storagePolicyName);
+                await eventListener.AssertRegEx(nameof(storagePolicyName), storagePolicyName, @"^[-\w\._]+$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Delete a PureStoragePolicy</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="storagePolicyName">Name of the storage policy.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PureStoragePoliciesDelete(string subscriptionId, string resourceGroupName, string privateCloudName, string storagePolicyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + global::System.Uri.EscapeDataString(privateCloudName)
+                        + "/pureStoragePolicies/"
+                        + global::System.Uri.EscapeDataString(storagePolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PureStoragePoliciesDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Delete a PureStoragePolicy</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PureStoragePoliciesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AVS/privateClouds/(?<privateCloudName>[^/]+)/pureStoragePolicies/(?<storagePolicyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies/{storagePolicyName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateCloudName = _match.Groups["privateCloudName"].Value;
+                var storagePolicyName = _match.Groups["storagePolicyName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + privateCloudName
+                        + "/pureStoragePolicies/"
+                        + storagePolicyName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PureStoragePoliciesDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "PureStoragePoliciesDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PureStoragePoliciesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PureStoragePoliciesDelete" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="storagePolicyName">Name of the storage policy.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PureStoragePoliciesDelete_Validate(string subscriptionId, string resourceGroupName, string privateCloudName, string storagePolicyName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(privateCloudName),privateCloudName);
+                await eventListener.AssertRegEx(nameof(privateCloudName), privateCloudName, @"^[-\w\._]+$");
+                await eventListener.AssertNotNull(nameof(storagePolicyName),storagePolicyName);
+                await eventListener.AssertRegEx(nameof(storagePolicyName), storagePolicyName, @"^[-\w\._]+$");
+            }
+        }
+
+        /// <summary>Get a PureStoragePolicy</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="storagePolicyName">Name of the storage policy.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PureStoragePoliciesGet(string subscriptionId, string resourceGroupName, string privateCloudName, string storagePolicyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + global::System.Uri.EscapeDataString(privateCloudName)
+                        + "/pureStoragePolicies/"
+                        + global::System.Uri.EscapeDataString(storagePolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PureStoragePoliciesGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a PureStoragePolicy</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PureStoragePoliciesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AVS/privateClouds/(?<privateCloudName>[^/]+)/pureStoragePolicies/(?<storagePolicyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies/{storagePolicyName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateCloudName = _match.Groups["privateCloudName"].Value;
+                var storagePolicyName = _match.Groups["storagePolicyName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + privateCloudName
+                        + "/pureStoragePolicies/"
+                        + storagePolicyName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PureStoragePoliciesGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a PureStoragePolicy</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy> PureStoragePoliciesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AVS/privateClouds/(?<privateCloudName>[^/]+)/pureStoragePolicies/(?<storagePolicyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies/{storagePolicyName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateCloudName = _match.Groups["privateCloudName"].Value;
+                var storagePolicyName = _match.Groups["storagePolicyName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + privateCloudName
+                        + "/pureStoragePolicies/"
+                        + storagePolicyName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PureStoragePoliciesGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a PureStoragePolicy</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="storagePolicyName">Name of the storage policy.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy> PureStoragePoliciesGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string storagePolicyName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + global::System.Uri.EscapeDataString(privateCloudName)
+                        + "/pureStoragePolicies/"
+                        + global::System.Uri.EscapeDataString(storagePolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PureStoragePoliciesGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "PureStoragePoliciesGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy> PureStoragePoliciesGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PureStoragePolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "PureStoragePoliciesGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PureStoragePoliciesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PureStoragePolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PureStoragePoliciesGet" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="storagePolicyName">Name of the storage policy.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PureStoragePoliciesGet_Validate(string subscriptionId, string resourceGroupName, string privateCloudName, string storagePolicyName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(privateCloudName),privateCloudName);
+                await eventListener.AssertRegEx(nameof(privateCloudName), privateCloudName, @"^[-\w\._]+$");
+                await eventListener.AssertNotNull(nameof(storagePolicyName),storagePolicyName);
+                await eventListener.AssertRegEx(nameof(storagePolicyName), storagePolicyName, @"^[-\w\._]+$");
+            }
+        }
+
+        /// <summary>List PureStoragePolicy resources by PrivateCloud</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PureStoragePoliciesList(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + global::System.Uri.EscapeDataString(privateCloudName)
+                        + "/pureStoragePolicies"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PureStoragePoliciesList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List PureStoragePolicy resources by PrivateCloud</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PureStoragePoliciesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AVS/privateClouds/(?<privateCloudName>[^/]+)/pureStoragePolicies$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateCloudName = _match.Groups["privateCloudName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + privateCloudName
+                        + "/pureStoragePolicies"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PureStoragePoliciesList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List PureStoragePolicy resources by PrivateCloud</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicyListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicyListResult> PureStoragePoliciesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AVS/privateClouds/(?<privateCloudName>[^/]+)/pureStoragePolicies$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateCloudName = _match.Groups["privateCloudName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + privateCloudName
+                        + "/pureStoragePolicies"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PureStoragePoliciesListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List PureStoragePolicy resources by PrivateCloud</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicyListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicyListResult> PureStoragePoliciesListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AVS/privateClouds/"
+                        + global::System.Uri.EscapeDataString(privateCloudName)
+                        + "/pureStoragePolicies"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PureStoragePoliciesListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "PureStoragePoliciesListWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicyListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicyListResult> PureStoragePoliciesListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PureStoragePolicyListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "PureStoragePoliciesList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PureStoragePoliciesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPureStoragePolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PureStoragePolicyListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PureStoragePoliciesList" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateCloudName">Name of the private cloud</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PureStoragePoliciesList_Validate(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(privateCloudName),privateCloudName);
+                await eventListener.AssertRegEx(nameof(privateCloudName), privateCloudName, @"^[-\w\._]+$");
+            }
+        }
+
         /// <summary>Get a ScriptCmdlet</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -18860,7 +21736,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptCmdletsGet(string subscriptionId, string resourceGroupName, string privateCloudName, string scriptPackageName, string scriptCmdletName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdlet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18905,7 +21781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptCmdletsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdlet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18962,7 +21838,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdlet> ScriptCmdletsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19023,7 +21899,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdlet> ScriptCmdletsGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string scriptPackageName, string scriptCmdletName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19212,7 +22088,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptCmdletsList(string subscriptionId, string resourceGroupName, string privateCloudName, string scriptPackageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19256,7 +22132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptCmdletsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19311,7 +22187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletsList> ScriptCmdletsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19369,7 +22245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletsList> ScriptCmdletsListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string scriptPackageName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19556,7 +22432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptExecutionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateCloudName, string scriptExecutionName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19605,7 +22481,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptExecutionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19665,7 +22541,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution> ScriptExecutionsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19728,7 +22604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution> ScriptExecutionsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string scriptExecutionName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20106,7 +22982,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptExecutionsDelete(string subscriptionId, string resourceGroupName, string privateCloudName, string scriptExecutionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20150,7 +23026,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptExecutionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20387,7 +23263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptExecutionsGet(string subscriptionId, string resourceGroupName, string privateCloudName, string scriptExecutionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20436,7 +23312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptExecutionsGetExecutionLogs(string subscriptionId, string resourceGroupName, string privateCloudName, string scriptExecutionName, System.Collections.Generic.List<string> body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20487,7 +23363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptExecutionsGetExecutionLogsViaIdentity(global::System.String viaIdentity, System.Collections.Generic.List<string> body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20549,7 +23425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution> ScriptExecutionsGetExecutionLogsViaIdentityWithResult(global::System.String viaIdentity, System.Collections.Generic.List<string> body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20614,7 +23490,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution> ScriptExecutionsGetExecutionLogsWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string scriptExecutionName, System.Collections.Generic.List<string> body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20804,7 +23680,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptExecutionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20858,7 +23734,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution> ScriptExecutionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20915,7 +23791,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution> ScriptExecutionsGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string scriptExecutionName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21098,7 +23974,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptExecutionsList(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21140,7 +24016,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptExecutionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21192,7 +24068,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionsList> ScriptExecutionsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21246,7 +24122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionsList> ScriptExecutionsListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21426,7 +24302,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptPackagesGet(string subscriptionId, string resourceGroupName, string privateCloudName, string scriptPackageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21469,7 +24345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptPackagesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21523,7 +24399,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackage> ScriptPackagesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21580,7 +24456,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackage> ScriptPackagesGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string scriptPackageName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21763,7 +24639,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptPackagesList(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21805,7 +24681,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task ScriptPackagesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21857,7 +24733,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagesList> ScriptPackagesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21911,7 +24787,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagesList> ScriptPackagesListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22076,6 +24952,302 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
+        /// <summary>A list of SKUs.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SkusList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPagedResourceSku>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.AVS/skus"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SkusList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>A list of SKUs.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SkusListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPagedResourceSku>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.AVS/skus$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.AVS/skus'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.AVS/skus"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SkusList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>A list of SKUs.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPagedResourceSku>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPagedResourceSku> SkusListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.AVS/skus$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.AVS/skus'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.AVS/skus"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SkusListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>A list of SKUs.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPagedResourceSku>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPagedResourceSku> SkusListWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.AVS/skus"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SkusListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "SkusListWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPagedResourceSku>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPagedResourceSku> SkusListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PagedResourceSku.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "SkusList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SkusList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPagedResourceSku>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PagedResourceSku.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="SkusList" /> method. Call this like the actual call, but you will get validation events
+        /// back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SkusList_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+            }
+        }
+
         /// <summary>Get a VirtualMachine</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -22092,7 +25264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachinesGet(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string virtualMachineId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22137,7 +25309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachinesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22194,7 +25366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachine> VirtualMachinesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22255,7 +25427,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachine> VirtualMachinesGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string virtualMachineId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22444,7 +25616,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachinesList(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachinesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22488,7 +25660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachinesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachinesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22543,7 +25715,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachinesList> VirtualMachinesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22601,7 +25773,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachinesList> VirtualMachinesListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22777,7 +25949,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <param name="privateCloudName">Name of the private cloud</param>
         /// <param name="clusterName">Name of the cluster</param>
         /// <param name="virtualMachineId">ID of the virtual machine.</param>
-        /// <param name="body">The body type of the operation request.</param>
+        /// <param name="body">The content of the action request</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -22786,9 +25959,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachinesRestrictMovement(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string virtualMachineId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachineRestrictMovement body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task VirtualMachinesRestrictMovement(string subscriptionId, string resourceGroupName, string privateCloudName, string clusterName, string virtualMachineId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachineRestrictMovement body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22822,13 +25995,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.VirtualMachinesRestrictMovement_Call (request, onDefault,eventListener,sender);
+                await this.VirtualMachinesRestrictMovement_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Enable or disable DRS-driven VM movement restriction</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">The body type of the operation request.</param>
+        /// <param name="body">The content of the action request</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -22837,9 +26011,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachinesRestrictMovementViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachineRestrictMovement body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task VirtualMachinesRestrictMovementViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachineRestrictMovement body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22887,12 +26061,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.VirtualMachinesRestrictMovement_Call (request, onDefault,eventListener,sender);
+                await this.VirtualMachinesRestrictMovement_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "VirtualMachinesRestrictMovement" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -22900,7 +26075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachinesRestrictMovement_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachinesRestrictMovement_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -23009,6 +26184,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -23036,7 +26217,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// <param name="privateCloudName">Name of the private cloud</param>
         /// <param name="clusterName">Name of the cluster</param>
         /// <param name="virtualMachineId">ID of the virtual machine.</param>
-        /// <param name="body">The body type of the operation request.</param>
+        /// <param name="body">The content of the action request</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -23078,7 +26259,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksCreateDhcp(string subscriptionId, string resourceGroupName, string privateCloudName, string dhcpId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23127,7 +26308,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksCreateDhcpViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23187,7 +26368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp> WorkloadNetworksCreateDhcpViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23250,7 +26431,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp> WorkloadNetworksCreateDhcpWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string dhcpId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23629,7 +26810,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksCreateDnsService(string subscriptionId, string resourceGroupName, string privateCloudName, string dnsServiceId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23678,7 +26859,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksCreateDnsServiceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23738,7 +26919,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService> WorkloadNetworksCreateDnsServiceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23801,7 +26982,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService> WorkloadNetworksCreateDnsServiceWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string dnsServiceId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24180,7 +27361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksCreateDnsZone(string subscriptionId, string resourceGroupName, string privateCloudName, string dnsZoneId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24229,7 +27410,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksCreateDnsZoneViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24289,7 +27470,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone> WorkloadNetworksCreateDnsZoneViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24352,7 +27533,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone> WorkloadNetworksCreateDnsZoneWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string dnsZoneId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24731,7 +27912,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksCreatePortMirroring(string subscriptionId, string resourceGroupName, string privateCloudName, string portMirroringId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24780,7 +27961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksCreatePortMirroringViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24840,7 +28021,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring> WorkloadNetworksCreatePortMirroringViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24903,7 +28084,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring> WorkloadNetworksCreatePortMirroringWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string portMirroringId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25284,7 +28465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksCreatePublicIP(string subscriptionId, string resourceGroupName, string privateCloudName, string publicIPId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25333,7 +28514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksCreatePublicIPViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25393,7 +28574,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP> WorkloadNetworksCreatePublicIPViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25456,7 +28637,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP> WorkloadNetworksCreatePublicIPWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string publicIPId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25835,7 +29016,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksCreateSegments(string subscriptionId, string resourceGroupName, string privateCloudName, string segmentId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25884,7 +29065,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksCreateSegmentsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25944,7 +29125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment> WorkloadNetworksCreateSegmentsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26007,7 +29188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment> WorkloadNetworksCreateSegmentsWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string segmentId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26386,7 +29567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksCreateVMGroup(string subscriptionId, string resourceGroupName, string privateCloudName, string vmGroupId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26435,7 +29616,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksCreateVMGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26495,7 +29676,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup> WorkloadNetworksCreateVMGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26558,7 +29739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup> WorkloadNetworksCreateVMGroupWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string vmGroupId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26936,7 +30117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksDeleteDhcp(string subscriptionId, string resourceGroupName, string privateCloudName, string dhcpId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26980,7 +30161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksDeleteDhcpViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27218,7 +30399,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksDeleteDnsService(string subscriptionId, string resourceGroupName, string dnsServiceId, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27262,7 +30443,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksDeleteDnsServiceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27500,7 +30681,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksDeleteDnsZone(string subscriptionId, string resourceGroupName, string dnsZoneId, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27544,7 +30725,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksDeleteDnsZoneViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27782,7 +30963,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksDeletePortMirroring(string subscriptionId, string resourceGroupName, string portMirroringId, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27826,7 +31007,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksDeletePortMirroringViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28066,7 +31247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksDeletePublicIP(string subscriptionId, string resourceGroupName, string publicIPId, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28110,7 +31291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksDeletePublicIPViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28348,7 +31529,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksDeleteSegment(string subscriptionId, string resourceGroupName, string privateCloudName, string segmentId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28392,7 +31573,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksDeleteSegmentViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28630,7 +31811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksDeleteVMGroup(string subscriptionId, string resourceGroupName, string vmGroupId, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28674,7 +31855,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksDeleteVMGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28910,7 +32091,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGet(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetwork>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28955,7 +32136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetDhcp(string subscriptionId, string resourceGroupName, string dhcpId, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28998,7 +32179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetDhcpViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29052,7 +32233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp> WorkloadNetworksGetDhcpViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29109,7 +32290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp> WorkloadNetworksGetDhcpWithResult(string subscriptionId, string resourceGroupName, string dhcpId, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29293,7 +32474,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetDnsService(string subscriptionId, string resourceGroupName, string privateCloudName, string dnsServiceId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29336,7 +32517,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetDnsServiceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29390,7 +32571,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService> WorkloadNetworksGetDnsServiceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29447,7 +32628,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService> WorkloadNetworksGetDnsServiceWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string dnsServiceId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29633,7 +32814,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetDnsZone(string subscriptionId, string resourceGroupName, string privateCloudName, string dnsZoneId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29676,7 +32857,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetDnsZoneViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29730,7 +32911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone> WorkloadNetworksGetDnsZoneViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29787,7 +32968,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone> WorkloadNetworksGetDnsZoneWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string dnsZoneId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29973,7 +33154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetGateway(string subscriptionId, string resourceGroupName, string privateCloudName, string gatewayId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30016,7 +33197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetGatewayViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30070,7 +33251,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkGateway> WorkloadNetworksGetGatewayViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30127,7 +33308,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkGateway> WorkloadNetworksGetGatewayWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string gatewayId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30313,7 +33494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetPortMirroring(string subscriptionId, string resourceGroupName, string privateCloudName, string portMirroringId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30356,7 +33537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetPortMirroringViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30410,7 +33591,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring> WorkloadNetworksGetPortMirroringViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30467,7 +33648,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring> WorkloadNetworksGetPortMirroringWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string portMirroringId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30653,7 +33834,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetPublicIP(string subscriptionId, string resourceGroupName, string privateCloudName, string publicIPId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30696,7 +33877,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetPublicIPViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30750,7 +33931,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP> WorkloadNetworksGetPublicIPViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30807,7 +33988,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP> WorkloadNetworksGetPublicIPWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string publicIPId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30993,7 +34174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetSegment(string subscriptionId, string resourceGroupName, string privateCloudName, string segmentId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31036,7 +34217,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetSegmentViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31090,7 +34271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment> WorkloadNetworksGetSegmentViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31147,7 +34328,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment> WorkloadNetworksGetSegmentWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string segmentId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31333,7 +34514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetVMGroup(string subscriptionId, string resourceGroupName, string privateCloudName, string vmGroupId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31376,7 +34557,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetVMGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31430,7 +34611,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup> WorkloadNetworksGetVMGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31487,7 +34668,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup> WorkloadNetworksGetVMGroupWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string vmGroupId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31670,7 +34851,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetwork>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31722,7 +34903,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetwork> WorkloadNetworksGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31779,7 +34960,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetVirtualMachine(string subscriptionId, string resourceGroupName, string privateCloudName, string virtualMachineId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVirtualMachine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31822,7 +35003,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksGetVirtualMachineViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVirtualMachine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31876,7 +35057,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVirtualMachine> WorkloadNetworksGetVirtualMachineViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31933,7 +35114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVirtualMachine> WorkloadNetworksGetVirtualMachineWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string virtualMachineId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32116,7 +35297,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetwork> WorkloadNetworksGetWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32295,7 +35476,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksList(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32339,7 +35520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListDhcp(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32381,7 +35562,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListDhcpViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32433,7 +35614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpList> WorkloadNetworksListDhcpViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32487,7 +35668,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpList> WorkloadNetworksListDhcpWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32666,7 +35847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListDnsServices(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsServicesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32708,7 +35889,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListDnsServicesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsServicesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32760,7 +35941,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsServicesList> WorkloadNetworksListDnsServicesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32814,7 +35995,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsServicesList> WorkloadNetworksListDnsServicesWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32995,7 +36176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListDnsZones(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33037,7 +36218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListDnsZonesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33089,7 +36270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonesList> WorkloadNetworksListDnsZonesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33143,7 +36324,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonesList> WorkloadNetworksListDnsZonesWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33324,7 +36505,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListGateways(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkGatewayList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33366,7 +36547,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListGatewaysViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkGatewayList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33418,7 +36599,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkGatewayList> WorkloadNetworksListGatewaysViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33472,7 +36653,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkGatewayList> WorkloadNetworksListGatewaysWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33653,7 +36834,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListPortMirroring(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroringList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33695,7 +36876,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListPortMirroringViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroringList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33747,7 +36928,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroringList> WorkloadNetworksListPortMirroringViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33801,7 +36982,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroringList> WorkloadNetworksListPortMirroringWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33982,7 +37163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListPublicIPs(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIPsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34024,7 +37205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListPublicIPsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIPsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34076,7 +37257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIPsList> WorkloadNetworksListPublicIPsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34130,7 +37311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIPsList> WorkloadNetworksListPublicIPsWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34311,7 +37492,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListSegments(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegmentsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34353,7 +37534,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListSegmentsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegmentsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34405,7 +37586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegmentsList> WorkloadNetworksListSegmentsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34459,7 +37640,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegmentsList> WorkloadNetworksListSegmentsWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34640,7 +37821,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListVMGroups(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroupsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34682,7 +37863,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListVMGroupsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroupsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34734,7 +37915,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroupsList> WorkloadNetworksListVMGroupsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34788,7 +37969,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroupsList> WorkloadNetworksListVMGroupsWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34967,7 +38148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35019,7 +38200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkList> WorkloadNetworksListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35075,7 +38256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListVirtualMachines(string subscriptionId, string resourceGroupName, string privateCloudName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVirtualMachinesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35117,7 +38298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksListVirtualMachinesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVirtualMachinesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35169,7 +38350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVirtualMachinesList> WorkloadNetworksListVirtualMachinesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35223,7 +38404,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVirtualMachinesList> WorkloadNetworksListVirtualMachinesWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35404,7 +38585,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkList> WorkloadNetworksListWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35586,7 +38767,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksUpdateDhcp(string subscriptionId, string resourceGroupName, string privateCloudName, string dhcpId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35635,7 +38816,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksUpdateDhcpViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35695,7 +38876,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp> WorkloadNetworksUpdateDhcpViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35758,7 +38939,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp> WorkloadNetworksUpdateDhcpWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string dhcpId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36139,7 +39320,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksUpdateDnsService(string subscriptionId, string resourceGroupName, string privateCloudName, string dnsServiceId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36188,7 +39369,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksUpdateDnsServiceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36248,7 +39429,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService> WorkloadNetworksUpdateDnsServiceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36311,7 +39492,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService> WorkloadNetworksUpdateDnsServiceWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string dnsServiceId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36692,7 +39873,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksUpdateDnsZone(string subscriptionId, string resourceGroupName, string privateCloudName, string dnsZoneId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36741,7 +39922,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksUpdateDnsZoneViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36801,7 +39982,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone> WorkloadNetworksUpdateDnsZoneViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36864,7 +40045,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone> WorkloadNetworksUpdateDnsZoneWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string dnsZoneId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37245,7 +40426,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksUpdatePortMirroring(string subscriptionId, string resourceGroupName, string privateCloudName, string portMirroringId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37294,7 +40475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksUpdatePortMirroringViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37354,7 +40535,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring> WorkloadNetworksUpdatePortMirroringViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37417,7 +40598,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring> WorkloadNetworksUpdatePortMirroringWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string portMirroringId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37800,7 +40981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksUpdateSegments(string subscriptionId, string resourceGroupName, string privateCloudName, string segmentId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37849,7 +41030,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksUpdateSegmentsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37909,7 +41090,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment> WorkloadNetworksUpdateSegmentsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37972,7 +41153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment> WorkloadNetworksUpdateSegmentsWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string segmentId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38353,7 +41534,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksUpdateVMGroup(string subscriptionId, string resourceGroupName, string privateCloudName, string vmGroupId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38402,7 +41583,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkloadNetworksUpdateVMGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38462,7 +41643,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup> WorkloadNetworksUpdateVMGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38525,7 +41706,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup> WorkloadNetworksUpdateVMGroupWithResult(string subscriptionId, string resourceGroupName, string privateCloudName, string vmGroupId, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup body, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
