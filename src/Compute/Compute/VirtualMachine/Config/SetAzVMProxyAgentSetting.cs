@@ -27,12 +27,12 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMProxyAgentSetting"), OutputType(typeof(PSVirtualMachine))]
     public class SetAzureVMProxySetting : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
-        [Alias("VMProfile")]
+        [Alias("VirtualMachine")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMProfile)]
+            HelpMessage = "PSVirtualMachine object created from New-AzVMConfig.")]
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 

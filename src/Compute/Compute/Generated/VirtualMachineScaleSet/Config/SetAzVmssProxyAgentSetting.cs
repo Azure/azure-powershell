@@ -29,10 +29,12 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public class SetAzureVmssProxySetting : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
+        [Alias("Vmss")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "PSVirtualMachineScaleSet object created from New-AzVMSSConfig.")]
         public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(

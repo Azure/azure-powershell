@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Increase the value of this parameter allows users to reset the key used for securing communication channel between guest and host.")]
         [Alias("KeyIncarnationId")]
-        public int ProxyAgentKeyIncarnationId { get; set; }
+        public int? ProxyAgentKeyIncarnationId { get; set; }
 
         [Parameter(
             ValueFromPipeline = true)]

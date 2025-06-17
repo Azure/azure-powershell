@@ -174,7 +174,7 @@ Accept wildcard characters: False
 Increase the value of this parameter allows users to reset the key used for securing communication channel between guest and host.
 
 ```yaml
-Type: System.Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases: KeyIncarnationId
 

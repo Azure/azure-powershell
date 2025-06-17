@@ -111,12 +111,12 @@ Accept wildcard characters: False
 ```
 
 ### -VM
-The virtual machine profile.
+PSVirtualMachine object created from New-AzVMConfig.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: (All)
-Aliases: VMProfile
+Aliases: VirtualMachine
 
 Required: True
 Position: Named
