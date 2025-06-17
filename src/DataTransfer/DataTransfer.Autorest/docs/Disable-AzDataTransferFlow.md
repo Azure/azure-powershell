@@ -116,8 +116,6 @@ Type                                   : microsoft.azuredatatransfer/connections
 
 This example disables a specific flow named `Flow01` in the connection `Connection01` within the resource group `ResourceGroup01` without prompting for confirmation.
 
----
-
 ## PARAMETERS
 
 ### -AsJob

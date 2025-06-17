@@ -64,8 +64,6 @@ Type                         : microsoft.azuredatatransfer/connections
 
 This example lists all the pending send side connections for the connection `Connection01` which can be linked to this receive side connection.
 
----
-
 ## PARAMETERS
 
 ### -ConnectionName

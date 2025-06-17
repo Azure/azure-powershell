@@ -35,8 +35,6 @@ Type                               : microsoft.azuredatatransfer/pipelines
 
 This example retrieves a specific pipeline named `Pipeline01` within the resource group `ResourceGroup01`.
 
----
-
 ### Example 2: Get a list of pipelines in a resource group
 ```powershell
 $pipelinesInResourceGroup = Get-AzDataTransferPipeline -ResourceGroupName ResourceGroup01
@@ -74,8 +72,6 @@ Type                               : microsoft.azuredatatransfer/pipelines
 
 This example retrieves all pipelines in the resource group `ResourceGroup01`.
 
----
-
 ### Example 3: Get a list of pipelines in a subscription
 ```powershell
 $pipelinesInSubscription = Get-AzDataTransferPipeline -SubscriptionId "00000000-0000-0000-0000-000000000000"
@@ -112,5 +108,3 @@ Type                               : microsoft.azuredatatransfer/pipelines
 ```
 
 This example retrieves all pipelines in the subscription with the ID `00000000-0000-0000-0000-000000000000`.
-
----

@@ -109,8 +109,6 @@ Type                         : microsoft.azuredatatransfer/connections
 
 This example denies a connection request using the ID for `Connection01` in the pipeline `Pipeline01` within the resource group `ResourceGroup01` and provides a status reason for the rejection.
 
----
-
 ## PARAMETERS
 
 ### -AsJob

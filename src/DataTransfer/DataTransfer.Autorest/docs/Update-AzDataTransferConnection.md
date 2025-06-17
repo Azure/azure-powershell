@@ -96,8 +96,6 @@ Type                         : microsoft.azuredatatransfer/connections
 
 This example updates the tags for the connection `Connection01` in the resource group `ResourceGroup01`.
 
----
-
 ## PARAMETERS
 
 ### -AsJob

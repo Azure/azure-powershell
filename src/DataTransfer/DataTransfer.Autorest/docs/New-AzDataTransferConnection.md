@@ -91,8 +91,6 @@ Type                         : microsoft.azuredatatransfer/connections
 
 This example creates a new connection named `Connection01` under the pipeline `Pipeline01`in the resource group `ResourceGroup01` located in the `EastUS` region with basic parameters direction, flow type, and justification.
 
----
-
 ### Example 2: Create a new Send side connection with basic parameters
 ```powershell
 New-AzDataTransferConnection -ResourceGroupName ResourceGroup02 -PipelineName Pipeline01 -Name Connection02 -Location "WestUS" -Direction "Send" -PIN "ABCDEFG" -FlowType "Mission" -Justification "Required for data processing" -Confirm:$false
@@ -141,8 +139,6 @@ Type                         : microsoft.azuredatatransfer/connections
 ```
 
 This example creates a new connection named `Connection02` under the pipeline `Pipeline01` in the resource group `ResourceGroup02` located in the `WestUS` region with basic parameters direction, flow type, and justification.
-
----
 
 ### Example 3: Create a new connection with additional parameters
 ```powershell
@@ -193,8 +189,6 @@ Type                         : microsoft.azuredatatransfer/connections
 ```
 
 This example creates a new connection named `Connection03` in the resource group `ResourceGroup01` with additional parameters such as primary and secondary contacts and resource tags.
-
----
 
 ## PARAMETERS
 

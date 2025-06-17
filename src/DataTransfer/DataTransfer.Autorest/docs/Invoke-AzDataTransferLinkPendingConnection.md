@@ -108,8 +108,6 @@ Type                         : microsoft.azuredatatransfer/connections
 
 This example links a pending send side connection with the name `SendConnection01` to the receive side connection `ReceiveConnection01` within the resource group `ResourceGroup02` and provides a status reason.
 
----
-
 ## PARAMETERS
 
 ### -AsJob

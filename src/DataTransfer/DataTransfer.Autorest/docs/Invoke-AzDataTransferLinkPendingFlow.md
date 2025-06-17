@@ -152,8 +152,6 @@ Type                                   : microsoft.azuredatatransfer/connections
 
 This example links a pending send side flow with the naem `SendFlow01` to the receive side flow `ReceiveFlow01` in the connection `ReceiveConnection01` within the resource group `ResourceGroup02` and provides a status reason.
 
----
-
 ## PARAMETERS
 
 ### -AsJob

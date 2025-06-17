@@ -66,5 +66,3 @@ Type                                   : microsoft.azuredatatransfer/connections
 ```
 
 This example lists all pending flows on send side for the receive side connection `Connection01` within the resource group `ResourceGroup01`.
-
----

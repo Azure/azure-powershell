@@ -89,8 +89,6 @@ Type                         : microsoft.azuredatatransfer/connections
 
 This example retrieves a specific connection named `Connection01` within the resource group `ResourceGroup01`.
 
----
-
 ### Example 2: Get a list of connections in a resource group
 ```powershell
 $connectionsInResourceGroup = Get-AzDataTransferConnection -ResourceGroupName ResourceGroup01
@@ -140,8 +138,6 @@ Type                         : microsoft.azuredatatransfer/connections
 
 This example retrieves all connections in the resource group `ResourceGroup01`.
 
----
-
 ### Example 3: Get a list of connections in a subscription
 ```powershell
 $connectionsInSubscription = Get-AzDataTransferConnection -SubscriptionId "00000000-0000-0000-0000-000000000000"
@@ -190,8 +186,6 @@ Type                         : microsoft.azuredatatransfer/connections
 ```
 
 This example retrieves all connections in the subscription with the ID `00000000-0000-0000-0000-000000000000`.
-
----
 
 ## PARAMETERS
 

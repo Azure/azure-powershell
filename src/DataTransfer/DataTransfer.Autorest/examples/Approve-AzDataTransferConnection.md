@@ -1,5 +1,4 @@
 ### Example 1: Approve a connection request by ID
-
 ```powershell
 $connectionToApprove = Get-AzDataTransferConnection -ResourceGroupName ResourceGroup01 -Name Connection01
 Approve-AzDataTransferConnection -PipelineName Pipeline01 -ResourceGroupName ResourceGroup01 -ConnectionId $connectionToApprove.Id -StatusReason "Approved for processing" -Confirm:$false
@@ -48,5 +47,3 @@ Type                         : microsoft.azuredatatransfer/connections
 ```
 
 This example approves a connection request using the ID of `Connection01` in the pipeline `Pipeline01` within the resource group `ResourceGroup01` and provides a status reason. The approved connection response returns the updated status and the PIN.
-
----

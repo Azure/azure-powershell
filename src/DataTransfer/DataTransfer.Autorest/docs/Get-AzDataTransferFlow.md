@@ -101,8 +101,6 @@ Type                               : Microsoft.azuredatatransfer/connections/flo
 
 This example retrieves a specific flow named `Flow01` in the connection `Connection01` within the resource group `ResourceGroup01`.
 
----
-
 ### Example 2: Get a list of flows in a connection
 ```powershell
 Get-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01
@@ -163,8 +161,6 @@ Type                               : Microsoft.azuredatatransfer/connections/flo
 ```
 
 This example retrieves all flows in the connection `Connection01` within the resource group `ResourceGroup01`.
-
----
 
 ## PARAMETERS
 
