@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "ObjectParameter",
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The PS Gallery in VM Access Control Profile bbject")]
+            HelpMessage = "The PS Gallery in VM Access Control Profile object")]
         [ValidateNotNullOrEmpty]
         public PSGalleryInVMAccessControlProfile InputObject { get; set; }
 
