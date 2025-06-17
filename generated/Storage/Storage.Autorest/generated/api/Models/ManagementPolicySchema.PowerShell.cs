@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     using Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PowerShell;
 
     /// <summary>
-    /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+    /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ManagementPolicySchemaTypeConverter))]
     public partial class ManagementPolicySchema
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             return ToJsonString();
         }
     }
-    /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+    /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
     [System.ComponentModel.TypeConverter(typeof(ManagementPolicySchemaTypeConverter))]
     public partial interface IManagementPolicySchema
 

@@ -168,6 +168,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ShareName = (string) content.GetValueForProperty("ShareName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ShareName, global::System.Convert.ToString);
             }
+            if (content.Contains("StorageTaskAssignmentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).StorageTaskAssignmentName = (string) content.GetValueForProperty("StorageTaskAssignmentName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).StorageTaskAssignmentName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -248,6 +252,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("ShareName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ShareName = (string) content.GetValueForProperty("ShareName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ShareName, global::System.Convert.ToString);
+            }
+            if (content.Contains("StorageTaskAssignmentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).StorageTaskAssignmentName = (string) content.GetValueForProperty("StorageTaskAssignmentName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).StorageTaskAssignmentName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
