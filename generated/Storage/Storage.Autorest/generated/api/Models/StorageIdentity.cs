@@ -133,6 +133,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string ShareName { get => this._shareName; set => this._shareName = value; }
 
+        /// <summary>Backing field for <see cref="StorageTaskAssignmentName" /> property.</summary>
+        private string _storageTaskAssignmentName;
+
+        /// <summary>
+        /// The name of the storage task assignment within the specified resource group. Storage task assignment names must be between
+        /// 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public string StorageTaskAssignmentName { get => this._storageTaskAssignmentName; set => this._storageTaskAssignmentName = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -341,6 +351,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"shareName",
         PossibleTypes = new [] { typeof(string) })]
         string ShareName { get; set; }
+        /// <summary>
+        /// The name of the storage task assignment within the specified resource group. Storage task assignment names must be between
+        /// 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.",
+        SerializedName = @"storageTaskAssignmentName",
+        PossibleTypes = new [] { typeof(string) })]
+        string StorageTaskAssignmentName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -427,6 +451,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// and followed by a letter or number.
         /// </summary>
         string ShareName { get; set; }
+        /// <summary>
+        /// The name of the storage task assignment within the specified resource group. Storage task assignment names must be between
+        /// 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// </summary>
+        string StorageTaskAssignmentName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
         /// <summary>

@@ -30,13 +30,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicySchema _policy;
 
         /// <summary>
-        /// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicySchema Policy { get => (this._policy = this._policy ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicySchema()); set => this._policy = value; }
 
         /// <summary>
-        /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyRule> PolicyRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicySchemaInternal)Policy).Rule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicySchemaInternal)Policy).Rule = value ; }
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? LastModifiedTime { get;  }
         /// <summary>
-        /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = true,
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+        Description = @"The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.",
         SerializedName = @"rules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyRule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyRule> PolicyRule { get; set; }
@@ -84,11 +84,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Returns the date and time the ManagementPolicies was last modified.</summary>
         global::System.DateTime? LastModifiedTime { get; set; }
         /// <summary>
-        /// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicySchema Policy { get; set; }
         /// <summary>
-        /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
         /// </summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyRule> PolicyRule { get; set; }
 
