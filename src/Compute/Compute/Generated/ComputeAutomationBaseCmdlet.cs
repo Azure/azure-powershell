@@ -333,6 +333,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 return ComputeClient.ComputeManagementClient.RestorePoints;
             }
         }
+        public IGalleryInVMAccessControlProfilesOperations GalleryInVMAccessControlProfileClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.GalleryInVMAccessControlProfiles;
+            }
+        }
+        public IGalleryInVMAccessControlProfileVersionsOperations GalleryInVMAccessControlProfilesVersionClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.GalleryInVMAccessControlProfileVersions;
+            }
+        }
 
         public static string FormatObject(Object obj)
         {
