@@ -1,0 +1,94 @@
+{
+  "Get-AzNeonPostgresBranch+[NoContext]+List+$GET+https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "762f8d95-48a1-4168-ab76-080e90694d2a" ],
+        "CommandName": [ "Get-AzNeonPostgresBranch" ],
+        "FullCommandName": [ "Get-AzNeonPostgresBranch_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.1", "Az.NeonPostgres/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=9cf8ccaf-273c-4fe7-ae5a-2498a0f5d4c5/southindia/4a085fa3-35c3-4667-aada-ed29f5ab9859" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "5438980b-d7fd-44e5-b3f2-0b175bb3cc7b" ],
+        "x-ms-correlation-request-id": [ "e06c2c91-987a-49b1-a39b-d9d49ebf7208" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250612T094846Z:e06c2c91-987a-49b1-a39b-d9d49ebf7208" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 18C8C2DD4FCB423F8A46471DB5B74FED Ref B: MAA201060516019 Ref C: 2025-06-12T09:48:45Z" ],
+        "Date": [ "Thu, 12 Jun 2025 09:48:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1471" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"projectId\":\"dawn-breeze-86932057\",\"attributes\":[{\"name\":\"createdAt\",\"value\":\"May 12, 2025 8:02 AM\"},{\"name\":\"logicalSize\",\"value\":\"30785536\"},{\"name\":\"cpuUsedSec\",\"value\":\"229\"},{\"name\":\"computeTimeSeconds\",\"value\":\"229\"},{\"name\":\"activeTimeSeconds\",\"value\":\"904\"},{\"name\":\"writtenDataBytes\",\"value\":\"608\"},{\"name\":\"dataTransferBytes\",\"value\":\"22\"},{\"name\":\"isProtected\",\"value\":\"false\"},{\"name\":\"isDefault\",\"value\":\"true\"},{\"name\":\"lastActive\",\"value\":\"Jun 12, 2025 9:36 AM\"},{\"name\":\"autoscalingLimitMinCu\",\"value\":\"0.25\"},{\"name\":\"autoscalingLimitMaxCu\",\"value\":\"0.25\"}],\"entityId\":\"br-damp-bird-a82olmcu\",\"entityName\":\"main\",\"createdAt\":\"May 12, 2025 8:02 AM\",\"provisioningState\":\"idle\"}},{\"properties\":{\"projectId\":\"dawn-breeze-86932057\",\"parentId\":\"br-damp-bird-a82olmcu\",\"attributes\":[{\"name\":\"createdAt\",\"value\":\"Jun 12, 2025 9:22 AM\"},{\"name\":\"logicalSize\",\"value\":\"30842880\"},{\"name\":\"cpuUsedSec\",\"value\":\"80\"},{\"name\":\"computeTimeSeconds\",\"value\":\"80\"},{\"name\":\"activeTimeSeconds\",\"value\":\"312\"},{\"name\":\"writtenDataBytes\",\"value\":\"198480\"},{\"name\":\"dataTransferBytes\",\"value\":\"0\"},{\"name\":\"isProtected\",\"value\":\"false\"},{\"name\":\"isDefault\",\"value\":\"false\"},{\"name\":\"lastActive\",\"value\":\"Jun 12, 2025 9:36 AM\"},{\"name\":\"autoscalingLimitMinCu\",\"value\":\"0.25\"},{\"name\":\"autoscalingLimitMaxCu\",\"value\":\"0.25\"}],\"entityId\":\"br-aged-fog-a8dk8sxi\",\"entityName\":\"test-branch\",\"createdAt\":\"Jun 12, 2025 9:22 AM\",\"provisioningState\":\"idle\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNeonPostgresBranch+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches/br-damp-bird-a82olmcu?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches/br-damp-bird-a82olmcu?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "307cba53-bc3a-4c2f-95b8-2d9251339326" ],
+        "CommandName": [ "Get-AzNeonPostgresBranch" ],
+        "FullCommandName": [ "Get-AzNeonPostgresBranch_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.1", "Az.NeonPostgres/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=9cf8ccaf-273c-4fe7-ae5a-2498a0f5d4c5/southindia/68a04ed2-3b2e-4d51-b7f5-c3df0dca155b" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "399fedea-5849-4aa9-8766-5ca1aa7ed4dc" ],
+        "x-ms-correlation-request-id": [ "51161611-b92e-4f49-be57-625abf788dd0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250612T094848Z:51161611-b92e-4f49-be57-625abf788dd0" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B75DD090525F484BB486E12C2490CA17 Ref B: MAA201060516019 Ref C: 2025-06-12T09:48:46Z" ],
+        "Date": [ "Thu, 12 Jun 2025 09:48:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "611" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"projectId\":\"dawn-breeze-86932057\",\"parentId\":null,\"roleName\":null,\"databaseName\":null,\"roles\":null,\"databases\":null,\"endpoints\":null,\"attributes\":[{\"name\":\"logicalSize\",\"value\":\"30785536\"},{\"name\":\"cpuUsedSec\",\"value\":\"229\"},{\"name\":\"computeTimeSeconds\",\"value\":\"229\"},{\"name\":\"activeTimeSeconds\",\"value\":\"904\"},{\"name\":\"writtenDataBytes\",\"value\":\"608\"},{\"name\":\"dataTransferBytes\",\"value\":\"22\"},{\"name\":\"isProtected\",\"value\":\"false\"},{\"name\":\"isDefault\",\"value\":\"true\"}],\"entityId\":\"br-damp-bird-a82olmcu\",\"entityName\":\"main\",\"createdAt\":\"May 12, 2025 8:02 AM\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

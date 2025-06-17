@@ -1,0 +1,105 @@
+{
+  "resourceType": "organizations/projects/branches",
+  "apiVersion": "2025-03-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.neonpostgres"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNeonPostgresBranch",
+      "description": "Get a Branch",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Neon.Postgres/organizations/{organizationName}/projects/{projectName}/branches/{branchName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.neonpostgres/get-azneonpostgresbranch"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-OrganizationName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Branch",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.branchName]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNeonPostgresBranch",
+      "description": "Delete a Branch",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Neon.Postgres/organizations/{organizationName}/projects/{projectName}/branches/{branchName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.neonpostgres/remove-azneonpostgresbranch"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-OrganizationName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Branch",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.branchName]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

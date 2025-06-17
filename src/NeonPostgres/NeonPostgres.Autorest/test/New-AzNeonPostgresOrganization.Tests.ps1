@@ -15,16 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzNeonPostgresOrganizatio
 }
 
 # Define variables directly
-$resourceName = "almasTestNeonPSRecord1A"
-$resourceGroupName = "NeonDemoRG"
-$location = "centraluseuap"
-$subscriptionId = "5d9a6cc3-4e60-4b41-be79-d28f0a01074e"
+$resourceName = "NeonDemoOrgPS2"
+$resourceGroupName = "neonrg"
+$location = "eastus2"
+$subscriptionId = "a81c0054-6c92-41aa-a235-4f9f98f917c6"
 
 # Company Details
 $companyDetailBusinessPhone = "+1234567890"
-$companyDetailCompanyName = "DemoCompany"
+$companyDetailCompanyName = "Contosoft"
 $companyDetailCountry = "USA"
-$companyDetailDomain = "demo.com"
+$companyDetailDomain = "Contosoft.com"
 $companyDetailNumberOfEmployee = 500
 $companyDetailOfficeAddress = "1234 Azure Ave"
 
@@ -33,29 +33,37 @@ $marketplaceDetailSubscriptionId = "yxmkfivp"
 $marketplaceDetailSubscriptionStatus = "PendingFulfillmentStart"
 
 # Offer Details
-$offerDetailOfferId = "neon_test"
-$offerDetailPlanId = "neon_test_1"
-$offerDetailPlanName = "Neon Serverless Postgres - Free (Test_Liftr)"
+$offerDetailOfferId = "neon_serverless_postgres_azure_prod"
+$offerDetailPlanId = "neon_serverless_postgres_azure_prod_free"
+$offerDetailPlanName = "Free Plan"
 $offerDetailPublisherId = "neon1722366567200"
 $offerDetailTermId = "gmz7xq9ge3py"
 $offerDetailTermUnit = "P1M"
 
 # Partner Organization Properties
-$partnerOrganizationPropertyOrganizationId = "org12345"
-$partnerOrganizationPropertyOrganizationName = "PartnerOrgRecord1A"
+$partnerOrganizationPropertyOrganizationId = ""
+$partnerOrganizationPropertyOrganizationName = "NeonDemoOrgPS"
 
-# Single Sign-On Properties
-$singleSignOnPropertyAadDomain = "partnerorg.com"
-$singleSignOnPropertyEnterpriseAppId = "app12345"
+# Project Properties
+$pgVersion = "17"
+$projectName = "NeonDemoOrgPSProject"
+$regionId = "eastus2"
+$databaseName = "NeonDB"
+$branchName = "main"
+
+# Single Sign-On Properties - Optional
+# These properties are optional and can be set to empty strings if not needed.
+$singleSignOnPropertyAadDomain = ""
+$singleSignOnPropertyEnterpriseAppId = ""
 $singleSignOnPropertySingleSignOnState = "Enable"
-$singleSignOnPropertySingleSignOnUrl = "https://sso.partnerorg.com"
+$singleSignOnPropertySingleSignOnUrl = ""
 
 # User Details
-$userDetailEmailAddress = "khanalmas@microsoft.com"
-$userDetailFirstName = "Almas"
-$userDetailLastName = "Khan"
+$userDetailEmailAddress = "Demouser@testtestliftrtest2.onmicrosoft.com"
+$userDetailFirstName = "Demo"
+$userDetailLastName = "User"
 $userDetailPhoneNumber = "+1234567890"
-$userDetailUpn = "khanalmas_microsoft.com#EXT#@qumulotesttenant2.onmicrosoft.com"
+$userDetailUpn = "Demouser@testtestliftrtest2.onmicrosoft.com"
 
 Describe 'New-AzNeonPostgresOrganization' {
     It 'CreateExpanded' {

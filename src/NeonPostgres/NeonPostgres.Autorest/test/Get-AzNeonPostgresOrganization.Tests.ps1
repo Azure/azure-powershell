@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNeonPostgresOrganizatio
 Describe 'Get-AzNeonPostgresOrganization' {
     It 'List' {
         { 
-            $result = Get-AzNeonPostgresOrganization -SubscriptionId 5d9a6cc3-4e60-4b41-be79-d28f0a01074e
+            $result = Get-AzNeonPostgresOrganization -SubscriptionId a81c0054-6c92-41aa-a235-4f9f98f917c6
             $result.Count | Should -BeGreaterThan 0 
         } | Should -Not -Throw
     }
