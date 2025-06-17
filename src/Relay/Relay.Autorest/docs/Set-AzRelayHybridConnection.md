@@ -64,7 +64,7 @@ This example updates the UserMetadata property with new value.
 ### Example 2: Updates a HybridConnection in the specified Relay namespace
 ```powershell
 $connection = Get-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01
-$connection.UserMetadata = "testHybirdConnection"
+$connection.UserMetadata = "testHybridConnection"
 Set-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01 -InputObject $connection | Format-List
 ```
 
@@ -85,7 +85,7 @@ SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType : 
 Type                         : Microsoft.Relay/namespaces/hybridconnections
 UpdatedAt                    : 3/30/2023 6:28:37 AM
-UserMetadata                 : testHybirdConnection
+UserMetadata                 : testHybridConnection
 ```
 
 This command updates a HybridConnection in the specified Relay namespace.

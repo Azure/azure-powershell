@@ -44,6 +44,25 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
+  - where:
+      verb: Get
+      subject: NameSpace
+    set:
+      breaking-change:
+        change-description: "The type of property 'PrivateEndpointConnection' will be changed to 'List'."
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
+  - where:
+      subject: NamespaceNetworkRuleSet
+    set:
+      breaking-change:
+        change-description: "The type of property 'IPRule' will be changed to 'List'."
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
   # Namespace Authorization Rule
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}"].put.operationId
