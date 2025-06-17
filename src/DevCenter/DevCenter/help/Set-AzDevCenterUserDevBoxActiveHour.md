@@ -16,28 +16,28 @@ Lets a user set their own active hours for their Dev Box, overriding the default
 ```
 Set-AzDevCenterUserDevBoxActiveHour -Endpoint <String> -DevBoxName <String> -ProjectName <String>
  [-UserId <String>] -EndTimeHour <Int32> -StartTimeHour <Int32> -TimeZone <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Set
 ```
 Set-AzDevCenterUserDevBoxActiveHour -Endpoint <String> -DevBoxName <String> -ProjectName <String>
  [-UserId <String>] -Body <IUserActiveHoursConfiguration> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByDevCenter
 ```
 Set-AzDevCenterUserDevBoxActiveHour -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
  [-UserId <String>] -Body <IUserActiveHoursConfiguration> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetExpandedByDevCenter
 ```
 Set-AzDevCenterUserDevBoxActiveHour -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
  [-UserId <String>] -EndTimeHour <Int32> -StartTimeHour <Int32> -TimeZone <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -195,21 +195,6 @@ Parameter Sets: SetExpanded, SetExpandedByDevCenter
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

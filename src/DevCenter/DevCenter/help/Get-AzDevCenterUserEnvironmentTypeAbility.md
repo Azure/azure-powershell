@@ -15,27 +15,27 @@ Gets the signed-in user's permitted abilities in an environment type.
 ### Get (Default)
 ```
 Get-AzDevCenterUserEnvironmentTypeAbility -Endpoint <String> -EnvironmentTypeName <String>
- -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDevCenterUserEnvironmentTypeAbility -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterUserEnvironmentTypeAbility -DevCenterName <String> -EnvironmentTypeName <String>
- -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityByDevCenter
 ```
 Get-AzDevCenterUserEnvironmentTypeAbility -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -166,21 +166,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

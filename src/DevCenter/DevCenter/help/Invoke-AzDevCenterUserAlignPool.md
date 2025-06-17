@@ -16,20 +16,20 @@ Aligns all Dev Boxes in the pool with the current configuration.
 ```
 Invoke-AzDevCenterUserAlignPool -Endpoint <String> -PoolName <String> -ProjectName <String>
  -Target <PoolAlignTarget[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Align
 ```
 Invoke-AzDevCenterUserAlignPool -Endpoint <String> -PoolName <String> -ProjectName <String>
- -Body <IPoolAlignBody> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -Body <IPoolAlignBody> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AlignViaIdentity
 ```
 Invoke-AzDevCenterUserAlignPool -Endpoint <String> -InputObject <IDevCenterdataIdentity> -Body <IPoolAlignBody>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -37,20 +37,20 @@ Invoke-AzDevCenterUserAlignPool -Endpoint <String> -InputObject <IDevCenterdataI
 ```
 Invoke-AzDevCenterUserAlignPool -Endpoint <String> -InputObject <IDevCenterdataIdentity>
  -Target <PoolAlignTarget[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AlignByDevCenter
 ```
 Invoke-AzDevCenterUserAlignPool -DevCenterName <String> -PoolName <String> -ProjectName <String>
- -Body <IPoolAlignBody> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -Body <IPoolAlignBody> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AlignViaIdentityByDevCenter
 ```
 Invoke-AzDevCenterUserAlignPool -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- -Body <IPoolAlignBody> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -Body <IPoolAlignBody> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,14 +58,14 @@ Invoke-AzDevCenterUserAlignPool -DevCenterName <String> -InputObject <IDevCenter
 ```
 Invoke-AzDevCenterUserAlignPool -DevCenterName <String> -PoolName <String> -ProjectName <String>
  -Target <PoolAlignTarget[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AlignViaIdentityExpandedByDevCenter
 ```
 Invoke-AzDevCenterUserAlignPool -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  -Target <PoolAlignTarget[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -242,21 +242,6 @@ Parameter Sets: AlignExpanded, Align, AlignByDevCenter, AlignExpandedByDevCenter
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

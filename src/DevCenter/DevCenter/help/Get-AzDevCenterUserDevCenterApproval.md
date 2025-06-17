@@ -15,14 +15,14 @@ Gets a list of Dev Box creations that are pending approval.
 ### List (Default)
 ```
 Get-AzDevCenterUserDevCenterApproval -Endpoint <String> -ProjectName <String> [-Maxpagesize <Int32>]
- [-Select <String[]>] [-Skip <Int32>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-Select <String[]>] [-Skip <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
 Get-AzDevCenterUserDevCenterApproval -DevCenterName <String> -ProjectName <String> [-Maxpagesize <Int32>]
- [-Select <String[]>] [-Skip <Int32>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-Select <String[]>] [-Skip <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -104,21 +104,6 @@ The maximum number of result items per page.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

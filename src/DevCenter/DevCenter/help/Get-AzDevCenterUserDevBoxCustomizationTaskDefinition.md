@@ -15,39 +15,39 @@ Gets a customization task.
 ### List (Default)
 ```
 Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -Endpoint <String> -ProjectName <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -Endpoint <String> -ProjectName <String>
- -CatalogName <String> -TaskName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -CatalogName <String> -TaskName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityByDevCenter
 ```
 Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -DevCenterName <String>
- -InputObject <IDevCenterdataIdentity> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -InputObject <IDevCenterdataIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
 Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -DevCenterName <String> -ProjectName <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -DevCenterName <String> -ProjectName <String>
- -CatalogName <String> -TaskName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -CatalogName <String> -TaskName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -176,21 +176,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

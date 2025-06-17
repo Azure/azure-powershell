@@ -16,28 +16,28 @@ Validates a list of customization tasks.
 ```
 Test-AzDevCenterUserDevBoxCustomizationTaskAction -Endpoint <String> -ProjectName <String>
  [-Task <ICustomizationTask[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded
 ```
 Test-AzDevCenterUserDevBoxCustomizationTaskAction -Endpoint <String> -InputObject <IDevCenterdataIdentity>
  [-Task <ICustomizationTask[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpandedByDevCenter
 ```
 Test-AzDevCenterUserDevBoxCustomizationTaskAction -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-Task <ICustomizationTask[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateExpandedByDevCenter
 ```
 Test-AzDevCenterUserDevBoxCustomizationTaskAction -DevCenterName <String> -ProjectName <String>
  [-Task <ICustomizationTask[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -205,21 +205,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
