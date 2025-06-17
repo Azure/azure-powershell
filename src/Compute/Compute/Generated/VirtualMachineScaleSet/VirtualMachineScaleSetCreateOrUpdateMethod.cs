@@ -345,7 +345,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             SetDefaultOrchestrationMode(parameters);
             ConfigureFlexibleOrchestrationMode(parameters);
             ConfigureSecuritySettings(parameters);
-            CleanupStandardSecurityType(parameters);
 
             return parameters;
         }
@@ -389,24 +388,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 else
                 {
                     parameters.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings(true, true);
-                }
-            }
-        }
-
-        private void CleanupStandardSecurityType(VirtualMachineScaleSet parameters)
-        {
-            if (parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType != null
-                && parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
-            {
-                if (parameters.VirtualMachineProfile.SecurityProfile.UefiSettings?.SecureBootEnabled == null
-                    && parameters.VirtualMachineProfile.SecurityProfile.UefiSettings?.VTpmEnabled == null
-                    && parameters.VirtualMachineProfile.SecurityProfile.EncryptionAtHost == null)
-                {
-                    parameters.VirtualMachineProfile.SecurityProfile = null;
-                }
-                else
-                {
-                    parameters.VirtualMachineProfile.SecurityProfile.SecurityType = null;
                 }
             }
         }
