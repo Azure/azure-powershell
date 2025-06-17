@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.")]
-        public SwitchParameter EnableProxyAgent { get; set; }
+           HelpMessage = "Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.")]
+        public bool? EnableProxyAgent { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Increase the value of this parameter allows users to reset the key used for securing communication channel between guest and host.")]
-        public int KeyIncarnationId { get; set; }
+        public int? KeyIncarnationId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             this.VM.SecurityProfile.ProxyAgentSettings = new ProxyAgentSettings
             {
-                Enabled = this.EnableProxyAgent.IsPresent,
+                Enabled = this.EnableProxyAgent,
                 WireServer = (this.WireServerMode == null && this.WireServerProfile == null ? null : new HostEndpointSettings()
                 {
                     Mode = this.WireServerMode,

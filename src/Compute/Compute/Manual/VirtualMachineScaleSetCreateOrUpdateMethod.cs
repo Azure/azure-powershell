@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = SimpleParameterSet,
-            HelpMessage = "Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.")]
+            HelpMessage = "Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.")]
         public SwitchParameter EnableProxyAgent { get; set; }
 
         private void ConfigureSecuritySettings()

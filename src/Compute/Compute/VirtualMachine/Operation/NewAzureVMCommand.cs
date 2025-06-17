@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = SimpleParameterSet,
-            HelpMessage = "Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.")]
+            HelpMessage = "Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.")]
         public SwitchParameter EnableProxyAgent { get; set; }
 
         public override void ExecuteCmdlet()
@@ -749,7 +749,7 @@ namespace Microsoft.Azure.Commands.Compute
                         includeZone: _cmdlet.IncludeZone,
                         excludeZone: _cmdlet.ExcludeZone,
                         alignRegionalDisksToVMZone: _cmdlet.AlignRegionalDisksToVMZone,
-                        enableProxyAgent: _cmdlet.EnableProxyAgent
+                        enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null
                     );
                 }
                 else  // does not get used. DiskFile parameter set is not supported.

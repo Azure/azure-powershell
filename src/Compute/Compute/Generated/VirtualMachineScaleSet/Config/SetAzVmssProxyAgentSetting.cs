@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.")]
-        public SwitchParameter EnableProxyAgent { get; set; }
+           HelpMessage = "Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.")]
+        public bool? EnableProxyAgent { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings = new ProxyAgentSettings
             {
-                Enabled = this.EnableProxyAgent.IsPresent,
+                Enabled = this.EnableProxyAgent,
                 WireServer = (this.WireServerMode == null && this.WireServerProfile == null ? null : new HostEndpointSettings()
                 {
                     Mode = this.WireServerMode,
