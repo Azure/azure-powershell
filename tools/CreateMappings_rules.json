@@ -975,5 +975,9 @@
   {
     "alias": "MongoDB",
     "module": "MongoDB"
+  },
+  {
+    "alias": "DataTransfer",
+    "module": "DataTransfer"
   }
 ]
