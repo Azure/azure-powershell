@@ -65,7 +65,7 @@ $exascaleDbStorageVault = Get-AzOracleExascaleDbStorageVault -Name $exascaleStor
 $exascaleDbStorageVaultId = $exascaleDbStorageVault.Id
 
 $exadbVmClusterName = "OFake_PowerShellTestExadbVmCluster"
-New-AzOracleExadbVMCluster -Name $exadbVmClusterName -ResourceGroupName $resourceGroup -Location "eastus" -DisplayName $exadbVmClusterName -HostName "host" -totalEcpuCount 8 -exascaleDbStorageVaultId $exascaleDbStorageVaultId -SshPublicKey $sshPublicKey -VnetId $vnetId -GiVersion "19.0.0.0" -SubnetId $subnetId -LicenseModel "LicenseIncluded" -memorySizeInGbs 22 -shape "ExaDbXS" -totalSizeInGbs 280 -enabledEcpuCount 8  -DbNodeStorageSizeInGb 180 -DataStorageSizeInTb 2.0 -DataStoragePercentage 80 -TimeZone "UTC" -nodeCount 1
+New-AzOracleExadbVMCluster -Name $exadbVmClusterName -ResourceGroupName $resourceGroup -Location "eastus" -DisplayName $exadbVmClusterName -HostName "host" -totalEcpuCount 8 -exascaleDbStorageVaultId $exascaleDbStorageVaultId -SshPublicKey $sshPublicKey -VnetId $vnetId -SubnetId $subnetId -LicenseModel "LicenseIncluded" -shape "ExaDbXS" -enabledEcpuCount 8 -TimeZone "UTC" -nodeCount 1
 ```
 
 ```output

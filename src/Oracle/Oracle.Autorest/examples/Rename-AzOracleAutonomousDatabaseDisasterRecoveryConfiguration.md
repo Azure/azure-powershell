@@ -2,9 +2,9 @@
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroup = "PowerShellTestRg"
-$autonomousdatabasename = "databasedb1",
+$autonomousdatabasename = "databasedb1"
 
-Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration -autonomousdatabasename $autonomousdatabasename -ResourceGroupName $resourceGroup -DisasterRecoveryType  "Adg" -IsReplicateAutomaticBackups "false"
+Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration -autonomousdatabasename $autonomousdatabasename -ResourceGroupName $resourceGroup -DisasterRecoveryType "Adg"
 ```
 
 ```output
@@ -64,5 +64,5 @@ usedDataStorageSizeInTbs    : null
 ocid                        : ocid1..aaaaa
 ```
 
-Change an Autonomous Database Disaster recovery configuration .
+Change an Autonomous Database Disaster recovery configuration.
 For more information, execute `Get-Help Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration`.

@@ -67,9 +67,9 @@ Perform ChangeDisasterRecoveryConfiguration action on Autonomous Database
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroup = "PowerShellTestRg"
-$autonomousdatabasename = "databasedb1",
+$autonomousdatabasename = "databasedb1"
 
-Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration -autonomousdatabasename $autonomousdatabasename -ResourceGroupName $resourceGroup -DisasterRecoveryType  "Adg" -IsReplicateAutomaticBackups "false"
+Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration -autonomousdatabasename $autonomousdatabasename -ResourceGroupName $resourceGroup -DisasterRecoveryType "Adg"
 ```
 
 ```output
