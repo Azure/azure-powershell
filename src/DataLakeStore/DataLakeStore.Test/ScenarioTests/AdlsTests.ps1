@@ -502,7 +502,7 @@ function Test-DataLakeStoreFileSystem
 		$accountName = Get-DataLakeStoreAccountName
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		$accountCreated = New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DisableEncryption
-
+    
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
@@ -525,7 +525,6 @@ function Test-DataLakeStoreFileSystem
 			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
 			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
 		}
-
 
 		# define all the files and folders to create
 		$encodingFolder="/encodingFolder"
@@ -723,7 +722,7 @@ function Test-DataLakeStoreFileSystem
 		Assert-True {Remove-AzDataLakeStoreItem -Account $accountName -paths $summaryFolder -force -recurse -passthru} "Remove folder failed"
 		Assert-Throws {Get-AzDataLakeStoreItem -Account $accountName -path $summaryFolder}
 		Assert-True {Remove-AzDataLakeStoreItem -Account $accountName -paths $encodingFolder -force -recurse -passthru} "Remove folder failed"
-		
+	
 		# Delete Data Lake account
 		Assert-True {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
@@ -734,7 +733,7 @@ function Test-DataLakeStoreFileSystem
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures	
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -761,7 +760,7 @@ function Test-DataLakeStoreFileSystemPermissions
 		$accountName = Get-DataLakeStoreAccountName
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		$accountCreated = New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DisableEncryption
-
+	
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
@@ -900,7 +899,7 @@ function Test-DataLakeStoreFileSystemPermissions
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures	
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 

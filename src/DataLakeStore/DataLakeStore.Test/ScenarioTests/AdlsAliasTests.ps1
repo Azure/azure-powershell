@@ -503,7 +503,7 @@ function Test-DataLakeStoreFileSystem
 		$accountName = Get-DataLakeStoreAccountName
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		$accountCreated = New-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DisableEncryption
-
+    
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
@@ -724,13 +724,12 @@ function Test-DataLakeStoreFileSystem
     	Assert-True {Remove-AdlStoreItem -Account $accountName -paths $summaryFolder -force -recurse -passthru} "Remove folder failed"
 		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $summaryFolder}
 		Assert-True {Remove-AdlStoreItem -Account $accountName -paths $encodingFolder -force -recurse -passthru} "Remove folder failed"
-		
+    
 		# Delete Data Lake account
 		Assert-True {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 		# Verify that it is gone by trying to get it again
 		Assert-Throws {Get-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
-
 	}
 	finally
 	{
@@ -763,7 +762,7 @@ function Test-DataLakeStoreFileSystemPermissions
 		$accountName = Get-DataLakeStoreAccountName
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		$accountCreated = New-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DisableEncryption
-
+    
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
@@ -896,12 +895,11 @@ function Test-DataLakeStoreFileSystemPermissions
 		# Verify that it is gone by trying to get it again
 		Assert-Throws {Get-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
 	}
-	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures	
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -1085,7 +1083,7 @@ function Test-AdlsEnumerateAndRestoreDeletedItem
 		{
 			Assert-True { Restore-AdlStoreDeletedItem -Account $accountName $item -Force -Passthru}
 		}
-
+    
 		# Delete Data Lake account
 		Assert-True {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
@@ -1096,6 +1094,6 @@ function Test-AdlsEnumerateAndRestoreDeletedItem
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures	
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
