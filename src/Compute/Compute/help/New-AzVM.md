@@ -57,7 +57,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
  [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <IAzureContextContainer>] 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -619,7 +619,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableProxyAgent
-Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.
+Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

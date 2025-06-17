@@ -482,7 +482,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableProxyAgent
-Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.
+Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
