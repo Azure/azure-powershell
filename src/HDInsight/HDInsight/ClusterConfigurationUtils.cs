@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         }
 
         public  List<EntraUserInfo> GetHDInsightGatewayEntraUser(string EntraUserIdentity, Hashtable[] EntraUserFullInfo)
-        {  
+        {
             List<EntraUserInfo> restAuthEntraUsers = new List<EntraUserInfo>();
             if (!string.IsNullOrWhiteSpace(EntraUserIdentity))
             {

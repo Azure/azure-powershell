@@ -718,7 +718,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 string errorMessage =$"Can not find service princaipl per the parameter ObjectId:{ObjectId}, the error message is '{e.Message}'."+ " Please specify Application Id explicitly by providing ApplicationId parameter and retry.";
                 throw new AzPSArgumentException(errorMessage, nameof(ObjectId));
             }
-            
+
             var spApplicationId = Guid.Empty;
             Guid.TryParse(sp.AppId, out spApplicationId);
             Debug.Assert(spApplicationId != Guid.Empty);
