@@ -11,19 +11,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Azure.Identity;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.HDInsight.Commands;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.HDInsight.Models;
-using Microsoft.Graph;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.IdentityModel.Tokens.Jwt;
-
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
-    internal class ClusterConfigurationUtils
+    internal class ClusterConfigurationUtils: HDInsightCmdletBase
     {
         public static string GetResourceGroupFromClusterId(string clusterId)
         {
@@ -129,22 +134,24 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     select key.Remove(0, Constants.ClusterConfiguration.StorageAccountKeyPrefix.Length)).ToList();
         }
 
-        public static List<EntraUserInfo> GetHDInsightGatewayEntraUser(string EntraUserIdentity, Hashtable[] EntraUserFullInfo)
-        {
+        public  List<EntraUserInfo> GetHDInsightGatewayEntraUser(string EntraUserIdentity, Hashtable[] EntraUserFullInfo)
+        {  
             List<EntraUserInfo> restAuthEntraUsers = new List<EntraUserInfo>();
             if (!string.IsNullOrWhiteSpace(EntraUserIdentity))
             {
+                MicrosoftGraphClient graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(
+                    DefaultProfile.DefaultContext, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
+                graphClient.TenantID = DefaultProfile.DefaultContext.Tenant.Id.ToString();
                 List<string> userdata = EntraUserIdentity
                      .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                      .Select(s => s.Trim())
                      .Where(s => !string.IsNullOrEmpty(s))
                      .ToList();
-                var graphClient = new GraphServiceClient(new DefaultAzureCredential());
                 foreach (var data in userdata)
                 {
                     try
                     {
-                        var user = graphClient.Users[data].GetAsync().GetAwaiter().GetResult();
+                        var user = graphClient.Users.GetUserWithHttpMessagesAsync(data).Result.Body;
                         restAuthEntraUsers.Add(new EntraUserInfo
                         {
                             ObjectId = user.Id,
@@ -184,6 +191,5 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             }
             return restAuthEntraUsers;
         }
-
     }
 }

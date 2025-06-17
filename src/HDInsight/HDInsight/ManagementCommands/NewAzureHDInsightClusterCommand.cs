@@ -438,7 +438,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                 throw new ArgumentException("Cannot provide both EntraUserIdentity and EntraUserFullInfo parameters.");
             }else if(!string.IsNullOrWhiteSpace(EntraUserIdentity) || (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
             {
-                RestAuthEntraUsers = ClusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserIdentity, EntraUserFullInfo);
+                var clusterConfigurationUtils = new ClusterConfigurationUtils();
+                RestAuthEntraUsers = clusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserIdentity, EntraUserFullInfo);
             }
             ClusterCreateHelper.AddClusterCredentialToGatewayConfig(HttpCredential, clusterConfigurations, RestAuthEntraUsers);
 
@@ -717,7 +718,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 string errorMessage =$"Can not find service princaipl per the parameter ObjectId:{ObjectId}, the error message is '{e.Message}'."+ " Please specify Application Id explicitly by providing ApplicationId parameter and retry.";
                 throw new AzPSArgumentException(errorMessage, nameof(ObjectId));
             }
-
+            
             var spApplicationId = Guid.Empty;
             Guid.TryParse(sp.AppId, out spApplicationId);
             Debug.Assert(spApplicationId != Guid.Empty);

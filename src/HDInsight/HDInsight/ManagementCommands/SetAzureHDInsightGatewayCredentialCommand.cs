@@ -128,7 +128,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     throw new ArgumentException("Cannot provide both EntraUserIdentity and EntraUserFullInfo parameters.");
                 }
-                RestAuthEntraUsers = ClusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserIdentity, EntraUserFullInfo);
+                var clusterConfigurationUtils = new ClusterConfigurationUtils();
+                RestAuthEntraUsers = clusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserIdentity, EntraUserFullInfo);
             }
 
             var updateGatewaySettingsParameters = new UpdateGatewaySettingsParameters();
