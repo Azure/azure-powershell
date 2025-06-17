@@ -1,0 +1,52 @@
+{
+  "resourceType": "privateClouds/provisionedNetworks",
+  "apiVersion": "2024-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.vmware"
+  },
+  "commands": [
+    {
+      "name": "Get-AzVMwareProvisionedNetwork",
+      "description": "Get a ProvisionedNetwork",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/provisionedNetworks/{provisionedNetworkName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareprovisionednetwork"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-PrivateCloudName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a ProvisionedNetwork",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.provisionedNetworkName]"
+            },
+            {
+              "name": "-PrivateCloudName",
+              "value": "[Path.privateCloudName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "resourceType": "privateClouds/pureStoragePolicies",
+  "apiVersion": "2024-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.vmware"
+  },
+  "commands": [
+    {
+      "name": "Get-AzVMwarePureStoragePolicy",
+      "description": "Get a PureStoragePolicy",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies/{storagePolicyName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarepurestoragepolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PrivateCloudName <String>",
+              "-ResourceGroupName <String>",
+              "-StoragePolicyName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a PureStoragePolicy",
+          "parameters": [
+            {
+              "name": "-PrivateCloudName",
+              "value": "[Path.privateCloudName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-StoragePolicyName",
+              "value": "[Path.storagePolicyName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzVMwarePureStoragePolicy",
+      "description": "Delete a PureStoragePolicy",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies/{storagePolicyName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwarepurestoragepolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PrivateCloudName <String>",
+              "-ResourceGroupName <String>",
+              "-StoragePolicyName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a PureStoragePolicy",
+          "parameters": [
+            {
+              "name": "-PrivateCloudName",
+              "value": "[Path.privateCloudName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-StoragePolicyName",
+              "value": "[Path.storagePolicyName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwarePlacementPolicy
 
 ## SYNOPSIS
-update a PlacementPolicy
+Update a PlacementPolicy
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ Update-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateClou
 ```
 
 ## DESCRIPTION
-update a PlacementPolicy
+Update a PlacementPolicy
 
 ## EXAMPLES
 

@@ -1,0 +1,38 @@
+{
+  "AzVMwareSku+[NoContext]+List all SKUs+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/skus?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/skus?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "120" ],
+        "x-ms-client-request-id": [ "10e13d35-441d-46f3-99a3-8fa710765816" ],
+        "CommandName": [ "Get-AzVMwareSku" ],
+        "FullCommandName": [ "Get-AzVMwareSku_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
+        "Access-Control-Allow-Headers": [ "*" ],
+        "Access-Control-Allow-Credentials": [ "true" ],
+        "Date": [ "Mon, 16 Jun 2025 20:31:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1110" ]
+      },
+      "Content": "{\"value\":[{\"resourceType\":\"privateClouds\",\"name\":\"av36\",\"locations\":[\"australiaeast\"],\"locationInfo\":[{\"location\":\"australiaeast\",\"zones\":[\"1\"],\"zoneDetails\":[]}],\"capabilities\":[{\"name\":\"CpuCoreCount\",\"value\":\"36\"},{\"name\":\"RamGB\",\"value\":\"576\"},{\"name\":\"StorageCacheTB\",\"value\":\"3.2\"},{\"name\":\"StorageTB\",\"value\":\"15.2\"},{\"name\":\"HostType\",\"value\":\"he\"}],\"restrictions\":[]},{\"resourceType\":\"privateClouds\",\"name\":\"av36p\",\"locations\":[\"centralindia\"],\"locationInfo\":[{\"location\":\"centralindia\",\"zones\":[\"3\"],\"zoneDetails\":[]}],\"capabilities\":[{\"name\":\"CpuCoreCount\",\"value\":\"36\"},{\"name\":\"RamGB\",\"value\":\"768\"},{\"name\":\"StorageCacheTB\",\"value\":\"1.5\"},{\"name\":\"StorageTB\",\"value\":\"19.2\"},{\"name\":\"HostType\",\"value\":\"he2\"}],\"restrictions\":[]},{\"resourceType\":\"privateClouds\",\"name\":\"av36pt\",\"locations\":[\"westeurope\"],\"locationInfo\":[{\"location\":\"westeurope\",\"zones\":[\"2\",\"3\"],\"zoneDetails\":[]}],\"capabilities\":[{\"name\":\"CpuCoreCount\",\"value\":\"36\"},{\"name\":\"RamGB\",\"value\":\"768\"},{\"name\":\"StorageCacheTB\",\"value\":\"1.5\"},{\"name\":\"StorageTB\",\"value\":\"19.2\"},{\"name\":\"HostType\",\"value\":\"he2\"}],\"restrictions\":[]}]}",
+      "isContentBase64": false
+    }
+  }
+}
