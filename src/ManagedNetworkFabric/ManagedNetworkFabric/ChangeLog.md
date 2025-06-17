@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-Upgraded API version to 2024-06-15-preview
+* Upgraded API version to 2024-06-15-preview
 
 ## Version 0.1.3
 * Upgraded nuget package to signed package.
