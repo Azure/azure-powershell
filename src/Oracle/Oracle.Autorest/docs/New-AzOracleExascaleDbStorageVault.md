@@ -46,7 +46,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroup = "PowerShellTestRg"
 
 $exaScaleDbStorageVaultName = "OFake_PowerShellTestExaScaleDbStorage"
-New-AzOracleExascaleDbStorageVault -Name $exaScaleDbStorageVaultName -ResourceGroupName $resourceGroup -Location "eastus" -DisplayName $exaScaleDbStorageVaultName -description "description" -totalSizeInGbs 280 -smartFlashCachePercentage 0 -TimeZone "UTC"  
+New-AzOracleExascaleDbStorageVault -Name $exaScaleDbStorageVaultName -ResourceGroupName $resourceGroup -Location "eastus" -DisplayName $exaScaleDbStorageVaultName -description "description" -totalSizeInGbs 280 -additionalFlashCacheInPercent 100 -TimeZone "UTC"  
 ```
 
 ```output
