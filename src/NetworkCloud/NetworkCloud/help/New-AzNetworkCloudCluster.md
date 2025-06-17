@@ -25,11 +25,11 @@ New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> [-Subscript
  [-AnalyticOutputSettingAnalyticsWorkspaceId <String>]
  [-AnalyticsOutputSettingsAssociatedIdentityType <ManagedServiceIdentitySelectorType>]
  [-AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
- [-AnalyticsWorkspaceId <String>] [-AssociatedIdentityType <ManagedServiceIdentitySelectorType>]
- [-AssociatedIdentityUserAssignedIdentityResourceId <String>] [-ClusterLocation <String>]
- [-ClusterServicePrincipalApplicationId <String>] [-ClusterServicePrincipalId <String>]
- [-ClusterServicePrincipalPassword <SecureString>] [-ClusterServicePrincipalTenantId <String>]
- [-CommandOutputSettingContainerUrl <String>]
+ [-AnalyticsWorkspaceId <String>] [-ClusterLocation <String>] [-ClusterServicePrincipalApplicationId <String>]
+ [-ClusterServicePrincipalId <String>] [-ClusterServicePrincipalPassword <SecureString>]
+ [-ClusterServicePrincipalTenantId <String>] [-CommandOutputSettingContainerUrl <String>]
+ [-CommandOutputSettingsAssociatedIdentityType <ManagedServiceIdentitySelectorType>]
+ [-CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
  [-ComputeDeploymentThresholdGrouping <ValidationThresholdGrouping>]
  [-ComputeDeploymentThresholdType <ValidationThresholdType>] [-ComputeDeploymentThresholdValue <Int64>]
  [-ComputeRackDefinition <IRackDefinition[]>] [-IdentityType <ManagedServiceIdentityType>]
@@ -42,7 +42,7 @@ New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> [-Subscript
  [-SecretArchiveUseKeyVault <ClusterSecretArchiveEnabled>] [-Tag <Hashtable>]
  [-UpdateStrategyMaxUnavailable <Int64>] [-UpdateStrategyThresholdType <ValidationThresholdType>]
  [-UpdateStrategyThresholdValue <Int64>] [-UpdateStrategyType <ClusterUpdateStrategyType>]
- [-UpdateStrategyWaitTimeMinutes <Int64>]
+ [-UpdateStrategyWaitTimeMinute <Int64>]
  [-VulnerabilityScanningSettingContainerScan <VulnerabilityScanningSettingsContainerScan>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -88,7 +88,7 @@ $userAssignedIdentityResourceId = "/subscriptions/00000000-0000-0000-0000-000000
 $identityUserAssignedIdentity.Add($userAssignedIdentityResourceId, @{})
 
 
-New-AzNetworkCloudCluster -ResourceGroupName resourceGroup -Name clusterName -AggregatorOrSingleRackDefinitionNetworkRackId rackId -AggregatorOrSingleRackDefinitionRackSerialNumber sr1234 -AggregatorOrSingleRackDefinitionRackSkuId rackSku -ClusterType clustertype -IdentityType identityType -IdentityUserAssignedIdentity $identityUserAssignedIdentity -ClusterVersion clusterversion -ExtendedLocationName CmExtendedLocation -ExtendedLocationType CustomLocation -Location location -NetworkFabricId networkFabricId -SubscriptionId subscriptionId -AggregatorOrSingleRackDefinitionAvailabilityZone availabilityZone -AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration $baremetalmachineconfigurationdata -AggregatorOrSingleRackDefinitionRackLocation rackLocation -AggregatorOrSingleRackDefinitionStorageApplianceConfiguration $storageapplianceconfigurationdata -AnalyticOutputSettingAnalyticsWorkspaceId analyticsWorkspaceId -AnalyticsOutputSettingsAssociatedIdentityType identityType -AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -AnalyticsWorkspaceId analyticsWorkspaceId -CommandOutputSettingContainerUrl containerUrl -AssociatedIdentityType identityType -AssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -ClusterServicePrincipalApplicationId clusterServicePrincipalAppId -ClusterServicePrincipalId ClusterServicePrincipalId -ClusterServicePrincipalPassword $securePassword -ClusterServicePrincipalTenantId tenantId -ComputeRackDefinition $computerackdefinition -SecretArchiveKeyVaultId keyVaultId -SecretArchiveSettingVaultUri keyVaultUri -SecretArchiveSettingsAssociatedIdentityType identityType -SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -SecretArchiveUseKeyVault useKeyVault -UpdateStrategyThresholdType updateStrategyThresholdType -UpdateStrategyThresholdValue updateStrategyThresholdValue -UpdateStrategyType updateStrategyType -UpdateStrategyWaitTimeMinutes updateStrategyWaitTimeMinutes -VulnerabilityScanningSettingContainerScan vulnerabilityScanningSettingContainerScan -ComputeDeploymentThresholdGrouping computeDeploymentThresholdGrouping -ComputeDeploymentThresholdType computeDeploymentThresholdType -ComputeDeploymentThresholdValue computeDeploymentThresholdValue -Tag $tagHash
+New-AzNetworkCloudCluster -ResourceGroupName resourceGroup -Name clusterName -AggregatorOrSingleRackDefinitionNetworkRackId rackId -AggregatorOrSingleRackDefinitionRackSerialNumber sr1234 -AggregatorOrSingleRackDefinitionRackSkuId rackSku -ClusterType clustertype -IdentityType identityType -IdentityUserAssignedIdentity $identityUserAssignedIdentity -ClusterVersion clusterversion -ExtendedLocationName CmExtendedLocation -ExtendedLocationType CustomLocation -Location location -NetworkFabricId networkFabricId -SubscriptionId subscriptionId -AggregatorOrSingleRackDefinitionAvailabilityZone availabilityZone -AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration $baremetalmachineconfigurationdata -AggregatorOrSingleRackDefinitionRackLocation rackLocation -AggregatorOrSingleRackDefinitionStorageApplianceConfiguration $storageapplianceconfigurationdata -AnalyticOutputSettingAnalyticsWorkspaceId analyticsWorkspaceId -AnalyticsOutputSettingsAssociatedIdentityType identityType -AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -AnalyticsWorkspaceId analyticsWorkspaceId -CommandOutputSettingContainerUrl containerUrl -AssociatedIdentityType identityType -AssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -ClusterServicePrincipalApplicationId clusterServicePrincipalAppId -ClusterServicePrincipalId ClusterServicePrincipalId -ClusterServicePrincipalPassword $securePassword -ClusterServicePrincipalTenantId tenantId -ComputeRackDefinition $computerackdefinition -SecretArchiveKeyVaultId keyVaultId -SecretArchiveSettingVaultUri keyVaultUri -SecretArchiveSettingsAssociatedIdentityType identityType -SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -SecretArchiveUseKeyVault useKeyVault -UpdateStrategyThresholdType updateStrategyThresholdType -UpdateStrategyThresholdValue updateStrategyThresholdValue -UpdateStrategyType updateStrategyType -UpdateStrategyWaitTimeMinute updateStrategyWaitTimeMinutes -VulnerabilityScanningSettingContainerScan vulnerabilityScanningSettingContainerScan -ComputeDeploymentThresholdGrouping computeDeploymentThresholdGrouping -ComputeDeploymentThresholdType computeDeploymentThresholdType -ComputeDeploymentThresholdValue computeDeploymentThresholdValue -Tag $tagHash
 ```
 
 ```output
@@ -287,37 +287,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AssociatedIdentityType
-The type of managed identity that is being selected.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AssociatedIdentityUserAssignedIdentityResourceId
-The user assigned managed identity resource ID to use.
-Mutually exclusive with a system assigned identity type.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ClusterLocation
 The customer-provided location information to identify where the cluster resides.
 
@@ -425,6 +394,37 @@ Accept wildcard characters: False
 
 ### -CommandOutputSettingContainerUrl
 The URL of the storage account container that is to be used by the specified identities.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CommandOutputSettingsAssociatedIdentityType
+The type of managed identity that is being selected.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId
+The user assigned managed identity resource ID to use.
+Mutually exclusive with a system assigned identity type.
 
 ```yaml
 Type: System.String
@@ -901,7 +901,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UpdateStrategyWaitTimeMinutes
+### -UpdateStrategyWaitTimeMinute
 The time to wait between the increments of update defined by the strategy.
 
 ```yaml

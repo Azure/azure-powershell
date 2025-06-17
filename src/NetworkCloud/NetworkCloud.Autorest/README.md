@@ -255,18 +255,17 @@ directive:
       parameter-name: BgpServiceLoadBalancerConfigurationIPAddressPool
     set:
       parameter-name: BgpIPAddressPool
+  # rename property names
   - where:
-      parameter-name: UpdateStrategyWaitTimeMinute
+      model-name: Cluster
+      property-name: AssociatedIdentityType
     set:
-      parameter-name: UpdateStrategyWaitTimeMinutes
+      property-name: CommandOutputSettingsAssociatedIdentityType
   - where:
-      parameter-name: CommandOutputSettingsAssociatedIdentityType
+      model-name: Cluster
+      property-name: AssociatedIdentityUserAssignedIdentityResourceId
     set:
-      parameter-name: AssociatedIdentityType
-  - where:
-      parameter-name: CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId
-    set:
-      parameter-name: AssociatedIdentityUserAssignedIdentityResourceId
+      property-name: CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId
 
   # define password parameters as `password` type, which generates it as "SecureString"
   - from: swagger-document
