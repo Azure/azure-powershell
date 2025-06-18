@@ -25,7 +25,7 @@ For information on how to develop for `Az.DataTransfer`, see [how-to.md](how-to.
 
 ### AutoRest Configuration
 
-> see [def](https://aka.ms/autorest)
+> see https://aka.ms/autorest
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
