@@ -32,7 +32,7 @@ function Test-SetGatewayCredential{
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 
 		$username = "admin"
-		$textPassword= "YourPw!00953"
+		$textPassword= "Password"
 		$password = ConvertTo-SecureString $textPassword -AsPlainText -Force
 		$credential = New-Object System.Management.Automation.PSCredential($username, $password)
 

@@ -135,7 +135,7 @@ function Prepare-ClusterCreateParameter{
     $storageAccountKey=$storageAccountKey[0].Value
 
     $httpUser="admin"
-    $textPassword= "YourPw!00953"
+    $textPassword= "Password"
     $httpPassword=ConvertTo-SecureString $textPassword -AsPlainText -Force
     $sshUser="sshuser"
     $sshPassword=$httpPassword

@@ -378,7 +378,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primarySharedKey\": \"Sanitized\",\r\n  \"secondarySharedKey\": \"B/I5KbQg4TCZQBhbfNJAmbn6fjQDFsqewnGDEqRsuhqBcN6MNDBkNHDVjZtcXjsxUtWqUoK0PYuJpytUyq9Isg==\"\r\n}",
+      "ResponseBody": "{\r\n  \"primarySharedKey\": \"Sanitized\",\r\n  \"secondarySharedKey\": \"Sanitized\"\r\n}",
       "StatusCode": 200
     },
     {
