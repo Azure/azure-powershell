@@ -1,60 +1,82 @@
 ---
-external help file:
+external help file: Az.DataTransfer-help.xml
 Module Name: Az.DataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.datatransfer/update-azdatatransferflow
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/invoke-azdatatransferlinkpendingflow
 schema: 2.0.0
 ---
 
-# Update-AzDataTransferFlow
+# Invoke-AzDataTransferLinkPendingFlow
 
 ## SYNOPSIS
-update the flow resource.
+Links the specified flow.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### LinkExpanded (Default)
 ```
-Update-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IdentityType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityConnectionExpanded
-```
-Update-AzDataTransferFlow -ConnectionInputObject <IDataTransferIdentity> -Name <String>
- [-IdentityType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzDataTransferLinkPendingFlow -ConnectionName <String> -FlowName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -PendingFlowId <String> [-StatusReason <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### LinkViaJsonString
 ```
-Update-AzDataTransferFlow -InputObject <IDataTransferIdentity> [-IdentityType <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Invoke-AzDataTransferLinkPendingFlow -ConnectionName <String> -FlowName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### LinkViaJsonFilePath
+```
+Invoke-AzDataTransferLinkPendingFlow -ConnectionName <String> -FlowName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Link
+```
+Invoke-AzDataTransferLinkPendingFlow -ConnectionName <String> -FlowName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Flow <IResourceBody> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### LinkViaIdentityConnectionExpanded
+```
+Invoke-AzDataTransferLinkPendingFlow -FlowName <String> -ConnectionInputObject <IDataTransferIdentity>
+ -PendingFlowId <String> [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### LinkViaIdentityConnection
+```
+Invoke-AzDataTransferLinkPendingFlow -FlowName <String> -ConnectionInputObject <IDataTransferIdentity>
+ -Flow <IResourceBody> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### LinkViaIdentityExpanded
+```
+Invoke-AzDataTransferLinkPendingFlow -InputObject <IDataTransferIdentity> -PendingFlowId <String>
+ [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### LinkViaIdentity
+```
+Invoke-AzDataTransferLinkPendingFlow -InputObject <IDataTransferIdentity> -Flow <IResourceBody>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
-```
-Update-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-update the flow resource.
+Links the specified flow.
 
 ## EXAMPLES
 
-### Example 1: Update tags for a flow
+### Example 1: Link a pending flow by ID
 ```powershell
-Update-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -Name Flow01 -Tag @{Environment="Production"; Department="IT"} -Confirm:$false
+$sendFlow = Get-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName SendConnection01 -FlowName SendFlow01
+Invoke-AzDataTransferLinkPendingFlow -ResourceGroupName ResourceGroup02 -ConnectionName ReceiveConnection01 -FlowName ReceiveFlow01 -PendingFlowId $sendFlow.Id -StatusReason "Linking approved" -Confirm:$false
 ```
 
 ```output
@@ -75,20 +97,20 @@ DataType                               : Blob
 DestinationEndpoint                    : 
 DestinationEndpointPort                : 
 EventHubId                             : 
-FlowId                                 : 
+FlowId                                 : 00000000-0000-0000-0000-000000000000
 FlowType                               : Mission
 ForceDisabledStatus                    : 
-Id                                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/connections/Connection01/flows/Flow01
+Id                                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup02/providers/Microsoft.AzureDataTransfer/connections/ReceiveConnection01/flows/ReceiveFlow01
 IdentityPrincipalId                    : 
 IdentityTenantId                       : 
 IdentityType                           : None
 IdentityUserAssignedIdentity           : {}
 KeyVaultUri                            : 
-LinkStatus                             : Unlinked
-LinkedFlowId                           : 
-Location                               : EastUS
+LinkStatus                             : Linked
+LinkedFlowId                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/connections/SendConnection01/flows/SendFlow01
+Location                               : eastus
 MessagingOptionBillingTier             : 
-Name                                   : Flow01
+Name                                   : ReceiveFlow01
 Passphrase                             : 
 PlanName                               : 
 PlanProduct                            : 
@@ -97,7 +119,7 @@ PlanPublisher                          :
 PlanVersion                            : 
 Policy                                 : 
 ProvisioningState                      : Succeeded
-ResourceGroupName                      : ResourceGroup01
+ResourceGroupName                      : ResourceGroup02
 SchemaConnectionId                     : 
 SchemaContent                          : 
 SchemaDirection                        : 
@@ -110,35 +132,26 @@ ServiceBusQueueId                      :
 SourceAddressSourceAddresses           : 
 Status                                 : Enabled
 StorageAccountId                       : 
-StorageAccountName                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Storage/storageAccounts/storageAccount01
-StorageContainerName                   : teststorage
+StorageAccountName                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup03/providers/Microsoft.Storage/storageAccounts/test
+StorageContainerName                   : test-container
 StorageTableName                       : 
 StreamId                               : 
 StreamLatency                          : 
 StreamProtocol                         : 
-SystemDataCreatedAt                    : 6/11/2099 7:09:52 AM
+SystemDataCreatedAt                    : 5/30/2099 10:06:51 AM
 SystemDataCreatedBy                    : test@test.com
 SystemDataCreatedByType                : User
-SystemDataLastModifiedAt               : 6/11/2099 7:09:52 AM
-SystemDataLastModifiedBy               : test@test.com
-SystemDataLastModifiedByType           : User
+SystemDataLastModifiedAt               : 6/11/2099 6:07:36 AM
+SystemDataLastModifiedBy               : 00000000-0000-0000-0000-000000000000
+SystemDataLastModifiedByType           : Application
 Tag                                    : {
-                                           "Environment": "Production",
-                                           "Department": "IT",
-                                           "creationTime": "2099-06-11T07:14:45.0294500Z",
+                                           "creationTime": "2099-05-30T10:06:48.5223272Z",
                                            "vteam": "Experience"
                                          }
 Type                                   : microsoft.azuredatatransfer/connections/flows
 ```
 
-This example updates the tags for the flow `Flow01` in the connection `Connection01` within the resource group `ResourceGroup01`.
-
-### Example 2: Update a flow with additional parameters
-```powershell
-Update-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -Name Flow01 -CustomerManagedKeyVaultUri "https://mykeyvault.vault.azure.net/" -DestinationEndpoint "https://destination.blob.core.windows.net" -Confirm:$false
-```
-
-This example updates the flow `Flow01` in the connection `Connection01` within the resource group `ResourceGroup01` by modifying the Key Vault URI and destination endpoint.
+This example links a pending send side flow with the naem `SendFlow01` to the receive side flow `ReceiveFlow01` in the connection `ReceiveConnection01` within the resource group `ResourceGroup02` and provides a status reason.
 
 ## PARAMETERS
 
@@ -162,7 +175,7 @@ Identity Parameter
 
 ```yaml
 Type: ADT.Models.IDataTransferIdentity
-Parameter Sets: UpdateViaIdentityConnectionExpanded
+Parameter Sets: LinkViaIdentityConnectionExpanded, LinkViaIdentityConnection
 Aliases:
 
 Required: True
@@ -177,7 +190,7 @@ The name for the connection to perform the operation on.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: LinkExpanded, LinkViaJsonString, LinkViaJsonFilePath, Link
 Aliases:
 
 Required: True
@@ -203,15 +216,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -Flow
+The resource to reference.
+
+```yaml
+Type: ADT.Models.IResourceBody
+Parameter Sets: Link, LinkViaIdentityConnection, LinkViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -FlowName
+The name for the flow to perform the operation on.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectionExpanded, UpdateViaIdentityExpanded
+Parameter Sets: LinkExpanded, LinkViaJsonString, LinkViaJsonFilePath, Link, LinkViaIdentityConnectionExpanded, LinkViaIdentityConnection
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -223,7 +251,7 @@ Identity Parameter
 
 ```yaml
 Type: ADT.Models.IDataTransferIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: LinkViaIdentityExpanded, LinkViaIdentity
 Aliases:
 
 Required: True
@@ -234,11 +262,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-Path of Json file supplied to the Update operation
+Path of Json file supplied to the Link operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
+Parameter Sets: LinkViaJsonFilePath
 Aliases:
 
 Required: True
@@ -249,27 +277,12 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Update operation
+Json string supplied to the Link operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString
+Parameter Sets: LinkViaJsonString
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name for the flow to perform the operation on.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectionExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
-Aliases: FlowName
 
 Required: True
 Position: Named
@@ -293,16 +306,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PendingFlowId
+ID of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: LinkExpanded, LinkViaIdentityConnectionExpanded, LinkViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: LinkExpanded, LinkViaJsonString, LinkViaJsonFilePath, Link
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StatusReason
+Reason for resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: LinkExpanded, LinkViaIdentityConnectionExpanded, LinkViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -315,44 +358,12 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: LinkExpanded, LinkViaJsonString, LinkViaJsonFilePath, Link
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectionExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectionExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -395,6 +406,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ADT.Models.IDataTransferIdentity
 
+### ADT.Models.IResourceBody
+
 ## OUTPUTS
 
 ### ADT.Models.IFlow
@@ -402,4 +415,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

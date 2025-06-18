@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataTransfer-help.xml
 Module Name: Az.DataTransfer
 online version: https://learn.microsoft.com/powershell/module/az.datatransfer/new-azdatatransferflow
 schema: 2.0.0
@@ -14,37 +14,37 @@ create the flow resource.
 
 ### CreateExpanded (Default)
 ```
-New-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-ApiFlowOptionApiMode <String>] [-ApiFlowOptionAudienceOverride <String>]
- [-ApiFlowOptionCname <String>] [-ApiFlowOptionIdentityTranslation <String>]
- [-ApiFlowOptionRemoteCallingModeClientId <String>] [-ApiFlowOptionRemoteEndpoint <String>]
- [-ApiFlowOptionSenderClientId <String>] [-ConnectionId <String>] [-ConnectionLocation <String>]
- [-ConnectionSubscriptionName <String>] [-ConsumerGroup <String>] [-CustomerManagedKeyVaultUri <String>]
- [-DataType <String>] [-DestinationEndpoint <String[]>] [-DestinationEndpointPort <Int64[]>]
- [-EventHubId <String>] [-FlowType <String>] [-IdentityType <String>] [-MessagingOptionBillingTier <String>]
- [-Passphrase <String>] [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-PlanPublisher <String>] [-PlanVersion <String>] [-PropertiesConnectionName <String>]
- [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
- [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
- [-ServiceBusQueueId <String>] [-SourceAddress <String[]>] [-Status <String>] [-StorageAccountId <String>]
- [-StorageAccountName <String>] [-StorageContainerName <String>] [-StorageTableName <String>]
- [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Location <String> [-ApiFlowOptionApiMode <String>]
+ [-ApiFlowOptionAudienceOverride <String>] [-ApiFlowOptionCname <String>]
+ [-ApiFlowOptionIdentityTranslation <String>] [-ApiFlowOptionRemoteCallingModeClientId <String>]
+ [-ApiFlowOptionRemoteEndpoint <String>] [-ApiFlowOptionSenderClientId <String>] [-ConnectionId <String>]
+ [-ConnectionLocation <String>] [-ConnectionSubscriptionName <String>] [-ConsumerGroup <String>]
+ [-CustomerManagedKeyVaultUri <String>] [-DataType <String>] [-DestinationEndpoint <String[]>]
+ [-DestinationEndpointPort <Int64[]>] [-EventHubId <String>] [-FlowType <String>] [-IdentityType <String>]
+ [-MessagingOptionBillingTier <String>] [-Passphrase <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-PropertiesConnectionName <String>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
+ [-SchemaDirection <String>] [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>]
+ [-SchemaType <String>] [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-SourceAddress <String[]>]
+ [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
+ [-StorageContainerName <String>] [-StorageTableName <String>] [-StreamId <String>] [-StreamLatency <Int64>]
+ [-StreamProtocol <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -1106,4 +1106,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

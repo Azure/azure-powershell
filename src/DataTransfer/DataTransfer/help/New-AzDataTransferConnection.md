@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataTransfer-help.xml
 Module Name: Az.DataTransfer
 online version: https://learn.microsoft.com/powershell/module/az.datatransfer/new-azdatatransferconnection
 schema: 2.0.0
@@ -14,26 +14,27 @@ create the connection resource.
 
 ### CreateExpanded (Default)
 ```
-New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Direction <String>] [-FlowType <String[]>] [-IdentityType <String>]
+New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-Direction <String>] [-FlowType <String[]>] [-IdentityType <String>]
  [-Justification <String>] [-Pin <String>] [-PipelineName <String>] [-PrimaryContact <String>]
  [-RemoteSubscriptionId <String>] [-RequirementId <String>] [-Schema <ISchema[]>] [-SchemaUri <String[]>]
  [-SecondaryContact <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -585,4 +586,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

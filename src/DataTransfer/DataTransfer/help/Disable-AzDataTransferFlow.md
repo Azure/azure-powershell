@@ -1,60 +1,45 @@
 ---
-external help file:
+external help file: Az.DataTransfer-help.xml
 Module Name: Az.DataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.datatransfer/update-azdatatransferflow
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/disable-azdatatransferflow
 schema: 2.0.0
 ---
 
-# Update-AzDataTransferFlow
+# Disable-AzDataTransferFlow
 
 ## SYNOPSIS
-update the flow resource.
+Disables the specified flow
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Disable (Default)
 ```
-Update-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IdentityType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityConnectionExpanded
-```
-Update-AzDataTransferFlow -ConnectionInputObject <IDataTransferIdentity> -Name <String>
- [-IdentityType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Disable-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### DisableViaIdentityConnection
 ```
-Update-AzDataTransferFlow -InputObject <IDataTransferIdentity> [-IdentityType <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Disable-AzDataTransferFlow -Name <String> -ConnectionInputObject <IDataTransferIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
+### DisableViaIdentity
 ```
-Update-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Disable-AzDataTransferFlow -InputObject <IDataTransferIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update the flow resource.
+Disables the specified flow
 
 ## EXAMPLES
 
-### Example 1: Update tags for a flow
+### Example 1: Disable a specific flow
 ```powershell
-Update-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -Name Flow01 -Tag @{Environment="Production"; Department="IT"} -Confirm:$false
+Disable-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -Name Flow01 -Confirm:$false
 ```
 
 ```output
@@ -108,7 +93,7 @@ SchemaType                             :
 SchemaUri                              : 
 ServiceBusQueueId                      : 
 SourceAddressSourceAddresses           : 
-Status                                 : Enabled
+Status                                 : Disabled
 StorageAccountId                       : 
 StorageAccountName                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Storage/storageAccounts/storageAccount01
 StorageContainerName                   : teststorage
@@ -124,21 +109,13 @@ SystemDataLastModifiedBy               : test@test.com
 SystemDataLastModifiedByType           : User
 Tag                                    : {
                                            "Environment": "Production",
-                                           "Department": "IT",
                                            "creationTime": "2099-06-11T07:14:45.0294500Z",
                                            "vteam": "Experience"
                                          }
 Type                                   : microsoft.azuredatatransfer/connections/flows
 ```
 
-This example updates the tags for the flow `Flow01` in the connection `Connection01` within the resource group `ResourceGroup01`.
-
-### Example 2: Update a flow with additional parameters
-```powershell
-Update-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -Name Flow01 -CustomerManagedKeyVaultUri "https://mykeyvault.vault.azure.net/" -DestinationEndpoint "https://destination.blob.core.windows.net" -Confirm:$false
-```
-
-This example updates the flow `Flow01` in the connection `Connection01` within the resource group `ResourceGroup01` by modifying the Key Vault URI and destination endpoint.
+This example disables a specific flow named `Flow01` in the connection `Connection01` within the resource group `ResourceGroup01` without prompting for confirmation.
 
 ## PARAMETERS
 
@@ -162,7 +139,7 @@ Identity Parameter
 
 ```yaml
 Type: ADT.Models.IDataTransferIdentity
-Parameter Sets: UpdateViaIdentityConnectionExpanded
+Parameter Sets: DisableViaIdentityConnection
 Aliases:
 
 Required: True
@@ -177,7 +154,7 @@ The name for the connection to perform the operation on.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: Disable
 Aliases:
 
 Required: True
@@ -203,27 +180,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectionExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: ADT.Models.IDataTransferIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: DisableViaIdentity
 Aliases:
 
 Required: True
@@ -233,42 +195,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name for the flow to perform the operation on.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectionExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: Disable, DisableViaIdentityConnection
 Aliases: FlowName
 
 Required: True
@@ -299,7 +231,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: Disable
 Aliases:
 
 Required: True
@@ -315,44 +247,12 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: Disable
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectionExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectionExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -402,4 +302,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

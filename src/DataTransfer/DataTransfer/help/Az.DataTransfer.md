@@ -1,14 +1,14 @@
 ---
 Module Name: Az.DataTransfer
-Module Guid: 88c154ed-ced9-4381-b277-441566a6c538
-Download Help Link: https://learn.microsoft.com/powershell/module/az.datatransfer
-Help Version: 1.0.0.0
-Locale: en-US
+Module Guid: {{ Update Module Guid }}
+Download Help Link: {{ Update Download Link }}
+Help Version: {{ Update Help Version }}
+Locale: {{ Update Locale }}
 ---
 
 # Az.DataTransfer Module
 ## Description
-Microsoft Azure PowerShell: DataTransfer cmdlets
+{{ Fill in the Description }}
 
 ## Az.DataTransfer Cmdlets
 ### [Approve-AzDataTransferConnection](Approve-AzDataTransferConnection.md)
