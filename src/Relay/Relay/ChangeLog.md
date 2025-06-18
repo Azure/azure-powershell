@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added breaking change announcement for below commands from Fixed Array to List.
+* Added breaking change announcement for below commands from one object to List.
   - `Get-AzRelayNamespace`
   - `Get-AzRelayNamespaceNetworkRuleSet`
   - `Set-AzRelayNamespaceNetworkRuleSet`
