@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -159,6 +160,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        private readonly bool ForcePrompt = false;
+
         public override void Execute()
         {
             base.Execute();
@@ -198,6 +201,20 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
+                if (this.ContinuousCapture == true && this.CaptureSettings != null &&
+                    this.CaptureSettings.FileCount == 1 && this.CaptureSettings.FileSizeInBytes == 1073741824
+                    && this.CaptureSettings.SessionTimeLimitInSeconds == 18000)
+                {
+                    ConfirmAction(ForcePrompt,
+                   $"Do you want to change the capture settings? As you have opted 'ContinuousCapture' as 'True' and Capture settings are : {JsonConvert.SerializeObject(this.CaptureSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })} ", string.Empty,
+                   this.Name,
+                   () =>
+                    {
+                        throw new Exception("Please modified the CaptureSettings values by using 'New-AzPacketCaptureSettingsConfig' command with specific values.");
+                    }
+                   );
+                }
+
                 if (this.TotalBytesPerSession != null)
                 {
                     throw new ArgumentException("InvalidRequestPropertiesInPacketCaptureRequest: TotalBytesPerSession is not supported in packet capture request.");

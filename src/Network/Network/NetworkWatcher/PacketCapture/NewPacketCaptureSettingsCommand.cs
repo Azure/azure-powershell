@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
         [Parameter(
              Mandatory = false,
              ValueFromPipeline = true,
-             HelpMessage = "Number of file count. Default value is 10.")]
+             HelpMessage = "Number of file count. Default value is 1.")]
         [ValidateNotNull]
         [ValidateRange(1, 10000)]
         public int? FileCount { get; set; }
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Number of bytes captured per packet. Default value is 104857600.")]
+            HelpMessage = "Number of bytes captured per packet. Default value is 1073741824.")]
         [ValidateNotNull]
         [ValidateRange(102400, uint.MaxValue)]
         public long? FileSizeInBytes { get; set; }
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Capture session in seconds. Default value is 86400.")]
+            HelpMessage = "Capture session in seconds. Default value is 18000.")]
         [ValidateNotNull]
         [ValidateRange(1, 604800)]
         public int? SessionTimeLimitInSeconds { get; set; }
@@ -53,13 +53,13 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
 
             // Set default values if null
             if (this.FileCount == null)
-                this.FileCount = 10;
+                this.FileCount = 1;
 
             if (this.FileSizeInBytes == null)
-                this.FileSizeInBytes = 104857600;
+                this.FileSizeInBytes = 1073741824;
 
             if (this.SessionTimeLimitInSeconds == null)
-                this.SessionTimeLimitInSeconds = 86400;
+                this.SessionTimeLimitInSeconds = 18000;
 
             var packetCaptureSettings = new PSPacketCaptureSettings
             {
