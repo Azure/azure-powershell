@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDataTransferFlow
 
 ## SYNOPSIS
-update the flow resource.
+Update the flow resource.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ Update-AzDataTransferFlow -InputObject <IDataTransferIdentity> [-IdentityType <S
 ```
 
 ## DESCRIPTION
-update the flow resource.
+Update the flow resource.
 
 ## EXAMPLES
 

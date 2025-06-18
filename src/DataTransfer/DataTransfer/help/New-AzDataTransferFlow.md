@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataTransferFlow
 
 ## SYNOPSIS
-create the flow resource.
+Create the flow resource.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupNam
 ```
 
 ## DESCRIPTION
-create the flow resource.
+Create the flow resource.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDataTransferFlow
 
 ## SYNOPSIS
-update the flow resource.
+Update the flow resource.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ Update-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroup
 ```
 
 ## DESCRIPTION
-update the flow resource.
+Update the flow resource.
 
 ## EXAMPLES
 

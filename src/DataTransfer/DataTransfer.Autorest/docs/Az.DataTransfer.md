@@ -45,10 +45,10 @@ Links the connection to its pending connection.
 Links the specified flow.
 
 ### [New-AzDataTransferConnection](New-AzDataTransferConnection.md)
-create the connection resource.
+Create the connection resource.
 
 ### [New-AzDataTransferFlow](New-AzDataTransferFlow.md)
-create the flow resource.
+Create the flow resource.
 
 ### [Remove-AzDataTransferConnection](Remove-AzDataTransferConnection.md)
 Deletes the connection resource.
@@ -57,8 +57,8 @@ Deletes the connection resource.
 Deletes the flow resource.
 
 ### [Update-AzDataTransferConnection](Update-AzDataTransferConnection.md)
-update the connection resource.
+Update the connection resource.
 
 ### [Update-AzDataTransferFlow](Update-AzDataTransferFlow.md)
-update the flow resource.
+Update the flow resource.
 
