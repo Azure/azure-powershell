@@ -78,6 +78,29 @@ SubnetId          : /subscriptions/f557b96d-2308-4a18-aae1-b8f7e7e70cc7/resource
 
 This command creates the new ANF volume "MyAnfVolume" within the pool "MyAnfPool".
 
+### Example 2: Create an ANF volume using NFSv4.1 Protocol Type
+```powershell
+$exportPolicyRule = New-AzNetAppFilesExportPolicyRuleObject -RuleIndex 1 -AllowedClient "0.0.0.0/0" -UnixReadWrite -Nfsv4.1
+New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -Location "westus2" -CreationToken "MyAnfVolume" -ProtocolType NFSv4.1 -ExportPolicy $exportPolicyRule -UsageThreshold 1099511627776 -ServiceLevel "Premium" -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName"
+```
+
+```output
+Location          : westus2
+Id                : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount/capacityPools/MyAnfPool/volumes/MyAnfVolume
+Name              : MyAnfAccount/MyAnfPool/MyAnfVolume
+Type              : Microsoft.NetApp/netAppAccounts/capacityPools/volumes
+Tags              :
+FileSystemId      : 3e2773a7-2a72-d003-0637-1a8b1fa3eaaf
+CreationToken     : MyAnfVolume
+ServiceLevel      : Premium
+UsageThreshold    : 1099511627776
+ProvisioningState : Succeeded
+SubnetId          : /subscriptions/f557b96d-2308-4a18-aae1-b8f7e7e70cc7/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/default
+```
+
+This command creates the new ANF volume "MyAnfVolume" within the pool "MyAnfPool" using NFSv4.1 protocol including the requred ExportPolicy.
+
+
 ## PARAMETERS
 
 ### -AccountName
