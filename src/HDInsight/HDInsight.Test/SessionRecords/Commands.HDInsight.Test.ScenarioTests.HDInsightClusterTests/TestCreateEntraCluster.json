@@ -120,7 +120,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/f3940faa-5c42-491f-b0d0-4669c3fb60e2"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/f3940faa-5c42-491f-b0d0-4669c3fb60e2"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "799"
@@ -192,7 +192,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/f1d5ce61-51b4-4399-976f-39653a3c3605"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/f1d5ce61-51b4-4399-976f-39653a3c3605"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -258,7 +258,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/90070fe2-a4a7-4a58-b7d0-d426944572b0"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/90070fe2-a4a7-4a58-b7d0-d426944572b0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -330,7 +330,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/06e5ee2f-3aba-423f-8aa4-af634e28e5d9"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/06e5ee2f-3aba-423f-8aa4-af634e28e5d9"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "799"
@@ -367,8 +367,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/v1.0/users/v-yukunli%40microsoft.com",
-      "EncodedRequestUri": "L3YxLjAvdXNlcnMvdi15dWt1bmxpJTQwbWljcm9zb2Z0LmNvbQ==",
+      "RequestUri": "/v1.0/users/user%40microsoft.com",
+      "EncodedRequestUri": "L3YxLjAvdXNlcnMvdXNlciU0MG1pY3Jvc29mdC5jb20=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -417,11 +417,11 @@
           "application/json; odata.metadata=minimal; odata.streaming=true; IEEE754Compatible=false; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"@odata.context\": \"https://graph.microsoft.com/v1.0/$metadata#users/$entity\",\r\n  \"businessPhones\": [],\r\n  \"displayName\": \"Yukun Li (Beyondsoft)\",\r\n  \"givenName\": \"Yukun\",\r\n  \"jobTitle\": null,\r\n  \"mail\": \"v-yukunli@microsoft.com\",\r\n  \"mobilePhone\": null,\r\n  \"officeLocation\": \"No WorkSpace\",\r\n  \"preferredLanguage\": null,\r\n  \"surname\": \"Li (Beyondsoft)\",\r\n  \"userPrincipalName\": \"v-yukunli@microsoft.com\",\r\n  \"id\": \"9cd85b81-c262-44da-bc33-96c3b8c182d3\"\r\n}",
+      "ResponseBody": "{\r\n  \"@odata.context\": \"https://graph.microsoft.com/v1.0/$metadata#users/$entity\",\r\n  \"businessPhones\": [],\r\n  \"displayName\": \"DisplayName\",\r\n  \"givenName\": \"Yukun\",\r\n  \"jobTitle\": null,\r\n  \"mail\": \"user@microsoft.com\",\r\n  \"mobilePhone\": null,\r\n  \"officeLocation\": \"No WorkSpace\",\r\n  \"preferredLanguage\": null,\r\n  \"surname\": \"Li (Beyondsoft)\",\r\n  \"userPrincipalName\": \"user@microsoft.com\",\r\n  \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/v1.0/users/00223b95-49cf-4250-9217-5044728045f4",
+      "RequestUri": "/v1.0/users/00000000-0000-0000-0000-000000000000",
       "EncodedRequestUri": "L3YxLjAvdXNlcnMvMDAyMjNiOTUtNDljZi00MjUwLTkyMTctNTA0NDcyODA0NWY0",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -471,7 +471,7 @@
           "application/json; odata.metadata=minimal; odata.streaming=true; IEEE754Compatible=false; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"@odata.context\": \"https://graph.microsoft.com/v1.0/$metadata#users/$entity\",\r\n  \"businessPhones\": [],\r\n  \"displayName\": \"Beifei Li (Beyondsoft)\",\r\n  \"givenName\": \"Beifei\",\r\n  \"jobTitle\": null,\r\n  \"mail\": \"v-beifeili@microsoft.com\",\r\n  \"mobilePhone\": null,\r\n  \"officeLocation\": \"No WorkSpace\",\r\n  \"preferredLanguage\": null,\r\n  \"surname\": \"Li (Beyondsoft)\",\r\n  \"userPrincipalName\": \"v-beifeili@microsoft.com\",\r\n  \"id\": \"00223b95-49cf-4250-9217-5044728045f4\"\r\n}",
+      "ResponseBody": "{\r\n  \"@odata.context\": \"https://graph.microsoft.com/v1.0/$metadata#users/$entity\",\r\n  \"businessPhones\": [],\r\n  \"displayName\": \"DisplayName\",\r\n  \"givenName\": \"Beifei\",\r\n  \"jobTitle\": null,\r\n  \"mail\": \"user@microsoft.com\",\r\n  \"mobilePhone\": null,\r\n  \"officeLocation\": \"No WorkSpace\",\r\n  \"preferredLanguage\": null,\r\n  \"surname\": \"Li (Beyondsoft)\",\r\n  \"userPrincipalName\": \"user@microsoft.com\",\r\n  \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -510,7 +510,7 @@
           "9063f568-2ac1-4268-8096-a0b74d9b801d"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/3a92b3c2-0c92-4300-a8da-cb3cf9ef0ee5"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/3a92b3c2-0c92-4300-a8da-cb3cf9ef0ee5"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -573,7 +573,7 @@
           "3526"
         ]
       },
-      "RequestBody": "{\r\n  \"location\": \"East Asia\",\r\n  \"properties\": {\r\n    \"clusterVersion\": \"5.1\",\r\n    \"osType\": \"Linux\",\r\n    \"clusterDefinition\": {\r\n      \"kind\": \"Hadoop\",\r\n      \"componentVersion\": {},\r\n      \"configurations\": {\r\n        \"gateway\": {\r\n          \"restAuthCredential.isEnabled\": \"false\",\r\n          \"restAuthEntraUsers\": \"[{\\\"ObjectId\\\":\\\"9cd85b81-c262-44da-bc33-96c3b8c182d3\\\",\\\"DisplayName\\\":\\\"Yukun Li (Beyondsoft)\\\",\\\"Upn\\\":\\\"v-yukunli@microsoft.com\\\"},{\\\"ObjectId\\\":\\\"00223b95-49cf-4250-9217-5044728045f4\\\",\\\"DisplayName\\\":\\\"Beifei Li (Beyondsoft)\\\",\\\"Upn\\\":\\\"v-beifeili@microsoft.com\\\"}]\"\r\n        },\r\n        \"core-site\": {}\r\n      }\r\n    },\r\n    \"computeProfile\": {\r\n      \"roles\": [\r\n        {\r\n          \"name\": \"headnode\",\r\n          \"targetInstanceCount\": 2,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"STANDARD_E4_V3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\",\r\n              \"password\": \"Sanitized\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          }\r\n        },\r\n        {\r\n          \"name\": \"workernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"STANDARD_E8_V3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\",\r\n              \"password\": \"Sanitized\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          }\r\n        },\r\n        {\r\n          \"name\": \"zookeepernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"STANDARD_A2_V2\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\",\r\n              \"password\": \"Sanitized\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"storageProfile\": {\r\n      \"storageaccounts\": [\r\n        {\r\n          \"name\": \"storagepstest121.blob.core.windows.net\",\r\n          \"isDefault\": true,\r\n          \"container\": \"ps7680\",\r\n          \"key\": \"Sanitized\",\r\n          \"resourceId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test744/providers/Microsoft.Storage/storageAccounts/storagepstest121\"\r\n        }\r\n      ]\r\n    },\r\n    \"minSupportedTlsVersion\": \"1.2\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"East Asia\",\r\n  \"properties\": {\r\n    \"clusterVersion\": \"5.1\",\r\n    \"osType\": \"Linux\",\r\n    \"clusterDefinition\": {\r\n      \"kind\": \"Hadoop\",\r\n      \"componentVersion\": {},\r\n      \"configurations\": {\r\n        \"gateway\": {\r\n          \"restAuthCredential.isEnabled\": \"false\",\r\n          \"restAuthEntraUsers\": \"[{\\\"ObjectId\\\":\\\"00000000-0000-0000-0000-000000000000\\\",\\\"DisplayName\\\":\\\"DisplayName\\\",\\\"Upn\\\":\\\"user@microsoft.com\\\"},{\\\"ObjectId\\\":\\\"00000000-0000-0000-0000-000000000000\\\",\\\"DisplayName\\\":\\\"DisplayName\\\",\\\"Upn\\\":\\\"user@microsoft.com\\\"}]\"\r\n        },\r\n        \"core-site\": {}\r\n      }\r\n    },\r\n    \"computeProfile\": {\r\n      \"roles\": [\r\n        {\r\n          \"name\": \"headnode\",\r\n          \"targetInstanceCount\": 2,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"STANDARD_E4_V3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\",\r\n              \"password\": \"Sanitized\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          }\r\n        },\r\n        {\r\n          \"name\": \"workernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"STANDARD_E8_V3\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\",\r\n              \"password\": \"Sanitized\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          }\r\n        },\r\n        {\r\n          \"name\": \"zookeepernode\",\r\n          \"targetInstanceCount\": 3,\r\n          \"hardwareProfile\": {\r\n            \"vmSize\": \"STANDARD_A2_V2\"\r\n          },\r\n          \"osProfile\": {\r\n            \"linuxOperatingSystemProfile\": {\r\n              \"username\": \"sshuser\",\r\n              \"password\": \"Sanitized\"\r\n            }\r\n          },\r\n          \"virtualNetworkProfile\": {\r\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0\",\r\n            \"subnet\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0/subnets/default\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"storageProfile\": {\r\n      \"storageaccounts\": [\r\n        {\r\n          \"name\": \"storagepstest121.blob.core.windows.net\",\r\n          \"isDefault\": true,\r\n          \"container\": \"ps7680\",\r\n          \"key\": \"Sanitized\",\r\n          \"resourceId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test744/providers/Microsoft.Storage/storageAccounts/storagepstest121\"\r\n        }\r\n      ]\r\n    },\r\n    \"minSupportedTlsVersion\": \"1.2\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -600,7 +600,7 @@
           "4e15d962-0f2a-4304-9988-b60f5e08f7fc"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/dfc72c4c-5591-41e0-8d3f-2b0c67b98064"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/dfc72c4c-5591-41e0-8d3f-2b0c67b98064"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "800"
@@ -672,7 +672,7 @@
           "8ebab61d-7759-4558-8a10-81fa459ddfb1"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/ece55323-9c86-4b53-8a41-0b680366c937"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/ece55323-9c86-4b53-8a41-0b680366c937"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -744,7 +744,7 @@
           "22321ac8-18ff-4819-ba56-9f841b0afff5"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/6c0fa3eb-f8d1-4dc2-a2ef-e5991f591f66"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/6c0fa3eb-f8d1-4dc2-a2ef-e5991f591f66"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -816,7 +816,7 @@
           "11a4b5e0-4249-4cab-ab15-aadd9a066bb7"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/3875e7e3-914e-4c51-99b3-2abfde6f59aa"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/3875e7e3-914e-4c51-99b3-2abfde6f59aa"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -888,7 +888,7 @@
           "acbf9c24-e528-45ff-b221-3605cd1f2d3c"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/5260dc12-ddfc-41bf-87eb-c009eee76b00"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/5260dc12-ddfc-41bf-87eb-c009eee76b00"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -960,7 +960,7 @@
           "12cdcfa0-b93e-4c78-a513-2938f1910704"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/fdd356a3-72f4-453c-b9e0-a82bb79dedb9"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/fdd356a3-72f4-453c-b9e0-a82bb79dedb9"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -1032,7 +1032,7 @@
           "a4372deb-0699-4e79-98f2-beaf42503ecb"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/c8e98680-f3b5-471f-acf2-d2eb6ecfef21"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/c8e98680-f3b5-471f-acf2-d2eb6ecfef21"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -1104,7 +1104,7 @@
           "b809ff41-fd6b-4d35-b316-ff958d817765"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/4bf32047-ac5b-48e5-9dd3-a253308e752e"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/4bf32047-ac5b-48e5-9dd3-a253308e752e"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -1176,7 +1176,7 @@
           "0f4b354f-f677-453c-81f9-8b107e22b869"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/f0542569-ec04-4d9e-a2ab-fdd4a5cff697"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/f0542569-ec04-4d9e-a2ab-fdd4a5cff697"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -1248,7 +1248,7 @@
           "c2fd8d05-0f95-4338-a5b9-67c81d41f30a"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/0b3af48e-97c4-4ddb-bb4f-3c6c28619c5e"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/0b3af48e-97c4-4ddb-bb4f-3c6c28619c5e"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -1320,7 +1320,7 @@
           "c2f2f5aa-38c8-4eee-8f1c-ac303fd0c04c"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/9fd177b1-9260-44d8-8048-a45f9c592486"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/9fd177b1-9260-44d8-8048-a45f9c592486"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -1392,7 +1392,7 @@
           "910ae7a9-4f1b-450f-831c-7645eb47958e"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/9132a7a0-a7fe-475f-9b65-a31e9fceda5e"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/9132a7a0-a7fe-475f-9b65-a31e9fceda5e"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -1464,7 +1464,7 @@
           "95b1a369-1cac-4dd2-8daa-4d156816a070"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/3622f77f-a2cb-47a9-8acf-82d5205dba7d"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/3622f77f-a2cb-47a9-8acf-82d5205dba7d"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -1536,7 +1536,7 @@
           "1ad8087e-24e6-4c0a-8d69-f639cd0b7e0e"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/71af3232-283e-4c96-836b-204df2af3b39"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/71af3232-283e-4c96-836b-204df2af3b39"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -1608,7 +1608,7 @@
           "a6330f0c-f412-4fe5-8bac-97c67ea99382"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/636b2a02-123e-44d8-9818-675af0986c8f"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/636b2a02-123e-44d8-9818-675af0986c8f"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -1680,7 +1680,7 @@
           "5b149b3b-3f40-4d83-9990-f0249e731554"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/c08735a8-8cef-4350-be33-9afef9f82ed0"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/c08735a8-8cef-4350-be33-9afef9f82ed0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -1752,7 +1752,7 @@
           "2ba78b4c-9e97-4508-8a4e-cbf371a02144"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/0773cec6-5a09-4aa3-b3a3-a5fc1be93114"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/0773cec6-5a09-4aa3-b3a3-a5fc1be93114"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -1824,7 +1824,7 @@
           "552cfbb8-c93a-4af8-aeba-e2222949c6f6"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/06dd3df3-b815-4fb3-b077-c2ff799b4cbc"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/06dd3df3-b815-4fb3-b077-c2ff799b4cbc"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -1896,7 +1896,7 @@
           "dce26c9f-1401-4e81-bb4f-c27a3c924a61"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/a08633bc-8179-483d-a36a-481eb2bea163"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/a08633bc-8179-483d-a36a-481eb2bea163"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -1968,7 +1968,7 @@
           "a949e83e-8040-4ad3-ba51-15da1ff3cb16"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/d3b68973-06cd-418b-ab09-3ba2195cf78d"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/d3b68973-06cd-418b-ab09-3ba2195cf78d"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -2040,7 +2040,7 @@
           "a6198836-095b-4849-a6dc-9776adc33909"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japanwest/97a0d184-57e0-4e76-b548-1ae3adb0bb18"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japanwest/97a0d184-57e0-4e76-b548-1ae3adb0bb18"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -2112,7 +2112,7 @@
           "cdc83d01-b059-4466-a23a-4a5af590d1d0"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/a2abc0ed-ba3d-4403-81c8-20742cbbc6bb"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/a2abc0ed-ba3d-4403-81c8-20742cbbc6bb"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -2184,7 +2184,7 @@
           "74058b1f-133d-4429-91bf-ca7dc06f7bd3"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japanwest/9b91da71-f382-498a-a8ae-1ffde3820088"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japanwest/9b91da71-f382-498a-a8ae-1ffde3820088"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -2256,7 +2256,7 @@
           "e3538ad0-6455-45e1-919c-a84f31550232"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japanwest/99e95033-2696-45f5-9a57-806d454bc80c"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japanwest/99e95033-2696-45f5-9a57-806d454bc80c"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -2328,7 +2328,7 @@
           "795ec6e3-5e60-4379-912e-a5a4b6636506"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/5f457e91-8ef8-4967-a058-30716d246c49"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/5f457e91-8ef8-4967-a058-30716d246c49"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -2400,7 +2400,7 @@
           "2ebb8a15-8d81-4543-9238-ef08787839c5"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/142306e3-5225-4622-8aa1-430f57e19954"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/142306e3-5225-4622-8aa1-430f57e19954"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -2472,7 +2472,7 @@
           "c27c4dd0-ccd0-4c2e-a39c-33f444001ce6"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/ac23c2bb-467e-4812-8adc-55de9d0bd93c"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/ac23c2bb-467e-4812-8adc-55de9d0bd93c"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -2544,7 +2544,7 @@
           "7901fdc4-aa77-4327-9665-36fa0047f777"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/8fc4518a-4a1d-4679-98ce-ea147e5c96e4"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/8fc4518a-4a1d-4679-98ce-ea147e5c96e4"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -2616,7 +2616,7 @@
           "c23c515d-2d14-4444-bddd-bd09e02cfe17"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/0eba545d-a1b0-4a47-8dcb-f515044d4f11"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/0eba545d-a1b0-4a47-8dcb-f515044d4f11"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -2688,7 +2688,7 @@
           "a7049fd5-e3f6-4a20-840c-055c305775d9"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/a451eac6-a21d-40ed-ba23-36b92013d259"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/a451eac6-a21d-40ed-ba23-36b92013d259"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -2760,7 +2760,7 @@
           "4fcdd9e3-1e3c-4978-9c36-e5d4f9b71ab2"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/e4dd12e4-d5a4-486e-baf0-c5bc9e32be01"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/e4dd12e4-d5a4-486e-baf0-c5bc9e32be01"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -2832,7 +2832,7 @@
           "f29f67cf-9484-4b64-bd09-3ae1301b111b"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/1b277763-8cbd-4814-8798-9ac668ad04a6"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/1b277763-8cbd-4814-8798-9ac668ad04a6"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -2904,7 +2904,7 @@
           "cf0a2485-840b-4fbf-879c-505c4467ea00"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japanwest/cae5f7d7-73ec-41e3-885d-0551172d9250"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japanwest/cae5f7d7-73ec-41e3-885d-0551172d9250"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -2976,7 +2976,7 @@
           "611f7786-e9c1-44e9-b138-2a86ddad7ff9"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/f1d0a4bb-4339-4232-bbe4-3593ba74521c"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/f1d0a4bb-4339-4232-bbe4-3593ba74521c"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -3048,7 +3048,7 @@
           "a7a0d092-002b-498d-82c8-904c6fd555e3"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/1f670bc6-4f0a-4ea7-b4af-e5f03b0972bf"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/1f670bc6-4f0a-4ea7-b4af-e5f03b0972bf"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -3120,7 +3120,7 @@
           "73240e04-2e61-425c-8554-aec4218e9c24"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/e2fef7b7-3785-4a0c-b31b-c9a32093f4ac"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/e2fef7b7-3785-4a0c-b31b-c9a32093f4ac"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -3192,7 +3192,7 @@
           "4a7e9323-a1b6-49dd-a35e-b9eee7fefb5d"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/cdfd64f8-a325-45a3-a2f5-1306a8eb89dc"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/cdfd64f8-a325-45a3-a2f5-1306a8eb89dc"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -3264,7 +3264,7 @@
           "3127e1b0-2f35-44aa-aad1-74344da7faf3"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/452e35ae-b94a-4719-b9a9-6ee2710ab20c"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/452e35ae-b94a-4719-b9a9-6ee2710ab20c"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -3336,7 +3336,7 @@
           "b09f9e6a-17fc-431d-bca9-1904d75d7f90"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/2f8a2617-1f6d-44d1-b084-8b1fb2ccd51b"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/2f8a2617-1f6d-44d1-b084-8b1fb2ccd51b"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -3408,7 +3408,7 @@
           "d72a4e8e-6076-4b59-8567-67347bb40878"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/852e54e0-bbbb-4c46-a865-c4c3aced0dc0"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/852e54e0-bbbb-4c46-a865-c4c3aced0dc0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -3480,7 +3480,7 @@
           "18a6c081-78a1-4618-ae74-82a801fa4645"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/2a89cb95-679f-47f3-aeb0-6b4ba4d38a83"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/2a89cb95-679f-47f3-aeb0-6b4ba4d38a83"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -3552,7 +3552,7 @@
           "cad7dcde-f6fe-4788-89ba-dfcbc5e3d4df"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/de4cfaa7-bfb1-4963-bca0-8ab35c9e4b1e"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/de4cfaa7-bfb1-4963-bca0-8ab35c9e4b1e"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -3624,7 +3624,7 @@
           "66501aa3-3992-4ef5-85c3-5461c14e2326"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/f78ab94c-56e1-4357-ad85-15300157b28f"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/f78ab94c-56e1-4357-ad85-15300157b28f"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -3696,7 +3696,7 @@
           "0fe9cb0a-961f-4c82-bfdb-15067cbb4ed5"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/bed2f1e3-439d-47e8-9e45-0793f68772f7"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/bed2f1e3-439d-47e8-9e45-0793f68772f7"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -3768,7 +3768,7 @@
           "ea5781ae-ab3b-4f8e-b49f-e8575b52ebca"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/d5a2acd3-863d-49a3-a857-0f658da6fbbf"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/d5a2acd3-863d-49a3-a857-0f658da6fbbf"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -3840,7 +3840,7 @@
           "571ceb6d-87d2-42f0-adfb-aa37ccd74b9d"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/805e0272-86ce-484e-ae3a-fd2b6de6f71d"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/805e0272-86ce-484e-ae3a-fd2b6de6f71d"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -3912,7 +3912,7 @@
           "379cae95-6d4c-45a3-b7da-f3e64fe6b11f"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/e64d8496-883f-4f26-878f-cd21b553c040"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/e64d8496-883f-4f26-878f-cd21b553c040"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -3984,7 +3984,7 @@
           "a96b5c91-041a-41eb-a568-6400fed6dcfe"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japanwest/c820b241-3133-4a20-a0a8-9239a6dd7254"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japanwest/c820b241-3133-4a20-a0a8-9239a6dd7254"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -4056,7 +4056,7 @@
           "72e1c41a-9b76-4873-8ed6-ffdcd506683f"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/c625262b-e53e-4a31-86d9-ab9e1af4529a"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/c625262b-e53e-4a31-86d9-ab9e1af4529a"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -4128,7 +4128,7 @@
           "2deb2448-d8fa-410e-9dea-830f64ec2935"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/f0a7550f-dffe-4162-b635-7216233bd5d3"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japaneast/f0a7550f-dffe-4162-b635-7216233bd5d3"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -4200,7 +4200,7 @@
           "cbbd0445-a9cb-4491-b82a-f205cac10207"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japanwest/dc482d7b-9dc4-4adb-babe-f03f5761380a"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japanwest/dc482d7b-9dc4-4adb-babe-f03f5761380a"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -4332,7 +4332,7 @@
           "410"
         ]
       },
-      "RequestBody": "{\r\n  \"restAuthCredential.isEnabled\": false,\r\n  \"restAuthEntraUsers\": [\r\n    {\r\n      \"objectId\": \"e2af296c-0509-4653-8851-1dd19e5d951e\",\r\n      \"displayName\": \"Shuai Tong (Beyondsoft)\",\r\n      \"upn\": \"v-shuaitong@microsoft.com\"\r\n    },\r\n    {\r\n      \"objectId\": \"438eee54-a90f-48d4-af98-476079328b8c\",\r\n      \"displayName\": \"Wei dong Guo (Beyondsoft)\",\r\n      \"upn\": \"v-weidongguo@microsoft.com\"\r\n    }\r\n  ]\r\n}",
+      "RequestBody": "{\r\n  \"restAuthCredential.isEnabled\": false,\r\n  \"restAuthEntraUsers\": [\r\n    {\r\n      \"objectId\": \"00000000-0000-0000-0000-000000000000\",\r\n      \"displayName\": \"displayName\",\r\n      \"upn\": \"user@microsoft.com\"\r\n    },\r\n    {\r\n      \"objectId\": \"00000000-0000-0000-0000-000000000000\",\r\n      \"displayName\": \"displayName\",\r\n      \"upn\": \"user@microsoft.com\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -4359,7 +4359,7 @@
           "50f75bcf-1782-4d26-bb41-1dd6e63eb2ae"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japanwest/42c884ad-83e7-4fe9-a237-59e43afde5ff"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japanwest/42c884ad-83e7-4fe9-a237-59e43afde5ff"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "799"
@@ -4428,7 +4428,7 @@
           "cdf3f6a6-15b7-4e9a-ae17-49c750079214"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japanwest/61e08af6-57c9-4565-bb18-8d084c9d24b6"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japanwest/61e08af6-57c9-4565-bb18-8d084c9d24b6"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -4500,7 +4500,7 @@
           "b691dd75-89ad-46fd-ae67-cb95e076225b"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japanwest/93e0f325-9d55-46e3-b10d-3c38db9cef15"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japanwest/93e0f325-9d55-46e3-b10d-3c38db9cef15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -4572,7 +4572,7 @@
           "74411eb8-daf3-4d05-a039-2ae395fae0c5"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japanwest/1a71e541-2e03-41c8-a637-1b57a09405c9"
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/japanwest/1a71e541-2e03-41c8-a637-1b57a09405c9"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "799"
