@@ -1257,7 +1257,7 @@ function Test-SqlMaterializedViewCmdlets
 
   Try{
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableMaterializedViews 1
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableMaterializedViews 1 -BackupPolicyType Continuous
 
       $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
       $Throughput = Get-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
