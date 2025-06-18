@@ -80,7 +80,7 @@ This command creates the new ANF volume "MyAnfVolume" within the pool "MyAnfPool
 
 ### Example 2: Create an ANF volume using NFSv4.1 Protocol Type
 ```powershell
-$exportPolicyRule = New-AzNetAppFilesExportPolicyRuleObject -RuleIndex 1 -AllowedClient "0.0.0.0/0" -UnixReadWrite -Nfsv4.1
+$exportPolicyRule = New-AzNetAppFilesExportPolicyRuleObject -RuleIndex 1 -AllowedClient "0.0.0.0/0" -UnixReadWrite -Nfsv4.1
 New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -Location "westus2" -CreationToken "MyAnfVolume" -ProtocolType NFSv4.1 -ExportPolicy $exportPolicyRule -UsageThreshold 1099511627776 -ServiceLevel "Premium" -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName"
 ```
 
@@ -98,7 +98,7 @@ ProvisioningState : Succeeded
 SubnetId          : /subscriptions/f557b96d-2308-4a18-aae1-b8f7e7e70cc7/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/default
 ```
 
-This command creates the new ANF volume "MyAnfVolume" within the pool "MyAnfPool" using NFSv4.1 protocol including the requred ExportPolicy.
+This command creates the new ANF volume "MyAnfVolume" within the pool "MyAnfPool" using NFSv4.1 protocol including the required ExportPolicy.
 
 
 ## PARAMETERS
