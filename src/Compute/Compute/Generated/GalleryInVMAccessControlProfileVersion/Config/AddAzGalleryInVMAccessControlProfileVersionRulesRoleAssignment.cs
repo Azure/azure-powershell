@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Identities = this.Identity
             };
 
-            galleryInVMAcessControlProfileVersion.Rules.Roles.Add(roleAssignment);
+            galleryInVMAcessControlProfileVersion.Rules.RoleAssignments.Add(roleAssignment);
             WriteObject(galleryInVMAcessControlProfileVersion);
         }
     }
