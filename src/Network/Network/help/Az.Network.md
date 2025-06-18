@@ -655,7 +655,7 @@ Gets the troubleshooting result from the previously run or currently running tro
 Gets an existing P2SVpnGateway under VirtualHub.
 
 ### [Get-AzP2sVpnGatewayConnectionHealth](Get-AzP2sVpnGatewayConnectionHealth.md)
-Gets the current aggregared point to site connections health information from P2SVpnGateway.
+Gets the current aggregated point to site connections health information from P2SVpnGateway.
 
 ### [Get-AzP2sVpnGatewayDetailedConnectionHealth](Get-AzP2sVpnGatewayDetailedConnectionHealth.md)
 Gets the detailed information of current point to site connections from P2SVpnGateway.
@@ -778,7 +778,7 @@ Get IKE Security Associations of a Virtual Network Gateway Connection
 Displays the shared key used for the connection.
 
 ### [Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript](Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript.md)
-This commandlet takes the connection resource, VPN device brand, model, firmware version, and return the corresponding configuration script that customers can apply directly on their on-premises VPN devices. The script will follow the syntax of the selected device, and fill in the necessary parameters such as Azure gateway public IP addresses, virtual network address prefixes, VPN tunnel pre-shared key, etc. so customers can simply copy-paste to their VPN device configurations.
+This cmdlet takes the connection resource, VPN device brand, model, firmware version, and return the corresponding configuration script that customers can apply directly on their on-premises VPN devices. The script will follow the syntax of the selected device, and fill in the necessary parameters such as Azure gateway public IP addresses, virtual network address prefixes, VPN tunnel pre-shared key, etc. so customers can simply copy-paste to their VPN device configurations.
 
 ### [Get-AzVirtualNetworkGatewayLearnedRoute](Get-AzVirtualNetworkGatewayLearnedRoute.md)
 Lists routes learned by an Azure virtual network gateway
@@ -787,7 +787,7 @@ Lists routes learned by an Azure virtual network gateway
 Gets a Virtual Network Gateway NatRule.
 
 ### [Get-AzVirtualNetworkGatewaySupportedVpnDevice](Get-AzVirtualNetworkGatewaySupportedVpnDevice.md)
-This commandlet returns a list of supported VPN device brands, models, and firmware versions.
+This cmdlet returns a list of supported VPN device brands, models, and firmware versions.
 
 ### [Get-AzVirtualNetworkGatewayVpnClientConnectionHealth](Get-AzVirtualNetworkGatewayVpnClientConnectionHealth.md)
 Get the list of vpn client connection health of an Azure virtual network gateway for per vpn client connection
@@ -830,7 +830,7 @@ Gets the list of all VpnServerConfigurations that are associated with this Virtu
 Generates and downloads Vpn profile at VirtualWan-VpnServerConfiguration level for Point to site client setup.
 
 ### [Get-AzVpnClientConfiguration](Get-AzVpnClientConfiguration.md)
-Allows users to easily download the Vpn Profile package that was generated using the New-AzVpnClientConfiguration commandlet.
+Allows users to easily download the Vpn Profile package that was generated using the New-AzVpnClientConfiguration cmdlet.
 
 ### [Get-AzVpnClientIpsecParameter](Get-AzVpnClientIpsecParameter.md)
 Gets the vpn Ipsec parameters set on Virtual Network Gateway for Point to site connections.
@@ -1123,10 +1123,10 @@ Creates a Firewall Application Rule.
 Creates a collection of Firewall application rules.
 
 ### [New-AzFirewallHubIpAddress](New-AzFirewallHubIpAddress.md)
-Ip addresses assoicated to the firewall on virtual hub
+Ip addresses associated to the firewall on virtual hub
 
 ### [New-AzFirewallHubPublicIpAddress](New-AzFirewallHubPublicIpAddress.md)
-Public Ip assoicated to the firewall on virtual hub
+Public Ip associated to the firewall on virtual hub
 
 ### [New-AzFirewallNatRule](New-AzFirewallNatRule.md)
 Creates a Firewall NAT Rule.
@@ -1153,7 +1153,7 @@ Creates a new Azure Firewall Policy
 Create a new Azure Firewall Policy Application Rule
 
 ### [New-AzFirewallPolicyApplicationRuleCustomHttpHeader](New-AzFirewallPolicyApplicationRuleCustomHttpHeader.md)
-Create a new Azure Firewall Policy Application Rule Custon HTTP Header
+Create a new Azure Firewall Policy Application Rule Custom HTTP Header
 
 ### [New-AzFirewallPolicyDnsSetting](New-AzFirewallPolicyDnsSetting.md)
 Creates a new DNS Setting for Azure Firewall Policy

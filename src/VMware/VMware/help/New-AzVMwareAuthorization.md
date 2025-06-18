@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareAuthorization
 
 ## SYNOPSIS
-create a ExpressRouteAuthorization
+Create a ExpressRouteAuthorization
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzVMwareAuthorization -InputObject <IVMwareIdentity> [-ExpressRouteId <Strin
 ```
 
 ## DESCRIPTION
-create a ExpressRouteAuthorization
+Create a ExpressRouteAuthorization
 
 ## EXAMPLES
 

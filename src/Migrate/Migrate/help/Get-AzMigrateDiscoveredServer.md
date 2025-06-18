@@ -41,7 +41,7 @@ Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-Get Azure migrate server commandlet fetches all servers in a migrate project.
+Get Azure migrate server cmdlet fetches all servers in a migrate project.
 
 ## EXAMPLES
 
@@ -79,7 +79,7 @@ idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31
 ```
 
 Get a server in a migrate project by name.
-Name is a unique paramenter for a server.
+Name is a unique parameter for a server.
 
 ### Example 3: List VMware machines in an appliance
 ```powershell
@@ -115,7 +115,7 @@ idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31
 ```
 
 Get a server for an appliance in a project.
-Name is a unique paramenter for a server.
+Name is a unique parameter for a server.
 
 ### Example 5: List and filter VMware machines by display name
 ```powershell

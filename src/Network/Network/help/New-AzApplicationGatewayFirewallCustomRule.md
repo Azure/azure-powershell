@@ -27,7 +27,7 @@ The **New-AzApplicationGatewayFirewallCustomRule** creates a custom rule for fir
 
 ### Example 1
 ```powershell
-New-AzApplicationGatewayFirewallCustomRule -Name example-rule -Priority 1 -RuleType MatchRule -MatchCondition $condtion -Action Allow
+New-AzApplicationGatewayFirewallCustomRule -Name example-rule -Priority 1 -RuleType MatchRule -MatchCondition $condition -Action Allow
 ```
 
 ```output

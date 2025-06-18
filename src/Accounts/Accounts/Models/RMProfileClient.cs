@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// </summary>
         /// <param name="sourceContext">The name of the context to change</param>
         /// <param name="targetContext">The enw name for the context</param>
-        /// <returns>true if the rename was successful, otherwise falkse</returns>
+        /// <returns>true if the rename was successful, otherwise false</returns>
         public bool TryRenameContext(string sourceContext, string targetContext)
         {
             return _profile.TryRenameContext(sourceContext, targetContext);
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                             TryGetTenantSubscription(token, account, environment, subscriptionId, subscriptionName, false, out tempSubscription, out tempTenant, out tempSubscriptions))
                         {
                             // If no subscription found for the given token/tenant，discard tempTenant value.
-                            // Continue to look for matched subscripitons until one subscription retrived by its home tenant is found.
+                            // Continue to look for matched subscriptions until one subscription retrieved by its home tenant is found.
                             if (defaultTenant == null && tempSubscription != null)
                             {
                                 defaultSubscription = tempSubscription;

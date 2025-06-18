@@ -181,7 +181,7 @@ Accept wildcard characters: False
 ```
 
 ### -BackupPerformance
-Specify throughput in MiB/s. If ommited BackupPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+Specify throughput in MiB/s. If omitted BackupPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -241,7 +241,7 @@ Accept wildcard characters: False
 ```
 
 ### -BackupSize
-Specify capacity (in GiB). If ommited Size for BackupSize will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only
+Specify capacity (in GiB). If omitted Size for BackupSize will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -256,7 +256,7 @@ Accept wildcard characters: False
 ```
 
 ### -BinaryPerformance
-Specify throughput in MiB/s. If ommited BinaryPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+Specify throughput in MiB/s. If omitted BinaryPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -301,7 +301,7 @@ Accept wildcard characters: False
 ```
 
 ### -BinarySize
-Specify capacity (in GiB). If ommited Size for BinarySize will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only
+Specify capacity (in GiB). If omitted Size for BinarySize will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -331,7 +331,7 @@ Accept wildcard characters: False
 ```
 
 ### -Data2Performance
-Specify throughput in MiB/s. If ommited DataPerformance for disk 2 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+Specify throughput in MiB/s. If omitted DataPerformance for disk 2 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -376,7 +376,7 @@ Accept wildcard characters: False
 ```
 
 ### -Data3Performance
-Specify throughput in MiB/s. If ommited DataPerformance for disk 3 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+Specify throughput in MiB/s. If omitted DataPerformance for disk 3 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -421,7 +421,7 @@ Accept wildcard characters: False
 ```
 
 ### -Data4Performance
-Specify throughput in MiB/s. If ommited DataPerformance for disk 4 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+Specify throughput in MiB/s. If omitted DataPerformance for disk 4 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -466,7 +466,7 @@ Accept wildcard characters: False
 ```
 
 ### -Data4Size
-Specify capacity (in GiB). If ommited DataSize for disk 4 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 4 this will be ignored. For Oracle Application Volume Groups only
+Specify capacity (in GiB). If omitted DataSize for disk 4 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 4 this will be ignored. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -481,7 +481,7 @@ Accept wildcard characters: False
 ```
 
 ### -Data5Performance
-Specify throughput in MiB/s. If ommited DataPerformance for disk 5 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+Specify throughput in MiB/s. If omitted DataPerformance for disk 5 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -526,7 +526,7 @@ Accept wildcard characters: False
 ```
 
 ### -Data5Size
-Specify capacity (in GiB). If ommited DataSize for disk 5 will be autocalculated or specify an integer value representing size.If NumberOfDataVolume is less than 5 this will be ignored. For Oracle Application Volume Groups only
+Specify capacity (in GiB). If omitted DataSize for disk 5 will be autocalculated or specify an integer value representing size.If NumberOfDataVolume is less than 5 this will be ignored. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -541,7 +541,7 @@ Accept wildcard characters: False
 ```
 
 ### -Data6Performance
-Specify throughput in MiB/s. If ommited DataPerformance for disk 6 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+Specify throughput in MiB/s. If omitted DataPerformance for disk 6 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -586,7 +586,7 @@ Accept wildcard characters: False
 ```
 
 ### -Data6Size
-Specify capacity (in GiB). If ommited DataSize for disk 6 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 6 this will be ignored. For Oracle Application Volume Groups only
+Specify capacity (in GiB). If omitted DataSize for disk 6 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 6 this will be ignored. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -601,7 +601,7 @@ Accept wildcard characters: False
 ```
 
 ### -Data7Performance
-Specify throughput in MiB/s. If ommited DataPerformance for disk 7 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+Specify throughput in MiB/s. If omitted DataPerformance for disk 7 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -646,7 +646,7 @@ Accept wildcard characters: False
 ```
 
 ### -Data7Size
-Specify capacity (in GiB). If ommited DataSize for disk 7 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 7 this will be ignored. For Oracle Application Volume Groups only
+Specify capacity (in GiB). If omitted DataSize for disk 7 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 7 this will be ignored. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -692,7 +692,7 @@ Accept wildcard characters: False
 
 ### -DataBackupPerformance
 Specify throughput in MiB/s.
-If ommited DataBackupPerformance will be autocalculated or specify an integer value representing throughput.
+If omitted DataBackupPerformance will be autocalculated or specify an integer value representing throughput.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -738,7 +738,7 @@ Accept wildcard characters: False
 
 ### -DataBackupSize
 Specify capacity (in GiB).
-If ommited DataSize will be autocalculated or specify an integer value representing size.
+If omitted DataSize will be autocalculated or specify an integer value representing size.
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -754,7 +754,7 @@ Accept wildcard characters: False
 
 ### -DataPerformance
 Specify throughput in MiB/s.
-If ommited DataPerformance will be autocalculated or specify and integer value representing throughput.
+If omitted DataPerformance will be autocalculated or specify and integer value representing throughput.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -769,7 +769,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataPerformance8
-Specify throughput in MiB/s. If ommited DataPerformance for disk 8 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+Specify throughput in MiB/s. If omitted DataPerformance for disk 8 will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -815,7 +815,7 @@ Accept wildcard characters: False
 
 ### -DataSize
 Specify capacity (in GiB).
-If ommited DataSize will be autocalculated or specify an integer value representing size.
+If omitted DataSize will be autocalculated or specify an integer value representing size.
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -830,7 +830,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataSize2
-Specify capacity (in GiB). If ommited a DataSize size for disk 2 will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only
+Specify capacity (in GiB). If omitted a DataSize size for disk 2 will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -845,7 +845,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataSize3
-Specify capacity (in GiB). If ommited DataSize for disk 3 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 3 this will be ignored. For Oracle Application Volume Groups only
+Specify capacity (in GiB). If omitted DataSize for disk 3 will be autocalculated or specify an integer value representing size. If NumberOfDataVolume is less than 3 this will be ignored. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -860,7 +860,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataSize8
-Specify capacity (in GiB). If ommited DataSize for disk 8 will be autocalculated or specify an integer value representing size.If NumberOfDataVolume is less than 8 this will be ignored. For Oracle Application Volume Groups only
+Specify capacity (in GiB). If omitted DataSize for disk 8 will be autocalculated or specify an integer value representing size.If NumberOfDataVolume is less than 8 this will be ignored. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -965,7 +965,7 @@ Accept wildcard characters: False
 ```
 
 ### -HannaSystemReplication
-HANA System Replication (HSR): Replication between the same SID instance on hosts in the same region, or differerent regions.
+HANA System Replication (HSR): Replication between the same SID instance on hosts in the same region, or different regions.
 This could be Scale-Up or Scale-Out configurations.
 
 ```yaml
@@ -1030,7 +1030,7 @@ Accept wildcard characters: False
 
 ### -LogBackupPerformance
 Specify throughput in MiB/s.
-If ommited LogBackupPerformance will be autocalculated or specify an integer value representing throughput.
+If omitted LogBackupPerformance will be autocalculated or specify an integer value representing throughput.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -1076,7 +1076,7 @@ Accept wildcard characters: False
 
 ### -LogBackupSize
 Specify capacity (in GiB).
-If ommited DataSize will be autocalculated or specify an integer value representing size.
+If omitted DataSize will be autocalculated or specify an integer value representing size.
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -1091,7 +1091,7 @@ Accept wildcard characters: False
 ```
 
 ### -LogMirrorPerformance
-Specify throughput in MiB/s. If ommited LogMirrorPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
+Specify throughput in MiB/s. If omitted LogMirrorPerformance will be autocalculated or specify and integer value representing throughput. For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -1136,7 +1136,7 @@ Accept wildcard characters: False
 ```
 
 ### -LogMirrorSize
-Specify capacity (in GiB). If ommited Size for LogMirrorSize will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only
+Specify capacity (in GiB). If omitted Size for LogMirrorSize will be autocalculated or specify an integer value representing size.For Oracle Application Volume Groups only
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -1152,7 +1152,7 @@ Accept wildcard characters: False
 
 ### -LogPerformance
 Specify throughput in MiB/s.
-If ommited LogPerformance will be autocalculated or specify and integer value representing throughput.
+If omitted LogPerformance will be autocalculated or specify and integer value representing throughput.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -1198,7 +1198,7 @@ Accept wildcard characters: False
 
 ### -LogSize
 Specify capacity (in GiB).
-If ommited LogSize will be autocalculated or specify an integer value representing size.
+If omitted LogSize will be autocalculated or specify an integer value representing size.
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -1383,7 +1383,7 @@ Accept wildcard characters: False
 
 ### -SharedPerformance
 Specify throughput in MiB/s.
-If ommited SharedPerformance will be autocalculated or specify and integer value representing throughput.
+If omitted SharedPerformance will be autocalculated or specify and integer value representing throughput.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -1429,7 +1429,7 @@ Accept wildcard characters: False
 
 ### -SharedSize
 Specify capacity (in GiB).
-If ommited SharedSize will be autocalculated or specify an integer value representing size.
+If omitted SharedSize will be autocalculated or specify an integer value representing size.
 
 ```yaml
 Type: System.Nullable`1[System.Int64]

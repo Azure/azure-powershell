@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public string DnsPrefix { get; set; }
 
         /// <summary>
-        /// Gets FDQN for the agent pool.
+        /// Gets FQDN for the agent pool.
         /// </summary>
         public string Fqdn { get; private set; }
 

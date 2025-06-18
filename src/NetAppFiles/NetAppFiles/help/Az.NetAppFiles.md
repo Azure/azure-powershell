@@ -90,7 +90,7 @@ Gets details of an Azure NetApp Files (ANF) VolumeGroup.
 Get Group Id List for LDAP User
 
 ### [Get-AzNetAppFilesVolumeQuotaRule](Get-AzNetAppFilesVolumeQuotaRule.md)
-Gets details of an Azure NetApp Files (ANF) Volume Quouta Rule.
+Gets details of an Azure NetApp Files (ANF) Volume Quota Rule.
 
 ### [Get-AzNetAppFilesVolumeReplication](Get-AzNetAppFilesVolumeReplication.md)
 Get volume's replication
