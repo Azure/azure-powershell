@@ -4293,7 +4293,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primarySharedKey\": \"jStSmmp4goBfCjsTEAhLjEK0/HQR3b7POFHP1Kr5l+cAhF184BsmQbka1wXc2WS9Yf4jvD9BFRBWHUfcRoLo2Q==\",\r\n  \"secondarySharedKey\": \"+/cWHP8k0NHZKdMmtqA+yP65joLWnMbHzTSnVk7/xp/3oc9ZeNQrd8bdGe5S0hKFUjjNJCGmdy1B46rbUtna/Q==\"\r\n}",
+      "ResponseBody": "{\r\n  \"primarySharedKey\": \"Sanitized\",\r\n  \"secondarySharedKey\": \"Sanitized\"\r\n}",
       "StatusCode": 200
     },
     {

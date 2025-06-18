@@ -2514,7 +2514,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primarySharedKey\": \"i8eWdRHpwqNIBofxNPrflrQv2BBAIoDWggTgZhnJZdA7k02Ff1+R+x6hkMJtny7qaA2utxF1lLY8DOTQ/EXnEg==\",\r\n  \"secondarySharedKey\": \"bA19wyDO6fjtLKu+PSzRRDPrNH4TD79Lm2q5WPFkI6Ll/0E/+LtW7bB7XdiNl320P+S3eDC/orvcn/JFCzuC5g==\"\r\n}",
+      "ResponseBody": "{\r\n  \"primarySharedKey\": \"Sanitized\",\r\n  \"secondarySharedKey\": \"Sanitized\"\r\n}",
       "StatusCode": 200
     },
     {
