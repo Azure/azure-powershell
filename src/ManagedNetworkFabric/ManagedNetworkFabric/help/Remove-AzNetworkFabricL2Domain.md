@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/remove-aznetworkfabricl2domain
 schema: 2.0.0
@@ -15,13 +15,14 @@ Deletes layer 2 connectivity between compute nodes by managed by named L2 Isolat
 ### Delete (Default)
 ```
 Remove-AzNetworkFabricL2Domain -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzNetworkFabricL2Domain -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -206,4 +207,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

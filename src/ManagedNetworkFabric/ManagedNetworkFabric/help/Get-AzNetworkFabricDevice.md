@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricdevice
 schema: 2.0.0
@@ -14,7 +14,8 @@ Gets the Network Device resource details.
 
 ### List (Default)
 ```
-Get-AzNetworkFabricDevice [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkFabricDevice [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -23,16 +24,16 @@ Get-AzNetworkFabricDevice -Name <String> -ResourceGroupName <String> [-Subscript
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List1
+```
+Get-AzNetworkFabricDevice -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzNetworkFabricDevice -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzNetworkFabricDevice -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -158,7 +159,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -182,4 +183,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

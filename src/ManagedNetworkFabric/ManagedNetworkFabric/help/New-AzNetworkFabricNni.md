@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricnni
 schema: 2.0.0
@@ -15,14 +15,14 @@ Configuration used to setup CE-PE connectivity PUT Method.
 ### CreateExpanded (Default)
 ```
 New-AzNetworkFabricNni -Name <String> -NetworkFabricName <String> -ResourceGroupName <String>
- -UseOptionB <String> [-SubscriptionId <String>] [-BfdConfigurationInterval <Int32>]
+ [-SubscriptionId <String>] -UseOptionB <String> [-BfdConfigurationInterval <Int32>]
  [-BfdConfigurationMultiplier <Int32>] [-BmpConfigurationState <String>]
  [-ConditionalDefaultRouteConfigurationIpv4Route <IStaticRouteProperties[]>]
  [-ConditionalDefaultRouteConfigurationIpv6Route <IStaticRouteProperties[]>] [-EgressAclId <String>]
  [-ExportRoutePolicy <IExportRoutePolicyInformation>] [-ImportRoutePolicy <IImportRoutePolicyInformation>]
  [-IngressAclId <String>] [-IsManagementType <String>] [-Layer2Configuration <ILayer2Configuration>]
  [-MicroBfdState <String>] [-NniType <String>] [-NpbStaticRouteConfiguration <INpbStaticRouteConfiguration>]
- [-OptionBLayer3ConfigurationPeerAsn <Int64>] [-OptionBLayer3ConfigurationPeLoopbackIpaddress <String[]>]
+ [-OptionBLayer3ConfigurationPeLoopbackIpaddress <String[]>] [-OptionBLayer3ConfigurationPeerAsn <Int64>]
  [-OptionBLayer3ConfigurationPrefixLimit <IOptionBLayer3PrefixLimitProperties[]>]
  [-OptionBLayer3ConfigurationPrimaryIpv4Prefix <String>]
  [-OptionBLayer3ConfigurationPrimaryIpv6Prefix <String>]
@@ -30,14 +30,21 @@ New-AzNetworkFabricNni -Name <String> -NetworkFabricName <String> -ResourceGroup
  [-OptionBLayer3ConfigurationSecondaryIpv6Prefix <String>] [-OptionBLayer3ConfigurationVlanId <Int32>]
  [-StaticRouteConfigurationIpv4Route <IStaticRouteProperties[]>]
  [-StaticRouteConfigurationIpv6Route <IStaticRouteProperties[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityNetworkFabric
+### CreateViaJsonString
 ```
-New-AzNetworkFabricNni -Name <String> -NetworkFabricInputObject <IManagedNetworkFabricIdentity>
- -Resource <INetworkToNetworkInterconnect> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzNetworkFabricNni -Name <String> -NetworkFabricName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzNetworkFabricNni -Name <String> -NetworkFabricName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNetworkFabricExpanded
@@ -49,7 +56,7 @@ New-AzNetworkFabricNni -Name <String> -NetworkFabricInputObject <IManagedNetwork
  [-ExportRoutePolicy <IExportRoutePolicyInformation>] [-ImportRoutePolicy <IImportRoutePolicyInformation>]
  [-IngressAclId <String>] [-IsManagementType <String>] [-Layer2Configuration <ILayer2Configuration>]
  [-MicroBfdState <String>] [-NniType <String>] [-NpbStaticRouteConfiguration <INpbStaticRouteConfiguration>]
- [-OptionBLayer3ConfigurationPeerAsn <Int64>] [-OptionBLayer3ConfigurationPeLoopbackIpaddress <String[]>]
+ [-OptionBLayer3ConfigurationPeLoopbackIpaddress <String[]>] [-OptionBLayer3ConfigurationPeerAsn <Int64>]
  [-OptionBLayer3ConfigurationPrefixLimit <IOptionBLayer3PrefixLimitProperties[]>]
  [-OptionBLayer3ConfigurationPrimaryIpv4Prefix <String>]
  [-OptionBLayer3ConfigurationPrimaryIpv6Prefix <String>]
@@ -57,21 +64,14 @@ New-AzNetworkFabricNni -Name <String> -NetworkFabricInputObject <IManagedNetwork
  [-OptionBLayer3ConfigurationSecondaryIpv6Prefix <String>] [-OptionBLayer3ConfigurationVlanId <Int32>]
  [-StaticRouteConfigurationIpv4Route <IStaticRouteProperties[]>]
  [-StaticRouteConfigurationIpv6Route <IStaticRouteProperties[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### CreateViaIdentityNetworkFabric
 ```
-New-AzNetworkFabricNni -Name <String> -NetworkFabricName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzNetworkFabricNni -Name <String> -NetworkFabricName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzNetworkFabricNni -Name <String> -NetworkFabricInputObject <IManagedNetworkFabricIdentity>
+ -Resource <INetworkToNetworkInterconnect> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -379,7 +379,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: CreateViaIdentityNetworkFabric, CreateViaIdentityNetworkFabricExpanded
+Parameter Sets: CreateViaIdentityNetworkFabricExpanded, CreateViaIdentityNetworkFabric
 Aliases:
 
 Required: True
@@ -394,7 +394,7 @@ Name of the Network Fabric.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -591,7 +591,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -637,7 +637,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -710,4 +710,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabricdeviceupgrade
 schema: 2.0.0
@@ -15,39 +15,42 @@ Upgrades the version of the Network Device.
 ### UpgradeExpanded (Default)
 ```
 Invoke-AzNetworkFabricDeviceUpgrade -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpgradeViaJsonString
+```
+Invoke-AzNetworkFabricDeviceUpgrade -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpgradeViaJsonFilePath
+```
+Invoke-AzNetworkFabricDeviceUpgrade -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Upgrade
 ```
-Invoke-AzNetworkFabricDeviceUpgrade -Name <String> -ResourceGroupName <String> -Body <IUpdateVersion>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Invoke-AzNetworkFabricDeviceUpgrade -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Body <IUpdateVersion> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpgradeViaIdentityExpanded
+```
+Invoke-AzNetworkFabricDeviceUpgrade -InputObject <IManagedNetworkFabricIdentity> [-Version <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentity
 ```
 Invoke-AzNetworkFabricDeviceUpgrade -InputObject <IManagedNetworkFabricIdentity> -Body <IUpdateVersion>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpgradeViaIdentityExpanded
-```
-Invoke-AzNetworkFabricDeviceUpgrade -InputObject <IManagedNetworkFabricIdentity> [-Version <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpgradeViaJsonFilePath
-```
-Invoke-AzNetworkFabricDeviceUpgrade -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpgradeViaJsonString
-```
-Invoke-AzNetworkFabricDeviceUpgrade -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -131,7 +134,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: UpgradeViaIdentity, UpgradeViaIdentityExpanded
+Parameter Sets: UpgradeViaIdentityExpanded, UpgradeViaIdentity
 Aliases:
 
 Required: True
@@ -176,7 +179,7 @@ Name of the Network Device.
 
 ```yaml
 Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
+Parameter Sets: UpgradeExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, Upgrade
 Aliases: NetworkDeviceName
 
 Required: True
@@ -207,7 +210,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
+Parameter Sets: UpgradeExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, Upgrade
 Aliases:
 
 Required: True
@@ -223,7 +226,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
+Parameter Sets: UpgradeExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, Upgrade
 Aliases:
 
 Required: False
@@ -295,4 +298,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

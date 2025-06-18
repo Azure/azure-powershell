@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricroutepolicy
 schema: 2.0.0
@@ -14,24 +14,25 @@ Implements Route Policy PUT method.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricRoutePolicy -Name <String> -ResourceGroupName <String> -Location <String>
- -NetworkFabricId <String> -Statement <IRoutePolicyStatementProperties[]> [-SubscriptionId <String>]
+New-AzNetworkFabricRoutePolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> -NetworkFabricId <String> -Statement <IRoutePolicyStatementProperties[]>
  [-AddressFamilyType <String>] [-Annotation <String>] [-DefaultAction <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzNetworkFabricRoutePolicy -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzNetworkFabricRoutePolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzNetworkFabricRoutePolicy -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzNetworkFabricRoutePolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -360,4 +361,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

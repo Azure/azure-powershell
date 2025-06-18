@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricexternalnetwork
 schema: 2.0.0
@@ -14,63 +14,63 @@ Create ExternalNetwork PUT method.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricExternalNetwork -L3IsolationDomainName <String> -Name <String> -ResourceGroupName <String>
- -PeeringOption <String> [-SubscriptionId <String>] [-Annotation <String>] [-BmpConfigurationState <String>]
+New-AzNetworkFabricExternalNetwork -Name <String> -L3IsolationDomainName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -PeeringOption <String> [-Annotation <String>] [-BmpConfigurationState <String>]
  [-ExportRoutePolicy <IExportRoutePolicy>] [-ImportRoutePolicy <IImportRoutePolicy>]
  [-NativeIpv4PrefixLimit <IPrefixLimitProperties[]>] [-NativeIpv6PrefixLimit <IPrefixLimitProperties[]>]
- [-NetworkToNetworkInterconnectId <String>] [-optionAPropertyBfdConfigurationInterval <Int32>]
- [-OptionAPropertyBfdConfigurationMultiplier <Int32>] [-OptionAPropertyEgressAclId <String>]
- [-OptionAPropertyIngressAclId <String>] [-OptionAPropertyMtu <Int32>] [-OptionAPropertyPeerAsn <Int64>]
- [-OptionAPropertyPrimaryIpv4Prefix <String>] [-OptionAPropertyPrimaryIpv6Prefix <String>]
- [-OptionAPropertySecondaryIpv4Prefix <String>] [-OptionAPropertySecondaryIpv6Prefix <String>]
- [-OptionAPropertyV4OverV6BgpSession <String>] [-OptionAPropertyV6OverV4BgpSession <String>]
- [-OptionAPropertyVlanId <Int32>] [-OptionBProperty <IL3OptionBProperties>]
- [-StaticRouteConfigurationBfdConfigurationInterval <Int32>]
+ [-NetworkToNetworkInterconnectId <String>] [-OptionAPropertyBfdConfigurationMultiplier <Int32>]
+ [-OptionAPropertyEgressAclId <String>] [-OptionAPropertyIngressAclId <String>] [-OptionAPropertyMtu <Int32>]
+ [-OptionAPropertyPeerAsn <Int64>] [-OptionAPropertyPrimaryIpv4Prefix <String>]
+ [-OptionAPropertyPrimaryIpv6Prefix <String>] [-OptionAPropertySecondaryIpv4Prefix <String>]
+ [-OptionAPropertySecondaryIpv6Prefix <String>] [-OptionAPropertyV4OverV6BgpSession <String>]
+ [-OptionAPropertyV6OverV4BgpSession <String>] [-OptionAPropertyVlanId <Int32>]
+ [-OptionBProperty <IL3OptionBProperties>] [-StaticRouteConfigurationBfdConfigurationInterval <Int32>]
  [-StaticRouteConfigurationBfdConfigurationMultiplier <Int32>]
  [-StaticRouteConfigurationIpv4Route <IStaticRouteProperties[]>]
- [-StaticRouteConfigurationIpv6Route <IStaticRouteProperties[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityL3IsolationDomain
-```
-New-AzNetworkFabricExternalNetwork -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
- -Name <String> -Resource <IExternalNetwork> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityL3IsolationDomainExpanded
-```
-New-AzNetworkFabricExternalNetwork -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
- -Name <String> -PeeringOption <String> [-Annotation <String>] [-BmpConfigurationState <String>]
- [-ExportRoutePolicy <IExportRoutePolicy>] [-ImportRoutePolicy <IImportRoutePolicy>]
- [-NativeIpv4PrefixLimit <IPrefixLimitProperties[]>] [-NativeIpv6PrefixLimit <IPrefixLimitProperties[]>]
- [-NetworkToNetworkInterconnectId <String>] [-optionAPropertyBfdConfigurationInterval <Int32>]
- [-OptionAPropertyBfdConfigurationMultiplier <Int32>] [-OptionAPropertyEgressAclId <String>]
- [-OptionAPropertyIngressAclId <String>] [-OptionAPropertyMtu <Int32>] [-OptionAPropertyPeerAsn <Int64>]
- [-OptionAPropertyPrimaryIpv4Prefix <String>] [-OptionAPropertyPrimaryIpv6Prefix <String>]
- [-OptionAPropertySecondaryIpv4Prefix <String>] [-OptionAPropertySecondaryIpv6Prefix <String>]
- [-OptionAPropertyV4OverV6BgpSession <String>] [-OptionAPropertyV6OverV4BgpSession <String>]
- [-OptionAPropertyVlanId <Int32>] [-OptionBProperty <IL3OptionBProperties>]
- [-StaticRouteConfigurationBfdConfigurationInterval <Int32>]
- [-StaticRouteConfigurationBfdConfigurationMultiplier <Int32>]
- [-StaticRouteConfigurationIpv4Route <IStaticRouteProperties[]>]
- [-StaticRouteConfigurationIpv6Route <IStaticRouteProperties[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzNetworkFabricExternalNetwork -L3IsolationDomainName <String> -Name <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-StaticRouteConfigurationIpv6Route <IStaticRouteProperties[]>]
+ [-optionAPropertyBfdConfigurationInterval <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzNetworkFabricExternalNetwork -L3IsolationDomainName <String> -Name <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzNetworkFabricExternalNetwork -Name <String> -L3IsolationDomainName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzNetworkFabricExternalNetwork -Name <String> -L3IsolationDomainName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityL3IsolationDomainExpanded
+```
+New-AzNetworkFabricExternalNetwork -Name <String> -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
+ -PeeringOption <String> [-Annotation <String>] [-BmpConfigurationState <String>]
+ [-ExportRoutePolicy <IExportRoutePolicy>] [-ImportRoutePolicy <IImportRoutePolicy>]
+ [-NativeIpv4PrefixLimit <IPrefixLimitProperties[]>] [-NativeIpv6PrefixLimit <IPrefixLimitProperties[]>]
+ [-NetworkToNetworkInterconnectId <String>] [-OptionAPropertyBfdConfigurationMultiplier <Int32>]
+ [-OptionAPropertyEgressAclId <String>] [-OptionAPropertyIngressAclId <String>] [-OptionAPropertyMtu <Int32>]
+ [-OptionAPropertyPeerAsn <Int64>] [-OptionAPropertyPrimaryIpv4Prefix <String>]
+ [-OptionAPropertyPrimaryIpv6Prefix <String>] [-OptionAPropertySecondaryIpv4Prefix <String>]
+ [-OptionAPropertySecondaryIpv6Prefix <String>] [-OptionAPropertyV4OverV6BgpSession <String>]
+ [-OptionAPropertyV6OverV4BgpSession <String>] [-OptionAPropertyVlanId <Int32>]
+ [-OptionBProperty <IL3OptionBProperties>] [-StaticRouteConfigurationBfdConfigurationInterval <Int32>]
+ [-StaticRouteConfigurationBfdConfigurationMultiplier <Int32>]
+ [-StaticRouteConfigurationIpv4Route <IStaticRouteProperties[]>]
+ [-StaticRouteConfigurationIpv6Route <IStaticRouteProperties[]>]
+ [-optionAPropertyBfdConfigurationInterval <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityL3IsolationDomain
+```
+New-AzNetworkFabricExternalNetwork -Name <String> -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
+ -Resource <IExternalNetwork> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,7 +109,7 @@ New-AzNetworkFabricExternalNetwork -L3IsolationDomainName $l3domainName -Name $n
 ```output
 AdministrativeState Annotation ConfigurationState ExportRoutePolicy
 ------------------- ---------- ------------------ -----------------
-Enabled                                           
+Enabled
 ```
 
 This command creates the External Network resource with Option B Properties.
@@ -122,7 +122,7 @@ New-AzNetworkFabricExternalNetwork -L3IsolationDomainName $l3domainName -Name $n
 ```output
 AdministrativeState Annotation ConfigurationState ExportRoutePolicy
 ------------------- ---------- ------------------ -----------------
-Enabled                                           
+Enabled
 ```
 
 This command creates the External Network resource with Option A Properties.
@@ -255,7 +255,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: CreateViaIdentityL3IsolationDomain, CreateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: CreateViaIdentityL3IsolationDomainExpanded, CreateViaIdentityL3IsolationDomain
 Aliases:
 
 Required: True
@@ -270,7 +270,7 @@ Name of the L3 Isolation Domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -606,7 +606,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -684,7 +684,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -741,4 +741,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/lock-aznetworkfabric
 schema: 2.0.0
@@ -15,40 +15,42 @@ Post action: Triggers network fabric lock operation.
 ### LockExpanded (Default)
 ```
 Lock-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Action <String>]
- [-LockType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-LockType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### LockViaJsonString
+```
+Lock-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### LockViaJsonFilePath
+```
+Lock-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Lock
 ```
-Lock-AzNetworkFabric -Name <String> -ResourceGroupName <String> -Body <INetworkFabricLockRequest>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Lock-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Body <INetworkFabricLockRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### LockViaIdentityExpanded
+```
+Lock-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> [-Action <String>] [-LockType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### LockViaIdentity
 ```
 Lock-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> -Body <INetworkFabricLockRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### LockViaIdentityExpanded
-```
-Lock-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> [-Action <String>] [-LockType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### LockViaJsonFilePath
-```
-Lock-AzNetworkFabric -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### LockViaJsonString
-```
-Lock-AzNetworkFabric -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -147,7 +149,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: LockViaIdentity, LockViaIdentityExpanded
+Parameter Sets: LockViaIdentityExpanded, LockViaIdentity
 Aliases:
 
 Required: True
@@ -207,7 +209,7 @@ Name of the Network Fabric.
 
 ```yaml
 Type: System.String
-Parameter Sets: Lock, LockExpanded, LockViaJsonFilePath, LockViaJsonString
+Parameter Sets: LockExpanded, LockViaJsonString, LockViaJsonFilePath, Lock
 Aliases: NetworkFabricName
 
 Required: True
@@ -238,7 +240,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Lock, LockExpanded, LockViaJsonFilePath, LockViaJsonString
+Parameter Sets: LockExpanded, LockViaJsonString, LockViaJsonFilePath, Lock
 Aliases:
 
 Required: True
@@ -254,7 +256,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Lock, LockExpanded, LockViaJsonFilePath, LockViaJsonString
+Parameter Sets: LockExpanded, LockViaJsonString, LockViaJsonFilePath, Lock
 Aliases:
 
 Required: False
@@ -311,4 +313,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

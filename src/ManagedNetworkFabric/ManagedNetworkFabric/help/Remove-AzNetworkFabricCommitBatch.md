@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/remove-aznetworkfabriccommitbatch
 schema: 2.0.0
@@ -16,41 +16,42 @@ Post action: Discards a Batch operation in progress.
 ```
 Remove-AzNetworkFabricCommitBatch -NetworkFabricName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-CommitBatchId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Discard
+### DiscardViaJsonString
 ```
 Remove-AzNetworkFabricCommitBatch -NetworkFabricName <String> -ResourceGroupName <String>
- -Body <IDiscardCommitBatchRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DiscardViaIdentity
-```
-Remove-AzNetworkFabricCommitBatch -InputObject <IManagedNetworkFabricIdentity>
- -Body <IDiscardCommitBatchRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DiscardViaIdentityExpanded
-```
-Remove-AzNetworkFabricCommitBatch -InputObject <IManagedNetworkFabricIdentity> [-CommitBatchId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DiscardViaJsonFilePath
 ```
 Remove-AzNetworkFabricCommitBatch -NetworkFabricName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DiscardViaJsonString
+### Discard
 ```
-Remove-AzNetworkFabricCommitBatch -NetworkFabricName <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Remove-AzNetworkFabricCommitBatch -NetworkFabricName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Body <IDiscardCommitBatchRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DiscardViaIdentityExpanded
+```
+Remove-AzNetworkFabricCommitBatch -InputObject <IManagedNetworkFabricIdentity> [-CommitBatchId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### DiscardViaIdentity
+```
+Remove-AzNetworkFabricCommitBatch -InputObject <IManagedNetworkFabricIdentity>
+ -Body <IDiscardCommitBatchRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,7 +150,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: DiscardViaIdentity, DiscardViaIdentityExpanded
+Parameter Sets: DiscardViaIdentityExpanded, DiscardViaIdentity
 Aliases:
 
 Required: True
@@ -194,7 +195,7 @@ Name of the Network Fabric.
 
 ```yaml
 Type: System.String
-Parameter Sets: Discard, DiscardExpanded, DiscardViaJsonFilePath, DiscardViaJsonString
+Parameter Sets: DiscardExpanded, DiscardViaJsonString, DiscardViaJsonFilePath, Discard
 Aliases:
 
 Required: True
@@ -225,7 +226,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Discard, DiscardExpanded, DiscardViaJsonFilePath, DiscardViaJsonString
+Parameter Sets: DiscardExpanded, DiscardViaJsonString, DiscardViaJsonFilePath, Discard
 Aliases:
 
 Required: True
@@ -241,7 +242,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Discard, DiscardExpanded, DiscardViaJsonFilePath, DiscardViaJsonString
+Parameter Sets: DiscardExpanded, DiscardViaJsonString, DiscardViaJsonFilePath, Discard
 Aliases:
 
 Required: False
@@ -298,4 +299,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

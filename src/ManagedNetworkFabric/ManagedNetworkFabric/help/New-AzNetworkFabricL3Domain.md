@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricl3domain
 schema: 2.0.0
@@ -14,27 +14,27 @@ Create isolation domain resources for layer 3 connectivity between compute nodes
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> -Location <String>
- -NetworkFabricId <String> [-SubscriptionId <String>]
- [-AggregateRouteConfiguration <IAggregateRouteConfiguration>] [-Annotation <String>]
- [-ConnectedSubnetRoutePolicy <IConnectedSubnetRoutePolicy>] [-RedistributeConnectedSubnet <String>]
- [-RedistributeStaticRoute <String>] [-RoutePrefixLimitHardLimit <Int32>] [-RoutePrefixLimitThreshold <Int32>]
+New-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> -NetworkFabricId <String> [-AggregateRouteConfiguration <IAggregateRouteConfiguration>]
+ [-Annotation <String>] [-ConnectedSubnetRoutePolicy <IConnectedSubnetRoutePolicy>]
+ [-RedistributeConnectedSubnet <String>] [-RedistributeStaticRoute <String>]
+ [-RoutePrefixLimitHardLimit <Int32>] [-RoutePrefixLimitThreshold <Int32>]
  [-StaticRoutePolicyExportRoutePolicy <IL3ExportRoutePolicy>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,7 +65,7 @@ New-AzNetworkFabricL3Domain -Name $name -ResourceGroupName $resourceGroupName -L
 ```output
 AdministrativeState AggregateRouteConfiguration
 ------------------- ---------------------------
-Disabled            
+Disabled
 ```
 
 This command creates the L3 Isolation Domain resource.
@@ -405,4 +405,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

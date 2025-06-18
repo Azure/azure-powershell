@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabrictaprule
 schema: 2.0.0
@@ -14,27 +14,27 @@ Create Network Tap Rule resource.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricTapRule -Name <String> -ResourceGroupName <String> -ConfigurationType <String>
- -Location <String> [-SubscriptionId <String>] [-Annotation <String>]
+New-AzNetworkFabricTapRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ConfigurationType <String> -Location <String> [-Annotation <String>]
  [-DynamicMatchConfiguration <ICommonDynamicMatchConfiguration[]>]
  [-GlobalNetworkTapRuleActionEnableCount <String>] [-GlobalNetworkTapRuleActionTruncate <String>]
  [-MatchConfiguration <INetworkTapRuleMatchConfiguration[]>] [-PollingIntervalInSecond <Single>]
- [-Tag <Hashtable>] [-TapRulesUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-TapRulesUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzNetworkFabricTapRule -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzNetworkFabricTapRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzNetworkFabricTapRule -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzNetworkFabricTapRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -401,4 +401,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

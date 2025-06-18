@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/update-aznetworkfabric
 schema: 2.0.0
@@ -15,7 +15,7 @@ Update Network Fabric resource.
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Annotation <String>] [-ControlPlaneAcls <String[]>] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-Annotation <String>] [-ControlPlaneAcls <String[]>] [-EnableSystemAssignedIdentity <Boolean>]
  [-FabricAsn <Int64>] [-FabricVersion <String>] [-HardwareAlertThreshold <Int32>] [-Ipv4Prefix <String>]
  [-Ipv6Prefix <String>] [-ManagementNetworkConfiguration <IManagementNetworkConfigurationProperties>]
  [-RackCount <Int32>] [-ServerCountPerRack <Int32>] [-StorageAccountConfigurationStorageAccountId <String>]
@@ -23,13 +23,56 @@ Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-Subscription
  [-StorageArrayCount <Int32>] [-Tag <Hashtable>] [-TerminalServerConfiguration <ITerminalServerConfiguration>]
  [-TrustedIPPrefix <String[]>] [-UniqueRdConfigurationNniDerivedUniqueRdConfigurationState <String>]
  [-UniqueRdConfigurationUniqueRdConfigurationState <String>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpgradeViaJsonString
+```
+Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpgradeViaJsonFilePath
+```
+Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpgradeExpanded
+```
+Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Action <String>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Upgrade
+```
+Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Body <IUpgradeNetworkFabricProperties> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpgradeViaIdentityExpanded
+```
+Update-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> [-Action <String>] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpgradeViaIdentity
+```
+Update-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> -Body <IUpgradeNetworkFabricProperties>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> [-Annotation <String>]
- [-ControlPlaneAcls <String[]>] [-EnableSystemAssignedIdentity <Boolean?>] [-FabricAsn <Int64>]
+ [-ControlPlaneAcls <String[]>] [-EnableSystemAssignedIdentity <Boolean>] [-FabricAsn <Int64>]
  [-FabricVersion <String>] [-HardwareAlertThreshold <Int32>] [-Ipv4Prefix <String>] [-Ipv6Prefix <String>]
  [-ManagementNetworkConfiguration <IManagementNetworkConfigurationProperties>] [-RackCount <Int32>]
  [-ServerCountPerRack <Int32>] [-StorageAccountConfigurationStorageAccountId <String>]
@@ -37,46 +80,7 @@ Update-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> [-Annotation
  [-StorageArrayCount <Int32>] [-Tag <Hashtable>] [-TerminalServerConfiguration <ITerminalServerConfiguration>]
  [-TrustedIPPrefix <String[]>] [-UniqueRdConfigurationNniDerivedUniqueRdConfigurationState <String>]
  [-UniqueRdConfigurationUniqueRdConfigurationState <String>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Upgrade
-```
-Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> -Body <IUpgradeNetworkFabricProperties>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpgradeExpanded
-```
-Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Action <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpgradeViaIdentity
-```
-Update-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> -Body <IUpgradeNetworkFabricProperties>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpgradeViaIdentityExpanded
-```
-Update-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> [-Action <String>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpgradeViaJsonFilePath
-```
-Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpgradeViaJsonString
-```
-Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -204,7 +208,7 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -266,7 +270,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpgradeViaIdentity, UpgradeViaIdentityExpanded
+Parameter Sets: UpgradeViaIdentityExpanded, UpgradeViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -358,7 +362,7 @@ Name of the Network Fabric.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
+Parameter Sets: UpdateExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, UpgradeExpanded, Upgrade
 Aliases: NetworkFabricName
 
 Required: True
@@ -404,7 +408,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
+Parameter Sets: UpdateExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, UpgradeExpanded, Upgrade
 Aliases:
 
 Required: True
@@ -496,7 +500,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
+Parameter Sets: UpdateExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, UpgradeExpanded, Upgrade
 Aliases:
 
 Required: False
@@ -663,4 +667,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

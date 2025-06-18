@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabric
 schema: 2.0.0
@@ -14,7 +14,8 @@ Get Network Fabric resource details.
 
 ### List (Default)
 ```
-Get-AzNetworkFabric [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkFabric [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -23,15 +24,15 @@ Get-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId 
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzNetworkFabric -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -158,7 +159,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -182,4 +183,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabricnnibfdadministrativestate
 schema: 2.0.0
@@ -17,44 +17,46 @@ Update the Admin State.
 Invoke-AzNetworkFabricNniBfdAdministrativeState -NetworkFabricName <String>
  -NetworkToNetworkInterconnectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AdministrativeState <String>] [-RouteType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Invoke-AzNetworkFabricNniBfdAdministrativeState -NetworkFabricName <String>
+ -NetworkToNetworkInterconnectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Invoke-AzNetworkFabricNniBfdAdministrativeState -NetworkFabricName <String>
+ -NetworkToNetworkInterconnectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityNetworkFabricExpanded
+```
+Invoke-AzNetworkFabricNniBfdAdministrativeState -NetworkToNetworkInterconnectName <String>
+ -NetworkFabricInputObject <IManagedNetworkFabricIdentity> [-AdministrativeState <String>]
+ [-RouteType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityNetworkFabric
+```
+Invoke-AzNetworkFabricNniBfdAdministrativeState -NetworkToNetworkInterconnectName <String>
+ -NetworkFabricInputObject <IManagedNetworkFabricIdentity> -Body <INniBfdAdministrativeStateRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Invoke-AzNetworkFabricNniBfdAdministrativeState -InputObject <IManagedNetworkFabricIdentity>
  [-AdministrativeState <String>] [-RouteType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityNetworkFabric
-```
-Invoke-AzNetworkFabricNniBfdAdministrativeState -NetworkFabricInputObject <IManagedNetworkFabricIdentity>
- -NetworkToNetworkInterconnectName <String> -Body <INniBfdAdministrativeStateRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityNetworkFabricExpanded
-```
-Invoke-AzNetworkFabricNniBfdAdministrativeState -NetworkFabricInputObject <IManagedNetworkFabricIdentity>
- -NetworkToNetworkInterconnectName <String> [-AdministrativeState <String>] [-RouteType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Invoke-AzNetworkFabricNniBfdAdministrativeState -NetworkFabricName <String>
- -NetworkToNetworkInterconnectName <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Invoke-AzNetworkFabricNniBfdAdministrativeState -NetworkFabricName <String>
- -NetworkToNetworkInterconnectName <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,7 +94,7 @@ Select either enable or disable.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNetworkFabricExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkFabricExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -198,7 +200,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: UpdateViaIdentityNetworkFabric, UpdateViaIdentityNetworkFabricExpanded
+Parameter Sets: UpdateViaIdentityNetworkFabricExpanded, UpdateViaIdentityNetworkFabric
 Aliases:
 
 Required: True
@@ -213,7 +215,7 @@ Name of the Network Fabric.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -228,7 +230,7 @@ Name of the Network to Network Interconnect.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkFabric, UpdateViaIdentityNetworkFabricExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityNetworkFabricExpanded, UpdateViaIdentityNetworkFabric
 Aliases:
 
 Required: True
@@ -259,7 +261,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -275,7 +277,7 @@ Choose either Static or OptionA.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNetworkFabricExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkFabricExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -291,7 +293,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -348,4 +350,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

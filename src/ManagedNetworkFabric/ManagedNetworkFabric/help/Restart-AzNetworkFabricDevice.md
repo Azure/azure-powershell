@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/restart-aznetworkfabricdevice
 schema: 2.0.0
@@ -15,40 +15,42 @@ Reboot the Network Device.
 ### RebootExpanded (Default)
 ```
 Restart-AzNetworkFabricDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-RebootType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-RebootType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RebootViaJsonString
+```
+Restart-AzNetworkFabricDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RebootViaJsonFilePath
+```
+Restart-AzNetworkFabricDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Reboot
 ```
-Restart-AzNetworkFabricDevice -Name <String> -ResourceGroupName <String> -Body <IRebootProperties>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Restart-AzNetworkFabricDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Body <IRebootProperties> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RebootViaIdentityExpanded
+```
+Restart-AzNetworkFabricDevice -InputObject <IManagedNetworkFabricIdentity> [-RebootType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### RebootViaIdentity
 ```
 Restart-AzNetworkFabricDevice -InputObject <IManagedNetworkFabricIdentity> -Body <IRebootProperties>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RebootViaIdentityExpanded
-```
-Restart-AzNetworkFabricDevice -InputObject <IManagedNetworkFabricIdentity> [-RebootType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RebootViaJsonFilePath
-```
-Restart-AzNetworkFabricDevice -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### RebootViaJsonString
-```
-Restart-AzNetworkFabricDevice -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -132,7 +134,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: RebootViaIdentity, RebootViaIdentityExpanded
+Parameter Sets: RebootViaIdentityExpanded, RebootViaIdentity
 Aliases:
 
 Required: True
@@ -177,7 +179,7 @@ Name of the Network Device.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reboot, RebootExpanded, RebootViaJsonFilePath, RebootViaJsonString
+Parameter Sets: RebootExpanded, RebootViaJsonString, RebootViaJsonFilePath, Reboot
 Aliases: NetworkDeviceName
 
 Required: True
@@ -224,7 +226,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reboot, RebootExpanded, RebootViaJsonFilePath, RebootViaJsonString
+Parameter Sets: RebootExpanded, RebootViaJsonString, RebootViaJsonFilePath, Reboot
 Aliases:
 
 Required: True
@@ -240,7 +242,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reboot, RebootExpanded, RebootViaJsonFilePath, RebootViaJsonString
+Parameter Sets: RebootExpanded, RebootViaJsonString, RebootViaJsonFilePath, Reboot
 Aliases:
 
 Required: False
@@ -297,4 +299,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

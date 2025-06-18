@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricinterface
 schema: 2.0.0
@@ -15,18 +15,7 @@ Get the Network Interface resource details.
 ### List (Default)
 ```
 Get-AzNetworkFabricInterface -NetworkDeviceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzNetworkFabricInterface -Name <String> -NetworkDeviceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzNetworkFabricInterface -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -34,6 +23,19 @@ Get-AzNetworkFabricInterface -InputObject <IManagedNetworkFabricIdentity> [-Defa
 ```
 Get-AzNetworkFabricInterface -Name <String> -NetworkDeviceInputObject <IManagedNetworkFabricIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzNetworkFabricInterface -Name <String> -NetworkDeviceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzNetworkFabricInterface -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,7 +118,7 @@ Name of the Network Interface.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityNetworkDevice
+Parameter Sets: GetViaIdentityNetworkDevice, Get
 Aliases: NetworkInterfaceName
 
 Required: True
@@ -146,7 +148,7 @@ Name of the Network Device.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -162,7 +164,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -178,7 +180,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -202,4 +204,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

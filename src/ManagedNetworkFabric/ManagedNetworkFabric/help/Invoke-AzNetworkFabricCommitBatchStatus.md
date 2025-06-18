@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabriccommitbatchstatus
 schema: 2.0.0
@@ -16,41 +16,42 @@ Post action: Returns a status of commit batch operation.
 ```
 Invoke-AzNetworkFabricCommitBatchStatus -NetworkFabricName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-CommitBatchId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Commit
-```
-Invoke-AzNetworkFabricCommitBatchStatus -NetworkFabricName <String> -ResourceGroupName <String>
- -Body <ICommitBatchStatusRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CommitViaIdentity
-```
-Invoke-AzNetworkFabricCommitBatchStatus -InputObject <IManagedNetworkFabricIdentity>
- -Body <ICommitBatchStatusRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CommitViaIdentityExpanded
-```
-Invoke-AzNetworkFabricCommitBatchStatus -InputObject <IManagedNetworkFabricIdentity> [-CommitBatchId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CommitViaJsonFilePath
-```
-Invoke-AzNetworkFabricCommitBatchStatus -NetworkFabricName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CommitViaJsonString
 ```
 Invoke-AzNetworkFabricCommitBatchStatus -NetworkFabricName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CommitViaJsonFilePath
+```
+Invoke-AzNetworkFabricCommitBatchStatus -NetworkFabricName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Commit
+```
+Invoke-AzNetworkFabricCommitBatchStatus -NetworkFabricName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Body <ICommitBatchStatusRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CommitViaIdentityExpanded
+```
+Invoke-AzNetworkFabricCommitBatchStatus -InputObject <IManagedNetworkFabricIdentity> [-CommitBatchId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CommitViaIdentity
+```
+Invoke-AzNetworkFabricCommitBatchStatus -InputObject <IManagedNetworkFabricIdentity>
+ -Body <ICommitBatchStatusRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,7 +150,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: CommitViaIdentity, CommitViaIdentityExpanded
+Parameter Sets: CommitViaIdentityExpanded, CommitViaIdentity
 Aliases:
 
 Required: True
@@ -194,7 +195,7 @@ Name of the Network Fabric.
 
 ```yaml
 Type: System.String
-Parameter Sets: Commit, CommitExpanded, CommitViaJsonFilePath, CommitViaJsonString
+Parameter Sets: CommitExpanded, CommitViaJsonString, CommitViaJsonFilePath, Commit
 Aliases:
 
 Required: True
@@ -225,7 +226,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Commit, CommitExpanded, CommitViaJsonFilePath, CommitViaJsonString
+Parameter Sets: CommitExpanded, CommitViaJsonString, CommitViaJsonFilePath, Commit
 Aliases:
 
 Required: True
@@ -241,7 +242,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Commit, CommitExpanded, CommitViaJsonFilePath, CommitViaJsonString
+Parameter Sets: CommitExpanded, CommitViaJsonString, CommitViaJsonFilePath, Commit
 Aliases:
 
 Required: False
@@ -298,4 +299,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

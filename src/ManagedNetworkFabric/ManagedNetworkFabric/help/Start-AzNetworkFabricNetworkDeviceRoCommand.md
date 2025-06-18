@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/start-aznetworkfabricnetworkdevicerocommand
 schema: 2.0.0
@@ -15,42 +15,43 @@ Run the RO Command on the Network Device.
 ### RunExpanded (Default)
 ```
 Start-AzNetworkFabricNetworkDeviceRoCommand -NetworkDeviceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Command <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### Run
-```
-Start-AzNetworkFabricNetworkDeviceRoCommand -NetworkDeviceName <String> -ResourceGroupName <String>
- -Body <IDeviceRoCommand> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RunViaIdentity
-```
-Start-AzNetworkFabricNetworkDeviceRoCommand -InputObject <IManagedNetworkFabricIdentity>
- -Body <IDeviceRoCommand> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### RunViaIdentityExpanded
-```
-Start-AzNetworkFabricNetworkDeviceRoCommand -InputObject <IManagedNetworkFabricIdentity> [-Command <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RunViaJsonFilePath
-```
-Start-AzNetworkFabricNetworkDeviceRoCommand -NetworkDeviceName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Command <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RunViaJsonString
 ```
 Start-AzNetworkFabricNetworkDeviceRoCommand -NetworkDeviceName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RunViaJsonFilePath
+```
+Start-AzNetworkFabricNetworkDeviceRoCommand -NetworkDeviceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Run
+```
+Start-AzNetworkFabricNetworkDeviceRoCommand -NetworkDeviceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Body <IDeviceRoCommand> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RunViaIdentityExpanded
+```
+Start-AzNetworkFabricNetworkDeviceRoCommand -InputObject <IManagedNetworkFabricIdentity> [-Command <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### RunViaIdentity
+```
+Start-AzNetworkFabricNetworkDeviceRoCommand -InputObject <IManagedNetworkFabricIdentity>
+ -Body <IDeviceRoCommand> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,7 +149,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: RunViaIdentity, RunViaIdentityExpanded
+Parameter Sets: RunViaIdentityExpanded, RunViaIdentity
 Aliases:
 
 Required: True
@@ -193,7 +194,7 @@ Name of the Network Device.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded, RunViaJsonFilePath, RunViaJsonString
+Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath, Run
 Aliases:
 
 Required: True
@@ -224,7 +225,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded, RunViaJsonFilePath, RunViaJsonString
+Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath, Run
 Aliases:
 
 Required: True
@@ -240,7 +241,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded, RunViaJsonFilePath, RunViaJsonString
+Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath, Run
 Aliases:
 
 Required: False
@@ -297,4 +298,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricinternalnetwork
 schema: 2.0.0
@@ -14,8 +14,8 @@ Create InternalNetwork PUT method.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricInternalNetwork -L3IsolationDomainName <String> -Name <String> -ResourceGroupName <String>
- -VlanId <Int32> [-SubscriptionId <String>] [-Annotation <String>] [-BfdConfigurationInterval <Int32>]
+New-AzNetworkFabricInternalNetwork -Name <String> -L3IsolationDomainName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -VlanId <Int32> [-Annotation <String>] [-BfdConfigurationInterval <Int32>]
  [-BfdConfigurationMultiplier <Int32>] [-BgpConfigurationAllowAs <Int32>]
  [-BgpConfigurationAllowAsOverride <String>] [-BgpConfigurationAnnotation <String>]
  [-BgpConfigurationDefaultRouteOriginate <String>] [-BgpConfigurationIpv4ListenRangePrefix <String[]>]
@@ -29,48 +29,50 @@ New-AzNetworkFabricInternalNetwork -L3IsolationDomainName <String> -Name <String
  [-ImportRoutePolicy <IImportRoutePolicy>] [-IngressAclId <String>] [-IsMonitoringEnabled <String>]
  [-Mtu <Int32>] [-NativeIpv4PrefixLimit <IPrefixLimitProperties[]>]
  [-NativeIpv6PrefixLimit <IPrefixLimitProperties[]>] [-StaticRouteConfiguration <IStaticRouteConfiguration>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityL3IsolationDomain
-```
-New-AzNetworkFabricInternalNetwork -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
- -Name <String> -Resource <IInternalNetwork> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityL3IsolationDomainExpanded
-```
-New-AzNetworkFabricInternalNetwork -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
- -Name <String> -VlanId <Int32> [-Annotation <String>] [-BfdConfigurationInterval <Int32>]
- [-BfdConfigurationMultiplier <Int32>] [-BgpConfigurationAllowAs <Int32>]
- [-BgpConfigurationAllowAsOverride <String>] [-BgpConfigurationAnnotation <String>]
- [-BgpConfigurationDefaultRouteOriginate <String>] [-BgpConfigurationIpv4ListenRangePrefix <String[]>]
- [-BgpConfigurationIpv4NeighborAddress <INeighborAddress[]>]
- [-BgpConfigurationIpv6ListenRangePrefix <String[]>]
- [-BgpConfigurationIpv6NeighborAddress <INeighborAddress[]>] [-BgpConfigurationPeerAsn <Int64>]
- [-BgpConfigurationV4OverV6BgpSession <String>] [-BgpConfigurationV6OverV4BgpSession <String>]
- [-BmpConfigurationNeighborIPExclusion <String[]>] [-BmpConfigurationState <String>]
- [-ConnectedIPv4Subnet <IConnectedSubnet[]>] [-ConnectedIPv6Subnet <IConnectedSubnet[]>]
- [-EgressAclId <String>] [-ExportRoutePolicy <IExportRoutePolicy>] [-Extension <String>]
- [-ImportRoutePolicy <IImportRoutePolicy>] [-IngressAclId <String>] [-IsMonitoringEnabled <String>]
- [-Mtu <Int32>] [-NativeIpv4PrefixLimit <IPrefixLimitProperties[]>]
- [-NativeIpv6PrefixLimit <IPrefixLimitProperties[]>] [-StaticRouteConfiguration <IStaticRouteConfiguration>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzNetworkFabricInternalNetwork -L3IsolationDomainName <String> -Name <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzNetworkFabricInternalNetwork -L3IsolationDomainName <String> -Name <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzNetworkFabricInternalNetwork -Name <String> -L3IsolationDomainName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzNetworkFabricInternalNetwork -Name <String> -L3IsolationDomainName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityL3IsolationDomainExpanded
+```
+New-AzNetworkFabricInternalNetwork -Name <String> -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
+ -VlanId <Int32> [-Annotation <String>] [-BfdConfigurationInterval <Int32>]
+ [-BfdConfigurationMultiplier <Int32>] [-BgpConfigurationAllowAs <Int32>]
+ [-BgpConfigurationAllowAsOverride <String>] [-BgpConfigurationAnnotation <String>]
+ [-BgpConfigurationDefaultRouteOriginate <String>] [-BgpConfigurationIpv4ListenRangePrefix <String[]>]
+ [-BgpConfigurationIpv4NeighborAddress <INeighborAddress[]>]
+ [-BgpConfigurationIpv6ListenRangePrefix <String[]>]
+ [-BgpConfigurationIpv6NeighborAddress <INeighborAddress[]>] [-BgpConfigurationPeerAsn <Int64>]
+ [-BgpConfigurationV4OverV6BgpSession <String>] [-BgpConfigurationV6OverV4BgpSession <String>]
+ [-BmpConfigurationNeighborIPExclusion <String[]>] [-BmpConfigurationState <String>]
+ [-ConnectedIPv4Subnet <IConnectedSubnet[]>] [-ConnectedIPv6Subnet <IConnectedSubnet[]>]
+ [-EgressAclId <String>] [-ExportRoutePolicy <IExportRoutePolicy>] [-Extension <String>]
+ [-ImportRoutePolicy <IImportRoutePolicy>] [-IngressAclId <String>] [-IsMonitoringEnabled <String>]
+ [-Mtu <Int32>] [-NativeIpv4PrefixLimit <IPrefixLimitProperties[]>]
+ [-NativeIpv6PrefixLimit <IPrefixLimitProperties[]>] [-StaticRouteConfiguration <IStaticRouteConfiguration>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityL3IsolationDomain
+```
+New-AzNetworkFabricInternalNetwork -Name <String> -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
+ -Resource <IInternalNetwork> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,7 +122,7 @@ New-AzNetworkFabricInternalNetwork -Name $name -L3IsolationDomainName $l3domainN
 ```output
 AdministrativeState Annotation BgpConfiguration
 ------------------- ---------- ----------------
-Enabled                        
+Enabled
 ```
 
 This command creates the Internal Network resource.
@@ -561,7 +563,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: CreateViaIdentityL3IsolationDomain, CreateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: CreateViaIdentityL3IsolationDomainExpanded, CreateViaIdentityL3IsolationDomain
 Aliases:
 
 Required: True
@@ -576,7 +578,7 @@ Name of the L3 Isolation Domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -683,7 +685,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -714,7 +716,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -787,4 +789,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

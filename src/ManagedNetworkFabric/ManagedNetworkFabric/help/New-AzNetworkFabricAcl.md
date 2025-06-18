@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricacl
 schema: 2.0.0
@@ -14,27 +14,27 @@ Implements Access Control List PUT method.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricAcl -Name <String> -ResourceGroupName <String> -ConfigurationType <String>
- -Location <String> [-SubscriptionId <String>] [-AclsUrl <String>] [-AclType <String>] [-Annotation <String>]
+New-AzNetworkFabricAcl -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ConfigurationType <String> -Location <String> [-AclType <String>] [-AclsUrl <String>] [-Annotation <String>]
  [-DefaultAction <String>] [-DeviceRole <String>]
  [-DynamicMatchConfiguration <ICommonDynamicMatchConfiguration[]>]
  [-GlobalAccessControlListActionEnableCount <String>]
- [-MatchConfiguration <IAccessControlListMatchConfiguration[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MatchConfiguration <IAccessControlListMatchConfiguration[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzNetworkFabricAcl -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzNetworkFabricAcl -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzNetworkFabricAcl -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzNetworkFabricAcl -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +95,7 @@ New-AzNetworkFabricAcl -Name $name -ResourceGroupName $resourceGroupName -Locati
 ```output
 AclsUrl AdministrativeState Annotation ConfigurationState ConfigurationType DefaultAction DynamicMatchConfiguration
 ------- ------------------- ---------- ------------------ ----------------- ------------- -------------------------
-        Disabled                       Succeeded          Inline            Permit        
+        Disabled                       Succeeded          Inline            Permit
 ```
 
 This command creates the Access Control List resource.
@@ -434,4 +434,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

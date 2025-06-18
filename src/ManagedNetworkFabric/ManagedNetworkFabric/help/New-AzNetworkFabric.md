@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabric
 schema: 2.0.0
@@ -14,10 +14,11 @@ Create Network Fabric resource.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabric -Name <String> -ResourceGroupName <String> -FabricAsn <Int64> -Ipv4Prefix <String>
- -Location <String> -ManagementNetworkConfiguration <IManagementNetworkConfigurationProperties>
+New-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -FabricAsn <Int64>
+ -Ipv4Prefix <String> -Location <String>
+ -ManagementNetworkConfiguration <IManagementNetworkConfigurationProperties>
  -NetworkFabricControllerId <String> -NetworkFabricSku <String> -ServerCountPerRack <Int32>
- -TerminalServerConfiguration <ITerminalServerConfiguration> [-SubscriptionId <String>] [-Annotation <String>]
+ -TerminalServerConfiguration <ITerminalServerConfiguration> [-Annotation <String>]
  [-ControlPlaneAcls <String[]>] [-EnableSystemAssignedIdentity] [-FabricVersion <String>]
  [-HardwareAlertThreshold <Int32>] [-Ipv6Prefix <String>] [-RackCount <Int32>]
  [-StorageAccountConfigurationStorageAccountId <String>] [-StorageAccountIdentityType <String>]
@@ -25,20 +26,22 @@ New-AzNetworkFabric -Name <String> -ResourceGroupName <String> -FabricAsn <Int64
  [-Tag <Hashtable>] [-TrustedIPPrefix <String[]>]
  [-UniqueRdConfigurationNniDerivedUniqueRdConfigurationState <String>]
  [-UniqueRdConfigurationUniqueRdConfigurationState <String>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzNetworkFabric -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzNetworkFabric -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -657,4 +660,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

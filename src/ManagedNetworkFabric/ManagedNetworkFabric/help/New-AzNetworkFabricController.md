@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabriccontroller
 schema: 2.0.0
@@ -14,28 +14,28 @@ Create a Network Fabric Controller.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricController -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Annotation <String>]
+New-AzNetworkFabricController -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-Annotation <String>]
  [-InfrastructureExpressRouteConnection <IExpressRouteConnectionInformation[]>] [-Ipv4AddressSpace <String>]
  [-Ipv6AddressSpace <String>] [-IsWorkloadManagementNetworkEnabled <String>]
  [-ManagedResourceGroupConfigurationLocation <String>] [-ManagedResourceGroupConfigurationName <String>]
- [-NfcSku <String>] [-Tag <Hashtable>]
- [-WorkloadExpressRouteConnection <IExpressRouteConnectionInformation[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NfcSku <String>] [-Tag <Hashtable>] [-WorkloadExpressRouteConnection <IExpressRouteConnectionInformation[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzNetworkFabricController -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzNetworkFabricController -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzNetworkFabricController -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzNetworkFabricController -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -403,4 +403,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

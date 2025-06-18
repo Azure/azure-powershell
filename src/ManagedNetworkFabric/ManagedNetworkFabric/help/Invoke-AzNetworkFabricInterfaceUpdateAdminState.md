@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabricinterfaceupdateadminstate
 schema: 2.0.0
@@ -16,42 +16,45 @@ Update the admin state of the Network Interface.
 ```
 Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkDeviceName <String> -NetworkInterfaceName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-ResourceId <String[]>] [-State <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Invoke-AzNetworkFabricInterfaceUpdateAdminState -InputObject <IManagedNetworkFabricIdentity>
- [-ResourceId <String[]>] [-State <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityNetworkDevice
-```
-Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkDeviceInputObject <IManagedNetworkFabricIdentity>
- -NetworkInterfaceName <String> -Body <IUpdateAdministrativeState> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityNetworkDeviceExpanded
-```
-Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkDeviceInputObject <IManagedNetworkFabricIdentity>
- -NetworkInterfaceName <String> [-ResourceId <String[]>] [-State <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkDeviceName <String> -NetworkInterfaceName <String>
- -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkDeviceName <String> -NetworkInterfaceName <String>
- -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkDeviceName <String> -NetworkInterfaceName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityNetworkDeviceExpanded
+```
+Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkInterfaceName <String>
+ -NetworkDeviceInputObject <IManagedNetworkFabricIdentity> [-ResourceId <String[]>] [-State <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityNetworkDevice
+```
+Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkInterfaceName <String>
+ -NetworkDeviceInputObject <IManagedNetworkFabricIdentity> -Body <IUpdateAdministrativeState>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Invoke-AzNetworkFabricInterfaceUpdateAdminState -InputObject <IManagedNetworkFabricIdentity>
+ [-ResourceId <String[]>] [-State <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -165,7 +168,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: UpdateViaIdentityNetworkDevice, UpdateViaIdentityNetworkDeviceExpanded
+Parameter Sets: UpdateViaIdentityNetworkDeviceExpanded, UpdateViaIdentityNetworkDevice
 Aliases:
 
 Required: True
@@ -180,7 +183,7 @@ Name of the Network Device.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -195,7 +198,7 @@ Name of the Network Interface.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkDevice, UpdateViaIdentityNetworkDeviceExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityNetworkDeviceExpanded, UpdateViaIdentityNetworkDevice
 Aliases:
 
 Required: True
@@ -226,7 +229,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -241,7 +244,7 @@ Network Fabrics or Network Rack resource Id.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNetworkDeviceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkDeviceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -256,7 +259,7 @@ Administrative state.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNetworkDeviceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkDeviceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -272,7 +275,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -329,4 +332,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

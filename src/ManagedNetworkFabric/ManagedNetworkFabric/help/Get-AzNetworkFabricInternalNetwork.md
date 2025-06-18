@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricinternalnetwork
 schema: 2.0.0
@@ -15,25 +15,27 @@ Gets a InternalNetworks.
 ### List (Default)
 ```
 Get-AzNetworkFabricInternalNetwork -L3IsolationDomainName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkFabricInternalNetwork -L3IsolationDomainName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityL3IsolationDomain
+```
+Get-AzNetworkFabricInternalNetwork -Name <String> -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzNetworkFabricInternalNetwork -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetViaIdentityL3IsolationDomain
-```
-Get-AzNetworkFabricInternalNetwork -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
- -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +51,7 @@ Get-AzNetworkFabricInternalNetwork -L3IsolationDomainName $l3name -ResourceGroup
 ```output
 AdministrativeState Annotation BgpConfiguration
 ------------------- ---------- ----------------
-Enabled                        
+Enabled
 ```
 
 This command lists all the Internal Networks.
@@ -62,7 +64,7 @@ Get-AzNetworkFabricInternalNetwork -L3IsolationDomainName $l3name -Name $name -R
 ```output
 AdministrativeState Annotation BgpConfiguration
 ------------------- ---------- ----------------
-Enabled                        
+Enabled
 ```
 
 This command gets details of the given Internal Network.
@@ -120,7 +122,7 @@ Name of the L3 Isolation Domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -151,7 +153,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -167,7 +169,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -191,4 +193,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

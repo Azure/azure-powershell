@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/update-aznetworkfabricexternalnetwork
 schema: 2.0.0
@@ -34,7 +34,54 @@ Update-AzNetworkFabricExternalNetwork -L3IsolationDomainName <String> -Name <Str
  [-StaticRouteConfigurationBfdConfigurationMultiplier <Int32>]
  [-StaticRouteConfigurationIpv4Route <IStaticRoutePatchProperties[]>]
  [-StaticRouteConfigurationIpv6Route <IStaticRoutePatchProperties[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzNetworkFabricExternalNetwork -L3IsolationDomainName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzNetworkFabricExternalNetwork -L3IsolationDomainName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityL3IsolationDomainExpanded
+```
+Update-AzNetworkFabricExternalNetwork -Name <String>
+ -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity> [-Annotation <String>]
+ [-BmpConfigurationState <String>] [-ExportRoutePolicyExportIpv4RoutePolicyId <String>]
+ [-ExportRoutePolicyExportIpv6RoutePolicyId <String>] [-ImportRoutePolicyImportIpv4RoutePolicyId <String>]
+ [-ImportRoutePolicyImportIpv6RoutePolicyId <String>] [-NativeIpv4PrefixLimit <IPrefixLimitPatchProperties[]>]
+ [-NativeIpv6PrefixLimit <IPrefixLimitPatchProperties[]>] [-NetworkToNetworkInterconnectId <String>]
+ [-OptionAPropertiesBfdConfigurationIntervalInMilliSecond <Int32>]
+ [-OptionAPropertiesBfdConfigurationMultiplier <Int32>] [-OptionAPropertyEgressAclId <String>]
+ [-OptionAPropertyIngressAclId <String>] [-OptionAPropertyMtu <Int32>] [-OptionAPropertyPeerAsn <Int64>]
+ [-OptionAPropertyPrimaryIpv4Prefix <String>] [-OptionAPropertyPrimaryIpv6Prefix <String>]
+ [-OptionAPropertySecondaryIpv4Prefix <String>] [-OptionAPropertySecondaryIpv6Prefix <String>]
+ [-OptionAPropertyV4OverV6BgpSession <String>] [-OptionAPropertyV6OverV4BgpSession <String>]
+ [-OptionAPropertyVlanId <Int32>] [-OptionBPropertyExportRouteTarget <String[]>]
+ [-OptionBPropertyImportRouteTarget <String[]>] [-PeeringOption <String>]
+ [-RouteTargetExportIpv4RouteTarget <String[]>] [-RouteTargetExportIpv6RouteTarget <String[]>]
+ [-RouteTargetImportIpv4RouteTarget <String[]>] [-RouteTargetImportIpv6RouteTarget <String[]>]
+ [-StaticRouteConfigurationBfdConfigurationIntervalInMilliSecond <Int32>]
+ [-StaticRouteConfigurationBfdConfigurationMultiplier <Int32>]
+ [-StaticRouteConfigurationIpv4Route <IStaticRoutePatchProperties[]>]
+ [-StaticRouteConfigurationIpv6Route <IStaticRoutePatchProperties[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityL3IsolationDomain
+```
+Update-AzNetworkFabricExternalNetwork -Name <String>
+ -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity> -Property <IExternalNetworkPatch>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -58,53 +105,7 @@ Update-AzNetworkFabricExternalNetwork -InputObject <IManagedNetworkFabricIdentit
  [-StaticRouteConfigurationBfdConfigurationMultiplier <Int32>]
  [-StaticRouteConfigurationIpv4Route <IStaticRoutePatchProperties[]>]
  [-StaticRouteConfigurationIpv6Route <IStaticRoutePatchProperties[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityL3IsolationDomain
-```
-Update-AzNetworkFabricExternalNetwork -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
- -Name <String> -Property <IExternalNetworkPatch> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityL3IsolationDomainExpanded
-```
-Update-AzNetworkFabricExternalNetwork -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
- -Name <String> [-Annotation <String>] [-BmpConfigurationState <String>]
- [-ExportRoutePolicyExportIpv4RoutePolicyId <String>] [-ExportRoutePolicyExportIpv6RoutePolicyId <String>]
- [-ImportRoutePolicyImportIpv4RoutePolicyId <String>] [-ImportRoutePolicyImportIpv6RoutePolicyId <String>]
- [-NativeIpv4PrefixLimit <IPrefixLimitPatchProperties[]>]
- [-NativeIpv6PrefixLimit <IPrefixLimitPatchProperties[]>] [-NetworkToNetworkInterconnectId <String>]
- [-OptionAPropertiesBfdConfigurationIntervalInMilliSecond <Int32>]
- [-OptionAPropertiesBfdConfigurationMultiplier <Int32>] [-OptionAPropertyEgressAclId <String>]
- [-OptionAPropertyIngressAclId <String>] [-OptionAPropertyMtu <Int32>] [-OptionAPropertyPeerAsn <Int64>]
- [-OptionAPropertyPrimaryIpv4Prefix <String>] [-OptionAPropertyPrimaryIpv6Prefix <String>]
- [-OptionAPropertySecondaryIpv4Prefix <String>] [-OptionAPropertySecondaryIpv6Prefix <String>]
- [-OptionAPropertyV4OverV6BgpSession <String>] [-OptionAPropertyV6OverV4BgpSession <String>]
- [-OptionAPropertyVlanId <Int32>] [-OptionBPropertyExportRouteTarget <String[]>]
- [-OptionBPropertyImportRouteTarget <String[]>] [-PeeringOption <String>]
- [-RouteTargetExportIpv4RouteTarget <String[]>] [-RouteTargetExportIpv6RouteTarget <String[]>]
- [-RouteTargetImportIpv4RouteTarget <String[]>] [-RouteTargetImportIpv6RouteTarget <String[]>]
- [-StaticRouteConfigurationBfdConfigurationIntervalInMilliSecond <Int32>]
- [-StaticRouteConfigurationBfdConfigurationMultiplier <Int32>]
- [-StaticRouteConfigurationIpv4Route <IStaticRoutePatchProperties[]>]
- [-StaticRouteConfigurationIpv6Route <IStaticRoutePatchProperties[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzNetworkFabricExternalNetwork -L3IsolationDomainName <String> -Name <String>
- -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzNetworkFabricExternalNetwork -L3IsolationDomainName <String> -Name <String>
- -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,7 +142,7 @@ Switch configuration description.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -171,7 +172,7 @@ BMP Configuration State.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -202,7 +203,7 @@ ARM resource ID of RoutePolicy.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -217,7 +218,7 @@ ARM resource ID of RoutePolicy.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -232,7 +233,7 @@ ARM resource ID of RoutePolicy.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -247,7 +248,7 @@ ARM resource ID of RoutePolicy.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -307,7 +308,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: UpdateViaIdentityL3IsolationDomain, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityL3IsolationDomain
 Aliases:
 
 Required: True
@@ -322,7 +323,7 @@ Name of the L3 Isolation Domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -337,7 +338,7 @@ Name of the External Network.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomain, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityL3IsolationDomain
 Aliases: ExternalNetworkName
 
 Required: True
@@ -352,7 +353,7 @@ Prefix limits
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitPatchProperties[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -367,7 +368,7 @@ Prefix limits
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitPatchProperties[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -382,7 +383,7 @@ ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork res
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -413,7 +414,7 @@ Example: 300.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -429,7 +430,7 @@ Example: 5.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -445,7 +446,7 @@ ARM resource ID of Access Control Lists.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -461,7 +462,7 @@ ARM resource ID of Access Control Lists.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -476,7 +477,7 @@ MTU to use for option A peering.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -491,7 +492,7 @@ Peer ASN number.Example : 28
 
 ```yaml
 Type: System.Int64
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -506,7 +507,7 @@ IPv4 Address Prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -521,7 +522,7 @@ IPv6 Address Prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -536,7 +537,7 @@ Secondary IPv4 Address Prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -551,7 +552,7 @@ Secondary IPv6 Address Prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -566,7 +567,7 @@ V4OverV6 BGP Session state
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -581,7 +582,7 @@ V6OverV4 BGP Session state
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -597,7 +598,7 @@ Example : 501
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -613,7 +614,7 @@ This is used for the backward compatibility.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -629,7 +630,7 @@ This is used for the backward compatibility.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -644,7 +645,7 @@ Peering option list.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -675,7 +676,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -690,7 +691,7 @@ Route Targets to be applied for outgoing routes into CE.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -705,7 +706,7 @@ Route Targets to be applied for outgoing routes from CE.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -720,7 +721,7 @@ Route Targets to be applied for incoming routes into CE.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -735,7 +736,7 @@ Route Targets to be applied for incoming routes from CE.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -751,7 +752,7 @@ Example: 300.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -767,7 +768,7 @@ Example: 5.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -782,7 +783,7 @@ List of IPv4 Routes.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRoutePatchProperties[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -797,7 +798,7 @@ List of IPv6 Routes.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRoutePatchProperties[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityL3IsolationDomainExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityL3IsolationDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -813,7 +814,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -870,4 +871,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

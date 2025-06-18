@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedNetworkFabric-help.xml
 Module Name: Az.ManagedNetworkFabric
 online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/update-aznetworkfabricaccesscontrollist
 schema: 2.0.0
@@ -15,35 +15,37 @@ API to update certain properties of the Access Control List resource.
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkFabricAccessControlList -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AclsUrl <String>] [-AclType <String>] [-Annotation <String>] [-ConfigurationType <String>]
+ [-AclType <String>] [-AclsUrl <String>] [-Annotation <String>] [-ConfigurationType <String>]
  [-DefaultAction <String>] [-DeviceRole <String>]
  [-DynamicMatchConfiguration <ICommonDynamicMatchConfigurationPatch[]>]
  [-GlobalAccessControlListActionEnableCount <String>]
  [-MatchConfiguration <IAccessControlListMatchConfigurationPatch[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzNetworkFabricAccessControlList -InputObject <IManagedNetworkFabricIdentity> [-AclsUrl <String>]
- [-AclType <String>] [-Annotation <String>] [-ConfigurationType <String>] [-DefaultAction <String>]
- [-DeviceRole <String>] [-DynamicMatchConfiguration <ICommonDynamicMatchConfigurationPatch[]>]
- [-GlobalAccessControlListActionEnableCount <String>]
- [-MatchConfiguration <IAccessControlListMatchConfigurationPatch[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzNetworkFabricAccessControlList -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzNetworkFabricAccessControlList -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Update-AzNetworkFabricAccessControlList -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzNetworkFabricAccessControlList -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzNetworkFabricAccessControlList -InputObject <IManagedNetworkFabricIdentity> [-AclType <String>]
+ [-AclsUrl <String>] [-Annotation <String>] [-ConfigurationType <String>] [-DefaultAction <String>]
+ [-DeviceRole <String>] [-DynamicMatchConfiguration <ICommonDynamicMatchConfigurationPatch[]>]
+ [-GlobalAccessControlListActionEnableCount <String>]
+ [-MatchConfiguration <IAccessControlListMatchConfigurationPatch[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -293,7 +295,7 @@ Name of the Access Control List.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases: AccessControlListName
 
 Required: True
@@ -324,7 +326,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -340,7 +342,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -410,4 +412,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
