@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     default:
                         resourceGroupName = this.ResourceGroupName;
                         galleryName = this.GalleryName;
-                        galleryInVMAccessControlProfileName = this.GalleryInVMAccessControlProfileVersionName;
+                        galleryInVMAccessControlProfileName = this.GalleryInVMAccessControlProfileName;
                         galleryInVMAccessControlProfileVersionName = this.GalleryInVMAccessControlProfileVersionName;
                         break;
                 }

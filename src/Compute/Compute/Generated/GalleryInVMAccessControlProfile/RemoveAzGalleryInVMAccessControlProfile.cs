@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryInVMAccessControlProfile", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
-    public partial class RemoveGalleryInVMAccessControlProfile : ComputeAutomationBaseCmdlet
+    public partial class RemoveAzureRMGalleryInVMAccessControlProfile : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {

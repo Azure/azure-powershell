@@ -72,14 +72,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                GalleryInVMAccessControlProfileVersion galleryInVMAccessControlProfileVersion = new GalleryInVMAccessControlProfileVersion();
-                ComputeAutomationAutoMapperProfile.Mapper.Map<PSGalleryInVMAccessControlProfileVersion, GalleryInVMAccessControlProfileVersion>(this.GalleryInVmAccessControlProfileVersion, galleryInVMAccessControlProfileVersion);
+                if (ShouldProcess(this.GalleryInVmAccessControlProfileVersion.Name, VerbsCommon.New))
+                {
+                    GalleryInVMAccessControlProfileVersion galleryInVMAccessControlProfileVersion = new GalleryInVMAccessControlProfileVersion();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSGalleryInVMAccessControlProfileVersion, GalleryInVMAccessControlProfileVersion>(this.GalleryInVmAccessControlProfileVersion, galleryInVMAccessControlProfileVersion);
 
 
-                var result = GalleryInVMAccessControlProfileVersionClient.CreateOrUpdate(this.ResourceGroupName, this.GalleryName, this.GalleryInVMAccessControlProfileName, this.GalleryInVmAccessControlProfileVersion.Name, galleryInVMAccessControlProfileVersion);
-                var psObject = new PSGalleryInVMAccessControlProfileVersion();
-                ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryInVMAccessControlProfileVersion, PSGalleryInVMAccessControlProfileVersion>(result, psObject);
-                WriteObject(psObject);
+                    var result = GalleryInVMAccessControlProfileVersionClient.CreateOrUpdate(this.ResourceGroupName, this.GalleryName, this.GalleryInVMAccessControlProfileName, this.GalleryInVmAccessControlProfileVersion.Name, galleryInVMAccessControlProfileVersion);
+                    var psObject = new PSGalleryInVMAccessControlProfileVersion();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryInVMAccessControlProfileVersion, PSGalleryInVMAccessControlProfileVersion>(result, psObject);
+                    WriteObject(psObject);
+                }
+                    
             });
         }
     }

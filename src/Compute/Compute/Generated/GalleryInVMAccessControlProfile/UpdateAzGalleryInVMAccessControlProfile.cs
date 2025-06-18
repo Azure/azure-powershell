@@ -38,9 +38,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryInVMAccessControlProfile")]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryInVMAccessControlProfile")]
     [OutputType(typeof(PSGalleryInVMAccessControlProfile))]
-    public partial class NewAzureRmGalleryInVMAccessControlProfile : ComputeAutomationBaseCmdlet
+    public partial class UpdateAzureRmGalleryInVMAccessControlProfile : ComputeAutomationBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -61,22 +61,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Gallery In VM Access Control Profile.")]
         public string GalleryInVMAccessControlProfileName { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location of the Gallery In VM Access Control Profile.")]
-        public string Location { get; set; }
         
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "This property allows you to specify the OS type of the VMs/VMSS for which this profile can be used against.")]
-        [PSArgumentCompleter("Windows", "Linux")]
-        public string OsType { get; set; }
-        
-        [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "This property allows you to specify the Endpoint type for which this profile is defining the access control for.")]
         [PSArgumentCompleter("WireServer","IMDS")]
@@ -93,46 +80,36 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.GalleryInVMAccessControlProfileName, VerbsCommon.New))
+                if (ShouldProcess(this.GalleryInVMAccessControlProfileName, VerbsData.Update))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string galleryName = this.GalleryName;
                     string galleryInVMAccessControlProfileName = this.GalleryInVMAccessControlProfileName;
                     GalleryInVMAccessControlProfile galleryInVMAccessControlProfile = new GalleryInVMAccessControlProfile();
 
-                    galleryInVMAccessControlProfile.Location = this.Location;
                     galleryInVMAccessControlProfile.Properties = new GalleryInVMAccessControlProfileProperties();
 
-                    if (this.IsParameterBound(c=> c.Description))
+                    if (this.IsParameterBound(c => c.Description))
                     {
                         galleryInVMAccessControlProfile.Properties.Description = this.Description;
                     }
 
-                    if (this.OsType.Equals("Windows", StringComparison.OrdinalIgnoreCase))
+                    if (this.IsParameterBound(c => c.ApplicableHostEndPoint))
                     {
-                        galleryInVMAccessControlProfile.Properties.OsType = OperatingSystemTypes.Windows;
+                        if (this.ApplicableHostEndPoint.Equals("WireServer", StringComparison.OrdinalIgnoreCase))
+                        {
+                            galleryInVMAccessControlProfile.Properties.ApplicableHostEndpoint = EndpointTypes.WireServer;
+                        }
+                        else if (this.ApplicableHostEndPoint.Equals("IMDS", StringComparison.OrdinalIgnoreCase))
+                        {
+                            galleryInVMAccessControlProfile.Properties.ApplicableHostEndpoint = EndpointTypes.IMDS;
+                        }
+                        else
+                        {
+                            throw new ArgumentException("Invalid applicable host endpoint type specified. Valid values are 'WireServer' or 'IMDS'.");
+                        }
                     }
-                    else if (this.OsType.Equals("Linux", StringComparison.OrdinalIgnoreCase))
-                    {
-                        galleryInVMAccessControlProfile.Properties.OsType = OperatingSystemTypes.Linux;
-                    }
-                    else
-                    {
-                        throw new ArgumentException("Invalid OS type specified. Valid values are 'Windows' or 'Linux'.");
-                    }
-
-                    if (this.ApplicableHostEndPoint.Equals("WireServer", StringComparison.OrdinalIgnoreCase))
-                    {
-                        galleryInVMAccessControlProfile.Properties.ApplicableHostEndpoint = EndpointTypes.WireServer;
-                    }
-                    else if (this.ApplicableHostEndPoint.Equals("IMDS", StringComparison.OrdinalIgnoreCase))
-                    {
-                        galleryInVMAccessControlProfile.Properties.ApplicableHostEndpoint = EndpointTypes.IMDS;
-                    }
-                    else
-                    {
-                        throw new ArgumentException("Invalid applicable host endpoint type specified. Valid values are 'WireServer' or 'IMDS'.");
-                    }
+                    
 
                     var result = GalleryInVMAccessControlProfileClient.CreateOrUpdate(resourceGroupName, galleryName, galleryInVMAccessControlProfileName, galleryInVMAccessControlProfile);
 

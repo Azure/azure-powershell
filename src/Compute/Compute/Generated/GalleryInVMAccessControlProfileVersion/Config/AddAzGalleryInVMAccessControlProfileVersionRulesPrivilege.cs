@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The query parameters to match in the path.")]
-        public string QueryParameter { get; set; }
+        public Hashtable QueryParameter { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -83,8 +83,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 Name = this.PrivilegeName,
                 Path = this.Path,
-                //QueryParameter.Add = this.QueryParameter
             };
+
+            if (this.IsParameterBound(c => c.QueryParameter)
+            {
+                privilege.QueryParameters = this.QueryParameter.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
+            }
 
             galleryInVMAcessControlProfileVersion.Rules.Privileges.Add(privilege);
             WriteObject(galleryInVMAcessControlProfileVersion);

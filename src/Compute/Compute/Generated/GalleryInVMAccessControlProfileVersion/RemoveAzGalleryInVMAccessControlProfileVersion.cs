@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.GalleryInVMAccessControlProfileNameVersion, VerbsCommon.Remove)
+                if (ShouldProcess(this.GalleryInVMAccessControlProfileVersionName, VerbsCommon.Remove)
                     && (this.Force.IsPresent ||
                         this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
                                             "Remove-AzGalleryInVMAccessControlProfileVersion operation")))
@@ -48,30 +48,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName;
                     string galleryName;
                     string galleryInVMAccessControlProfileName;
-                    string galleryInVMAccessControlProfileNameVersion;
+                    string galleryInVMAccessControlProfileVersionName;
                     switch (this.ParameterSetName)
                     {
                         case "ResourceIdParameter":
                             resourceGroupName = GetResourceGroupName(this.ResourceId);
                             galleryName = GetGalleryNameFromInVMAccessControlProfileResourceId(this.ResourceId);
                             galleryInVMAccessControlProfileName = GetInVMAccessControlProfileNameFromInVMAccessControlProfileResourceId(this.ResourceId);
-                            galleryInVMAccessControlProfileNameVersion = GetInVMAccessControlProfileVersionNameFromInVMAccessControlProfileVersionResourceId(this.ResourceId);
+                            galleryInVMAccessControlProfileVersionName = GetInVMAccessControlProfileVersionNameFromInVMAccessControlProfileVersionResourceId(this.ResourceId);
                             break;
                         case "ObjectParameter":
                             resourceGroupName = GetResourceGroupName(this.InputObject.Id);
                             galleryName = GetGalleryNameFromInVMAccessControlProfileResourceId(this.InputObject.Id);
                             galleryInVMAccessControlProfileName = GetInVMAccessControlProfileNameFromInVMAccessControlProfileResourceId(this.InputObject.Id);
-                            galleryInVMAccessControlProfileNameVersion = GetInVMAccessControlProfileVersionNameFromInVMAccessControlProfileVersionResourceId(this.InputObject.Id);
+                            galleryInVMAccessControlProfileVersionName = GetInVMAccessControlProfileVersionNameFromInVMAccessControlProfileVersionResourceId(this.InputObject.Id);
                             break;
                         default:
                             resourceGroupName = this.ResourceGroupName;
                             galleryName = this.GalleryName;
                             galleryInVMAccessControlProfileName = this.GalleryInVMAccessControlProfileName;
-                            galleryInVMAccessControlProfileNameVersion = this.GalleryInVMAccessControlProfileNameVersion;
+                            galleryInVMAccessControlProfileVersionName = this.GalleryInVMAccessControlProfileVersionName;
                             break;
                     }
 
-                    var result = GalleryInVMAccessControlProfileVersionClient.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryInVMAccessControlProfileName, galleryInVMAccessControlProfileNameVersion).GetAwaiter().GetResult();
+                    var result = GalleryInVMAccessControlProfileVersionClient.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryInVMAccessControlProfileName, galleryInVMAccessControlProfileVersionName).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse
                     {
                         StartTime = this.StartTime,
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Gallery In VM Access Control Profile Version.")]
-        public string GalleryInVMAccessControlProfileNameVersion { get; set; }
+        public string GalleryInVMAccessControlProfileVersionName { get; set; }
 
         [Parameter(
             Mandatory = false,
