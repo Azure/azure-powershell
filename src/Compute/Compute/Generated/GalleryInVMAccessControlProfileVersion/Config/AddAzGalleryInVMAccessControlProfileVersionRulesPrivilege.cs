@@ -69,14 +69,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         public override void ExecuteCmdlet()
         {
-            PSGalleryInVMAccessControlProfileVersion galleryInVMAcessControlProfileVersion = this.GalleryInVmAccessControlProfileVersion;
-            if (galleryInVMAcessControlProfileVersion.Rules == null)
+            PSGalleryInVMAccessControlProfileVersion galleryInVMAccessControlProfileVersion = this.GalleryInVmAccessControlProfileVersion;
+            if (galleryInVMAccessControlProfileVersion.Rules == null)
             {
-                galleryInVMAcessControlProfileVersion.Rules = new AccessControlRules();
+                galleryInVMAccessControlProfileVersion.Rules = new AccessControlRules();
             }
-            if (galleryInVMAcessControlProfileVersion.Rules.Privileges == null)
+            if (galleryInVMAccessControlProfileVersion.Rules.Privileges == null)
             {
-                galleryInVMAcessControlProfileVersion.Rules.Privileges = new List<AccessControlRulesPrivilege>();
+                galleryInVMAccessControlProfileVersion.Rules.Privileges = new List<AccessControlRulesPrivilege>();
             }
 
             AccessControlRulesPrivilege privilege = new AccessControlRulesPrivilege
@@ -85,13 +85,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Path = this.Path,
             };
 
-            if (this.IsParameterBound(c => c.QueryParameter)
+            if (this.IsParameterBound(c => c.QueryParameter))
             {
-                privilege.QueryParameters = this.QueryParameter.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
+                privilege.QueryParameters = this.QueryParameter.Cast<DictionaryEntry>()
+                    .ToDictionary(kvp => kvp.Key?.ToString() ?? string.Empty,
+                                  kvp => kvp.Value?.ToString() ?? string.Empty);
             }
 
-            galleryInVMAcessControlProfileVersion.Rules.Privileges.Add(privilege);
-            WriteObject(galleryInVMAcessControlProfileVersion);
+            galleryInVMAccessControlProfileVersion.Rules.Privileges.Add(privilege);
+            WriteObject(galleryInVMAccessControlProfileVersion);
         }
     }
 }

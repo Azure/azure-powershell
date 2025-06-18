@@ -83,11 +83,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         public override void ExecuteCmdlet()
         {
-            var galleryInVMAcessControlProfileVersion = new PSGalleryInVMAccessControlProfileVersion();
-            galleryInVMAcessControlProfileVersion.Name = this.Name;
-            galleryInVMAcessControlProfileVersion.Location = this.Location;
-            galleryInVMAcessControlProfileVersion.Mode = this.Mode;
-            galleryInVMAcessControlProfileVersion.DefaultAccess = this.DefaultAccess;
+            var galleryInVMAccessControlProfileVersion = new PSGalleryInVMAccessControlProfileVersion();
+            galleryInVMAccessControlProfileVersion.Name = this.Name;
+            galleryInVMAccessControlProfileVersion.Location = this.Location;
+            galleryInVMAccessControlProfileVersion.Mode = this.Mode;
+            galleryInVMAccessControlProfileVersion.DefaultAccess = this.DefaultAccess;
 
             // create a list of TargetRegions 
             List<TargetRegion> targetRegions = new List<TargetRegion>();
@@ -103,16 +103,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // add to list of TargetRegions
                 targetRegions.Add(targetRegion);
             }
-            // assign to galleryInVMAcessControlProfileVersion.TargetLocations
-            galleryInVMAcessControlProfileVersion.TargetLocations = targetRegions;
+            // assign to galleryInVMAccessControlProfileVersion.TargetLocations
+            galleryInVMAccessControlProfileVersion.TargetLocations = targetRegions;
 
 
             if (this.ExcludeFromLatest.IsPresent)
             {
-                galleryInVMAcessControlProfileVersion.ExcludeFromLatest = true;
+                galleryInVMAccessControlProfileVersion.ExcludeFromLatest = true;
             }
 
-            WriteObject(galleryInVMAcessControlProfileVersion);
+            WriteObject(galleryInVMAccessControlProfileVersion);
         }
     }
 }

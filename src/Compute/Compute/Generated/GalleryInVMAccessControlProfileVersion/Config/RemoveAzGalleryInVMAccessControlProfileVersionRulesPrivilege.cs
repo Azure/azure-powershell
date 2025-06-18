@@ -57,21 +57,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         public override void ExecuteCmdlet()
         {
-            PSGalleryInVMAccessControlProfileVersion galleryInVMAcessControlProfileVersion = this.GalleryInVmAccessControlProfileVersion;
+            PSGalleryInVMAccessControlProfileVersion galleryInVMAccessControlProfileVersion = this.GalleryInVmAccessControlProfileVersion;
 
-            if (galleryInVMAcessControlProfileVersion.Rules != null && galleryInVMAcessControlProfileVersion.Rules.Privileges != null)
+            if (galleryInVMAccessControlProfileVersion.Rules != null && galleryInVMAccessControlProfileVersion.Rules.Privileges != null)
             {
                 // iterate over the privileges and remove the one with the matching name 
-                AccessControlRulesPrivilege privilegeToRemove = galleryInVMAcessControlProfileVersion.Rules.Privileges
+                AccessControlRulesPrivilege privilegeToRemove = galleryInVMAccessControlProfileVersion.Rules.Privileges
                     .FirstOrDefault(privilege => string.Equals(privilege.Name, this.PrivilegeName, StringComparison.OrdinalIgnoreCase));
 
                 if (privilegeToRemove != null)
                 {
-                    galleryInVMAcessControlProfileVersion.Rules.Privileges.Remove(privilegeToRemove);
+                    galleryInVMAccessControlProfileVersion.Rules.Privileges.Remove(privilegeToRemove);
                 }
             }
 
-            WriteObject(galleryInVMAcessControlProfileVersion);
+            WriteObject(galleryInVMAccessControlProfileVersion);
         }
     }
 }

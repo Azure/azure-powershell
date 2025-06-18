@@ -56,21 +56,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         public override void ExecuteCmdlet()
         {
-            PSGalleryInVMAccessControlProfileVersion galleryInVMAcessControlProfileVersion = this.GalleryInVmAccessControlProfileVersion;
+            PSGalleryInVMAccessControlProfileVersion galleryInVMAccessControlProfileVersion = this.GalleryInVmAccessControlProfileVersion;
 
-            if (galleryInVMAcessControlProfileVersion.Rules != null && galleryInVMAcessControlProfileVersion.Rules.RoleAssignments != null)
+            if (galleryInVMAccessControlProfileVersion.Rules != null && galleryInVMAccessControlProfileVersion.Rules.RoleAssignments != null)
             {
                 // iterate over the roles and remove the one with the matching name 
-                AccessControlRulesRoleAssignment roleAssignmentToRemove = galleryInVMAcessControlProfileVersion.Rules.RoleAssignments
+                AccessControlRulesRoleAssignment roleAssignmentToRemove = galleryInVMAccessControlProfileVersion.Rules.RoleAssignments
                     .FirstOrDefault(roleAssignment => string.Equals(roleAssignment.Role, this.Role, StringComparison.OrdinalIgnoreCase));
 
                 if (roleAssignmentToRemove != null)
                 {
-                    galleryInVMAcessControlProfileVersion.Rules.RoleAssignments.Remove(roleAssignmentToRemove);
+                    galleryInVMAccessControlProfileVersion.Rules.RoleAssignments.Remove(roleAssignmentToRemove);
                 }
             }
 
-            WriteObject(galleryInVMAcessControlProfileVersion);
+            WriteObject(galleryInVMAccessControlProfileVersion);
         }
     }
 }

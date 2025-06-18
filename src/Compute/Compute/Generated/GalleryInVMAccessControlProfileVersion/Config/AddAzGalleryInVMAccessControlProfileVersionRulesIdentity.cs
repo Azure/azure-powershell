@@ -83,14 +83,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         public override void ExecuteCmdlet()
         {
-            PSGalleryInVMAccessControlProfileVersion galleryInVMAcessControlProfileVersion = this.GalleryInVmAccessControlProfileVersion;
-            if (galleryInVMAcessControlProfileVersion.Rules == null)
+            PSGalleryInVMAccessControlProfileVersion galleryInVMAccessControlProfileVersion = this.GalleryInVmAccessControlProfileVersion;
+            if (galleryInVMAccessControlProfileVersion.Rules == null)
             {
-                galleryInVMAcessControlProfileVersion.Rules = new AccessControlRules();
+                galleryInVMAccessControlProfileVersion.Rules = new AccessControlRules();
             }
-            if (galleryInVMAcessControlProfileVersion.Rules.Identities == null)
+            if (galleryInVMAccessControlProfileVersion.Rules.Identities == null)
             {
-                galleryInVMAcessControlProfileVersion.Rules.Identities = new List<AccessControlRulesIdentity>();
+                galleryInVMAccessControlProfileVersion.Rules.Identities = new List<AccessControlRulesIdentity>();
             }
 
             AccessControlRulesIdentity identity = new AccessControlRulesIdentity
@@ -102,8 +102,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ProcessName = this.ProcessName
             };
 
-            galleryInVMAcessControlProfileVersion.Rules.Identities.Add(identity);
-            WriteObject(galleryInVMAcessControlProfileVersion);
+            galleryInVMAccessControlProfileVersion.Rules.Identities.Add(identity);
+            WriteObject(galleryInVMAccessControlProfileVersion);
         }
     }
 }
