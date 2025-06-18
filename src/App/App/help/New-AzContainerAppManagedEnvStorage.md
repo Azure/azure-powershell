@@ -15,7 +15,7 @@ create storage for a managedEnvironment.
 ### CreateExpanded (Default)
 ```
 New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>]
+ [-SubscriptionId <String>] [-AzureFileAccessMode <String>] [-AzureFileAccountKeySecure <SecureString>]
  [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -37,7 +37,7 @@ New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGr
 ### CreateViaIdentityManagedEnvironmentExpanded
 ```
 New-AzContainerAppManagedEnvStorage -Name <String> -ManagedEnvironmentInputObject <IAppIdentity>
- [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
+ [-AzureFileAccessMode <String>] [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>]
  [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -45,7 +45,7 @@ New-AzContainerAppManagedEnvStorage -Name <String> -ManagedEnvironmentInputObjec
 ### CreateViaIdentityExpanded
 ```
 New-AzContainerAppManagedEnvStorage -InputObject <IAppIdentity> [-AzureFileAccessMode <String>]
- [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
+ [-AzureFileAccountKeySecure <SecureString>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -87,11 +87,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureFileAccountKey
+### -AzureFileAccountKeySecure
 Storage account key for azure file.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaIdentityExpanded
 Aliases:
 
