@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change announcement for below commands from Fixed Array to List.
+  - `Get-AzRelayNamespace`
+  - `Get-AzRelayNamespaceNetworkRuleSet`
+  - `Set-AzRelayNamespaceNetworkRuleSet`
 
 ## Version 2.1.0
 * Upgraded nuget package to signed package.
