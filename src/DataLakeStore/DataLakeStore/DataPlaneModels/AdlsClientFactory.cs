@@ -13,15 +13,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
     public class AdlsClientFactory
     {
         private static readonly Dictionary<string, AdlsClient> ClientFactory=new Dictionary<string, AdlsClient>();
-        /// <summary>
-        /// For unit testing this is set as true
-        /// </summary>
-        internal static bool IsTest = false;
-        public static DelegatingHandler[] CustomDelegatingHAndler;
-        /// <summary>
-        /// Mock client credentials used for testing, this is set for record
-        /// </summary>
-        internal static TokenCredential MockCredentials = null;
 
         private static string HandleAccntName(string accnt,IAzureContext context)
         {
@@ -47,15 +38,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     return ClientFactory[accntNm];
                 }
                 AdlsClient client = null;
-                if (IsTest)
-                {
-                    client = AdlsClient.CreateClient(accntNm, MockCredentials, new string[] { });
-                }
-                else
-                {
-                    var tokenCredential = new DataLakeStoreTokenCredential(context);
-                    client = AdlsClient.CreateClient(accntNm, tokenCredential, new string[] { });
-                }
+                var tokenCredential = new DataLakeStoreTokenCredential(context);
+                client = AdlsClient.CreateClient(accntNm, tokenCredential, new string[] { });
+
                 client.AddUserAgentSuffix(AzurePowerShell.UserAgentValue.ToString());
                 ClientFactory.Add(accntNm,client);
                 return client;

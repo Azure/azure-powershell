@@ -17,12 +17,6 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.TestFx;
 using System.Collections.Generic;
 using Xunit.Abstractions;
-using Azure.Core;
-using System;
-using System.Net.Http.Headers;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
 {
@@ -64,41 +58,9 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
                 )
                 .WithManagementClients(context =>
                 {
-                    AdlsClientFactory.IsTest = true;
-
-                    var serviceClientCredentials = context.GetClientCredentials("https://datalake.azure.net");
-                    var scope = "https://datalake.azure.net/.default";
-
-                    // Convert ServiceClientCredentials to TokenCredential
-                    var tokenCredential = new ServiceClientCredentialsAdapter(serviceClientCredentials, scope);
-
-                    var handlers = context.AddHandlers(new TokenCredentialAdapter(tokenCredential), new AdlMockDelegatingHandler());
-                    AdlsClientFactory.CustomDelegatingHAndler = handlers;
-                    AdlsClientFactory.MockCredentials = tokenCredential;
-
                     return new object();
                 })
-                .WithCleanupAction(
-                    () => AdlsClientFactory.IsTest = false
-                )
                 .Build();
-        }
-    }
-
-    public class TokenCredentialAdapter : Microsoft.Rest.ServiceClientCredentials
-    {
-        private readonly TokenCredential _tokenCredential;
-
-        public TokenCredentialAdapter(TokenCredential tokenCredential)
-        {
-            _tokenCredential = tokenCredential;
-        }
-
-        public override async Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            var tokenRequestContext = new TokenRequestContext(new[] { "https://datalake.azure.net/.default"});
-            var accessToken = await _tokenCredential.GetTokenAsync(tokenRequestContext, cancellationToken).ConfigureAwait(false);
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken.Token);
         }
     }
 }

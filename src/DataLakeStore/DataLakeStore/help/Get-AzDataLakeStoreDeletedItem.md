@@ -14,7 +14,7 @@ Searches for deleted entries in trash which match the filter.
 ## SYNTAX
 
 ```
-Get-AzDataLakeStoreDeletedItem [-Account] <String> [-Filter] <String> [-Count <Int32>] [-listAfter <String>]
+Get-AzDataLakeStoreDeletedItem [-Account] <String> [-Filter] <String> [-Count <Int32>] [-ListAfter <String>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -118,7 +118,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -listAfter
+### -ListAfter
 Token returned by system in the previous invocation
 
 ```yaml

@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             Mandatory = false,
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "Token returned by system in the previous invocation")]
-        public string listAfter { get; set; }
+        public string ListAfter { get; set; }
 
         [Parameter(Mandatory = false,
             ParameterSetName = DefaultParameterSet,
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            var (deletedItems, continuationToken) = DataLakeStoreFileSystemClient.EnumerateDeletedItems(Account, Filter, Count, listAfter, this, CmdletCancellationToken);
+            var (deletedItems, continuationToken) = DataLakeStoreFileSystemClient.EnumerateDeletedItems(Account, Filter, Count, ListAfter, this, CmdletCancellationToken);
             var toReturn = deletedItems.Select(entry => new DataLakeStoreDeletedItem(entry)).ToList();
 
             // Write the list of deleted items.

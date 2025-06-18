@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 null,
                 ShowDialog.Never,
                 null,
-                "https://datalake.azure.net/");
+                AzureEnvironment.Endpoint.DataLakeEndpointResourceId);
         }
 
         public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
