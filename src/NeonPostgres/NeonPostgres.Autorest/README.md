@@ -28,7 +28,7 @@ For information on how to develop for `Az.NeonPostgres`, see [how-to.md](how-to.
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 75fdb87b5367a3ab306e85fb6daa7501d54f0553
+commit: fb9d32d1bddf171eb777b33ff7fb7dd30a8771da
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -40,7 +40,7 @@ try-require:
   - $(repo)/specification/liftrneon/resource-manager/readme.powershell.md
 
 # For new RP, the version is 0.1.0
-module-version: 0.1.0
+module-version: 0.2.0
 # Normally, title is the service name
 title: NeonPostgres
 subject-prefix: $(service-name)
@@ -70,4 +70,8 @@ directive:
   - where:
       verb: Set
     remove: true
+  - remove-operation:
+    - Organizations_GetPostgresVersions
+    - Projects_Update
+    - Branches_Update
 ```

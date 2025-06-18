@@ -27,11 +27,22 @@ Get-AzDigitalTwinsEndpoint -ResourceGroupName azps_test_group -ResourceName azps
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DIGITALTWINSINSTANCEINPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+  [EndpointName <String>]: Name of Endpoint Resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: Location of DigitalTwinsInstance.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group that contains the DigitalTwinsInstance.
+  [ResourceId <String>]: The name of the private link resource.
+  [ResourceName <String>]: The name of the DigitalTwinsInstance.
+  [SubscriptionId <String>]: The subscription identifier.
+  [TimeSeriesDatabaseConnectionName <String>]: Name of time series database connection.
 
 INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
   [EndpointName <String>]: Name of Endpoint Resource.
@@ -47,10 +58,11 @@ INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsendpoint
 #>
 function Get-AzDigitalTwinsEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityDigitalTwinsInstance', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [System.String]
     # Name of Endpoint Resource.
@@ -82,8 +94,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityDigitalTwinsInstance', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity]
+    # Identity Parameter
+    ${DigitalTwinsInstanceInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -141,6 +158,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -162,11 +188,10 @@ begin {
         $mapping = @{
             Get = 'Az.DigitalTwins.private\Get-AzDigitalTwinsEndpoint_Get';
             GetViaIdentity = 'Az.DigitalTwins.private\Get-AzDigitalTwinsEndpoint_GetViaIdentity';
+            GetViaIdentityDigitalTwinsInstance = 'Az.DigitalTwins.private\Get-AzDigitalTwinsEndpoint_GetViaIdentityDigitalTwinsInstance';
             List = 'Az.DigitalTwins.private\Get-AzDigitalTwinsEndpoint_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -180,6 +205,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -169,7 +169,7 @@ Accept wildcard characters: False
 
 ### -Ipv4ConnectedPrefix
 The IPV4 prefix (CIDR) assigned to this L3 network.
-Required when the IP allocation typeis IPV4 or DualStack.
+Required when the IP allocation type is IPV4 or DualStack.
 
 ```yaml
 Type: System.String
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 
 ### -Ipv6ConnectedPrefix
 The IPV6 prefix (CIDR) assigned to this L3 network.
-Required when the IP allocation typeis IPV6 or DualStack.
+Required when the IP allocation type is IPV6 or DualStack.
 
 ```yaml
 Type: System.String

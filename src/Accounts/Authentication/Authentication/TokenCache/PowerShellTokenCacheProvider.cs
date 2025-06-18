@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public abstract class PowerShellTokenCacheProvider
     {
         public const string PowerShellTokenCacheProviderKey = "PowerShellTokenCacheProviderKey";
-        //Reanme CommonTenant to OrganizationTenant with reference to
+        //Rename CommonTenant to OrganizationTenant with reference to
         //https://learn.microsoft.com/en-us/dotnet/api/microsoft.identity.client.abstractapplicationbuilder-1.withauthority?view=msal-dotnet-latest#microsoft-identity-client-abstractapplicationbuilder-1-withauthority(system-string-system-boolean
         //From MSAL, we shall always use "organizations" for both work and school and MSA accounts
         private const string organizationTenant = "organizations";

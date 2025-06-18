@@ -890,6 +890,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzNetAppFilesVolumeRestoreStatus](./Get-AzNetAppFilesVolumeRestoreStatus.md)
 [New-AzNetAppFilesVolumeRestoreStatus](./Get-AzNetAppFilesVolumeRestoreStatus.md)
 [Approve-AzNetAppFilesReplication](./Approve-AzNetAppFilesReplication.md)
-[Inititialize-AzNetAppFilesReplication](./Approve-AzNetAppFilesReplication.md)
+[Initialize-AzNetAppFilesReplication](./Approve-AzNetAppFilesReplication.md)
 [Resume-AzNetAppFilesReplication](./Resume-AzNetAppFilesReplication.md)
 [Remove-AzNetAppFilesReplication](./Remove-AzNetAppFilesReplication.md)

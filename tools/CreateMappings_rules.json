@@ -975,5 +975,9 @@
   {
     "alias": "MongoDB",
     "module": "MongoDB"
+  },
+  {
+    "module": "DependencyMap",
+    "alias": "DependencyMap"
   }
 ]

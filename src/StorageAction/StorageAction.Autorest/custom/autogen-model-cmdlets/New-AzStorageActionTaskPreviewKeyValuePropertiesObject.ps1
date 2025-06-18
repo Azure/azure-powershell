@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskPreviewKeyVal
 https://learn.microsoft.com/powershell/module/Az.StorageAction/new-azstorageactiontaskpreviewkeyvaluepropertiesobject
 #>
 function New-AzStorageActionTaskPreviewKeyValuePropertiesObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskPreviewKeyValueProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

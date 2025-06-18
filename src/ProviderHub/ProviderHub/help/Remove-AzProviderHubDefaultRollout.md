@@ -20,6 +20,13 @@ Remove-AzProviderHubDefaultRollout -ProviderNamespace <String> -RolloutName <Str
  [<CommonParameters>]
 ```
 
+### DeleteViaIdentityProviderRegistration
+```
+Remove-AzProviderHubDefaultRollout -RolloutName <String>
+ -ProviderRegistrationInputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzProviderHubDefaultRollout -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>] [-PassThru]
@@ -66,7 +73,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
@@ -110,12 +116,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProviderRegistrationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+Parameter Sets: DeleteViaIdentityProviderRegistration
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -RolloutName
 The rollout name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityProviderRegistration
 Aliases:
 
 Required: True

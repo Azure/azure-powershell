@@ -1,0 +1,46 @@
+name: Clean Old Branches
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '5 18 * * *'
+
+jobs:
+  clean-old-branches:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Clean old branches
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $cutoffDate = (Get-Date).AddDays(-30)
+          $repo = gh repo view --json nameWithOwner --jq ".nameWithOwner"
+
+          Write-Host "Checking repo: $repo"
+          $branches = gh api "repos/$repo/branches" --paginate | ConvertFrom-Json
+          Write-Host "Total branches: $($branches.Count)"
+
+          foreach ($branch in $branches) {
+            $name = $branch.name
+            if ($name -match "^Daily/Release_(\d{14})$") {
+                $timestamp = $matches[1]
+                try {
+                    $branchDate = [datetime]::ParseExact($timestamp, "yyyyMMddHHmmss", [System.Globalization.CultureInfo]::InvariantCulture)
+                } catch {
+                  Write-Warning "Failed to parse timestamp for $name"
+                  continue
+                }
+
+                if ($branchDate -lt $cutoffDate) {
+                  Write-Host "Deleting old branch: $name (created $branchDate)"
+                  gh api -X DELETE "repos/$repo/git/refs/heads/$name"
+                }
+            }
+          }

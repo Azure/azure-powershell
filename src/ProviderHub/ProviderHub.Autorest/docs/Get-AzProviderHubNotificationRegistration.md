@@ -30,6 +30,12 @@ Get-AzProviderHubNotificationRegistration -InputObject <IProviderHubIdentity> [-
  [<CommonParameters>]
 ```
 
+### GetViaIdentityProviderRegistration
+```
+Get-AzProviderHubNotificationRegistration -Name <String>
+ -ProviderRegistrationInputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the notification registration details.
 
@@ -82,7 +88,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
@@ -101,7 +106,7 @@ The notification registration.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityProviderRegistration
 Aliases: NotificationRegistrationName
 
 Required: True
@@ -123,6 +128,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProviderRegistrationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+Parameter Sets: GetViaIdentityProviderRegistration
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -150,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationRegistration
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.INotificationRegistration
 
 ## NOTES
 
