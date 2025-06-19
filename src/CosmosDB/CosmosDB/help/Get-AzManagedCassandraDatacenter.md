@@ -37,23 +37,23 @@ Get-AzManagedCassandraDatacenter -ParentObject <PSClusterResource> [-DefaultProf
 ```
 
 ## DESCRIPTION
-The **Get-AzManagedCassandraDataCenter** cmdlet fetches the properties of an existing managed Cassandra data center.
+The **Get-AzManagedCassandraDatacenter** cmdlet fetches the properties of an existing managed Cassandra data center.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Get-AzManagedCassandraDataCenter -ResourceGroupName "resourceGroupName" -ClusterName "clusterName" -DataCenterName "dataCenterName"
+Get-AzManagedCassandraDatacenter -ResourceGroupName "resourceGroupName" -ClusterName "clusterName" -DataCenterName "dataCenterName"
 ```
 
 ### Example 2
 ```powershell
-Get-AzManagedCassandraDataCenter -ResourceId "resourceId"
+Get-AzManagedCassandraDatacenter -ResourceId "resourceId"
 ```
 
 ### Example 3
 ```powershell
-$clusterResource | Get-AzManagedCassandraDataCenter
+$clusterResource | Get-AzManagedCassandraDatacenter
 ```
 
 ## PARAMETERS
