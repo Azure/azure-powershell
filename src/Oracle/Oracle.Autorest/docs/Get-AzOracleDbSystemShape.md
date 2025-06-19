@@ -14,8 +14,8 @@ Get a DbSystemShape
 
 ### List (Default)
 ```
-Get-AzOracleDbSystemShape -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzOracleDbSystemShape -Location <String> [-SubscriptionId <String[]>] [-Zone <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -171,6 +171,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+Filters the result for the given Azure Availability Zone
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

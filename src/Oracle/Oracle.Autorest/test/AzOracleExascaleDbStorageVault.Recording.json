@@ -1,0 +1,47 @@
+{
+  "AzOracleExascaleDbStorageVault+[NoContext]+ListOracleExascaleDbStorageVault+$GET+https://management.azure.com/subscriptions/4aa7be2d-ffd6-4657-828b-31ca25e39985/providers/Oracle.Database/exascaleDbStorageVaults?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/4aa7be2d-ffd6-4657-828b-31ca25e39985/providers/Oracle.Database/exascaleDbStorageVaults?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "80" ],
+        "x-ms-client-request-id": [ "d8ee2afe-9d86-41f5-94ea-c869cb297bc7" ],
+        "CommandName": [ "Get-AzOracleExascaleDbStorageVault" ],
+        "FullCommandName": [ "Get-AzOracleExascaleDbStorageVault_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.Oracle/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "05e630b2-a3f7-4aa9-bbd4-b0c981adef63" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "ffe71bde-8405-4b25-b27c-c219edfbc36c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "ffe71bde-8405-4b25-b27c-c219edfbc36c" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20250619T072908Z:ffe71bde-8405-4b25-b27c-c219edfbc36c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 37BF351F3DC74B518F7F374097DB1217 Ref B: DM2AA1091212019 Ref C: 2025-06-19T07:29:07Z" ],
+        "Date": [ "Thu, 19 Jun 2025 07:29:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5431" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/4aa7be2d-ffd6-4657-828b-31ca25e39985/resourceGroups/NetSdkTestRg/providers/Oracle.Database/exascaleDbStorageVaults/OfakeStorageNet7038\",\"name\":\"OfakeStorageNet7038\",\"type\":\"oracle.database/exascaledbstoragevaults\",\"location\":\"eastus\",\"zones\":[\"2\"],\"tags\":{\"env\":\"test\",\"purpose\":\"sdk-test\"},\"systemData\":{\"createdBy\":\"mihret.kidane@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-16T15:58:08.4947252Z\",\"lastModifiedBy\":\"85cb9edf-cccf-4ba9-a0ac-2a3394be2449\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-06-16T15:59:32.8553966Z\"},\"properties\":{\"additionalFlashCacheInPercent\":0,\"description\":\"This is a test Exascale DB Storage Vault created by the .NET SDK tests.\",\"displayName\":\"OfakeStorageNet7038\",\"highCapacityDatabaseStorage\":{\"totalSizeInGbs\":300},\"highCapacityDatabaseStorageInput\":{\"totalSizeInGbs\":300},\"timeZone\":\"UTC\",\"provisioningState\":\"Succeeded\",\"lifecycleState\":\"Available\",\"vmClusterCount\":0,\"ocid\":\"ocid1.exascaledbstoragevault.oc1.iad.anuwcljtboqpjsqal6tue4hps5hkwkda7xyj2dpcuoa2dwvyxeuk5ghd2vjq\",\"ociUrl\":\"https://cloud.oracle.com/dbaas/exadb-xs/exascaleStorageVaults/ocid1.exascaledbstoragevault.oc1.iad.anuwcljtboqpjsqal6tue4hps5hkwkda7xyj2dpcuoa2dwvyxeuk5ghd2vjq?region=us-ashburn-1\u0026tenant=orpsandbox2\u0026compartmentId=ocid1.compartment.oc1..aaaaaaaasnfbmmlxikpz5p7gneqbqe7yvlzfx6gt2cr2y3xumxjy72gemi6q\"}},{\"id\":\"/subscriptions/4aa7be2d-ffd6-4657-828b-31ca25e39985/resourceGroups/Netsdk/providers/Oracle.Database/exascaleDbStorageVaults/OfakeStorageNet2641\",\"name\":\"OfakeStorageNet2641\",\"type\":\"oracle.database/exascaledbstoragevaults\",\"location\":\"eastus\",\"zones\":[\"2\"],\"tags\":{\"env\":\"test\",\"purpose\":\"sdk-test\"},\"systemData\":{\"createdBy\":\"mihret.kidane@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-16T16:26:23.4930567Z\",\"lastModifiedBy\":\"85cb9edf-cccf-4ba9-a0ac-2a3394be2449\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-06-16T16:27:56.4883394Z\"},\"properties\":{\"additionalFlashCacheInPercent\":0,\"description\":\"This is a test Exascale DB Storage Vault created by the .NET SDK tests.\",\"displayName\":\"OfakeStorageNet2641\",\"highCapacityDatabaseStorage\":{\"totalSizeInGbs\":300},\"highCapacityDatabaseStorageInput\":{\"totalSizeInGbs\":300},\"timeZone\":\"UTC\",\"provisioningState\":\"Succeeded\",\"lifecycleState\":\"Available\",\"vmClusterCount\":0,\"ocid\":\"ocid1.exascaledbstoragevault.oc1.iad.anuwcljtboqpjsqam2flwpah7ofyqabae7hrh7f5a6wcb6ekmjq75xj5y43q\",\"ociUrl\":\"https://cloud.oracle.com/dbaas/exadb-xs/exascaleStorageVaults/ocid1.exascaledbstoragevault.oc1.iad.anuwcljtboqpjsqam2flwpah7ofyqabae7hrh7f5a6wcb6ekmjq75xj5y43q?region=us-ashburn-1\u0026tenant=orpsandbox2\u0026compartmentId=ocid1.compartment.oc1..aaaaaaaasnfbmmlxikpz5p7gneqbqe7yvlzfx6gt2cr2y3xumxjy72gemi6q\"}},{\"id\":\"/subscriptions/4aa7be2d-ffd6-4657-828b-31ca25e39985/resourceGroups/HanTest2/providers/Oracle.Database/exascaleDbStorageVaults/HanVS1\",\"name\":\"HanVS1\",\"type\":\"oracle.database/exascaledbstoragevaults\",\"location\":\"eastus\",\"zones\":[\"3\"],\"tags\":{},\"systemData\":{\"createdBy\":\"rae.cai@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-16T18:41:27.8241751Z\",\"lastModifiedBy\":\"85cb9edf-cccf-4ba9-a0ac-2a3394be2449\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-06-16T18:42:37.4265976Z\"},\"properties\":{\"additionalFlashCacheInPercent\":0,\"description\":\"HanVS1\",\"displayName\":\"HanVS1\",\"highCapacityDatabaseStorage\":{\"totalSizeInGbs\":300},\"highCapacityDatabaseStorageInput\":{\"totalSizeInGbs\":300},\"timeZone\":\"UTC\",\"provisioningState\":\"Succeeded\",\"lifecycleState\":\"Available\",\"vmClusterCount\":0,\"ocid\":\"ocid1.exascaledbstoragevault.oc1.iad.anuwcljrboqpjsqafu2yz3uzuve3ydcmwygdqofaexfgsm245wfz6uhwdcoa\",\"ociUrl\":\"https://cloud.oracle.com/dbaas/exadb-xs/exascaleStorageVaults/ocid1.exascaledbstoragevault.oc1.iad.anuwcljrboqpjsqafu2yz3uzuve3ydcmwygdqofaexfgsm245wfz6uhwdcoa?region=us-ashburn-1\u0026tenant=orpsandbox2\u0026compartmentId=ocid1.compartment.oc1..aaaaaaaasnfbmmlxikpz5p7gneqbqe7yvlzfx6gt2cr2y3xumxjy72gemi6q\"}},{\"id\":\"/subscriptions/4aa7be2d-ffd6-4657-828b-31ca25e39985/resourceGroups/giversion-test/providers/Oracle.Database/exascaleDbStorageVaults/ADMIN\",\"name\":\"ADMIN\",\"type\":\"oracle.database/exascaledbstoragevaults\",\"location\":\"eastus\",\"zones\":[\"3\"],\"tags\":{},\"systemData\":{\"createdBy\":\"raghunadh.metta@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-18T21:50:22.8393713Z\",\"lastModifiedBy\":\"85cb9edf-cccf-4ba9-a0ac-2a3394be2449\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-06-18T21:51:25.2073674Z\"},\"properties\":{\"displayName\":\"ADMIN\",\"highCapacityDatabaseStorage\":{\"totalSizeInGbs\":300},\"highCapacityDatabaseStorageInput\":{\"totalSizeInGbs\":300},\"timeZone\":\"UTC\",\"provisioningState\":\"Failed\",\"lifecycleState\":\"Failed\"}},{\"id\":\"/subscriptions/4aa7be2d-ffd6-4657-828b-31ca25e39985/resourceGroups/giversion-test/providers/Oracle.Database/exascaleDbStorageVaults/giv\",\"name\":\"giv\",\"type\":\"oracle.database/exascaledbstoragevaults\",\"location\":\"eastus\",\"zones\":[\"3\"],\"tags\":{},\"systemData\":{\"createdBy\":\"raghunadh.metta@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-18T22:08:33.4075089Z\",\"lastModifiedBy\":\"85cb9edf-cccf-4ba9-a0ac-2a3394be2449\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-06-18T22:09:21.4089173Z\"},\"properties\":{\"displayName\":\"giv\",\"highCapacityDatabaseStorage\":{\"totalSizeInGbs\":300},\"highCapacityDatabaseStorageInput\":{\"totalSizeInGbs\":300},\"timeZone\":\"UTC\",\"provisioningState\":\"Failed\",\"lifecycleState\":\"Failed\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

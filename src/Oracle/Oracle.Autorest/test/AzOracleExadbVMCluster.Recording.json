@@ -1,0 +1,45 @@
+{
+  "AzOracleExadbVMCluster+[NoContext]+ListOracleExadbVMClusters+$GET+https://management.azure.com/subscriptions/4aa7be2d-ffd6-4657-828b-31ca25e39985/providers/Oracle.Database/exadbVmClusters?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/4aa7be2d-ffd6-4657-828b-31ca25e39985/providers/Oracle.Database/exadbVmClusters?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "79" ],
+        "x-ms-client-request-id": [ "0a07a8f5-fee8-4d4e-8f83-f6014846a84a" ],
+        "CommandName": [ "Get-AzOracleExadbVMCluster" ],
+        "FullCommandName": [ "Get-AzOracleExadbVMCluster_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.Oracle/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "e26557ba-5522-4f4a-a15c-a20e73d88ac9" ],
+        "x-ms-correlation-request-id": [ "e26557ba-5522-4f4a-a15c-a20e73d88ac9" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20250619T072906Z:e26557ba-5522-4f4a-a15c-a20e73d88ac9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C044D7E0608C4B08821672143E5D9F13 Ref B: DM2AA1091212019 Ref C: 2025-06-19T07:29:05Z" ],
+        "Date": [ "Thu, 19 Jun 2025 07:29:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  }
+}
