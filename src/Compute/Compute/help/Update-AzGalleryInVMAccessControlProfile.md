@@ -14,8 +14,9 @@ schema: 2.0.0
 
 ```
 Update-AzGalleryInVMAccessControlProfile -ResourceGroupName <String> -GalleryName <String>
- -GalleryInVMAccessControlProfileName <String> [-ApplicableHostEndPoint <String>] [-Description <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -GalleryInVMAccessControlProfileName <String> -Location <String> [-ApplicableHostEndPoint <String>]
+ [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +37,7 @@ PS C:\> {{ Add example code here }}
 This property allows you to specify the Endpoint type for which this profile is defining the access control for.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -51,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -67,7 +68,7 @@ The description of this gallery inVMAccessControlProfile resource.
 This property is updatable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +83,7 @@ Accept wildcard characters: False
 The name of the Gallery In VM Access Control Profile.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -97,7 +98,22 @@ Accept wildcard characters: False
 The name of the gallery.
 
 ```yaml
-Type: String
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Location
+The location of the Gallery In VM Access Control Profile.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +128,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -127,7 +143,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

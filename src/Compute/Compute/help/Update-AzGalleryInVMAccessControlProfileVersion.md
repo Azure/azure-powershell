@@ -16,7 +16,7 @@ schema: 2.0.0
 Update-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName <String> -GalleryName <String>
  -GalleryInVMAccessControlProfileName <String> -Name <String>
  [-GalleryInVmAccessControlProfileVersion <PSGalleryInVMAccessControlProfileVersion>] [-Mode <String>]
- [-DefaultAccess <String>] [-TargetRegion <String[]>] [-ExcludeFromLatest <Boolean>]
+ [-DefaultAccess <String>] [-TargetRegion <String[]>] [-ExcludeFromLatest <Boolean>] -Location <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ PS C:\> {{ Add example code here }}
 This property allows you to specify if the requests will be allowed to access the host endpoints.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 If set to true, Virtual Machines deployed from the latest version of the Resource Profile won't use this Profile version.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 The name of the Gallery In VM Access Control Profile.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 PSGalleryInVmAccessControlProfileVersion object created from New-AzGalleryInVMAccessControlProfileVersionConfig.
 
 ```yaml
-Type: PSGalleryInVMAccessControlProfileVersion
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSGalleryInVMAccessControlProfileVersion
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +113,22 @@ Accept wildcard characters: False
 The name of the gallery.
 
 ```yaml
-Type: String
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Location
+The location of the Gallery In VM Access Control Profile.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +143,7 @@ Accept wildcard characters: False
 This property allows you to specify whether the access control rules are in Audit mode, in Enforce mode or Disabled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +158,7 @@ Accept wildcard characters: False
 The name of the Gallery In VM Access Control Profile Version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: GalleryInVMAccessControlProfileVersionName
 
@@ -158,7 +173,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -173,7 +188,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -189,7 +204,7 @@ The names of the target regions where the Resource Profile version is going to b
 This property is updatable.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
