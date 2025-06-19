@@ -31,13 +31,13 @@ New-AzManagedCassandraDatacenter -Location <String> -DelegatedSubnetId <String>
 ```
 
 ## DESCRIPTION
-The **New-AzManagedCassandraDataCenter** cmdlet creates a new managed Cassandra data center.
+The **New-AzManagedCassandraDatacenter** cmdlet creates a new managed Cassandra data center.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-New-AzManagedCassandraDataCenter `
+New-AzManagedCassandraDatacenter `
  -ResourceGroupName "resourceGroupName" `
  -ClusterName "clusterName" `
  -DataCenterName "dataCenterName" `
