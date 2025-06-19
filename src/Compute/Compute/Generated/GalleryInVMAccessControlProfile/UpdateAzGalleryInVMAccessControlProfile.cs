@@ -61,7 +61,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Gallery In VM Access Control Profile.")]
         public string GalleryInVMAccessControlProfileName { get; set; }
-        
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The location of the Gallery In VM Access Control Profile.")]
+        public string Location { get; set; }
+
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -86,6 +92,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string galleryName = this.GalleryName;
                     string galleryInVMAccessControlProfileName = this.GalleryInVMAccessControlProfileName;
                     GalleryInVMAccessControlProfile galleryInVMAccessControlProfile = new GalleryInVMAccessControlProfile();
+                    galleryInVMAccessControlProfile.Location = this.Location;
 
                     galleryInVMAccessControlProfile.Properties = new GalleryInVMAccessControlProfileProperties();
 

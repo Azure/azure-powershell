@@ -100,6 +100,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "If set to true, Virtual Machines deployed from the latest version of the Resource Profile won't use this Profile version.")]
         public bool? ExcludeFromLatest { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The location of the Gallery In VM Access Control Profile.")]
+        public string Location { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -115,6 +121,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     psGalleryInVMAccessControlProfileVersion = new PSGalleryInVMAccessControlProfileVersion();
                 }
 
+                psGalleryInVMAccessControlProfileVersion.Location = this.Location;
                 psGalleryInVMAccessControlProfileVersion.Mode = this.IsParameterBound(c => c.Mode) ? this.Mode : psGalleryInVMAccessControlProfileVersion.Mode;
                 psGalleryInVMAccessControlProfileVersion.DefaultAccess = this.IsParameterBound(c => c.DefaultAccess) ? this.DefaultAccess : psGalleryInVMAccessControlProfileVersion.DefaultAccess;
                 psGalleryInVMAccessControlProfileVersion.ExcludeFromLatest = this.IsParameterBound(c => c.ExcludeFromLatest) ? this.ExcludeFromLatest : psGalleryInVMAccessControlProfileVersion.ExcludeFromLatest;
