@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed the issue that context is not cleared when WAM is enabled.
 
 ## Version 5.1.0
 * Enabled setting the authentication scope for SSH cmdlets by `Set-AzEnvironment -SshAuthScope <String>`.

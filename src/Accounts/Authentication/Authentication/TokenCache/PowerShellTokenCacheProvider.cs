@@ -12,10 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 using Azure.Identity;
 
 using Hyak.Common;
@@ -24,12 +20,14 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Extensions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
-using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
-using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Broker;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -55,14 +53,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             _tokenCacheDataToFlush = null;
         }
 
-        public virtual void ClearCache()
+        public virtual void ClearCache(string authority = null)
         {
         }
 
-        public bool TryRemoveAccount(string accountId)
+        public bool TryRemoveAccount(string accountId, string authority = null)
         {
             TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Calling GetAccountsAsync"));
-            var client = CreatePublicClient();
+            var client = CreatePublicClient(authority);
             var account = client.GetAccountsAsync()
                             .ConfigureAwait(false).GetAwaiter().GetResult()
                             .FirstOrDefault(a => string.Equals(a.Username, accountId, StringComparison.OrdinalIgnoreCase));
@@ -89,7 +87,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             TracingAdapter.Information(string.Format("[PowerShellTokenCacheProvider] Calling GetAccountsAsync on {0}", authority ?? "AzureCloud"));
 
-            return CreatePublicClient(authority: authority)
+            return CreatePublicClient(authority)
                     .GetAccountsAsync()
                     .ConfigureAwait(false).GetAwaiter().GetResult();
         }
@@ -195,18 +193,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// </summary>
         public virtual IPublicClientApplication CreatePublicClient(string authority = null)
         {
-            var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId);
-            if (AzConfigReader.IsWamEnabled(authority))
-            {
-                builder = builder.WithBroker(new BrokerOptions(BrokerOptions.OperatingSystems.Windows));
-            }
-            if (!string.IsNullOrEmpty(authority))
-            {
-                builder.WithAuthority(authority);
-            }
-            var client = builder.Build();
-            RegisterCache(client);
-            return client;
+            return CreatePublicClient(authority, organizationTenant);
         }
 
         public abstract TokenCachePersistenceOptions GetTokenCachePersistenceOptions();
