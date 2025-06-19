@@ -1,55 +1,63 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azmanagedcassandradatacenter
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/update-azmanagedcassandradatacenter
 schema: 2.0.0
 ---
 
-# New-AzManagedCassandraDatacenter
+# Update-AzManagedCassandraDatacenter
 
 ## SYNOPSIS
-Create a new Azure Managed Instances for Apache Cassandra data center.
+Update an existing Azure Managed Instances for Apache Cassandra data center.
 
 ## SYNTAX
 
 ### ByNameParameterSet (Default)
 ```
-New-AzManagedCassandraDatacenter -Location <String> -DelegatedSubnetId <String> [-Sku <String>]
- [-DiskCapacity <Int32>] [-ManagedDiskCustomerKeyUri <String>] [-UseAvailabilityZone]
- -ResourceGroupName <String> -ClusterName <String> -DatacenterName <String> [-NodeCount <Int32>]
+Update-AzManagedCassandraDatacenter -ResourceGroupName <String> -ClusterName <String> -DatacenterName <String>
+ [-NodeCount <Int32>] [-Base64EncodedCassandraYamlFragment <String>] [-BackupStorageCustomerKeyUri <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdParameterSet
+```
+Update-AzManagedCassandraDatacenter -ResourceId <String> [-NodeCount <Int32>]
+ [-Base64EncodedCassandraYamlFragment <String>] [-BackupStorageCustomerKeyUri <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByObjectParameterSet
+```
+Update-AzManagedCassandraDatacenter -InputObject <PSDataCenterResource> [-NodeCount <Int32>]
  [-Base64EncodedCassandraYamlFragment <String>] [-BackupStorageCustomerKeyUri <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-New-AzManagedCassandraDatacenter -Location <String> -DelegatedSubnetId <String>
- -ParentObject <PSClusterResource> [-Sku <String>] [-DiskCapacity <Int32>]
- [-ManagedDiskCustomerKeyUri <String>] [-UseAvailabilityZone] [-NodeCount <Int32>]
+Update-AzManagedCassandraDatacenter -ParentObject <PSClusterResource> [-NodeCount <Int32>]
  [-Base64EncodedCassandraYamlFragment <String>] [-BackupStorageCustomerKeyUri <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzManagedCassandraDataCenter** cmdlet creates a new managed Cassandra data center.
+The **Update-AzManagedCassandraDatacenter** cmdlet updates an existing managed Cassandra data center.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-New-AzManagedCassandraDataCenter `
+Update-AzManagedCassandraDatacenter `
  -ResourceGroupName "resourceGroupName" `
  -ClusterName "clusterName" `
  -DataCenterName "dataCenterName" `
- -DelegatedSubnetId "resourceId" `
- -Location "location" `
  -NodeCount 3
 ```
 
 ## PARAMETERS
 
 ### -BackupStorageCustomerKeyUri
-URI to a KeyVault key used to encrypt backups of the cluster. If omitted, Azure's own keys will be used.
+URI to KeyVault key that is used to encrypt Cassandra backups. If not set, will use Azure's own keys. Ensure the system assigned identity of the cluster has been assigned appropriate permissions (key get/wrap/unwrap permissions) on the key.
 
 ```yaml
 Type: System.String
@@ -123,63 +131,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DelegatedSubnetId
-The resource id of the virtual network subnet where managed Cassandra should attach network interfaces.
+### -InputObject
+Managed Cassandra Datacenter object
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDataCenterResource
+Parameter Sets: ByObjectParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DiskCapacity
-The number of data disks to connect to each node in the cluster.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 4
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-The location to create the managed Cassandra cluster in.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedDiskCustomerKeyUri
-URI of a KeyVault key used to encrypt data at rest in the cluster. If omitted, Azure's own keys will be used.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -228,32 +191,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Sku
-Name of the virtual machine sku to use for nodes in this data center. See the [documentation](https://learn.microsoft.com/en-us/azure/managed-instance-apache-cassandra/create-cluster-cli) for supported skus.
+### -ResourceId
+ResourceId of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: Standard_DS14_v2
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UseAvailabilityZone
-If set, allocate nodes in this data center using availability zones if they are supported in the region.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: True
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -294,6 +242,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.CosmosDB.Models.PSClusterResource
+
+### Microsoft.Azure.Commands.CosmosDB.Models.PSDataCenterResource
 
 ## OUTPUTS
 
