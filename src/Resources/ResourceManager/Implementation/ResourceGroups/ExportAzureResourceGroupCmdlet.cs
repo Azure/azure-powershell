@@ -185,6 +185,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     }
                 }
 
+                // Determine the correct file extension based on OutputFormat
+                string extension = OutputFormat.Equals(ExportTemplateOutputFormat.Bicep, StringComparison.OrdinalIgnoreCase) ? ".bicep" : ".json";
+
                 string path = FileUtility.SaveTemplateFile(
                     templateName: this.ResourceGroupName,
                     contents: contents,
@@ -193,7 +196,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             ? System.IO.Path.Combine(CurrentPath(), this.ResourceGroupName)
                             : this.TryResolvePath(this.Path),
                     overwrite: Force.IsPresent,
-                    shouldContinue: ShouldContinue);
+                    shouldContinue: ShouldContinue,
+                    extension: extension // Pass the extension
+                    );
 
                 WriteObject(PowerShellUtilities.ConstructPSObject(null, "Path", path));
             }

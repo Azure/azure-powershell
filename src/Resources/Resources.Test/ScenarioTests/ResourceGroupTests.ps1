@@ -421,7 +421,6 @@ function Test-ExportResourceGroupBicep
             Clean-ResourceGroup $rgname
         }
     }
-}
 
 
 <#
