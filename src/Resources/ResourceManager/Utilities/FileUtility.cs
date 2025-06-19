@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         /// <param name="overwrite">Overrides existing file</param>
         /// <param name="shouldContinue">The confirmation action</param>
         /// <returns>The file path</returns>
-        public static string SaveTemplateFile(string templateName, string contents, string outputPath, bool overwrite, Func<string, string, bool> shouldContinue)
+        public static string SaveTemplateFile(string templateName, string contents, string outputPath, bool overwrite, Func<string, string, bool> shouldContinue, string extension = ".json") // Added extension parameter with default
         {
             StringBuilder finalOutputPath = new StringBuilder();
 
