@@ -233,6 +233,14 @@ directive:
 
   - where:
       verb: Get
+      subject: ^PendingConnection
+      parameter-name: ConnectionName
+    set:
+      parameter-name: Name
+      alias: ConnectionName
+
+  - where:
+      verb: Get
       subject: ^ListPendingFlow
     set:
       subject: PendingFlow

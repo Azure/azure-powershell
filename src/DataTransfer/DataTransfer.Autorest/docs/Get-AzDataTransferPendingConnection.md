@@ -13,8 +13,8 @@ Lists all pending remote connections that are linkable to this connection.
 ## SYNTAX
 
 ```
-Get-AzDataTransferPendingConnection -ConnectionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzDataTransferPendingConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,21 +66,6 @@ This example lists all the pending send side connections for the connection `Con
 
 ## PARAMETERS
 
-### -ConnectionName
-The name for the connection to perform the operation on.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -91,6 +76,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name for the connection to perform the operation on.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ConnectionName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
