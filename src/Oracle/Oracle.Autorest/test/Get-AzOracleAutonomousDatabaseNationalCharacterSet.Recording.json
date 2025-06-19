@@ -1,17 +1,17 @@
 {
-  "Get-AzOracleAutonomousDatabaseNationalCharacterSet+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDatabaseNationalCharacterSets?api-version=2023-09-01+1": {
+  "Get-AzOracleAutonomousDatabaseNationalCharacterSet+[NoContext]+List+$GET+https://management.azure.com/subscriptions/4aa7be2d-ffd6-4657-828b-31ca25e39985/providers/Oracle.Database/locations/eastus/autonomousDatabaseNationalCharacterSets?api-version=2025-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDatabaseNationalCharacterSets?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/4aa7be2d-ffd6-4657-828b-31ca25e39985/providers/Oracle.Database/locations/eastus/autonomousDatabaseNationalCharacterSets?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "a24f88db-bb56-462c-a077-d133ef72a8c4" ],
+        "x-ms-unique-id": [ "91" ],
+        "x-ms-client-request-id": [ "10f29b23-9e7e-4063-a37c-efee9e3c0adb" ],
         "CommandName": [ "Get-AzOracleAutonomousDatabaseNationalCharacterSet" ],
         "FullCommandName": [ "Get-AzOracleAutonomousDatabaseNationalCharacterSet_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.Oracle/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,25 +22,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "Vary": [ "Origin", "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "tenantId=9195a8c5-6bc8-41cb-80ef-2e772dbc1f73,objectId=30fd5364-7348-4647-b4e8-d8c363ec6b7c/westcentralus/3881f46b-5609-4199-b8f7-e1375d987e41" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "opc-request-id": [ "/21AC9B15174A2CEC1972C6B65C438942/83CF06B49E422D7C788A0659727D8162" ],
+        "opc-request-id": [ "/3BE02A96F3DC6CE75D03FC0AD31E70AD/103D8925397D5F8D673261688A79FC53" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "f412f5bf-1f64-4a42-89fe-90b0bb6b015b" ],
-        "x-ms-correlation-request-id": [ "f9b516e6-a9e2-4977-9082-54850b6a7b91" ],
+        "x-ms-request-id": [ "43acd328-abc9-4f8e-a0e2-e5fe20d710d3" ],
+        "x-ms-correlation-request-id": [ "da5ad1d4-4327-49e3-adfa-be674db23925" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "UKWEST:20240705T102832Z:f9b516e6-a9e2-4977-9082-54850b6a7b91" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20250619T072945Z:da5ad1d4-4327-49e3-adfa-be674db23925" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 44E698ED144F4D16B1FBCAE99B1E2437 Ref B: AMS231020615053 Ref C: 2024-07-05T10:28:31Z" ],
-        "Date": [ "Fri, 05 Jul 2024 10:28:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E186E9DCB22E49BD912403119F445546 Ref B: DM2AA1091214049 Ref C: 2025-06-19T07:29:43Z" ],
+        "Date": [ "Thu, 19 Jun 2025 07:29:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "429" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDatabaseNationalCharacterSets/al16utf16\",\"type\":\"NATIONAL\",\"properties\":{\"characterSet\":\"AL16UTF16\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDatabaseNationalCharacterSets/utf8\",\"type\":\"NATIONAL\",\"properties\":{\"characterSet\":\"UTF8\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/4aa7be2d-ffd6-4657-828b-31ca25e39985/providers/Oracle.Database/locations/eastus/autonomousDatabaseNationalCharacterSets/al16utf16\",\"type\":\"NATIONAL\",\"properties\":{\"characterSet\":\"AL16UTF16\"}},{\"id\":\"/subscriptions/4aa7be2d-ffd6-4657-828b-31ca25e39985/providers/Oracle.Database/locations/eastus/autonomousDatabaseNationalCharacterSets/utf8\",\"type\":\"NATIONAL\",\"properties\":{\"characterSet\":\"UTF8\"}}]}",
       "isContentBase64": false
     }
   }
