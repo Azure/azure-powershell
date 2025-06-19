@@ -32,7 +32,7 @@ pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisCache.1.11.0.zip;sourceType=sa]Az.RedisCache,1.11.0
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisEnterpriseCache.1.5.0.zip;sourceType=sa]Az.RedisEnterpriseCache,1.5.0
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Relay.2.1.0.zip;sourceType=sa]Az.Relay,2.1.0
-pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Reservations.0.14.0.zip;sourceType=sa]Az.Reservations,0.14.0
+pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Reservations.0.14.1.zip;sourceType=sa]Az.Reservations,0.14.1
 pac35,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceGraph.1.2.1.zip;sourceType=sa]Az.ResourceGraph,1.2.1
 pac36,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceMover.1.3.0.zip;sourceType=sa]Az.ResourceMover,1.3.0
 pac37,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Resources.8.0.0.zip;sourceType=sa]Az.Resources,8.0.0
