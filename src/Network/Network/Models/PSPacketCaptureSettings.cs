@@ -20,24 +20,21 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSPacketCaptureSettings 
     {
         /// <summary>
-        /// Gets or sets number of file count. Default value of count is 10 and maximum
-        /// number is 10000.
+        /// Gets or sets number of file count.
         /// </summary>
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public int? FileCount { get; set; }
 
         /// <summary>
-        /// Gets or sets number of bytes captured per packet. Default value in bytes
-        /// 104857600 (100MB) and maximum in bytes 4294967295 (4GB).
+        /// Gets or sets number of bytes captured per packet.
         /// </summary>
         [JsonProperty(Order = 2)]
         [Ps1Xml(Target = ViewControl.Table)]
         public long? FileSizeInBytes { get; set; }
 
         /// <summary>
-        /// Gets or sets maximum duration of the capture session in seconds is 604800s
-        /// (7 days) for a file. Default value in second 86400s (1 day).
+        /// Gets or sets maximum duration of the capture session in seconds.
         /// </summary>
         [JsonProperty(Order = 3)]
         [Ps1Xml(Target = ViewControl.Table)]

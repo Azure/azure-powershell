@@ -58,7 +58,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileCount
-Number of file count. Default value is 10.
+Number of file count. Default value is 1.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -67,13 +67,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 10
+Default value: 1
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -FileSizeInBytes
-Number of bytes captured per packet. Default value is 104857600.
+Number of bytes captured per packet. Default value is 1073741824.
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -82,13 +82,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 104857600
+Default value: 1073741824
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -SessionTimeLimitInSeconds
-Capture session in seconds. Default value is 86400.
+Capture session in seconds. Default value is 18000.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -97,7 +97,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 86400
+Default value: 18000
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
