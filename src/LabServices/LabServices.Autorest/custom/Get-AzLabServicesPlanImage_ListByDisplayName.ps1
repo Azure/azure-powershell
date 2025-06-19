@@ -36,7 +36,7 @@ function Get-AzLabServicesPlanImage_ListByDisplayName {
 
         [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
         [System.String]
-        # The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+        # The name of lab service lab plan.
         ${LabPlanName},
    
         [Parameter(Mandatory, ValueFromPipelineByPropertyName)]

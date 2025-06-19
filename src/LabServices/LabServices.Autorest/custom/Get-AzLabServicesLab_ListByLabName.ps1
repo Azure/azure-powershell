@@ -37,7 +37,7 @@ param(
     [Parameter(Mandatory)]
     [SupportsWildcards()]
     [System.String]
-    # The name of the lab that uniquely identifies it.
+    # The name of lab service lab.
     ${Name},
 
     [Parameter()]

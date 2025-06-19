@@ -44,7 +44,7 @@ function Add-AzLabServicesUserQuota_Email {
         [Parameter(Mandatory)]
         [System.String]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-        # The name of the lab.
+        # The name of the lab service lab.
         ${LabName},
    
         [Parameter(Mandatory)]

@@ -19,7 +19,7 @@ param(
     [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    # Lab resource to create user in.
+    # The object of lab service lab to create user in.
     ${Lab},
 
     [Parameter(Mandatory)]

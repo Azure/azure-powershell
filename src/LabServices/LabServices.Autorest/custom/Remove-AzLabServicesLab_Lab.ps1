@@ -19,7 +19,7 @@ param(
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    # The lab object to remove.
+    # The object of lab service lab to remove.
     ${Lab},
 
     [Parameter()]

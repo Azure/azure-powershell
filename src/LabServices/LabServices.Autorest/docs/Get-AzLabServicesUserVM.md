@@ -87,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -Lab
-The Lab object.
+The object of lab service lab.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -LabName
-The name of the lab that uniquely identifies it.
+The name of lab service lab.
 
 ```yaml
 Type: System.String
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource Id of the VM that uniquely identifies it.
+The resource Id of lab service user.
 
 ```yaml
 Type: System.String
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -User
-The user object.
+The object of lab service user.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User

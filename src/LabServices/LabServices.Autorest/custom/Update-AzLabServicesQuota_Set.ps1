@@ -44,7 +44,7 @@ function Update-AzLabServicesQuota_Set {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
-        # The name of the lab that uniquely identifies it.
+        # The name of lab service lab.
         ${LabName},
 
         [Parameter(Mandatory)]

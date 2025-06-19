@@ -106,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -LabName
-The name of the lab.
+The name of the lab service lab.
 
 ```yaml
 Type: System.String
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 ```
 
 ### -User
-User of a lab that can register for and use virtual machines within the lab.
+The object of lab service user.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User

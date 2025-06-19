@@ -148,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource Id of the lab plan that uniquely identifies it.
+The resource Id of lab service lab plan.
 
 ```yaml
 Type: System.String

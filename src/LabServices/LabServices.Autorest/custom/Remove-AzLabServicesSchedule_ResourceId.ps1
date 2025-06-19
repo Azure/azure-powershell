@@ -18,7 +18,7 @@ function Remove-AzLabServicesSchedule_ResourceId {
 param(
     [Parameter(Mandatory)]
     [System.String]
-    # The resource Id of the schedule that uniquely identifies it.
+    # The resource Id of lab service schedule.
     ${ResourceId},
 
     [Parameter()]

@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource Id of the VM that uniquely identifies it.
+The resource Id of lab service VM.
 
 ```yaml
 Type: System.String

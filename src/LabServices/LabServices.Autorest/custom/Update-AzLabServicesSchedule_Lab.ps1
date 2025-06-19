@@ -20,12 +20,12 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    # Lab resource to update schedule in.
+    # The object of lab service lab.
     ${Lab},
 
     [Parameter(Mandatory)]
     [System.String]
-    # The resource ID of the schedule to update.
+    # The name of lab service schedule to update.
     ${Name},
 
     [Parameter()]

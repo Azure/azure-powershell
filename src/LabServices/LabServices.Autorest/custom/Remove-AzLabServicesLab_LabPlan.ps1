@@ -19,7 +19,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    # The LabPlan resource to remove.
+    # The object of lab service lab plan to remove.
     ${LabPlan},
 
     [Parameter(Mandatory)]

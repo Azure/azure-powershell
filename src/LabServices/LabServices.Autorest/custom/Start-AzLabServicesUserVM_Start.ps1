@@ -44,13 +44,13 @@ function Start-AzLabServicesUserVM_Start {
         [Parameter(Mandatory)]
         [System.String]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-        # The name of the lab that uniquely identifies it.
+        # The name of lab service lab.
         ${LabName},
    
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
-        # Email address of the user.
+        # Email address of the user that can use virtual machines.
         ${Email},
     
         [Parameter()]

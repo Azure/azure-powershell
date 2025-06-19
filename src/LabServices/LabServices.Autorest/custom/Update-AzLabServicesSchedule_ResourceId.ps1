@@ -18,7 +18,7 @@ function Update-AzLabServicesSchedule_ResourceId {
 param(
     [Parameter(Mandatory)]
     [System.String]
-    # The resource ID of the schedule to update.
+    # The resource ID of lab service schedule to update.
     ${ResourceId},
 
     [Parameter()]

@@ -18,13 +18,13 @@ function Get-AzLabServicesVM_Lab {
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
-        # The lab object.
+        # The object of lab service lab.
         ${Lab},
    
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
-        # The name of VM.
+        # The name of lab service VM.
         ${Name},
 
         [Parameter()]

@@ -29,7 +29,7 @@ function Get-AzLabServicesUserVM_ResourceId {
     param(
         [Parameter(Mandatory)]
         [System.String]
-        # The resource Id of the VM that uniquely identifies it.
+        # The resource Id of lab service user.
         ${ResourceId},
   
         [Parameter()]

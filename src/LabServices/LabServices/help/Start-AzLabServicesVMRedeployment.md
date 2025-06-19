@@ -178,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource Id of the virtual machine that uniquely identifies it.
+The resource Id of lab service virtual machine.
 
 ```yaml
 Type: System.String

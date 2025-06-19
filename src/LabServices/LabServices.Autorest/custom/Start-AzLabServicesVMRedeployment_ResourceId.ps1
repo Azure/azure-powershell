@@ -29,7 +29,7 @@ function Start-AzLabServicesVMRedeployment_ResourceId {
     param(
         [Parameter(Mandatory)]
         [System.String]
-        # The resource Id of the virtual machine that uniquely identifies it.
+        # The resource Id of lab service virtual machine.
         ${ResourceId},
   
         [Parameter()]

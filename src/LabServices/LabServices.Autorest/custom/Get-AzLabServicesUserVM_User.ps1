@@ -29,7 +29,7 @@ function Get-AzLabServicesUserVM_User {
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
-        # The user object.
+        # The object of lab service user.
         ${User},
   
         [Parameter()]

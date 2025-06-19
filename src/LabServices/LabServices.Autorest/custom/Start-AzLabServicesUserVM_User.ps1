@@ -29,7 +29,7 @@ function Start-AzLabServicesUserVM_User {
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
-        # User of a lab that can register for and use virtual machines within the lab.
+        # The object of lab service user that can use virtual machines.
         ${User},
   
         [Parameter()]

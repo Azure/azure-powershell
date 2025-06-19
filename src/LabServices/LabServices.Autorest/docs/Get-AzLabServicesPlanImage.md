@@ -164,7 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -LabPlan
-The lab plan to get images for.
+The object of lab service lab plan to get images for.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
@@ -241,7 +241,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource Id of the image that uniquely identifies it.
+The resource Id of lab service lab plan.
 
 ```yaml
 Type: System.String

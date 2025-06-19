@@ -29,7 +29,7 @@ function Reset-AzLabServicesVMPassword_VM {
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine]
-        # The virtual machine object.
+        # The object of lab service virtual machine.
         ${VM},
   
         [Parameter()]

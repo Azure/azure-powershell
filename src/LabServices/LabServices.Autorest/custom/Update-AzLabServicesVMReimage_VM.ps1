@@ -18,7 +18,7 @@ function Update-AzLabServicesVMReimage_VM {
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine]
-    # The virtual machine resource to reimage.
+    # The object of lab service virtual machine.
     ${VM},
 
     [Parameter()]

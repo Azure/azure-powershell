@@ -19,7 +19,7 @@ param(
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    # The User resource to remove.
+    # The object of lab service user to remove.
     ${User},
 
     [Parameter()]

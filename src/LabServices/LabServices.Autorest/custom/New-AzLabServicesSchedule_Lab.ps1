@@ -19,13 +19,13 @@ function New-AzLabServicesSchedule_Lab {
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-        # The lab object.
+        # The object of lab service lab.
         ${Lab},
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
-        # The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+        # The name of lab service schedule.
         ${Name},
     
         [Parameter()]

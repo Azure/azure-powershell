@@ -29,7 +29,7 @@ function Get-AzLabServicesPlanImage_ResourceId {
     param(
         [Parameter(Mandatory)]
         [System.String]
-        # The resource Id of the image that uniquely identifies it.
+        # The resource Id of lab service lab plan.
         ${ResourceId},
 
         [Parameter()]

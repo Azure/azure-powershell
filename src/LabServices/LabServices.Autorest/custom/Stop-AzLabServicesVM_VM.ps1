@@ -18,7 +18,7 @@ function Stop-AzLabServicesVM_VM {
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine]
-        # The Virtual Machine resource to stop.
+        # The object of lab service virtual machine to stop.
         ${VM},
   
         [Parameter()]

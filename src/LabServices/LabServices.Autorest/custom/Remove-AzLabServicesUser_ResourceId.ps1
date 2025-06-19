@@ -18,7 +18,7 @@ function Remove-AzLabServicesUser_ResourceId {
 param(
     [Parameter(Mandatory)]
     [System.String]
-    # The resource Id of the user that uniquely identifies it.
+    # The resource Id of lab service user.
     ${ResourceId},
 
     [Parameter()]

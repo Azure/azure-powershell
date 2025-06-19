@@ -30,7 +30,7 @@ function Update-AzLabServicesQuota_Lab {
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-        # The Lab object.
+        # The object of lab service lab.
         ${Lab},
 
         [Parameter(Mandatory)]

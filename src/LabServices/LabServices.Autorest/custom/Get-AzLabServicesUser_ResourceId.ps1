@@ -18,7 +18,7 @@ function Get-AzLabServicesUser_ResourceId {
     param(
         [Parameter(Mandatory)]
         [System.String]
-        # The resource ID of the user.
+        # The resource ID of lab service user.
         ${ResourceId},
    
         [Parameter()]

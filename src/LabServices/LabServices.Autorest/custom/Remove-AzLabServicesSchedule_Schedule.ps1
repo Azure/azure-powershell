@@ -19,7 +19,7 @@ param(
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Schedule]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    # The Schedule resource to remove.
+    # The object of lab service schedule to remove.
     ${Schedule},
 
     [Parameter()]

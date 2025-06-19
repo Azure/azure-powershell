@@ -29,7 +29,7 @@ function Get-AzLabServicesLabForVM {
     param(
         [Parameter(Mandatory)]
         [System.String]
-        # The resource Id of the VM that uniquely identifies it.
+        # The resource Id of lab service VM.
         ${ResourceId},
       
         [Parameter()]

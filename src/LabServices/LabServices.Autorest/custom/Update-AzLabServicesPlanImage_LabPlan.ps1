@@ -19,13 +19,13 @@ param(
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    # Lab Plans act as a permission container for creating labs via labs.azure.com. Additionally, they can provide a set of default configurations that will apply at the time of creating a lab, but these defaults can still be overwritten.
+    # The object of lab service lab plan.
     ${LabPlan},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
-    # The image name.
+    # The name of image.
     ${Name},
 
     [Parameter(Mandatory)]

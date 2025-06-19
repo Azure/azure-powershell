@@ -18,7 +18,7 @@ function Update-AzLabServicesUser_ResourceId {
 param(
     [Parameter(Mandatory)]
     [System.String]
-    # The resource ID of the user to update.
+    # The resource ID of lab service user to update.
     ${ResourceId},
 
     [Parameter()]

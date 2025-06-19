@@ -29,7 +29,7 @@ function Get-AzLabServicesUserVM_Lab {
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
-        # The Lab object.
+        # The object of lab service lab.
         ${Lab},
    
         [Parameter(Mandatory)]

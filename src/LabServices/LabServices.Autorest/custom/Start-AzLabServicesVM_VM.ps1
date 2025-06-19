@@ -18,7 +18,7 @@ function Start-AzLabServicesVM_VM {
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine]
-        # The VM resource to start.
+        # The object of lab service virtual machine to start.
         ${VM},
   
         [Parameter()]

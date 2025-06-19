@@ -18,7 +18,7 @@ function Send-AzLabServicesUserInvite_Users {
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
-        # The user to invite.
+        # The object of lab service user to invite.
         ${User},
 
         [Parameter()]

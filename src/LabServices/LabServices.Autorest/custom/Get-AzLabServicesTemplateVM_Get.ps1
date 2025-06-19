@@ -44,7 +44,7 @@ function Get-AzLabServicesTemplateVM_Get {
         [Parameter(Mandatory)]
         [System.String]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-        # The name of the lab that uniquely identifies it.
+        # The name of lab service lab.
         ${LabName},
        
         [Parameter()]

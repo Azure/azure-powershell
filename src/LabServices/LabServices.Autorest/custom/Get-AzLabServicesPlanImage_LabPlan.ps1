@@ -29,7 +29,7 @@ function Get-AzLabServicesPlanImage_LabPlan {
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
-        # The lab plan to get images for.
+        # The object of lab service lab plan to get images for.
         ${LabPlan},
    
         [Parameter()]

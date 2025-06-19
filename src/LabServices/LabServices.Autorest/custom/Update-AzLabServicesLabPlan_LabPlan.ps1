@@ -20,7 +20,7 @@ param(
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    # The LabPlan resource to update.
+    # The object of lab service lab plan.
     ${LabPlan},
 
     [Parameter()]

@@ -19,7 +19,7 @@ param(
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    # Lab resource to synchronize users in.
+    # The object of lab service lab to synchronize users in.
     ${Lab},
 
     [Parameter()]
