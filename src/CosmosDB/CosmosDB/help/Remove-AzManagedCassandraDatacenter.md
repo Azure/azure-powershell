@@ -37,13 +37,13 @@ Remove-AzManagedCassandraDatacenter [-AsJob] [-PassThru] -ParentObject <PSCluste
 ```
 
 ## DESCRIPTION
-The **Remove-AzManagedCassandraDataCenter** cmdlet deletes a managed Cassandra data center.
+The **Remove-AzManagedCassandraDatacenter** cmdlet deletes a managed Cassandra data center.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Remove-AzManagedCassandraDataCenter `
+Remove-AzManagedCassandraDatacenter `
  -ResourceGroupName "resourceGroupName" `
  -ClusterName "clusterName" `
  -DataCenterName "dataCenterName"
@@ -51,12 +51,12 @@ Remove-AzManagedCassandraDataCenter `
 
 ### Example 2
 ```powershell
-Remove-AzManagedCassandraDataCenter -ResourceId "dataCenterResourceId"
+Remove-AzManagedCassandraDatacenter -ResourceId "dataCenterResourceId"
 ```
 
 ### Example 3
 ```powershell
-$dataCenterResource | Remove-AzManagedCassandraDataCenter
+$dataCenterResource | Remove-AzManagedCassandraDatacenter
 ```
 
 ## PARAMETERS
