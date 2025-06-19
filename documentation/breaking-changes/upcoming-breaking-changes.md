@@ -638,6 +638,24 @@
   - May 2025 onwards, this command will return a schedule policy object for Enhanced policy by default for AzureVM workload
   - This change is expected to take effect from Az.RecoveryServices version: 8.0.0 and Az version: 14.0.0
 
+## Az.Relay
+
+### `Get-AzRelayNamespace`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - Change description : The type of property 'PrivateEndpointConnection' will be changed to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '9.0.0'
+
+### `Get-AzRelayNamespaceNetworkRuleSet`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet is being deprecated. There will be no replacement for it.
+  - Change description : The type of property 'IPRule' will be changed to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '9.0.0'
+
 ## Az.SpringCloud
 
 ### `Deploy-AzSpringCloudApp`

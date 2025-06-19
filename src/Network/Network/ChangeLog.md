@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.18.0
 * Onboarded Application Gateway WAF Exceptions cmdlet.
     - `New-AzApplicationGatewayFirewallPolicyException`  
 

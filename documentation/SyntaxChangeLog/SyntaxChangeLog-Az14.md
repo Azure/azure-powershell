@@ -1,3 +1,15 @@
+## 14.2.0 - July 2025
+#### Az.Network 7.18.0 
+* Modified cmdlet `New-AzApplicationGatewayFirewallPolicyManagedRule`
+   - Added parameter `-Exception`
+* Added cmdlet `New-AzApplicationGatewayFirewallPolicyException`
+#### Az.Storage 9.1.0 
+* Modified cmdlet `New-AzStorageAccount`
+   - Added parameter `-SasExpirationAction`
+* Modified cmdlet `Set-AzStorageAccount`
+   - Added parameter `-SasExpirationAction`
+* Added cmdlet `Get-AzStorageTaskAssignment`, `Get-AzStorageTaskAssignmentInstancesReport`, `New-AzStorageTaskAssignment`, `Remove-AzStorageTaskAssignment`, `Update-AzStorageTaskAssignment`
+
 ## 14.1.0 - June 2025
 #### Az.Migrate 2.8.0 
 * Added cmdlet `Get-AzMigrateServerMigrationStatus`
@@ -501,6 +513,7 @@
 #### Az.Storage 9.0.0 
 * Modified cmdlet `Start-AzStorageAccountMigration`
    - Added parameter `-Force`
+
 
 
 

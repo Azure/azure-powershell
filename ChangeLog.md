@@ -1,3 +1,32 @@
+## 14.2.0 - July 2025
+#### Az.Accounts 5.1.0
+* Enabled setting the authentication scope for SSH cmdlets by 'Set-AzEnvironment -SshAuthScope <String>'.
+
+#### Az.DataFactory 1.19.4
+* Added support for Databricks Job Activity.
+* Added more support for QuickBooks connection properties.
+
+#### Az.Network 7.18.0
+* Onboarded Application Gateway WAF Exceptions cmdlet.
+    - 'New-AzApplicationGatewayFirewallPolicyException'  
+
+#### Az.Relay 2.1.1
+* Added breaking change announcement for below commands.
+  - 'Get-AzRelayNamespace'
+  - 'Get-AzRelayNamespaceNetworkRuleSet'
+  - 'Set-AzRelayNamespaceNetworkRuleSet'
+
+#### Az.Storage 9.1.0
+* Supported set SasExpirationAction as Log or Block, together with SasExpirationPeriod
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported Storage task assignment
+    - 'New-AzStorageTaskAssignment'
+    - 'Update-AzStorageTaskAssignment'
+    - 'Get-AzStorageTaskAssignment'
+    - 'Remove-AzStorageTaskAssignment'
+    - 'Get-AzStorageTaskAssignmentinstancesReport'
+
 ## 14.1.0 - June 2025
 #### Az.Accounts 5.0.2
 * Upgrade Azure.Core to 1.45.0
