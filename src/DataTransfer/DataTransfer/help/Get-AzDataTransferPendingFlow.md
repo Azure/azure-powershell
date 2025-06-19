@@ -1,11 +1,11 @@
 ---
 external help file: Az.DataTransfer-help.xml
 Module Name: Az.DataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferlistpendingflow
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferpendingflow
 schema: 2.0.0
 ---
 
-# Get-AzDataTransferListPendingFlow
+# Get-AzDataTransferPendingFlow
 
 ## SYNOPSIS
 Lists all remote flows that have not yet been linked to local flows
@@ -13,9 +13,8 @@ Lists all remote flows that have not yet been linked to local flows
 ## SYNTAX
 
 ```
-Get-AzDataTransferListPendingFlow -ConnectionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Get-AzDataTransferPendingFlow -ConnectionName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +24,7 @@ Lists all remote flows that have not yet been linked to local flows
 
 ### Example 1: List all pending flows for a specific connection
 ```powershell
-$pendingFlows = Get-AzDataTransferListPendingFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01
+$pendingFlows = Get-AzDataTransferPendingFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01
 ```
 
 ```output

@@ -1,11 +1,11 @@
 ---
 external help file: Az.DataTransfer-help.xml
 Module Name: Az.DataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferlistpendingconnection
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferpendingconnection
 schema: 2.0.0
 ---
 
-# Get-AzDataTransferListPendingConnection
+# Get-AzDataTransferPendingConnection
 
 ## SYNOPSIS
 Lists all pending remote connections that are linkable to this connection.
@@ -13,7 +13,7 @@ Lists all pending remote connections that are linkable to this connection.
 ## SYNTAX
 
 ```
-Get-AzDataTransferListPendingConnection -ConnectionName <String> -ResourceGroupName <String>
+Get-AzDataTransferPendingConnection -ConnectionName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Lists all pending remote connections that are linkable to this connection.
 
 ### Example 1: List all pending connections for a specific connection
 ```powershell
-Get-AzDataTransferListPendingConnection -ResourceGroupName ResourceGroup01 -ConnectionName Connection01
+Get-AzDataTransferPendingConnection -ResourceGroupName ResourceGroup01 -ConnectionName Connection01
 ```
 
 ```output

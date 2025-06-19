@@ -223,4 +223,17 @@ directive:
       subject: ^Flow$
       parameter-name: DestinationEndpoint|DestinationEndpointPort|Passphrase|SourceAddressList
     hide: true
+
+  # Rename Get Pending Connection/Flow cmdlets
+  - where:
+      verb: Get
+      subject: ^ListPendingConnection
+    set:
+      subject: PendingConnection
+
+  - where:
+      verb: Get
+      subject: ^ListPendingFlow
+    set:
+      subject: PendingFlow
 ```

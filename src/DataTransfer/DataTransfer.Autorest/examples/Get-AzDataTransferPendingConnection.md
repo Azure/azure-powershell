@@ -1,6 +1,6 @@
 ### Example 1: List all pending connections for a specific connection
 ```powershell
-Get-AzDataTransferListPendingConnection -ResourceGroupName ResourceGroup01 -ConnectionName Connection01
+Get-AzDataTransferPendingConnection -ResourceGroupName ResourceGroup01 -ConnectionName Connection01
 ```
 
 ```output

@@ -29,10 +29,10 @@ Gets connection resource.
 ### [Get-AzDataTransferFlow](Get-AzDataTransferFlow.md)
 Gets flow resource.
 
-### [Get-AzDataTransferListPendingConnection](Get-AzDataTransferListPendingConnection.md)
+### [Get-AzDataTransferPendingConnection](Get-AzDataTransferPendingConnection.md)
 Lists all pending remote connections that are linkable to this connection.
 
-### [Get-AzDataTransferListPendingFlow](Get-AzDataTransferListPendingFlow.md)
+### [Get-AzDataTransferPendingFlow](Get-AzDataTransferPendingFlow.md)
 Lists all remote flows that have not yet been linked to local flows
 
 ### [Get-AzDataTransferPipeline](Get-AzDataTransferPipeline.md)

@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataTransferListPendingFlow'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataTransferPendingConnection'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzDataTransferListPendingFlow.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzDataTransferPendingConnection.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataTransferListPending
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzDataTransferListPendingFlow' {
+Describe 'Get-AzDataTransferPendingConnection' {
     It 'List' {
         {
-            $pendingFlows = Get-AzDataTransferListPendingFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked
-            $pendingFlows.Count | Should -BeGreaterThan 0
-            $pendingFlows | ForEach-Object {
+            $pendingConnections = Get-AzDataTransferPendingConnection -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionApproved
+            $pendingConnections.Count | Should -BeGreaterThan 0
+            $pendingConnections | ForEach-Object {
                 $_.Name | Should -Not -BeNullOrEmpty
             }
         } | Should -Not -Throw
