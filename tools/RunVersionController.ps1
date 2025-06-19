@@ -514,12 +514,10 @@ switch ($PSCmdlet.ParameterSetName)
         Update-AzPreview
         Update-AzPreviewChangelog
         Update-AzSyntaxChangelog
-        # We need to generate the upcoming-breaking-changes.md after the process of bump version in minor release
-        if ([PSVersion]::MINOR -Eq $versionBump)
-        {
-            Import-Module $PSScriptRoot/BreakingChanges/GetUpcomingBreakingChange.psm1
-            Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath $PSScriptRoot/../artifacts/Release/ -MarkdownPath $PSScriptRoot/../documentation/breaking-changes/upcoming-breaking-changes.md
-        }
+
+        # Update the doc of upcoming breaking change
+        Import-Module $PSScriptRoot/BreakingChanges/GetUpcomingBreakingChange.psm1
+        Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath $PSScriptRoot/../artifacts/Release/ -MarkdownPath $PSScriptRoot/../documentation/breaking-changes/upcoming-breaking-changes.md
     }
 }
 

@@ -15,7 +15,7 @@
 # To get upcoming breaking change info, you need to build az first
 # ```powershell
 # dotnet msbuild build.proj /t:build /p:configuration=Debug
-# Import-Module ./tools/BreakingChanges/GetUpcomingBreakingChange.ps1
+# Import-Module ./tools/BreakingChanges/GetUpcomingBreakingChange.psm1
 # Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath ./artifacts/Debug/ -MarkdownPath ./documentation/breaking-changes/upcoming-breaking-changes.md
 # ```
 
@@ -59,16 +59,31 @@ Function Export-AllBreakingChangeMessageUnderArtifacts
         [String]
         $MarkdownPath
     )
+    Write-Host "Gathering breaking change info from $ArtifactsPath"
     $Result = "# Upcoming breaking changes in Azure PowerShell`n"
-    $AllModuleList = Get-ChildItem -Path $ArtifactsPath -Filter Az.* | ForEach-Object { $_.Name }
-    ForEach ($ModuleName In $AllModuleList)
-    {
-        Write-Host "Generating breaking change message for $ModuleName"
-        if ($ModuleName -ne "Az.Monitor")
-        {
-            $Result += Export-BreakingChangeMessageOfModule -ArtifactsPath $ArtifactsPath -ModuleName $ModuleName
-        }
 
+
+    $AllModuleList = Get-ChildItem -Path $ArtifactsPath -Filter Az.* | ForEach-Object { $_.Name }
+    $i = 0
+    $total = $AllModuleList.Count
+    $AllModuleList | ForEach-Object {
+        $i = $i + 1
+        Write-Progress -Activity "Gathering breaking change info" -Status "Processing $_" -PercentComplete (100 * $i / $total)
+        $Result += Export-BreakingChangeMessageOfModule -ArtifactsPath $ArtifactsPath -ModuleName $_
     }
+    Write-Host "Writing breaking changes to $MarkdownPath"
     $Result | Out-File -FilePath $MarkdownPath -Force
+}
+
+Function IsPreGAModule
+{
+    [CmdletBinding()]
+    Param (
+        [Parameter()]
+        [String]
+        $ModuleName
+    )
+    # Pre-GA modules are those that do not have a version number in their name
+    # e.g. Az.Accounts, Az.Resources, etc.
+    Return ($ModuleName -notmatch '\d+\.\d+\.\d+')
 }
