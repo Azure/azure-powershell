@@ -9,6 +9,8 @@ Locale: en-US
 # Az.EventHub Module
 ## Description
 This topic displays help for the Azure Event Hub PowerShell resource manager cmdlets.
+
+## Az.EventHub Cmdlets
 ### [Approve-AzEventHubPrivateEndpointConnection](Approve-AzEventHubPrivateEndpointConnection.md)
 Approves an EventHub PrivateEndpointConnection
 

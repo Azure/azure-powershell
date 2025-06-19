@@ -9,6 +9,8 @@ Locale: en-US
 # Az.MachineLearning Module
 ## Description
 Machine Learning Web Services cmdlets for Azure Resource Manager
+
+## Az.MachineLearning Cmdlets
 ### [Add-AzMlWebServiceRegionalProperty](Add-AzMlWebServiceRegionalProperty.md)
 Creates regional web service properties.
 

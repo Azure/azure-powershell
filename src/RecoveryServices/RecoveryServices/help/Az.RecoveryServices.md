@@ -9,6 +9,8 @@ Locale: en-US
 # Az.RecoveryServices Module
 ## Description
 This topic displays help topics for the Azure Recovery Services cmdlets.
+
+## Az.RecoveryServices Cmdlets
 ### [Add-AzRecoveryServicesAsrReplicationProtectedItemDisk](Add-AzRecoveryServicesAsrReplicationProtectedItemDisk.md)
 Add the disk for protection for already protected azure virtual machine.
 
