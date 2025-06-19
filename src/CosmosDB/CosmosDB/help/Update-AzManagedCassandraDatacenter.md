@@ -41,13 +41,13 @@ Update-AzManagedCassandraDatacenter -ParentObject <PSClusterResource> [-NodeCoun
 ```
 
 ## DESCRIPTION
-The **Update-AzManagedCassandraDataCenter** cmdlet updates an existing managed Cassandra data center.
+The **Update-AzManagedCassandraDatacenter** cmdlet updates an existing managed Cassandra data center.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Update-AzManagedCassandraDataCenter `
+Update-AzManagedCassandraDatacenter `
  -ResourceGroupName "resourceGroupName" `
  -ClusterName "clusterName" `
  -DataCenterName "dataCenterName" `
