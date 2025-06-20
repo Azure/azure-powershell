@@ -20,7 +20,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PacketCaptureSettingsConfig", SupportsShouldProcess = false), OutputType(typeof(PSPacketCaptureSettings))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PacketCaptureSettingsConfig", SupportsShouldProcess = true), OutputType(typeof(PSPacketCaptureSettings))]
     public class NewPacketCaptureSettingsCommand : NetworkBaseCmdlet
     {
         [Parameter(
