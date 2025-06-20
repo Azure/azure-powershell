@@ -19,7 +19,9 @@
 -->
 
 ## Upcoming Release
-* Added breaking change announcement from Fixed Array to List.
+* Added breaking change announcement for below cmdlets from array to list.
+  - `Get-AzRoleManagementPolicy`
+  - `Update-AzRoleManagementPolicy`
 
 ## Version 8.0.0
 * [Breaking Change] Updated API version of resource types from latest to DefaultApiVersion for cmdlets `*-AzResource` and `Invoke-AzResourceAction`.
