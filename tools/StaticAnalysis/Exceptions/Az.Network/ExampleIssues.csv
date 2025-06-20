@@ -1,4 +1,2 @@
-Module,Cmdlet,Example,Line,RuleName,ProblemId,Severity,Description,Extent,Remediation
-Az.Network,Add-AzVirtualNetworkPeering,2,5,Invalid_Cmdlet,5000,1,New-AzResourceGroup is not a valid command name.,New-AzResourceGroup -Name $rgName  -Location westcentralus,Check the spell of New-AzResourceGroup.
-Az.Network,New-AzPacketCaptureSettingsConfig,1,0,NeedDeleting,5050,1,The prompt of example need to be deleted.,D:\a\_work\1\s\src\Network\Network\help\New-AzPacketCaptureSettingsConfig.md,Delete the prompt of example.
-Az.Network,New-AzPacketCaptureSettingsConfig,2,0,NeedDeleting,5050,1,The prompt of example need to be deleted.,D:\a\_work\1\s\src\Network\Network\help\New-AzPacketCaptureSettingsConfig.md,Delete the prompt of example.
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.Network","Add-AzVirtualNetworkPeering","2","5","Invalid_Cmdlet","5000","1","New-AzResourceGroup is not a valid command name.","New-AzResourceGroup -Name $rgName  -Location westcentralus","Check the spell of New-AzResourceGroup."
