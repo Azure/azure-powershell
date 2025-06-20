@@ -28,14 +28,14 @@ This New-AzPacketCaptureSettingsConfig cmdlet creates an object of PSPacketCaptu
 
 ### Example 1
 ```powershell
-PS C:\> New-AzPacketCaptureSettingsConfig -FileCount 2 -FileSizeInBytes 102400 -SessionTimeLimitInSeconds 60
+New-AzPacketCaptureSettingsConfig -FileCount 2 -FileSizeInBytes 102400 -SessionTimeLimitInSeconds 60
 ```
 
 In the above example, passing file count with file size and session time (in seconds). It will create an object.
 
 ### Example 2
 ```powershell
-PS C:\> New-AzPacketCaptureSettingsConfig 
+New-AzPacketCaptureSettingsConfig 
 ```
 
 In the above example, without passing any parameters. It will create an object with default values,

@@ -714,7 +714,7 @@ function Test-PacketCaptureV2ForVMWithRingBuffer {
         $c1 = New-AzPacketCaptureSettingsConfig -FileCount 2 -FileSizeInBytes 102400 -SessionTimeLimitInSeconds 60
 
         #Create packet capture
-        $job = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -Name $pcName1 -TargetId $vm.Id -ContinuousCapture $true -CaptureSettings $c1 -LocalPath C:\captures\Capture.cap -AsJob
+        $job = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -Name $pcName1 -TargetId $vm.Id -ContinuousCapture $true -CaptureSetting $c1 -LocalPath C:\captures\Capture.cap -AsJob
         $job | Wait-Job
 
         #Get packet capture
@@ -806,7 +806,7 @@ function Test-PacketCaptureV2WithRingBuffer {
 
         #Create packet capture
         # with Continuous Capture, if you are using continuousCapture, change it to local Path instead FilePath
-        $job3 = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -Name $pcName3 -TargetId $vmss.Id -TargetType "azurevmss" -ContinuousCapture $false -CaptureSettings $c1 -LocalPath C:\captures\Capture.cap -AsJob
+        $job3 = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -Name $pcName3 -TargetId $vmss.Id -TargetType "azurevmss" -ContinuousCapture $false -CaptureSetting $c1 -LocalPath C:\captures\Capture.cap -AsJob
         $job3 | Wait-Job
        
         Start-TestSleep -Seconds 2

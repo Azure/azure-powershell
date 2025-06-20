@@ -18,7 +18,7 @@ New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher <PSNetworkWatcher> -Name <St
  [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
  [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
  [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>]
- [-ContinuousCapture <Boolean>] [-LocalPath <String>] [-CaptureSettings <PSPacketCaptureSettings>] [-AsJob]
+ [-ContinuousCapture <Boolean>] [-LocalPath <String>] [-CaptureSetting <PSPacketCaptureSettings>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcherName <String> -ResourceGroupN
  -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
  [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
  [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>]
- [-ContinuousCapture <Boolean>] [-LocalPath <String>] [-CaptureSettings <PSPacketCaptureSettings>] [-AsJob]
+ [-ContinuousCapture <Boolean>] [-LocalPath <String>] [-CaptureSetting <PSPacketCaptureSettings>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ New-AzNetworkWatcherPacketCaptureV2 -Location <String> -Name <String> -TargetId 
  [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
  [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
  [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>]
- [-ContinuousCapture <Boolean>] [-LocalPath <String>] [-CaptureSettings <PSPacketCaptureSettings>] [-AsJob]
+ [-ContinuousCapture <Boolean>] [-LocalPath <String>] [-CaptureSetting <PSPacketCaptureSettings>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -217,7 +217,7 @@ $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.Res
 
 $capSettings = New-AzPacketCaptureSettingsConfig -FileCount 2 -FileSizeInBytes 102400 -SessionTimeLimitInSeconds 60
 
-New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $networkWatcher -Name "PacketCaptureTest" -TargetId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/SampleVMSS" -BytesToCapturePerPacket 1 -ContinuousCapture $false -CaptureSettings $capSettings -LocalPath "/var/captures/test1.cap"
+New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $networkWatcher -Name "PacketCaptureTest" -TargetId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/SampleVMSS" -BytesToCapturePerPacket 1 -ContinuousCapture $false -CaptureSetting $capSettings -LocalPath "/var/captures/test1.cap"
 ```
 
 ```output
@@ -277,7 +277,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -CaptureSettings
+### -CaptureSetting
 The capture setting holds the 'FileCount', 'FileSizeInBytes', 'SessionTimeLimitInSeconds' values. These settings are only applicable, if 'ContinuousCapture' is provided.
 
 ```yaml
