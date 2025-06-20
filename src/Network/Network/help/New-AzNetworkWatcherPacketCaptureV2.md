@@ -338,7 +338,7 @@ Accept wildcard characters: False
 ```
 
 ### -LocalFilePath
-Local File path.
+Local file path.
 
 ```yaml
 Type: System.String
