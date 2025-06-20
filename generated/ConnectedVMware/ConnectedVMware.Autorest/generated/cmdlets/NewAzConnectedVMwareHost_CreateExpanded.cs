@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create host.</summary>
+    /// <summary>create host.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/hosts/{hostName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzConnectedVMwareHost_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IHost))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Description(@"Create host.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Description(@"create host.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/hosts/{hostName}", ApiVersion = "2023-10-01")]
     public partial class NewAzConnectedVMwareHost_CreateExpanded : global::System.Management.Automation.PSCmdlet,

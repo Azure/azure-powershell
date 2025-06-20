@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzComputeFleet
 
 ## SYNOPSIS
-create a Fleet
+Create a Fleet
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ New-AzComputeFleet -Name <String> -ResourceGroupName <String> -Resource <IFleet>
 ```
 
 ## DESCRIPTION
-create a Fleet
+Create a Fleet
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzElasticMonitor
 
 ## SYNOPSIS
-create a monitor resource.
+Create a monitor resource.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ New-AzElasticMonitor -Name <String> -ResourceGroupName <String> -JsonString <Str
 ```
 
 ## DESCRIPTION
-create a monitor resource.
+Create a monitor resource.
 
 ## EXAMPLES
 

@@ -32,10 +32,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models
         Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationInfo Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal.Configuration { get => (this._configuration = this._configuration ?? new Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.ConfigurationInfo()); set { {_configuration = value;} } }
 
         /// <summary>Internal Acessors for ConfigurationName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal.ConfigurationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationInfoInternal)Configuration).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationInfoInternal)Configuration).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal.ConfigurationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationInfoInternal)Configuration).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationInfoInternal)Configuration).Name = value ?? null; }
 
         /// <summary>Internal Acessors for ConfigurationVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal.ConfigurationVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationInfoInternal)Configuration).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationInfoInternal)Configuration).Version = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal.ConfigurationVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationInfoInternal)Configuration).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationInfoInternal)Configuration).Version = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentInfoInternal.Name { get => this._name; set { {_name = value;} } }

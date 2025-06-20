@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create an applicationGroup.
+Create an applicationGroup.
 .Description
-create an applicationGroup.
+Create an applicationGroup.
 .Example
 New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                             -Name ApplicationGroupName `

@@ -53,7 +53,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyConfigurations Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerPropertiesInternal.SecurityPolicyConfiguration { get => (this._securityPolicyConfiguration = this._securityPolicyConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.SecurityPolicyConfigurations()); set { {_securityPolicyConfiguration = value;} } }
 
         /// <summary>Internal Acessors for SecurityPolicyConfigurationWafSecurityPolicy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IWafSecurityPolicy Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerPropertiesInternal.SecurityPolicyConfigurationWafSecurityPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyConfigurationsInternal)SecurityPolicyConfiguration).WafSecurityPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyConfigurationsInternal)SecurityPolicyConfiguration).WafSecurityPolicy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IWafSecurityPolicy Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerPropertiesInternal.SecurityPolicyConfigurationWafSecurityPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyConfigurationsInternal)SecurityPolicyConfiguration).WafSecurityPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyConfigurationsInternal)SecurityPolicyConfiguration).WafSecurityPolicy = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;

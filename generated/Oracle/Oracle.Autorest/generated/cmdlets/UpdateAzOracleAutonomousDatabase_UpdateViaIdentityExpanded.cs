@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a AutonomousDatabase</summary>
+    /// <summary>update a AutonomousDatabase</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzOracleAutonomousDatabase_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabase))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"Update a AutonomousDatabase")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"update a AutonomousDatabase")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}", ApiVersion = "2023-09-01")]
     public partial class UpdateAzOracleAutonomousDatabase_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,

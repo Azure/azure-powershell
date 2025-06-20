@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDynatraceMonitorTagRule
 
 ## SYNOPSIS
-update a TagRule
+Update a TagRule
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzDynatraceMonitorTagRule -MonitorInputObject <IDynatraceObservabilityIde
 ```
 
 ## DESCRIPTION
-update a TagRule
+Update a TagRule
 
 ## EXAMPLES
 

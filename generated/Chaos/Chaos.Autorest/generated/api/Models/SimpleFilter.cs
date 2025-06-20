@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         private Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFilter __filter = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Filter();
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFilterInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFilterInternal)__filter).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFilterInternal)__filter).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFilterInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFilterInternal)__filter).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFilterInternal)__filter).Type = value ; }
 
         /// <summary>Internal Acessors for Parameter</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISimpleFilterParameters Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISimpleFilterInternal.Parameter { get => (this._parameter = this._parameter ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.SimpleFilterParameters()); set { {_parameter = value;} } }

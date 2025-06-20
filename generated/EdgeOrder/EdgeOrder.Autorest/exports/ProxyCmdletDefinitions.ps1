@@ -1768,10 +1768,10 @@ end {
 
 <#
 .Synopsis
-create a new address with the specified parameters.
+Create a new address with the specified parameters.
 Existing address can be updated with this API
 .Description
-create a new address with the specified parameters.
+Create a new address with the specified parameters.
 Existing address can be updated with this API
 .Example
 $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName ContactName -EmailList @("emailId") -Phone Phone
@@ -2044,10 +2044,10 @@ end {
 
 <#
 .Synopsis
-create an order item.
+Create an order item.
 Existing order item cannot be updated with this api and should instead be updated with the create order item API.
 .Description
-create an order item.
+Create an order item.
 Existing order item cannot be updated with this api and should instead be updated with the create order item API.
 .Example
 $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName ContactName -EmailList @("emailId") -Phone Phone
@@ -2812,9 +2812,9 @@ end {
 
 <#
 .Synopsis
-update the properties of an existing address.
+Update the properties of an existing address.
 .Description
-update the properties of an existing address.
+Update the properties of an existing address.
 .Example
 $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName "ContactName2" -EmailList @("emailId") -Phone Phone
 $DebugPreference = "Continue"
@@ -3107,9 +3107,9 @@ end {
 
 <#
 .Synopsis
-update the properties of an existing order item.
+Update the properties of an existing order item.
 .Description
-update the properties of an existing order item.
+Update the properties of an existing order item.
 .Example
 $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName "ContactName2" -EmailList @("emailId") -Phone Phone
 $DebugPreference = "Continue"

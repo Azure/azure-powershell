@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a OrganizationResource
+Update a OrganizationResource
 .Description
-update a OrganizationResource
+Update a OrganizationResource
 .Example
 Update-AzLambdaTestOrganization -Name "test-cli-instance-1" -ResourceGroupName "abdul-test" -Tag @{"TestName1" = "TestValue1"}
 

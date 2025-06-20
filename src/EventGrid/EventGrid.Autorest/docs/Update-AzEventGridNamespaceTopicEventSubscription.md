@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridNamespaceTopicEventSubscription
 
 ## SYNOPSIS
-update an existing event subscription of a namespace topic.
+Update an existing event subscription of a namespace topic.
 
 ## SYNTAX
 
@@ -70,7 +70,7 @@ Update-AzEventGridNamespaceTopicEventSubscription -EventSubscriptionName <String
 ```
 
 ## DESCRIPTION
-update an existing event subscription of a namespace topic.
+Update an existing event subscription of a namespace topic.
 
 ## EXAMPLES
 

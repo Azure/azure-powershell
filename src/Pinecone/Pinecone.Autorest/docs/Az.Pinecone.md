@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Pinecone
-Module Guid: 1f613ee5-8830-4ca9-adf3-6d91fd935c12
+Module Guid: c00c7fff-f7e1-4c4f-a69f-8f259884cc12
 Download Help Link: https://learn.microsoft.com/powershell/module/az.pinecone
 Help Version: 1.0.0.0
 Locale: en-US

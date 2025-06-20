@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create PrivateEndpointConnections of service namespace.
+Create PrivateEndpointConnections of service namespace.
 .Description
-create PrivateEndpointConnections of service namespace.
+Create PrivateEndpointConnections of service namespace.
 .Example
 {{ Add code here }}
 .Example

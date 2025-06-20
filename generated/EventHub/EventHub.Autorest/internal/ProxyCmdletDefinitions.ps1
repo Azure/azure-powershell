@@ -1677,9 +1677,9 @@ end {
 
 <#
 .Synopsis
-create an ApplicationGroup for a Namespace.
+Create an ApplicationGroup for a Namespace.
 .Description
-create an ApplicationGroup for a Namespace.
+Create an ApplicationGroup for a Namespace.
 .Example
 $t1 = New-AzEventHubThrottlingPolicyConfig -Name t1 -MetricId IncomingMessages -RateLimitThreshold 10000
 $t2 = New-AzEventHubThrottlingPolicyConfig -Name t2 -MetricId OutgoingBytes -RateLimitThreshold 20000
@@ -1834,10 +1834,10 @@ end {
 
 <#
 .Synopsis
-create an AuthorizationRule for the specified Event Hub.
+Create an AuthorizationRule for the specified Event Hub.
 Creation/create of the AuthorizationRule will take a few seconds to take effect.
 .Description
-create an AuthorizationRule for the specified Event Hub.
+Create an AuthorizationRule for the specified Event Hub.
 Creation/create of the AuthorizationRule will take a few seconds to take effect.
 .Example
 New-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule -Rights @('Manage', 'Send', 'Listen')
@@ -2096,9 +2096,9 @@ end {
 
 <#
 .Synopsis
-create an instance of an Event Hubs Cluster.
+Create an instance of an Event Hubs Cluster.
 .Description
-create an instance of an Event Hubs Cluster.
+Create an instance of an Event Hubs Cluster.
 .Example
 New-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myEventHubsCluster -Location "eastasia" -SupportsScaling -Capacity 2
 .Example
@@ -2266,9 +2266,9 @@ end {
 
 <#
 .Synopsis
-create an Event Hubs consumer group as a nested resource within a Namespace.
+Create an Event Hubs consumer group as a nested resource within a Namespace.
 .Description
-create an Event Hubs consumer group as a nested resource within a Namespace.
+Create an Event Hubs consumer group as a nested resource within a Namespace.
 .Example
 New-AzEventHubConsumerGroup -Name myConsumerGroup -NamespaceName myNamespace -ResourceGroupName myResourceGroup -EventHubName myEventHub -UserMetadata "Test ConsumerGroup"
 
@@ -2418,9 +2418,9 @@ end {
 
 <#
 .Synopsis
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 .Description
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 .Example
 New-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
 
@@ -2833,9 +2833,9 @@ end {
 
 <#
 .Synopsis
-create an AuthorizationRule for a Namespace.
+Create an AuthorizationRule for a Namespace.
 .Description
-create an AuthorizationRule for a Namespace.
+Create an AuthorizationRule for a Namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -3282,11 +3282,11 @@ end {
 
 <#
 .Synopsis
-create a namespace.
+Create a namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Description
-create a namespace.
+Create a namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Example
@@ -3686,9 +3686,9 @@ end {
 
 <#
 .Synopsis
-create NetworkRuleSet for a Namespace.
+Create NetworkRuleSet for a Namespace.
 .Description
-create NetworkRuleSet for a Namespace.
+Create NetworkRuleSet for a Namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -3920,9 +3920,9 @@ end {
 
 <#
 .Synopsis
-create PrivateEndpointConnections of service namespace.
+Create PrivateEndpointConnections of service namespace.
 .Description
-create PrivateEndpointConnections of service namespace.
+Create PrivateEndpointConnections of service namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -4171,9 +4171,9 @@ end {
 
 <#
 .Synopsis
-create an EventHub schema group.
+Create an EventHub schema group.
 .Description
-create an EventHub schema group.
+Create an EventHub schema group.
 .Example
 $schemaGroup = New-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name mySchemaGroup -SchemaCompatibility Backward -SchemaType Avro
 
@@ -4326,9 +4326,9 @@ end {
 
 <#
 .Synopsis
-create a new Event Hub as a nested resource within a Namespace.
+Create a new Event Hub as a nested resource within a Namespace.
 .Description
-create a new Event Hub as a nested resource within a Namespace.
+Create a new Event Hub as a nested resource within a Namespace.
 .Example
 New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -RetentionTimeInHour 168 -PartitionCount 5 -CleanupPolicy Delete
 .Example
@@ -4946,9 +4946,9 @@ end {
 
 <#
 .Synopsis
-update an ApplicationGroup for a Namespace.
+Update an ApplicationGroup for a Namespace.
 .Description
-update an ApplicationGroup for a Namespace.
+Update an ApplicationGroup for a Namespace.
 .Example
 $t3 = New-AzEventHubThrottlingPolicyConfig -Name t3 -MetricId OutgoingMessages -RateLimitThreshold 12000
 $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAppGroup
@@ -5142,10 +5142,10 @@ end {
 
 <#
 .Synopsis
-update an AuthorizationRule for the specified Event Hub.
+Update an AuthorizationRule for the specified Event Hub.
 Creation/update of the AuthorizationRule will take a few seconds to take effect.
 .Description
-update an AuthorizationRule for the specified Event Hub.
+Update an AuthorizationRule for the specified Event Hub.
 Creation/update of the AuthorizationRule will take a few seconds to take effect.
 .Example
 Set-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule -Rights @('Manage', 'Send', 'Listen')
@@ -5321,9 +5321,9 @@ end {
 
 <#
 .Synopsis
-update an instance of an Event Hubs Cluster.
+Update an instance of an Event Hubs Cluster.
 .Description
-update an instance of an Event Hubs Cluster.
+Update an instance of an Event Hubs Cluster.
 .Example
 Set-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myCluster -Capacity 3
 .Example
@@ -5517,9 +5517,9 @@ end {
 
 <#
 .Synopsis
-update an Event Hubs consumer group as a nested resource within a Namespace.
+Update an Event Hubs consumer group as a nested resource within a Namespace.
 .Description
-update an Event Hubs consumer group as a nested resource within a Namespace.
+Update an Event Hubs consumer group as a nested resource within a Namespace.
 .Example
 Set-AzEventHubConsumerGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -EventHubName myEventHub -Name myConsumerGroup -UserMetadata "Example Metadata"
 .Example
@@ -5696,9 +5696,9 @@ end {
 
 <#
 .Synopsis
-update a new Alias(Disaster Recovery configuration)
+Update a new Alias(Disaster Recovery configuration)
 .Description
-update a new Alias(Disaster Recovery configuration)
+Update a new Alias(Disaster Recovery configuration)
 .Example
 {{ Add code here }}
 .Example
@@ -5871,9 +5871,9 @@ end {
 
 <#
 .Synopsis
-update an AuthorizationRule for a Namespace.
+Update an AuthorizationRule for a Namespace.
 .Description
-update an AuthorizationRule for a Namespace.
+Update an AuthorizationRule for a Namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -6439,9 +6439,9 @@ end {
 
 <#
 .Synopsis
-update NetworkRuleSet for a Namespace.
+Update NetworkRuleSet for a Namespace.
 .Description
-update NetworkRuleSet for a Namespace.
+Update NetworkRuleSet for a Namespace.
 .Example
 $ipRule1 = New-AzEventHubIPRuleConfig -IPMask 2.2.2.2 -Action Allow
 $ipRule2 = New-AzEventHubIPRuleConfig -IPMask 3.3.3.3 -Action Allow
@@ -6651,9 +6651,9 @@ end {
 
 <#
 .Synopsis
-update PrivateEndpointConnections of service namespace.
+Update PrivateEndpointConnections of service namespace.
 .Description
-update PrivateEndpointConnections of service namespace.
+Update PrivateEndpointConnections of service namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -6843,9 +6843,9 @@ end {
 
 <#
 .Synopsis
-update an EventHub schema group.
+Update an EventHub schema group.
 .Description
-update an EventHub schema group.
+Update an EventHub schema group.
 .Example
 {{ Add code here }}
 .Example
@@ -7027,9 +7027,9 @@ end {
 
 <#
 .Synopsis
-update a new Event Hub as a nested resource within a Namespace.
+Update a new Event Hub as a nested resource within a Namespace.
 .Description
-update a new Event Hub as a nested resource within a Namespace.
+Update a new Event Hub as a nested resource within a Namespace.
 .Example
 Set-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
 .Example

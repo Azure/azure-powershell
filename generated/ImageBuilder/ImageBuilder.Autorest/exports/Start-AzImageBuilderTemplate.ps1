@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-run artifacts from a existing image template
+Run artifacts from a existing image template
 .Description
-run artifacts from a existing image template
+Run artifacts from a existing image template
 .Example
 Start-AzImageBuilderTemplate -Name azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder
 .Example

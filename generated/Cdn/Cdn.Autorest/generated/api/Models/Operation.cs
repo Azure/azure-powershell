@@ -47,16 +47,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplay Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationInternal.Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OperationDisplay()); set { {_display = value;} } }
 
         /// <summary>Internal Acessors for DisplayDescription</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Description = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayOperation</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Operation = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Operation = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayProvider</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Provider = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Provider = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayResource</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Resource = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationDisplayInternal)Display).Resource = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationInternal.Name { get => this._name; set { {_name = value;} } }
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationProperties Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OperationProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for PropertyServiceSpecification</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IServiceSpecification Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationInternal.PropertyServiceSpecification { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationPropertiesInternal)Property).ServiceSpecification; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationPropertiesInternal)Property).ServiceSpecification = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IServiceSpecification Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationInternal.PropertyServiceSpecification { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationPropertiesInternal)Property).ServiceSpecification; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationPropertiesInternal)Property).ServiceSpecification = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

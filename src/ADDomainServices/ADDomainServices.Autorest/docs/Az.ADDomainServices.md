@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ADDomainServices
-Module Guid: 9ad18405-bd7f-4c38-973e-4a979ec5ded8
+Module Guid: fe5f1d09-a59a-410b-8831-30128bd79d00
 Download Help Link: https://learn.microsoft.com/powershell/module/az.addomainservices
 Help Version: 1.0.0.0
 Locale: en-US

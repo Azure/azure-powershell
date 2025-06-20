@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update GuestAgent.</summary>
+    /// <summary>update GuestAgent.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/guestAgents/default"
     /// [OpenAPI] Create=>PUT:"/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/guestAgents/default"
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzStackHCIVMGuestAgent_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgent))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"Update GuestAgent.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"update GuestAgent.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Generated]
     public partial class UpdateAzStackHCIVMGuestAgent_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener,

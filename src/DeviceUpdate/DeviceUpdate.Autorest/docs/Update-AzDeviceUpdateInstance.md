@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDeviceUpdateInstance
 
 ## SYNOPSIS
-update instance's tags.
+Update instance's tags.
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ Update-AzDeviceUpdateInstance -AccountName <String> -Name <String> -ResourceGrou
 ```
 
 ## DESCRIPTION
-update instance's tags.
+Update instance's tags.
 
 ## EXAMPLES
 

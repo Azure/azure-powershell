@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Cmdlets
     using System;
 
     /// <summary>
-    /// Create a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
+    /// create a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
     /// name.
     /// </summary>
     /// <remarks>
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzSphereDeployment_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDeployment))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"Create a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"create a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}", ApiVersion = "2024-04-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.NotSuggestDefaultParameterSet]

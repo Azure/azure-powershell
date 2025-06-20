@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the VmmServers resource.
+Update the VmmServers resource.
 .Description
-update the VmmServers resource.
+Update the VmmServers resource.
 .Example
 Update-AzScVmmServer -Name "test-vmmserver-01" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -Tag @{"key-1"="value-1"}
 

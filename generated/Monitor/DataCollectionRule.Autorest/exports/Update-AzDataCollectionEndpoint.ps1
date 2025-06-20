@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a data collection endpoint.
+Update a data collection endpoint.
 .Description
-update a data collection endpoint.
+Update a data collection endpoint.
 .Example
 Update-AzDataCollectionEndpoint -Name myCollectionEndpoint -ResourceGroupName AMCS-TEST -Tag @{"123"="abc"}
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new Service or update an exiting Service.
+Create a new Service or update an exiting Service.
 .Description
-create a new Service or update an exiting Service.
+Create a new Service or update an exiting Service.
 .Example
 New-AzSpringCloud -ResourceGroupName springcloudrg -Name spring-pwsh01 -Location eastus
 .Example

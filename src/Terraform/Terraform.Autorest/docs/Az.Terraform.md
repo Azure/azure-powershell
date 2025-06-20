@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Terraform
-Module Guid: 0e83fac3-e2db-4aed-9b5e-d28ca6a2fa90
+Module Guid: 89b6b8ec-a4c2-4afa-90f3-60a86040de1f
 Download Help Link: https://learn.microsoft.com/powershell/module/az.terraform
 Help Version: 1.0.0.0
 Locale: en-US

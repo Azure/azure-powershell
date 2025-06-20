@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update build service agent pool.
+Update build service agent pool.
 .Description
-update build service agent pool.
+Update build service agent pool.
 .Example
 Update-AzSpringCloudBuildServiceAgentPool -ResourceGroupName springcloudrg -ServiceName espring-pwsh01 -PoolSizeName "S1"
 

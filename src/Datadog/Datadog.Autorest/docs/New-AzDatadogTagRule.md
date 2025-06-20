@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDatadogTagRule
 
 ## SYNOPSIS
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given monitor resource.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ New-AzDatadogTagRule -MonitorName <String> -Name <String> -ResourceGroupName <St
 ```
 
 ## DESCRIPTION
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given monitor resource.
 
 ## EXAMPLES
 

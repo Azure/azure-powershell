@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMobileNetworkAttachedDataNetwork
 
 ## SYNOPSIS
-update an attached data network.
+Update an attached data network.
 Must be created in the same location as its parent packet core data plane.
 
 ## SYNTAX
@@ -69,7 +69,7 @@ Update-AzMobileNetworkAttachedDataNetwork -Name <String>
 ```
 
 ## DESCRIPTION
-update an attached data network.
+Update an attached data network.
 Must be created in the same location as its parent packet core data plane.
 
 ## EXAMPLES

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
+Update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 .Description
-update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
+Update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 .Example
 $jsonString = '{
   "HanaHostname": "hdb1-0",

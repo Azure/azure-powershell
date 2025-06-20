@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create an instance of an Event Hubs Cluster.
+Create an instance of an Event Hubs Cluster.
 .Description
-create an instance of an Event Hubs Cluster.
+Create an instance of an Event Hubs Cluster.
 .Example
 New-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myEventHubsCluster -Location "eastasia" -SupportsScaling -Capacity 2
 .Example

@@ -1178,9 +1178,9 @@ end {
 
 <#
 .Synopsis
-create a Volume Snapshot.
+Create a Volume Snapshot.
 .Description
-create a Volume Snapshot.
+Create a Volume Snapshot.
 .Example
  $volume = New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGiB 1
  New-AzElasticSanVolumeSnapshot -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -CreationDataSourceId $volume.Id -Name mysnapshot
@@ -1454,9 +1454,9 @@ end {
 
 <#
 .Synopsis
-create a Volume.
+Create a Volume.
 .Description
-create a Volume.
+Create a Volume.
 .Example
 New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolumegroup -SizeGib 100  -CreationDataSourceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup/snapshots/mysnapshot'
 
@@ -2782,9 +2782,9 @@ end {
 
 <#
 .Synopsis
-update an Volume.
+Update an Volume.
 .Description
-update an Volume.
+Update an Volume.
 .Example
 $volume = Update-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGib 120
 
@@ -3056,9 +3056,9 @@ end {
 
 <#
 .Synopsis
-update a Elastic San.
+Update a Elastic San.
 .Description
-update a Elastic San.
+Update a Elastic San.
 .Example
 $elasticSan = Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 64 -ExtendedCapacitySizeTib 128 -Tag @{"tag3" = "value3"}
 
@@ -3535,9 +3535,9 @@ end {
 
 <#
 .Synopsis
-create ElasticSan.
+Create ElasticSan.
 .Description
-create ElasticSan.
+Create ElasticSan.
 .Example
 New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
 .Example

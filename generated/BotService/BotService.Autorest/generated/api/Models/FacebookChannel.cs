@@ -45,16 +45,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).Location = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for CallbackUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IFacebookChannelInternal.CallbackUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IFacebookChannelPropertiesInternal)Property).CallbackUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IFacebookChannelPropertiesInternal)Property).CallbackUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IFacebookChannelInternal.CallbackUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IFacebookChannelPropertiesInternal)Property).CallbackUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IFacebookChannelPropertiesInternal)Property).CallbackUrl = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IFacebookChannelProperties Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IFacebookChannelInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.FacebookChannelProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for VerifyToken</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IFacebookChannelInternal.VerifyToken { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IFacebookChannelPropertiesInternal)Property).VerifyToken; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IFacebookChannelPropertiesInternal)Property).VerifyToken = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IFacebookChannelInternal.VerifyToken { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IFacebookChannelPropertiesInternal)Property).VerifyToken; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IFacebookChannelPropertiesInternal)Property).VerifyToken = value ?? null; }
 
         /// <summary>The channel name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Constant]

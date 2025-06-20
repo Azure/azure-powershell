@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update Account.
+Update Account.
 .Description
-update Account.
+Update Account.
 .Example
 Update-AzDeviceUpdateAccount -Name azpstest-account -ResourceGroupName azpstest_gp -EnableSystemAssignedIdentity $true -Tag @{"abc"="123"}
 .Example

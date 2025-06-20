@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a Network Tap.</summary>
+    /// <summary>create a Network Tap.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNetworkFabricTap_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTap))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Description(@"Create a Network Tap.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Description(@"create a Network Tap.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}", ApiVersion = "2023-06-15")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.NotSuggestDefaultParameterSet]

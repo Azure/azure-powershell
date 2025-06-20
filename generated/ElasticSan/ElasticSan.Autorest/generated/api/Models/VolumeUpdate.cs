@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         public string ManagedByResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)Property).ManagedByResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)Property).ManagedByResourceId = value ?? null; }
 
         /// <summary>Internal Acessors for ManagedBy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdateInternal.ManagedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)Property).ManagedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)Property).ManagedBy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdateInternal.ManagedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)Property).ManagedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)Property).ManagedBy = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VolumeUpdateProperties()); set { {_property = value;} } }

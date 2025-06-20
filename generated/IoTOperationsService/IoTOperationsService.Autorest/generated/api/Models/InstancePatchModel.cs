@@ -50,10 +50,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePatchModelInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePatchModelInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePatchModelInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePatchModelInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePatchModelInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Backing field for <see cref="Tag" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePatchModelTags _tag;

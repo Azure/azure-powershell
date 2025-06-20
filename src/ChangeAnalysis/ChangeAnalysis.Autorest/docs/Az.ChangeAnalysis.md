@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ChangeAnalysis
-Module Guid: 5dc9f3b4-16dc-477e-a1aa-973625cda463
+Module Guid: 31e8e4e5-f32b-4e90-88ee-57269859b142
 Download Help Link: https://learn.microsoft.com/powershell/module/az.changeanalysis
 Help Version: 1.0.0.0
 Locale: en-US

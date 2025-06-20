@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMobileNetworkPacketCoreControlPlane
 
 ## SYNOPSIS
-create a packet core control plane.
+Create a packet core control plane.
 
 ## SYNTAX
 
@@ -54,7 +54,7 @@ New-AzMobileNetworkPacketCoreControlPlane -Name <String> -ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-create a packet core control plane.
+Create a packet core control plane.
 
 ## EXAMPLES
 

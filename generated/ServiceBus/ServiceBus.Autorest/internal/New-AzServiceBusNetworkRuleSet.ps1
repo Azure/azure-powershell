@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create NetworkRuleSet for a Namespace.
+Create NetworkRuleSet for a Namespace.
 .Description
-create NetworkRuleSet for a Namespace.
+Create NetworkRuleSet for a Namespace.
 .Example
 {{ Add code here }}
 .Example

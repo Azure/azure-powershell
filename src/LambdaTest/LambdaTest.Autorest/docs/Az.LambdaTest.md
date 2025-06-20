@@ -1,6 +1,6 @@
 ---
 Module Name: Az.LambdaTest
-Module Guid: 27bc7a2c-255c-4683-8abe-09ba59024a2d
+Module Guid: a5d3040f-17a1-4994-9a80-8930b6f5343c
 Download Help Link: https://learn.microsoft.com/powershell/module/az.lambdatest
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,11 +15,11 @@ Microsoft Azure PowerShell: LambdaTest cmdlets
 Get a OrganizationResource
 
 ### [New-AzLambdaTestOrganization](New-AzLambdaTestOrganization.md)
-create a OrganizationResource
+Create a OrganizationResource
 
 ### [Remove-AzLambdaTestOrganization](Remove-AzLambdaTestOrganization.md)
 Delete a OrganizationResource
 
 ### [Update-AzLambdaTestOrganization](Update-AzLambdaTestOrganization.md)
-update a OrganizationResource
+Update a OrganizationResource
 

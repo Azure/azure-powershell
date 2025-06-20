@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzLambdaTestOrganization
 
 ## SYNOPSIS
-create a OrganizationResource
+Create a OrganizationResource
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ New-AzLambdaTestOrganization -Name <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-create a OrganizationResource
+Create a OrganizationResource
 
 ## EXAMPLES
 

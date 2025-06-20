@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMobileNetworkPacketCoreDataPlane
 
 ## SYNOPSIS
-update a packet core data plane.
+Update a packet core data plane.
 Must be created in the same location as its parent packet core control plane.
 
 ## SYNTAX
@@ -40,7 +40,7 @@ Update-AzMobileNetworkPacketCoreDataPlane -Name <String>
 ```
 
 ## DESCRIPTION
-update a packet core data plane.
+Update a packet core data plane.
 Must be created in the same location as its parent packet core control plane.
 
 ## EXAMPLES

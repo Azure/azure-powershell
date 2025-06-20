@@ -70,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
     {
         /// <summary>Immutable list of Spacecraft links.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

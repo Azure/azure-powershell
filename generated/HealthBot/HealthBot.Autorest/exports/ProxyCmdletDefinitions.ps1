@@ -230,9 +230,9 @@ end {
 
 <#
 .Synopsis
-create a new HealthBot.
+Create a new HealthBot.
 .Description
-create a new HealthBot.
+Create a new HealthBot.
 .Example
 New-AzHealthBot -Name yourihealthbot1 -ResourceGroupName youriTest -Location eastus -Sku F0
 

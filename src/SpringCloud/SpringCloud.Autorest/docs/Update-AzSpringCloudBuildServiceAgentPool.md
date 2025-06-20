@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSpringCloudBuildServiceAgentPool
 
 ## SYNOPSIS
-update build service agent pool.
+Update build service agent pool.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzSpringCloudBuildServiceAgentPool -SpringInputObject <ISpringCloudIdenti
 ```
 
 ## DESCRIPTION
-update build service agent pool.
+Update build service agent pool.
 
 ## EXAMPLES
 

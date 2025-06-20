@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
     public partial class PaloAltoNetworks
     {
 
-        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">certificate name</param>
         /// <param name="body">Resource create parameters.</param>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">certificate name</param>
         /// <param name="jsonString">Json string supplied to the CertificateObjectGlobalRulestackCreateOrUpdate operation</param>
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">certificate name</param>
         /// <param name="jsonString">Json string supplied to the CertificateObjectGlobalRulestackCreateOrUpdate operation</param>
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">certificate name</param>
         /// <param name="body">Resource create parameters.</param>
@@ -318,16 +318,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -340,7 +341,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -470,16 +474,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -492,7 +497,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -725,17 +733,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -748,7 +757,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1480,7 +1492,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -1532,7 +1544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1594,7 +1606,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1654,7 +1666,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -1705,7 +1717,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -1754,7 +1766,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -1821,16 +1833,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1843,7 +1856,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1973,16 +1989,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1995,7 +2012,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -2247,17 +2267,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -2270,7 +2291,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3723,7 +3747,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FirewallResource</summary>
+        /// <summary>update a FirewallResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="firewallName">Firewall resource name</param>
@@ -3772,7 +3796,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FirewallResource</summary>
+        /// <summary>update a FirewallResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3831,7 +3855,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FirewallResource</summary>
+        /// <summary>update a FirewallResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3888,7 +3912,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FirewallResource</summary>
+        /// <summary>update a FirewallResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="firewallName">Firewall resource name</param>
@@ -3936,7 +3960,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FirewallResource</summary>
+        /// <summary>update a FirewallResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="firewallName">Firewall resource name</param>
@@ -3982,7 +4006,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FirewallResource</summary>
+        /// <summary>update a FirewallResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="firewallName">Firewall resource name</param>
@@ -4044,16 +4068,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4066,7 +4091,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4194,16 +4222,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4216,7 +4245,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4458,17 +4490,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4481,7 +4514,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -7217,7 +7253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
+        /// <summary>update a FqdnListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">fqdn list name</param>
         /// <param name="body">Resource create parameters.</param>
@@ -7263,7 +7299,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
+        /// <summary>update a FqdnListGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7319,7 +7355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
+        /// <summary>update a FqdnListGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7373,7 +7409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
+        /// <summary>update a FqdnListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">fqdn list name</param>
         /// <param name="jsonString">Json string supplied to the FqdnListGlobalRulestackCreateOrUpdate operation</param>
@@ -7418,7 +7454,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
+        /// <summary>update a FqdnListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">fqdn list name</param>
         /// <param name="jsonString">Json string supplied to the FqdnListGlobalRulestackCreateOrUpdate operation</param>
@@ -7461,7 +7497,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
+        /// <summary>update a FqdnListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">fqdn list name</param>
         /// <param name="body">Resource create parameters.</param>
@@ -7522,16 +7558,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -7544,7 +7581,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -7674,16 +7714,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -7696,7 +7737,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -7927,17 +7971,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -7950,7 +7995,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -8678,7 +8726,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListLocalRulestackResource</summary>
+        /// <summary>update a FqdnListLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -8730,7 +8778,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListLocalRulestackResource</summary>
+        /// <summary>update a FqdnListLocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8792,7 +8840,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListLocalRulestackResource</summary>
+        /// <summary>update a FqdnListLocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8852,7 +8900,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListLocalRulestackResource</summary>
+        /// <summary>update a FqdnListLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -8903,7 +8951,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListLocalRulestackResource</summary>
+        /// <summary>update a FqdnListLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -8952,7 +9000,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListLocalRulestackResource</summary>
+        /// <summary>update a FqdnListLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -9019,16 +9067,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9041,7 +9090,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9171,16 +9223,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9193,7 +9246,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9443,17 +9499,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9466,7 +9523,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -10267,6 +10327,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
 
         /// <summary>Commit rulestack configuration</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10274,7 +10335,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GlobalRulestackCommit(string globalRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GlobalRulestackCommit(string globalRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-09-01";
             // Constant Parameters
@@ -10298,12 +10359,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GlobalRulestackCommit_Call (request, onDefault,eventListener,sender);
+                await this.GlobalRulestackCommit_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Commit rulestack configuration</summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10311,7 +10373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GlobalRulestackCommitViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GlobalRulestackCommitViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-09-01";
             // Constant Parameters
@@ -10345,12 +10407,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GlobalRulestackCommit_Call (request, onDefault,eventListener,sender);
+                await this.GlobalRulestackCommit_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "GlobalRulestackCommit" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10358,24 +10421,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GlobalRulestackCommit_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GlobalRulestackCommit_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -10388,7 +10452,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -10463,6 +10530,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -10498,7 +10571,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a GlobalRulestackResource</summary>
+        /// <summary>update a GlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10541,7 +10614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a GlobalRulestackResource</summary>
+        /// <summary>update a GlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10594,7 +10667,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a GlobalRulestackResource</summary>
+        /// <summary>update a GlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10645,7 +10718,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a GlobalRulestackResource</summary>
+        /// <summary>update a GlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="jsonString">Json string supplied to the GlobalRulestackCreateOrUpdate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10687,7 +10760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a GlobalRulestackResource</summary>
+        /// <summary>update a GlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="jsonString">Json string supplied to the GlobalRulestackCreateOrUpdate operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10727,7 +10800,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a GlobalRulestackResource</summary>
+        /// <summary>update a GlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10785,16 +10858,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -10807,7 +10881,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -10935,16 +11012,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -10957,7 +11035,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -11180,17 +11261,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -11203,7 +11285,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -14727,7 +14812,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulesResource</summary>
+        /// <summary>update a LocalRulesResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -14779,7 +14864,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulesResource</summary>
+        /// <summary>update a LocalRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -14841,7 +14926,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulesResource</summary>
+        /// <summary>update a LocalRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14901,7 +14986,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulesResource</summary>
+        /// <summary>update a LocalRulesResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -14952,7 +15037,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulesResource</summary>
+        /// <summary>update a LocalRulesResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -15001,7 +15086,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulesResource</summary>
+        /// <summary>update a LocalRulesResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -15066,16 +15151,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -15088,7 +15174,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -15216,16 +15305,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -15238,7 +15328,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -15488,17 +15581,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -15511,7 +15605,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -17317,17 +17414,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -17340,7 +17438,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -17463,7 +17564,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulestackResource</summary>
+        /// <summary>update a LocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -17512,7 +17613,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulestackResource</summary>
+        /// <summary>update a LocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -17571,7 +17672,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulestackResource</summary>
+        /// <summary>update a LocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17628,7 +17729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulestackResource</summary>
+        /// <summary>update a LocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -17676,7 +17777,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulestackResource</summary>
+        /// <summary>update a LocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -17722,7 +17823,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulestackResource</summary>
+        /// <summary>update a LocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -17786,16 +17887,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -17808,7 +17910,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -17936,16 +18041,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -17958,7 +18064,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -18200,17 +18309,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -18223,7 +18333,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -23027,7 +23140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PostRulesResource</summary>
+        /// <summary>update a PostRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Post Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -23073,7 +23186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PostRulesResource</summary>
+        /// <summary>update a PostRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -23129,7 +23242,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PostRulesResource</summary>
+        /// <summary>update a PostRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -23183,7 +23296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PostRulesResource</summary>
+        /// <summary>update a PostRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Post Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PostRulesCreateOrUpdate operation</param>
@@ -23228,7 +23341,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PostRulesResource</summary>
+        /// <summary>update a PostRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Post Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PostRulesCreateOrUpdate operation</param>
@@ -23271,7 +23384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PostRulesResource</summary>
+        /// <summary>update a PostRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Post Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -23330,16 +23443,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -23352,7 +23466,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -23480,16 +23597,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -23502,7 +23620,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -23733,17 +23854,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -23756,7 +23878,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -25295,7 +25420,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PreRulesResource</summary>
+        /// <summary>update a PreRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Pre Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -25341,7 +25466,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PreRulesResource</summary>
+        /// <summary>update a PreRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -25397,7 +25522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PreRulesResource</summary>
+        /// <summary>update a PreRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -25451,7 +25576,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PreRulesResource</summary>
+        /// <summary>update a PreRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Pre Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PreRulesCreateOrUpdate operation</param>
@@ -25496,7 +25621,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PreRulesResource</summary>
+        /// <summary>update a PreRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Pre Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PreRulesCreateOrUpdate operation</param>
@@ -25539,7 +25664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PreRulesResource</summary>
+        /// <summary>update a PreRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Pre Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -25598,16 +25723,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -25620,7 +25746,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -25748,16 +25877,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -25770,7 +25900,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -26001,17 +26134,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -26024,7 +26158,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -27563,7 +27700,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
+        /// <summary>update a PrefixListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">Local Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -27609,7 +27746,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
+        /// <summary>update a PrefixListGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -27665,7 +27802,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
+        /// <summary>update a PrefixListGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -27719,7 +27856,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
+        /// <summary>update a PrefixListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">Local Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PrefixListGlobalRulestackCreateOrUpdate operation</param>
@@ -27764,7 +27901,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
+        /// <summary>update a PrefixListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">Local Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PrefixListGlobalRulestackCreateOrUpdate operation</param>
@@ -27807,7 +27944,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
+        /// <summary>update a PrefixListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">Local Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -27868,16 +28005,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -27890,7 +28028,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -28020,16 +28161,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -28042,7 +28184,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -28273,17 +28418,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -28296,7 +28442,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -29024,7 +29173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListResource</summary>
+        /// <summary>update a PrefixListResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -29076,7 +29225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListResource</summary>
+        /// <summary>update a PrefixListResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -29138,7 +29287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListResource</summary>
+        /// <summary>update a PrefixListResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -29198,7 +29347,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListResource</summary>
+        /// <summary>update a PrefixListResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -29249,7 +29398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListResource</summary>
+        /// <summary>update a PrefixListResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -29298,7 +29447,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListResource</summary>
+        /// <summary>update a PrefixListResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -29365,16 +29514,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -29387,7 +29537,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -29517,16 +29670,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -29539,7 +29693,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -29789,17 +29946,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -29812,7 +29970,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener

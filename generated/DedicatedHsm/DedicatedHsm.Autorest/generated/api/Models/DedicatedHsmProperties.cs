@@ -36,13 +36,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models
         Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkProfile Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal.ManagementNetworkProfile { get => (this._managementNetworkProfile = this._managementNetworkProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.NetworkProfile()); set { {_managementNetworkProfile = value;} } }
 
         /// <summary>Internal Acessors for ManagementNetworkProfileSubnet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IApiEntityReference Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal.ManagementNetworkProfileSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkProfileInternal)ManagementNetworkProfile).Subnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkProfileInternal)ManagementNetworkProfile).Subnet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IApiEntityReference Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal.ManagementNetworkProfileSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkProfileInternal)ManagementNetworkProfile).Subnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkProfileInternal)ManagementNetworkProfile).Subnet = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NetworkProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkProfile Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal.NetworkProfile { get => (this._networkProfile = this._networkProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.NetworkProfile()); set { {_networkProfile = value;} } }
 
         /// <summary>Internal Acessors for NetworkProfileSubnet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IApiEntityReference Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal.NetworkProfileSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkProfileInternal)NetworkProfile).Subnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkProfileInternal)NetworkProfile).Subnet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IApiEntityReference Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal.NetworkProfileSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkProfileInternal)NetworkProfile).Subnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkProfileInternal)NetworkProfile).Subnet = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
