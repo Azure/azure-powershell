@@ -97,8 +97,8 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            HelpMessage = "Gets or sets the Entra user data. Accepts one or more ObjectId/Upn separated by ','.")]
-        public string EntraUserIdentity { get; set; }
+            HelpMessage = "Gets or sets the Entra user data. Accepts one or more ObjectId/Upn values.")]
+        public string[] EntraUserIdentity { get; set; }
 
         [Parameter(
             HelpMessage = "Gets or sets a list of Entra users as an array of hashtables. Each hashtable should contain keys such as ObjectId, Upn, and DisplayName.")]
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public override void ExecuteCmdlet()
         {
             bool isHttpCredentialBound = this.HttpCredential != null;
-            bool isRestAuthEntraUsersBound = !string.IsNullOrWhiteSpace(EntraUserIdentity) || (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0) ;
+            bool isRestAuthEntraUsersBound = (EntraUserIdentity != null && EntraUserIdentity.Length > 0) || (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0) ;
             if (isHttpCredentialBound && isRestAuthEntraUsersBound)
             {
                 throw new ArgumentException("Only one of HttpCredential, EntraUserIdentity, or EntraUserFullInfo can be provided.");
@@ -124,11 +124,11 @@ namespace Microsoft.Azure.Commands.HDInsight
             List<EntraUserInfo> RestAuthEntraUsers = null;
             if (isRestAuthEntraUsersBound)
             {
-                if (!string.IsNullOrWhiteSpace(EntraUserIdentity) && (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
+                if ((EntraUserIdentity != null && EntraUserIdentity.Length > 0) && (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
                 {
                     throw new ArgumentException("Cannot provide both EntraUserIdentity and EntraUserFullInfo parameters.");
                 }
-                RestAuthEntraUsers = ClusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserIdentity, EntraUserFullInfo, DefaultProfile.DefaultContext);
+                RestAuthEntraUsers = ClusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserIdentity, EntraUserFullInfo, GraphClient);
             }
 
             var updateGatewaySettingsParameters = new UpdateGatewaySettingsParameters();

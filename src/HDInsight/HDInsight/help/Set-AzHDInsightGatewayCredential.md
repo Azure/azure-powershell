@@ -15,14 +15,14 @@ Sets the gateway HTTP credentials of an Azure HDInsight cluster.
 ### SetByNameParameterSet (Default)
 ```
 Set-AzHDInsightGatewayCredential [-Name] <String> [[-HttpCredential] <PSCredential>]
- [-ResourceGroupName <String>] [-EntraUserIdentity <String>] [-EntraUserFullInfo <Hashtable[]>] [-AsJob]
+ [-ResourceGroupName <String>] [-EntraUserIdentity <String[]>] [-EntraUserFullInfo <Hashtable[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Set-AzHDInsightGatewayCredential [[-HttpCredential] <PSCredential>] [-EntraUserIdentity <String>]
+Set-AzHDInsightGatewayCredential [[-HttpCredential] <PSCredential>] [-EntraUserIdentity <String[]>]
  [-EntraUserFullInfo <Hashtable[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  -InputObject <AzureHDInsightCluster> [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -30,7 +30,7 @@ Set-AzHDInsightGatewayCredential [[-HttpCredential] <PSCredential>] [-EntraUserI
 
 ### SetByResourceIdParameterSet
 ```
-Set-AzHDInsightGatewayCredential [[-HttpCredential] <PSCredential>] [-EntraUserIdentity <String>]
+Set-AzHDInsightGatewayCredential [[-HttpCredential] <PSCredential>] [-EntraUserIdentity <String[]>]
  [-EntraUserFullInfo <Hashtable[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] -ResourceId <String>
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -69,6 +69,30 @@ Get-AzHDInsightCluster -ClusterName $clusterName | Set-AzHDInsightGatewayCredent
 ```
 
 ### Example 4: Set Gateway Entra Users for an HDInsight Cluster by EntraUser Full Info
+To use the `-EntraUserFullInfo` parameter, you need to provide each user's `ObjectId`, `Upn`, and `DisplayName`. You can retrieve this information using one of the following methods:
+######  Option 1: Use Azure Portal
+1. Go to https://portal.azure.com and sign in.
+2. Navigate to **Microsoft Entra ID** > **Users**.
+3. Search for the user you want to add.
+4. Click on the user to open their profile.
+5. Copy the following fields:
+   - **Object ID**
+   - **User Principal Name (UPN)**
+   - **Display Name**
+
+######  Option 2: Use PowerShell
+You can use the `Get-AzADUser` cmdlet to retrieve Entra user information from Azure Active Directory.
+Example command:
+```powershell
+Get-AzADUser -UserPrincipalName "user@contoso.com"
+```
+This will return properties such as:
+ - Id -> ObjectId
+ - UserPrincipalName -> Upn
+ - DisplayName -> DisplayName
+
+For more details, refer to the official documentation: [Get-AzADUser - PowerShell](https://learn.microsoft.com/en-us/powershell/module/az.resources/get-azaduser?view=azps-14.0.0)
+
 ```powershell
 # Cluster info
 $clusterName = "your-hadoop-001"
@@ -83,9 +107,7 @@ Set-AzHDInsightGatewayCredential `
 ```powershell
 # Cluster info
 $clusterName = "your-hadoop-001"
-# If you want to specify multiple Entra users, provide their ObjectId or Upn as a single comma-separated string.
-# Example: "objectid1,objectid2,user1@contoso.com,user2@contoso.com"
-$entraUserIdentity = "user@contoso.com"
+$entraUserIdentity = @("user1@contoso.com","user2@contoso.com","objectid3","objectid4")
 
 Set-AzHDInsightGatewayCredential `
             -ClusterName $clusterName `
@@ -140,10 +162,10 @@ Accept wildcard characters: False
 ```
 
 ### -EntraUserIdentity
-Gets or sets the Entra user data. Accepts one or more ObjectId/Upn separated by ','.
+Gets or sets the Entra user data. Accepts one or more ObjectId/Upn values.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

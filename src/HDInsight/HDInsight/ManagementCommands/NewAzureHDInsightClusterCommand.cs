@@ -103,8 +103,8 @@ namespace Microsoft.Azure.Commands.HDInsight
         public bool? EnableSecureChannel { get; set; }
 
         [Parameter(
-            HelpMessage = "Gets or sets the Entra user data. Accepts one or more ObjectId/Upn separated by ','.")]
-        public string EntraUserIdentity { get; set; }
+            HelpMessage = "Gets or sets the Entra user data. Accepts one or more ObjectId/Upn values.")]
+        public string[] EntraUserIdentity { get; set; }
 
         [Parameter(
             HelpMessage = "Gets or sets a list of Entra users as an array of hashtables. Each hashtable should contain keys such as ObjectId, Upn, and DisplayName.")]
@@ -433,12 +433,12 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             // Add cluster username/password or EntraUserInfo to gateway config.
             List<EntraUserInfo> RestAuthEntraUsers = null;
-            if (!string.IsNullOrWhiteSpace(EntraUserIdentity) && (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
+            if ((EntraUserIdentity != null && EntraUserIdentity.Length > 0) && (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
             {
                 throw new ArgumentException("Cannot provide both EntraUserIdentity and EntraUserFullInfo parameters.");
-            }else if(!string.IsNullOrWhiteSpace(EntraUserIdentity) || (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
+            }else if((EntraUserIdentity != null && EntraUserIdentity.Length > 0) || (EntraUserFullInfo != null && EntraUserFullInfo.Length > 0))
             {
-                RestAuthEntraUsers = ClusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserIdentity, EntraUserFullInfo, DefaultProfile.DefaultContext);
+                RestAuthEntraUsers = ClusterConfigurationUtils.GetHDInsightGatewayEntraUser(EntraUserIdentity, EntraUserFullInfo, GraphClient);
             }
             ClusterCreateHelper.AddClusterCredentialToGatewayConfig(HttpCredential, clusterConfigurations, RestAuthEntraUsers);
 

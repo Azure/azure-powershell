@@ -18,7 +18,7 @@ Creates an Azure HDInsight cluster in the specified resource group for the curre
 New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ClusterSizeInNodes] <Int32> [[-HttpCredential] <PSCredential>] [[-StorageAccountResourceId] <String>]
  [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-EnableSecureChannel <Boolean>]
- [-EntraUserIdentity <String>] [-EntraUserFullInfo <Hashtable[]>] [-Config <AzureHDInsightConfig>]
+ [-EntraUserIdentity <String[]>] [-EntraUserFullInfo <Hashtable[]>] [-Config <AzureHDInsightConfig>]
  [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
  [-AmbariDatabase <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
@@ -48,7 +48,7 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
 New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ClusterSizeInNodes] <Int32> [[-HttpCredential] <PSCredential>] [[-StorageAccountResourceId] <String>]
  [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-EnableSecureChannel <Boolean>]
- [-EntraUserIdentity <String>] [-EntraUserFullInfo <Hashtable[]>] [-Config <AzureHDInsightConfig>]
+ [-EntraUserIdentity <String[]>] [-EntraUserFullInfo <Hashtable[]>] [-Config <AzureHDInsightConfig>]
  [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
  [-AmbariDatabase <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
@@ -79,7 +79,7 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
 New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ClusterSizeInNodes] <Int32> [[-HttpCredential] <PSCredential>] [[-StorageAccountResourceId] <String>]
  [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-EnableSecureChannel <Boolean>]
- [-EntraUserIdentity <String>] [-EntraUserFullInfo <Hashtable[]>] [-Config <AzureHDInsightConfig>]
+ [-EntraUserIdentity <String[]>] [-EntraUserFullInfo <Hashtable[]>] [-Config <AzureHDInsightConfig>]
  [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
  [-AmbariDatabase <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
@@ -707,7 +707,7 @@ New-AzHDInsightCluster `
     -SshCredential $clusterCreds
 ```
 
-### Example 15: Create an Azure HDInsight cluster With Entra USer By ObjectId Or Upn
+### Example 15: Create an Azure HDInsight cluster With Entra User By ObjectId Or Upn
 ```powershell
 # Primary storage account info
 $storageAccountResourceGroupName = "Group"
@@ -724,9 +724,7 @@ $clusterResourceGroupName = "Group"
 $clusterName = "your-hadoop-002"
 $clusterCreds = Get-Credential
 
-# If you want to specify multiple Entra users, provide their ObjectId or Upn as a single comma-separated string.
-# Example: "objectid1,objectid2,user1@contoso.com,user2@contoso.com"
-$entraUserIdentity = "user@contoso.com"
+$entraUserIdentity = "user1@contoso.com","user2@contoso.com","objectid3","objectid4"
 
 # If the cluster's resource group doesn't exist yet, run:
 # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
@@ -745,7 +743,30 @@ New-AzHDInsightCluster `
     -EntraUserIdentity $entraUserIdentity
 ```
 
-### Example 16: Create an Azure HDInsight cluster With Entra USer By FUll Info 
+### Example 16: Create an Azure HDInsight cluster With Entra User By FUll Info
+To use the `-EntraUserFullInfo` parameter, you need to provide each user's `ObjectId`, `Upn`, and `DisplayName`. You can retrieve this information using one of the following methods:
+######  Option 1: Use Azure Portal
+1. Go to https://portal.azure.com and sign in.
+2. Navigate to **Microsoft Entra ID** > **Users**.
+3. Search for the user you want to add.
+4. Click on the user to open their profile.
+5. Copy the following fields:
+   - **Object ID**
+   - **User Principal Name (UPN)**
+   - **Display Name**
+
+######  Option 2: Use PowerShell
+You can use the `Get-AzADUser` cmdlet to retrieve Entra user information from Azure Active Directory.
+Example command:
+```powershell
+Get-AzADUser -UserPrincipalName "user@contoso.com"
+```
+This will return properties such as:
+ - Id -> ObjectId
+ - UserPrincipalName -> Upn
+ - DisplayName -> DisplayName
+
+For more details, refer to the official documentation: [Get-AzADUser - PowerShell](https://learn.microsoft.com/en-us/powershell/module/az.resources/get-azaduser?view=azps-14.0.0)
 ```powershell
 # Primary storage account info
 $storageAccountResourceGroupName = "Group"
@@ -1238,10 +1259,10 @@ Accept wildcard characters: False
 ```
 
 ### -EntraUserIdentity
-Gets or sets the Entra user data. Accepts one or more ObjectId/Upn separated by ','.
+Gets or sets the Entra user data. Accepts one or more ObjectId/Upn values.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

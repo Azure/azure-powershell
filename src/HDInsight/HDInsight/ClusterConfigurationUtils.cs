@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.HDInsight.Models;
@@ -134,15 +135,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     select key.Remove(0, Constants.ClusterConfiguration.StorageAccountKeyPrefix.Length)).ToList();
         }
 
-        public static List<EntraUserInfo> GetHDInsightGatewayEntraUser(string EntraUserIdentity, Hashtable[] EntraUserFullInfo, IAzureContext context)
+        public static List<EntraUserInfo> GetHDInsightGatewayEntraUser(string[] EntraUserIdentity, Hashtable[] EntraUserFullInfo, IMicrosoftGraphClient graphClient)
         {
             List<EntraUserInfo> restAuthEntraUsers = new List<EntraUserInfo>();
-            if (!string.IsNullOrWhiteSpace(EntraUserIdentity))
+            if (EntraUserIdentity!=null)
             {
-                MicrosoftGraphClient graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(context, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
-                graphClient.TenantID = context.Tenant.Id.ToString();
+                if (graphClient == null)
+                {
+                    throw new InvalidOperationException(
+                     "Your Azure credentials have not been set up or have expired, please run Connect-AzAccount to set up your Azure credentials.\n" +
+                     "Authentication failed against resource MicrosoftGraphEndpointResourceId. User interaction is required. This may be due to the conditional access policy settings such as multi-factor authentication (MFA). Please rerun 'Connect-AzAccount' with additional parameter '-AuthScope MicrosoftGraphEndpointResourceId'.\n" +
+                     "Alternatively, you can use the 'EntraUserFullInfo' parameter to manually specify the user details."
+                     );
+                }
                 List<string> userdata = EntraUserIdentity
-                     .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                      .Select(s => s.Trim())
                      .Where(s => !string.IsNullOrEmpty(s))
                      .ToList();
@@ -150,7 +156,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 {
                     try
                     {
-                        var user = graphClient.Users.GetUserWithHttpMessagesAsync(data).Result.Body;
+                        var user = graphClient.Users.GetUser(data);
+                        if(user == null)
+                        {
+                            throw new Exception($"The Entra user retrieved for input \"{data}\" is null. Please confirm that the user exists in Microsoft Entra ID. ");
+                        }
                         restAuthEntraUsers.Add(new EntraUserInfo
                         {
                             ObjectId = user.Id,
