@@ -18,7 +18,9 @@ function Remove-AzLabServicesLab_ResourceId {
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of lab service lab.
         ${ResourceId},
+        
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]

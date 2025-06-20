@@ -19,12 +19,12 @@ API to get the template vm for the lab.
 API to get the template vm for the lab.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicestemplatevm
 #>
 function Get-AzLabServicesTemplateVM_Get {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter()]
@@ -37,11 +37,14 @@ function Get-AzLabServicesTemplateVM_Get {
         [Parameter(Mandatory)]
         [System.String]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        # The name of the resource group.
+        # The name is case insensitive.
         ${ResourceGroupName},
 
         [Parameter(Mandatory)]
         [System.String]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        # The name of lab service lab.
         ${LabName},
        
         [Parameter()]

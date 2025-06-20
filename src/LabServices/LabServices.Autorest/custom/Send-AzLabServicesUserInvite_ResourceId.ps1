@@ -18,10 +18,12 @@ function Send-AzLabServicesUserInvite_ResourceId {
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of lab service user.
         ${ResourceId},
 
         [Parameter()]
         [System.String]
+        # Custom text for the invite email.
         ${Text},
 
         [Parameter()]

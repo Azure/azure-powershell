@@ -13,11 +13,12 @@
 # ----------------------------------------------------------------------------------
 
 function Publish-AzLabServicesLab_ResourceId {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of lab service lab.
         ${ResourceId},
 
         ${AdditionalUsageQuota},

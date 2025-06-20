@@ -12,9 +12,31 @@ Saves an image from a lab VM to the attached shared image gallery.
 
 ## SYNTAX
 
+### SaveExpanded (Default)
 ```
 Save-AzLabServicesLabPlanImage -LabPlanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-LabVirtualMachineId <String>] [-Name <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SaveViaJsonString
+```
+Save-AzLabServicesLabPlanImage -LabPlanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SaveViaJsonFilePath
+```
+Save-AzLabServicesLabPlanImage -LabPlanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SaveViaIdentityExpanded
+```
+Save-AzLabServicesLabPlanImage -InputObject <ILabServicesIdentity> [-LabVirtualMachineId <String>]
+ [-Name <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -63,13 +85,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: SaveViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Save operation
+
+```yaml
+Type: System.String
+Parameter Sets: SaveViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Save operation
+
+```yaml
+Type: System.String
+Parameter Sets: SaveViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LabPlanName
 The name of the lab plan that uniquely identifies it within containing resource group.
 Used in resource URIs and in UI.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SaveExpanded, SaveViaJsonString, SaveViaJsonFilePath
 Aliases:
 
 Required: True
@@ -84,7 +151,7 @@ The ID of the lab virtual machine you want to save an image from.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -99,7 +166,7 @@ The name for the image we create.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -145,7 +212,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SaveExpanded, SaveViaJsonString, SaveViaJsonFilePath
 Aliases:
 
 Required: True
@@ -160,7 +227,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SaveExpanded, SaveViaJsonString, SaveViaJsonFilePath
 Aliases:
 
 Required: False
@@ -205,6 +272,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
 
 ## OUTPUTS
 

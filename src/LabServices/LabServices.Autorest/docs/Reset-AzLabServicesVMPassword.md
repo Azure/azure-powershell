@@ -18,11 +18,38 @@ Reset-AzLabServicesVMPassword -Password <SecureString> -ResourceId <String> [-Su
  [-Username <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [<CommonParameters>]
 ```
 
-### Reset
+### ResetExpanded
 ```
 Reset-AzLabServicesVMPassword -LabName <String> -ResourceGroupName <String> -VirtualMachineName <String>
  -Password <SecureString> -Username <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ResetViaIdentityExpanded
+```
+Reset-AzLabServicesVMPassword -InputObject <ILabServicesIdentity> -Password <SecureString> -Username <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ResetViaIdentityLabExpanded
+```
+Reset-AzLabServicesVMPassword -LabInputObject <ILabServicesIdentity> -VirtualMachineName <String>
+ -Password <SecureString> -Username <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ResetViaJsonFilePath
+```
+Reset-AzLabServicesVMPassword -LabName <String> -ResourceGroupName <String> -VirtualMachineName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ResetViaJsonString
+```
+Reset-AzLabServicesVMPassword -LabName <String> -ResourceGroupName <String> -VirtualMachineName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### VM
@@ -61,7 +88,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -75,13 +103,73 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: ResetViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Reset operation
+
+```yaml
+Type: System.String
+Parameter Sets: ResetViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Reset operation
+
+```yaml
+Type: System.String
+Parameter Sets: ResetViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LabInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: ResetViaIdentityLabExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LabName
 The name of the lab that uniquely identifies it within containing lab account.
 Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset
+Parameter Sets: ResetExpanded, ResetViaJsonFilePath, ResetViaJsonString
 Aliases:
 
 Required: True
@@ -126,7 +214,7 @@ The password
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: ResetExpanded, ResetViaIdentityExpanded, ResetViaIdentityLabExpanded, ResourceId, VM
 Aliases:
 
 Required: True
@@ -142,7 +230,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset
+Parameter Sets: ResetExpanded, ResetViaJsonFilePath, ResetViaJsonString
 Aliases:
 
 Required: True
@@ -153,7 +241,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource Id of lab service virtual machine.
 
 ```yaml
 Type: System.String
@@ -172,7 +260,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResetExpanded, ResetViaJsonFilePath, ResetViaJsonString, ResourceId, VM
 Aliases:
 
 Required: False
@@ -187,7 +275,7 @@ The user whose password is being reset
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResetExpanded, ResetViaIdentityExpanded, ResetViaIdentityLabExpanded, ResourceId, VM
 Aliases:
 
 Required: True
@@ -203,7 +291,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset
+Parameter Sets: ResetExpanded, ResetViaIdentityLabExpanded, ResetViaJsonFilePath, ResetViaJsonString
 Aliases:
 
 Required: True
@@ -214,10 +302,10 @@ Accept wildcard characters: False
 ```
 
 ### -VM
-To construct, see NOTES section for VM properties and create a hash table.
+The object of lab service virtual machine.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
 Parameter Sets: VM
 Aliases:
 
@@ -264,11 +352,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 
 ### System.Boolean
 

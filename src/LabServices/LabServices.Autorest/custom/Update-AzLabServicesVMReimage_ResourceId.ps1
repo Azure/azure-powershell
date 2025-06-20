@@ -13,11 +13,12 @@
 # ----------------------------------------------------------------------------------
 
 function Update-AzLabServicesVMReimage_ResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [System.String]
+    # The resource ID of lab service virtual machine.
     ${ResourceId},
 
     [Parameter()]
