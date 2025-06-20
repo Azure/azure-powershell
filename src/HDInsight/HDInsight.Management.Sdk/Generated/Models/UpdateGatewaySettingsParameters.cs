@@ -8,7 +8,8 @@ namespace Microsoft.Azure.Management.HDInsight.Models
     using System.Linq;
 
     /// <summary>
-    /// The update gateway settings request parameters.
+    /// The update gateway settings request parameters. Note either basic or entra
+    /// user should be provided at a time.
     /// </summary>
     public partial class UpdateGatewaySettingsParameters
     {
@@ -33,12 +34,16 @@ namespace Microsoft.Azure.Management.HDInsight.Models
 
         /// <param name="password">The gateway settings user password.
         /// </param>
-        public UpdateGatewaySettingsParameters(bool? isCredentialEnabled = default(bool?), string userName = default(string), string password = default(string))
+
+        /// <param name="restAuthEntraUsers">List of Entra users for gateway access.
+        /// </param>
+        public UpdateGatewaySettingsParameters(bool? isCredentialEnabled = default(bool?), string userName = default(string), string password = default(string), System.Collections.Generic.IList<EntraUserInfo> restAuthEntraUsers = default(System.Collections.Generic.IList<EntraUserInfo>))
 
         {
             this.IsCredentialEnabled = isCredentialEnabled;
             this.UserName = userName;
             this.Password = password;
+            this.RestAuthEntraUsers = restAuthEntraUsers;
             CustomInit();
         }
 
@@ -66,5 +71,11 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "restAuthCredential.password")]
         public string Password {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of Entra users for gateway access.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "restAuthEntraUsers")]
+        public System.Collections.Generic.IList<EntraUserInfo> RestAuthEntraUsers {get; set; }
     }
 }
