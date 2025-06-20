@@ -199,7 +199,8 @@ CmdletsToExport = 'Add-AzImageDataDisk', 'Add-AzVhd',
                'Update-AzGalleryImageDefinition', 'Update-AzGalleryImageVersion', 
                'Update-AzHost', 'Update-AzImage', 'Update-AzRestorePointCollection', 
                'Update-AzSnapshot', 'Update-AzSshKey', 'Update-AzVM', 'Update-AzVmss', 
-               'Update-AzVmssInstance', 'Update-AzVmssVM'
+               'Update-AzVmssInstance', 'Update-AzVmssVM', 
+               'Set-AzVMProxyAgentSetting', 'Set-AzVmssProxyAgentSetting'
 
 # Variables to export from this module
 # VariablesToExport = @()

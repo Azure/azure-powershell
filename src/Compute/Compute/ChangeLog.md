@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* Added `-EnableProxyAgent` parameter to `New-AzVM` and `New-AzVmss` simple parameter sets.
+* Added `-ProxyAgentKeyIncarnationId`parameter to `Update-AzVmssVM` cmdlet.
+* Added new cmdlets `Set-AzVmssProxyAgent` and `Set-AzVMProxyAgent` to set the proxy agent settings for VM and VMSS.`
 
 ## Version 10.0.1
 * Added breaking change message for `New-AzVM` and `New-AzVmss` cmdlets.
