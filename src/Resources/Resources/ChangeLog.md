@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added a small fix to Test-AzResourceGroupDeployment
 
 ## Version 8.0.0
 * [Breaking Change] Updated API version of resource types from latest to DefaultApiVersion for cmdlets `*-AzResource` and `Invoke-AzResourceAction`.
