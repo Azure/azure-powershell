@@ -199,7 +199,7 @@ stages:
 
     - task: AzurePowerShell@5
       displayName: Save live test results
-      condition: or(eq(variables['Build.Reason'], 'Schedule'), eq(variables['Build.SourceBranch'], 'refs/heads/internal/release'))
+      condition: or(in(variables['Build.SourceBranch'], 'refs/heads/main', 'refs/heads/internal/release'), startsWith(variables['Build.SourceBranch'], 'refs/heads/Daily/Release_'))
       inputs:
         pwsh: true
         azurePowerShellVersion: latestVersion

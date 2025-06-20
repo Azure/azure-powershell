@@ -26,6 +26,7 @@
     #>
     function New-AzManagedServicesEligibleAuthorizationObject {
         [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleAuthorization')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.CmdletBreakingChange("15.0.0", "9.0.0", "2025/11/03", ChangeDescription="The type of the property 'DelegatedRoleDefinitionId' will be changed from Array to List.")]
         [CmdletBinding(PositionalBinding=$false)]
         Param(
     

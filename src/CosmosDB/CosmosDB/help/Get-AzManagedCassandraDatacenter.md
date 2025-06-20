@@ -1,80 +1,62 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/remove-azmanagedcassandradatacenter
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azmanagedcassandradatacenter
 schema: 2.0.0
 ---
 
-# Remove-AzManagedCassandraDatacenter
+# Get-AzManagedCassandraDatacenter
 
 ## SYNOPSIS
-Deletes a Azure Managed Instances for Apache Cassandra data center.
+Gets a Azure Managed Instances for Apache Cassandra data center.
 
 ## SYNTAX
 
 ### ByNameParameterSet (Default)
 ```
-Remove-AzManagedCassandraDatacenter -ResourceGroupName <String> -ClusterName <String> -DataCenterName <String>
- [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzManagedCassandraDatacenter -ResourceGroupName <String> -ClusterName <String> [-DataCenterName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Remove-AzManagedCassandraDatacenter -ResourceId <String> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzManagedCassandraDatacenter -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzManagedCassandraDatacenter -InputObject <PSDataCenterResource> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzManagedCassandraDatacenter -InputObject <PSDataCenterResource> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Remove-AzManagedCassandraDatacenter [-AsJob] [-PassThru] -ParentObject <PSClusterResource>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzManagedCassandraDatacenter -ParentObject <PSClusterResource> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzManagedCassandraDataCenter** cmdlet deletes a managed Cassandra data center.
+The **Get-AzManagedCassandraDatacenter** cmdlet fetches the properties of an existing managed Cassandra data center.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Remove-AzManagedCassandraDataCenter `
- -ResourceGroupName "resourceGroupName" `
- -ClusterName "clusterName" `
- -DataCenterName "dataCenterName"
+Get-AzManagedCassandraDatacenter -ResourceGroupName "resourceGroupName" -ClusterName "clusterName" -DataCenterName "dataCenterName"
 ```
 
 ### Example 2
 ```powershell
-Remove-AzManagedCassandraDataCenter -ResourceId "dataCenterResourceId"
+Get-AzManagedCassandraDatacenter -ResourceId "resourceId"
 ```
 
 ### Example 3
 ```powershell
-$dataCenterResource | Remove-AzManagedCassandraDataCenter
+$clusterResource | Get-AzManagedCassandraDatacenter
 ```
 
 ## PARAMETERS
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ClusterName
 Name of the managed Cassandra cluster.
@@ -99,7 +81,7 @@ Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -122,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Managed Cassandra data center object
+Managed Cassandra Datacenter object
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDataCenterResource
@@ -137,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-Managed Cassandra Cluster object
+Managed Cassandra cluster object
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSClusterResource
@@ -148,21 +130,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PassThru
-To be set to true if the user wants to receive an output. The output is true if the operation was successful and an error is thrown if not.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -182,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource id of the managed Cassandra DataCenter.
+Resource id of the managed Cassandra cluster.
 
 ```yaml
 Type: System.String
@@ -196,44 +163,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSDataCenterResource
+### Microsoft.Azure.Commands.CosmosDB.Models.PSClusterResource
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.CosmosDB.Models.PSDataCenterResource
 
 ## NOTES
 
