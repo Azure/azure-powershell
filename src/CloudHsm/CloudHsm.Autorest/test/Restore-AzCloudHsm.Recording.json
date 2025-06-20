@@ -1,0 +1,41 @@
+{
+  "Restore-AzCloudHsm+[NoContext]+Restore+$POST+https://management.azure.com/subscriptions/75e96d09-a291-40e1-a5e6-cda78233d867/resourceGroups/ps-test/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/chsm1/restore?api-version=2025-03-31+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/75e96d09-a291-40e1-a5e6-cda78233d867/resourceGroups/ps-test/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/chsm1/restore?api-version=2025-03-31",
+      "Content": "{\r\n  \"azureStorageBlobContainerUri\": \"https://pstestbackup.blob.core.windows.net/testbackup\",\r\n  \"backupId\": \"cloudhsm-eb0e0bf9-9d12-4201-b38c-567c8a452dd5-2025061208354444\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "176" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 409,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "4f92f0c6-d161-469c-b17b-2fcaa51e928a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8a7348a2-6b25-4382-8b23-151e1a3ae586/ukwest/20e22d8f-852e-4550-9081-59ed82d501ac" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "b3f1c48d-9bb1-4436-813b-b19d715dfdb7" ],
+        "x-ms-routing-request-id": [ "UKWEST:20250613T132614Z:b3f1c48d-9bb1-4436-813b-b19d715dfdb7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B573734428794D5484737DCB2B7999A2 Ref B: FRA231050411023 Ref C: 2025-06-13T13:26:14Z" ],
+        "Date": [ "Fri, 13 Jun 2025 13:26:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "183" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"code\":\"Conflict\",\"message\":\"Restore operation for resource chsm1 has already been triggered. Restore operation can not be attempted more than once\",\"details\":[],\"additionalInfo\":[]}",
+      "isContentBase64": false
+    }
+  }
+}
