@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzBotService
 
 ## SYNOPSIS
-update a Bot Service
+Update a Bot Service
 
 ## SYNTAX
 
@@ -52,7 +52,7 @@ Update-AzBotService -Name <String> -ResourceGroupName <String> -JsonString <Stri
 ```
 
 ## DESCRIPTION
-update a Bot Service
+Update a Bot Service
 
 ## EXAMPLES
 

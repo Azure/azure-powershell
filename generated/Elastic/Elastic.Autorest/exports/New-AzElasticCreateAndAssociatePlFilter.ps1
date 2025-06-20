@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create and Associate private link traffic filter for the given deployment.
+Create and Associate private link traffic filter for the given deployment.
 .Description
-create and Associate private link traffic filter for the given deployment.
+Create and Associate private link traffic filter for the given deployment.
 .Example
 New-AzElasticCreateAndAssociatePlFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 

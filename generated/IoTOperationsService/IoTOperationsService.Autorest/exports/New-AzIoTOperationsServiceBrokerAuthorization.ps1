@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a BrokerAuthorizationResource
+Create a BrokerAuthorizationResource
 .Description
-create a BrokerAuthorizationResource
+Create a BrokerAuthorizationResource
 .Example
 New-AzIoTOperationsServiceBrokerAuthorization `
   -AuthorizationName "my-authz" `

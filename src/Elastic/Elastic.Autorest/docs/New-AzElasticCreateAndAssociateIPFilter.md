@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzElasticCreateAndAssociateIPFilter
 
 ## SYNOPSIS
-create and Associate IP traffic filter for the given deployment.
+Create and Associate IP traffic filter for the given deployment.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ New-AzElasticCreateAndAssociateIPFilter -InputObject <IElasticIdentity> [-IP <St
 ```
 
 ## DESCRIPTION
-create and Associate IP traffic filter for the given deployment.
+Create and Associate IP traffic filter for the given deployment.
 
 ## EXAMPLES
 

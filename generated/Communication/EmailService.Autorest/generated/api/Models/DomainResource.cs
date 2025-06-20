@@ -71,89 +71,107 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EmailService.Origin(Microsoft.Azure.PowerShell.Cmdlets.EmailService.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>P1 sender domain that is present on the email envelope [RFC 5321].</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EmailService.Origin(Microsoft.Azure.PowerShell.Cmdlets.EmailService.PropertyOrigin.Inlined)]
         public string MailFromSenderDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).MailFromSenderDomain; }
 
         /// <summary>Internal Acessors for DataLocation</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.DataLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DataLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DataLocation = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.DataLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DataLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DataLocation = value ?? null; }
 
         /// <summary>Internal Acessors for Dkim2ErrorCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.Dkim2ErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).Dkim2ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).Dkim2ErrorCode = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.Dkim2ErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).Dkim2ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).Dkim2ErrorCode = value ?? null; }
 
         /// <summary>Internal Acessors for Dkim2Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.Dkim2Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).Dkim2Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).Dkim2Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.Dkim2Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).Dkim2Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).Dkim2Status = value ?? null; }
 
         /// <summary>Internal Acessors for DkimErrorCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.DkimErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DkimErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DkimErrorCode = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.DkimErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DkimErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DkimErrorCode = value ?? null; }
 
         /// <summary>Internal Acessors for DkimStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.DkimStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DkimStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DkimStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.DkimStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DkimStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DkimStatus = value ?? null; }
 
         /// <summary>Internal Acessors for DmarcErrorCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.DmarcErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DmarcErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DmarcErrorCode = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.DmarcErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DmarcErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DmarcErrorCode = value ?? null; }
 
         /// <summary>Internal Acessors for DmarcStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.DmarcStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DmarcStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DmarcStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.DmarcStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DmarcStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DmarcStatus = value ?? null; }
 
         /// <summary>Internal Acessors for DomainErrorCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.DomainErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DomainErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DomainErrorCode = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.DomainErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DomainErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DomainErrorCode = value ?? null; }
 
         /// <summary>Internal Acessors for DomainStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.DomainStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DomainStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DomainStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.DomainStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DomainStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).DomainStatus = value ?? null; }
 
         /// <summary>Internal Acessors for FromSenderDomain</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.FromSenderDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).FromSenderDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).FromSenderDomain = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.FromSenderDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).FromSenderDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).FromSenderDomain = value ?? null; }
 
         /// <summary>Internal Acessors for MailFromSenderDomain</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.MailFromSenderDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).MailFromSenderDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).MailFromSenderDomain = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.MailFromSenderDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).MailFromSenderDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).MailFromSenderDomain = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainProperties Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.DomainProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for SpfErrorCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.SpfErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).SpfErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).SpfErrorCode = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.SpfErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).SpfErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).SpfErrorCode = value ?? null; }
 
         /// <summary>Internal Acessors for SpfStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.SpfStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).SpfStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).SpfStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.SpfStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).SpfStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).SpfStatus = value ?? null; }
 
         /// <summary>Internal Acessors for VerificationRecord</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecords Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.VerificationRecord { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationRecord; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationRecord = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationRecords Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.VerificationRecord { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationRecord; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationRecord = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VerificationState</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStates Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.VerificationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationState = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesVerificationStates Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.VerificationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationState = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VerificationStateDkim</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.VerificationStateDkim { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDkim; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDkim = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.VerificationStateDkim { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDkim; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDkim = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VerificationStateDkim2</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.VerificationStateDkim2 { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDkim2; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDkim2 = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.VerificationStateDkim2 { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDkim2; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDkim2 = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VerificationStateDmarc</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.VerificationStateDmarc { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDmarc; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDmarc = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.VerificationStateDmarc { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDmarc; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDmarc = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VerificationStateDomain</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.VerificationStateDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDomain = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.VerificationStateDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateDomain = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VerificationStateSpf</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.VerificationStateSpf { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateSpf; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateSpf = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResourceInternal.VerificationStateSpf { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateSpf; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainPropertiesInternal)Property).VerificationStateSpf = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EmailService.Origin(Microsoft.Azure.PowerShell.Cmdlets.EmailService.PropertyOrigin.Inherited)]
@@ -186,31 +204,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EmailService.Origin(Microsoft.Azure.PowerShell.Cmdlets.EmailService.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EmailService.Origin(Microsoft.Azure.PowerShell.Cmdlets.EmailService.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EmailService.Origin(Microsoft.Azure.PowerShell.Cmdlets.EmailService.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EmailService.Origin(Microsoft.Azure.PowerShell.Cmdlets.EmailService.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EmailService.Origin(Microsoft.Azure.PowerShell.Cmdlets.EmailService.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EmailService.Origin(Microsoft.Azure.PowerShell.Cmdlets.EmailService.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EmailService.Origin(Microsoft.Azure.PowerShell.Cmdlets.EmailService.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EmailService.Origin(Microsoft.Azure.PowerShell.Cmdlets.EmailService.PropertyOrigin.Inherited)]

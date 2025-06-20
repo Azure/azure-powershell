@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.ServiceBind
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappservicebindobject
 #>
 function New-AzContainerAppServiceBindObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.ServiceBind')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

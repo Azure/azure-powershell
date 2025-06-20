@@ -31,16 +31,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Models
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IAny> Input { get => this._input; set => this._input = value; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartMetadataInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartMetadataInternal)__dashboardPartMetadata).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartMetadataInternal)__dashboardPartMetadata).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartMetadataInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartMetadataInternal)__dashboardPartMetadata).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPartMetadataInternal)__dashboardPartMetadata).Type = value ; }
 
         /// <summary>Internal Acessors for ContentSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsContentSettings Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataInternal.ContentSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsInternal)Setting).ContentSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsInternal)Setting).ContentSetting = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsContentSettings Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataInternal.ContentSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsInternal)Setting).ContentSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsInternal)Setting).ContentSetting = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Setting</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettings Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataInternal.Setting { get => (this._setting = this._setting ?? new Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.MarkdownPartMetadataSettings()); set { {_setting = value;} } }
 
         /// <summary>Internal Acessors for SettingsContent</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsContent Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataInternal.SettingsContent { get => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsInternal)Setting).Content; set => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsInternal)Setting).Content = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsContent Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataInternal.SettingsContent { get => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsInternal)Setting).Content; set => ((Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettingsInternal)Setting).Content = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Setting" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IMarkdownPartMetadataSettings _setting;

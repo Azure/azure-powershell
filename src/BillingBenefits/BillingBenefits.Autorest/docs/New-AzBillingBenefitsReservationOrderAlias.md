@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzBillingBenefitsReservationOrderAlias
 
 ## SYNOPSIS
-create a reservation order alias.
+Create a reservation order alias.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ New-AzBillingBenefitsReservationOrderAlias -Name <String> -JsonString <String> [
 ```
 
 ## DESCRIPTION
-create a reservation order alias.
+Create a reservation order alias.
 
 ## EXAMPLES
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a BrokerAuthenticationResource
+Update a BrokerAuthenticationResource
 .Description
-update a BrokerAuthenticationResource
+Update a BrokerAuthenticationResource
 .Example
 Update-AzIoTOperationsServiceBrokerAuthentication `
   -AuthenticationName "my-authn" `

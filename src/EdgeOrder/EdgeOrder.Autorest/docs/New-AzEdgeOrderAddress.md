@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEdgeOrderAddress
 
 ## SYNOPSIS
-create a new address with the specified parameters.
+Create a new address with the specified parameters.
 Existing address can be updated with this API
 
 ## SYNTAX
@@ -35,7 +35,7 @@ New-AzEdgeOrderAddress -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-create a new address with the specified parameters.
+Create a new address with the specified parameters.
 Existing address can be updated with this API
 
 ## EXAMPLES

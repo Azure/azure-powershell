@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Step
 https://learn.microsoft.com/powershell/module/Az.Chaos/new-azchaosstepobject
 #>
 function New-AzChaosStepObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Step')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

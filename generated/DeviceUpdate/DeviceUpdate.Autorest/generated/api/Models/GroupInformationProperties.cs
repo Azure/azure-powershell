@@ -27,10 +27,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models
         string Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IGroupInformationPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
         /// <summary>Internal Acessors for GroupId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateLinkResourcePropertiesInternal.GroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateLinkResourcePropertiesInternal)__privateLinkResourceProperties).GroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateLinkResourcePropertiesInternal)__privateLinkResourceProperties).GroupId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateLinkResourcePropertiesInternal.GroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateLinkResourcePropertiesInternal)__privateLinkResourceProperties).GroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateLinkResourcePropertiesInternal)__privateLinkResourceProperties).GroupId = value ?? null; }
 
         /// <summary>Internal Acessors for RequiredMember</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateLinkResourcePropertiesInternal.RequiredMember { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateLinkResourcePropertiesInternal)__privateLinkResourceProperties).RequiredMember; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateLinkResourcePropertiesInternal)__privateLinkResourceProperties).RequiredMember = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateLinkResourcePropertiesInternal.RequiredMember { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateLinkResourcePropertiesInternal)__privateLinkResourceProperties).RequiredMember; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateLinkResourcePropertiesInternal)__privateLinkResourceProperties).RequiredMember = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;

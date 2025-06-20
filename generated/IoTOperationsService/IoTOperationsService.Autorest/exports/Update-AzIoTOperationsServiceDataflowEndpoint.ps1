@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a DataflowEndpointResource
+Update a DataflowEndpointResource
 .Description
-update a DataflowEndpointResource
+Update a DataflowEndpointResource
 .Example
 Update-AzIoTOperationsServiceDataflowEndpoint  -InstanceName  "aio-instance-name"   -Name "local-storage-endpoint"  -ResourceGroupName "aio-validation-116116143"  -EndpointType "LocalStorage"  -LocalStorageSettingPersistentVolumeClaimRef "myPersistentVolumeClaim" 
 

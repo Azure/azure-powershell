@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkSecurityPerimeterLoggingConfiguration
 
 ## SYNOPSIS
-create NSP logging configuration.
+Create NSP logging configuration.
 
 ## SYNTAX
 
@@ -64,7 +64,7 @@ New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String> -
 ```
 
 ## DESCRIPTION
-create NSP logging configuration.
+Create NSP logging configuration.
 
 ## EXAMPLES
 

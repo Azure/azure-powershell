@@ -30,19 +30,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).Id; }
 
         /// <summary>Internal Acessors for DevPortalUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderInternal.DevPortalUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).DevPortalUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).DevPortalUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderInternal.DevPortalUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).DevPortalUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).DevPortalUrl = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderInternal.DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).DisplayName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderInternal.DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).DisplayName = value ?? null; }
 
         /// <summary>Internal Acessors for IconUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderInternal.IconUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).IconUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).IconUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderInternal.IconUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).IconUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).IconUrl = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).ServiceProviderName; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).ServiceProviderName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).ServiceProviderName; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderPropertiesInternal)Property).ServiceProviderName = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderProperties Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IServiceProviderInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ServiceProviderProperties()); set { {_property = value;} } }

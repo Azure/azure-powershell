@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSelfHelpDiagnostic
 
 ## SYNOPSIS
-create a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
+Create a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
 \<br/\>Diagnostics are powerful solutions that access product resources or other relevant data and provide the root cause of the issue and the steps to address the issue.\<br/\>\<br/\> \<b\>Note: \</b\> ‘requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
 
 ## SYNTAX
@@ -40,7 +40,7 @@ New-AzSelfHelpDiagnostic -Scope <String> -SResourceName <String> -JsonString <St
 ```
 
 ## DESCRIPTION
-create a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
+Create a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
 \<br/\>Diagnostics are powerful solutions that access product resources or other relevant data and provide the root cause of the issue and the steps to address the issue.\<br/\>\<br/\> \<b\>Note: \</b\> ‘requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
 
 ## EXAMPLES

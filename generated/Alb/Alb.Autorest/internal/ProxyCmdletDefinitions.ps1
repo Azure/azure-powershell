@@ -132,9 +132,9 @@ end {
 
 <#
 .Synopsis
-create a SecurityPolicy
+Create a SecurityPolicy
 .Description
-create a SecurityPolicy
+Create a SecurityPolicy
 .Example
 {{ Add code here }}
 .Example
@@ -312,9 +312,9 @@ end {
 
 <#
 .Synopsis
-update a SecurityPolicy
+Update a SecurityPolicy
 .Description
-update a SecurityPolicy
+Update a SecurityPolicy
 .Example
 {{ Add code here }}
 .Example

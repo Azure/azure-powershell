@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedNetworkVendorFunction
 
 ## SYNOPSIS
-update a vendor network function.
+Update a vendor network function.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 
@@ -46,7 +46,7 @@ Update-AzConnectedNetworkVendorFunction -ServiceKey <String> -VendorInputObject 
 ```
 
 ## DESCRIPTION
-update a vendor network function.
+Update a vendor network function.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 

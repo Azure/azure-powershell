@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new registered ASN with the specified name under the given subscription, resource group and peering.
+Create a new registered ASN with the specified name under the given subscription, resource group and peering.
 .Description
-create a new registered ASN with the specified name under the given subscription, resource group and peering.
+Create a new registered ASN with the specified name under the given subscription, resource group and peering.
 .Example
 New-AzPeeringRegisteredAsn -Name TestAsn -PeeringName MapsIxRs -ResourceGroupName MAPSDemo -Asn 65001
 

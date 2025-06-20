@@ -1,6 +1,6 @@
 ---
 Module Name: Az.NeonPostgres
-Module Guid: 088cadd3-a541-42cc-a886-a889207dee2d
+Module Guid: 641bc7d9-32cc-4e25-ab6e-728528bb442c
 Download Help Link: https://learn.microsoft.com/powershell/module/az.neonpostgres
 Help Version: 1.0.0.0
 Locale: en-US
@@ -36,13 +36,13 @@ Get a Project
 Action to retrieve the connection URI for the Neon Database.
 
 ### [New-AzNeonPostgresBranch](New-AzNeonPostgresBranch.md)
-create a Branch
+Create a Branch
 
 ### [New-AzNeonPostgresOrganization](New-AzNeonPostgresOrganization.md)
-create a OrganizationResource
+Create a OrganizationResource
 
 ### [New-AzNeonPostgresProject](New-AzNeonPostgresProject.md)
-create a Project
+Create a Project
 
 ### [Remove-AzNeonPostgresBranch](Remove-AzNeonPostgresBranch.md)
 Delete a Branch
@@ -54,11 +54,11 @@ Delete a OrganizationResource
 Delete a Project
 
 ### [Update-AzNeonPostgresBranch](Update-AzNeonPostgresBranch.md)
-update a Branch
+Update a Branch
 
 ### [Update-AzNeonPostgresOrganization](Update-AzNeonPostgresOrganization.md)
-update a OrganizationResource
+Update a OrganizationResource
 
 ### [Update-AzNeonPostgresProject](Update-AzNeonPostgresProject.md)
-update a Project
+Update a Project
 

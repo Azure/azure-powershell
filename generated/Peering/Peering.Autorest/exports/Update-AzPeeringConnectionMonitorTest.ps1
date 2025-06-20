@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a connection monitor test with the specified name under the given subscription, resource group and peering service.
+Update a connection monitor test with the specified name under the given subscription, resource group and peering service.
 .Description
-update a connection monitor test with the specified name under the given subscription, resource group and peering service.
+Update a connection monitor test with the specified name under the given subscription, resource group and peering service.
 .Example
 Update-AzPeeringConnectionMonitorTest -Name TestName -PeeringServiceName DRTest -ResourceGroupName DemoRG -Destination Test
 

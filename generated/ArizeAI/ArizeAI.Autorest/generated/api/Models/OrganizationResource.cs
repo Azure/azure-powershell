@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Azure subscription id for the the marketplace offer is purchased from</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.PropertyOrigin.Inlined)]
@@ -75,46 +75,64 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models
         Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IManagedServiceIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Marketplace</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseMarketplaceDetails Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.Marketplace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).Marketplace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).Marketplace = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseMarketplaceDetails Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.Marketplace { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).Marketplace; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).Marketplace = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MarketplaceOfferDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseOfferDetails Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.MarketplaceOfferDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).MarketplaceOfferDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).MarketplaceOfferDetail = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseOfferDetails Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.MarketplaceOfferDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).MarketplaceOfferDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).MarketplaceOfferDetail = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MarketplaceSubscriptionStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.MarketplaceSubscriptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).MarketplaceSubscriptionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).MarketplaceSubscriptionStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.MarketplaceSubscriptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).MarketplaceSubscriptionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).MarketplaceSubscriptionStatus = value ?? null; }
 
         /// <summary>Internal Acessors for PartnerProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IPartnerProperties Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.PartnerProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).PartnerProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).PartnerProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IPartnerProperties Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.PartnerProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).PartnerProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).PartnerProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationProperties Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.OrganizationProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for SingleSignOnProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseSingleSignOnPropertiesV2 Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.SingleSignOnProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).SingleSignOnProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).SingleSignOnProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseSingleSignOnPropertiesV2 Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.SingleSignOnProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).SingleSignOnProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).SingleSignOnProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for User</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseUserDetails Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.User { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).User; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).User = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseUserDetails Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResourceInternal.User { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).User; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal)Property).User = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.PropertyOrigin.Inherited)]
@@ -187,31 +205,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.PropertyOrigin.Inherited)]

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzGraphServicesAccount
 
 ## SYNOPSIS
-update account details.
+Update account details.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzGraphServicesAccount -Name <String> -ResourceGroupName <String> -JsonSt
 ```
 
 ## DESCRIPTION
-update account details.
+Update account details.
 
 ## EXAMPLES
 

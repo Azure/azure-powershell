@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzActionGroup
 
 ## SYNOPSIS
-update a new action group or update an existing one.
+Update a new action group or update an existing one.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Update-AzActionGroup -InputObject <IActionGroupIdentity> [-ArmRoleReceiver <IArm
 ```
 
 ## DESCRIPTION
-update a new action group or update an existing one.
+Update a new action group or update an existing one.
 
 ## EXAMPLES
 

@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models
         /// The name of the region in which the resources needed for Teams Calling will be deployed.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

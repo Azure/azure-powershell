@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorCdnRoute
 
 ## SYNOPSIS
-create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+Create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 
 ## SYNTAX
 
@@ -73,7 +73,7 @@ New-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <Stri
 ```
 
 ## DESCRIPTION
-create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+Create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 
 ## EXAMPLES
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a TagRule
+Update a TagRule
 .Description
-update a TagRule
+Update a TagRule
 .Example
 $tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
 Update-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter

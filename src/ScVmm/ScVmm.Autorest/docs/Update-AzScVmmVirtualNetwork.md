@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzScVmmVirtualNetwork
 
 ## SYNOPSIS
-update the VirtualNetworks resource.
+Update the VirtualNetworks resource.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzScVmmVirtualNetwork -Name <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-update the VirtualNetworks resource.
+Update the VirtualNetworks resource.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMongoDBOrganization
 
 ## SYNOPSIS
-create a OrganizationResource
+Create a OrganizationResource
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ New-AzMongoDBOrganization -Name <String> -ResourceGroupName <String> -JsonString
 ```
 
 ## DESCRIPTION
-create a OrganizationResource
+Create a OrganizationResource
 
 ## EXAMPLES
 

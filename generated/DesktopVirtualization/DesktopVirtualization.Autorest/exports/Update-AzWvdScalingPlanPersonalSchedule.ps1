@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a ScalingPlanPersonalSchedule.
+Update a ScalingPlanPersonalSchedule.
 .Description
-update a ScalingPlanPersonalSchedule.
+Update a ScalingPlanPersonalSchedule.
 .Example
 Update-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `

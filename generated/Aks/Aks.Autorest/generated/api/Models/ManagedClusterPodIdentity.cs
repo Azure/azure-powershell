@@ -56,31 +56,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Message; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningErrorBody> Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningErrorBody> Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentity Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.UserAssignedIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Message = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningErrorBodyError</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningErrorBody Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityInternal.ProvisioningErrorBodyError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).ManagedClusterPodIdentityProvisioningErrorBodyError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).ManagedClusterPodIdentityProvisioningErrorBodyError = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningErrorBody Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityInternal.ProvisioningErrorBodyError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).ManagedClusterPodIdentityProvisioningErrorBodyError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).ManagedClusterPodIdentityProvisioningErrorBodyError = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProvisioningInfo</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfo Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityInternal.ProvisioningInfo { get => (this._provisioningInfo = this._provisioningInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterPodIdentityProvisioningInfo()); set { {_provisioningInfo = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningInfoError</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningError Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityInternal.ProvisioningInfoError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Error = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningError Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityInternal.ProvisioningInfoError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Error = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProvisioningInfoInternal)ProvisioningInfo).Target = value ?? null; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

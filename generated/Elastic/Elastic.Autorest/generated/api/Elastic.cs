@@ -344,6 +344,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="rulesetId">Ruleset Id of the filter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -351,7 +352,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AssociateTrafficFilterAssociate(string subscriptionId, string resourceGroupName, string monitorName, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AssociateTrafficFilterAssociate(string subscriptionId, string resourceGroupName, string monitorName, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2024-03-01";
             // Constant Parameters
@@ -381,13 +382,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AssociateTrafficFilterAssociate_Call (request, onDefault,eventListener,sender);
+                await this.AssociateTrafficFilterAssociate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Associate traffic filter for the given deployment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="rulesetId">Ruleset Id of the filter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -395,7 +397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AssociateTrafficFilterAssociateViaIdentity(global::System.String viaIdentity, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AssociateTrafficFilterAssociateViaIdentity(global::System.String viaIdentity, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2024-03-01";
             // Constant Parameters
@@ -437,12 +439,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AssociateTrafficFilterAssociate_Call (request, onDefault,eventListener,sender);
+                await this.AssociateTrafficFilterAssociate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "AssociateTrafficFilterAssociate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -450,7 +453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AssociateTrafficFilterAssociate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AssociateTrafficFilterAssociate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -559,6 +562,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2354,6 +2363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="rulesetId">Ruleset Id of the filter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2361,7 +2371,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DetachTrafficFilterUpdate(string subscriptionId, string resourceGroupName, string monitorName, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DetachTrafficFilterUpdate(string subscriptionId, string resourceGroupName, string monitorName, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2024-03-01";
             // Constant Parameters
@@ -2391,13 +2401,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DetachTrafficFilterUpdate_Call (request, onDefault,eventListener,sender);
+                await this.DetachTrafficFilterUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Detach traffic filter for the given deployment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="rulesetId">Ruleset Id of the filter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2405,7 +2416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DetachTrafficFilterUpdateViaIdentity(global::System.String viaIdentity, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DetachTrafficFilterUpdateViaIdentity(global::System.String viaIdentity, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2024-03-01";
             // Constant Parameters
@@ -2447,12 +2458,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DetachTrafficFilterUpdate_Call (request, onDefault,eventListener,sender);
+                await this.DetachTrafficFilterUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "DetachTrafficFilterUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2460,7 +2472,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DetachTrafficFilterUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DetachTrafficFilterUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2569,6 +2581,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3719,6 +3737,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="body">Elastic Monitor Upgrade Parameters</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3727,7 +3746,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitorUpgrade(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorUpgrade body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task MonitorUpgrade(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorUpgrade body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2024-03-01";
             // Constant Parameters
@@ -3759,13 +3778,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.MonitorUpgrade_Call (request, onDefault,eventListener,sender);
+                await this.MonitorUpgrade_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Upgradable version for a monitor resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Elastic Monitor Upgrade Parameters</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3774,7 +3794,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitorUpgradeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorUpgrade body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task MonitorUpgradeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorUpgrade body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2024-03-01";
             // Constant Parameters
@@ -3818,7 +3838,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.MonitorUpgrade_Call (request, onDefault,eventListener,sender);
+                await this.MonitorUpgrade_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -3827,6 +3847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="jsonString">Json string supplied to the MonitorUpgrade operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3834,7 +3855,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitorUpgradeViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MonitorUpgradeViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2024-03-01";
             // Constant Parameters
@@ -3866,12 +3887,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.MonitorUpgrade_Call (request, onDefault,eventListener,sender);
+                await this.MonitorUpgrade_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "MonitorUpgrade" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3879,7 +3901,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MonitorUpgrade_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MonitorUpgrade_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3991,6 +4013,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }

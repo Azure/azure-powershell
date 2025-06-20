@@ -60,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataSourcesSpecDataImports Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataSourcesSpecInternal.DataImport { get => (this._dataImport = this._dataImport ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataSourcesSpecDataImports()); set { {_dataImport = value;} } }
 
         /// <summary>Internal Acessors for DataImportEventHub</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesEventHub Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataSourcesSpecInternal.DataImportEventHub { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesInternal)DataImport).EventHub; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesInternal)DataImport).EventHub = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesEventHub Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataSourcesSpecInternal.DataImportEventHub { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesInternal)DataImport).EventHub; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataImportSourcesInternal)DataImport).EventHub = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="PerformanceCounter" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPerfCounterDataSource> _performanceCounter;

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create an evidence a specified report
+Create an evidence a specified report
 .Description
-create an evidence a specified report
+Create an evidence a specified report
 .Example
 {{ Add code here }}
 .Example

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPeeringServicePrefix
 
 ## SYNOPSIS
-create a new prefix with the specified name under the given subscription, resource group and peering service.
+Create a new prefix with the specified name under the given subscription, resource group and peering service.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzPeeringServicePrefix -Name <String> -PeeringServiceName <String> -Resource
 ```
 
 ## DESCRIPTION
-create a new prefix with the specified name under the given subscription, resource group and peering service.
+Create a new prefix with the specified name under the given subscription, resource group and peering service.
 
 ## EXAMPLES
 

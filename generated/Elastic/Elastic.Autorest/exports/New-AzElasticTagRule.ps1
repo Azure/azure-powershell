@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given monitor resource.
 .Description
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given monitor resource.
 .Example
 New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -LogRuleSendActivityLog
 

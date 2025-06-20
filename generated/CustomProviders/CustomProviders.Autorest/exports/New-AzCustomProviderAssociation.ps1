@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create an association.
+Create an association.
 .Description
-create an association.
+Create an association.
 .Example
 $provider = Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type
 New-AzCustomProviderAssociation -Scope $resourceId -Name MyAssoc -TargetResourceId $provider.Id

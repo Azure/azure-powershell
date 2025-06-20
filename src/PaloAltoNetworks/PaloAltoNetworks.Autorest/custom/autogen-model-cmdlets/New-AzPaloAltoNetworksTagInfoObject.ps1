@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.TagInfo
 https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworkstaginfoobject
 #>
 function New-AzPaloAltoNetworksTagInfoObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.TagInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

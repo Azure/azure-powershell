@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedNetworkDevice
 
 ## SYNOPSIS
-create a device.
+Create a device.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzConnectedNetworkDevice -Name <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-create a device.
+Create a device.
 
 ## EXAMPLES
 

@@ -85,25 +85,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinition Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.Metadata { get => (this._metadata = this._metadata ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticsDefinition()); set { {_metadata = value;} } }
 
         /// <summary>Internal Acessors for MetadataAuthor</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.MetadataAuthor { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Author; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Author = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.MetadataAuthor { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Author; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Author = value ?? null; }
 
         /// <summary>Internal Acessors for MetadataCategory</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.MetadataCategory { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Category; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Category = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.MetadataCategory { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Category; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Category = value ?? null; }
 
         /// <summary>Internal Acessors for MetadataDescription</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.MetadataDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.MetadataDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Description = value ?? null; }
 
         /// <summary>Internal Acessors for MetadataId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.MetadataId { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.MetadataId { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Id = value ?? null; }
 
         /// <summary>Internal Acessors for MetadataName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.MetadataName { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.MetadataName { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Name = value ?? null; }
 
         /// <summary>Internal Acessors for MetadataScore</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.MetadataScore { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Score; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Score = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.MetadataScore { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Score; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Score = value ?? default(float); }
 
         /// <summary>Internal Acessors for MetadataType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.MetadataType { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.MetadataType { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsDefinitionInternal)Metadata).Type = value ?? null; }
 
         /// <summary>Internal Acessors for Status</summary>
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsStatus Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDiagnosticsPropertiesInternal.Status { get => (this._status = this._status ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticsStatus()); set { {_status = value;} } }

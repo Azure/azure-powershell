@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new Deployment or create an exiting Deployment.
+Create a new Deployment or create an exiting Deployment.
 .Description
-create a new Deployment or create an exiting Deployment.
+Create a new Deployment or create an exiting Deployment.
 .Example
 New-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rp -ServiceName spring-cloud-service -AppName gateway -Name default
 

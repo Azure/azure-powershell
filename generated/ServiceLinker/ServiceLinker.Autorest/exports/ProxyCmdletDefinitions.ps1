@@ -184,9 +184,9 @@ end {
 
 <#
 .Synopsis
-list source configurations for a linker in container app.
+List source configurations for a linker in container app.
 .Description
-list source configurations for a linker in container app.
+List source configurations for a linker in container app.
 .Example
 Get-AzServiceLinkerConfigurationForContainerApp -ContainerApp servicelinker-containerapp -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker | Format-List
 
@@ -378,9 +378,9 @@ end {
 
 <#
 .Synopsis
-list source configurations for a linker in spring cloud.
+List source configurations for a linker in spring cloud.
 .Description
-list source configurations for a linker in spring cloud.
+List source configurations for a linker in spring cloud.
 .Example
 Get-AzServiceLinkerConfigurationForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker | Format-List
 
@@ -588,9 +588,9 @@ end {
 
 <#
 .Synopsis
-list source configurations for a linker in webapp.
+List source configurations for a linker in webapp.
 .Description
-list source configurations for a linker in webapp.
+List source configurations for a linker in webapp.
 .Example
 Get-AzServiceLinkerConfigurationForWebApp -WebApp servicelinker-webapp -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker | Format-List
 

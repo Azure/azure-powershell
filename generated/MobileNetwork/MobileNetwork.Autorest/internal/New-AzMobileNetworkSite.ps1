@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-create a mobile network site.
+Create a mobile network site.
 Must be created in the same location as its parent mobile network.
 .Description
-create a mobile network site.
+Create a mobile network site.
 Must be created in the same location as its parent mobile network.
 .Example
 New-AzMobileNetworkSite -MobileNetworkName azps-mn -Name azps-mn-site -ResourceGroupName azps_test_group -Location eastus -Tag @{"site"="123"}

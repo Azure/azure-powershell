@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a cluster pool.
+Create a cluster pool.
 .Description
-create a cluster pool.
+Create a cluster pool.
 .Example
 # Cluster pool configuration info
 $location = "West US 3"
@@ -63,7 +63,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CLUSTERPOOL <IClusterPool>: Cluster pool.
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [ComputeProfileAvailabilityZone <List<String>>]: The list of Availability zones to use for AKS VMSS nodes.

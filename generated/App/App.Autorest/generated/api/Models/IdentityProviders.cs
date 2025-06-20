@@ -225,73 +225,73 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IApple Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.Apple { get => (this._apple = this._apple ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.Apple()); set { {_apple = value;} } }
 
         /// <summary>Internal Acessors for AppleLogin</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginScopes Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.AppleLogin { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppleInternal)Apple).Login; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppleInternal)Apple).Login = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginScopes Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.AppleLogin { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppleInternal)Apple).Login; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppleInternal)Apple).Login = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AppleRegistration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppleRegistration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.AppleRegistration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppleInternal)Apple).Registration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppleInternal)Apple).Registration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppleRegistration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.AppleRegistration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppleInternal)Apple).Registration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppleInternal)Apple).Registration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AzureActiveDirectory</summary>
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectory Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.AzureActiveDirectory { get => (this._azureActiveDirectory = this._azureActiveDirectory ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureActiveDirectory()); set { {_azureActiveDirectory = value;} } }
 
         /// <summary>Internal Acessors for AzureActiveDirectoryLogin</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryLogin Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.AzureActiveDirectoryLogin { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).Login; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).Login = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryLogin Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.AzureActiveDirectoryLogin { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).Login; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).Login = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AzureActiveDirectoryRegistration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryRegistration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.AzureActiveDirectoryRegistration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).Registration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).Registration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryRegistration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.AzureActiveDirectoryRegistration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).Registration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).Registration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AzureActiveDirectoryValidation</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryValidation Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.AzureActiveDirectoryValidation { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).Validation; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).Validation = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryValidation Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.AzureActiveDirectoryValidation { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).Validation; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).Validation = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AzureStaticWebApp</summary>
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureStaticWebApps Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.AzureStaticWebApp { get => (this._azureStaticWebApp = this._azureStaticWebApp ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureStaticWebApps()); set { {_azureStaticWebApp = value;} } }
 
         /// <summary>Internal Acessors for AzureStaticWebAppRegistration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureStaticWebAppsRegistration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.AzureStaticWebAppRegistration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureStaticWebAppsInternal)AzureStaticWebApp).Registration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureStaticWebAppsInternal)AzureStaticWebApp).Registration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureStaticWebAppsRegistration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.AzureStaticWebAppRegistration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureStaticWebAppsInternal)AzureStaticWebApp).Registration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureStaticWebAppsInternal)AzureStaticWebApp).Registration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DefaultAuthorizationPolicyAllowedPrincipal</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAllowedPrincipals Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.DefaultAuthorizationPolicyAllowedPrincipal { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).DefaultAuthorizationPolicyAllowedPrincipal; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).DefaultAuthorizationPolicyAllowedPrincipal = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAllowedPrincipals Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.DefaultAuthorizationPolicyAllowedPrincipal { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).DefaultAuthorizationPolicyAllowedPrincipal; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).DefaultAuthorizationPolicyAllowedPrincipal = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Facebook</summary>
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IFacebook Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.Facebook { get => (this._facebook = this._facebook ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.Facebook()); set { {_facebook = value;} } }
 
         /// <summary>Internal Acessors for FacebookLogin</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginScopes Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.FacebookLogin { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IFacebookInternal)Facebook).Login; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IFacebookInternal)Facebook).Login = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginScopes Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.FacebookLogin { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IFacebookInternal)Facebook).Login; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IFacebookInternal)Facebook).Login = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for FacebookRegistration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppRegistration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.FacebookRegistration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IFacebookInternal)Facebook).Registration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IFacebookInternal)Facebook).Registration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppRegistration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.FacebookRegistration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IFacebookInternal)Facebook).Registration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IFacebookInternal)Facebook).Registration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for GitHub</summary>
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGitHub Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.GitHub { get => (this._gitHub = this._gitHub ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.GitHub()); set { {_gitHub = value;} } }
 
         /// <summary>Internal Acessors for GitHubLogin</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginScopes Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.GitHubLogin { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGitHubInternal)GitHub).Login; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGitHubInternal)GitHub).Login = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginScopes Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.GitHubLogin { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGitHubInternal)GitHub).Login; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGitHubInternal)GitHub).Login = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for GitHubRegistration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IClientRegistration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.GitHubRegistration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGitHubInternal)GitHub).Registration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGitHubInternal)GitHub).Registration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IClientRegistration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.GitHubRegistration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGitHubInternal)GitHub).Registration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGitHubInternal)GitHub).Registration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Google</summary>
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGoogle Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.Google { get => (this._google = this._google ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.Google()); set { {_google = value;} } }
 
         /// <summary>Internal Acessors for GoogleLogin</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginScopes Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.GoogleLogin { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGoogleInternal)Google).Login; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGoogleInternal)Google).Login = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILoginScopes Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.GoogleLogin { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGoogleInternal)Google).Login; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGoogleInternal)Google).Login = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for GoogleRegistration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IClientRegistration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.GoogleRegistration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGoogleInternal)Google).Registration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGoogleInternal)Google).Registration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IClientRegistration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.GoogleRegistration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGoogleInternal)Google).Registration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGoogleInternal)Google).Registration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for GoogleValidation</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAllowedAudiencesValidation Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.GoogleValidation { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGoogleInternal)Google).Validation; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGoogleInternal)Google).Validation = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAllowedAudiencesValidation Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.GoogleValidation { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGoogleInternal)Google).Validation; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IGoogleInternal)Google).Validation = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Twitter</summary>
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITwitter Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.Twitter { get => (this._twitter = this._twitter ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.Twitter()); set { {_twitter = value;} } }
 
         /// <summary>Internal Acessors for TwitterRegistration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITwitterRegistration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.TwitterRegistration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITwitterInternal)Twitter).Registration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITwitterInternal)Twitter).Registration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITwitterRegistration Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.TwitterRegistration { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITwitterInternal)Twitter).Registration; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITwitterInternal)Twitter).Registration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ValidationDefaultAuthorizationPolicy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultAuthorizationPolicy Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.ValidationDefaultAuthorizationPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).ValidationDefaultAuthorizationPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).ValidationDefaultAuthorizationPolicy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultAuthorizationPolicy Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.ValidationDefaultAuthorizationPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).ValidationDefaultAuthorizationPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).ValidationDefaultAuthorizationPolicy = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ValidationJwtClaimCheck</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJwtClaimChecks Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.ValidationJwtClaimCheck { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).ValidationJwtClaimCheck; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).ValidationJwtClaimCheck = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJwtClaimChecks Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersInternal.ValidationJwtClaimCheck { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).ValidationJwtClaimCheck; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAzureActiveDirectoryInternal)AzureActiveDirectory).ValidationJwtClaimCheck = value ?? null /* model class */; }
 
         /// <summary>The App ID of the app used for login.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inlined)]

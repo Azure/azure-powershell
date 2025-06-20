@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.NfsStorageClassTypeP
 https://learn.microsoft.com/powershell/module/Az.KubernetesRuntime/new-azkubernetesruntimenfsstorageclasstypepropertiesobject
 #>
 function New-AzKubernetesRuntimeNfsStorageClassTypePropertiesObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.NfsStorageClassTypeProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

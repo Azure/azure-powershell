@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-update a data network.
+Update a data network.
 Must be created in the same location as its parent mobile network.
 .Description
-update a data network.
+Update a data network.
 Must be created in the same location as its parent mobile network.
 .Example
 Update-AzMobileNetworkDataNetwork -MobileNetworkName azps-mn -DataNetworkName azps-mn-datanetwork -ResourceGroupName azps_test_group -Tag @{"abc"="12"}

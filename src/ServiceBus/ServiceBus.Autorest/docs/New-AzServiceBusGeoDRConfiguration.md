@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusGeoDRConfiguration
 
 ## SYNOPSIS
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzServiceBusGeoDRConfiguration -Name <String> -NamespaceInputObject <IServic
 ```
 
 ## DESCRIPTION
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 
 ## EXAMPLES
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a SIM.
+Create a SIM.
 .Description
-create a SIM.
+Create a SIM.
 .Example
 $staticIp = New-AzMobileNetworkSimStaticIPPropertiesObject -StaticIPIpv4Address 10.0.0.20
 

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.AzureFunctionRecei
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactiongroupazurefunctionreceiverobject
 #>
 function New-AzActionGroupAzureFunctionReceiverObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.AzureFunctionReceiver')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-create a network slice.
+Create a network slice.
 Must be created in the same location as its parent mobile network.
 .Description
-create a network slice.
+Create a network slice.
 Must be created in the same location as its parent mobile network.
 .Example
 New-AzMobileNetworkSlice -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -SliceName azps-mn-slice -Location eastus -SnssaiSst 1 -SnssaiSd "1abcde"

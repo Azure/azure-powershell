@@ -44,10 +44,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         public string AksVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileInternal)__aksClusterProfile).AksVersion; }
 
         /// <summary>Internal Acessors for AksClusterAgentPoolIdentityProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileAksClusterAgentPoolIdentityProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileInternal.AksClusterAgentPoolIdentityProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileInternal)__aksClusterProfile).AksClusterAgentPoolIdentityProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileInternal)__aksClusterProfile).AksClusterAgentPoolIdentityProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileAksClusterAgentPoolIdentityProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileInternal.AksClusterAgentPoolIdentityProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileInternal)__aksClusterProfile).AksClusterAgentPoolIdentityProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileInternal)__aksClusterProfile).AksClusterAgentPoolIdentityProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AksVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileInternal.AksVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileInternal)__aksClusterProfile).AksVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileInternal)__aksClusterProfile).AksVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileInternal.AksVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileInternal)__aksClusterProfile).AksVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAksClusterProfileInternal)__aksClusterProfile).AksVersion = value ?? null; }
 
         /// <summary>
         /// Creates an new <see cref="ClusterPoolResourcePropertiesAksClusterProfile" /> instance.

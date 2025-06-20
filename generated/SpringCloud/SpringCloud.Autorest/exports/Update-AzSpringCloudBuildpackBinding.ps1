@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a buildpack binding.
+Update a buildpack binding.
 .Description
-update a buildpack binding.
+Update a buildpack binding.
 .Example
 Update-AzSpringCloudBuildpackBinding -ResourceGroupName springcloudrg -ServiceName sspring-portal0 -BuilderName default -Name binging01 -BindingType 'AppDynamics'
 

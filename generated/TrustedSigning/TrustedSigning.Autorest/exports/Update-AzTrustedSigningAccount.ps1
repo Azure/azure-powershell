@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a trusted signing account.
+Update a trusted signing account.
 .Description
-update a trusted signing account.
+Update a trusted signing account.
 .Example
 Update-AzTrustedSigningAccount -AccountName test -ResourceGroupName rg-test -SkuName Premium
 .Example

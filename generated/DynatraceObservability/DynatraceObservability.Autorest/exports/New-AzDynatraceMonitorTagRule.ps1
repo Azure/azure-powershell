@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a TagRule
+Create a TagRule
 .Description
-create a TagRule
+Create a TagRule
 .Example
 $tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
 New-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter

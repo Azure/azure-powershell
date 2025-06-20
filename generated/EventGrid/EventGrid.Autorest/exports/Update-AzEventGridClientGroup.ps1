@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a client group with the specified parameters.
+Update a client group with the specified parameters.
 .Description
-update a client group with the specified parameters.
+Update a client group with the specified parameters.
 .Example
 Update-AzEventGridClientGroup -Name azps-clientgroup -Namespacename azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -Description "This is a test client group" -Query "attributes.b IN ['a', 'b', 'c', 'd']"
 .Example
