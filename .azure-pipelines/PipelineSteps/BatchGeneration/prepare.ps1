@@ -18,7 +18,7 @@ Write-Host "Total module groups: $($groupedModules.Count)"
 $index = 0
 $generationTargets = @{}
 foreach ($moduleGroup in $groupedModules) {
-    Write-Host "##[group]Prepareing module group $($index + 1) with $($moduleGroup.Count) modules"
+    Write-Host "##[group]Preparing module group $($index + 1) with $($moduleGroup.Count) modules"
     $mergedModules = @{}
     foreach ($moduleName in $moduleGroup) {
         Write-Host "Module $($moduleName): $($moduleMap[$moduleName] -join ',')"

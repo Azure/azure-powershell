@@ -59,6 +59,9 @@ Adding Run Command to VMSS instances
 ### [Add-AzVmssSecret](Add-AzVmssSecret.md)
 Adds a secret to a VMSS.
 
+### [Add-AzVmssSkuProfileVMSize](Add-AzVmssSkuProfileVMSize.md)
+Add a VM size into VMSS Sku Profile for VMSS Instance Mix.
+
 ### [Add-AzVmssSshPublicKey](Add-AzVmssSshPublicKey.md)
 Adds SSH public keys to the VMSS.
 
@@ -248,9 +251,6 @@ Grants an access to a disk.
 ### [Grant-AzSnapshotAccess](Grant-AzSnapshotAccess.md)
 Grants an access to a snapshot.
 
-### [Invoke-AzSpotPlacementRecommender](Invoke-AzSpotPlacementRecommender.md)
-Generates placement scores for Spot VM skus.
-
 ### [Invoke-AzSpotPlacementScore](Invoke-AzSpotPlacementScore.md)
 Generates placement scores for Spot VM skus.
 
@@ -438,7 +438,7 @@ Removes a data disk from an image object.
 Delete Proximity Placement Group resource.
 
 ### [Remove-AzRestorePoint](Remove-AzRestorePoint.md)
-This cmdlet can remove a Restore Point 
+This cmdlet can remove a Restore Point
 
 ### [Remove-AzRestorePointCollection](Remove-AzRestorePointCollection.md)
 This Cmdlet can remove Restore Point Collection
@@ -517,6 +517,9 @@ Removes a network interface configuration from a VMSS.
 
 ### [Remove-AzVmssRunCommand](Remove-AzVmssRunCommand.md)
 Remove VMSS RunCommand
+
+### [Remove-AzVmssSkuProfileVMSize](Remove-AzVmssSkuProfileVMSize.md)
+Remove a VM size from VMSS Sku Profile for VMSS Instance Mix.
 
 ### [Remove-AzVmssVMDataDisk](Remove-AzVmssVMDataDisk.md)
 Removes a data disk from a virtual machine scale set VM
@@ -690,7 +693,7 @@ Starts an Azure virtual machine.
 Starts the VMSS or a set of virtual machines within the VMSS.
 
 ### [Start-AzVmssRollingExtensionUpgrade](Start-AzVmssRollingExtensionUpgrade.md)
-This cmdlet starts a rolling upgrade for all extensions on the given Virtual Machine Scale Set to the latest available version. 
+This cmdlet starts a rolling upgrade for all extensions on the given Virtual Machine Scale Set to the latest available version.
 
 ### [Start-AzVmssRollingOSUpgrade](Start-AzVmssRollingOSUpgrade.md)
 Starts a rolling upgrade to move all virtual machine scale set instances to the latest available Platform Image OS version.

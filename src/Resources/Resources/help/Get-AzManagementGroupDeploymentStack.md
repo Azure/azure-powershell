@@ -12,7 +12,7 @@ Gets Management Group scoped Deployment Stacks.
 
 ## SYNTAX
 
-### ListByManagmentGroupId (Default)
+### ListByManagementGroupId (Default)
 ```
 Get-AzManagementGroupDeploymentStack -ManagementGroupId <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -31,13 +31,13 @@ Get-AzManagementGroupDeploymentStack -ResourceId <String> [-Pre] [-DefaultProfil
 ```
 
 ## DESCRIPTION
-Retrieve a mangement group scoped deployment stack.
+Retrieve a management group scoped deployment stack.
 
 ## EXAMPLES
 
-### Example 1: Retrieves the deployment stack MyMGStack in mangement group MyManagementGroup
+### Example 1: Retrieves the deployment stack MyMGStack in management group MyManagementGroup
 ```powershell
-Get-AzManagementGroupDeploymentStack -ManagementGroupId MyMangementGroup -Name MyMGStack
+Get-AzManagementGroupDeploymentStack -ManagementGroupId MyManagementGroup -Name MyMGStack
 ```
 
 Get a deployment stack named 'MyMGStack' under an MG named 'MyManagementGroup'.
@@ -64,7 +64,7 @@ The id of the ManagementGroup where the DeploymentStack is deployed
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByManagmentGroupId, GetByManagementGroupIdAndName
+Parameter Sets: ListByManagementGroupId, GetByManagementGroupIdAndName
 Aliases:
 
 Required: True

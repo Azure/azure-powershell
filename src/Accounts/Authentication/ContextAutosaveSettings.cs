@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public string ContextDirectory { get; set; }
 
         /// <summary>
-        /// Fiel name for the context file
+        /// File name for the context file
         /// </summary>
         public string ContextFile { get; set; }
 

@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The ID of the subnet which pods will join when launched.")]
         public string NodePodSubnetID { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Whether to enalbe OIDC issuer feature.")]
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable OIDC issuer feature.")]
         public SwitchParameter EnableOidcIssuer { get; set; }
 
         private AcsServicePrincipal acsServicePrincipal;

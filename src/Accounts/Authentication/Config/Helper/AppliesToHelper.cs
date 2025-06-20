@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         /// Gets a comma-divided string for human-readable description of the AppliesTo options.
         /// </summary>
         /// <param name="options">Options of AppliesTo.</param>
-        /// <returns>The formated string.</returns>
+        /// <returns>The formatted string.</returns>
         internal static string FormatOptions(IReadOnlyCollection<AppliesTo> options)
         {
             if (options == null || !options.Any())
