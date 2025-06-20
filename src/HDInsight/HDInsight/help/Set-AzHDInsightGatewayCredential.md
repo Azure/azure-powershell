@@ -76,9 +76,9 @@ To use the `-EntraUserFullInfo` parameter, you need to provide each user's `Obje
 3. Search for the user you want to add.
 4. Click on the user to open their profile.
 5. Copy the following fields:
-   - **Object ID**
-   - **User Principal Name (UPN)**
-   - **Display Name**
+  - **Object ID**
+  - **User Principal Name (UPN)**
+  - **Display Name**
 
 ######  Option 2: Use PowerShell
 You can use the `Get-AzADUser` cmdlet to retrieve Entra user information from Azure Active Directory.
