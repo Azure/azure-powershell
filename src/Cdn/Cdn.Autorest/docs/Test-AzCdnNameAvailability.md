@@ -43,7 +43,7 @@ This is needed for resources where name is globally unique, such as a CDN endpoi
 
 ## EXAMPLES
 
-### Example 1: Check AzureCDN endpint name availability
+### Example 1: Check AzureCDN endpoint name availability
 ```powershell
 Test-AzCdnNameAvailability -Name endptest001 -Type Microsoft.Cdn/Profiles/Endpoints
 ```
@@ -54,7 +54,7 @@ Message            NameAvailable Reason
 Name not available False         Name is already in use
 ```
 
-Check AzureCDN endpint name availability
+Check AzureCDN endpoint name availability
 
 ## PARAMETERS
 

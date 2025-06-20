@@ -31,7 +31,7 @@ Invoke-AzCdnCommitProfileToAFDMigration -ProfileName name-migrated -ResourceGrou
 Commit the Migration, the Microsoft CDN (classic) profile will be upgraded AFD.
 After migration/upgrade, you won’t be able to view CDN resources.
 
-### Example 2: Commit the migrated Microsoft CDN (classic) profile, when the subscription of the profile is different from the local subscrition
+### Example 2: Commit the migrated Microsoft CDN (classic) profile, when the subscription of the profile is different from the local subscription
 ```powershell
 Invoke-AzCdnCommitProfileToAFDMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
 ```

@@ -70,7 +70,7 @@ function setupEnv() {
         Name = "origin1"
         HostName = "host1.hello.com"
     };
-    Write-Host -ForegroundColor Green "Start to creat endpointName : $($verizonEndpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+    Write-Host -ForegroundColor Green "Start to create endpointName : $($verizonEndpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
     New-AzCdnEndpoint -Name $verizonEndpointName -ResourceGroupName $resourceGroupName -ProfileName $verizonCdnProfileName -IsHttpAllowed -IsHttpsAllowed `
         -Location $env.location -Origin $origin -IsCompressionEnabled -ContentTypesToCompress "text/html","text/css" `
         -OriginHostHeader "www.bing.com" -OriginPath "/photos" -QueryStringCachingBehavior "IgnoreQueryString" | Out-Null
@@ -88,7 +88,7 @@ function setupEnv() {
     # DNA mapping use DNS Zone resource: ps.cdne2e.azfdtest.xyz 
     # Add RecordSets in 'DNS Management' blade: 
     #    Name: ps-2024-0901-domain010
-    #    Tyep: CName
+    #    Type: CName
     #    Alias Record Set: No
     #    Alias: ps-2024-0901-domain010.azureedge.net
     $classicCdnEndpointName = 'ps-2024-0901-domain010'

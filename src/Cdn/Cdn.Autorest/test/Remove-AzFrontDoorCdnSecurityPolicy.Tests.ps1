@@ -32,7 +32,7 @@ Describe 'Remove-AzFrontDoorCdnSecurityPolicy'  {
         New-AzFrontDoorCdnSecurityPolicy -Name $policyName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
 
         Remove-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName
-        Write-Host -ForegroundColor Green "Delete policName : $($policyName)"
+        Write-Host -ForegroundColor Green "Delete policyName : $($policyName)"
     }
 
     It 'DeleteViaIdentity' {
