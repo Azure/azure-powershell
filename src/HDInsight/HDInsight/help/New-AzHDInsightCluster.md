@@ -745,7 +745,8 @@ New-AzHDInsightCluster `
 
 ### Example 16: Create an Azure HDInsight cluster With Entra User By FUll Info
 To use the `-EntraUserFullInfo` parameter, you need to provide each user's `ObjectId`, `Upn`, and `DisplayName`. You can retrieve this information using one of the following methods:
-######  Option 1: Use Azure Portal
+
+Option 1: Use Azure Portal
 1. Go to https://portal.azure.com and sign in.
 2. Navigate to **Microsoft Entra ID** > **Users**.
 3. Search for the user you want to add.
@@ -755,9 +756,9 @@ To use the `-EntraUserFullInfo` parameter, you need to provide each user's `Obje
   - **User Principal Name (UPN)**
   - **Display Name**
 
-######  Option 2: Use PowerShell
+Option 2: Use PowerShell
 You can use the `Get-AzADUser` cmdlet to retrieve Entra user information from Azure Active Directory.
-Example command:
+command:
 ```powershell
 Get-AzADUser -UserPrincipalName "user@contoso.com"
 ```
@@ -767,6 +768,7 @@ This will return properties such as:
  - DisplayName -> DisplayName
 
 For more details, refer to the official documentation: [Get-AzADUser - PowerShell](https://learn.microsoft.com/en-us/powershell/module/az.resources/get-azaduser?view=azps-14.0.0)
+
 ```powershell
 # Primary storage account info
 $storageAccountResourceGroupName = "Group"

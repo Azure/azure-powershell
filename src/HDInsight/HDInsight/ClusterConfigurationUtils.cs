@@ -11,6 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
@@ -142,10 +143,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             {
                 if (graphClient == null)
                 {
-                    throw new InvalidOperationException(
+                    throw new AzPSArgumentException(
                      "Your Azure credentials have not been set up or have expired, please run Connect-AzAccount to set up your Azure credentials.\n" +
                      "Authentication failed against resource MicrosoftGraphEndpointResourceId. User interaction is required. This may be due to the conditional access policy settings such as multi-factor authentication (MFA). Please rerun 'Connect-AzAccount' with additional parameter '-AuthScope MicrosoftGraphEndpointResourceId'.\n" +
-                     "Alternatively, you can use the 'EntraUserFullInfo' parameter to manually specify the user details."
+                     "Alternatively, you can use the 'EntraUserFullInfo' parameter to manually specify the user details.", ErrorKind.UserError
                      );
                 }
                 List<string> userdata = EntraUserIdentity
@@ -159,7 +160,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                         var user = graphClient.Users.GetUser(data);
                         if(user == null)
                         {
-                            throw new Exception($"The Entra user retrieved for input \"{data}\" is null. Please confirm that the user exists in Microsoft Entra ID. ");
+                            throw new InvalidOperationException($"The Entra user retrieved for input \"{data}\" is null. Please confirm that the user exists in Microsoft Entra ID. ");
                         }
                         restAuthEntraUsers.Add(new EntraUserInfo
                         {
@@ -167,6 +168,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                             DisplayName = user.DisplayName,
                             Upn = user.UserPrincipalName
                         });
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        throw;
                     }
                     catch (Exception ex)
                     {
