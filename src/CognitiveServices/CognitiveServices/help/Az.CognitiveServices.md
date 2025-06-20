@@ -9,6 +9,8 @@ Locale: en-US
 # Az.CognitiveServices Module
 ## Description
 This topic displays help topics for the Azure Cognitive Services cmdlets.
+
+## Az.CognitiveServices Cmdlets
 ### [Add-AzCognitiveServicesAccountNetworkRule](Add-AzCognitiveServicesAccountNetworkRule.md)
 Add IpRules or VirtualNetworkRules to the NetworkRule property of a Cognitive Services account
 

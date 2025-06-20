@@ -9,6 +9,8 @@ Locale: en-US
 # Az.StorageSync Module
 ## Description
 The cmdlets in the Storage Sync module enable you to manage operations pertaining to Azure File Sync in PowerShell.
+
+## Az.StorageSync Cmdlets
 ### [Get-AzStorageSyncCloudEndpoint](Get-AzStorageSyncCloudEndpoint.md)
 This command lists all cloud endpoints within a given sync group.
 

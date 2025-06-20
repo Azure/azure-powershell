@@ -9,6 +9,8 @@ Locale: en-US
 # Az.Network Module
 ## Description
 This topic displays help topics for the Azure Network Cmdlets.
+
+## Az.Network Cmdlets
 ### [Add-AzApplicationGatewayAuthenticationCertificate](Add-AzApplicationGatewayAuthenticationCertificate.md)
 Adds an authentication certificate to an application gateway.
 
