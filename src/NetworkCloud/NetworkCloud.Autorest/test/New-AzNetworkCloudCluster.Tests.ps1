@@ -51,4 +51,63 @@ Describe 'New-AzNetworkCloudCluster' {
                 -Tag $tagHash `
         } | Should -Not -Throw
     }
+
+    It 'CreateWithIdentity' {
+        {
+            $clusterconfig = $global:config.AzNetworkCloudCluster
+            $common = $global:config.common
+            $tagHash = @{
+                tag1 = $clusterconfig.tags
+            }
+            $identityUserAssignedIdentity = @{}
+            $identityUserAssignedIdentity.Add($clusterconfig.miUserAssignedIdentityResourceId, @{})
+            $password = ConvertTo-SecureString "********" -AsPlainText -Force
+            $bmmConfigurationData1 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress1 -BootMacAddress $clusterconfig.bootMacAddress1 -RackSlot 1 -SerialNumber $clusterconfig.serialNumber1 -MachineDetail "machineDetail" -MachineName "lab00r750wkr1"
+            $bmmConfigurationData2 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress2 -BootMacAddress $clusterconfig.bootMacAddress2 -RackSlot 2 -SerialNumber $clusterconfig.serialNumber2 -MachineDetail "machineDetailmgr" -MachineName "lab00r750mgr1"
+            $bmmConfigurationData3 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress3 -BootMacAddress $clusterconfig.bootMacAddress3 -RackSlot 3 -SerialNumber $clusterconfig.serialNumber3 -MachineDetail "machineDetailmgr" -MachineName "lab00r750mgr2"
+            $bareMetalMachineConfigurationData = @($bmmConfigurationData1, $bmmConfigurationData2, $bmmConfigurationData3)
+
+            $computerackdefinition = New-AzNetworkCloudRackDefinitionObject -NetworkRackId $clusterconfig.aggregatorRack.networkRackId -RackSerialNumber $clusterconfig.computeRack.serialNumber -RackSkuId $clusterconfig.computeRack.rackSkuId -AvailabilityZone "1" -RackLocation $clusterconfig.rackDefinitionRackLocation -BareMetalMachineConfigurationData $bareMetalMachineConfigurationData
+            $baremetalmachineconfigurationdata = @($bmmconfigurationdata1)
+
+            $securePassword = ConvertTo-SecureString $clusterconfig.clusterServicePrincipalPassword -AsPlainText -Force
+
+            New-AzNetworkCloudCluster -ResourceGroupName $clusterconfig.miClusterRg -Name $clusterconfig.miClusterName `
+                -AggregatorOrSingleRackDefinitionNetworkRackId $clusterconfig.aggregatorRack.networkRackId `
+                -AggregatorOrSingleRackDefinitionRackSerialNumber $clusterconfig.aggregatorRack.serialNumber `
+                -AggregatorOrSingleRackDefinitionRackSkuId $clusterconfig.aggregatorRack.rackSkuId `
+                -AggregatorOrSingleRackDefinitionAvailabilityZone $clusterconfig.aggregatorRack.availabilityZone `
+                -AggregatorOrSingleRackDefinitionRackLocation "Foo Datacenter, Floor 3, Aisle 9, Rack 2" `
+                -IdentityType $clusterconfig.identityType `
+                -IdentityUserAssignedIdentity $identityUserAssignedIdentity `
+                -RuntimeProtectionConfigurationEnforcementLevel $clusterconfig.runtimeProtectionConfigEnforcementLevel `
+                -AnalyticOutputSettingAnalyticsWorkspaceId $clusterconfig.miAnalyticsWorkspaceId `
+                -AnalyticsOutputSettingsAssociatedIdentityType $clusterconfig.identityType `
+                -AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
+                -ClusterType $clusterconfig.clusterType -ClusterVersion $clusterconfig.clusterVersion `
+                -CommandOutputSettingContainerUrl $clusterconfig.containerUrl `
+                -AssociatedIdentityType $clusterconfig.identityType `
+                -AssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
+                -ExtendedLocationName $clusterconfig.miExtendedLocation -ExtendedLocationType $common.customLocationType `
+                -Location $common.location `
+                -SubscriptionId $clusterconfig.subscriptionId `
+                -NetworkFabricId $clusterconfig.miNetworkFabricId `
+                -ClusterServicePrincipalApplicationId $clusterconfig.clusterServicePrincipalApplicationId `
+                -ClusterServicePrincipalId $clusterconfig.clusterServicePrincipalId `
+                -ClusterServicePrincipalPassword $securePassword `
+                -ClusterServicePrincipalTenantId $clusterconfig.clusterServicePrincipalTenantId `
+                -ComputeRackDefinition $computerackdefinition `
+                -SecretArchiveKeyVaultId $clusterconfig.miKeyVaultId `
+                -SecretArchiveSettingVaultUri $clusterconfig.keyVaultUri `
+                -SecretArchiveSettingsAssociatedIdentityType $clusterconfig.identityType `
+                -SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
+                -SecretArchiveUseKeyVault $clusterconfig.useKeyVault `
+                -UpdateStrategyThresholdType $clusterconfig.updateStrategyThresholdType `
+                -UpdateStrategyThresholdValue $clusterconfig.updateStrategyThresholdValue `
+                -UpdateStrategyType $clusterconfig.updateStrategyType `
+                -UpdateStrategyWaitTimeMinute $clusterconfig.updateStrategyWaitTimeMinute `
+                -VulnerabilityScanningSettingContainerScan $clusterconfig.vulnerabilityScanningSettingContainerScan `
+                -Tag $tagHash `
+        } | Should -Not -Throw
+    }
 }

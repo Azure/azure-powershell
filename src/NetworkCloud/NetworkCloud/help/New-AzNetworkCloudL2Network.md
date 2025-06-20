@@ -14,10 +14,10 @@ Create a new layer 2 (L2) network or update the properties of the existing netwo
 
 ```
 New-AzNetworkCloudL2Network -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -ExtendedLocationName <String> -ExtendedLocationType <String> -L2IsolationDomainId <String> -Location <String>
- [-HybridAksPluginType <HybridAksPluginType>] [-InterfaceName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] -ExtendedLocationName <String> -ExtendedLocationType <String>
+ -L2IsolationDomainId <String> -Location <String> [-HybridAksPluginType <HybridAksPluginType>]
+ [-InterfaceName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,6 +108,39 @@ The network plugin type for Hybrid AKS.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.HybridAksPluginType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+The ETag of the transformation.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+Other values will result in error from server as they are not supported.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -279,7 +312,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IL2Network
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL2Network
 
 ## NOTES
 
