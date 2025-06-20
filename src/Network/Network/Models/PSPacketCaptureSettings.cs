@@ -12,27 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Newtonsoft.Json;
-
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSStorageLocation
+    using Microsoft.WindowsAzure.Commands.Common.Attributes;
+    using Newtonsoft.Json;
+
+    public class PSPacketCaptureSettings 
     {
-        [JsonProperty(Order = 2)]
+        /// <summary>
+        /// Gets or sets number of file count.
+        /// </summary>
+        [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public string StorageId { get; set; }
+        public int? FileCount { get; set; }
 
+        /// <summary>
+        /// Gets or sets number of bytes captured per packet.
+        /// </summary>
         [JsonProperty(Order = 2)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public string StoragePath { get; set; }
+        public long? FileSizeInBytes { get; set; }
 
-        [JsonProperty(Order = 2)]
+        /// <summary>
+        /// Gets or sets maximum duration of the capture session in seconds.
+        /// </summary>
+        [JsonProperty(Order = 3)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public string FilePath { get; set; }
-
-        [JsonProperty(Order = 2)]
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string LocalPath { get; set; }
+        public int? SessionTimeLimitInSeconds { get; set; }
     }
 }
