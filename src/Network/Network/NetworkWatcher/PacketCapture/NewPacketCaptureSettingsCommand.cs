@@ -20,14 +20,13 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PacketCaptureSettingsConfig"), OutputType(typeof(PSPacketCaptureSettings))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PacketCaptureSettingsConfig", SupportsShouldProcess = false), OutputType(typeof(PSPacketCaptureSettings))]
     public class NewPacketCaptureSettingsCommand : NetworkBaseCmdlet
     {
         [Parameter(
              Mandatory = false,
              ValueFromPipeline = true,
              HelpMessage = "Number of file count. Default value is 1.")]
-        [ValidateNotNull]
         [ValidateRange(1, 10000)]
         public int? FileCount { get; set; }
 
@@ -35,7 +34,6 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Number of bytes captured per packet. Default value is 1073741824.")]
-        [ValidateNotNull]
         [ValidateRange(102400, uint.MaxValue)]
         public long? FileSizeInBytes { get; set; }
 
@@ -43,7 +41,6 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Capture session in seconds. Default value is 18000.")]
-        [ValidateNotNull]
         [ValidateRange(1, 604800)]
         public int? SessionTimeLimitInSeconds { get; set; }
 

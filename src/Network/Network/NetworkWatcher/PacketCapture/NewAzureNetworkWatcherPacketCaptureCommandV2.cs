@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "Local File path.")]
+             HelpMessage = "Local file path.")]
         [ValidateNotNullOrEmpty]
         public string LocalFilePath { get; set; }
 
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "This continuous capture is a nullable boolean, which can hold 'null', 'true' or 'false' value. If we do not pass this parameter, it would be consider as 'null', default value is 'null'.")]
+             HelpMessage = "This continuous capture is a nullable boolean, which can hold 'null', 'true' or 'false' value. If we do not pass this parameter, it would be considered as 'null', default value is 'null'.")]
         public bool? ContinuousCapture { get; set; }
 
         [Parameter(
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              HelpMessage = "The capture setting holds the 'FileCount', 'FileSizeInBytes', 'SessionTimeLimitInSeconds' values. These settings are only applicable, if 'ContinuousCapture' is provided.")]
         [ValidateNotNull]
-        public PSPacketCaptureSettings CaptureSettings { get; set; }
+        public PSPacketCaptureSettings CaptureSetting { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -201,16 +201,16 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                if (this.ContinuousCapture == true && this.CaptureSettings != null &&
-                    this.CaptureSettings.FileCount == 1 && this.CaptureSettings.FileSizeInBytes == 1073741824
-                    && this.CaptureSettings.SessionTimeLimitInSeconds == 18000)
+                if (this.ContinuousCapture == true && this.CaptureSetting != null &&
+                    this.CaptureSetting.FileCount == 1 && this.CaptureSetting.FileSizeInBytes == 1073741824
+                    && this.CaptureSetting.SessionTimeLimitInSeconds == 18000)
                 {
                     ConfirmAction(ForcePrompt,
-                   $"Do you want to change the capture settings? As you have opted 'ContinuousCapture' as 'True' and Capture settings are : {JsonConvert.SerializeObject(this.CaptureSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })} ", string.Empty,
+                   $"Do you want to change the capture settings? As you have opted 'ContinuousCapture' as 'True' and Capture settings are : {JsonConvert.SerializeObject(this.CaptureSetting, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })} ", string.Empty,
                    this.Name,
                    () =>
                     {
-                        throw new Exception("Please modified the CaptureSettings values by using 'New-AzPacketCaptureSettingsConfig' command with specific values.");
+                        throw new Exception("Please modified the CaptureSetting values by using 'New-AzPacketCaptureSettingsConfig' command with specific values.");
                     }
                    );
                 }
@@ -283,13 +283,13 @@ namespace Microsoft.Azure.Commands.Network
             {
                 packetCaptureProperties.ContinuousCapture = this.ContinuousCapture;
                 packetCaptureProperties.StorageLocation.LocalPath = this.LocalPath;
-                if (this.CaptureSettings != null)
+                if (this.CaptureSetting != null)
                 {
                     packetCaptureProperties.CaptureSettings = new MNM.PacketCaptureSettings()
                     {
-                        FileCount = this.CaptureSettings.FileCount,
-                        FileSizeInBytes = this.CaptureSettings.FileSizeInBytes,
-                        SessionTimeLimitInSeconds = this.CaptureSettings.SessionTimeLimitInSeconds
+                        FileCount = this.CaptureSetting.FileCount,
+                        FileSizeInBytes = this.CaptureSetting.FileSizeInBytes,
+                        SessionTimeLimitInSeconds = this.CaptureSetting.SessionTimeLimitInSeconds
                     };
                 }
             }
