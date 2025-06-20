@@ -5753,11 +5753,14 @@ function Test-SecurityPostureFeature
         $SecurityPostureId = "/CommunityGalleries/SecurityPosturesBVTGallery/securityPostures/VMSSUniformWindows/versions/latest"
 
         # create vmss with security posture settings
-        $vmss = New-AzVmss -ResourceGroupName $rgname -Location eastus2euap -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel1 -SecurityPostureId $SecurityPostureId -SecurityPostureExcludeExtension "SecurityPostureSecurityAgent"
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Location eastus2euap -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel1 -SecurityPostureId $SecurityPostureId -SecurityPostureExcludeExtension "SecurityPostureSecurityAgent" -EnableProxyAgent
 
         # verify
         Assert-AreEqual $vmss.VirtualMAchineProfile.SecurityPostureReference.Id $SecurityPostureId
         Assert-AreEqual $vmss.virtualMachineProfile.SecurityPostureReference.ExcludeExtensions.count 1
+        #Assert-True $vmss.VirtualMAchineProfile.SecurityProfile.ProxyAgentSettings.Enabled
+
+        # update to add keyIncarnationId and see if that works
 
         # Test New-AzVmssConfig 
         $vmssConfig = New-AzVmssConfig -SecurityPostureId $SecurityPostureId -SecurityPostureExcludeExtension "SecurityPostureSecurityAgent"
