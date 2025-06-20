@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added a small fix to Test-AzResourceGroupDeployment
 
 ## Version 8.0.1
 * Fixed empty warning output issue for cmdlet `Test-AzResourceGroupDeployment` [#27888]
