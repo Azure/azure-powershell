@@ -1,0 +1,509 @@
+variables:
+  IntermediateStepTimeoutInMinutes: 30
+  GenerateTimeoutInMinutes: 120
+  BuildTimeoutInMinutes: 120
+  AnalysisTimeoutInMinutes: 120
+  TestTimeoutInMinutes: 180
+  MaxParallelGenerateJobs: 15
+  MaxParallelBuildJobs: 15
+  MaxParallelAnalyzeJobs: 5
+  MaxParallelTestWindowsJobs: 5
+  MaxParallelTestLinuxJobs: 5
+  MaxParallelTestMacJobs: 5
+  WindowsAgentPoolName: pool-windows-2019
+  LinuxAgentPoolName: pool-ubuntu-2004
+  MacOSAgentPoolName: 'Azure Pipelines'
+  MacOSAgentPoolVMImage: macOS-latest
+
+trigger: none
+
+resources:
+  pipelines:
+    - pipeline: autorestRelease
+      project: release 
+      source: "autorest.powershell - Publish on commit - OneBranch"  
+      trigger: true
+
+stages:
+  - stage: Generate
+    jobs:
+    - job: prepare
+      displayName: Generate Build Targets Matrix
+      timeoutInMinutes: ${{ variables.IntermediateStepTimeoutInMinutes }}
+      pool: ${{ variables.WindowsAgentPoolName }}
+      steps:
+
+      # TODO: (Bernard) Uncomment the no checkout step after automatically install repo into agents 
+      # - checkout: none
+      - checkout: self
+        fetchDepth: 1
+        fetchTags: false
+
+      - template: util/get-github-pat-steps.yml
+
+      - task: PowerShell@2
+        name: checkout
+        displayName: 'Create Batch Generation Branch'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            $date = Get-Date -Format "yy-MM-dd"
+            $generationBranch = "batch-generation/branch-$date-$(Build.BuildId)"
+            $token = "$(GitHubToken)"
+
+            $createBranchPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'create-branch.ps1'
+            & $createBranchPath -Owner 'Azure' -Repo 'azure-powershell' -BaseBranch "$(GenerationBaseBranch)" -NewBranch $generationBranch -Token $token
+            Write-Host "##vso[task.setvariable variable=GenerationBranch;isOutput=true]$generationBranch"
+
+      - task: PowerShell@2
+        name: version
+        displayName: 'Get latest Autorest Version'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            $autorestPowershellUrl = "https://registry.npmjs.org/@autorest/powershell"
+            $response = Invoke-RestMethod -Uri $autorestPowershellUrl -Method Get
+            $latestAutorestVersion = $response.'dist-tags'.latest
+            Write-Host "Latest version of Autorest Powershell is $latestAutorestVersion"
+            Write-Host "##vso[task.setvariable variable=LatestAutorestVersion;isOutput=true]$latestAutorestVersion"
+
+      - task: PowerShell@2
+        name: mtrx
+        displayName: 'Generate Build Targets Matrix'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            $prepareModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'prepare.ps1'
+            & $prepareModulesPath -RepoRoot "$(Build.SourcesDirectory)" -MaxParallelJobs "${{ variables.MaxParallelGenerateJobs }}"
+
+      - task: PublishPipelineArtifact@1
+        displayName: 'Upload generated targets'
+        inputs:
+          targetPath: artifacts
+          artifact: 'prepare'
+
+    - job: generate
+      displayName: "Batch Generate: "
+      dependsOn: prepare
+      condition: and(
+        ne(dependencies.prepare.outputs['mtrx.generationTargets'], ''),
+        ne(dependencies.prepare.outputs['mtrx.generationTargets'], '{}')
+        )
+      variables:
+        GenerationBranch: $[dependencies.prepare.outputs['checkout.GenerationBranch']]
+        LatestAutorestVersion: $[dependencies.prepare.outputs['version.LatestAutorestVersion']]
+      timeoutInMinutes: ${{ variables.GenerateTimeoutInMinutes }}
+      pool: ${{ variables.WindowsAgentPoolName }}
+      strategy:
+        matrix: $[ dependencies.prepare.outputs['mtrx.generationTargets'] ]
+        maxParallel: ${{ variables.MaxParallelGenerateJobs }}
+
+      steps:
+      - checkout: self
+        persistCredentials: true
+        fetchTags: false
+      
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          artifactName: 'prepare'
+          targetPath: artifacts
+
+      - task: PowerShell@2
+        name: generate
+        displayName: 'Regenerate Modules'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            git fetch origin "$(GenerationBranch)"
+            git checkout "$(GenerationBranch)"
+
+            $batchGenerateModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'batch-generate-modules.ps1'
+            & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)" -AutorestVersion "$(LatestAutorestVersion)"
+          workingDirectory: $(Build.SourcesDirectory)
+
+      - task: PublishPipelineArtifact@1
+        displayName: 'Save patch and generation report'
+        inputs:
+          targetPath: artifacts
+          artifact: 'generate-$(MatrixKey)'
+        condition: always()
+
+  - stage: Build
+    dependsOn: Generate
+    condition: always()
+    variables:
+      GenerationBranch: $[stageDependencies.Generate.prepare.outputs['checkout.GenerationBranch']]
+      LatestAutorestVersion: $[stageDependencies.Generate.prepare.outputs['version.LatestAutorestVersion']]
+    jobs:
+    - job: filter
+      displayName: 'Filter Changed Modules'
+      timeoutInMinutes: ${{ variables.IntermediateStepTimeoutInMinutes }}
+      pool: ${{ variables.WindowsAgentPoolName }}
+      steps:
+      - checkout: self
+        persistCredentials: true
+        fetchTags: false
+      
+      - task: PowerShell@2
+        name: checkout
+        displayName: 'Checkout Generation Branch'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            git fetch origin "$(GenerationBranch)"
+            git checkout "$(GenerationBranch)"
+
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          artifactName: 'prepare'
+          targetPath: artifacts
+
+      - download: current
+        patterns: '**/changed-*.patch'
+        displayName: 'Download all .patch artifacts'
+
+      - task: PowerShell@2
+        name: apply
+        displayName: 'Apply all patches'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
+            git config user.name "azure-powershell-bot"
+
+            Write-Host "Applying all .patch files to "$(GenerationBranch)"..."
+            $patchFiles = Get-ChildItem -Path "$env:PIPELINE_WORKSPACE" -Recurse -Filter *.patch
+
+            foreach ($patch in $patchFiles) {
+              Write-Host "Applying patch: $($patch.FullName)"
+              git apply --whitespace=fix "$($patch.FullName)"
+            }
+            
+            git add .
+            git commit -m "Autorest Upgrade - $(LatestAutorestVersion)"
+            git push origin "$(GenerationBranch)"
+
+      - task: PowerShell@2
+        name: mtrx
+        displayName: 'Generate Test Targets Matrix'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            $base = git merge-base HEAD origin/main
+            $changedFiles = git diff --name-only $base HEAD
+
+            $sourceBranchName = "$(Build.SourceBranch)".Replace('refs/heads/', '')
+            git checkout $sourceBranchName
+
+            $filterModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'filter.ps1'
+            & $filterModulesPath `
+              -MaxParallelBuildJobs "${{ variables.MaxParallelBuildJobs }}" `
+              -MaxParallelAnalyzeJobs "${{ variables.MaxParallelAnalyzeJobs }}" `
+              -MaxParallelTestWindowsJobs "${{ variables.MaxParallelTestWindowsJobs }}" `
+              -MaxParallelTestLinuxJobs "${{ variables.MaxParallelTestLinuxJobs }}" `
+              -MaxParallelTestMacJobs "${{ variables.MaxParallelTestMacJobs }}" `
+              -ChangedFiles $changedFiles `
+              -RepoRoot "$(Build.SourcesDirectory)"
+        env:
+            RUN_TEST_ON_ALL_MODULES: $(RUN_TEST_ON_ALL_MODULES)
+
+      - task: PublishPipelineArtifact@1
+        displayName: 'Upload filtered targets'
+        inputs:
+          targetPath: artifacts
+          artifact: 'filter'
+
+    - job: build
+      displayName: "Build:"
+      dependsOn: filter
+      condition: and(
+        ne(dependencies.filter.outputs['mtrx.buildTargets'], ''),
+        ne(dependencies.filter.outputs['mtrx.buildTargets'], '{}')
+        )
+      timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
+      pool: ${{ variables.WindowsAgentPoolName }}
+      strategy:
+        matrix: $[ dependencies.filter.outputs['mtrx.buildTargets'] ]
+        maxParallel: ${{ variables.MaxParallelBuildJobs }}
+
+      steps:
+      - checkout: self
+        fetchDepth: 1
+        fetchTags: false
+
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          artifactName: 'filter'
+          targetPath: artifacts
+
+      - task: PowerShell@2
+        name: build
+        displayName: 'Build Targets'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            git fetch origin "$(GenerationBranch)"
+            git checkout "$(GenerationBranch)"
+
+            $buildModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'build-modules.ps1'
+            & $buildModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)"
+
+          workingDirectory: $(Build.SourcesDirectory)
+
+      - task: PublishPipelineArtifact@1
+        displayName: 'Save build artifacts'
+        inputs:
+          targetPath: artifacts
+          artifact: 'build-$(MatrixKey)'
+        condition: always()
+
+  - stage: Test
+    dependsOn: Build
+    condition: always()
+    jobs:
+    - job: collect
+      displayName: "Collect Artifacts"
+      timeoutInMinutes: ${{ variables.IntermediateStepTimeoutInMinutes }}
+      pool: ${{ variables.WindowsAgentPoolName }}
+
+      steps:
+      - checkout: none
+
+      - download: current
+        patterns: |
+          **/Debug/**
+          **/StaticAnalysis/**
+        displayName: 'Download build artifacts'
+
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          artifactName: 'filter'
+          targetPath: artifacts
+
+      - task: PowerShell@2
+        name: collect
+        displayName: 'Collect modules artifacts'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+
+            $workspace = "$env:PIPELINE_WORKSPACE"
+            $repoRoot = "$(Build.SourcesDirectory)"
+            $artifactsRoot = Join-Path $repoRoot "artifacts"
+            $debugArtifactDestPath = Join-Path $artifactsRoot "Debug"
+            New-Item -ItemType Directory -Force -Path $debugArtifactDestPath | Out-Null
+
+            $copiedModules = @{}
+            $StaticAnalysisCopied = $false
+
+            Get-ChildItem -Path $workspace -Directory | ForEach-Object {
+                $debugArtifactSrcPath = Join-Path $_.FullName "Debug"
+                $StaticAnalysisSrcDirectory = Join-Path $_.FullName 'StaticAnalysis'
+
+                if (Test-Path $debugArtifactSrcPath) {
+                    Get-ChildItem -Path $debugArtifactSrcPath -Directory | ForEach-Object {
+                        $moduleName = $_.Name
+
+                        if (-not $copiedModules.ContainsKey($moduleName)) {
+                            $destPath = Join-Path $debugArtifactDestPath $moduleName
+                            Copy-Item -Path $_.FullName -Destination $destPath -Recurse
+                            $copiedModules[$moduleName] = $true
+                            Write-Host "Copied $moduleName from $debugArtifactSrcPath"
+                        } else {
+                            Write-Host "Skipped $moduleName from $debugArtifactSrcPath (already copied)"
+                        }
+                    }
+                }
+
+                if ((Test-Path $StaticAnalysisSrcDirectory) -and (-not $StaticAnalysisCopied)) {
+                    $destPath = Join-Path $artifactsRoot 'StaticAnalysis'
+                    Copy-Item -Path $StaticAnalysisSrcDirectory -Destination $destPath -Recurse
+                    $StaticAnalysisCopied = $true
+                    Write-Host "Copied StaticAnalysis from $StaticAnalysisSrcDirectory"
+                }
+                
+            }
+
+            Get-ChildItem -Path $artifactsRoot -Directory | ForEach-Object {
+                Write-Host "Artifact Directory - $($_.Name)"
+            }
+
+            Get-ChildItem -Path $debugArtifactDestPath -Directory | ForEach-Object {
+                Write-Host "Debug Directory - $($_.Name)"
+            }
+
+
+      - task: PublishPipelineArtifact@1
+        displayName: 'Upload collected artifacts'
+        inputs:
+          targetPath: artifacts
+          artifact: 'collect'
+      
+    - job: analyze
+      displayName: "Analyze:"
+      dependsOn: 
+        - collect
+      condition: and(
+        ne(stageDependencies.Build.filter.outputs['mtrx.analyzeTargets'], ''),
+        ne(stageDependencies.Build.filter.outputs['mtrx.analyzeTargets'], '{}')
+        )
+      timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
+      pool: ${{ variables.WindowsAgentPoolName }}
+      strategy:
+        matrix: $[ stageDependencies.Build.filter.outputs['mtrx.analyzeTargets'] ]
+        maxParallel: ${{ variables.MaxParallelAnalyzeJobs }}
+
+      steps:
+      - checkout: self
+        fetchDepth: 1
+        fetchTags: false
+
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          artifact: collect
+          path: $(Build.SourcesDirectory)/artifacts
+        displayName: 'Download collected artifact to artifacts folder'
+
+      - task: NodeTool@0
+        displayName: Install autorest
+        inputs:
+          versionSpec: '14.17.1'
+          command: custom
+          verbose: false
+          customCommand: install autorest@latest
+
+      - task: PowerShell@2
+        displayName: Setup environment for autorest
+        inputs:
+          targetType: inline
+          script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
+          pwsh: true
+
+      - task: UseDotNet@2
+        displayName: 'Use .NET SDK for Static Analysis'
+        inputs:
+          packageType: sdk
+          version: 8.x
+
+      - task: PowerShell@2
+        name: analyze
+        displayName: 'Analyze modules'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            Write-Host "Matrix Key: $(MatrixKey)"
+
+            $analyseModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'analyse-modules.ps1'
+            & $analyseModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)"
+
+      - task: PublishPipelineArtifact@1
+        displayName: 'Save Analyse Report'
+        inputs:
+          targetPath: artifacts
+          artifact: 'analyse-$(MatrixKey)'
+        condition: always()
+
+    - template: util/batch-generation-test-job.yml
+      parameters:
+        jobName: 'test_windows'
+        OSName: 'Windows'
+        timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+        agentPoolName: ${{ variables.WindowsAgentPoolName }}
+        maxParallel: ${{ variables.MaxParallelTestWindowsJobs }}
+        
+    - template: util/batch-generation-test-job.yml
+      parameters:
+        jobName: 'test_linux'
+        OSName: 'Linux'
+        timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+        agentPoolName: ${{ variables.LinuxAgentPoolName }}
+        maxParallel: ${{ variables.MaxParallelTestLinuxJobs }}
+
+    - template: util/batch-generation-test-job.yml
+      parameters:
+        jobName: 'test_mac'
+        OSName: 'MacOS'
+        timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+        agentPoolName: ${{ variables.MacOSAgentPoolName }}
+        agentPoolVMImage: ${{ variables.MacOSAgentPoolVMImage }}
+        maxParallel: ${{ variables.MaxParallelTestMacJobs }}
+ 
+  - stage: Report
+    condition: always()
+    jobs:
+    - job: report
+      displayName: 'Report'
+      timeoutInMinutes: ${{ variables.IntermediateStepTimeoutInMinutes }}
+      pool: ${{ variables.WindowsAgentPoolName }}
+      steps:
+      - checkout: self
+        fetchDepth: 1
+        fetchTags: false
+
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          artifactName: 'prepare'
+          targetPath: artifacts
+
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          artifactName: 'filter'
+          targetPath: artifacts
+
+      - download: current
+        patterns: |
+          **/AnalyseReport-*.json
+          **/GenerationReport-*.json
+          **/BuildReport-*.json
+          **/Test*Report-*.json
+        displayName: 'Download build artifacts'
+
+      - task: PowerShell@2
+        name: report
+        displayName: 'Report Results'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            $reportScriptPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'report.ps1'
+            & $reportScriptPath -RepoRoot "$(Build.SourcesDirectory)" -PipelineWorkspace "$env:PIPELINE_WORKSPACE"
+
+      - task: PublishPipelineArtifact@1
+        displayName: 'Save Reports'
+        inputs:
+          targetPath: artifacts
+          artifact: 'reports'
+        condition: always()
+  
+  - stage: FailedJobNotification
+    dependsOn:
+      - Generate
+      - Build
+      - Test
+      - Report
+    condition: failed()
+    jobs:
+      - job: FailJobNotification
+        steps:          
+          - task: PowerShell@2
+            name: notification
+            displayName: "teams notification on failed job"
+            inputs:
+              targetType: inline
+              pwsh: true
+              script: |
+                $notificationScriptPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'notify-failed-job.ps1'
+                & $notificationScriptPath -RepoRoot "$(Build.SourcesDirectory)"
+            env:
+              TEAMS_URL: $(TEAMS_URL)
+              FailedJobNotificationReceivers: $(FailedJobNotificationReceivers)

@@ -20,9 +20,9 @@ Gets the specified NSP linkReference resource.
 .Description
 Gets the specified NSP linkReference resource.
 .Example
-Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3
+Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
- Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3 -Name Ref-from-t-link1-1738a5f3-78f8-4f1b-8f30-ffe0eaa74495
+Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -Name Ref-from-link-test-1-000000-29bb-4bc4-9297-676b337e6c74
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity

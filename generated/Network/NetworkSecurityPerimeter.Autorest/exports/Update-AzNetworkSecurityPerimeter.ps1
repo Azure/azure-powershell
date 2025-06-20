@@ -20,12 +20,10 @@ Patch Tags for a Network Security Perimeter.
 .Description
 Patch Tags for a Network Security Perimeter.
 .Example
-
-Update-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
-
+Update-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1 -Tag @{'Owner'='user-test-1'}
 .Example
- $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
- Update-AzNetworkSecurityPerimeter -InputObject $GETObj
+ $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1
+ Update-AzNetworkSecurityPerimeter -InputObject $GETObj -Tag @{'Owner'='user-test-2'}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity

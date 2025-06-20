@@ -20,18 +20,12 @@ Gets the specified NSP association by name.
 .Description
 Gets the specified NSP association by name.
 .Example
-
- Get-AzNetworkSecurityPerimeterAssociation -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+Get-AzNetworkSecurityPerimeterAssociation -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-
- Get-AzNetworkSecurityPerimeterAssociation -Name association3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+Get-AzNetworkSecurityPerimeterAssociation -Name association-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-
- $GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name association3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
- Get-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj
-
+$GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name association-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Get-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity

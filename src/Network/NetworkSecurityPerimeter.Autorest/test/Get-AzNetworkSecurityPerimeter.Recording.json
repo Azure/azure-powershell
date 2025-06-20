@@ -1,13 +1,13 @@
 {
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2024-07-01+1": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2024-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2024-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "2b950832-2d0e-44ad-af48-12f121693e04" ],
+        "x-ms-client-request-id": [ "98426d63-5f3f-4e86-bce6-502eecc225c5" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeter" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeter_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,37 +22,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-request-id": [ "c90265a6-95e5-470e-8d64-685a022175f5" ],
-        "x-ms-correlation-request-id": [ "c90265a6-95e5-470e-8d64-685a022175f5" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20250320T101709Z:c90265a6-95e5-470e-8d64-685a022175f5" ],
+        "x-ms-request-id": [ "b1ddf29b-a992-4312-add0-d1d8096df317" ],
+        "x-ms-correlation-request-id": [ "b1ddf29b-a992-4312-add0-d1d8096df317" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250516T091239Z:b1ddf29b-a992-4312-add0-d1d8096df317" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2EF77BF7FD2B4D15917B8B019ECF8F52 Ref B: MNZ221060609031 Ref C: 2025-03-20T10:17:08Z" ],
-        "Date": [ "Thu, 20 Mar 2025 10:17:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D032445F887B4E058CFEC8A40FB9029A Ref B: MNZ221060618051 Ref C: 2025-05-16T09:12:38Z" ],
+        "Date": [ "Fri, 16 May 2025 09:12:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "4329" ],
+        "Content-Length": [ "3981" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"tc7fyt-nsp1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"aa0804ab-71bd-432b-9e13-a812a6954b8b\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"tc7fyt-nsp10\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp10\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"321dd4a5-e89b-4240-9ebc-778b9f15b5c0\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"tc7fyt-nsp11\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp11\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"c5683334-0c58-4c7f-9b04-fc454bd87cc0\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"tc7fyt-nsp12\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp12\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"bf5e60f7-4858-4186-8878-0eda1b9a8d91\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"tc7fyt-nsp13\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp13\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"d10e7eea-d5a1-400c-8c18-3338750dc02f\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"tc7fyt-nsp2\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp2\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"9bfcbbc0-bc73-43af-991e-f239b213c71f\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"tc7fyt-nsp3\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp3\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"b9d40206-0fce-4887-b050-471d436aad70\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"tc7fyt-nsp4\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp4\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"b6b7eabb-5980-47b6-ba1f-8adea85ea103\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"tc7fyt-nsp5\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp5\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"876bef07-e292-42c8-8eb6-8903ed00d981\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"tc7fyt-nsp6\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp6\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"6c015ecf-581e-48f1-8348-d18d98a4b479\",\"provisioningState\":\"Succeeded\"}}],\"nextLink\":\"https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2024-07-01\u0026%24skiptoken=3ZDBasMwEET%2fRYecIstJReMYQvEhlEJdQp3cDEWR164wlsRqnSYx%2fveK9tJv6GmGYQ4zb2IWrvRqbB9YPrF9UR1P1Xp%2fKg4sZ59EPuRCDMqqDgawlKj7iJBoN4gwnoNG48k4G8RDJh%2f1OW25VK3icgPAM1CSr3Qm5VZnOmu2AiG4ETU8oxt9ED5g90F6096ER3cxDWAQpdHogmspeQP6ctgL%2b6sV6BEN3Q6AZgCK3SflDb9EExfs1ula8nTD09WiNRjoxTZw3a3ShY%2fTK3OH6Nm8ZAqHousQOkXQHF0PNh4t3ku2%2fCFRKuwBYzTVf2HULK%2f%2fHY6azWz%2bBg%3d%3d\"}",
+      "Content": "{\"nextLink\":\"https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2024-07-01\u0026firstIndex=10\u0026pageSize=10\",\"value\":[{\"name\":\"t0zm9t-nsp1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"668dbbba-963c-4a34-b75b-3ac27dd96c8c\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"t0zm9t-nsp10\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp10\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"17e2724d-eb6f-41c4-9e78-5d48beb3055b\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"t0zm9t-nsp11\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp11\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"9560a2fd-7e99-4ca1-b4f9-ef5809938f5f\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"t0zm9t-nsp12\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp12\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"d185b802-34a7-4016-8a62-1467e434a275\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"t0zm9t-nsp13\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp13\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"f052d762-bfb2-441b-92b5-819742d6af7e\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"t0zm9t-nsp2\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp2\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"adb10098-e397-40a4-89fb-7a891809f4b0\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"t0zm9t-nsp3\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp3\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"70c662f8-a8cb-4ccd-8af0-cb95259abb03\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"t0zm9t-nsp4\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp4\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"ec9523ca-22dc-4730-9303-6beeb23a79d4\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"t0zm9t-nsp5\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp5\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"8ad439f0-5fa1-46f0-8a8f-555f13498df1\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"t0zm9t-nsp6\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp6\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"5d4ddccd-2af0-4a40-8828-9d8e0049e150\",\"provisioningState\":\"Succeeded\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2024-07-01\u0026%24skiptoken=3ZDBasMwEET%2fRYecIstJReMYQvEhlEJdQp3cDEWR164wlsRqnSYx%2fveK9tJv6GmGYQ4zb2IWrvRqbB9YPrF9UR1P1Xp%2fKg4sZ59EPuRCDMqqDgawlKj7iJBoN4gwnoNG48k4G8RDJh%2f1OW25VK3icgPAM1CSr3Qm5VZnOmu2AiG4ETU8oxt9ED5g90F6096ER3cxDWAQpdHogmspeQP6ctgL%2b6sV6BEN3Q6AZgCK3SflDb9EExfs1ula8nTD09WiNRjoxTZw3a3ShY%2fTK3OH6Nm8ZAqHousQOkXQHF0PNh4t3ku2%2fCFRKuwBYzTVf2HULK%2f%2fHY6azWz%2bBg%3d%3d+2": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2024-07-01\u0026firstIndex=10\u0026pageSize=10+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2024-07-01\u0026%24skiptoken=3ZDBasMwEET%2fRYecIstJReMYQvEhlEJdQp3cDEWR164wlsRqnSYx%2fveK9tJv6GmGYQ4zb2IWrvRqbB9YPrF9UR1P1Xp%2fKg4sZ59EPuRCDMqqDgawlKj7iJBoN4gwnoNG48k4G8RDJh%2f1OW25VK3icgPAM1CSr3Qm5VZnOmu2AiG4ETU8oxt9ED5g90F6096ER3cxDWAQpdHogmspeQP6ctgL%2b6sV6BEN3Q6AZgCK3SflDb9EExfs1ula8nTD09WiNRjoxTZw3a3ShY%2fTK3OH6Nm8ZAqHousQOkXQHF0PNh4t3ku2%2fCFRKuwBYzTVf2HULK%2f%2fHY6azWz%2bBg%3d%3d",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2024-07-01\u0026firstIndex=10\u0026pageSize=10",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "2b950832-2d0e-44ad-af48-12f121693e04" ],
+        "x-ms-client-request-id": [ "98426d63-5f3f-4e86-bce6-502eecc225c5" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeter" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeter_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -66,36 +65,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-request-id": [ "861466fe-1a4d-4d3f-8e3c-82b44876ca45" ],
-        "x-ms-correlation-request-id": [ "861466fe-1a4d-4d3f-8e3c-82b44876ca45" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20250320T101710Z:861466fe-1a4d-4d3f-8e3c-82b44876ca45" ],
+        "x-ms-request-id": [ "f88023b8-c656-4524-ae7e-5458f45f17bd" ],
+        "x-ms-correlation-request-id": [ "f88023b8-c656-4524-ae7e-5458f45f17bd" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250516T091239Z:f88023b8-c656-4524-ae7e-5458f45f17bd" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: DA72A7B089444B019F33B3BCA946AAF9 Ref B: MNZ221060609031 Ref C: 2025-03-20T10:17:09Z" ],
-        "Date": [ "Thu, 20 Mar 2025 10:17:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: ED3F0F6BFD604ED99732B868CE67712C Ref B: MNZ221060618051 Ref C: 2025-05-16T09:12:39Z" ],
+        "Date": [ "Fri, 16 May 2025 09:12:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2267" ],
+        "Content-Length": [ "2281" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"tc7fyt-nsp7\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp7\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"2c4ebb1f-c029-492a-8a17-9a2df9a97ae9\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"tc7fyt-nsp8\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp8\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"d4589b90-a8a6-4f26-854e-0b88db55fb7a\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"tc7fyt-nsp9\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp9\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"d2a5d53d-3a45-4fdb-9837-78a5753346e3\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"tc7fyt-nspD1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nspD1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"2e666fc4-23a1-4674-b8da-0a631d7b53f0\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"tc7fyt-nspD2\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nspD2\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"3bd3ab14-d718-4925-9b2c-ee2f1b6212b1\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"tc7fyt-nspDelB1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nspDelB1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"6c595cd5-b01e-4a57-a7e9-d90fe6d6683f\",\"provisioningState\":\"Succeeded\"}}]}",
+      "Content": "{\"nextLink\":\"\",\"value\":[{\"name\":\"t0zm9t-nsp7\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp7\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"410242fe-bdc1-416b-b9e1-152f62239182\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"t0zm9t-nsp8\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp8\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"24c70216-74cc-4eb5-84ac-cc4e6ff534a9\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"t0zm9t-nsp9\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp9\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"167a65a0-b1ee-4839-9a95-59a120852af1\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"t0zm9t-nspD1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nspD1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"6d279742-7492-4e6b-a8a2-56f18e3edc90\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"t0zm9t-nspD2\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nspD2\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"0f77bf66-cbba-4882-a4bc-cf627b441df6\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"t0zm9t-nspDelB1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nspDelB1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"43963c09-2b06-4dbe-a000-4d4077c74f0c\",\"provisioningState\":\"Succeeded\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp1?api-version=2024-07-01+1": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp1?api-version=2024-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp1?api-version=2024-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp1?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "6e814c0d-c096-4120-83ee-964aa17b2bcb" ],
+        "x-ms-client-request-id": [ "7086db0f-4b69-463e-b754-73c0ca80ae26" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeter" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeter_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -113,32 +111,32 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-request-id": [ "01b0de55-a34b-4553-8e56-4f686142a1c7" ],
-        "x-ms-correlation-request-id": [ "01b0de55-a34b-4553-8e56-4f686142a1c7" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20250320T101711Z:01b0de55-a34b-4553-8e56-4f686142a1c7" ],
+        "x-ms-request-id": [ "9c4e789f-40ac-4bb6-af64-e3164998c14f" ],
+        "x-ms-correlation-request-id": [ "9c4e789f-40ac-4bb6-af64-e3164998c14f" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250516T091240Z:9c4e789f-40ac-4bb6-af64-e3164998c14f" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3895EAD4EDDA49008A1F1FDB540EC460 Ref B: MNZ221060609031 Ref C: 2025-03-20T10:17:10Z" ],
-        "Date": [ "Thu, 20 Mar 2025 10:17:11 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6A63845BABF749ACA4F912ED8E03C73E Ref B: MNZ221060618051 Ref C: 2025-05-16T09:12:39Z" ],
+        "Date": [ "Fri, 16 May 2025 09:12:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "373" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"tc7fyt-nsp1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"aa0804ab-71bd-432b-9e13-a812a6954b8b\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"name\":\"t0zm9t-nsp1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"668dbbba-963c-4a34-b75b-3ac27dd96c8c\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp1?api-version=2024-07-01+1": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp1?api-version=2024-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp1?api-version=2024-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp1?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "e2f057bb-10b4-49d8-a67d-6da0b4bda1b9" ],
+        "x-ms-client-request-id": [ "fec1d249-9dc5-452b-9c73-49166a3dc7ab" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeter" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeter_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -156,32 +154,32 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-request-id": [ "a6a8fe17-7fcc-47e8-9c4d-702f4b706c07" ],
-        "x-ms-correlation-request-id": [ "a6a8fe17-7fcc-47e8-9c4d-702f4b706c07" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20250320T101712Z:a6a8fe17-7fcc-47e8-9c4d-702f4b706c07" ],
+        "x-ms-request-id": [ "ad33986e-e2b8-4312-9a7b-a3a8d6466dab" ],
+        "x-ms-correlation-request-id": [ "ad33986e-e2b8-4312-9a7b-a3a8d6466dab" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250516T091242Z:ad33986e-e2b8-4312-9a7b-a3a8d6466dab" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 05EBCA5B14FA4AF196C026CC41FF11E8 Ref B: MNZ221060609031 Ref C: 2025-03-20T10:17:11Z" ],
-        "Date": [ "Thu, 20 Mar 2025 10:17:11 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A93CE86E32684C458F6BA92DF4263945 Ref B: MNZ221060618051 Ref C: 2025-05-16T09:12:41Z" ],
+        "Date": [ "Fri, 16 May 2025 09:12:41 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "373" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"tc7fyt-nsp1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"aa0804ab-71bd-432b-9e13-a812a6954b8b\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"name\":\"t0zm9t-nsp1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"668dbbba-963c-4a34-b75b-3ac27dd96c8c\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp1?api-version=2024-07-01+2": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp1?api-version=2024-07-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp1?api-version=2024-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp1?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "6327e12f-5634-416b-9f8d-a50258cf0e0a" ],
+        "x-ms-client-request-id": [ "c38f01d2-b1d1-414a-8c60-d9a23a2ac85a" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeter" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeter_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -199,20 +197,20 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-request-id": [ "7b4d1af9-9b05-4520-9e65-48cf3d60bb3b" ],
-        "x-ms-correlation-request-id": [ "7b4d1af9-9b05-4520-9e65-48cf3d60bb3b" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20250320T101713Z:7b4d1af9-9b05-4520-9e65-48cf3d60bb3b" ],
+        "x-ms-request-id": [ "5c695de9-3c32-4e7f-a803-144fc1fb4d49" ],
+        "x-ms-correlation-request-id": [ "5c695de9-3c32-4e7f-a803-144fc1fb4d49" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250516T091243Z:5c695de9-3c32-4e7f-a803-144fc1fb4d49" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 31F5AB4466D9463B97ED12ADA0FDB155 Ref B: MNZ221060609031 Ref C: 2025-03-20T10:17:12Z" ],
-        "Date": [ "Thu, 20 Mar 2025 10:17:12 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 172FB4EBC09F4FF49826C6BE88245ECD Ref B: MNZ221060618051 Ref C: 2025-05-16T09:12:42Z" ],
+        "Date": [ "Fri, 16 May 2025 09:12:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "373" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"tc7fyt-nsp1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"aa0804ab-71bd-432b-9e13-a812a6954b8b\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"name\":\"t0zm9t-nsp1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9t-nsp1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"668dbbba-963c-4a34-b75b-3ac27dd96c8c\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

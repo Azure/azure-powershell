@@ -79,6 +79,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
             {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
             {_organizationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonString>("organizationName"), out var __jsonOrganizationName) ? (string)__jsonOrganizationName : (string)_organizationName;}
+            {_projectName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonString>("projectName"), out var __jsonProjectName) ? (string)__jsonProjectName : (string)_projectName;}
+            {_branchName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonString>("branchName"), out var __jsonBranchName) ? (string)__jsonBranchName : (string)_branchName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
@@ -105,6 +107,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._organizationName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonString(this._organizationName.ToString()) : null, "organizationName" ,container.Add );
+            AddIf( null != (((object)this._projectName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonString(this._projectName.ToString()) : null, "projectName" ,container.Add );
+            AddIf( null != (((object)this._branchName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonString(this._branchName.ToString()) : null, "branchName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

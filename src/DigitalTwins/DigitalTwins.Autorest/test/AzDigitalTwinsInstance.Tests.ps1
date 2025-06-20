@@ -17,8 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzDigitalTwinsInstance'))
 Describe 'AzDigitalTwinsInstance' {
     It 'CreateExpanded' {
         {
-            $config = New-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName -Location $env.location -IdentityType 'SystemAssigned' -PublicNetworkAccess 'Enabled'
-            $config.Name | Should -Be $env.dtInstanceName
+            $config = New-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName2 -Location $env.location -EnableSystemAssignedIdentity:$true -PublicNetworkAccess 'Enabled'
+            $config.Name | Should -Be $env.dtInstanceName2
         } | Should -Not -Throw
     }
 
@@ -38,29 +38,29 @@ Describe 'AzDigitalTwinsInstance' {
 
     It 'Get' {
         {
-            $config = Get-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName
-            $config.Name | Should -Be $env.dtInstanceName
+            $config = Get-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName2
+            $config.Name | Should -Be $env.dtInstanceName2
         } | Should -Not -Throw
     }
 
     It 'UpdateExpanded' {
         {
-            $config = Update-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName -Tag @{"abc"="123"}
-            $config.Name | Should -Be $env.dtInstanceName
+            $config = Update-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName2 -Tag @{"abc"="123"}
+            $config.Name | Should -Be $env.dtInstanceName2
         } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' {
         {
-            $config = Get-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName
+            $config = Get-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName2
             $config = Update-AzDigitalTwinsInstance -InputObject $config -Tag @{"1234"="abcd"}
-            $config.Name | Should -Be $env.dtInstanceName
+            $config.Name | Should -Be $env.dtInstanceName2
         } | Should -Not -Throw
     }
 
     It 'Delete' {
         {
-            Remove-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName
+            Remove-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName2
         } | Should -Not -Throw
     }
 }

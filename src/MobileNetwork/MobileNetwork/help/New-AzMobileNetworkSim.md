@@ -8,10 +8,11 @@ schema: 2.0.0
 # New-AzMobileNetworkSim
 
 ## SYNOPSIS
-Creates or updates a SIM.
+create a SIM.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzMobileNetworkSim -GroupName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -InternationalMobileSubscriberIdentity <String> [-AuthenticationKey <String>]
@@ -20,8 +21,40 @@ New-AzMobileNetworkSim -GroupName <String> -Name <String> -ResourceGroupName <St
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzMobileNetworkSim -GroupName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzMobileNetworkSim -GroupName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentitySimGroupExpanded
+```
+New-AzMobileNetworkSim -Name <String> -SimGroupInputObject <IMobileNetworkIdentity>
+ -InternationalMobileSubscriberIdentity <String> [-AuthenticationKey <String>] [-DeviceType <String>]
+ [-IntegratedCircuitCardIdentifier <String>] [-OperatorKeyCode <String>] [-SimPolicyId <String>]
+ [-StaticIPConfiguration <ISimStaticIPProperties[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzMobileNetworkSim -InputObject <IMobileNetworkIdentity> -InternationalMobileSubscriberIdentity <String>
+ [-AuthenticationKey <String>] [-DeviceType <String>] [-IntegratedCircuitCardIdentifier <String>]
+ [-OperatorKeyCode <String>] [-SimPolicyId <String>] [-StaticIPConfiguration <ISimStaticIPProperties[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates a SIM.
+create a SIM.
 
 ## EXAMPLES
 
@@ -62,7 +95,7 @@ The Ki value for the SIM.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySimGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -94,7 +127,7 @@ The Azure portal allows SIMs to be grouped and filtered based on this value.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySimGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -109,7 +142,7 @@ The name of the SIM Group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases: SimGroupName
 
 Required: True
@@ -119,12 +152,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -IntegratedCircuitCardIdentifier
 The integrated circuit card ID (ICCID) for the SIM.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySimGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -139,7 +187,37 @@ The international mobile subscriber identity (IMSI) for the SIM.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySimGroupExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -154,7 +232,7 @@ The name of the SIM.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentitySimGroupExpanded
 Aliases: SimName
 
 Required: True
@@ -184,7 +262,7 @@ The Opc value for the SIM.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySimGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -200,7 +278,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -210,12 +288,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SimGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: CreateViaIdentitySimGroupExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SimPolicyId
 SIM policy resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySimGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -228,11 +321,10 @@ Accept wildcard characters: False
 ### -StaticIPConfiguration
 A list of static IP addresses assigned to this SIM.
 Each address is assigned at a defined network scope, made up of {attached data network, slice}.
-To construct, see NOTES section for STATICIPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimStaticIPProperties[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimStaticIPProperties[]
+Parameter Sets: CreateExpanded, CreateViaIdentitySimGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -247,7 +339,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -293,9 +385,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISim
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISim
 
 ## NOTES
 

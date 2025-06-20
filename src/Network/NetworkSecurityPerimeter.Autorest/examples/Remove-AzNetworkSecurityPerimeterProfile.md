@@ -1,20 +1,14 @@
-### Example 1: Deletes a NetworkSecurityPerimeterProfile by Name
-
+### Example 1: Delete NetworkSecurityPerimeter Profile by Name
 ```powershell
-
- Remove-AzNetworkSecurityPerimeterProfile -Name profile6 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
-
+Remove-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 ```
 
-Deletes a NetworkSecurityPerimeterProfile by Name
+Delete NetworkSecurityPerimeter Profile by Name
 
-### Example 2: Deletes a NetworkSecurityPerimeterProfile by identity (using pipe)
-
+### Example 2: Delete NetworkSecurityPerimeter Profile by Identity (using pipe)
 ```powershell
-
- $profileObj = Get-AzNetworkSecurityPerimeterProfile -Name profile7 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
- Remove-AzNetworkSecurityPerimeterProfile -InputObject $profileObj
-
+$profileObj = Get-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Remove-AzNetworkSecurityPerimeterProfile -InputObject $profileObj
 ```
 
-Deletes a NetworkSecurityPerimeterProfile by identity (using pipe)
+Delete NetworkSecurityPerimeter Profile by Identity (using pipe)

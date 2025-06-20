@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Onboarded Application Gateway WAF Exceptions cmdlet.
+    - `New-AzApplicationGatewayFirewallPolicyException`  
+
+## Version 7.17.0
 * Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:
 	- `New-AzNatGateway`
 	- `Set-AzNatGateway`
@@ -36,14 +40,40 @@
     - `Invoke-AzVirtualNetworkGatewayCommitMigration`
     - `Invoke-AzVirtualNetworkGatewayAbortMigration`
 * Added cmdlets for CRUD operations of NetworkSecurityPerimeter service
-    - Cmdlets for NetworkSecurityPerimeter crud operations
-    - Cmdlets for NetworkSecurityPerimeter profile crud operations
-    - Cmdlets for NetworkSecurityPerimeter association crud operations
-    - Cmdlets for NetworkSecurityPerimeter access rule crud operations
-    - Cmdlets for NetworkSecurityPerimeter link crud operations
+    - Cmdlets for NetworkSecurityPerimeter operations
+        - `New-AzNetworkSecurityPerimeter`
+        - `Get-AzNetworkSecurityPerimeter`
+        - `Update-AzNetworkSecurityPerimeter`
+        - `Remove-AzNetworkSecurityPerimeter`
+    - Cmdlets for NetworkSecurityPerimeter profile operations
+        - `New-AzNetworkSecurityPerimeterProfile`
+        - `Get-AzNetworkSecurityPerimeterProfile`
+        - `Remove-AzNetworkSecurityPerimeterProfile`
+    - Cmdlets for NetworkSecurityPerimeter association operations
+        - `New-AzNetworkSecurityPerimeterAssociation`
+        - `Get-AzNetworkSecurityPerimeterAssociation`
+        - `Update-AzNetworkSecurityPerimeterAssociation`
+        - `Remove-AzNetworkSecurityPerimeterAssociation`
+    - Cmdlets for NetworkSecurityPerimeter access rule operations
+        - `New-AzNetworkSecurityPerimeterAccessRule`
+        - `Get-AzNetworkSecurityPerimeterAccessRule`
+        - `Update-AzNetworkSecurityPerimeterAccessRule`
+        - `Remove-AzNetworkSecurityPerimeterAccessRule`
+    - Cmdlets for NetworkSecurityPerimeter link operations
+        - `New-AzNetworkSecurityPerimeterLink`
+        - `Get-AzNetworkSecurityPerimeterLink`
+        - `Update-AzNetworkSecurityPerimeterLink`
+        - `Remove-AzNetworkSecurityPerimeterLink`
     - Cmdlets for NetworkSecurityPerimeter link reference operations
-    - Cmdlets for NetworkSecurityPerimeter logging configuration crud operations
+        - `Get-AzNetworkSecurityPerimeterLinkReference`
+        - `Remove-AzNetworkSecurityPerimeterLinkReference`
+    - Cmdlets for NetworkSecurityPerimeter logging configuration operations
+        - `New-AzNetworkSecurityPerimeterLoggingConfiguration`
+        - `Get-AzNetworkSecurityPerimeterLoggingConfiguration`
+        - `Update-AzNetworkSecurityPerimeterLoggingConfiguration`
+        - `Remove-AzNetworkSecurityPerimeterLoggingConfiguration`
     - Cmdlet to get NetworkSecurityPerimeter associable resource types
+        - `Get-AzNetworkSecurityPerimeterAssociableResourceType`
 * Updated cmdlet to add the property of `PartnerManagedResource`, and updated corresponding cmdlets.
     - `Get-AzNetworkVirtualAppliance`
 * Added cmdlet to retrieve boot diagnostic logs for a given NetworkVirtualAppliance VM instance:

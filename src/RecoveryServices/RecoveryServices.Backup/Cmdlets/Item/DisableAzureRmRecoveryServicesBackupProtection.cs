@@ -101,11 +101,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
                         string plainToken = HelperUtils.GetPlainToken(Token, SecureToken);
-                        if (plainToken != "" && plainToken != null && !this.DeleteBackupData && RetainRecoveryPointsAsPerPolicy.IsPresent)
-                        {
-                            throw new ArgumentException(String.Format(Resources.DisableWithRetainBackupNotCrititcal));
-                        }
-
+                        
                         if (DeleteBackupData && RetainRecoveryPointsAsPerPolicy.IsPresent)
                         {
                             throw new AzPSArgumentException(String.Format(Resources.CantRemoveAndRetainRPsSimultaneously), "RetainRecoveryPointsAsPerPolicy");

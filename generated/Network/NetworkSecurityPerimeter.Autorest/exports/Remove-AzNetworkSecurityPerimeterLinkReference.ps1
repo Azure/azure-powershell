@@ -20,10 +20,10 @@ Deletes an NSP LinkReference resource.
 .Description
 Deletes an NSP LinkReference resource.
 .Example
-Remove-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3 -Name Ref-from-t-link1-1738a5f3-78f8-4f1b-8f30-ffe0eaa74495
+Remove-AzNetworkSecurityPerimeterLinkReference -Name Ref-from-link-test-1-00000000-78f8-4f1b-8f30-ffe0eaa74495 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
- $linkRefObj = Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName psrg_Ex -SecurityPerimeterName ext-nsp11 -Name Ref-from-t-linkD4-902f9e36-84c2-43d6-983d-677f70568a30
- Remove-AzNetworkSecurityPerimeterLinkReference -InputObject $linkRefObj
+$linkRefObj = Get-AzNetworkSecurityPerimeterLinkReference -Name Ref-from-link-test-1-00000000-78f8-4f1b-8f30-ffe0eaa74495 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Remove-AzNetworkSecurityPerimeterLinkReference -InputObject $linkRefObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity

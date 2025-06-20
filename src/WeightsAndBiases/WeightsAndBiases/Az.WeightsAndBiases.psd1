@@ -30,7 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell: {ModuleNamePlaceHolder} cmdlets'
+Description = 'Microsoft Azure PowerShell: WeightsAndBiases cmdlets'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -95,7 +95,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', '{ModuleNamePlaceHolder}'
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'WeightsAndBiases'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'

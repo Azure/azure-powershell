@@ -458,4 +458,4 @@ System.String Microsoft.Azure.Commands.Network.Models.PSVpnServerConfiguration
 
 ## RELATED LINKS
 
-[New-AzRoutingConfiguration]()
+[New-AzRoutingConfiguration](New-AzRoutingConfiguration.md)

@@ -1,33 +1,22 @@
-### Example 1: Creates a NetworkSecurityPerimeterProfile
+### Example 1: Create NetworkSecurityPerimeter Profile
 ```powershell
-
- New-AzNetworkSecurityPerimeterProfile -Name profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+New-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 ```
 
 ```output
-
-Location    Name
---------    ----
-eastus2euap profile1
-
-
+AccessRulesVersion           : 0
+DiagnosticSettingsVersion    : 0
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/rg-test-1/providers
+                                /Microsoft.Network/networkSecurityPerimeters/nsp-test-1/profiles/profile-test-1
+Name                         : profile-test-1
+ResourceGroupName            : rg-test-1
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Network/networkSecurityPerimeters/profiles
 ```
-Creates a NetworkSecurityPerimeterProfile
 
-### Example 2: Creates a NetworkSecurityPerimeterProfile
-```powershell
-
- New-AzNetworkSecurityPerimeterProfile -Name profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
-```
-
-```output
-
-Location    Name
---------    ----
-eastus2euap profile2
-
-
-```
-Creates a NetworkSecurityPerimeterProfile
+Creates NetworkSecurityPerimeter Profile

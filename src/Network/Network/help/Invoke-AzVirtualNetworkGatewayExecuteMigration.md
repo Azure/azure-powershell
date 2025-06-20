@@ -15,21 +15,21 @@ Trigger execute migration for virtual network gateway.
 ### ByName (Default)
 ```
 Invoke-AzVirtualNetworkGatewayExecuteMigration -Name <String> -ResourceGroupName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Invoke-AzVirtualNetworkGatewayExecuteMigration -InputObject <PSVirtualNetworkGateway> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Invoke-AzVirtualNetworkGatewayExecuteMigration -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -97,7 +97,7 @@ The virtual network gateway name.
 ```yaml
 Type: System.String
 Parameter Sets: ByName
-Aliases: ResourceName, VirtualNetworkGatewayName, GatewayName
+Aliases:
 
 Required: True
 Position: Named

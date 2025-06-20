@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStorageCacheAmlFileS
 }
 
 Describe 'Remove-AzStorageCacheAmlFileSystem' {
-
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
     It 'DeleteViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw

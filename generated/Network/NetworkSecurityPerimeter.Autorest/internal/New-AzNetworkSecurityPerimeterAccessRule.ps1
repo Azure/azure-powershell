@@ -20,14 +20,9 @@ create a network access rule.
 .Description
 create a network access rule.
 .Example
-
- New-AzNetworkSecurityPerimeterAccessRule -Name accessRule1 -ProfileName profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound' -Location eastus2euap
-
+New-AzNetworkSecurityPerimeterAccessRule -Name access-rule-test-1 -ProfileName profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound'
 .Example
-
-$emails = @("test123@microsoft.com", "test321@microsoft.com")
-New-AzNetworkSecurityPerimeterAccessRule -Name accessRule2 -ProfileName profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -EmailAddress $emails -Direction 'Outbound' -Location eastus2euap
-
+New-AzNetworkSecurityPerimeterAccessRule -Name access-rule-test-2 -ProfileName profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -EmailAddress @("test123@microsoft.com", "test321@microsoft.com") -Direction 'Outbound'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -55,16 +50,12 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 PARAMETER <INspAccessRule>: The NSP access rule resource
-  [Id <String>]: Resource ID.
-  [Location <String>]: Resource location.
-  [Tag <IResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
   [AddressPrefix <List<String>>]: Inbound address prefixes (IPv4/IPv6)
   [Direction <String>]: Direction that specifies whether the access rules is inbound/outbound.
-  [EmailAddress <List<String>>]: Outbound rules email address format.
-  [FullyQualifiedDomainName <List<String>>]: Outbound rules fully qualified domain name format.
-  [PhoneNumber <List<String>>]: Outbound rules phone number format.
-  [ServiceTag <List<String>>]: Inbound rules service tag names.
+  [EmailAddress <List<String>>]: Outbound rules in email address format. This access rule type is currently unavailable for use.
+  [FullyQualifiedDomainName <List<String>>]: Outbound rules in fully qualified domain name format.
+  [PhoneNumber <List<String>>]: Outbound rules in phone number format. This access rule type is currently unavailable for use.
+  [ServiceTag <List<String>>]: Inbound rules of type service tag. This access rule type is currently unavailable for use.
   [Subscription <List<ISubscriptionId>>]: List of subscription ids
     [Id <String>]: Subscription id in the ARM id format.
 .Link

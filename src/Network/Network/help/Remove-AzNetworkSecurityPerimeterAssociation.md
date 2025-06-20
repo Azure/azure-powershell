@@ -38,20 +38,20 @@ Deletes an NSP association resource.
 
 ## EXAMPLES
 
-### Example 1: Deletes a NetworkSecurityPerimeterAccessAssociation by Name
+### Example 1: Delete NetworkSecurityPerimeter Association by Name
 ```powershell
-Remove-AzNetworkSecurityPerimeterAssociation -Name association4 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
+Remove-AzNetworkSecurityPerimeterAssociation -Name association-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 ```
 
-Deletes a NetworkSecurityPerimeterAccessAssociation by Name
+Delete NetworkSecurityPerimeter Association by Name
 
-### Example 2: Deletes a NetworkSecurityPerimeterAccessAssociation by identity (using pipe)
+### Example 2: Delete NetworkSecurityPerimeter Association by Identity (using pipe)
 ```powershell
-$associationObj = Get-AzNetworkSecurityPerimeterAssociation -Name association5 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
- Remove-AzNetworkSecurityPerimeterAssociation -InputObject $associationObj
+$associationObj = Get-AzNetworkSecurityPerimeterAssociation -Name association-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Remove-AzNetworkSecurityPerimeterAssociation -InputObject $associationObj
 ```
 
-Deletes a NetworkSecurityPerimeterAccessAssociation by identity (using pipe)
+Delete NetworkSecurityPerimeter Association by Identity (using pipe)
 
 ## PARAMETERS
 

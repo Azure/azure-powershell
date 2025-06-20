@@ -95,13 +95,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -MigrationParameter
+Migration parameters to be passed to invoke prepare migration
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayMigrationParameters
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The virtual network gateway name.
 
 ```yaml
 Type: System.String
 Parameter Sets: ByName
-Aliases: ResourceName, VirtualNetworkGatewayName, GatewayName
+Aliases:
 
 Required: True
 Position: Named
@@ -170,21 +185,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MigrationParameter
-Migration paramters to be passed to invoke prepare migration
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayMigrationParameters
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -209,4 +209,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Invoke-AzVirtualNetworkGatewayExecuteMigration](./Invoke-AzVirtualNetworkGatewayExecuteMigration.md)
 
 [Invoke-AzVirtualNetworkGatewayCommitMigration](./Invoke-AzVirtualNetworkGatewayCommitMigration.md)
-

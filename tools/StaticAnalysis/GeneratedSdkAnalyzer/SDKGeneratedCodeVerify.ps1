@@ -153,18 +153,6 @@ try {
                     Remediation = "Please determine autorest v4 in Readme file."
                 }
             }
-            
-            If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
-            {
-                $ExceptionList += [GeneratedSdkIssue]@{
-                    Module = $ModuleName;
-                    Sdk = $_;
-                    Severity = 1;
-                    ProblemId = $GenSdkChanged
-                    Description = "Failed to set autorest.csharp@2.3.90 for $ModuleName."
-                    Remediation = ""
-                }
-            }
 
             If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
             {

@@ -31,20 +31,20 @@ Deletes a network security perimeter.
 
 ## EXAMPLES
 
-### Example 1: Deletes a NetworkSecurityPerimeter by Name
+### Example 1: Delete NetworkSecurityPerimeter by Name
 ```powershell
-Remove-AzNetworkSecurityPerimeter -Name nsp5 -ResourceGroupName ResourceGroup-1
+Remove-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1
 ```
 
-Deletes a NetworkSecurityPerimeter by Name
+Delete NetworkSecurityPerimeter by Name
 
-### Example 2: Deletes a NetworkSecurityPerimeter by identity (using pipe)
+### Example 2: Delete NetworkSecurityPerimeter by Identity (using pipe)
 ```powershell
-$nspObj = Get-AzNetworkSecurityPerimeter -Name nsp6 -ResourceGroupName ResourceGroup-1 
- Remove-AzNetworkSecurityPerimeter -InputObject $nspObj
+$nspObj = Get-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1 
+Remove-AzNetworkSecurityPerimeter -InputObject $nspObj
 ```
 
-Deletes a NetworkSecurityPerimeter by identity (using pipe)
+Delete NetworkSecurityPerimeter by Identity (using pipe)
 
 ## PARAMETERS
 

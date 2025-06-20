@@ -1,58 +1,60 @@
-### Example 1: Gets a NetworkSecurityPerimeterProfile by Name
-
+### Example 1: List NetworkSecurityPerimeter Profiles
 ```powershell
-
- Get-AzNetworkSecurityPerimeterProfile -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+Get-AzNetworkSecurityPerimeterProfile -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 ```
 
 ```output
-
-Location    Name
---------    ----
-eastus2euap profile1
-eastus2euap profile2
-
-
+Name                ResourceGroupName
+----                -----------------
+profile-test-1      rg-test-1
+profile-test-2      rg-test-1
 ```
-Lists NetworkSecurityPerimeterProfile
 
+List NetworkSecurityPerimeter Profiles
 
-### Example 2: Gets a NetworkSecurityPerimeterProfile by Name
-
+### Example 2: Get NetworkSecurityPerimeter Profile by Name
 ```powershell
-
- Get-AzNetworkSecurityPerimeterProfile -Name profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+Get-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 ```
 
 ```output
-
-Location    Name
---------    ----
-eastus2euap profile1
-
-
+AccessRulesVersion           : 5
+DiagnosticSettingsVersion    : 0
+Id                           : /subscriptions/0000000-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/rg-test-1/providers
+                                /Microsoft.Network/networkSecurityPerimeters/nsp-test-1/profiles/profile-test-1
+Name                         : profile-test-1
+ResourceGroupName            : rg-test-1
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Network/networkSecurityPerimeters/profiles
 ```
-Gets a NetworkSecurityPerimeterProfile by Name
 
+Get NetworkSecurityPerimeter Profile by Name
 
-### Example 3: Gets a NetworkSecurityPerimeterProfile by identity (using pipe)
-
+### Example 3: Get NetworkSecurityPerimeter Profile by Identity (using pipe)
 ```powershell
-
- $GETObj = Get-AzNetworkSecurityPerimeterProfile -Name profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
- Get-AzNetworkSecurityPerimeterProfile -InputObject $GETObj
-
+$GETObj = Get-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Get-AzNetworkSecurityPerimeterProfile -InputObject $GETObj
 ```
 
 ```output
-
-Location    Name
---------    ----
-eastus2euap profile1
-
-
+AccessRulesVersion           : 5
+DiagnosticSettingsVersion    : 0
+Id                           : /subscriptions/0000000-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/rg-test-1/providers
+                                /Microsoft.Network/networkSecurityPerimeters/nsp-test-1/profiles/profile-test-1
+Name                         : profile-test-1
+ResourceGroupName            : rg-test-1
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Network/networkSecurityPerimeters/profiles
 ```
-Gets a NetworkSecurityPerimeterProfile by identity (using pipe)
 
+Get NetworkSecurityPerimeter Profile by Identity (using pipe)

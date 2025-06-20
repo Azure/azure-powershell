@@ -30,14 +30,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// <summary>Backing field for <see cref="EmailAddress" /> property.</summary>
         private System.Collections.Generic.List<string> _emailAddress;
 
-        /// <summary>Outbound rules email address format.</summary>
+        /// <summary>
+        /// Outbound rules in email address format. This access rule type is currently unavailable for use.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> EmailAddress { get => this._emailAddress; set => this._emailAddress = value; }
 
         /// <summary>Backing field for <see cref="FullyQualifiedDomainName" /> property.</summary>
         private System.Collections.Generic.List<string> _fullyQualifiedDomainName;
 
-        /// <summary>Outbound rules fully qualified domain name format.</summary>
+        /// <summary>Outbound rules in fully qualified domain name format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> FullyQualifiedDomainName { get => this._fullyQualifiedDomainName; set => this._fullyQualifiedDomainName = value; }
 
@@ -57,7 +59,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// <summary>Backing field for <see cref="PhoneNumber" /> property.</summary>
         private System.Collections.Generic.List<string> _phoneNumber;
 
-        /// <summary>Outbound rules phone number format.</summary>
+        /// <summary>
+        /// Outbound rules in phone number format. This access rule type is currently unavailable for use.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> PhoneNumber { get => this._phoneNumber; set => this._phoneNumber = value; }
 
@@ -71,7 +75,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// <summary>Backing field for <see cref="ServiceTag" /> property.</summary>
         private System.Collections.Generic.List<string> _serviceTag;
 
-        /// <summary>Inbound rules service tag names.</summary>
+        /// <summary>
+        /// Inbound rules of type service tag. This access rule type is currently unavailable for use.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> ServiceTag { get => this._serviceTag; set => this._serviceTag = value; }
 
@@ -115,25 +121,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PSArgumentCompleterAttribute("Inbound", "Outbound")]
         string Direction { get; set; }
-        /// <summary>Outbound rules email address format.</summary>
+        /// <summary>
+        /// Outbound rules in email address format. This access rule type is currently unavailable for use.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Outbound rules email address format.",
+        Description = @"Outbound rules in email address format. This access rule type is currently unavailable for use.",
         SerializedName = @"emailAddresses",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> EmailAddress { get; set; }
-        /// <summary>Outbound rules fully qualified domain name format.</summary>
+        /// <summary>Outbound rules in fully qualified domain name format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Outbound rules fully qualified domain name format.",
+        Description = @"Outbound rules in fully qualified domain name format.",
         SerializedName = @"fullyQualifiedDomainNames",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> FullyQualifiedDomainName { get; set; }
@@ -148,14 +156,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         SerializedName = @"networkSecurityPerimeters",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterBasedAccessRule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterBasedAccessRule> NetworkSecurityPerimeter { get;  }
-        /// <summary>Outbound rules phone number format.</summary>
+        /// <summary>
+        /// Outbound rules in phone number format. This access rule type is currently unavailable for use.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Outbound rules phone number format.",
+        Description = @"Outbound rules in phone number format. This access rule type is currently unavailable for use.",
         SerializedName = @"phoneNumbers",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> PhoneNumber { get; set; }
@@ -171,14 +181,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PSArgumentCompleterAttribute("Succeeded", "Creating", "Updating", "Deleting", "Accepted", "Failed")]
         string ProvisioningState { get;  }
-        /// <summary>Inbound rules service tag names.</summary>
+        /// <summary>
+        /// Inbound rules of type service tag. This access rule type is currently unavailable for use.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Inbound rules service tag names.",
+        Description = @"Inbound rules of type service tag. This access rule type is currently unavailable for use.",
         SerializedName = @"serviceTags",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> ServiceTag { get; set; }
@@ -204,18 +216,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// <summary>Direction that specifies whether the access rules is inbound/outbound.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PSArgumentCompleterAttribute("Inbound", "Outbound")]
         string Direction { get; set; }
-        /// <summary>Outbound rules email address format.</summary>
+        /// <summary>
+        /// Outbound rules in email address format. This access rule type is currently unavailable for use.
+        /// </summary>
         System.Collections.Generic.List<string> EmailAddress { get; set; }
-        /// <summary>Outbound rules fully qualified domain name format.</summary>
+        /// <summary>Outbound rules in fully qualified domain name format.</summary>
         System.Collections.Generic.List<string> FullyQualifiedDomainName { get; set; }
         /// <summary>Rule specified by the perimeter id.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterBasedAccessRule> NetworkSecurityPerimeter { get; set; }
-        /// <summary>Outbound rules phone number format.</summary>
+        /// <summary>
+        /// Outbound rules in phone number format. This access rule type is currently unavailable for use.
+        /// </summary>
         System.Collections.Generic.List<string> PhoneNumber { get; set; }
         /// <summary>The provisioning state of the scope assignment resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PSArgumentCompleterAttribute("Succeeded", "Creating", "Updating", "Deleting", "Accepted", "Failed")]
         string ProvisioningState { get; set; }
-        /// <summary>Inbound rules service tag names.</summary>
+        /// <summary>
+        /// Inbound rules of type service tag. This access rule type is currently unavailable for use.
+        /// </summary>
         System.Collections.Generic.List<string> ServiceTag { get; set; }
         /// <summary>List of subscription ids</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubscriptionId> Subscription { get; set; }

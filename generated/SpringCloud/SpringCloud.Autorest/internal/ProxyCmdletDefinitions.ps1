@@ -2477,8 +2477,6 @@ update a KPack build.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild
@@ -2486,13 +2484,6 @@ Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BUILD <IBuild>: Build resource payload
-  [AgentPool <String>]: The resource id of agent pool
-  [Env <IBuildPropertiesEnv>]: The environment variables for this build
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [Er <String>]: The resource id of builder to build the source code
-  [RelativePath <String>]: The relative path of source code
 
 BUILDSERVICEINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the build service agent pool resource.
@@ -2560,24 +2551,27 @@ SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [StackName <String>]: The name of the stack resource.
   [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloudbuildservice
+https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloudbuildservicebuild
 #>
-function Update-AzSpringCloudBuildService {
+function Update-AzSpringCloudBuildServiceBuild {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaIdentityBuildService', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentitySpringExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [System.String]
+    # The name of the build service resource.
+    ${BuildServiceName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaIdentityBuildServiceExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaIdentitySpring', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaIdentitySpringExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the build resource.
-    ${BuildName},
+    ${Name},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
@@ -2585,14 +2579,12 @@ param(
     # You can obtain this value from the Azure Resource Manager API or the portal.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
     # The name of the Service resource.
     ${ServiceName},
 
-    [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -2601,68 +2593,44 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityBuildService', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityBuildServiceExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
     # Identity Parameter
     ${BuildServiceInputObject},
 
-    [Parameter(ParameterSetName='UpdateViaIdentitySpring', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
+    # Identity Parameter
+    ${InputObject},
+
     [Parameter(ParameterSetName='UpdateViaIdentitySpringExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity]
     # Identity Parameter
     ${SpringInputObject},
 
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentityBuildService', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentitySpring', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuild]
-    # Build resource payload
-    ${Build},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityBuildServiceExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentitySpringExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # The resource id of agent pool
-    ${AgentPool},
+    ${AgentPoolId},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityBuildServiceExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentitySpringExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # The resource id of builder to build the source code
-    ${Builder},
+    ${BuilderId},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityBuildServiceExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentitySpringExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildPropertiesEnv]))]
     [System.Collections.Hashtable]
     # The environment variables for this build
     ${Env},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityBuildServiceExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentitySpringExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
     # The relative path of source code
@@ -2729,24 +2697,17 @@ begin {
         $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
-            Update = 'Az.SpringCloud.private\Update-AzSpringCloudBuildService_Update';
-            UpdateExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudBuildService_UpdateExpanded';
-            UpdateViaIdentity = 'Az.SpringCloud.private\Update-AzSpringCloudBuildService_UpdateViaIdentity';
-            UpdateViaIdentityBuildService = 'Az.SpringCloud.private\Update-AzSpringCloudBuildService_UpdateViaIdentityBuildService';
-            UpdateViaIdentityBuildServiceExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudBuildService_UpdateViaIdentityBuildServiceExpanded';
-            UpdateViaIdentityExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudBuildService_UpdateViaIdentityExpanded';
-            UpdateViaIdentitySpring = 'Az.SpringCloud.private\Update-AzSpringCloudBuildService_UpdateViaIdentitySpring';
-            UpdateViaIdentitySpringExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudBuildService_UpdateViaIdentitySpringExpanded';
+            UpdateExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudBuildServiceBuild_UpdateExpanded';
+            UpdateViaIdentityBuildServiceExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudBuildServiceBuild_UpdateViaIdentityBuildServiceExpanded';
+            UpdateViaIdentityExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudBuildServiceBuild_UpdateViaIdentityExpanded';
+            UpdateViaIdentitySpringExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudBuildServiceBuild_UpdateViaIdentitySpringExpanded';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
-        }
-        if (('Update', 'UpdateExpanded', 'UpdateViaIdentitySpring', 'UpdateViaIdentitySpringExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
-            $PSBoundParameters['Name'] = 'default'
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

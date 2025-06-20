@@ -20,22 +20,14 @@ Gets the specified network security perimeter by the name.
 .Description
 Gets the specified network security perimeter by the name.
 .Example
-
- Get-AzNetworkSecurityPerimeter -ResourceGroupName ResourceGroup-1
-
+Get-AzNetworkSecurityPerimeter -ResourceGroupName rg-test-1
 .Example
-
- Get-AzNetworkSecurityPerimeter
-
+Get-AzNetworkSecurityPerimeter
 .Example
-
- Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
-
+Get-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1
 .Example
-
- $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
- Get-AzNetworkSecurityPerimeter -InputObject $GETObj
-
+$GETObj = Get-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1
+Get-AzNetworkSecurityPerimeter -InputObject $GETObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity

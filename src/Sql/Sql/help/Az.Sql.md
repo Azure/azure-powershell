@@ -21,7 +21,7 @@ Adds a job step to a job
 Adds a target to a target group
 
 ### [Add-AzSqlInstanceKeyVaultKey](Add-AzSqlInstanceKeyVaultKey.md)
-Adds a key vault key to the provided Managed Instance. 
+Adds a key vault key to the provided Managed Instance.
 
 ### [Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given managed instance
@@ -66,7 +66,7 @@ Converts a vulnerability assessment scan results to Excel format.
 Converts a vulnerability assessment scan results to Excel format.
 
 ### [Copy-AzSqlDatabaseLongTermRetentionBackup](Copy-AzSqlDatabaseLongTermRetentionBackup.md)
-Copies a long term retention backup to a target database.  
+Copies a long term retention backup to a target database.
 
 ### [Copy-AzSqlInstanceDatabase](Copy-AzSqlInstanceDatabase.md)
 Copy managed database to another managed instance.
@@ -564,7 +564,7 @@ Adds the allowed FQDN to the list of outbound firewall rules and creates a new o
 Creates or updates a Server Trust Group.
 
 ### [New-AzSqlServerVirtualNetworkRule](New-AzSqlServerVirtualNetworkRule.md)
-Creates an Azure SQL Server Virtual Network Rule. 
+Creates an Azure SQL Server Virtual Network Rule.
 
 ### [New-AzSqlSyncAgent](New-AzSqlSyncAgent.md)
 Creates an Azure SQL Sync Agent.
@@ -756,7 +756,7 @@ Modifies the configuration of an Instance Failover Group.
 Updates the state of an Azure SQL Database recommended action.
 
 ### [Set-AzSqlDatabaseReplicationLink](Set-AzSqlDatabaseReplicationLink.md)
-Updates the Link type of a Replication Link.
+Updates the link type of the geo-replication link
 
 ### [Set-AzSqlDatabaseSecondary](Set-AzSqlDatabaseSecondary.md)
 Switches a secondary database to be primary in order to initiate failover.
@@ -878,6 +878,9 @@ Starts a Log Replay service with the given parameters.
 ### [Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan](Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan.md)
 Starts a vulnerability assessment scan.
 
+### [Start-AzSqlInstanceLinkFailover](Start-AzSqlInstanceLinkFailover.md)
+Failovers an instance link.
+
 ### [Start-AzSqlSyncGroupSync](Start-AzSqlSyncGroupSync.md)
 Starts a sync group synchronization.
 
@@ -957,7 +960,5 @@ Updates an Azure SQL Database Sync Group.
 Updates an Azure SQL Database Sync Member.
 
 ### [Update-AzSqlSyncSchema](Update-AzSqlSyncSchema.md)
-Update the sync schema for a sync member database or a sync hub database.
-It will get the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
-If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
+Update the sync schema for a sync member database or a sync hub database. It will get the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database. If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
 

@@ -20,9 +20,9 @@ Gets the specified NSP link resource.
 .Description
 Gets the specified NSP link resource.
 .Example
- Get-AzNetworkSecurityPerimeterLink -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp2
+Get-AzNetworkSecurityPerimeterLink -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
- Get-AzNetworkSecurityPerimeterLink -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp2 -Name t-link1
+Get-AzNetworkSecurityPerimeterLink -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -Name link-test-1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity

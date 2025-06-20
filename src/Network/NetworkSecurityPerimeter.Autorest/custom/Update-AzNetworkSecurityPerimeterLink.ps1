@@ -130,19 +130,6 @@ function Update-AzNetworkSecurityPerimeterLink {
 
         # Body paramters
 
-        [Parameter(HelpMessage = "Resource tags.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags]))]
-        [System.Collections.Hashtable]
-        # Resource tags.
-        ${Tag},
-
-        [Parameter(HelpMessage = "Location of the resource")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [System.String]
-        # The Location of the resource
-        ${Location},
-
         [Parameter(HelpMessage = "Auto approved remote perimeter resource id")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.String]
@@ -170,7 +157,7 @@ function Update-AzNetworkSecurityPerimeterLink {
             # 1. GET
 
             # body params and AsJob
-            $bodyParams = 'Tag', 'Location', 'AutoApprovedRemotePerimeterResourceId', 'LocalInboundProfile', 'RemoteInboundProfile', 'AsJob'
+            $bodyParams = 'AutoApprovedRemotePerimeterResourceId', 'LocalInboundProfile', 'RemoteInboundProfile', 'AsJob'
 
             $bodyParamsMap = @{}
 

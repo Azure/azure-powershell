@@ -20,14 +20,10 @@ Deletes a network security perimeter.
 .Description
 Deletes a network security perimeter.
 .Example
-
- Remove-AzNetworkSecurityPerimeter -Name nsp5 -ResourceGroupName ResourceGroup-1
-
+Remove-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1
 .Example
-
- $nspObj = Get-AzNetworkSecurityPerimeter -Name nsp6 -ResourceGroupName ResourceGroup-1 
- Remove-AzNetworkSecurityPerimeter -InputObject $nspObj
-
+$nspObj = Get-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1 
+Remove-AzNetworkSecurityPerimeter -InputObject $nspObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity

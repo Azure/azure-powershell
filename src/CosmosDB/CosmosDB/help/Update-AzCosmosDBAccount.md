@@ -55,7 +55,7 @@ Update-AzCosmosDBAccount -InputObject <PSDatabaseAccountGetResults> [-EnableAuto
 ```
 
 ## DESCRIPTION
-Update the properties of a Cosmos DB account. Cannot update Account Regions simulataneously with other properties.
+Update the properties of a Cosmos DB account. Cannot update Account Regions simultaneously with other properties.
 
 ## EXAMPLES
 

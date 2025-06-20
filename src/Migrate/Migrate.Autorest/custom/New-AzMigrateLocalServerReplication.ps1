@@ -188,19 +188,22 @@ function New-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('Confirm')
         
         $MachineIdArray = $MachineId.Split("/")
+        if ($MachineIdArray.Length -lt 11) {
+            throw "Invalid machine ARM ID '$MachineId'"
+        }
         $SiteType = $MachineIdArray[7]
         $SiteName = $MachineIdArray[8]
         $ResourceGroupName = $MachineIdArray[4]
         $MachineName = $MachineIdArray[10]
-       
-        if (($SiteType -ne $SiteTypes.HyperVSites) -and ($SiteType -ne $SiteTypes.VMwareSites)) {
-            throw "Site type is not supported. Site type '$SiteType'. Check MachineId provided."
-        }
 
         # Get the source site and the discovered machine
         $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
         $null = $PSBoundParameters.Add("SiteName", $SiteName)
         $null = $PSBoundParameters.Add("MachineName", $MachineName)
+
+        if (($SiteType -ne $SiteTypes.HyperVSites) -and ($SiteType -ne $SiteTypes.VMwareSites)) {
+            throw "Site type is not supported. Site type '$SiteType'. Check MachineId provided."
+        }
         
         if ($SiteType -eq $SiteTypes.HyperVSites) {
             $instanceType = $AzLocalInstanceTypes.HyperVToAzLocal

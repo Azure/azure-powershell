@@ -44,18 +44,28 @@ Gets the NSP logging configuration.
 
 ## EXAMPLES
 
-### Example 1: Get the Network security perimeter logging configuration
+### Example 1: Get NetworkSecurityPerimeter LoggingConfiguration
 ```powershell
-Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3
+Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 ```
 
 ```output
-EnabledLogCategory           Name
-------------------           ----
-{NspPublicInboundPerimeterRulesAllowed} instance
+EnabledLogCategory           : {NspPublicInboundPerimeterRulesAllowed}
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers
+                                /Microsoft.Network/networkSecurityPerimeters/nsp-test-1/loggingConfigurations/instance
+Name                         : instance
+ResourceGroupName            : rg-test-1
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Network/networkSecurityPerimeters/loggingConfigurations
+Version                      : 4
 ```
 
-Get the Network security perimeter logging configuration
+Get NetworkSecurityPerimeter LoggingConfiguration
 
 ## PARAMETERS
 
