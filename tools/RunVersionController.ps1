@@ -176,9 +176,28 @@ function Bump-AzVersion
     $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1"
     Write-Host "Getting Az $ReleaseType information from gallery..." -ForegroundColor Yellow
     if("LTS" -eq $ReleaseType){
-        $galleryAz = (Find-Module -Name Az -Repository $GalleryName -AllVersions | Where-Object {([System.Version]($_.Version)).Major%2 -eq 0} | Sort-Object {[System.Version]$_.Version} -Descending)[0]
-    }else{
-        $galleryAz = Find-Module -Name Az -Repository $GalleryName
+        if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
+            Write-Host "Using DEFAULT_PS_REPOSITORY_NAME: $Env:DEFAULT_PS_REPOSITORY_NAME"
+            $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
+            $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
+            $galleryAz = Find-PSResource -Name AzPreview -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -TrustRepository
+        }
+        else {
+            $galleryAz = Find-PSResource -Name AzPreview -Repository $GalleryName -Version *
+        }
+        $galleryAz = $galleryAz | Where-Object { ([System.Version]($_.Version)).Major%2 -eq 0 } | Sort-Object {[System.Version]$_.Version} -Descending
+    }
+    else
+    {
+        if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
+            Write-Host "Using DEFAULT_PS_REPOSITORY_NAME: $Env:DEFAULT_PS_REPOSITORY_NAME"
+            $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
+            $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
+            $galleryAz = Find-PSResource -Name AzPreview -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -TrustRepository
+        }
+        else {
+            $galleryAz = Find-PSResource -Name AzPreview -Repository $GalleryName
+        }
     }
 
     $versionBump = [PSVersion]::NONE
@@ -325,7 +344,15 @@ function Update-AzPreviewChangelog
     $AzPreviewVersion = (Import-PowerShellDataFile "$PSScriptRoot\Az\Az.psd1").ModuleVersion
     $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\AzPreview\AzPreview.psd1"
     Write-Host "Getting gallery AzPreview information..." -ForegroundColor Yellow
-    $galleryAz = Find-Module -Name AzPreview -Repository $GalleryName
+    if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
+        Write-Host "Using DEFAULT_PS_REPOSITORY_NAME: $Env:DEFAULT_PS_REPOSITORY_NAME"
+        $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
+        $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
+        $galleryAz = Find-PSResource -Name AzPreview -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -TrustRepository
+    }
+    else {
+        $galleryAz = Find-PSResource -Name AzPreview -Repository $GalleryName
+    }
     $updatedModules = @()
     foreach ($localDependency in $localAz.RequiredModules)
     {
