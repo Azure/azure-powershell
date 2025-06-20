@@ -15,7 +15,21 @@ $artifactsDir = Join-Path $RepoRoot 'artifacts'
 
 $changedModulesDict = @{}
 $changedSubModulesDict = @{}
-if ($env:RUN_TEST_ON_ALL_MODULES -eq "True") {
+if ($env:TEST_CHANGED_MODULES_ONLY -eq "True") {
+    Write-Host "Run test on generated folder changed modules"
+    # Only generated folder change should trigger the test
+    for ($i = 0; $i -lt $ChangedFiles.Count; $i++) {
+        if ($ChangedFiles[$i] -match '^generated/([^/]+)/([^/]+\.Autorest)/') {
+            $moduleName = $Matches[1]
+            $subModuleName = $Matches[2]
+            $subModule = "$moduleName/$subModuleName"
+            
+            $changedModulesDict[$moduleName] = $true
+            $changedSubModulesDict[$subModule] = $true
+        }
+    }
+}
+else {
     Write-Host "Run test on all modules"
     $V4ModulesFile = Join-Path $artifactsDir "generationTargets.json"
     $V4ModuleMaps = Get-Content -Raw -Path $V4ModulesFile | ConvertFrom-Json
@@ -28,20 +42,6 @@ if ($env:RUN_TEST_ON_ALL_MODULES -eq "True") {
                 $changedModulesDict[$moduleName] = $true
                 $changedSubModulesDict[$subModule] = $true
             }
-        }
-    }
-}
-else {
-    Write-Host "Run test on generated folder changed modules"
-    # Only generated folder change should trigger the test
-    for ($i = 0; $i -lt $ChangedFiles.Count; $i++) {
-        if ($ChangedFiles[$i] -match '^generated/([^/]+)/([^/]+\.Autorest)/') {
-            $moduleName = $Matches[1]
-            $subModuleName = $Matches[2]
-            $subModule = "$moduleName/$subModuleName"
-            
-            $changedModulesDict[$moduleName] = $true
-            $changedSubModulesDict[$subModule] = $true
         }
     }
 }
