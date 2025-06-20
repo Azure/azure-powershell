@@ -1,0 +1,50 @@
+{
+  "Get-AzDataTransferPendingConnection+[NoContext]+List+$POST+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-approved-connection-1/listPendingConnections?api-version=2025-05-21+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-approved-connection-1/listPendingConnections?api-version=2025-05-21",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "53" ],
+        "x-ms-client-request-id": [ "75df461a-5483-43b5-8e2a-225cc849f05a" ],
+        "CommandName": [ "Get-AzDataTransferPendingConnection" ],
+        "FullCommandName": [ "Get-AzDataTransferPendingConnection_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.1", "Az.DataTransfer/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/southindia/2ebb0252-e693-4ef1-ae8b-b644396829c9" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "65e80d3d-1e94-420b-b0b6-b1d9ce82189c" ],
+        "x-ms-request-id": [ "746481a5-32a6-46cd-90e4-81e10859ab42" ],
+        "x-ms-correlation-request-id": [ "ea6d7cd8-68f9-45f0-a5d6-6737df5ead23" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250619T080912Z:ea6d7cd8-68f9-45f0-a5d6-6737df5ead23" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C57FD05B74714A3CBD3F3450E3228CAD Ref B: PNQ231110909031 Ref C: 2025-06-19T08:09:10Z" ],
+        "Date": [ "Thu, 19 Jun 2025 08:09:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5087" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/Connection02\",\"name\":\"Connection02\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"justification\":\"Required for data processing\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/Connection04\",\"name\":\"Connection04\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"justification\":\"Required for data processing\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/Connection06\",\"name\":\"Connection06\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"justification\":\"Required for data processing\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/faikh-test-send-pending-connection-1\",\"name\":\"faikh-test-send-pending-connection-1\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"justification\":\"Send side for PS testing\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/lasuredd-send-connection\",\"name\":\"lasuredd-send-connection\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"justification\":\"required\",\"flowTypes\":[\"Mission\",\"API\"],\"requirementId\":\"1234\"},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-connection-4j7colkk2\",\"name\":\"test-send-connection-4j7colkk2\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-connection-f5d45ha2s\",\"name\":\"test-send-connection-f5d45ha2s\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-connection-jmwhfgxgt\",\"name\":\"test-send-connection-jmwhfgxgt\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-connection-jqowey6an\",\"name\":\"test-send-connection-jqowey6an\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-connection-odetp2lqh\",\"name\":\"test-send-connection-odetp2lqh\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-connection-rbjxy5bqz\",\"name\":\"test-send-connection-rbjxy5bqz\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-connection-tqudmutmi\",\"name\":\"test-send-connection-tqudmutmi\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"flowTypes\":[\"Mission\"]},{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-pending-connection-1\",\"name\":\"test-send-pending-connection-1\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"subscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pipeline\":\"corptest\",\"justification\":\"Send side for PS testing\",\"flowTypes\":[\"Mission\"]}]}",
+      "isContentBase64": false
+    }
+  }
+}
