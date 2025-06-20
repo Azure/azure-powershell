@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added breaking change announcement for below commands from Fixed Array to List and breaking change announcement for fixing one object to List.
+* Added breaking change announcement for below commands from array or single object to list.
     - 'Get-AzManagedServicesAssignment'
     - 'Get-AzManagedServicesDefinition'
     - 'Get-AzManagedServicesMarketplaceDefinition'
