@@ -19,7 +19,9 @@
 -->
 
 ## Upcoming Release
-* Added breaking change announcement from Fixed Array to List.
+* Added breaking change announcement for below cmdlets from array to list.
+  - `Get-AzRoleManagementPolicy`
+  - `Update-AzRoleManagementPolicy`
 
 ## Version 8.0.1
 * Fixed empty warning output issue for cmdlet `Test-AzResourceGroupDeployment` [#27888]
