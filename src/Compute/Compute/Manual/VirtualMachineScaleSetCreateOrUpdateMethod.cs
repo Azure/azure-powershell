@@ -775,7 +775,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var parameters = new Parameters(this, client);
 
-            if (parameters?.ImageAndOsType?.Image?.Version?.ToLower() != "latest")
+            if (parameters?.ImageAndOsType?.Image?.Version != null && parameters?.ImageAndOsType?.Image?.Version?.ToLower() != "latest") 
             {
                 WriteWarning("You are deploying VMSS pinned to a specific image version from Azure Marketplace. \n" +
                     "Consider using \"latest\" as the image version. This allows VMSS to auto upgrade when a newer version is available.");
