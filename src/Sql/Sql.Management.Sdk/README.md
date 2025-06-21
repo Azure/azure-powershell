@@ -26,7 +26,7 @@ use-extension:
 
 ###
 ``` yaml
-commit: a21edd5a33e0db83bde8d1dfe706a0cf3db6409e
+commit: 40923289b489ac3f2a96d274ca5fbf0e4457e5d4
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/metrics.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/sql.core_legacy.json
@@ -117,6 +117,9 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ManagedDatabaseMoveOperations.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2023-05-01-preview/ManagedInstances.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/StartStopManagedInstanceSchedules.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2024-05-01-preview/DatabaseSchemas.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2024-05-01-preview/Databases.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2024-05-01-preview/Servers.json
 
 output-folder: Generated
 
