@@ -77,13 +77,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "This property allows you to specify whether the access control rules are in Audit mode, in Enforce mode or Disabled.")]
-        [PSArgumentCompleter("Audit", "Enforce", "Disabled")]
-        public string Mode { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "This property allows you to specify if the requests will be allowed to access the host endpoints.")]
         [PSArgumentCompleter("Allow", "Deny")]
         public string DefaultAccess { get; set; }
@@ -122,7 +115,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
 
                 psGalleryInVMAccessControlProfileVersion.Location = this.Location;
-                psGalleryInVMAccessControlProfileVersion.Mode = this.IsParameterBound(c => c.Mode) ? this.Mode : psGalleryInVMAccessControlProfileVersion.Mode;
                 psGalleryInVMAccessControlProfileVersion.DefaultAccess = this.IsParameterBound(c => c.DefaultAccess) ? this.DefaultAccess : psGalleryInVMAccessControlProfileVersion.DefaultAccess;
                 psGalleryInVMAccessControlProfileVersion.ExcludeFromLatest = this.IsParameterBound(c => c.ExcludeFromLatest) ? this.ExcludeFromLatest : psGalleryInVMAccessControlProfileVersion.ExcludeFromLatest;
                 if (this.IsParameterBound(c => c.TargetRegion))

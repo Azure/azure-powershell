@@ -15,8 +15,8 @@ schema: 2.0.0
 ```
 Update-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName <String> -GalleryName <String>
  -GalleryInVMAccessControlProfileName <String> -Name <String>
- [-GalleryInVmAccessControlProfileVersion <PSGalleryInVMAccessControlProfileVersion>] [-Mode <String>]
- [-DefaultAccess <String>] [-TargetRegion <String[]>] [-ExcludeFromLatest <Boolean>] -Location <String>
+ [-GalleryInVmAccessControlProfileVersion <PSGalleryInVMAccessControlProfileVersion>] [-DefaultAccess <String>]
+ [-TargetRegion <String[]>] [-ExcludeFromLatest <Boolean>] -Location <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -133,21 +133,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Mode
-This property allows you to specify whether the access control rules are in Audit mode, in Enforce mode or Disabled.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
