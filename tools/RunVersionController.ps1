@@ -507,6 +507,7 @@ switch ($PSCmdlet.ParameterSetName)
     {
         # clean the unnecessary SerializedCmdlets json file
         $ExistSerializedCmdletJsonFile = Get-ExistSerializedCmdletJsonFile
+        $GAModules = @() # with "Az."
         $ExpectJsonHashSet = @{}
         $SrcPath = Join-Path -Path $PSScriptRoot -ChildPath "..\src"
         foreach ($ModuleName in $(Get-ChildItem $SrcPath -Directory).Name)
@@ -517,9 +518,10 @@ switch ($PSCmdlet.ParameterSetName)
             if ($null -ne $Psd1FilePath)
             {
                 $Psd1Object = Import-PowerShellDataFile $Psd1FilePath
-                if ($Psd1Object.ModuleVersion -ge "1.0.0")
+                if ([Version]$Psd1Object.ModuleVersion -ge [Version]"1.0.0")
                 {
                     $ExpectJsonHashSet.Add("Az.${ModuleName}.json", $true)
+                    $GAModules += "Az.${ModuleName}"
                 }
             }
         }
@@ -528,7 +530,7 @@ switch ($PSCmdlet.ParameterSetName)
             $ModuleName = $JsonFile.Replace('.json', '')
             if (!$ExpectJsonHashSet.Contains($JsonFile))
             {
-                Write-Host "Module ${ModuleName} is not GA yet. The json file: ${JsonFile} is for reference"
+                Write-Host "Module ${ModuleName} is pre-GA. The serialized cmdlets file: ${JsonFile} is for reference only"
             }
         }
 
@@ -541,12 +543,10 @@ switch ($PSCmdlet.ParameterSetName)
         Update-AzPreview
         Update-AzPreviewChangelog
         Update-AzSyntaxChangelog
-        # We need to generate the upcoming-breaking-changes.md after the process of bump version in minor release
-        if ([PSVersion]::MINOR -Eq $versionBump)
-        {
-            Import-Module $PSScriptRoot/BreakingChanges/GetUpcomingBreakingChange.psm1
-            Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath $PSScriptRoot/../artifacts/Release/ -MarkdownPath $PSScriptRoot/../documentation/breaking-changes/upcoming-breaking-changes.md
-        }
+
+        # Update the doc of upcoming breaking change
+        Import-Module $PSScriptRoot/BreakingChanges/GetUpcomingBreakingChange.psm1
+        Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath $PSScriptRoot/../artifacts/Release/ -MarkdownPath $PSScriptRoot/../documentation/breaking-changes/upcoming-breaking-changes.md -Module $GAModules
     }
 }
 
