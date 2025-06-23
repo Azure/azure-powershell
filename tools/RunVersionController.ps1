@@ -228,11 +228,7 @@ function Bump-AzVersion
             continue
         }
 
-        $galleryVersion = $galleryDependency.RequiredVersion
-        if ([string]::IsNullOrEmpty($galleryVersion))
-        {
-            $galleryVersion = $galleryDependency.MinimumVersion
-        }
+        $galleryVersion = $galleryDependency.VersionRange.MinVersion.OriginalVersion
 
         $localVersion = $localDependency.RequiredVersion
         # Az.Accounts uses ModuleVersion to annote Version
