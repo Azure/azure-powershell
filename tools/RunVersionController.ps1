@@ -198,6 +198,7 @@ function Bump-AzVersion
     }
     else
     {
+        Write-Host "Before bumping Az version, we need to get the latest AzPreview module from the gallery." -ForegroundColor Yellow
         if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
             Write-Host "Using DEFAULT_PS_REPOSITORY_NAME: $Env:DEFAULT_PS_REPOSITORY_NAME"
             $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
@@ -205,7 +206,9 @@ function Bump-AzVersion
             $galleryAz = Find-PSResource -Name AzPreview -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -TrustRepository
         }
         else {
+            Write-Host "Using GalleryName: $GalleryName"
             $galleryAz = Find-PSResource -Name AzPreview -Repository $GalleryName
+            Write-Host "Found AzPreview version: $($galleryAz.Version)" -ForegroundColor Yellow
         }
     }
 
