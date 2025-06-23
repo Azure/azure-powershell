@@ -175,6 +175,7 @@ function Bump-AzVersion
     Write-Host "Getting local Az information..." -ForegroundColor Yellow
     $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1"
     Write-Host "Getting Az $ReleaseType information from gallery..." -ForegroundColor Yellow
+
     if("LTS" -eq $ReleaseType){
         if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
             Write-Host "Using DEFAULT_PS_REPOSITORY_NAME: $Env:DEFAULT_PS_REPOSITORY_NAME"
@@ -216,11 +217,7 @@ function Bump-AzVersion
             continue
         }
 
-        $galleryVersion = $galleryDependency.RequiredVersion
-        if ([string]::IsNullOrEmpty($galleryVersion))
-        {
-            $galleryVersion = $galleryDependency.MinimumVersion
-        }
+        $galleryVersion = $galleryDependency.VersionRange.MinVersion.OriginalVersion
 
         $localVersion = $localDependency.RequiredVersion
         # Az.Accounts uses ModuleVersion to annote Version
@@ -364,11 +361,7 @@ function Update-AzPreviewChangelog
             continue
         }
 
-        $galleryVersion = $galleryDependency.RequiredVersion
-        if ([string]::IsNullOrEmpty($galleryVersion))
-        {
-            $galleryVersion = $galleryDependency.MinimumVersion
-        }
+        $galleryVersion = $galleryDependency.VersionRange.MinVersion.OriginalVersion
 
         $localVersion = $localDependency.RequiredVersion
         # Az.Accounts uses ModuleVersion to annote Version
