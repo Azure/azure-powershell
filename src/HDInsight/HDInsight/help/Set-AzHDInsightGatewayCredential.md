@@ -69,6 +69,15 @@ Get-AzHDInsightCluster -ClusterName $clusterName | Set-AzHDInsightGatewayCredent
 ```
 
 ### Example 4: Set Gateway Entra Users for an HDInsight Cluster by EntraUser Full Info
+```powershell
+# Cluster info
+$clusterName = "your-hadoop-001"
+$entraUserFullInfo = @(@{ObjectId = "ObjectId1"; Upn = "Upn1"; DisplayName = "DisplayName1"},@{ObjectId = "ObjectId2"; Upn = "Upn2"; DisplayName = "DisplayName2"})
+
+Set-AzHDInsightGatewayCredential `
+            -ClusterName $clusterName `
+            -EntraUserFullInfo $entraUserFullInfo
+```
 To use the `-EntraUserFullInfo` parameter, you need to provide each user's `ObjectId`, `Upn`, and `DisplayName`. You can retrieve this information using one of the following methods:
 
 Option 1: Use Azure Portal
@@ -93,16 +102,6 @@ This will return properties such as:
  - DisplayName -> DisplayName
 
 For more details, refer to the official documentation: [Get-AzADUser - PowerShell](https://learn.microsoft.com/en-us/powershell/module/az.resources/get-azaduser?view=azps-14.0.0)
-
-```powershell
-# Cluster info
-$clusterName = "your-hadoop-001"
-$entraUserFullInfo = @(@{ObjectId = "ObjectId1"; Upn = "Upn1"; DisplayName = "DisplayName1"},@{ObjectId = "ObjectId2"; Upn = "Upn2"; DisplayName = "DisplayName2"})
-
-Set-AzHDInsightGatewayCredential `
-            -ClusterName $clusterName `
-            -EntraUserFullInfo $entraUserFullInfo
-```
 
 ### Example 5: Set Gateway Entra Users for an HDInsight Cluster by ObjectId or Upn
 ```powershell
