@@ -743,7 +743,7 @@ New-AzHDInsightCluster `
     -EntraUserIdentity $entraUserIdentity
 ```
 
-### Example 16: Create an Azure HDInsight cluster With Entra User By FUll Info
+### Example 16: Create an Azure HDInsight cluster With Entra User By Full Info
 ```powershell
 # Primary storage account info
 $storageAccountResourceGroupName = "Group"
