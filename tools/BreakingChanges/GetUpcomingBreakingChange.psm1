@@ -93,16 +93,3 @@ Preview modules are not included in this list. Read more about [module version t
         Export-BreakingChangeMessageOfModule -ArtifactsPath $ArtifactsPath -ModuleName $_ | Out-File -FilePath $MarkdownPath -Append -NoNewline
     }
 }
-
-Function IsPreGAModule
-{
-    [CmdletBinding()]
-    Param (
-        [Parameter()]
-        [String]
-        $ModuleName
-    )
-    # Pre-GA modules are those that do not have a version number in their name
-    # e.g. Az.Accounts, Az.Resources, etc.
-    Return ($ModuleName -notmatch '\d+\.\d+\.\d+')
-}
