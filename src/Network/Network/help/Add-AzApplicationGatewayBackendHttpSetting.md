@@ -296,15 +296,6 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DedicatedBackendConnection
 Enable or disable dedicated connection per backend server. Default is set to false.
