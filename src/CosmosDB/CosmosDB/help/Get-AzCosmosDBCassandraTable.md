@@ -15,14 +15,14 @@ Gets a CosmosDB Cassandra Table.
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBCassandraTable -AccountName <String> -KeyspaceName <String> -ResourceGroupName <String>
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzCosmosDBCassandraTable [-Name <String>] -ParentObject <PSCassandraKeyspaceGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,21 +116,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

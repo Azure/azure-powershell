@@ -14,7 +14,7 @@ Creates a new CosmosDB MongoDB Privilege object to be used to create or update  
 
 ```
 New-AzCosmosDBMongoDBPrivilege [-PrivilegeResource <PSMongoPrivilegeResource>] [-Actions <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,21 +76,6 @@ Microsoft.Azure.Commands.CosmosDB.Models.PSMongoPrivilegeResource Object.
 Type: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoPrivilegeResource
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

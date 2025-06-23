@@ -18,7 +18,7 @@ Update-AzCosmosDBMongoDBRoleDefinition -Id <String> [-RoleName <String>] [-Type 
  [-DatabaseName <String>]
  [-Privileges <System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoPrivilege]>]
  [-Roles <System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoRole]>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ Update-AzCosmosDBMongoDBRoleDefinition -ResourceGroupName <String> -AccountName 
  [-RoleName <String>] [-Type <String>] [-DatabaseName <String>]
  [-Privileges <System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoPrivilege]>]
  [-Roles <System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoRole]>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ Update-AzCosmosDBMongoDBRoleDefinition -Id <String> [-RoleName <String>] [-Type 
  [-Privileges <System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoPrivilege]>]
  [-Roles <System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoRole]>]
  -DatabaseAccountObject <PSDatabaseAccountGetResults> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -49,7 +49,7 @@ Update-AzCosmosDBMongoDBRoleDefinition -Id <String> [-RoleName <String>] [-Type 
  [-Privileges <System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoPrivilege]>]
  [-Roles <System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoRole]>]
  -InputObject <PSMongoDBRoleDefinitionGetResults> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -174,21 +174,6 @@ MongoDB Role Definition Privileges define allowed actions for corresponding reso
 Type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoPrivilege]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

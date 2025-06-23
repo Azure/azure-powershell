@@ -16,13 +16,13 @@ Gets the CosmosDB Client Encryption Key.
 ```
 Get-AzCosmosDbClientEncryptionKey -ResourceGroupName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzCosmosDbClientEncryptionKey [-Name <String>] -SqlDatabaseObject <PSSqlDatabaseGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,21 +97,6 @@ Client Encryption Key name.
 Type: System.String
 Parameter Sets: (All)
 Aliases: ClientEncryptionKeyName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

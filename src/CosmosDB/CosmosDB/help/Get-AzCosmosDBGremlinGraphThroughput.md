@@ -15,14 +15,14 @@ Gets the throughput of a CosmosDB Gremlin Graph.
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBGremlinGraphThroughput -ResourceGroupName <String> -AccountName <String> -DatabaseName <String>
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzCosmosDBGremlinGraphThroughput [-Name <String>] -InputObject <PSGremlinGraphGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -113,21 +113,6 @@ Gremlin Graph Name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

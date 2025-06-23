@@ -15,13 +15,13 @@ Get CosmosDB Account.
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBAccount -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzCosmosDBAccount -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,21 +81,6 @@ Name of the Cosmos DB database account.
 Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

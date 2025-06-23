@@ -25,7 +25,7 @@ Update-AzCosmosDBAccount [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWr
  [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>]
  [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
  [-EnablePerRegionPerPartitionAutoscale <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -41,7 +41,7 @@ Update-AzCosmosDBAccount -ResourceId <String> [-EnableAutomaticFailover <Boolean
  [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>]
  [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
  [-EnablePerRegionPerPartitionAutoscale <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -57,7 +57,7 @@ Update-AzCosmosDBAccount -InputObject <PSDatabaseAccountGetResults> [-EnableAuto
  [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>]
  [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
  [-EnablePerRegionPerPartitionAutoscale <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -488,21 +488,6 @@ List of Resource Ids to allow Network Acl Bypass for Synapse Link.
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

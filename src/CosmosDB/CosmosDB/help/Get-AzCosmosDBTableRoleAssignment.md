@@ -15,13 +15,13 @@ Gets the CosmosDB Table Role Assignment.
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBTableRoleAssignment -ResourceGroupName <String> -AccountName <String> [-Id <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzCosmosDBTableRoleAssignment [-Id <String>] -ParentObject <PSDatabaseAccountGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,21 +101,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

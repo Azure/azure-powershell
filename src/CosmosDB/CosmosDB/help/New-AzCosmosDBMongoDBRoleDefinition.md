@@ -16,14 +16,14 @@ Creates a new CosmosDB MongoDB Role Definition.
 ```
 New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
  -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByNameParameterSet
 ```
 New-AzCosmosDBMongoDBRoleDefinition -ResourceGroupName <String> -AccountName <String> -Id <String>
  -RoleName <String> -Type <String> -DatabaseName <String> -Privileges <PSMongoPrivilege[]>
- [-Roles <PSMongoRole[]>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-Roles <PSMongoRole[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ New-AzCosmosDBMongoDBRoleDefinition -ResourceGroupName <String> -AccountName <St
 ```
 New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
  -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] -DatabaseAccountObject <PSDatabaseAccountGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <Strin
 ```
 New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
  -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] -DatabaseAccountObject <PSDatabaseAccountGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -47,7 +47,7 @@ New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <Strin
 ```
 New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
  -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] [-ResourceId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -197,21 +197,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
