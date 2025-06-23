@@ -26,11 +26,11 @@ Sets the Proxy Agent settings properties for a PSVirtualMachine object.
 ### Example 1
 ```powershell
 $vmconfig = New-AzVMConfig -VMName $vmName -vmSize "Standard_D2s_v3"
-Set-AzVMProxyAgentSetting -VM $vmconfig -EnableProxyAgent $true -WireServerMode "Enforce" -WireServerProfile "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}" -ImdsMode "Enforce" -ImdsProfile "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}" -KeyIncarnationId 1
+Set-AzVMProxyAgentSetting -VM $vmconfig -EnableProxyAgent $true -WireServerMode "Enforce" -ImdsProfile "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}".
 ```
 
 This command sets the Proxy Agent settings for a virtual machine configuration object `$vmconfig`. 
-It enables the Proxy Agent, sets the Wire Server mode to "Enforce", specifies the Wire Server profile, sets the IMDS mode to "Enforce", specifies the IMDS profile, and sets the key incarnation ID to 1.
+It enables the Proxy Agent, sets the Wire Server mode to "Enforce", specifies the IMDS profile.
 
 ## PARAMETERS
 

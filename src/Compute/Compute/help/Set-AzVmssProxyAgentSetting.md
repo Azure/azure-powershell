@@ -26,11 +26,11 @@ Sets the Proxy Agent settings properties for a PSVirtualMachineScaleSet object.
 ### Example 1
 ```powershell
 $vmssConfig = New-AzVmssConfig -Location 'EastUS2' -SkuName 'Standard_D4s_v3'
-Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $vmssConfig -EnableProxyAgent $true -WireServerMode 'Enforce' -WireServerProfile '/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}' -ImdsMode 'Audit' -ImdsProfile '/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}'
+Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $vmssConfig -EnableProxyAgent $true -WireServerProfile '/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}' -ImdsProfile '/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}'
 ```
 
 This command sets the Proxy Agent settings for a virtual machine scale set configuration object `$vmssConfig`. 
-It enables the Proxy Agent, sets the Wire Server mode to "Enforce", specifies the Wire Server profile, sets the IMDS mode to "Audit", and specifies the IMDS profile.
+It enables the Proxy Agent, specifies the Wire Server profile, and specifies the IMDS profile.
 
 ## PARAMETERS
 
