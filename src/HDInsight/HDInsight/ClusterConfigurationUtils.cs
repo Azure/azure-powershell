@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception($"Failed to retrieve Entra user info from input: \"{data}\". Please check the EntraUserIdentity parameter, or consider using the EntraUserFullInfo approach to specify user details.", ex);
+                        throw new AzPSException($"Failed to retrieve Entra user info from input: \"{data}\". Please check the EntraUserIdentity parameter, or consider using the EntraUserFullInfo approach to specify user details.", ErrorKind.UserError, ex);
                     }
                 }
             }
