@@ -16,7 +16,7 @@ Lists all the restorable Azure Cosmos DB Gremlin resources available for a speci
 ```
 Get-AzCosmosDBGremlinRestorableResource -Location <String> -DatabaseAccountInstanceId <String>
  -RestoreTimestampInUtc <DateTime> -RestoreLocation <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -24,7 +24,7 @@ Get-AzCosmosDBGremlinRestorableResource -Location <String> -DatabaseAccountInsta
 Get-AzCosmosDBGremlinRestorableResource -Location <String> -DatabaseAccountInstanceId <String>
  -RestoreTimestampInUtc <DateTime> -RestoreLocation <String>
  -InputObject <PSRestorableDatabaseAccountGetResult> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,6 +104,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

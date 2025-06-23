@@ -17,7 +17,7 @@ Creates a new CosmosDB Sql Role Definition.
 New-AzCosmosDBSqlRoleDefinition -ResourceGroupName <String> -AccountName <String> [-Id <String>]
  -RoleName <String> [-Type <String>] -AssignableScope <System.Collections.Generic.List`1[System.String]>
  -DataAction <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFieldsPermissionsParameterSet
@@ -25,7 +25,8 @@ New-AzCosmosDBSqlRoleDefinition -ResourceGroupName <String> -AccountName <String
 New-AzCosmosDBSqlRoleDefinition -ResourceGroupName <String> -AccountName <String> [-Id <String>]
  -RoleName <String> [-Type <String>] -AssignableScope <System.Collections.Generic.List`1[System.String]>
  -Permission <System.Collections.Generic.List`1[Microsoft.Azure.Commands.CosmosDB.Models.PSPermission]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectDataActionsParameterSet
@@ -33,7 +34,8 @@ New-AzCosmosDBSqlRoleDefinition -ResourceGroupName <String> -AccountName <String
 New-AzCosmosDBSqlRoleDefinition [-Id <String>] -RoleName <String> [-Type <String>]
  -AssignableScope <System.Collections.Generic.List`1[System.String]>
  -DataAction <System.Collections.Generic.List`1[System.String]> -ParentObject <PSDatabaseAccountGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectPermissionsParameterSet
@@ -41,8 +43,8 @@ New-AzCosmosDBSqlRoleDefinition [-Id <String>] -RoleName <String> [-Type <String
 New-AzCosmosDBSqlRoleDefinition [-Id <String>] -RoleName <String> [-Type <String>]
  -AssignableScope <System.Collections.Generic.List`1[System.String]>
  -Permission <System.Collections.Generic.List`1[Microsoft.Azure.Commands.CosmosDB.Models.PSPermission]>
- -ParentObject <PSDatabaseAccountGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ParentObject <PSDatabaseAccountGetResults> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -194,6 +196,21 @@ Parameter Sets: ByFieldsPermissionsParameterSet, ByParentObjectPermissionsParame
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

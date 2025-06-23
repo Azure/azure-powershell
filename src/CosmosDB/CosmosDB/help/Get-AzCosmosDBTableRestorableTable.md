@@ -15,13 +15,14 @@ Lists all the restorable Azure Cosmos DB Tables available for a specific databas
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBTableRestorableTable -Location <String> -DatabaseAccountInstanceId <String> [-StartTime <String>]
- [-EndTime <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EndTime <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzCosmosDBTableRestorableTable -InputObject <PSRestorableTableGetResult>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,6 +134,21 @@ Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

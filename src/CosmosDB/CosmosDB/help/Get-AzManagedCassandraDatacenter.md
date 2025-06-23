@@ -15,25 +15,25 @@ Gets a Azure Managed Instances for Apache Cassandra data center.
 ### ByNameParameterSet (Default)
 ```
 Get-AzManagedCassandraDatacenter -ResourceGroupName <String> -ClusterName <String> [-DataCenterName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzManagedCassandraDatacenter -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Get-AzManagedCassandraDatacenter -InputObject <PSDataCenterResource> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzManagedCassandraDatacenter -ParentObject <PSClusterResource> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,6 +130,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

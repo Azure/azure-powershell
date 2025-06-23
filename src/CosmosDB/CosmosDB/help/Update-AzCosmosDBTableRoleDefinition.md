@@ -18,7 +18,8 @@ Update-AzCosmosDBTableRoleDefinition -ResourceGroupName <String> -AccountName <S
  [-Type <String>] [-RoleName <String>] [-DataAction <System.Collections.Generic.List`1[System.String]>]
  [-Permission <System.Collections.Generic.List`1[Microsoft.Azure.Commands.CosmosDB.Models.PSPermission]>]
  [-AssignableScope <System.Collections.Generic.List`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -27,14 +28,15 @@ Update-AzCosmosDBTableRoleDefinition -Id <String> [-Type <String>] [-RoleName <S
  [-DataAction <System.Collections.Generic.List`1[System.String]>]
  [-Permission <System.Collections.Generic.List`1[Microsoft.Azure.Commands.CosmosDB.Models.PSPermission]>]
  [-AssignableScope <System.Collections.Generic.List`1[System.String]>]
- -ParentObject <PSDatabaseAccountGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ParentObject <PSDatabaseAccountGetResults> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Update-AzCosmosDBTableRoleDefinition -InputObject <PSTableRoleDefinitionGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -202,6 +204,21 @@ Permission is a collection of data actions.
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.CosmosDB.Models.PSPermission]
 Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

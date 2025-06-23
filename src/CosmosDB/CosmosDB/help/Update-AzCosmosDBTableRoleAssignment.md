@@ -16,20 +16,22 @@ Updates an existing CosmosDB Table Role Assignment.
 ```
 Update-AzCosmosDBTableRoleAssignment -ResourceGroupName <String> -AccountName <String> -Id <String>
  [-RoleDefinitionId <String>] [-RoleDefinitionName <String>] [-Scope <String>] [-PrincipalId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Update-AzCosmosDBTableRoleAssignment -Id <String> [-Scope <String>] [-PrincipalId <String>]
- -ParentObject <PSTableRoleDefinitionGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ParentObject <PSTableRoleDefinitionGetResults> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Update-AzCosmosDBTableRoleAssignment -InputObject <PSTableRoleAssignmentGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,6 +143,21 @@ Object ID (Guid) of the AAD principal to which the Role Assignment is being gran
 Type: System.String
 Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

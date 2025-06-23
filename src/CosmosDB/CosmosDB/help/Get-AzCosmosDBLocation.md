@@ -14,7 +14,8 @@ Get Azure Cosmos DB location properties for a specific location.
 ## SYNTAX
 
 ```
-Get-AzCosmosDBLocation [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzCosmosDBLocation [-Location <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,6 +25,8 @@ List Azure Cosmos DB locations with their location properties. It includes Locat
 
 ### Example 1: Get Azure Cosmos DB Account Location Properties for Given Location
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 Get-AzCosmosDBLocation -Location "Central US"
 
@@ -54,6 +57,8 @@ Get-AzCosmosDBLocation -Location "Central US" | ConvertTo-Json
 
 ### Example 2: List Azure Cosmos DB Account Locations and their properties
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 Get-AzCosmosDBLocation
 
@@ -132,6 +137,21 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

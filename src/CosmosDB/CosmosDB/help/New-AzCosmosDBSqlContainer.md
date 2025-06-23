@@ -20,9 +20,9 @@ New-AzCosmosDBSqlContainer -ResourceGroupName <String> -AccountName <String> -Da
  [-AutoscaleMaxThroughput <Int32>] [-TtlInSeconds <Int32>] [-UniqueKeyPolicy <PSSqlUniqueKeyPolicy>]
  [-ConflictResolutionPolicyMode <String>] [-ConflictResolutionPolicyPath <String>]
  [-ConflictResolutionPolicyProcedure <String>] [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>]
- [-ClientEncryptionPolicy <PSSqlClientEncryptionPolicy>] [-AnalyticalStorageTtl <Int32>]
- [-VectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] [-DefaultProfile <IAzureContextContainer>] 
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClientEncryptionPolicy <PSSqlClientEncryptionPolicy>] [-vectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>]
+ [-AnalyticalStorageTtl <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -32,9 +32,9 @@ New-AzCosmosDBSqlContainer -Name <String> [-IndexingPolicy <PSSqlIndexingPolicy>
  [-AutoscaleMaxThroughput <Int32>] [-TtlInSeconds <Int32>] [-UniqueKeyPolicy <PSSqlUniqueKeyPolicy>]
  [-ConflictResolutionPolicyMode <String>] [-ConflictResolutionPolicyPath <String>]
  [-ConflictResolutionPolicyProcedure <String>] [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>]
- [-ClientEncryptionPolicy <PSSqlClientEncryptionPolicy>] [-AnalyticalStorageTtl <Int32>]
- [-VectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] -ParentObject <PSSqlDatabaseGetResults> 
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-ClientEncryptionPolicy <PSSqlClientEncryptionPolicy>] [-vectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>]
+ [-AnalyticalStorageTtl <Int32>] -ParentObject <PSSqlDatabaseGetResults>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -130,20 +130,6 @@ ClientEncryptionPolicy Object of type PSSqlClientEncryptionPolicy, when provided
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlClientEncryptionPolicy
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-### -VectorEmbeddingPolicy
-VectorEmbeddingPolicy Object of type PSSqlVectorEmbeddingPolicy, when provided this is set as the VectorEmbeddingPolicy of the container.
-
-```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbeddingPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -338,6 +324,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of resource group.
 
@@ -391,6 +392,21 @@ UniqueKeyPolicy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlUniqueKeyP
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUniqueKeyPolicy
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -vectorEmbeddingPolicy
+VectorEmbeddingPolicy Object of type PSSqlVectorEmbeddingPolicy, when provided this is set as the VectorEmbeddingPolicy of the container.
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbeddingPolicy
 Parameter Sets: (All)
 Aliases:
 

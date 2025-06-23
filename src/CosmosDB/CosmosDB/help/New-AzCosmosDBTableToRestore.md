@@ -13,8 +13,8 @@ Creates a new CosmosDB Table to Restore object(PSTableToRestore)
 ## SYNTAX
 
 ```
-New-AzCosmosDBTableToRestore [-TableNames <String[]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzCosmosDBTableToRestore [-TableName <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,9 +52,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TableNames
-The names of the tables to be restored.
-(If not provided, all the tables will be restored)
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TableName
+The names of the tables to be restored. (If not provided, all the tables will be restored)
 
 ```yaml
 Type: System.String[]

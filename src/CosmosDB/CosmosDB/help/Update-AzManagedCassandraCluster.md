@@ -17,8 +17,8 @@ Update an existing Azure Managed Instances for Apache Cassandra cluster.
 Update-AzManagedCassandraCluster -ResourceGroupName <String> -ClusterName <String> [-Tag <Hashtable>]
  [-ExternalGossipCertificate <String[]>] [-ClientCertificate <String[]>] [-RepairEnabled <Boolean>]
  [-TimeBetweenBackupInHours <Int32>] [-AuthenticationMethod <String>] [-CassandraVersion <String>]
- [-ExternalSeedNode <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ExternalSeedNode <String[]>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -26,8 +26,8 @@ Update-AzManagedCassandraCluster -ResourceGroupName <String> -ClusterName <Strin
 Update-AzManagedCassandraCluster -ResourceId <String> [-Tag <Hashtable>]
  [-ExternalGossipCertificate <String[]>] [-ClientCertificate <String[]>] [-RepairEnabled <Boolean>]
  [-TimeBetweenBackupInHours <Int32>] [-AuthenticationMethod <String>] [-CassandraVersion <String>]
- [-ExternalSeedNode <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ExternalSeedNode <String[]>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -35,8 +35,8 @@ Update-AzManagedCassandraCluster -ResourceId <String> [-Tag <Hashtable>]
 Update-AzManagedCassandraCluster -InputObject <PSClusterResource> [-Tag <Hashtable>]
  [-ExternalGossipCertificate <String[]>] [-ClientCertificate <String[]>] [-RepairEnabled <Boolean>]
  [-TimeBetweenBackupInHours <Int32>] [-AuthenticationMethod <String>] [-CassandraVersion <String>]
- [-ExternalSeedNode <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ExternalSeedNode <String[]>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -190,6 +190,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -15,36 +15,40 @@ Creates a new CosmosDB MongoDB Role Definition.
 ### ByFieldsDataActionsParameterSet (Default)
 ```
 New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
- -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByNameParameterSet
 ```
 New-AzCosmosDBMongoDBRoleDefinition -ResourceGroupName <String> -AccountName <String> -Id <String>
  -RoleName <String> -Type <String> -DatabaseName <String> -Privileges <PSMongoPrivilege[]>
- [-Roles <PSMongoRole[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Roles <PSMongoRole[]>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectDataActionsParameterSet
 ```
 New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
  -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] -DatabaseAccountObject <PSDatabaseAccountGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectPermissionsParameterSet
 ```
 New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
  -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] -DatabaseAccountObject <PSDatabaseAccountGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
  -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] [-ResourceId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -193,6 +197,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

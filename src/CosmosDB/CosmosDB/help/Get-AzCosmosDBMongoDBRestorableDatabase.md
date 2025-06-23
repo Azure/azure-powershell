@@ -15,13 +15,13 @@ Gets the list of all the restorable Azure Cosmos DB MongoDB databases available 
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBMongoDBRestorableDatabase -Location <String> -DatabaseAccountInstanceId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzCosmosDBMongoDBRestorableDatabase -InputObject <PSRestorableDatabaseAccountGetResult>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,6 +108,21 @@ Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

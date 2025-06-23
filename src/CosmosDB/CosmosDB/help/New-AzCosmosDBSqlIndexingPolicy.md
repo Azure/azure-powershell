@@ -14,8 +14,9 @@ Creates a new CosmosDB Sql IndexingPolicy object.
 
 ```
 New-AzCosmosDBSqlIndexingPolicy [-IncludedPath <PSIncludedPath[]>] [-SpatialSpec <PSSpatialSpec[]>]
- [-CompositePath <PSCompositePath[][]>] [-ExcludedPath <String[]>] [-Automatic <Boolean>] [-VectorIndex <PSVectorIndex[]>]
- [-IndexingMode <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-CompositePath <PSCompositePath[][]>] [-ExcludedPath <String[]>] [-Automatic <Boolean>]
+ [-IndexingMode <String>] [-VectorIndex <PSVectorIndex[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,6 +141,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SpatialSpec
 Array of objects of type Microsoft.Azure.Commands.CosmosDB.PSSpatialSpec
 
@@ -154,11 +170,12 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 ### -VectorIndex
 Array of objects of type Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorIndex.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorIndex[]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSVectorIndex[]
 Parameter Sets: (All)
 Aliases:
 

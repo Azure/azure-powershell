@@ -15,7 +15,8 @@ Creates a new CosmosDB IndexingPolicy object.
 ```
 New-AzCosmosDBGremlinIndexingPolicy [-IncludedPath <PSIncludedPath[]>] [-SpatialSpec <PSSpatialSpec[]>]
  [-CompositePath <PSCompositePath[][]>] [-ExcludedPath <String[]>] [-Automatic <Boolean>]
- [-IndexingMode <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IndexingMode <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,6 +131,21 @@ Possible values include: 'Consistent', 'Lazy', 'None'
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

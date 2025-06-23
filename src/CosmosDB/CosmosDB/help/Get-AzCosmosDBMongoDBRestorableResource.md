@@ -15,16 +15,16 @@ Lists all the restorable Azure Cosmos DB MongoDB resources available for a speci
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBMongoDBRestorableResource -Location <String> -DatabaseAccountInstanceId <String>
- -RestoreTimestampInUtc <DateTimeOffset> -RestoreLocation <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -RestoreTimestampInUtc <DateTime> -RestoreLocation <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzCosmosDBMongoDBRestorableResource -Location <String> -DatabaseAccountInstanceId <String>
- -RestoreTimestampInUtc <DateTimeOffset> -RestoreLocation <String>
+ -RestoreTimestampInUtc <DateTime> -RestoreLocation <String>
  -InputObject <PSRestorableDatabaseAccountGetResult> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,6 +110,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RestoreLocation
 The location of the source account from which restore is triggered.
 This will also be the write region of the restored account
@@ -130,7 +145,7 @@ Accept wildcard characters: False
 The timestamp to which the source account has to be restored to.
 
 ```yaml
-Type: System.DateTimeOffset
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
