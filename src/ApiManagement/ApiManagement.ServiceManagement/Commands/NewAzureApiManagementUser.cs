@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Identifier of new user. This parameter is optional. If not specified will be genetated.")]
+            HelpMessage = "Identifier of new user. This parameter is optional. If not specified will be generated.")]
         public String UserId { get; set; }
 
         [Parameter(

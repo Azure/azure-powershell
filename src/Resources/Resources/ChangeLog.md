@@ -22,6 +22,7 @@
 * Added breaking change announcement for below cmdlets from array to list.
   - `Get-AzRoleManagementPolicy`
   - `Update-AzRoleManagementPolicy`
+* Fixed empty warning output issue for cmdlet `Test-AzResourceGroupDeployment` [#27888]
 
 ## Version 8.0.0
 * [Breaking Change] Updated API version of resource types from latest to DefaultApiVersion for cmdlets `*-AzResource` and `Invoke-AzResourceAction`.

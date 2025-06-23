@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Commands.Profile
         public SwitchParameter SendCertificateChain { get; set; }
 
 
-        [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet, Mandatory = true, HelpMessage = "The path of certficate file in pkcs#12 format.")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet, Mandatory = true, HelpMessage = "The path of certificate file in pkcs#12 format.")]
         public String CertificatePath { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet, HelpMessage = "The password required to access the pkcs#12 certificate file.")]
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Commands.Profile
             // todo: ideally cancellation token should be passed to authentication factory as a parameter
             // however AuthenticationFactory.Authenticate does not support it
             // so I store it in AzureSession.Instance as a global variable
-            // todo: CancellationTokenSource should be visiable only in cmdlet class
+            // todo: CancellationTokenSource should be visible only in cmdlet class
             // CancellationTokenSource.Token should be passed to other classes
             AzureSession.Instance.RegisterComponent("LoginCancellationToken", () => new CancellationTokenSource(), true);
         }
@@ -901,7 +901,7 @@ namespace Microsoft.Azure.Commands.Profile
             }
             catch (Exception ex)
             {
-                WriteDebug(string.Format("Failed to add telemtry for config as {0}", ex.Message));
+                WriteDebug(string.Format("Failed to add telemetry for config as {0}", ex.Message));
             }
         }
 

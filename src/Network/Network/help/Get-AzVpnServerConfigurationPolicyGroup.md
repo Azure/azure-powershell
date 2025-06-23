@@ -175,4 +175,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzRoutingConfiguration]()
+[New-AzRoutingConfiguration](New-AzRoutingConfiguration.md)

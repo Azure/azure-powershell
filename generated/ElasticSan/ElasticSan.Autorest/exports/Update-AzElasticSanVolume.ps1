@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an Volume.
+Update an Volume.
 .Description
-update an Volume.
+Update an Volume.
 .Example
 $volume = Update-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGib 120
 

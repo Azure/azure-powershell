@@ -470,6 +470,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private TimeSpan? sasExpirationPeriod = null;
 
+        [Parameter(Mandatory = false, HelpMessage = "The action to be performed when SasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.")]
+        [PSArgumentCompleter("Log", "Block")]
+        [ValidateNotNullOrEmpty]
+        public string SasExpirationAction { get; set; }
+
+
         [Parameter(Mandatory = false, HelpMessage = "The Key expiration period of this account, it is accurate to days.")]
         public int KeyExpirationPeriodInDay
         {
@@ -883,10 +889,33 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         updateParameters.AllowSharedKeyAccess = allowSharedKeyAccess;
                     }
-                    if (sasExpirationPeriod != null)
+                    if (sasExpirationPeriod != null || SasExpirationAction != null)
                     {
-                        updateParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), "Log");
+                        if (sasExpirationPeriod == null && SasExpirationAction != null)
+                        {
+                            throw new ArgumentException("-SasExpirationAction can only be specified together with -SasExpirationPeriod.", "SasExpirationAction");
+                        }
+                        // If user not set action, and the account not already has the action value, Set the default action to Log to be aligned as before PSH release.
+                        if (SasExpirationAction == null)
+                        {
+                            SasExpirationAction = (this.OriginStorageAccountProperties.SasPolicy != null && this.OriginStorageAccountProperties.SasPolicy.ExpirationAction != null) 
+                                ? this.OriginStorageAccountProperties.SasPolicy.ExpirationAction 
+                                : ExpirationAction.Log;
+                        }
+                        else
+                        {
+                            if (String.Equals(SasExpirationAction, ExpirationAction.Log, StringComparison.OrdinalIgnoreCase))
+                            {
+                                SasExpirationAction = ExpirationAction.Log;
+                            }
+                            else if (String.Equals(SasExpirationAction, ExpirationAction.Block, StringComparison.OrdinalIgnoreCase))
+                            {
+                                SasExpirationAction = ExpirationAction.Block;
+                            }
+                        }
+                        updateParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), SasExpirationAction);
                     }
+
                     if (keyExpirationPeriodInDay != null)
                     {
                         updateParameters.KeyPolicy = new KeyPolicy(keyExpirationPeriodInDay.Value);

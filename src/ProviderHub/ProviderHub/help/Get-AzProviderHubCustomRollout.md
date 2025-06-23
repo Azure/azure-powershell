@@ -43,7 +43,7 @@ Gets the custom rollout details.
 
 ### Example 1: Get a custom rollout by rollout name.
 ```powershell
-Get-AzProviderHubCustomRollout -ProviderNamespace "Microsft.Contoso" -RolloutName "customRollout1"
+Get-AzProviderHubCustomRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "customRollout1"
 ```
 
 ```output
