@@ -175,6 +175,15 @@ function Bump-AzVersion
     Write-Host "Getting local Az information..." -ForegroundColor Yellow
     $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1"
     Write-Host "Getting Az $ReleaseType information from gallery..." -ForegroundColor Yellow
+    
+    # Force Azure Artifacts to pull the latest AzPreview module from the default repository
+    if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
+        Write-Host "Force syncing AzPreview module in Azure Artifacts repository $Env:DEFAULT_PS_REPOSITORY_NAME"
+        $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
+        $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
+        Save-PSResource -Name AzPreview -Path "tmp" -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -AsNupkg -TrustRepository -Verbose
+    }
+
     if("LTS" -eq $ReleaseType){
         if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
             Write-Host "Using DEFAULT_PS_REPOSITORY_NAME: $Env:DEFAULT_PS_REPOSITORY_NAME"
