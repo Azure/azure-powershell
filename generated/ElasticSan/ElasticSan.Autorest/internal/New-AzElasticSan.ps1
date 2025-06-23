@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create ElasticSan.
+Create ElasticSan.
 .Description
-create ElasticSan.
+Create ElasticSan.
 .Example
 New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
 .Example
