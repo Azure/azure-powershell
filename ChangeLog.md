@@ -26,10 +26,6 @@
     - 'Add-AzLoadBalancerRuleConfig'
     - 'New-AzLoadBalancerRuleConfig'
     - 'Set-AzLoadBalancerRuleConfig'
-* Added properties 'DedicatedBackendConnection', 'ValidateCertChainAndExpiry', 'ValidateSNI', and 'SniName' to Application Gateway Backend HTTP Settings, as well as support for them in the following cmdlets:
-    - 'New-AzApplicationGatewayBackendHttpSetting'
-    - 'Add-AzApplicationGatewayBackendHttpSetting'
-    - 'Set-AzApplicationGatewayBackendHttpSetting'
 * Added cmdlet for migration of basic IP based deployment to Standard IP based VMSS deployments for VirtualNetworkGateways
     - 'New-AzVirtualNetworkGatewayMigrationParameter'
     - 'Invoke-AzVirtualNetworkGatewayPrepareMigration'
