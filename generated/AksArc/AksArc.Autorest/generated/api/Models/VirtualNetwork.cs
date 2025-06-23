@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
 
         /// <summary>The error code from the operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inlined)]
-        public string Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).Code = value ?? null; }
+        public string Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).Code; }
 
         /// <summary>List of DNS server IP Addresses associated with the network</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inlined)]
@@ -69,47 +69,77 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>The error message from the operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inlined)]
-        public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).Message = value ?? null; }
+        public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).Message; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
+
+        /// <summary>Internal Acessors for Code</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).Code = value ?? null; }
 
         /// <summary>Internal Acessors for ExtendedLocation</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkExtendedLocation Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.ExtendedLocation { get => (this._extendedLocation = this._extendedLocation ?? new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.VirtualNetworkExtendedLocation()); set { {_extendedLocation = value;} } }
 
         /// <summary>Internal Acessors for InfraVnetProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInfraVnetProfile Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.InfraVnetProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).InfraVnetProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).InfraVnetProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInfraVnetProfile Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.InfraVnetProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).InfraVnetProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).InfraVnetProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for InfraVnetProfileHci</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInfraVnetProfileHci Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.InfraVnetProfileHci { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).InfraVnetProfileHci; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).InfraVnetProfileHci = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInfraVnetProfileHci Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.InfraVnetProfileHci { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).InfraVnetProfileHci; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).InfraVnetProfileHci = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for Message</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).Message = value ?? null; }
+
+        /// <summary>Internal Acessors for OperationStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.OperationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).OperationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).OperationStatus = value ?? null; }
 
         /// <summary>Internal Acessors for OperationStatusError</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusOperationStatusError Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.OperationStatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).OperationStatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).OperationStatusError = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusOperationStatusError Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.OperationStatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).OperationStatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).OperationStatusError = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for OperationStatusOperationId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.OperationStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).OperationStatusOperationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).OperationStatusOperationId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkProperties Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.VirtualNetworkProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Status</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatus Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).Status = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatus Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).Status = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StatusOperationStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusOperationStatus Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.StatusOperationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).StatusOperationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).StatusOperationStatus = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusOperationStatus Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkInternal.StatusOperationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).StatusOperationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).StatusOperationStatus = value ?? null /* model class */; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inherited)]
@@ -117,11 +147,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
 
         /// <summary>The status of the operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inlined)]
-        public string OperationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).OperationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).OperationStatus = value ?? null; }
+        public string OperationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).OperationStatus; }
 
         /// <summary>The identifier of the operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inlined)]
-        public string OperationStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).OperationStatusOperationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).OperationStatusOperationId = value ?? null; }
+        public string OperationStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal)Property).OperationStatusOperationId; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkProperties _property;
@@ -141,31 +171,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inherited)]

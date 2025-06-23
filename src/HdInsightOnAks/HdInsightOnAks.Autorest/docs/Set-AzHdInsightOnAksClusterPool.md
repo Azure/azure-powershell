@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzHdInsightOnAksClusterPool
 
 ## SYNOPSIS
-update a cluster pool.
+Update a cluster pool.
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ Set-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> -Json
 ```
 
 ## DESCRIPTION
-update a cluster pool.
+Update a cluster pool.
 
 ## EXAMPLES
 

@@ -33,19 +33,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Message; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBody> Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBody> Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBody Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponseInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponseBody()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponseInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponseInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponseBodyInternal)Error).Target = value ?? null; }
 
         /// <summary>Error target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Inlined)]

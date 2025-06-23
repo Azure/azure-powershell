@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSpringCloudBuildServiceBuilder
 
 ## SYNOPSIS
-update a KPack builder.
+Update a KPack builder.
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Update-AzSpringCloudBuildServiceBuilder -Name <String> -SpringInputObject <ISpri
 ```
 
 ## DESCRIPTION
-update a KPack builder.
+Update a KPack builder.
 
 ## EXAMPLES
 

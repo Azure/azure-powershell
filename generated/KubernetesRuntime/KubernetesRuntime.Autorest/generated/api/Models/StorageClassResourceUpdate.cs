@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models
         Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IStorageClassPropertiesUpdate Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IStorageClassResourceUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.StorageClassPropertiesUpdate()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for TypeProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IStorageClassTypePropertiesUpdate Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IStorageClassResourceUpdateInternal.TypeProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IStorageClassPropertiesUpdateInternal)Property).TypeProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IStorageClassPropertiesUpdateInternal)Property).TypeProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IStorageClassTypePropertiesUpdate Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IStorageClassResourceUpdateInternal.TypeProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IStorageClassPropertiesUpdateInternal)Property).TypeProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IStorageClassPropertiesUpdateInternal)Property).TypeProperty = value ?? null /* model class */; }
 
         /// <summary>Additional mount options</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.PropertyOrigin.Inlined)]

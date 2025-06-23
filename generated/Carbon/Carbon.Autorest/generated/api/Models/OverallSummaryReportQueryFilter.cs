@@ -53,7 +53,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models
         public System.Collections.Generic.List<string> LocationList { get => ((Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.IQueryFilterInternal)__queryFilter).LocationList; set => ((Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.IQueryFilterInternal)__queryFilter).LocationList = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for DateRange</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.IDateRange Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.IQueryFilterInternal.DateRange { get => ((Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.IQueryFilterInternal)__queryFilter).DateRange; set => ((Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.IQueryFilterInternal)__queryFilter).DateRange = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.IDateRange Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.IQueryFilterInternal.DateRange { get => ((Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.IQueryFilterInternal)__queryFilter).DateRange; set => ((Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.IQueryFilterInternal)__queryFilter).DateRange = value ?? null /* model class */; }
 
         /// <summary>
         /// The ReportType requested for carbon emissions data. Required. Specifies how data is aggregated and displayed in the output,

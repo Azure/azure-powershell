@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create private store collection</summary>
+    /// <summary>create private store collection</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMarketplacePrivateStoreCollection_CreateViaIdentityPrivateStore", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Description(@"Create private store collection")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Description(@"create private store collection")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.HttpPath(Path = "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}", ApiVersion = "2023-01-01")]
     public partial class NewAzMarketplacePrivateStoreCollection_CreateViaIdentityPrivateStore : global::System.Management.Automation.PSCmdlet,

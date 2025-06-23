@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedNetworkVendorSkuPreview
 
 ## SYNOPSIS
-update preview information of a vendor sku.
+Update preview information of a vendor sku.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzConnectedNetworkVendorSkuPreview -PreviewSubscription <String>
 ```
 
 ## DESCRIPTION
-update preview information of a vendor sku.
+Update preview information of a vendor sku.
 
 ## EXAMPLES
 

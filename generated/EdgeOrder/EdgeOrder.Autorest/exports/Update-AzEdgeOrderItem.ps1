@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the properties of an existing order item.
+Update the properties of an existing order item.
 .Description
-update the properties of an existing order item.
+Update the properties of an existing order item.
 .Example
 $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName "ContactName2" -EmailList @("emailId") -Phone Phone
 $DebugPreference = "Continue"

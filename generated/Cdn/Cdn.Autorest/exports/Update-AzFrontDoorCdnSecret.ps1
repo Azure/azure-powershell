@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a new Secret within the specified profile.
+Update a new Secret within the specified profile.
 .Description
-update a new Secret within the specified profile.
+Update a new Secret within the specified profile.
 .Example
 $secretSourceId = "xxxxxxxx"
 $certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId  

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a scaling plan.
+Update a scaling plan.
 .Description
-update a scaling plan.
+Update a scaling plan.
 .Example
 Update-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.PaloAltoNetworks
-Module Guid: 787ef00f-9345-469d-9156-0654cdc69286
+Module Guid: a0b5d42b-c80c-4ffa-83a4-3924932f3bbd
 Download Help Link: https://learn.microsoft.com/powershell/module/az.paloaltonetworks
 Help Version: 1.0.0.0
 Locale: en-US
@@ -42,7 +42,7 @@ Get changelog
 List of Firewalls associated with Rulestack
 
 ### [Get-AzPaloAltoNetworksLocalRulestackSupportInfo](Get-AzPaloAltoNetworksLocalRulestackSupportInfo.md)
-support info for rulestack.
+Support info for rulestack.
 
 ### [Get-AzPaloAltoNetworksPrefixListLocalRulestack](Get-AzPaloAltoNetworksPrefixListLocalRulestack.md)
 Get a PrefixListResource

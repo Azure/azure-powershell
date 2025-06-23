@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create an authorization rule for a queue.
+Create an authorization rule for a queue.
 .Description
-create an authorization rule for a queue.
+Create an authorization rule for a queue.
 .Example
 {{ Add code here }}
 .Example

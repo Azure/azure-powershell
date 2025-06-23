@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-refresh the domain validation token.
+Refresh the domain validation token.
 .Description
-refresh the domain validation token.
+Refresh the domain validation token.
 .Example
 Update-AzFrontDoorCdnCustomDomainValidationToken -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
 .Example

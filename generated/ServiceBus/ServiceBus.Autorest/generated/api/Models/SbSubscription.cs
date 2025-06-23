@@ -137,46 +137,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         public long? MessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).MessageCount; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Location</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Location = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for AccessedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.AccessedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).AccessedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).AccessedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.AccessedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).AccessedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).AccessedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for ClientAffineProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbClientAffineProperties Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.ClientAffineProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).ClientAffineProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).ClientAffineProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbClientAffineProperties Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.ClientAffineProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).ClientAffineProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).ClientAffineProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for CountDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetails Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.CountDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetail = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMessageCountDetails Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.CountDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetail = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for CountDetailActiveMessageCount</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.CountDetailActiveMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailActiveMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailActiveMessageCount = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.CountDetailActiveMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailActiveMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailActiveMessageCount = value ?? default(long); }
 
         /// <summary>Internal Acessors for CountDetailDeadLetterMessageCount</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.CountDetailDeadLetterMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailDeadLetterMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailDeadLetterMessageCount = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.CountDetailDeadLetterMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailDeadLetterMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailDeadLetterMessageCount = value ?? default(long); }
 
         /// <summary>Internal Acessors for CountDetailScheduledMessageCount</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.CountDetailScheduledMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailScheduledMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailScheduledMessageCount = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.CountDetailScheduledMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailScheduledMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailScheduledMessageCount = value ?? default(long); }
 
         /// <summary>Internal Acessors for CountDetailTransferDeadLetterMessageCount</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.CountDetailTransferDeadLetterMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailTransferDeadLetterMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailTransferDeadLetterMessageCount = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.CountDetailTransferDeadLetterMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailTransferDeadLetterMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailTransferDeadLetterMessageCount = value ?? default(long); }
 
         /// <summary>Internal Acessors for CountDetailTransferMessageCount</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.CountDetailTransferMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailTransferMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailTransferMessageCount = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.CountDetailTransferMessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailTransferMessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CountDetailTransferMessageCount = value ?? default(long); }
 
         /// <summary>Internal Acessors for CreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.CreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.CreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for MessageCount</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.MessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).MessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).MessageCount = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.MessageCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).MessageCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).MessageCount = value ?? default(long); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionProperties Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SbSubscriptionProperties()); set { {_property = value;} } }
@@ -184,8 +184,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SystemData()); set { {_systemData = value;} } }
 
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for UpdatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.UpdatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).UpdatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).UpdatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionInternal.UpdatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).UpdatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)Property).UpdatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
@@ -219,27 +237,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedByType; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"

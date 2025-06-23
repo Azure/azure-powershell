@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVoiceServicesCommunicationsTestLine
 
 ## SYNOPSIS
-update a TestLine
+Update a TestLine
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ Update-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayName <String>
 ```
 
 ## DESCRIPTION
-update a TestLine
+Update a TestLine
 
 ## EXAMPLES
 

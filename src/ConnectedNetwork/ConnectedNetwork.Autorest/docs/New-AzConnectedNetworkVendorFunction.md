@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedNetworkVendorFunction
 
 ## SYNOPSIS
-create a vendor network function.
+Create a vendor network function.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 
@@ -53,7 +53,7 @@ New-AzConnectedNetworkVendorFunction -LocationName <String> -ServiceKey <String>
 ```
 
 ## DESCRIPTION
-create a vendor network function.
+Create a vendor network function.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 

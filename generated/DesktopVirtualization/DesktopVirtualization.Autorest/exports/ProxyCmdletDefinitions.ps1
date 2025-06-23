@@ -4931,9 +4931,9 @@ end {
 
 <#
 .Synopsis
-create an App Attach package.
+Create an App Attach package.
 .Description
-create an App Attach package.
+Create an App Attach package.
 .Example
 $apps = "<PackagedApplication>"
 $deps = "<PackageDependencies>"
@@ -4982,7 +4982,6 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 APPATTACHPACKAGE <AppAttachPackage>: 
-  Location <String>: The geo-location where the resource lives
   [FailHealthCheckOnStagingFailure <String>]: Parameter indicating how the health check should behave if this package fails staging
   [HostPoolReference <List<String>>]: List of Hostpool resource Ids.
   [ImageCertificateExpiry <DateTime?>]: Date certificate expires, found in the appxmanifest.xml. 
@@ -5012,6 +5011,7 @@ APPATTACHPACKAGE <AppAttachPackage>:
   [ImagePath <String>]: VHD/CIM image path on Network Share.
   [ImageVersion <String>]: Package version found in the appxmanifest.xml. 
   [KeyVaultUrl <String>]: URL path to certificate name located in keyVault
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 
@@ -5375,9 +5375,9 @@ end {
 
 <#
 .Synopsis
-create an applicationGroup.
+Create an applicationGroup.
 .Description
-create an applicationGroup.
+Create an applicationGroup.
 .Example
 New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                             -Name ApplicationGroupName `
@@ -5729,9 +5729,9 @@ end {
 
 <#
 .Synopsis
-create an application.
+Create an application.
 .Description
-create an application.
+Create an application.
 .Example
 New-AzWvdApplication -ResourceGroupName ResourceGroupName `
                              -GroupName ApplicationGroupName `
@@ -6023,9 +6023,9 @@ end {
 
 <#
 .Synopsis
-create a host pool.
+Create a host pool.
 .Description
-create a host pool.
+Create a host pool.
 .Example
 New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
@@ -6546,9 +6546,9 @@ end {
 
 <#
 .Synopsis
-create a MSIX package.
+Create a MSIX package.
 .Description
-create a MSIX package.
+Create a MSIX package.
 .Example
 New-AzWvdMsixPackage -HostPoolName HostPoolName `
                      -ResourceGroupName resourceGroupName `
@@ -6873,9 +6873,9 @@ end {
 
 <#
 .Synopsis
-create a ScalingPlanPersonalSchedule.
+Create a ScalingPlanPersonalSchedule.
 .Description
-create a ScalingPlanPersonalSchedule.
+Create a ScalingPlanPersonalSchedule.
 .Example
 New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
@@ -7304,9 +7304,9 @@ end {
 
 <#
 .Synopsis
-create a ScalingPlanPooledSchedule.
+Create a ScalingPlanPooledSchedule.
 .Description
-create a ScalingPlanPooledSchedule.
+Create a ScalingPlanPooledSchedule.
 .Example
 New-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
@@ -7664,9 +7664,9 @@ end {
 
 <#
 .Synopsis
-create a scaling plan.
+Create a scaling plan.
 .Description
-create a scaling plan.
+Create a scaling plan.
 .Example
 New-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
@@ -8114,9 +8114,9 @@ end {
 
 <#
 .Synopsis
-create a workspace.
+Create a workspace.
 .Description
-create a workspace.
+Create a workspace.
 .Example
 New-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Name WorkspaceName `
@@ -11766,9 +11766,9 @@ end {
 
 <#
 .Synopsis
-update an App Attach Package
+Update an App Attach Package
 .Description
-update an App Attach Package
+Update an App Attach Package
 .Example
 $apps = "<PackagedApplication>"
 $deps = "<PackageDependencies>"
@@ -11816,7 +11816,6 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 APPATTACHPACKAGE <AppAttachPackage>: 
-  Location <String>: The geo-location where the resource lives
   [FailHealthCheckOnStagingFailure <String>]: Parameter indicating how the health check should behave if this package fails staging
   [HostPoolReference <List<String>>]: List of Hostpool resource Ids.
   [ImageCertificateExpiry <DateTime?>]: Date certificate expires, found in the appxmanifest.xml. 
@@ -11846,6 +11845,7 @@ APPATTACHPACKAGE <AppAttachPackage>:
   [ImagePath <String>]: VHD/CIM image path on Network Share.
   [ImageVersion <String>]: Package version found in the appxmanifest.xml. 
   [KeyVaultUrl <String>]: URL path to certificate name located in keyVault
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 
@@ -12247,9 +12247,9 @@ end {
 
 <#
 .Synopsis
-update an applicationGroup.
+Update an applicationGroup.
 .Description
-update an applicationGroup.
+Update an applicationGroup.
 .Example
 New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                           -Name ApplicationGroupName `
@@ -12515,9 +12515,9 @@ end {
 
 <#
 .Synopsis
-update an application.
+Update an application.
 .Description
-update an application.
+Update an application.
 .Example
 Update-AzWvdApplication -ResourceGroupName ResourceGroupName `
                              -GroupName ApplicationGroupName `
@@ -12918,9 +12918,9 @@ end {
 
 <#
 .Synopsis
-update a desktop.
+Update a desktop.
 .Description
-update a desktop.
+Update a desktop.
 .Example
 Update-AzWvdDesktop -ResourceGroupName ResourceGroupName `
                     -ApplicationGroupName ApplicationGroupName `
@@ -13232,9 +13232,9 @@ end {
 
 <#
 .Synopsis
-update a host pool.
+Update a host pool.
 .Description
-update a host pool.
+Update a host pool.
 .Example
 Update-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
@@ -13651,9 +13651,9 @@ end {
 
 <#
 .Synopsis
-update an  MSIX Package.
+Update an  MSIX Package.
 .Description
-update an  MSIX Package.
+Update an  MSIX Package.
 .Example
 Update-AzWvdMsixPackage -HostPoolName HostPoolName `
         -ResourceGroupName ResourceGroupName `
@@ -13965,9 +13965,9 @@ end {
 
 <#
 .Synopsis
-update a ScalingPlanPersonalSchedule.
+Update a ScalingPlanPersonalSchedule.
 .Description
-update a ScalingPlanPersonalSchedule.
+Update a ScalingPlanPersonalSchedule.
 .Example
 Update-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
@@ -14562,9 +14562,9 @@ end {
 
 <#
 .Synopsis
-update a ScalingPlanPooledSchedule.
+Update a ScalingPlanPooledSchedule.
 .Description
-update a ScalingPlanPooledSchedule.
+Update a ScalingPlanPooledSchedule.
 .Example
 Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
@@ -15061,9 +15061,9 @@ end {
 
 <#
 .Synopsis
-update a scaling plan.
+Update a scaling plan.
 .Description
-update a scaling plan.
+Update a scaling plan.
 .Example
 Update-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
@@ -15429,9 +15429,9 @@ end {
 
 <#
 .Synopsis
-update a session host.
+Update a session host.
 .Description
-update a session host.
+Update a session host.
 .Example
 Update-AzWvdSessionHost -ResourceGroupName ResourceGroupName `
                             -HostPoolName HostPoolName `
@@ -15746,9 +15746,9 @@ end {
 
 <#
 .Synopsis
-update a workspace.
+Update a workspace.
 .Description
-update a workspace.
+Update a workspace.
 .Example
 Update-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Name WorkspaceName `

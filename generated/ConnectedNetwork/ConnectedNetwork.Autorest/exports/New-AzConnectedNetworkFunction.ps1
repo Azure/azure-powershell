@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-create a network function resource.
+Create a network function resource.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 .Description
-create a network function resource.
+Create a network function resource.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 .Example

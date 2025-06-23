@@ -65,10 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseDetails Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicensePropertiesInternal.LicenseDetail { get => (this._licenseDetail = this._licenseDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.LicenseDetails()); set { {_licenseDetail = value;} } }
 
         /// <summary>Internal Acessors for LicenseDetailAssignedLicense</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicensePropertiesInternal.LicenseDetailAssignedLicense { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseDetailsInternal)LicenseDetail).AssignedLicense; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseDetailsInternal)LicenseDetail).AssignedLicense = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicensePropertiesInternal.LicenseDetailAssignedLicense { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseDetailsInternal)LicenseDetail).AssignedLicense; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseDetailsInternal)LicenseDetail).AssignedLicense = value ?? default(int); }
 
         /// <summary>Internal Acessors for LicenseDetailImmutableId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicensePropertiesInternal.LicenseDetailImmutableId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseDetailsInternal)LicenseDetail).ImmutableId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseDetailsInternal)LicenseDetail).ImmutableId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicensePropertiesInternal.LicenseDetailImmutableId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseDetailsInternal)LicenseDetail).ImmutableId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseDetailsInternal)LicenseDetail).ImmutableId = value ?? null; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;

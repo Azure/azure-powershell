@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Models
         Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ICreatorProperties Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ICreatorUpdateParametersInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.CreatorProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ICreatorUpdateParametersInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ICreatorPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ICreatorPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ICreatorUpdateParametersInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ICreatorPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ICreatorPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ICreatorProperties _property;

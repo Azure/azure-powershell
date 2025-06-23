@@ -121,6 +121,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
         /// <summary>
+        /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Returns true when the command succeeds")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter PassThru { get; set; }
+
+        /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.HttpPipeline Pipeline { get; set; }
@@ -164,6 +171,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
         /// return immediately (set to true to skip further processing )</param>
 
         partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+
+        /// <summary>
+        /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
+        /// on that response. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
+        /// immediately (set to true to skip further processing )</param>
+
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -430,7 +447,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.DomainsInitiateVerificationViaIdentity(InputObject.Id, _parametersBody, onDefault, this, Pipeline);
+                        await this.Client.DomainsInitiateVerificationViaIdentity(InputObject.Id, _parametersBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -451,7 +468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.DomainName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.DomainsInitiateVerification(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.EmailServiceName ?? null, InputObject.DomainName ?? null, _parametersBody, onDefault, this, Pipeline);
+                        await this.Client.DomainsInitiateVerification(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.EmailServiceName ?? null, InputObject.DomainName ?? null, _parametersBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -529,6 +546,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
+                }
+            }
+        }
+
+        /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
+        /// </returns>
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage)
+        {
+            using( NoSynchronizationContext )
+            {
+                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
+                overrideOnOk(responseMessage, ref _returnNow);
+                // if overrideOnOk has returned true, then return right away.
+                if ((null != _returnNow && await _returnNow))
+                {
+                    return ;
+                }
+                // onOk - response for 200 /
+                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                {
+                    WriteObject(true);
                 }
             }
         }

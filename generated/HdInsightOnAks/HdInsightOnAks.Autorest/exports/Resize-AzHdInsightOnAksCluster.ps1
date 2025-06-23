@@ -53,7 +53,7 @@ CLUSTERPOOLINPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 CLUSTERRESIZEREQUEST <IClusterResizeData>: The parameters for resizing a cluster.
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [TargetWorkerNodeCount <Int32?>]: Target node count of worker node.

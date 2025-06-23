@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new rule and create an existing rule
+Create a new rule and create an existing rule
 .Description
-create a new rule and create an existing rule
+Create a new rule and create an existing rule
 .Example
 New-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -SubscriptionName mySubscription -Name myCorrelationRule -FilterType CorrelationFilter -ContentType contenttype -CorrelationFilterProperty @{a='b';c='d'} -SessionId sessionid -CorrelationId correlationid -MessageId messageid -Label label -ReplyTo replyto -ReplyToSessionId replytosessionid
 .Example

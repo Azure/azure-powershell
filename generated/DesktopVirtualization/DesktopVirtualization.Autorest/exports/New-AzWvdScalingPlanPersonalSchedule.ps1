@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a ScalingPlanPersonalSchedule.
+Create a ScalingPlanPersonalSchedule.
 .Description
-create a ScalingPlanPersonalSchedule.
+Create a ScalingPlanPersonalSchedule.
 .Example
 New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `

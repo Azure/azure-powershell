@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProvisioningStatus1 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProvisioningStatusInternal.Status { get => (this._status = this._status ?? new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.AgentPoolProvisioningStatus1()); set { {_status = value;} } }
 
         /// <summary>Internal Acessors for StatusCurrentState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProvisioningStatusInternal.StatusCurrentState { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProvisioningStatus1Internal)Status).CurrentState; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProvisioningStatus1Internal)Status).CurrentState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProvisioningStatusInternal.StatusCurrentState { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProvisioningStatus1Internal)Status).CurrentState; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProvisioningStatus1Internal)Status).CurrentState = value ?? null; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;

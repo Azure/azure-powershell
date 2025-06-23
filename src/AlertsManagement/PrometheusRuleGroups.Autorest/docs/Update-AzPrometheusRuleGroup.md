@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzPrometheusRuleGroup
 
 ## SYNOPSIS
-update an Prometheus rule group definition.
+Update an Prometheus rule group definition.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzPrometheusRuleGroup -ResourceGroupName <String> -RuleGroupName <String>
 ```
 
 ## DESCRIPTION
-update an Prometheus rule group definition.
+Update an Prometheus rule group definition.
 
 ## EXAMPLES
 

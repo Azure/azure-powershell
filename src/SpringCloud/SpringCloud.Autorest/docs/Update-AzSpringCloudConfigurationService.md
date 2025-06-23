@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSpringCloudConfigurationService
 
 ## SYNOPSIS
-update the default Application Configuration Service or update the existing Application Configuration Service.
+Update the default Application Configuration Service or update the existing Application Configuration Service.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Update-AzSpringCloudConfigurationService -SpringInputObject <ISpringCloudIdentit
 ```
 
 ## DESCRIPTION
-update the default Application Configuration Service or update the existing Application Configuration Service.
+Update the default Application Configuration Service or update the existing Application Configuration Service.
 
 ## EXAMPLES
 

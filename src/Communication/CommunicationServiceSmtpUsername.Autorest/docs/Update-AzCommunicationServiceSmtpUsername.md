@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCommunicationServiceSmtpUsername
 
 ## SYNOPSIS
-update an SmtpUsernameResource.
+Update an SmtpUsernameResource.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Update-AzCommunicationServiceSmtpUsername -InputObject <ICommunicationServiceSmt
 ```
 
 ## DESCRIPTION
-update an SmtpUsernameResource.
+Update an SmtpUsernameResource.
 
 ## EXAMPLES
 

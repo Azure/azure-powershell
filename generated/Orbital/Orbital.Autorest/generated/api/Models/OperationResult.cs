@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultErrorPropertiesInternal)Error).Message; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultErrorPropertiesInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultErrorPropertiesInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultErrorPropertiesInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultErrorPropertiesInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for EndTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultInternal.EndTime { get => this._endTime; set { {_endTime = value;} } }
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultErrorPropertiesInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultErrorPropertiesInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultErrorPropertiesInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultErrorPropertiesInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationResultInternal.Name { get => this._name; set { {_name = value;} } }

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a TrafficController
+Create a TrafficController
 .Description
-create a TrafficController
+Create a TrafficController
 .Example
 New-AzAlb -Name test-alb -ResourceGroupName test-rg -Location NorthCentralUS
 

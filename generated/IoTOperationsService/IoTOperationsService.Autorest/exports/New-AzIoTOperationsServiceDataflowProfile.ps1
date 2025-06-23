@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a DataflowProfileResource
+Create a DataflowProfileResource
 .Description
-create a DataflowProfileResource
+Create a DataflowProfileResource
 .Example
 New-AzIoTOperationsServiceDataflowProfile -InstanceName  "aio-117832708" -Name "dataflowprofile-name" -ResourceGroupName "aio-validation-117832708" -ExtendedLocationName  "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.ExtendedLocation/customLocations/location-117832708" 
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetworkFunctionTrafficCollectorTag
 
 ## SYNOPSIS
-update the specified Azure Traffic Collector tags.
+Update the specified Azure Traffic Collector tags.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzNetworkFunctionTrafficCollectorTag -AzureTrafficCollectorName <String> 
 ```
 
 ## DESCRIPTION
-update the specified Azure Traffic Collector tags.
+Update the specified Azure Traffic Collector tags.
 
 ## EXAMPLES
 

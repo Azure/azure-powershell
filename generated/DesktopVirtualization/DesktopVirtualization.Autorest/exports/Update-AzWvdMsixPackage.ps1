@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an  MSIX Package.
+Update an  MSIX Package.
 .Description
-update an  MSIX Package.
+Update an  MSIX Package.
 .Example
 Update-AzWvdMsixPackage -HostPoolName HostPoolName `
         -ResourceGroupName ResourceGroupName `

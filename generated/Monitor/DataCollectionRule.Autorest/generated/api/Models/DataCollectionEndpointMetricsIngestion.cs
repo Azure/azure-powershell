@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         public string Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetricsIngestionEndpointSpecInternal)__metricsIngestionEndpointSpec).Endpoint; }
 
         /// <summary>Internal Acessors for Endpoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetricsIngestionEndpointSpecInternal.Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetricsIngestionEndpointSpecInternal)__metricsIngestionEndpointSpec).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetricsIngestionEndpointSpecInternal)__metricsIngestionEndpointSpec).Endpoint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetricsIngestionEndpointSpecInternal.Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetricsIngestionEndpointSpecInternal)__metricsIngestionEndpointSpec).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetricsIngestionEndpointSpecInternal)__metricsIngestionEndpointSpec).Endpoint = value ?? null; }
 
         /// <summary>Creates an new <see cref="DataCollectionEndpointMetricsIngestion" /> instance.</summary>
         public DataCollectionEndpointMetricsIngestion()

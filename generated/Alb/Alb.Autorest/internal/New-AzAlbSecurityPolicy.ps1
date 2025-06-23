@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a SecurityPolicy
+Create a SecurityPolicy
 .Description
-create a SecurityPolicy
+Create a SecurityPolicy
 .Example
 {{ Add code here }}
 .Example

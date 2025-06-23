@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMobileNetworkPacketCoreDataPlane
 
 ## SYNOPSIS
-create a packet core data plane.
+Create a packet core data plane.
 Must be created in the same location as its parent packet core control plane.
 
 ## SYNTAX
@@ -55,7 +55,7 @@ New-AzMobileNetworkPacketCoreDataPlane -Name <String> -PacketCoreControlPlaneNam
 ```
 
 ## DESCRIPTION
-create a packet core data plane.
+Create a packet core data plane.
 Must be created in the same location as its parent packet core control plane.
 
 ## EXAMPLES

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a new Kubernetes Source Control Configuration.
+Update a new Kubernetes Source Control Configuration.
 .Description
-update a new Kubernetes Source Control Configuration.
+Update a new Kubernetes Source Control Configuration.
 .Example
 {{ Add code here }}
 .Example

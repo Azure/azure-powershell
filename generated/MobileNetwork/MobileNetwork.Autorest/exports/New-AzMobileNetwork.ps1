@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a mobile network.
+Create a mobile network.
 .Description
-create a mobile network.
+Create a mobile network.
 .Example
 New-AzMobileNetwork -Name azps-mn -ResourceGroupName azps_test_group -Location eastus -PublicLandMobileNetworkIdentifierMcc 001 -PublicLandMobileNetworkIdentifierMnc 01 -Tag @{"china"="move"}
 

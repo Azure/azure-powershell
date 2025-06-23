@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-create a service.
+Create a service.
 Must be created in the same location as its parent mobile network.
 .Description
-create a service.
+Create a service.
 Must be created in the same location as its parent mobile network.
 .Example
 $ServiceDataFlowTemplate = New-AzMobileNetworkServiceDataFlowTemplateObject -Direction "Bidirectional" -Protocol "255" -RemoteIPList "any" -TemplateName azps-mn-flow-template

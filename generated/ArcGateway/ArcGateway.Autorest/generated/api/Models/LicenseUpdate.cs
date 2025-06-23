@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         public string LicenseType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ILicenseUpdatePropertiesInternal)Property).LicenseType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ILicenseUpdatePropertiesInternal)Property).LicenseType = value ?? null; }
 
         /// <summary>Internal Acessors for LicenseDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ILicenseUpdatePropertiesLicenseDetails Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ILicenseUpdateInternal.LicenseDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ILicenseUpdatePropertiesInternal)Property).LicenseDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ILicenseUpdatePropertiesInternal)Property).LicenseDetail = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ILicenseUpdatePropertiesLicenseDetails Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ILicenseUpdateInternal.LicenseDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ILicenseUpdatePropertiesInternal)Property).LicenseDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ILicenseUpdatePropertiesInternal)Property).LicenseDetail = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ILicenseUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ILicenseUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.LicenseUpdateProperties()); set { {_property = value;} } }

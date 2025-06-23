@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSpringCloudConfigServer
 
 ## SYNOPSIS
-update the config server.
+Update the config server.
 
 ## SYNTAX
 
@@ -45,7 +45,7 @@ Update-AzSpringCloudConfigServer -Name <String> -ResourceGroupName <String> -Jso
 ```
 
 ## DESCRIPTION
-update the config server.
+Update the config server.
 
 ## EXAMPLES
 

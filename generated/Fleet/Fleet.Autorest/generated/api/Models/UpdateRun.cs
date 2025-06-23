@@ -52,79 +52,97 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Message; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for ETag</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.ETag { get => this._eTag; set { {_eTag = value;} } }
 
         /// <summary>Internal Acessors for ManagedClusterUpdate</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IManagedClusterUpdate Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.ManagedClusterUpdate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ManagedClusterUpdate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ManagedClusterUpdate = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IManagedClusterUpdate Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.ManagedClusterUpdate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ManagedClusterUpdate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ManagedClusterUpdate = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ManagedClusterUpdateNodeImageSelection</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.INodeImageSelection Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.ManagedClusterUpdateNodeImageSelection { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ManagedClusterUpdateNodeImageSelection; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ManagedClusterUpdateNodeImageSelection = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.INodeImageSelection Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.ManagedClusterUpdateNodeImageSelection { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ManagedClusterUpdateNodeImageSelection; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ManagedClusterUpdateNodeImageSelection = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ManagedClusterUpdateUpgrade</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IManagedClusterUpgradeSpec Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.ManagedClusterUpdateUpgrade { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ManagedClusterUpdateUpgrade; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ManagedClusterUpdateUpgrade = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IManagedClusterUpgradeSpec Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.ManagedClusterUpdateUpgrade { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ManagedClusterUpdateUpgrade; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ManagedClusterUpdateUpgrade = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Message = value ?? null; }
 
         /// <summary>Internal Acessors for NodeImageSelectionSelectedNodeImageVersion</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.INodeImageVersion> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.NodeImageSelectionSelectedNodeImageVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).NodeImageSelectionSelectedNodeImageVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).NodeImageSelectionSelectedNodeImageVersion = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.INodeImageVersion> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.NodeImageSelectionSelectedNodeImageVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).NodeImageSelectionSelectedNodeImageVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).NodeImageSelectionSelectedNodeImageVersion = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunProperties Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UpdateRunProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Status</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunStatus Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Status = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunStatus Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Status = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StatusCompletedTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.StatusCompletedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusCompletedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusCompletedTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.StatusCompletedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusCompletedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusCompletedTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for StatusError</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.StatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusError = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.StatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusError = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StatusNodeImageSelection</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.INodeImageSelectionStatus Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.StatusNodeImageSelection { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusNodeImageSelection; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusNodeImageSelection = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.INodeImageSelectionStatus Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.StatusNodeImageSelection { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusNodeImageSelection; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusNodeImageSelection = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StatusStage</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatus> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.StatusStage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusStage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusStage = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatus> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.StatusStage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusStage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusStage = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for StatusStartTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.StatusStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusStartTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.StatusStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusStartTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for StatusState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.StatusState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.StatusState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).StatusState = value ?? null; }
 
         /// <summary>Internal Acessors for Strategy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunStrategy Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.Strategy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Strategy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Strategy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunStrategy Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.Strategy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Strategy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Strategy = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).Target = value ?? null; }
 
         /// <summary>Internal Acessors for UpdateStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatus Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.UpdateStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).UpdateStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).UpdateStatus = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatus Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunInternal.UpdateStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).UpdateStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRunPropertiesInternal)Property).UpdateStatus = value ?? null /* model class */; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.Fleet.PropertyOrigin.Inherited)]
@@ -179,31 +197,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.Fleet.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.Fleet.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.Fleet.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.Fleet.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.Fleet.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.Fleet.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.Fleet.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
 
         /// <summary>The error target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.Fleet.PropertyOrigin.Inlined)]

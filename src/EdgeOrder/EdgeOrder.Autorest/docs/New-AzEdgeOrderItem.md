@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEdgeOrderItem
 
 ## SYNOPSIS
-create an order item.
+Create an order item.
 Existing order item cannot be updated with this api and should instead be updated with the create order item API.
 
 ## SYNTAX
@@ -35,7 +35,7 @@ New-AzEdgeOrderItem -Name <String> -ResourceGroupName <String> -JsonString <Stri
 ```
 
 ## DESCRIPTION
-create an order item.
+Create an order item.
 Existing order item cannot be updated with this api and should instead be updated with the create order item API.
 
 ## EXAMPLES

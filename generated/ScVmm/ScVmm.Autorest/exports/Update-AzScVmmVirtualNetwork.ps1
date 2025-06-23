@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the VirtualNetworks resource.
+Update the VirtualNetworks resource.
 .Description
-update the VirtualNetworks resource.
+Update the VirtualNetworks resource.
 .Example
 Update-AzScVmmVirtualNetwork -Name "test-vnet" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -Tag @{"key-1"="value-1"}
 

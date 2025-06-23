@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubApplicationGroup
 
 ## SYNOPSIS
-create an ApplicationGroup for a Namespace.
+Create an ApplicationGroup for a Namespace.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ New-AzEventHubApplicationGroup -Name <String> -NamespaceInputObject <IEventHubId
 ```
 
 ## DESCRIPTION
-create an ApplicationGroup for a Namespace.
+Create an ApplicationGroup for a Namespace.
 
 ## EXAMPLES
 

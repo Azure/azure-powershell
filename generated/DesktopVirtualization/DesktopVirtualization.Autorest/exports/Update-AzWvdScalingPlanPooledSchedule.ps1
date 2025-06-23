@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a ScalingPlanPooledSchedule.
+Update a ScalingPlanPooledSchedule.
 .Description
-update a ScalingPlanPooledSchedule.
+Update a ScalingPlanPooledSchedule.
 .Example
 Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `

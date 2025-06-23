@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal.BfdConfiguration { get => (this._bfdConfiguration = this._bfdConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BfdConfiguration()); set { {_bfdConfiguration = value;} } }
 
         /// <summary>Internal Acessors for BfdConfigurationAdministrativeState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal.BfdConfigurationAdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfigurationInternal)BfdConfiguration).AdministrativeState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfigurationInternal)BfdConfiguration).AdministrativeState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal.BfdConfigurationAdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfigurationInternal)BfdConfiguration).AdministrativeState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfigurationInternal)BfdConfiguration).AdministrativeState = value ?? null; }
 
         /// <summary>Backing field for <see cref="Mtu" /> property.</summary>
         private int? _mtu;

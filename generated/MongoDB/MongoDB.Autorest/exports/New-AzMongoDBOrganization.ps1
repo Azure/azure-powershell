@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a OrganizationResource
+Create a OrganizationResource
 .Description
-create a OrganizationResource
+Create a OrganizationResource
 .Example
 New-AzMongoDBOrganization -Name "testorg7" -Location "East US 2" -ResourceGroupName "yashika-rg" -SubscriptionId "61641157-140c-4b97-b365-30ff76d9f82e" -MarketplaceSubscriptionId  "61641157-140c-4b97-b365-30ff76d9f82e" -PartnerPropertyOrganizationName "testorg7" -PartnerPropertyOrganizationId "6805d3e6bb11bf624o2bbaef"  -OfferDetailOfferId "mongodb_atlas_azure_native_prod" -OfferDetailPlanId "private_plan" -OfferDetailPlanName "Pay as You Go (Free) (Private)" -OfferDetailTermUnit "P1M" -OfferDetailPublisherId "mongodb" -OfferDetailTermId "gmz7xq9ge3py" -Tag @{"TestName" = "TestValue"} -UserEmailAddress "yashikajain@microsoft.com" -UserFirstName "" -UserLastName "" -UserUpn "yashikajain@microsoft.com"
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMobileNetwork
 
 ## SYNOPSIS
-update mobile network tags.
+Update mobile network tags.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzMobileNetwork -MobileNetworkName <String> -ResourceGroupName <String> -
 ```
 
 ## DESCRIPTION
-update mobile network tags.
+Update mobile network tags.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzImageBuilderTemplate
 
 ## SYNOPSIS
-run artifacts from a existing image template
+Run artifacts from a existing image template
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Start-AzImageBuilderTemplate -InputObject <IImageBuilderIdentity> [-DefaultProfi
 ```
 
 ## DESCRIPTION
-run artifacts from a existing image template
+Run artifacts from a existing image template
 
 ## EXAMPLES
 

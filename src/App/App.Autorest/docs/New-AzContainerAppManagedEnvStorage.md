@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppManagedEnvStorage
 
 ## SYNOPSIS
-create storage for a managedEnvironment.
+Create storage for a managedEnvironment.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-create storage for a managedEnvironment.
+Create storage for a managedEnvironment.
 
 ## EXAMPLES
 

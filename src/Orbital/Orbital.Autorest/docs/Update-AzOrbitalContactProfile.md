@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzOrbitalContactProfile
 
 ## SYNOPSIS
-update the specified contact profile tags.
+Update the specified contact profile tags.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzOrbitalContactProfile -Name <String> -ResourceGroupName <String> -JsonS
 ```
 
 ## DESCRIPTION
-update the specified contact profile tags.
+Update the specified contact profile tags.
 
 ## EXAMPLES
 

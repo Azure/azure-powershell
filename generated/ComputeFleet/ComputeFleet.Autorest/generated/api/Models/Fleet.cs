@@ -124,7 +124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Maximum value. Double.MaxValue(1.7976931348623157E+308)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inlined)]
@@ -143,22 +143,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         public double? MemoryInGiBPerVcpuMin { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).MemoryInGiBPerVcpuMin; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).MemoryInGiBPerVcpuMin = value ?? default(double); }
 
         /// <summary>Internal Acessors for AdditionalLocationsProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IAdditionalLocationsProfile Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.AdditionalLocationsProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).AdditionalLocationsProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).AdditionalLocationsProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IAdditionalLocationsProfile Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.AdditionalLocationsProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).AdditionalLocationsProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).AdditionalLocationsProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ComputeProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeProfile Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.ComputeProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ComputeProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ComputeProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeProfile Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.ComputeProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ComputeProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ComputeProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ComputeProfileAdditionalVirtualMachineCapability</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IAdditionalCapabilities Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.ComputeProfileAdditionalVirtualMachineCapability { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ComputeProfileAdditionalVirtualMachineCapability; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ComputeProfileAdditionalVirtualMachineCapability = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IAdditionalCapabilities Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.ComputeProfileAdditionalVirtualMachineCapability { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ComputeProfileAdditionalVirtualMachineCapability; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ComputeProfileAdditionalVirtualMachineCapability = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IManagedServiceIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Plan</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IPlan Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.Plan { get => (this._plan = this._plan ?? new Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Plan()); set { {_plan = value;} } }
@@ -167,61 +167,79 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetProperties Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.FleetProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for RegularPriorityProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IRegularPriorityProfile Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.RegularPriorityProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).RegularPriorityProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).RegularPriorityProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IRegularPriorityProfile Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.RegularPriorityProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).RegularPriorityProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).RegularPriorityProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SpotPriorityProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ISpotPriorityProfile Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.SpotPriorityProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).SpotPriorityProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).SpotPriorityProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ISpotPriorityProfile Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.SpotPriorityProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).SpotPriorityProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).SpotPriorityProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for TimeCreated</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.TimeCreated { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).TimeCreated; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).TimeCreated = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.TimeCreated { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).TimeCreated; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).TimeCreated = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for UniqueId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.UniqueId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).UniqueId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).UniqueId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.UniqueId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).UniqueId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).UniqueId = value ?? null; }
 
         /// <summary>Internal Acessors for VMAttribute</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributes Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttribute { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttribute; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttribute = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributes Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttribute { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttribute; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttribute = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VMAttributeAcceleratorCount</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxInteger Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeAcceleratorCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeAcceleratorCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeAcceleratorCount = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxInteger Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeAcceleratorCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeAcceleratorCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeAcceleratorCount = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VMAttributeDataDiskCount</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxInteger Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeDataDiskCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeDataDiskCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeDataDiskCount = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxInteger Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeDataDiskCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeDataDiskCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeDataDiskCount = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VMAttributeLocalStorageInGiB</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxDouble Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeLocalStorageInGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeLocalStorageInGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeLocalStorageInGiB = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxDouble Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeLocalStorageInGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeLocalStorageInGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeLocalStorageInGiB = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VMAttributeMemoryInGiB</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxDouble Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeMemoryInGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeMemoryInGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeMemoryInGiB = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxDouble Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeMemoryInGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeMemoryInGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeMemoryInGiB = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VMAttributeMemoryInGiBperVcpu</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxDouble Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeMemoryInGiBperVcpu { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeMemoryInGiBperVcpu; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeMemoryInGiBperVcpu = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxDouble Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeMemoryInGiBperVcpu { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeMemoryInGiBperVcpu; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeMemoryInGiBperVcpu = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VMAttributeNetworkBandwidthInMbps</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxDouble Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeNetworkBandwidthInMbps { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeNetworkBandwidthInMbps; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeNetworkBandwidthInMbps = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxDouble Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeNetworkBandwidthInMbps { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeNetworkBandwidthInMbps; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeNetworkBandwidthInMbps = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VMAttributeNetworkInterfaceCount</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxInteger Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeNetworkInterfaceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeNetworkInterfaceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeNetworkInterfaceCount = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxInteger Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeNetworkInterfaceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeNetworkInterfaceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeNetworkInterfaceCount = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VMAttributeRdmaNetworkInterfaceCount</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxInteger Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeRdmaNetworkInterfaceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeRdmaNetworkInterfaceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeRdmaNetworkInterfaceCount = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxInteger Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeRdmaNetworkInterfaceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeRdmaNetworkInterfaceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeRdmaNetworkInterfaceCount = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VMAttributeVcpuCount</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxInteger Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeVcpuCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeVcpuCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeVcpuCount = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributeMinMaxInteger Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetInternal.VMAttributeVcpuCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeVcpuCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMAttributeVcpuCount = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inherited)]
@@ -354,31 +372,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inherited)]

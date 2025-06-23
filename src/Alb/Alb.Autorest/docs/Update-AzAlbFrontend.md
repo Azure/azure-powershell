@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzAlbFrontend
 
 ## SYNOPSIS
-update a Frontend
+Update a Frontend
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Update-AzAlbFrontend -Name <String> -TrafficControllerInputObject <IAlbIdentity>
 ```
 
 ## DESCRIPTION
-update a Frontend
+Update a Frontend
 
 ## EXAMPLES
 

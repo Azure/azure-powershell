@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMobileNetworkSim
 
 ## SYNOPSIS
-update a SIM.
+Update a SIM.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzMobileNetworkSim -Name <String> -SimGroupInputObject <IMobileNetworkIde
 ```
 
 ## DESCRIPTION
-update a SIM.
+Update a SIM.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDatadogMonitor
 
 ## SYNOPSIS
-update a monitor resource.
+Update a monitor resource.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzDatadogMonitor -Name <String> -ResourceGroupName <String> -JsonString <
 ```
 
 ## DESCRIPTION
-update a monitor resource.
+Update a monitor resource.
 
 ## EXAMPLES
 

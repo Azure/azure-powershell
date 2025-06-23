@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the vm details that will be monitored by the Elastic monitor resource.
+Update the vm details that will be monitored by the Elastic monitor resource.
 .Description
-update the vm details that will be monitored by the Elastic monitor resource.
+Update the vm details that will be monitored by the Elastic monitor resource.
 .Example
 Update-AzElasticVMCollection -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 -OperationName Add -VMResourceId '/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxx/resourceGroups/VIDHI-RG/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS'
 .Example

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new AppComplianceAutomation report or create an exiting AppComplianceAutomation report.
+Create a new AppComplianceAutomation report or create an exiting AppComplianceAutomation report.
 .Description
-create a new AppComplianceAutomation report or create an exiting AppComplianceAutomation report.
+Create a new AppComplianceAutomation report or create an exiting AppComplianceAutomation report.
 .Example
 {{ Add code here }}
 .Example

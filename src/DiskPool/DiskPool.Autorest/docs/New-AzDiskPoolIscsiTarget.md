@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDiskPoolIscsiTarget
 
 ## SYNOPSIS
-create an iSCSI Target.
+Create an iSCSI Target.
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ New-AzDiskPoolIscsiTarget -DiskPoolName <String> -Name <String> -ResourceGroupNa
 ```
 
 ## DESCRIPTION
-create an iSCSI Target.
+Create an iSCSI Target.
 
 ## EXAMPLES
 

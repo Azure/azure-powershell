@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.TrafficWeight
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerapptrafficweightobject
 #>
 function New-AzContainerAppTrafficWeightObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.TrafficWeight')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
