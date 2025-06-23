@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimeProperties Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal.RuntimeProperty { get => (this._runtimeProperty = this._runtimeProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.CapabilityTypePropertiesRuntimeProperties()); set { {_runtimeProperty = value;} } }
 
         /// <summary>Internal Acessors for RuntimePropertyKind</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal.RuntimePropertyKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimePropertiesInternal)RuntimeProperty).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimePropertiesInternal)RuntimeProperty).Kind = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal.RuntimePropertyKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimePropertiesInternal)RuntimeProperty).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimePropertiesInternal)RuntimeProperty).Kind = value ?? null; }
 
         /// <summary>Internal Acessors for TargetType</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal.TargetType { get => this._targetType; set { {_targetType = value;} } }

@@ -86,37 +86,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.FormatTable(Index = 0)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for Authentication</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesAuthentication Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.Authentication { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).Authentication; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).Authentication = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesAuthentication Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.Authentication { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).Authentication; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).Authentication = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentity Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Identity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationProperties Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.CustomLocationProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.SystemData()); set { {_systemData = value;} } }
 
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inherited)]
@@ -157,32 +175,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.DoNotFormat]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).CreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.DoNotFormat]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).CreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.DoNotFormat]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).CreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.DoNotFormat]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.DoNotFormat]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.DoNotFormat]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inherited)]

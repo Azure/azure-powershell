@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a Association
+Create a Association
 .Description
-create a Association
+Create a Association
 .Example
 New-AzAlbAssociation -Name test-association -AlbName test-alb -ResourceGroupName test-rg -Location NorthCentralUS -SubnetId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet01/subnets/alb-subnet
 

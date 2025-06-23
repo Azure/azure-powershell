@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the specified spacecraft tags.
+Update the specified spacecraft tags.
 .Description
-update the specified spacecraft tags.
+Update the specified spacecraft tags.
 .Example
 Update-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name AQUA -Tag @{"123"="abc"}
 .Example

@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-create a data network.
+Create a data network.
 Must be created in the same location as its parent mobile network.
 .Description
-create a data network.
+Create a data network.
 Must be created in the same location as its parent mobile network.
 .Example
 New-AzMobileNetworkDataNetwork -MobileNetworkName azps-mn -Name azps-mn-datanetwork -ResourceGroupName azps_test_group -Location eastus

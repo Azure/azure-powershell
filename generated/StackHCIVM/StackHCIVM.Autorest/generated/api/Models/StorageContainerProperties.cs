@@ -16,11 +16,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
+        /// <summary>Internal Acessors for ProvisioningStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerPropertiesInternal.ProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ProvisioningStatusStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ProvisioningStatusStatus = value ?? null; }
+
+        /// <summary>Internal Acessors for ProvisioningStatusOperationId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerPropertiesInternal.ProvisioningStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ProvisioningStatusOperationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ProvisioningStatusOperationId = value ?? null; }
+
         /// <summary>Internal Acessors for Status</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerPropertiesInternal.Status { get => (this._status = this._status ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.StorageContainerStatus()); set { {_status = value;} } }
 
+        /// <summary>Internal Acessors for StatusAvailableSizeMb</summary>
+        long? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerPropertiesInternal.StatusAvailableSizeMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).AvailableSizeMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).AvailableSizeMb = value ?? default(long); }
+
+        /// <summary>Internal Acessors for StatusContainerSizeMb</summary>
+        long? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerPropertiesInternal.StatusContainerSizeMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ContainerSizeMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ContainerSizeMb = value ?? default(long); }
+
+        /// <summary>Internal Acessors for StatusErrorCode</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerPropertiesInternal.StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ErrorCode = value ?? null; }
+
+        /// <summary>Internal Acessors for StatusErrorMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerPropertiesInternal.StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ErrorMessage = value ?? null; }
+
         /// <summary>Internal Acessors for StatusProvisioningStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusProvisioningStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerPropertiesInternal.StatusProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ProvisioningStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ProvisioningStatus = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusProvisioningStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerPropertiesInternal.StatusProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ProvisioningStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ProvisioningStatus = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Path" /> property.</summary>
         private string _path;
@@ -40,11 +58,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         /// The status of the operation performed on the storage container [Succeeded, Failed, InProgress]
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string ProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ProvisioningStatusStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ProvisioningStatusStatus = value ?? null; }
+        public string ProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ProvisioningStatusStatus; }
 
         /// <summary>The ID of the operation performed on the storage container</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string ProvisioningStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ProvisioningStatusOperationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ProvisioningStatusOperationId = value ?? null; }
+        public string ProvisioningStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ProvisioningStatusOperationId; }
 
         /// <summary>Backing field for <see cref="Status" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatus _status;
@@ -55,19 +73,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 
         /// <summary>Amount of space available on the disk in MB</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public long? StatusAvailableSizeMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).AvailableSizeMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).AvailableSizeMb = value ?? default(long); }
+        public long? StatusAvailableSizeMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).AvailableSizeMb; }
 
         /// <summary>Total size of the disk in MB</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public long? StatusContainerSizeMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ContainerSizeMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ContainerSizeMb = value ?? default(long); }
+        public long? StatusContainerSizeMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ContainerSizeMb; }
 
         /// <summary>StorageContainer provisioning error code</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ErrorCode = value ?? null; }
+        public string StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ErrorCode; }
 
         /// <summary>Descriptive error message</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ErrorMessage = value ?? null; }
+        public string StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainerStatusInternal)Status).ErrorMessage; }
 
         /// <summary>Creates an new <see cref="StorageContainerProperties" /> instance.</summary>
         public StorageContainerProperties()

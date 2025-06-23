@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a client with the specified parameters.
+Create a client with the specified parameters.
 .Description
-create a client with the specified parameters.
+Create a client with the specified parameters.
 .Example
 $attribute = @{"room"="345";"floor"="3";"deviceTypes"="Fan"}
 New-AzEventGridClient -Name azps-client -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -Attribute $attribute -State Enabled -ClientCertificateAuthenticationValidationScheme "SubjectMatchesAuthenticationName"

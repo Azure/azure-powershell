@@ -31,16 +31,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Models
         Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountProperties Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountUpdateParametersInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.MapsAccountProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountUpdateParametersInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountUpdateParametersInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountUpdateParametersInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Sku()); set { {_sku = value;} } }
 
         /// <summary>Internal Acessors for SkuTier</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountUpdateParametersInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ISkuInternal)Sku).Tier = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountUpdateParametersInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ISkuInternal)Sku).Tier = value ?? null; }
 
         /// <summary>Internal Acessors for UniqueId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountUpdateParametersInternal.UniqueId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountPropertiesInternal)Property).UniqueId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountPropertiesInternal)Property).UniqueId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountUpdateParametersInternal.UniqueId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountPropertiesInternal)Property).UniqueId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountPropertiesInternal)Property).UniqueId = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountProperties _property;

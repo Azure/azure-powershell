@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-get a dryrun job
+Get a dryrun job
 .Description
-get a dryrun job
+Get a dryrun job
 .Example
 {{ Add code here }}
 .Example

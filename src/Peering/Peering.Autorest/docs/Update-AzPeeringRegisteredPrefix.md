@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzPeeringRegisteredPrefix
 
 ## SYNOPSIS
-update a new registered prefix with the specified name under the given subscription, resource group and peering.
+Update a new registered prefix with the specified name under the given subscription, resource group and peering.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Update-AzPeeringRegisteredPrefix -Name <String> -PeeringInputObject <IPeeringIde
 ```
 
 ## DESCRIPTION
-update a new registered prefix with the specified name under the given subscription, resource group and peering.
+Update a new registered prefix with the specified name under the given subscription, resource group and peering.
 
 ## EXAMPLES
 

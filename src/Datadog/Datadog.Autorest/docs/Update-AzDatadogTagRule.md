@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDatadogTagRule
 
 ## SYNOPSIS
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given monitor resource.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzDatadogTagRule -MonitorInputObject <IDatadogIdentity> -Name <String>
 ```
 
 ## DESCRIPTION
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given monitor resource.
 
 ## EXAMPLES
 

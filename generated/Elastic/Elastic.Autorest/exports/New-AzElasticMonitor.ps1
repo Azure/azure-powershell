@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a monitor resource.
+Create a monitor resource.
 .Description
-create a monitor resource.
+Create a monitor resource.
 .Example
 New-AzElasticMonitor -ResourceGroupName azps-elastic-test -Name elastic-pwsh02 -Location "westus2" -Sku "ess-consumption-2024_Monthly" -UserInfoEmailAddress 'xxx@microsoft.com'
 

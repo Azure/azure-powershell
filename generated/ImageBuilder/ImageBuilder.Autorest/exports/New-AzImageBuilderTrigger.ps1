@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a trigger for the specified virtual machine image template
+Create a trigger for the specified virtual machine image template
 .Description
-create a trigger for the specified virtual machine image template
+Create a trigger for the specified virtual machine image template
 .Example
 New-AzImageBuilderTrigger -ImageTemplateName azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder -Name azps-buildertrigger -Kind "SourceImage"
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create account resource.
+Create account resource.
 .Description
-create account resource.
+Create account resource.
 .Example
 New-AzGraphServicesAccount -ResourceGroupName myRG -Name myGraphAppBilling -AppId myAppGUID -SubscriptionId mySubscriptionGUID -Location Global
 

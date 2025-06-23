@@ -422,9 +422,9 @@ end {
 
 <#
 .Synopsis
-create a dedicated HSM in the specified subscription.
+Create a dedicated HSM in the specified subscription.
 .Description
-create a dedicated HSM in the specified subscription.
+Create a dedicated HSM in the specified subscription.
 .Example
 New-AzDedicatedHsm -Name hsm-n7wfxi -ResourceGroupName dedicatedhsm-rg-n359cz -Location eastus -Sku "SafeNet Luna Network HSM A790" -StampId stamp1 -SubnetId "/subscriptions/xxxx-xxxx-xxx-xxx/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.Network/virtualNetworks/vnetq30la9/subnets/hsmsubnet" -NetworkInterface @{PrivateIPAddress = '10.2.1.120' }
 
@@ -923,9 +923,9 @@ end {
 
 <#
 .Synopsis
-update a dedicated HSM in the specified subscription.
+Update a dedicated HSM in the specified subscription.
 .Description
-update a dedicated HSM in the specified subscription.
+Update a dedicated HSM in the specified subscription.
 .Example
 Update-AzDedicatedHsm -Name hsm-n7wfxi -ResourceGroupName dedicatedhsm-rg-n359cz -Tag @{'key1' = '1'; 'key2' = 2; 'key3' = 3}
 .Example

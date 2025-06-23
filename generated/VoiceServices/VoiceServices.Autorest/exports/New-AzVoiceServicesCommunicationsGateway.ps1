@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a CommunicationsGateway
+Create a CommunicationsGateway
 .Description
-create a CommunicationsGateway
+Create a CommunicationsGateway
 .Example
 $region = @()
 $region += New-AzVoiceServicesCommunicationsGatewayServiceRegionObject -Name useast -PrimaryRegionOperatorAddress '198.51.100.1'
@@ -34,8 +34,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 SERVICELOCATION <IServiceRegionProperties[]>: The regions in which to deploy the resources needed for Teams Calling
-  Name <String>: The name of the region in which the resources needed for Teams Calling will be deployed.
   PrimaryRegionPropertyOperatorAddress <List<String>>: IP address to use to contact the operator network from this region
+  [Name <String>]: The name of the region in which the resources needed for Teams Calling will be deployed.
   [PrimaryRegionPropertyAllowedMediaSourceAddressPrefix <List<String>>]: The allowed source IP address or CIDR ranges for media
   [PrimaryRegionPropertyAllowedSignalingSourceAddressPrefix <List<String>>]: The allowed source IP address or CIDR ranges for signaling
   [PrimaryRegionPropertyEsrpAddress <List<String>>]: IP address to use to contact the ESRP from this region

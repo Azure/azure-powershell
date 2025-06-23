@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-update a service.
+Update a service.
 Must be created in the same location as its parent mobile network.
 .Description
-update a service.
+Update a service.
 Must be created in the same location as its parent mobile network.
 .Example
 Update-AzMobileNetworkService -MobileNetworkName azps-mn -ServiceName azps-mn-service -ResourceGroupName azps_test_group -Tag @{"abc"="123"} -ServicePrecedence 0

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the tags for the network function resource.
+Update the tags for the network function resource.
 .Description
-update the tags for the network function resource.
+Update the tags for the network function resource.
 .Example
 $tags = @{ NewTag = "NewTagValue"}
 Update-AzConnectedNetworkFunctionTag -NetworkFunctionName myNewVnf1 -ResourceGroupName myResources -Tag $tags

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzTrustedSigningAccount
 
 ## SYNOPSIS
-update a trusted signing account.
+Update a trusted signing account.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzTrustedSigningAccount -AccountName <String> -ResourceGroupName <String>
 ```
 
 ## DESCRIPTION
-update a trusted signing account.
+Update a trusted signing account.
 
 ## EXAMPLES
 

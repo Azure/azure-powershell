@@ -2367,9 +2367,9 @@ end {
 
 <#
 .Synopsis
-create an evidence a specified report
+Create an evidence a specified report
 .Description
-create an evidence a specified report
+Create an evidence a specified report
 .Example
 {{ Add code here }}
 .Example
@@ -2601,9 +2601,9 @@ end {
 
 <#
 .Synopsis
-create a new AppComplianceAutomation report or create an exiting AppComplianceAutomation report.
+Create a new AppComplianceAutomation report or create an exiting AppComplianceAutomation report.
 .Description
-create a new AppComplianceAutomation report or create an exiting AppComplianceAutomation report.
+Create a new AppComplianceAutomation report or create an exiting AppComplianceAutomation report.
 .Example
 {{ Add code here }}
 .Example
@@ -3037,9 +3037,9 @@ end {
 
 <#
 .Synopsis
-create a new AppComplianceAutomation webhook or create an exiting AppComplianceAutomation webhook.
+Create a new AppComplianceAutomation webhook or create an exiting AppComplianceAutomation webhook.
 .Description
-create a new AppComplianceAutomation webhook or create an exiting AppComplianceAutomation webhook.
+Create a new AppComplianceAutomation webhook or create an exiting AppComplianceAutomation webhook.
 .Example
 {{ Add code here }}
 .Example
@@ -4088,9 +4088,9 @@ end {
 
 <#
 .Synopsis
-update an evidence a specified report
+Update an evidence a specified report
 .Description
-update an evidence a specified report
+Update an evidence a specified report
 .Example
 {{ Add code here }}
 .Example
@@ -4306,9 +4306,9 @@ end {
 
 <#
 .Synopsis
-update an exiting AppComplianceAutomation report.
+Update an exiting AppComplianceAutomation report.
 .Description
-update an exiting AppComplianceAutomation report.
+Update an exiting AppComplianceAutomation report.
 .Example
 {{ Add code here }}
 .Example
@@ -4726,9 +4726,9 @@ end {
 
 <#
 .Synopsis
-update an exiting AppComplianceAutomation webhook.
+Update an exiting AppComplianceAutomation webhook.
 .Description
-update an exiting AppComplianceAutomation webhook.
+Update an exiting AppComplianceAutomation webhook.
 .Example
 {{ Add code here }}
 .Example

@@ -1230,9 +1230,9 @@ end {
 
 <#
 .Synopsis
-create an iSCSI Target.
+Create an iSCSI Target.
 .Description
-create an iSCSI Target.
+Create an iSCSI Target.
 .Example
 New-AzDiskPoolIscsiTarget -DiskPoolName 'disk-pool-1' -Name 'target1' -ResourceGroupName 'storagepool-rg-test' -AclMode 'Dynamic'
 
@@ -2463,9 +2463,9 @@ end {
 
 <#
 .Synopsis
-update an iSCSI Target.
+Update an iSCSI Target.
 .Description
-update an iSCSI Target.
+Update an iSCSI Target.
 .Example
 $lun0 = New-AzDiskPoolIscsiLunObject -ManagedDiskAzureResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/storagepool-rg-test/providers/Microsoft.Compute/disks/disk1" -Name "lun0"
 Update-AzDiskPoolIscsiTarget -Name 'target0' -DiskPoolName 'disk-pool-5' -ResourceGroupName 'storagepool-rg-test' -Lun @($lun0)

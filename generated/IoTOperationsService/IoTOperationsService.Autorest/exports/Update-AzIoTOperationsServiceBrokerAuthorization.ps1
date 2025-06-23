@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a BrokerAuthorizationResource
+Update a BrokerAuthorizationResource
 .Description
-update a BrokerAuthorizationResource
+Update a BrokerAuthorizationResource
 .Example
 Update-AzIoTOperationsServiceBrokerAuthorization -BrokerName "default" -InstanceName "aio-117832708" -ResourceGroupName "aio-validation-117832708"
 

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryOSDiskImage Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfileInternal.OSDiskImage { get => (this._oSDiskImage = this._oSDiskImage ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.GalleryOSDiskImage()); set { {_oSDiskImage = value;} } }
 
         /// <summary>Internal Acessors for OSDiskImageSizeInMb</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfileInternal.OSDiskImageSizeInMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryDiskImageInternal)OSDiskImage).SizeInMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryDiskImageInternal)OSDiskImage).SizeInMb = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionStorageProfileInternal.OSDiskImageSizeInMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryDiskImageInternal)OSDiskImage).SizeInMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryDiskImageInternal)OSDiskImage).SizeInMb = value ?? default(long); }
 
         /// <summary>Backing field for <see cref="OSDiskImage" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryOSDiskImage _oSDiskImage;

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a TestLine
+Update a TestLine
 .Description
-update a TestLine
+Update a TestLine
 .Example
 Update-AzVoiceServicesCommunicationsTestLine -ResourceGroupName vtest-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name testline-01 -Tag @{'key1'='value1'}
 .Example

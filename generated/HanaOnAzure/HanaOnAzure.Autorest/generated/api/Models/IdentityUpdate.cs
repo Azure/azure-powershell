@@ -38,25 +38,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Internal Acessors for ClientId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IIdentityUpdateInternal.ClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IUserAssignedIdentityPropertiesInternal)Property).ClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IUserAssignedIdentityPropertiesInternal)Property).ClientId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IIdentityUpdateInternal.ClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IUserAssignedIdentityPropertiesInternal)Property).ClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IUserAssignedIdentityPropertiesInternal)Property).ClientId = value ?? null; }
 
         /// <summary>Internal Acessors for PrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IIdentityUpdateInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IUserAssignedIdentityPropertiesInternal)Property).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IUserAssignedIdentityPropertiesInternal)Property).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IIdentityUpdateInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IUserAssignedIdentityPropertiesInternal)Property).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IUserAssignedIdentityPropertiesInternal)Property).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IUserAssignedIdentityProperties Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IIdentityUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.UserAssignedIdentityProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for TenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IIdentityUpdateInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IUserAssignedIdentityPropertiesInternal)Property).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IUserAssignedIdentityPropertiesInternal)Property).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IIdentityUpdateInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IUserAssignedIdentityPropertiesInternal)Property).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IUserAssignedIdentityPropertiesInternal)Property).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Origin(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.PropertyOrigin.Inherited)]

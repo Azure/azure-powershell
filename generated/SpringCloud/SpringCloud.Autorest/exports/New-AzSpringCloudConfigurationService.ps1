@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create the default Application Configuration Service or create the existing Application Configuration Service.
+Create the default Application Configuration Service or create the existing Application Configuration Service.
 .Description
-create the default Application Configuration Service or create the existing Application Configuration Service.
+Create the default Application Configuration Service or create the existing Application Configuration Service.
 .Example
 New-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01
 

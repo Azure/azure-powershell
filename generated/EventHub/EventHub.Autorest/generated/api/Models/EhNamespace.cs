@@ -96,73 +96,73 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         public string MetricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).MetricId; }
 
         /// <summary>Internal Acessors for CreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.CreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.CreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Encryption</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEncryption Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).Encryption = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEncryption Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).Encryption = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for GeoDataReplication</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IGeoDataReplicationProperties Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.GeoDataReplication { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).GeoDataReplication; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).GeoDataReplication = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IGeoDataReplicationProperties Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.GeoDataReplication { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).GeoDataReplication; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).GeoDataReplication = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentity Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Identity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for MetricId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.MetricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).MetricId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).MetricId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.MetricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).MetricId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).MetricId = value ?? null; }
 
         /// <summary>Internal Acessors for PrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceProperties Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.EhNamespaceProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for ServiceBusEndpoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.ServiceBusEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).ServiceBusEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).ServiceBusEndpoint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.ServiceBusEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).ServiceBusEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).ServiceBusEndpoint = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Sku()); set { {_sku = value;} } }
 
         /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).Status = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for TenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for UpdatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.UpdatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).UpdatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).UpdatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.UpdatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).UpdatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).UpdatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The minimum TLS version for the cluster to support, e.g. '1.2'</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]

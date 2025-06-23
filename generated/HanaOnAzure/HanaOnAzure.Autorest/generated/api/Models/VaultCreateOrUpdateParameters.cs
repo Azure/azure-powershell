@@ -74,10 +74,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultProperties Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultCreateOrUpdateParametersInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.VaultProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Sku</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultCreateOrUpdateParametersInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultPropertiesInternal)Property).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultPropertiesInternal)Property).Sku = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultCreateOrUpdateParametersInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultPropertiesInternal)Property).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultPropertiesInternal)Property).Sku = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SkuFamily</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultCreateOrUpdateParametersInternal.SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultPropertiesInternal)Property).SkuFamily; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultPropertiesInternal)Property).SkuFamily = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultCreateOrUpdateParametersInternal.SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultPropertiesInternal)Property).SkuFamily; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultPropertiesInternal)Property).SkuFamily = value ; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IVaultProperties _property;

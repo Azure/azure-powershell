@@ -32,16 +32,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         public string MhsmId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).MhsmId; }
 
         /// <summary>Internal Acessors for DeletionDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.DeletionDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).DeletionDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).DeletionDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.DeletionDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).DeletionDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).DeletionDate = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for Location</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Location = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Location = value ?? null; }
 
         /// <summary>Internal Acessors for MhsmId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.MhsmId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).MhsmId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).MhsmId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.MhsmId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).MhsmId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).MhsmId = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Name { get => this._name; set { {_name = value;} } }
@@ -50,13 +50,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmProperties Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.DeletedManagedHsmProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for PurgeProtectionEnabled</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.PurgeProtectionEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).PurgeProtectionEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).PurgeProtectionEnabled = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.PurgeProtectionEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).PurgeProtectionEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).PurgeProtectionEnabled = value ?? default(bool); }
 
         /// <summary>Internal Acessors for ScheduledPurgeDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.ScheduledPurgeDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).ScheduledPurgeDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).ScheduledPurgeDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.ScheduledPurgeDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).ScheduledPurgeDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).ScheduledPurgeDate = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Tag</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesTags Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Tag = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesTags Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Tag = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Type { get => this._type; set { {_type = value;} } }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzOrbitalSpacecraft
 
 ## SYNOPSIS
-create a spacecraft resource.
+Create a spacecraft resource.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzOrbitalSpacecraft -Name <String> -ResourceGroupName <String> -JsonString <
 ```
 
 ## DESCRIPTION
-create a spacecraft resource.
+Create a spacecraft resource.
 
 ## EXAMPLES
 

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.SecurityPolicyUpdateProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for WafPolicy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IWafPolicyUpdate Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyUpdateInternal.WafPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyUpdatePropertiesInternal)Property).WafPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyUpdatePropertiesInternal)Property).WafPolicy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IWafPolicyUpdate Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyUpdateInternal.WafPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyUpdatePropertiesInternal)Property).WafPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyUpdatePropertiesInternal)Property).WafPolicy = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ISecurityPolicyUpdateProperties _property;

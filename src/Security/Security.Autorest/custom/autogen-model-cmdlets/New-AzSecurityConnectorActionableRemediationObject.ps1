@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ActionableRemediation
 https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityconnectoractionableremediationobject
 #>
 function New-AzSecurityConnectorActionableRemediationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Security.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ActionableRemediation')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

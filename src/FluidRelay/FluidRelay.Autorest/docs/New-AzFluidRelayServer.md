@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFluidRelayServer
 
 ## SYNOPSIS
-create a Fluid Relay server.
+Create a Fluid Relay server.
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ New-AzFluidRelayServer -Name <String> -ResourceGroup <String> -JsonString <Strin
 ```
 
 ## DESCRIPTION
-create a Fluid Relay server.
+Create a Fluid Relay server.
 
 ## EXAMPLES
 

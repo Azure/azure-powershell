@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a reservation order alias.
+Create a reservation order alias.
 .Description
-create a reservation order alias.
+Create a reservation order alias.
 .Example
 New-AzBillingBenefitsReservationOrderAlias -Name "PSRITest1" -AppliedScopeType "Shared" -BillingPlan "P1M" -BillingScopeId "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47" -SkuName "Standard_B1ls" -Location "westus" -Quantity 1 -ReservedResourceType 'VirtualMachines' -Term "P1Y" -DisplayName "PSRITest1"
 

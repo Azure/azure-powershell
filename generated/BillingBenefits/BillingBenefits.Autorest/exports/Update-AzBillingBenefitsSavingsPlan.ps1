@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update savings plan.
+Update savings plan.
 .Description
-update savings plan.
+Update savings plan.
 .Example
 Update-AzBillingBenefitsSavingsPlan -Id "f82fd820-f829-4022-8ba5-e3bf4ffc329b" -OrderId "e0b1f446-5684-4fa6-a0c8-d394368eda11" -DisplayName "NewName"
 

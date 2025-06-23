@@ -484,9 +484,9 @@ end {
 
 <#
 .Synopsis
-create an association between a VM and guest configuration
+Create an association between a VM and guest configuration
 .Description
-create an association between a VM and guest configuration
+Create an association between a VM and guest configuration
 .Example
 New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -VMName test-vm -GuestConfigurationName test-config -GuestConfigurationVersion "1.0.0.3" -GuestConfigurationContentUri "https://thisisfake/package" -GuestConfigurationContentHash "123contenthash"
 .Example
@@ -803,9 +803,9 @@ end {
 
 <#
 .Synopsis
-update an association between a ARC machine and guest configuration
+Update an association between a ARC machine and guest configuration
 .Description
-update an association between a ARC machine and guest configuration
+Update an association between a ARC machine and guest configuration
 .Example
 Update-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -MachineName test-machine -GuestConfigurationName test-config -GuestConfigurationVersion "1.0.0.3" -GuestConfigurationContentUri "https://thisisfake/package" -GuestConfigurationContentHash "123contenthash"
 

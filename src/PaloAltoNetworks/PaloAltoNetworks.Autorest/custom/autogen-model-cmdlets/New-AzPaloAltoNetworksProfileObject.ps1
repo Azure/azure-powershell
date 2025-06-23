@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.NetworkProfile
 https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworksprofileobject
 #>
 function New-AzPaloAltoNetworksProfileObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.NetworkProfile')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

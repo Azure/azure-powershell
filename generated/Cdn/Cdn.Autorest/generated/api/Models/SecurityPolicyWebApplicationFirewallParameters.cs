@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallAssociation> Association { get => this._association; set => this._association = value; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParametersInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParametersInternal)__securityPolicyPropertiesParameters).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParametersInternal)__securityPolicyPropertiesParameters).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParametersInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParametersInternal)__securityPolicyPropertiesParameters).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParametersInternal)__securityPolicyPropertiesParameters).Type = value ; }
 
         /// <summary>Internal Acessors for WafPolicy</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallParametersInternal.WafPolicy { get => (this._wafPolicy = this._wafPolicy ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference()); set { {_wafPolicy = value;} } }

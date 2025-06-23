@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DeviceRegistry
-Module Guid: 963de81d-125e-4a2a-8a50-b14c3b068c4d
+Module Guid: 93b7183f-52d5-4966-9bc7-566ab6e02fe2
 Download Help Link: https://learn.microsoft.com/powershell/module/az.deviceregistry
 Help Version: 1.0.0.0
 Locale: en-US
@@ -21,10 +21,10 @@ Get a AssetEndpointProfile
 Get a BillingContainer
 
 ### [New-AzDeviceRegistryAsset](New-AzDeviceRegistryAsset.md)
-create a Asset
+Create a Asset
 
 ### [New-AzDeviceRegistryAssetEndpointProfile](New-AzDeviceRegistryAssetEndpointProfile.md)
-create a AssetEndpointProfile
+Create a AssetEndpointProfile
 
 ### [Remove-AzDeviceRegistryAsset](Remove-AzDeviceRegistryAsset.md)
 Delete a Asset
@@ -33,8 +33,8 @@ Delete a Asset
 Delete a AssetEndpointProfile
 
 ### [Update-AzDeviceRegistryAsset](Update-AzDeviceRegistryAsset.md)
-update a Asset
+Update a Asset
 
 ### [Update-AzDeviceRegistryAssetEndpointProfile](Update-AzDeviceRegistryAssetEndpointProfile.md)
-update a AssetEndpointProfile
+Update a AssetEndpointProfile
 

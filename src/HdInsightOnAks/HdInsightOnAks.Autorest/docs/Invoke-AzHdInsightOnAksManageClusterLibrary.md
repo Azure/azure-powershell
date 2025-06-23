@@ -15,42 +15,42 @@ Library management operations on HDInsight on AKS cluster.
 ### ManageViaIdentity (Default)
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -InputObject <IHdInsightOnAksIdentity>
- -Operation <IClusterLibraryManagementOperation> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -Operation <IClusterLibraryManagementOperation> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Manage
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String> -ClusterPoolName <String>
  -ResourceGroupName <String> -Operation <IClusterLibraryManagementOperation> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManageExpanded
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String> -ClusterPoolName <String>
  -ResourceGroupName <String> -Action <String> -Library <IClusterLibrary[]> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManageViaIdentityClusterpool
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String>
  -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Operation <IClusterLibraryManagementOperation>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManageViaIdentityClusterpoolExpanded
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String>
  -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Action <String> -Library <IClusterLibrary[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManageViaIdentityExpanded
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -InputObject <IHdInsightOnAksIdentity> -Action <String>
- -Library <IClusterLibrary[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -Library <IClusterLibrary[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -58,14 +58,14 @@ Invoke-AzHdInsightOnAksManageClusterLibrary -InputObject <IHdInsightOnAksIdentit
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String> -ClusterPoolName <String>
  -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManageViaJsonString
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String> -ClusterPoolName <String>
  -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -281,6 +281,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

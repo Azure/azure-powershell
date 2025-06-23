@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a MSIX package.
+Create a MSIX package.
 .Description
-create a MSIX package.
+Create a MSIX package.
 .Example
 New-AzWvdMsixPackage -HostPoolName HostPoolName `
                      -ResourceGroupName resourceGroupName `

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update access policies in a key vault in the specified subscription.
+Update access policies in a key vault in the specified subscription.
 .Description
-update access policies in a key vault in the specified subscription.
+Update access policies in a key vault in the specified subscription.
 .Example
 {{ Add code here }}
 .Example

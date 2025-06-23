@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Selector
 https://learn.microsoft.com/powershell/module/Az.Chaos/new-azchaosselectorobject
 #>
 function New-AzChaosSelectorObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Selector')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -41,22 +41,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models
         Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryProperties Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.GraphQueryProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ResultKind</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResourceInternal.ResultKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryPropertiesInternal)Property).ResultKind; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryPropertiesInternal)Property).ResultKind = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResourceInternal.ResultKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryPropertiesInternal)Property).ResultKind; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryPropertiesInternal)Property).ResultKind = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResourceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.SystemData()); set { {_systemData = value;} } }
 
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for TimeModified</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResourceInternal.TimeModified { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryPropertiesInternal)Property).TimeModified; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryPropertiesInternal)Property).TimeModified = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResourceInternal.TimeModified { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryPropertiesInternal)Property).TimeModified; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryPropertiesInternal)Property).TimeModified = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>
         /// Azure resource name. This is GUID value. The display name should be assigned within properties field.
@@ -92,27 +110,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).CreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).CreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).CreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
 
         /// <summary>Resource tags</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.PropertyOrigin.Inherited)]

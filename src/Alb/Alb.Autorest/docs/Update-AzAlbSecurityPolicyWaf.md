@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.Alb
-online version: https://learn.microsoft.com/powershell/module/az.alb/update-azalbsecuritypolicy
+online version: https://learn.microsoft.com/powershell/module/az.alb/update-azalbsecuritypolicywaf
 schema: 2.0.0
 ---
 
 # Update-AzAlbSecurityPolicyWaf
 
 ## SYNOPSIS
-update a SecurityPolicy
+Update a SecurityPolicy
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Update-AzAlbSecurityPolicyWaf -Name <String> -TrafficControllerInputObject <IAlb
 ```
 
 ## DESCRIPTION
-update a SecurityPolicy
+Update a SecurityPolicy
 
 ## EXAMPLES
 

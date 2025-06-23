@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzIoTOperationsServiceBrokerAuthorization
 
 ## SYNOPSIS
-update a BrokerAuthorizationResource
+Update a BrokerAuthorizationResource
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Set-AzIoTOperationsServiceBrokerAuthorization -AuthorizationName <String> -Broke
 ```
 
 ## DESCRIPTION
-update a BrokerAuthorizationResource
+Update a BrokerAuthorizationResource
 
 ## EXAMPLES
 

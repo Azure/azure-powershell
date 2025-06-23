@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-create a Bot Service.
+Create a Bot Service.
 Bot Service is a resource group wide resource type.
 .Description
-create a Bot Service.
+Create a Bot Service.
 Bot Service is a resource group wide resource type.
 .Example
 New-AzBotService -resourcegroupname BotTest-rg -name BotTest1 -ApplicationId "af5fce4d-ee68-4b25-be09-f3222582e133" -Location global -Sku F0 -Description "123134" -Registration

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an SmtpUsernameResource.
+Update an SmtpUsernameResource.
 .Description
-update an SmtpUsernameResource.
+Update an SmtpUsernameResource.
 .Example
 Update-AzCommunicationServiceSmtpUsername -SmtpUsername ContosoSmtpUsernameResource1 -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -EntraApplicationId 1ebe1d1a-1111-1111-1c11-11ad111bf111
 

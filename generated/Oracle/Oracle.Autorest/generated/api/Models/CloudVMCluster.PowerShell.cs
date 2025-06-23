@@ -206,7 +206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             if (content.Contains("CpuCoreCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount = (int) content.GetValueForProperty("CpuCoreCount",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount = (int?) content.GetValueForProperty("CpuCoreCount",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("OcpuCount"))
             {
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             if (content.Contains("CpuCoreCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount = (int) content.GetValueForProperty("CpuCoreCount",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount = (int?) content.GetValueForProperty("CpuCoreCount",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterInternal)this).CpuCoreCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("OcpuCount"))
             {

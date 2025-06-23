@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the properties of an existing address.
+Update the properties of an existing address.
 .Description
-update the properties of an existing address.
+Update the properties of an existing address.
 .Example
 $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName "ContactName2" -EmailList @("emailId") -Phone Phone
 $DebugPreference = "Continue"

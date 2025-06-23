@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzIoTOperationsServiceBroker
 
 ## SYNOPSIS
-update a BrokerResource
+Update a BrokerResource
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Update-AzIoTOperationsServiceBroker -InstanceInputObject <IIoTOperationsServiceI
 ```
 
 ## DESCRIPTION
-update a BrokerResource
+Update a BrokerResource
 
 ## EXAMPLES
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a OpenAI integration rule for a given monitor resource.
+Update a OpenAI integration rule for a given monitor resource.
 .Description
-update a OpenAI integration rule for a given monitor resource.
+Update a OpenAI integration rule for a given monitor resource.
 .Example
 Update-AzElasticOpenAi -IntegrationName default -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 

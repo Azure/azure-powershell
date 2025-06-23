@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a ScalingPlanPooledSchedule.
+Create a ScalingPlanPooledSchedule.
 .Description
-create a ScalingPlanPooledSchedule.
+Create a ScalingPlanPooledSchedule.
 .Example
 New-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFederatedIdentityCredential
 
 ## SYNOPSIS
-create a federated identity credential under the specified user assigned identity.
+Create a federated identity credential under the specified user assigned identity.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -Resourc
 ```
 
 ## DESCRIPTION
-create a federated identity credential under the specified user assigned identity.
+Create a federated identity credential under the specified user assigned identity.
 
 ## EXAMPLES
 

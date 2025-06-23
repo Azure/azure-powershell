@@ -200,7 +200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ICloudProviderProfile Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.CloudProviderProfile { get => (this._cloudProviderProfile = this._cloudProviderProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.CloudProviderProfile()); set { {_cloudProviderProfile = value;} } }
 
         /// <summary>Internal Acessors for CloudProviderProfileInfraNetworkProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ICloudProviderProfileInfraNetworkProfile Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.CloudProviderProfileInfraNetworkProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ICloudProviderProfileInternal)CloudProviderProfile).InfraNetworkProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ICloudProviderProfileInternal)CloudProviderProfile).InfraNetworkProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ICloudProviderProfileInfraNetworkProfile Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.CloudProviderProfileInfraNetworkProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ICloudProviderProfileInternal)CloudProviderProfile).InfraNetworkProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ICloudProviderProfileInternal)CloudProviderProfile).InfraNetworkProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ClusterVMAccessProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IClusterVMAccessProfile Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.ClusterVMAccessProfile { get => (this._clusterVMAccessProfile = this._clusterVMAccessProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ClusterVMAccessProfile()); set { {_clusterVMAccessProfile = value;} } }
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IControlPlaneProfile Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.ControlPlane { get => (this._controlPlane = this._controlPlane ?? new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ControlPlaneProfile()); set { {_controlPlane = value;} } }
 
         /// <summary>Internal Acessors for ControlPlaneEndpoint</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IControlPlaneProfileControlPlaneEndpoint Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.ControlPlaneEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IControlPlaneProfileInternal)ControlPlane).ControlPlaneEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IControlPlaneProfileInternal)ControlPlane).ControlPlaneEndpoint = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IControlPlaneProfileControlPlaneEndpoint Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.ControlPlaneEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IControlPlaneProfileInternal)ControlPlane).ControlPlaneEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IControlPlaneProfileInternal)ControlPlane).ControlPlaneEndpoint = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for LicenseProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterLicenseProfile Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.LicenseProfile { get => (this._licenseProfile = this._licenseProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ProvisionedClusterLicenseProfile()); set { {_licenseProfile = value;} } }
@@ -218,13 +218,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfileProperties Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.LinuxProfile { get => (this._linuxProfile = this._linuxProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.LinuxProfileProperties()); set { {_linuxProfile = value;} } }
 
         /// <summary>Internal Acessors for LinuxProfileSsh</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfilePropertiesSsh Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.LinuxProfileSsh { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfilePropertiesInternal)LinuxProfile).Ssh; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfilePropertiesInternal)LinuxProfile).Ssh = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfilePropertiesSsh Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.LinuxProfileSsh { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfilePropertiesInternal)LinuxProfile).Ssh; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ILinuxProfilePropertiesInternal)LinuxProfile).Ssh = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NetworkProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.INetworkProfile Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.NetworkProfile { get => (this._networkProfile = this._networkProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.NetworkProfile()); set { {_networkProfile = value;} } }
 
         /// <summary>Internal Acessors for NetworkProfileLoadBalancerProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.INetworkProfileLoadBalancerProfile Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.NetworkProfileLoadBalancerProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.INetworkProfileInternal)NetworkProfile).LoadBalancerProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.INetworkProfileInternal)NetworkProfile).LoadBalancerProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.INetworkProfileLoadBalancerProfile Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.NetworkProfileLoadBalancerProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.INetworkProfileInternal)NetworkProfile).LoadBalancerProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.INetworkProfileInternal)NetworkProfile).LoadBalancerProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
@@ -232,17 +232,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         /// <summary>Internal Acessors for Status</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesStatus Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.Status { get => (this._status = this._status ?? new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ProvisionedClusterPropertiesStatus()); set { {_status = value;} } }
 
+        /// <summary>Internal Acessors for StatusControlPlaneStatus</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAddonStatusProfile> Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.StatusControlPlaneStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesStatusInternal)Status).ControlPlaneStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesStatusInternal)Status).ControlPlaneStatus = value ?? null /* arrayOf */; }
+
         /// <summary>Internal Acessors for StatusCurrentState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.StatusCurrentState { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesStatusInternal)Status).CurrentState; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesStatusInternal)Status).CurrentState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.StatusCurrentState { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesStatusInternal)Status).CurrentState; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesStatusInternal)Status).CurrentState = value ?? null; }
+
+        /// <summary>Internal Acessors for StatusErrorMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesStatusInternal)Status).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesStatusInternal)Status).ErrorMessage = value ?? null; }
 
         /// <summary>Internal Acessors for StorageProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IStorageProfile Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.StorageProfile { get => (this._storageProfile = this._storageProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.StorageProfile()); set { {_storageProfile = value;} } }
 
         /// <summary>Internal Acessors for StorageProfileNfsCsiDriver</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IStorageProfileNfsCsiDriver Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.StorageProfileNfsCsiDriver { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IStorageProfileInternal)StorageProfile).NfsCsiDriver; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IStorageProfileInternal)StorageProfile).NfsCsiDriver = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IStorageProfileNfsCsiDriver Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.StorageProfileNfsCsiDriver { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IStorageProfileInternal)StorageProfile).NfsCsiDriver; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IStorageProfileInternal)StorageProfile).NfsCsiDriver = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StorageProfileSmbCsiDriver</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IStorageProfileSmbCsiDriver Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.StorageProfileSmbCsiDriver { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IStorageProfileInternal)StorageProfile).SmbCsiDriver; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IStorageProfileInternal)StorageProfile).SmbCsiDriver = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IStorageProfileSmbCsiDriver Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesInternal.StorageProfileSmbCsiDriver { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IStorageProfileInternal)StorageProfile).SmbCsiDriver; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IStorageProfileInternal)StorageProfile).SmbCsiDriver = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="NetworkProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.INetworkProfile _networkProfile;
@@ -291,7 +297,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
 
         /// <summary>The detailed status of the provisioned cluster components including addons.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAddonStatusProfile> StatusControlPlaneStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesStatusInternal)Status).ControlPlaneStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesStatusInternal)Status).ControlPlaneStatus = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAddonStatusProfile> StatusControlPlaneStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesStatusInternal)Status).ControlPlaneStatus; }
 
         /// <summary>The current state of the provisioned cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inlined)]
@@ -299,7 +305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
 
         /// <summary>Error messages during a provisioned cluster operation or steady state.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inlined)]
-        public string StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesStatusInternal)Status).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesStatusInternal)Status).ErrorMessage = value ?? null; }
+        public string StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterPropertiesStatusInternal)Status).ErrorMessage; }
 
         /// <summary>Backing field for <see cref="StorageProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IStorageProfile _storageProfile;

@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-create an attached data network.
+Create an attached data network.
 Must be created in the same location as its parent packet core data plane.
 .Description
-create an attached data network.
+Create an attached data network.
 Must be created in the same location as its parent packet core data plane.
 .Example
 $dns=@("1.1.1.1", "1.1.1.2")

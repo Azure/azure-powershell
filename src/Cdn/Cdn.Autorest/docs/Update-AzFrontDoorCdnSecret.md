@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnSecret
 
 ## SYNOPSIS
-update a new Secret within the specified profile.
+Update a new Secret within the specified profile.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzFrontDoorCdnSecret -Name <String> -ProfileInputObject <ICdnIdentity> [-
 ```
 
 ## DESCRIPTION
-update a new Secret within the specified profile.
+Update a new Secret within the specified profile.
 
 ## EXAMPLES
 

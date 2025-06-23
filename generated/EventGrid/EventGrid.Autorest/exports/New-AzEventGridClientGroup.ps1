@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a client group with the specified parameters.
+Create a client group with the specified parameters.
 .Description
-create a client group with the specified parameters.
+Create a client group with the specified parameters.
 .Example
 New-AzEventGridClientGroup -Name azps-clientgroup -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -Query "attributes.b IN ['a', 'b', 'c']"
 

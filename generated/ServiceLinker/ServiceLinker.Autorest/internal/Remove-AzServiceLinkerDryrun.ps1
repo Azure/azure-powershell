@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-delete a dryrun job
+Delete a dryrun job
 .Description
-delete a dryrun job
+Delete a dryrun job
 .Example
 {{ Add code here }}
 .Example
