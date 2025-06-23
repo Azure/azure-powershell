@@ -57,22 +57,41 @@ Function Export-AllBreakingChangeMessageUnderArtifacts
         $ArtifactsPath,
         [Parameter()]
         [String]
-        $MarkdownPath
+        $MarkdownPath,
+        [Parameter(Mandatory = $false)]
+        [String[]]
+        $Module
     )
     Write-Host "Gathering breaking change info from $ArtifactsPath"
-    $Result = "# Upcoming breaking changes in Azure PowerShell`n"
+    @"
+# Upcoming breaking changes in Azure PowerShell
 
+The breaking changes listed in this article are planned for the next major release of the Az
+PowerShell module unless otherwise noted. Per our
+[Support lifecycle](azureps-support-lifecycle.md), breaking changes in Azure PowerShell occur twice
+a year with major versions of the Az PowerShell module.
 
-    $AllModuleList = Get-ChildItem -Path $ArtifactsPath -Filter Az.* | ForEach-Object { $_.Name }
+Preview modules are not included in this list. Read more about [module version types](azureps-support-lifecycle.md#module-version-types).
+"@ | Out-File -FilePath $MarkdownPath -Force
+
+    if (-not $Module)
+    {
+        # If no specific modules are provided, gather all Az.* modules
+        $Module = Get-ChildItem -Path $ArtifactsPath -Filter Az.* | ForEach-Object { $_.Name }
+        Write-Host "GA modules only: false. All $($Module.Count) modules will be processed."
+    }
+    else
+    {
+        Write-Host "$($Module.Count) GA modules will be processed."
+    }
+
     $i = 0
-    $total = $AllModuleList.Count
-    $AllModuleList | ForEach-Object {
+    $total = $Module.Count
+    $Module | ForEach-Object {
         $i = $i + 1
         Write-Progress -Activity "Gathering breaking change info" -Status "Processing $_" -PercentComplete (100 * $i / $total)
-        $Result += Export-BreakingChangeMessageOfModule -ArtifactsPath $ArtifactsPath -ModuleName $_
+        Export-BreakingChangeMessageOfModule -ArtifactsPath $ArtifactsPath -ModuleName $_ | Out-File -FilePath $MarkdownPath -Append -NoNewline
     }
-    Write-Host "Writing breaking changes to $MarkdownPath"
-    $Result | Out-File -FilePath $MarkdownPath -Force
 }
 
 Function IsPreGAModule
