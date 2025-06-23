@@ -149,7 +149,7 @@ Accept wildcard characters: False
 
 ### -ExtendedNetworkBlock
 Array of additional networks noncontiguous with networkBlock.
-Networks must beunique and non-overlapping across VNet in your subscription, on-premise, andthis privateCloud networkBlock attribute.
+Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute.
 Make sure the CIDR format conforms to(A.B.C.D/X).
 
 ```yaml
@@ -315,7 +315,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkBlock
-The block of addresses should be unique across VNet in your subscription aswell as on-premise.
+The block of addresses should be unique across VNet in your subscription as well as on-premise.
 Make sure the CIDR format is conformed to (A.B.C.D/X) whereA,B,C,D are between 0 and 255, and X is between 0 and 22
 
 ```yaml

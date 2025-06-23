@@ -17,7 +17,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Common
 {
     /// <summary>
-    /// Extnesion methods for PSCmdlet
+    /// Extension methods for PSCmdlet
     /// </summary>
     internal static class PSModuleExtensions
     {

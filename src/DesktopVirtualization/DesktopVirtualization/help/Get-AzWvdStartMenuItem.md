@@ -37,7 +37,7 @@ ApplicationGroupName/Disk Cleanup                   Microsoft.DesktopVirtualizat
 ApplicationGroupName/Internet Explorer              Microsoft.DesktopVirtualization/applicationgroups/startmenuitems
 ```
 
-This command Lists Windows Virtual Desktop Start Menu Items in an applicaton Group.
+This command Lists Windows Virtual Desktop Start Menu Items in an application Group.
 
 ## PARAMETERS
 

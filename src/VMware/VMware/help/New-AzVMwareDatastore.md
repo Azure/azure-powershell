@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskPoolVolumeMountOption
-Mode that describes whether the LUN has to be mounted as a datastore orattached as a LUN
+Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
 
 ```yaml
 Type: System.String

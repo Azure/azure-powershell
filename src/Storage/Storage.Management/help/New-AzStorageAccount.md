@@ -884,7 +884,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Set the new Storage Account Identity type, the idenetity is for use with key management services like Azure KeyVault.
+Set the new Storage Account Identity type, the identity is for use with key management services like Azure KeyVault.
 
 ```yaml
 Type: System.String
@@ -917,7 +917,7 @@ Accept wildcard characters: False
 
 ### -ImmutabilityPolicyState
 The mode of the policy. Possible values include: 'Unlocked', 'Disabled. 
-Disabled state disablesthe policy. 
+Disabled state disables the policy. 
 Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property. 
 A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states.
 This property can only be specified with '-EnableAccountLevelImmutability'.

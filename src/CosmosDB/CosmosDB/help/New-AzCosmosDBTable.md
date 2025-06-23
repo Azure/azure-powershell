@@ -33,7 +33,7 @@ Creates a new CosmosDB Table.
 
 ### Example 1
 ```powershell
-New-AzCosmosDBTable -AccountName myAcccountName -Name myTableName -ResourceGroupName myRgName
+New-AzCosmosDBTable -AccountName myAccountName -Name myTableName -ResourceGroupName myRgName
 ```
 
 ```output

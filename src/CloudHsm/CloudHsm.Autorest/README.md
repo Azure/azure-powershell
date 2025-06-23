@@ -38,7 +38,7 @@ require:
 # - (this-folder)/relative-path-to-your-local-readme.md
 
 input-file: 
-    - $(this-folder)/../../../../azure-rest-api-specs-myFork/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2025-03-31/cloudHsm.json
+    - $(repo)/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2025-03-31/cloudhsm.json
 try-require: 
   - $(repo)/specification/xxx/resource-manager/readme.powershell.md
 

@@ -192,7 +192,7 @@ jobs:
         & $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch $sourceBranchName -BotAccessToken '$(GithubToken)' -Description $prDescription
 
         <#
-          this commidId will be useful when we push directly to target branch in the future
+          this commitId will be useful when we push directly to target branch in the future
           $commitId = (git rev-parse HEAD)
         #>
   - template: util/publish-artifacts-steps.yml
