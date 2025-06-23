@@ -1,3 +1,111 @@
+## 14.2.0 - July 2025
+#### Az.Accounts 5.1.0
+* Enabled setting the authentication scope for SSH cmdlets by 'Set-AzEnvironment -SshAuthScope <String>'.
+
+#### Az.DataFactory 1.19.4
+* Added support for Databricks Job Activity.
+* Added more support for QuickBooks connection properties.
+
+#### Az.DependencyMap 0.1.0
+* First preview release for module Az.DependencyMap
+
+#### Az.DigitalTwins 0.3.0
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.ElasticSan 1.4.1
+* Added warning message for data integrity checking when create/update a volume group.
+    - 'New-AzElasticSanVolumeGroup'
+    - 'Update-AzElasticSanVolumeGroup'
+
+#### Az.HDInsight 6.4.0
+* Added two parameters '-EntraUserIdentity' and '-EntraUserFullInfo' to cmdlet 'New-AzHDInsightCluster' to support create cluster with entra user as gateway credential to replace use username and password.
+  - Added parameter '-EntraUserIdentity' to cmdlet 'New-AzHDInsightCluster' to support creating Entra user clusters using one or more ObjectId or Upn.
+  - Added parameter '-EntraUserFullInfo' to cmdlet 'New-AzHDInsightCluster' to support creating Entra user clusters using an array of hashtables that include ObjectId, Upn, and DisplayName.
+* Added two parameters '-EntraUserIdentity' and '-EntraUserFullInfo' to cmdlet 'Set-AzHDInsightGatewayCredential' to update Entra user information for an existing Entra user cluster.
+  - Added parameter '-EntraUserIdentity' to cmdlet 'Set-AzHDInsightGatewayCredential' to support update Entra user clusters using one or more ObjectId or Upn.
+  - Added parameter '-EntraUserFullInfo' to cmdlet 'Set-AzHDInsightGatewayCredential' to support update Entra user clusters using an array of hashtables that include ObjectId, Upn, and DisplayName.
+* Added support for using WASB storage with Managed Identity (MSI) in the 'New-AzHDInsightCluster' cmdlet.
+  -Users can specify the 'StorageAccountManagedIdentity' parameter to use MSI as a wasb storage credential when creating a cluster, as an alternative to use 'StorageAccountKey'.
+
+#### Az.ManagedServices 3.1.1
+* Added breaking change announcement for below commands from array or single object to list.
+    - 'Get-AzManagedServicesAssignment'
+    - 'Get-AzManagedServicesDefinition'
+    - 'Get-AzManagedServicesMarketplaceDefinition'
+    - 'New-AzManagedServicesAssignment'
+    - 'New-AzManagedServicesAuthorizationObject'
+    - 'New-AzManagedServicesDefinition'
+    - 'New-AzManagedServicesEligibleApproverObject'
+    - 'New-AzManagedServicesEligibleAuthorizationObject' 
+
+#### Az.NeonPostgres 0.2.0
+* Support to Manage Neon Projects
+        - List Neon Projects in a given Neon Postgres Organizations
+        - Get Neon Project details
+        - Validates and Create a Neon Project
+        - Validates and Delete a Neon Project
+* Support to Manage Neon Branches
+        - List Neon Branches in a given Neon Postgres Project
+        - Get Neon Branch details
+        - Validates and Create a Neon Branch
+        - Validates and Delete a Neon Branch
+* List Neon Postgres Databases in a Branch
+* List Neon Postgres Endpoints in a Branch
+* Support to Get Neon Database Connection Uri
+
+#### Az.Network 7.18.0
+* Added a new command which creates an object for CaptureSetting, and added properties 'FileCount', 'FileSizeInBytes', and 'SessionTimeLimitInSeconds', which helps to configure the capture setting for packet capture as well as support for it for the following cmdlets:
+	- 'New-AzPacketCaptureSettingsConfig'
+* Added properties 'ContinuousCapture', 'LocalPath', and 'CaptureSetting' reference in Packet capture V2 command, as well as support for it for the following cmdlets:
+    - 'New-AzNetworkWatcherPacketCaptureV2'
+* Onboarded Application Gateway WAF Exceptions cmdlet.
+    - 'New-AzApplicationGatewayFirewallPolicyException' 
+
+#### Az.ProviderHub 0.4.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Added cmdlets: Update-AzProviderHubCustomRollout, Update-AzProviderHubDefaultRollout, Update-AzProviderHubNotificationRegistration, Update-AzProviderHubProviderRegistration, Update-AzProviderHubResourceTypeRegistration
+* Changed 'CanaryRegion' parameters in New/Update CustomRollout cmdlet to 'SpecificationCanaryRegion', 'CanarySkipRegion' parameters in New/Update DefaultRollout cmdlet to 'SpecificationCanarySkipRegion'
+
+#### Az.Purview 0.3.0
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.Relay 2.1.1
+* Added breaking change announcement for below commands.
+  - 'Get-AzRelayNamespace'
+  - 'Get-AzRelayNamespaceNetworkRuleSet'
+  - 'Set-AzRelayNamespaceNetworkRuleSet'
+
+#### Az.Reservations 0.14.1
+* Fixed purchase request missing update x-ms-mutability for location property.
+
+#### Az.Resources 8.0.1
+* Fixed empty warning output issue for cmdlet 'Test-AzResourceGroupDeployment' [#27888]
+
+#### Az.Storage 9.1.0
+* Supported set SasExpirationAction as Log or Block, together with SasExpirationPeriod
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported Storage task assignment
+    - 'New-AzStorageTaskAssignment'
+    - 'Update-AzStorageTaskAssignment'
+    - 'Get-AzStorageTaskAssignment'
+    - 'Remove-AzStorageTaskAssignment'
+    - 'Get-AzStorageTaskAssignmentinstancesReport'
+
+#### Az.StorageAction 0.2.0
+* General availability for module Az.StorageAction
+
+#### Az.VMware 0.8.0
+* Updated the AVS VMware cmdlets api version to '2024-09-01'. 
+* Added cmdlet:
+    - 'Get-AzVMwareHost'
+    - 'Get-AzVMwareSku'
+    - 'Get-AzVMwareProvisionedNetwork'
+    - 'Get-AzVMwarePureStoragePolicy'
+    - 'New-AzVMwarePureStoragePolicy'
+    - 'Update-AzVMwarePureStoragePolicy'
+    - 'Remove-AzVMwarePureStoragePolicy'
+
 ## 14.1.0 - June 2025
 #### Az.Accounts 5.0.2
 * Upgrade Azure.Core to 1.45.0

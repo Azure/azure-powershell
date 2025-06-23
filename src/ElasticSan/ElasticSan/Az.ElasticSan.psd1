@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.4.0'
+ModuleVersion = '1.4.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -57,10 +57,10 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.1.0'; })
 RequiredAssemblies = 'ElasticSan.Autorest/bin/Az.ElasticSan.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'ElasticSan.Autorest/Az.ElasticSan.format.ps1xml'
@@ -104,7 +104,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ElasticSan'
+        Tags = 'Azure','ResourceManager','ARM','PSModule','ElasticSan'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -116,8 +116,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Changed parameters ''BaseSizeTiB'' and ''ExtendedCapacitySizeTiB'' in cmdlet ''New-AzElasticSan'' to be optional.
-    - ''New-AzElasticSan'''
+        ReleaseNotes = '* Added warning message for data integrity checking when create/update a volume group.
+    - ''New-AzElasticSanVolumeGroup''
+    - ''Update-AzElasticSanVolumeGroup'''
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -130,7 +131,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''

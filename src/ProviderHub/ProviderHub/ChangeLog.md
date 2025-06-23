@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 * Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
 * Added cmdlets: Update-AzProviderHubCustomRollout, Update-AzProviderHubDefaultRollout, Update-AzProviderHubNotificationRegistration, Update-AzProviderHubProviderRegistration, Update-AzProviderHubResourceTypeRegistration
 * Changed `CanaryRegion` parameters in New/Update CustomRollout cmdlet to `SpecificationCanaryRegion`, `CanarySkipRegion` parameters in New/Update DefaultRollout cmdlet to `SpecificationCanarySkipRegion`
