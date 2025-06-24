@@ -1,7 +1,6 @@
 ### Example 1: Update Cloud HSM to Add Tags
 ```powershell
 Update-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Tag @{ CloudHsmRegion = "UkWest"; Department = "Engineering"; DepartmentNo = "1"}
-Update-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Tag @{ CloudHsmRegion = "UkWest"; Department = "Engineering"; DepartmentNo = "1"}
 ```
 
 ```output

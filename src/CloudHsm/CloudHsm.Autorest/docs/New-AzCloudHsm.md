@@ -69,7 +69,6 @@ Because the command does not specify a value for the SKU parameter, it creates a
 ### Example 2: Create Cloud HSM with User Assigned Identity
 ```powershell
 New-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Location UkWest -Sku "Standard_B1" -UserAssignedIdentity  "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity"
-
 ```
 
 ```output
