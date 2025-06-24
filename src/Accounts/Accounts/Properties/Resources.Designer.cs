@@ -1087,7 +1087,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Starting July 01, 2025, MFA will be gradually enforced for Azure public cloud. The authentication with username and password in the command line is not supported with MFA. Consider using one of the compatible authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314.
+        ///   Looks up a localized string similar to Starting {0}, MFA will be gradually enforced for Azure public cloud. The authentication with username and password in the command line is not supported with MFA. Consider using one of the compatible authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276971.
         /// </summary>
         internal static string RopcDeprecationPublicCloud {
             get {
@@ -1096,7 +1096,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Using authentication with username and password in the command line is strongly discouraged. Consider using one of the recommended authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314.
+        ///   Looks up a localized string similar to Using authentication with username and password in the command line is strongly discouraged. Consider using one of the recommended authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276971.
         /// </summary>
         internal static string RopcDeprecationSovereignClouds {
             get {

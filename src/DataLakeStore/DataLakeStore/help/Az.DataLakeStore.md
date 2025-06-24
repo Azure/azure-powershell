@@ -41,9 +41,11 @@ Gets the list of items in a folder in Data Lake Store.
 ### [Get-AzDataLakeStoreChildItemSummary](Get-AzDataLakeStoreChildItemSummary.md)
 Gets the summary of total size, files and directories contained in the path specified
 
+### [Get-AzDataLakeStoreDeletedItem](Get-AzDataLakeStoreDeletedItem.md)
+Searches for deleted entries in trash which match the filter.
+
 ### [Get-AzDataLakeStoreFirewallRule](Get-AzDataLakeStoreFirewallRule.md)
-Gets the specified firewall rules in the specified Data Lake Store.
-If no firewall rule is specified, then lists all firewall rules for the account.
+Gets the specified firewall rules in the specified Data Lake Store. If no firewall rule is specified, then lists all firewall rules for the account.
 
 ### [Get-AzDataLakeStoreItem](Get-AzDataLakeStoreItem.md)
 Gets the details of a file or folder in Data Lake Store.
@@ -61,12 +63,10 @@ Gets the owner of a file or folder in Data Lake Store.
 Gets the permission octal of a file or folder in Data Lake Store.
 
 ### [Get-AzDataLakeStoreTrustedIdProvider](Get-AzDataLakeStoreTrustedIdProvider.md)
-Gets the specified trusted identity provider in the specified Data Lake Store.
-If no provider is specified, then lists all providers for the account.
+Gets the specified trusted identity provider in the specified Data Lake Store. If no provider is specified, then lists all providers for the account.
 
 ### [Get-AzDataLakeStoreVirtualNetworkRule](Get-AzDataLakeStoreVirtualNetworkRule.md)
-Gets the specified virtual network rules in the specified Data Lake Store.
-If no virtual network rule is specified, then lists all virtual network rules for the account.
+Gets the specified virtual network rules in the specified Data Lake Store. If no virtual network rule is specified, then lists all virtual network rules for the account.
 
 ### [Import-AzDataLakeStoreItem](Import-AzDataLakeStoreItem.md)
 Uploads a local file or directory to a Data Lake Store.
@@ -103,6 +103,9 @@ Removes the specified trusted identity provider in the specified Data Lake Store
 
 ### [Remove-AzDataLakeStoreVirtualNetworkRule](Remove-AzDataLakeStoreVirtualNetworkRule.md)
 Removes the specified virtual network rule in the specified Data Lake Store.
+
+### [Restore-AzDataLakeStoreDeletedItem](Restore-AzDataLakeStoreDeletedItem.md)
+Restore a deleted file or folder in Azure Data Lake.
 
 ### [Set-AzDataLakeStoreAccount](Set-AzDataLakeStoreAccount.md)
 Modifies a Data Lake Store account.

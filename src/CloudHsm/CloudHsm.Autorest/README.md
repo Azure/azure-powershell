@@ -40,7 +40,7 @@ require:
 input-file: 
     - $(repo)/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2025-03-31/cloudhsm.json
 try-require: 
-  - $(repo)/specification/xxx/resource-manager/readme.powershell.md
+  - $(repo)/specification/hardwaresecuritymodules/resource-manager/readme.powershell.md
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0

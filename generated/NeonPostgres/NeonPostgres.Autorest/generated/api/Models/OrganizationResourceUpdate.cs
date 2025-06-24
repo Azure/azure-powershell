@@ -49,36 +49,92 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id; }
 
+        /// <summary>SaaS subscription id for the the marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
+        public string MarketplaceDetailSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).MarketplaceDetailSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).MarketplaceDetailSubscriptionId = value ?? null; }
+
+        /// <summary>Marketplace subscription status</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
+        public string MarketplaceDetailSubscriptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).MarketplaceDetailSubscriptionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).MarketplaceDetailSubscriptionStatus = value ?? null; }
+
         /// <summary>Internal Acessors for CompanyDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseCompanyDetails Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal.CompanyDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).CompanyDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).CompanyDetail = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseCompanyDetails Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal.CompanyDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).CompanyDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).CompanyDetail = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for MarketplaceDetail</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsUpdate Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal.MarketplaceDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).MarketplaceDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).MarketplaceDetail = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for MarketplaceDetailOfferDetail</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseOfferDetailsUpdate Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal.MarketplaceDetailOfferDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).MarketplaceDetailOfferDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).MarketplaceDetailOfferDetail = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PartnerOrganizationProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataPartnerOrganizationPropertiesUpdate Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal.PartnerOrganizationProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).PartnerOrganizationProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).PartnerOrganizationProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataPartnerOrganizationPropertiesUpdate Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal.PartnerOrganizationProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).PartnerOrganizationProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).PartnerOrganizationProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PartnerOrganizationPropertySingleSignOnProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseSingleSignOnProperties Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal.PartnerOrganizationPropertySingleSignOnProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).PartnerOrganizationPropertySingleSignOnProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).PartnerOrganizationPropertySingleSignOnProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseSingleSignOnProperties Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal.PartnerOrganizationPropertySingleSignOnProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).PartnerOrganizationPropertySingleSignOnProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).PartnerOrganizationPropertySingleSignOnProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdate Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.LiftrBaseDataOrganizationPropertiesUpdate()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for UserDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseUserDetails Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal.UserDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).UserDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).UserDetail = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseUserDetails Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResourceUpdateInternal.UserDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).UserDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).UserDetail = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name; }
+
+        /// <summary>Offer Id for the marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
+        public string OfferDetailOfferId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).OfferDetailOfferId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).OfferDetailOfferId = value ?? null; }
+
+        /// <summary>Plan Id for the marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
+        public string OfferDetailPlanId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).OfferDetailPlanId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).OfferDetailPlanId = value ?? null; }
+
+        /// <summary>Plan Name for the marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
+        public string OfferDetailPlanName { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).OfferDetailPlanName; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).OfferDetailPlanName = value ?? null; }
+
+        /// <summary>Publisher Id for the marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
+        public string OfferDetailPublisherId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).OfferDetailPublisherId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).OfferDetailPublisherId = value ?? null; }
+
+        /// <summary>Term Id for the marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
+        public string OfferDetailTermId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).OfferDetailTermId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).OfferDetailTermId = value ?? null; }
+
+        /// <summary>Term Name for the marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
+        public string OfferDetailTermUnit { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).OfferDetailTermUnit; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).OfferDetailTermUnit = value ?? null; }
 
         /// <summary>Organization Id in partner's system</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
@@ -87,6 +143,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         /// <summary>Organization name in partner's system</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
         public string PartnerOrganizationPropertyOrganizationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).PartnerOrganizationPropertyOrganizationName; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).PartnerOrganizationPropertyOrganizationName = value ?? null; }
+
+        /// <summary>Neon Project Properties</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectPropertiesUpdate ProjectProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).ProjectProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdateInternal)Property).ProjectProperty = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdate _property;
@@ -115,31 +175,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inherited)]
@@ -260,6 +320,95 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         SerializedName = @"officeAddress",
         PossibleTypes = new [] { typeof(string) })]
         string CompanyDetailOfficeAddress { get; set; }
+        /// <summary>SaaS subscription id for the the marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"SaaS subscription id for the the marketplace offer",
+        SerializedName = @"subscriptionId",
+        PossibleTypes = new [] { typeof(string) })]
+        string MarketplaceDetailSubscriptionId { get; set; }
+        /// <summary>Marketplace subscription status</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Marketplace subscription status",
+        SerializedName = @"subscriptionStatus",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PSArgumentCompleterAttribute("PendingFulfillmentStart", "Subscribed", "Suspended", "Unsubscribed")]
+        string MarketplaceDetailSubscriptionStatus { get; set; }
+        /// <summary>Offer Id for the marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Offer Id for the marketplace offer",
+        SerializedName = @"offerId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OfferDetailOfferId { get; set; }
+        /// <summary>Plan Id for the marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Plan Id for the marketplace offer",
+        SerializedName = @"planId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OfferDetailPlanId { get; set; }
+        /// <summary>Plan Name for the marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Plan Name for the marketplace offer",
+        SerializedName = @"planName",
+        PossibleTypes = new [] { typeof(string) })]
+        string OfferDetailPlanName { get; set; }
+        /// <summary>Publisher Id for the marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Publisher Id for the marketplace offer",
+        SerializedName = @"publisherId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OfferDetailPublisherId { get; set; }
+        /// <summary>Term Id for the marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Term Id for the marketplace offer",
+        SerializedName = @"termId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OfferDetailTermId { get; set; }
+        /// <summary>Term Name for the marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Term Name for the marketplace offer",
+        SerializedName = @"termUnit",
+        PossibleTypes = new [] { typeof(string) })]
+        string OfferDetailTermUnit { get; set; }
         /// <summary>Organization Id in partner's system</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
         Required = false,
@@ -282,6 +431,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         SerializedName = @"organizationName",
         PossibleTypes = new [] { typeof(string) })]
         string PartnerOrganizationPropertyOrganizationName { get; set; }
+        /// <summary>Neon Project Properties</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Neon Project Properties",
+        SerializedName = @"projectProperties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectPropertiesUpdate) })]
+        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectPropertiesUpdate ProjectProperty { get; set; }
         /// <summary>List of AAD domains fetched from Microsoft Graph for user.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
         Required = false,
@@ -402,7 +562,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         long? CompanyDetailNumberOfEmployee { get; set; }
         /// <summary>Office address of the company</summary>
         string CompanyDetailOfficeAddress { get; set; }
-        /// <summary>Organization properties</summary>
+        /// <summary>Marketplace details of the resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsUpdate MarketplaceDetail { get; set; }
+        /// <summary>Offer details for the marketplace that is selected by the user</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseOfferDetailsUpdate MarketplaceDetailOfferDetail { get; set; }
+        /// <summary>SaaS subscription id for the the marketplace offer</summary>
+        string MarketplaceDetailSubscriptionId { get; set; }
+        /// <summary>Marketplace subscription status</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PSArgumentCompleterAttribute("PendingFulfillmentStart", "Subscribed", "Suspended", "Unsubscribed")]
+        string MarketplaceDetailSubscriptionStatus { get; set; }
+        /// <summary>Offer Id for the marketplace offer</summary>
+        string OfferDetailOfferId { get; set; }
+        /// <summary>Plan Id for the marketplace offer</summary>
+        string OfferDetailPlanId { get; set; }
+        /// <summary>Plan Name for the marketplace offer</summary>
+        string OfferDetailPlanName { get; set; }
+        /// <summary>Publisher Id for the marketplace offer</summary>
+        string OfferDetailPublisherId { get; set; }
+        /// <summary>Term Id for the marketplace offer</summary>
+        string OfferDetailTermId { get; set; }
+        /// <summary>Term Name for the marketplace offer</summary>
+        string OfferDetailTermUnit { get; set; }
+        /// <summary>Neon Organization properties</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataPartnerOrganizationPropertiesUpdate PartnerOrganizationProperty { get; set; }
         /// <summary>Organization Id in partner's system</summary>
         string PartnerOrganizationPropertyOrganizationId { get; set; }
@@ -410,6 +591,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         string PartnerOrganizationPropertyOrganizationName { get; set; }
         /// <summary>Single Sign On properties for the organization</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseSingleSignOnProperties PartnerOrganizationPropertySingleSignOnProperty { get; set; }
+        /// <summary>Neon Project Properties</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectPropertiesUpdate ProjectProperty { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesUpdate Property { get; set; }
         /// <summary>List of AAD domains fetched from Microsoft Graph for user.</summary>

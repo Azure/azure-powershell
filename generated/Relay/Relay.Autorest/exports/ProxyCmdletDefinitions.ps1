@@ -1277,7 +1277,7 @@ $connection.RequiresClientAuthorization = $false
 New-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-02 -InputObject $connection | Format-List
 .Example
 $connection = Get-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-02
-$connection.UserMetadata = "TestHybirdConnection2"
+$connection.UserMetadata = "TestHybridConnection2"
 New-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-02 -InputObject $connection | Format-List
 
 .Inputs
@@ -4066,7 +4066,7 @@ This operation is idempotent.
 Set-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01 -UserMetadata "Update UserMetaData" | Format-List
 .Example
 $connection = Get-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01
-$connection.UserMetadata = "testHybirdConnection"
+$connection.UserMetadata = "testHybridConnection"
 Set-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01 -InputObject $connection | Format-List
 
 .Inputs

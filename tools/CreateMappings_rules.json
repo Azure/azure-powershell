@@ -981,6 +981,10 @@
     "alias": "DependencyMap"
   },
   {
+    "alias": "DataTransfer",
+    "module": "DataTransfer"
+  },
+  {
     "alias": "CloudHsm",
     "module": "CloudHsm"
   }
