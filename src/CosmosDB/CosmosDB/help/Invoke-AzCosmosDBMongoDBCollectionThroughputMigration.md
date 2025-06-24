@@ -16,7 +16,7 @@ Use this to migrate autoscale throughput to manual throughput and vice versa.
 ```
 Invoke-AzCosmosDBMongoDBCollectionThroughputMigration -DatabaseName <String> [-Name <String>]
  -ResourceGroupName <String> -AccountName <String> -ThroughputType <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Invoke-AzCosmosDBMongoDBCollectionThroughputMigration -DatabaseName <String> [-N
 ```
 Invoke-AzCosmosDBMongoDBCollectionThroughputMigration [-Name <String>]
  -ParentObject <PSMongoDBDatabaseGetResults> -ThroughputType <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Invoke-AzCosmosDBMongoDBCollectionThroughputMigration [-Name <String>]
 ```
 Invoke-AzCosmosDBMongoDBCollectionThroughputMigration [-Name <String>]
  -InputObject <PSMongoDBCollectionGetResults> -ThroughputType <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -136,21 +136,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
