@@ -1,9 +1,3 @@
-parameters:
-- name: TestChangedModulesOnly
-  displayName: 'Only run tests on modules that are changed by regeneration'
-  type: string
-  default: 'True'
-
 variables:
   IntermediateStepTimeoutInMinutes: 30
   GenerateTimeoutInMinutes: 120
@@ -218,7 +212,7 @@ stages:
               -ChangedFiles $changedFiles `
               -RepoRoot "$(Build.SourcesDirectory)"
         env:
-            TEST_CHANGED_MODULES_ONLY: ${{ parameters.TestChangedModulesOnly }}
+            RUN_TEST_ON_ALL_MODULES: $(RUN_TEST_ON_ALL_MODULES)
 
       - task: PublishPipelineArtifact@1
         displayName: 'Upload filtered targets'

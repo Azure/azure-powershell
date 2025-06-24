@@ -66,7 +66,9 @@ function Write-Matrix {
         [string]$RepoRoot
     )
 
-    Write-Host "##[group]$VariableName module groups: $($GroupedModules.Count)"
+    Write-Host "$VariableName module groups: $($GroupedModules.Count)"
+    $GroupedModules | ForEach-Object { $_ -join ', ' } | ForEach-Object { Write-Host $_ }
+
     $targets = @{}
     $MatrixStr = ""
     $index = 0
@@ -74,11 +76,8 @@ function Write-Matrix {
         $key = ($index + 1).ToString() + "-" + $modules.Count
         $MatrixStr = "$MatrixStr,'$key':{'MatrixKey':'$key'}"
         $targets[$key] = $modules
-        $moduleNamesStr = $modules -join ', '
-        Write-Host "$key : $moduleNamesStr"
         $index++
     }
-    Write-Host "##[endgroup]"
 
     if ($MatrixStr -and $MatrixStr.Length -gt 1) {
         $MatrixStr = $MatrixStr.Substring(1)
@@ -92,7 +91,6 @@ function Write-Matrix {
     }
     $targetsOutputFile = Join-Path $targetsOutputDir "$VariableName.json"
     $targets | ConvertTo-Json -Depth 5 | Out-File -FilePath $targetsOutputFile -Encoding utf8
-    Write-Host
 }
 
 function Get-Targets {

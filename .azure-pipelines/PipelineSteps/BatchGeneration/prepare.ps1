@@ -34,17 +34,14 @@ foreach ($moduleGroup in $groupedModules) {
     $index++
 }
 
-$artifactsDir = Join-Path $RepoRoot "artifacts"
-if (-not (Test-Path -Path $artifactsDir)) {
-    New-Item -ItemType Directory -Path $artifactsDir
+$generationTargetsOutputDir = Join-Path $RepoRoot "artifacts"
+if (-not (Test-Path -Path $generationTargetsOutputDir)) {
+    New-Item -ItemType Directory -Path $generationTargetsOutputDir
 }
-$generationTargetsOutputFile = Join-Path $artifactsDir "generationTargets.json"
+$generationTargetsOutputFile = Join-Path $generationTargetsOutputDir "generationTargets.json"
 $generationTargets | ConvertTo-Json -Depth 5 | Out-File -FilePath $generationTargetsOutputFile -Encoding utf8
 
 if ($MatrixStr -and $MatrixStr.Length -gt 1) {
     $MatrixStr = $MatrixStr.Substring(1)
 }
 Write-Host "##vso[task.setVariable variable=generationTargets;isOutput=true]{$MatrixStr}"
-
-$V4ModulesRecordFile = Join-Path $artifactsDir 'preparedV4Modules.txt'
-$modules | Set-Content -Path $V4ModulesRecordFile -Encoding UTF8

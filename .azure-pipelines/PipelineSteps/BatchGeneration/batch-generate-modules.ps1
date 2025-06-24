@@ -113,7 +113,6 @@ foreach ($moduleName in $sortedModuleNames) {
     $moduleEndTime = Get-Date
     $moduleResult.DurationSeconds = ($moduleEndTime - $moduleStartTime).TotalSeconds
     $results += $moduleResult
-    $moduleResult | ConvertTo-Json -Depth 5 | Write-Output
 }
 
 $ArtifactOutputDir = Join-Path $RepoRoot "artifacts"
