@@ -13,9 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.HDInsight.Models;
@@ -29,7 +26,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
     {
         private AzureHdInsightManagementClient _hdInsightManagementClient;
         private AzureHdInsightJobManagementClient _hdInsightJobClient;
-        private IMicrosoftGraphClient _graphClient;
         protected BasicAuthenticationCloudCredentials _credential;
         protected string _clusterName;
 
@@ -54,25 +50,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
                 return _hdInsightJobClient;
             }
             set { _hdInsightJobClient = value; }
-        }
-
-        public IMicrosoftGraphClient GraphClient
-        {
-            get
-            {
-                if (_graphClient != null) return _graphClient;
-                try
-                {
-                    _graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(DefaultContext, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
-                    (_graphClient as MicrosoftGraphClient).TenantID = DefaultContext.Tenant.Id.ToString();
-                }
-                catch
-                {
-                    _graphClient = null;
-                }
-                return _graphClient;
-            }
-            set { _graphClient = value; }
         }
 
         protected string GetClusterConnection(string resourceGroupName, string clusterName)

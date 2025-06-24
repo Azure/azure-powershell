@@ -21,7 +21,7 @@ function Test-MonitoringRelatedCommands{
 	# Create some resources that will be used throughout test 
 	try
 	{
-		$location = "East Asia"
+		$location = "EastUS"
 		# prepare parameter for creating parameter
 		$params= Prepare-ClusterCreateParameter
 
@@ -30,7 +30,7 @@ function Test-MonitoringRelatedCommands{
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion -VirtualNetworkId $params.virtualNetworkId -SubnetName "default" -Version $params.version
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 
 		$workspaceName = Generate-Name("workspace-ps-test")
 		$resourceGroupName = $cluster.ResourceGroup
