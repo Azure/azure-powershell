@@ -1,6 +1,6 @@
 ### Example 1: Update Cloud HSM to Add Tags
 ```powershell
-Update-AzCloudHsm -name myCloudHsm -resourcegroupname group -Tag @{ CloudHsmRegion = "UkWest"; Department = "Engineering"; DepartmentNo = "1"}
+Update-AzCloudHsm -Name myCloudHsm -ResourceGroupName group -Tag @{ CloudHsmRegion = "UkWest"; Department = "Engineering"; DepartmentNo = "1"}
 ```
 
 ```output
@@ -43,7 +43,7 @@ Adds 3 Tags to a Cloud HSM named myCloudHsm.
 
 ### Example 2: Update Cloud HSM to add remove user Assigned Identity.
 ```powershell
-Update-AzCloudHsm -name myCloudHsm -resourcegroupname group  -UserAssignedIdentity  @null
+Update-AzCloudHsm -Name myCloudHsm -ResourceGroupName group  -UserAssignedIdentity @()
 ```
 
 ```output

@@ -26,7 +26,7 @@ Use `Backup-AzCloudHsm` to backup.
 
 ### Example 1:   Restores a Cloud HSM from backup.
 ```powershell
-Restore-AzCloudHsm 	-ClusterName chsm1 -ResourceGroupName group -BlobContainerUri "https://{accountName}.blob.core.windows.net/{containerName}" -BackupId cloudhsm-eb0e0bf9-9d12-4201-b38c-567c8a452dd5-2025052912032456
+Restore-AzCloudHsm -ClusterName chsm1 -ResourceGroupName group -BlobContainerUri "https://{accountName}.blob.core.windows.net/{containerName}" -BackupId cloudhsm-eb0e0bf9-9d12-4201-b38c-567c8a452dd5-2025052912032456
 ```
 
 ```output

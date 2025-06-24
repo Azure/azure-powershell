@@ -25,7 +25,7 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 
 ### Example 1: Deletes a Cloud HSM.
 ```powershell
-Remove-AzCloudHsm -name chsm1 -resourcegroupname group
+Remove-AzCloudHsm -Name chsm1 -ResourceGroupName group
 ```
 
 This command removes the Cloud HSM named chsm1 from the named resource group.
